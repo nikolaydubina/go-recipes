@@ -28,7 +28,7 @@ $ go list -json ./... | jq -rc '[.ImportPath, (.GoFiles | length)] | join(" ")' 
 
 ### Find packages without tests
 
-> This is alternative to running tests
+> If code coverage does not report packages without tests. This should be fast and good for CI.
 
 ```bash
 $ go list -json ./... | jq -rc 'select((.TestGoFiles | length)==0) | .ImportPath'
