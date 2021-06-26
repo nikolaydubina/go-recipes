@@ -1,7 +1,7 @@
 <h1 align="center">Go recipes 🦩 </h1>
 <p align="center">Handy commands to run in Go projects</p>
 
-### Get Go versions of upstream modules
+### Find Go versions of upstream modules
 
 > Use this when upgrading version of Go or finding old modules.
 
@@ -12,12 +12,12 @@ go.uber.org/multierr 1.14
 github.com/nikolaydubina/go-featureprocessing 1.15
 ```
 
-### Get histogram of files per package in current module
+### Make histogram of files per package
 
 > Use this to see when package is too big or too small. Adjust histogram length to maximum value.
 
 ```bash
-$ go list -json ./... | jq -rc 'select(.Standard!="true") | [.ImportPath, (.GoFiles | length)] | join(" ")' | perl -lane 'print (" " x (20 - $F[1]), "=" x $F[1], " ", $F[1], "\t", $F[0])'
+$ go list -json ./... | jq -rc '[.ImportPath, (.GoFiles | length)] | join(" ")' | perl -lane 'print (" " x (20 - $F[1]), "=" x $F[1], " ", $F[1], "\t", $F[0])'
   ================== 18	github.com/gin-gonic/gin
        ============= 13	github.com/gin-gonic/gin/binding
                    = 1	github.com/gin-gonic/gin/ginS
@@ -26,7 +26,17 @@ $ go list -json ./... | jq -rc 'select(.Standard!="true") | [.ImportPath, (.GoFi
          =========== 11	github.com/gin-gonic/gin/render
 ```
 
-### Get graph of packages
+### Find packages without tests
+
+> This is alternative to running tests
+
+```bash
+$ go list -json ./... | jq -rc 'select((.TestGoFiles | length)==0) | .ImportPath'
+github.com/gin-gonic/gin/ginS
+github.com/gin-gonic/gin/internal/json
+```
+
+### Make graph of upstream packages
 
 > Use to find unexpected dependencies, visualize project. Works best for small number of packages. Without `-deps` only for current module.
 
@@ -35,7 +45,7 @@ $ go list -deps -json ./... | jq -c "select(.Standard!="true") | {from: .ImportP
 ```
 ![package-graph](./docs/pacages-graph.svg)
 
-### Scrape details about upstream modules
+### Scrape details about upstream modules and make graph
 
 > Use to find low quality, unmaintained dependencies.
 
