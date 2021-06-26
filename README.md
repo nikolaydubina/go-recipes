@@ -12,7 +12,7 @@ go.uber.org/multierr 1.14
 github.com/nikolaydubina/go-featureprocessing 1.15
 ```
 
-### Make histogram of files per package
+### Make histogram of Go files per package
 
 > Use this to see when package is too big or too small. Adjust histogram length to maximum value.
 
