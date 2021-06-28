@@ -6,11 +6,27 @@
 > Use this when upgrading version of Go or finding old modules.
 
 ```bash
-$ go list -deps -json ./... | jq -rc 'select(.Standard!="true") | [.Module.Path,.Module.GoVersion] | join(" ")' | grep -v "^ $" | sort -k 2 | uniq
-github.com/mattn/go-isatty 1.12
-golang.org/x/sys 1.12
-github.com/gin-gonic/gin 1.13
-github.com/go-playground/locales 1.13
+$ go list -deps -json ./... | jq -rc 'select(.Standard!=true and .Module.GoVersion!=null) | [.Module.GoVersion,.Module.Path] | join(" ")' | grep -v "^ $" | sort -V | uniq 
+1.14 github.com/grpc-ecosystem/go-grpc-middleware
+1.14 github.com/grpc-ecosystem/grpc-gateway
+1.14 go.uber.org/multierr
+1.15 gopkg.in/yaml.v2
+1.16 github.com/deliveryhero/pd-ersatz/sts
+1.16 github.com/deliveryhero/pd-pablo-payment-gateway
+...
+```
+
+### Find upstream modules without Go version
+
+> Use this to find outdated modules or imports that you need to upgrade
+
+```bash
+$ go list -deps -json ./... | jq -rc 'select(.Standard!=true and .Module.GoVersion==null) | .Module.Path' | grep -v "^ $" | sort -u
+github.com/DataDog/datadog-go
+github.com/ajg/form
+github.com/davecgh/go-spew
+github.com/dgrijalva/jwt-go
+github.com/facebookgo/clock
 ...
 ```
 
@@ -43,7 +59,7 @@ github.com/gin-gonic/gin/internal/json
 > Use to find unexpected dependencies, visualize project. Works best for small number of packages. Without `-deps` only for current module.
 
 ```bash
-$ go list -deps -json ./... | jq -c 'select(.Standard!="true") | {from: .ImportPath, to: .Imports[]}' | jsonl-graph | dot -Tsvg > package-graph.svg
+$ go list -deps -json ./... | jq -c 'select(.Standard!=true) | {from: .ImportPath, to: .Imports[]}' | jsonl-graph | dot -Tsvg > package-graph.svg
 ```
 ![package-graph](./docs/pacages-graph.svg)
 
