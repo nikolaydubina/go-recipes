@@ -56,7 +56,7 @@ github.com/gin-gonic/gin/internal/json
 
 ### Make graph of upstream packages
 
-> Use to find unexpected dependencies, visualize project. Works best for small number of packages. Without `-deps` only for current module.
+> Use to find unexpected dependencies, visualize project. Works best for small number of packages, for large projects use `grep` to narrow down subgraph. Without `-deps` only for current module.
 
 ```bash
 $ go list -deps -json ./... | jq -c 'select(.Standard!=true) | {from: .ImportPath, to: .Imports[]}' | jsonl-graph | dot -Tsvg > package-graph.svg
