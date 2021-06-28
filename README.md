@@ -35,7 +35,7 @@ github.com/facebookgo/clock
 > Use this to see when package is too big or too small. Adjust histogram length to maximum value.
 
 ```bash
-$ go list -json ./... | jq -rc '[.ImportPath, (.GoFiles | length)] | join(" ")' | perl -lane 'print (" " x (20 - $F[1]), "=" x $F[1], " ", $F[1], "\t", $F[0])'
+$ go list -json ./... | jq -rc '[.ImportPath, (.GoFiles | length | tostring)] | join(" ")' | perl -lane 'print (" " x (20 - $F[1]), "=" x $F[1], " ", $F[1], "\t", $F[0])'
   ================== 18	github.com/gin-gonic/gin
        ============= 13	github.com/gin-gonic/gin/binding
                    = 1	github.com/gin-gonic/gin/ginS
