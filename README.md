@@ -6,10 +6,12 @@
 > Use this when upgrading version of Go or finding old modules.
 
 ```bash
-$ go list -deps -json ./... | jq -rc 'select(.Standard!="true") | [.Module.Path,.Module.GoVersion] | join(" ")' | grep -v "^ $" | sort -u -k 2
-go.uber.org/atomic 1.13
-go.uber.org/multierr 1.14
-github.com/nikolaydubina/go-featureprocessing 1.15
+$ go list -deps -json ./... | jq -rc 'select(.Standard!="true") | [.Module.Path,.Module.GoVersion] | join(" ")' | grep -v "^ $" | sort -k 2 | uniq
+github.com/mattn/go-isatty 1.12
+golang.org/x/sys 1.12
+github.com/gin-gonic/gin 1.13
+github.com/go-playground/locales 1.13
+...
 ```
 
 ### Make histogram of Go files per package
