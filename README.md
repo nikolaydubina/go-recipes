@@ -6,7 +6,7 @@
 > Use this when upgrading version of Go or finding old modules.
 
 ```bash
-$ go list -deps -json ./... | jq -rc 'select(.Standard!=true and .Module.GoVersion!=null) | [.Module.GoVersion,.Module.Path] | join(" ")' | grep -v "^ $" | sort -V | uniq 
+$ go list -deps -json ./... | jq -rc 'select(.Standard!=true and .Module.GoVersion!=null) | [.Module.GoVersion,.Module.Path] | join(" ")' | sort -V | uniq
 1.14 github.com/grpc-ecosystem/go-grpc-middleware
 1.14 github.com/grpc-ecosystem/grpc-gateway
 1.14 go.uber.org/multierr
@@ -21,7 +21,7 @@ $ go list -deps -json ./... | jq -rc 'select(.Standard!=true and .Module.GoVersi
 > Use this to find outdated modules or imports that you need to upgrade
 
 ```bash
-$ go list -deps -json ./... | jq -rc 'select(.Standard!=true and .Module.GoVersion==null) | .Module.Path' | grep -v "^ $" | sort -u
+$ go list -deps -json ./... | jq -rc 'select(.Standard!=true and .Module.GoVersion==null) | .Module.Path' | sort -u
 github.com/DataDog/datadog-go
 github.com/ajg/form
 github.com/davecgh/go-spew
