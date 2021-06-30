@@ -7,12 +7,9 @@
 
 ```bash
 $ go list -deps -json ./... | jq -rc 'select(.Standard!=true and .Module.GoVersion!=null) | [.Module.GoVersion,.Module.Path] | join(" ")' | sort -V | uniq
-1.14 github.com/grpc-ecosystem/go-grpc-middleware
-1.14 github.com/grpc-ecosystem/grpc-gateway
-1.14 go.uber.org/multierr
-1.15 gopkg.in/yaml.v2
-1.16 github.com/deliveryhero/pd-ersatz/sts
-1.16 github.com/deliveryhero/pd-pablo-payment-gateway
+1.11 github.com/ugorji/go/codec
+1.11 golang.org/x/crypto
+1.12 github.com/golang/protobuf
 ...
 ```
 
@@ -34,11 +31,9 @@ github.com/json-iterator/go v1.1.9 [v1.1.11]
 
 ```bash
 $ go list -deps -json ./... | jq -rc 'select(.Standard!=true and .Module.GoVersion==null) | .Module.Path' | sort -u
-github.com/DataDog/datadog-go
-github.com/ajg/form
-github.com/davecgh/go-spew
-github.com/dgrijalva/jwt-go
 github.com/facebookgo/clock
+golang.org/x/text
+gopkg.in/yaml.v2
 ...
 ```
 
@@ -50,7 +45,6 @@ github.com/facebookgo/clock
 $ go list -json ./... | jq -rc '[.ImportPath, (.GoFiles | length | tostring)] | join(" ")' | perl -lane 'print (" " x (20 - $F[1]), "=" x $F[1], " ", $F[1], "\t", $F[0])'
   ================== 18	github.com/gin-gonic/gin
        ============= 13	github.com/gin-gonic/gin/binding
-                   = 1	github.com/gin-gonic/gin/ginS
                    = 1	github.com/gin-gonic/gin/internal/bytesconv
                    = 1	github.com/gin-gonic/gin/internal/json
          =========== 11	github.com/gin-gonic/gin/render
