@@ -13,7 +13,7 @@ $ go list -deps -json ./... | jq -rc 'select(.Standard!=true and .Module.GoVersi
 ...
 ```
 
-### Get direct dependendies modules that can be upgraded
+### Get directly dependent modules that can be upgraded
 
 > Use this to keep your modules updated. Similar function is integrated in VSCode official Go plugin and GoLand, but you can run it as CLI too. May be useful if you use emacs or vim.
 
