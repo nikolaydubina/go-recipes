@@ -58,6 +58,7 @@ $ go list -json ./... | jq -rc '[.ImportPath, (.GoFiles | length | tostring)] | 
 $ go list -json ./... | jq -rc 'select((.TestGoFiles | length)==0) | .ImportPath'
 github.com/gin-gonic/gin/ginS
 github.com/gin-gonic/gin/internal/json
+...
 ```
 
 ### Make graph of upstream packages
