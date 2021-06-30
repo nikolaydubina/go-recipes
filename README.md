@@ -21,7 +21,7 @@ $ go list -deps -json ./... | jq -rc 'select(.Standard!=true and .Module.GoVersi
 > Use this to keep your modules updated. Similar function is integrated in VSCode official Go plugin and GoLand, but you can run it as CLI too. May be useful if you use emacs or vim.
 
 ```bash
-$  go list -u -m $(go list -m -f '{{.Indirect}} {{.}}' all | grep '^false' | cut -d ' ' -f2) | grep '\['
+$ go list -u -m $(go list -m -f '{{.Indirect}} {{.}}' all | grep '^false' | cut -d ' ' -f2) | grep '\['
 github.com/goccy/go-json v0.5.1 [v0.7.3]
 github.com/golang/protobuf v1.3.3 [v1.5.2]
 github.com/json-iterator/go v1.1.9 [v1.1.11]
