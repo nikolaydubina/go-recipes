@@ -15,7 +15,7 @@ $ go list -deps -json ./... | jq -rc 'select(.Standard!=true and .Module.GoVersi
 
 ### Get directly dependent modules that can be upgraded
 
-> Use this to keep your modules updated. Similar function is integrated in VSCode official Go plugin and GoLand, but you can run it as CLI too. May be useful if you use emacs or vim.
+> Use this to keep your modules updated. Similar function is integrated in VSCode official Go plugin and GoLand.
 
 ```bash
 $ go list -u -m $(go list -m -f '{{.Indirect}} {{.}}' all | grep '^false' | cut -d ' ' -f2) | grep '\['
@@ -52,7 +52,7 @@ $ go list -json ./... | jq -rc '[.ImportPath, (.GoFiles | length | tostring)] | 
 
 ### Find packages without tests
 
-> If code coverage does not report packages without tests. This should be fast and good for CI.
+> If code coverage does not report packages without tests. This should be fast for CI.
 
 ```bash
 $ go list -json ./... | jq -rc 'select((.TestGoFiles | length)==0) | .ImportPath'
@@ -72,7 +72,7 @@ $ go list -deps -json ./... | jq -c 'select(.Standard!=true) | {from: .ImportPat
 
 ### Scrape details about upstream modules and make graph
 
-> Use to find low quality, unmaintained dependencies.
+> Use to find low quality or unmaintained dependencies.
 
 ```bash
 $ go mod graph | import-graph -i=gomod | jsonl-graph -color-scheme=file://$PWD/basic.json | dot -Tsvg > output.svg
