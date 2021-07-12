@@ -10,9 +10,9 @@ go list -deps -json ./... | jq -rc 'select(.Standard!=true and .Module.GoVersion
 ```
 Sample Output:
 
-> 1.11 github.com/ugorji/go/codec
-> 1.11 golang.org/x/crypto
-> 1.12 github.com/golang/protobuf
+> 1.11 github.com/ugorji/go/codec <br>
+> 1.11 golang.org/x/crypto <br>
+> 1.12 github.com/golang/protobuf <br>
 
 
 ### Get directly dependent modules that can be upgraded
@@ -26,7 +26,7 @@ go list -u -m $(go list -m -f '{{.Indirect}} {{.}}' all | grep '^false' | cut -d
 Sample Output:
 
 > github.com/golang/protobuf v1.3.3 [v1.5.2]
-> github.com/json-iterator/go v1.1.9 [v1.1.11]
+github.com/json-iterator/go v1.1.9 [v1.1.11]
 
 ### Find upstream modules without Go version
 
