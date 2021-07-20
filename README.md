@@ -27,7 +27,8 @@ $ go list -deps -json ./... | jq -rc 'select(.Standard!=true and .Module.GoVersi
 
 ### Find directly dependent modules that can be upgraded
 
-Use this to keep your modules updated. Similar function is integrated in VSCode official Go plugin and GoLand.
+Use this to keep your modules updated.
+Similar function is integrated in VSCode official Go plugin and GoLand.
 
 ```bash
 $ go list -u -m $(go list -m -f '{{.Indirect}} {{.}}' all | grep '^false' | cut -d ' ' -f2) | grep '\['
@@ -39,7 +40,7 @@ github.com/json-iterator/go v1.1.9 [v1.1.11]
 
 ### Find upstream modules without Go version
 
-Use this to find outdated modules or imports that you need to upgrade
+Use this to find outdated modules or imports that you need to upgrade.
 
 ```bash
 $ go list -deps -json ./... | jq -rc 'select(.Standard!=true and .Module.GoVersion==null) | .Module.Path' | sort -u
@@ -59,9 +60,16 @@ $ go list -m -versions github.com/google/gofuzz
 github.com/google/gofuzz v1.0.0 v1.1.0 v1.2.0
 ```
 
+### See assembley of you Go snippets online
+
+Use godbolt.org to compile and see assembly of Go code snippets.
+You can check different platforms and compilers inlcuding cgo.
+This is a commonly used tool by C++ community.
+
 ### Make histogram of Go files per package
 
-Use this to see when package is too big or too small. Adjust histogram length to maximum value.
+Use this to see when package is too big or too small.
+Adjust histogram length to maximum value.
 
 ```bash
 $ go list -json ./... | jq -rc '[.ImportPath, (.GoFiles | length | tostring)] | join(" ")' | perl -lane 'print (" " x (20 - $F[1]), "=" x $F[1], " ", $F[1], "\t", $F[0])'
@@ -74,7 +82,8 @@ $ go list -json ./... | jq -rc '[.ImportPath, (.GoFiles | length | tostring)] | 
 
 ### Find packages without tests
 
-If code coverage does not report packages without tests. This should be fast for CI.
+If code coverage does not report packages without tests.
+This should be fast for CI.
 
 ```bash
 $ go list -json ./... | jq -rc 'select((.TestGoFiles | length)==0) | .ImportPath'
@@ -85,7 +94,9 @@ github.com/gin-gonic/gin/internal/json
 
 ### Make graph of upstream packages
 
-Use to find unexpected dependencies, visualize project. Works best for small number of packages, for large projects use `grep` to narrow down subgraph. Without `-deps` only for current module.
+Use to find unexpected dependencies or visualize project.
+Works best for small number of packages, for large projects use `grep` to narrow down subgraph.
+Without `-deps` only for current module.
 
 ```bash
 $ go list -deps -json ./... | jq -c 'select(.Standard!=true) | {from: .ImportPath, to: .Imports[]}' | jsonl-graph | dot -Tsvg > package-graph.svg
