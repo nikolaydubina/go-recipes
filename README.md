@@ -66,7 +66,7 @@ Use [godbolt.org](https://godbolt.org) to compile and see assembly of short Go c
 You can check different platforms and compilers including `cgo`.
 This tool is commonly used by C++ community.
 
-![godbolt](docs/godbolt.png)
+![godbolt](./docs/godbolt.png)
 
 ### Make histogram of Go files per package
 
