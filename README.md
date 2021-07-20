@@ -3,7 +3,7 @@
 
 ### GO101: Introduction to Go
 
-First, get familiar with basic commands and read through official [documentation](https://golang.org/doc/cmd).
+First, get familiar with basic commands and read through official [documentation](https://golang.org/doc/cmd) on Go toolchain.
 
 ```bash
 $ go build ./...
@@ -60,11 +60,13 @@ $ go list -m -versions github.com/google/gofuzz
 github.com/google/gofuzz v1.0.0 v1.1.0 v1.2.0
 ```
 
-### See assembley of you Go snippets online
+### Get assembly of you Go code snippets online
 
-Use godbolt.org to compile and see assembly of Go code snippets.
-You can check different platforms and compilers inlcuding cgo.
-This is a commonly used tool by C++ community.
+Use [godbolt.org](https://godbolt.org) to compile and see assembly of short Go code.
+You can check different platforms and compilers including `cgo`.
+This tool is commonly used by C++ community.
+
+![godbolt](docs/godbolt.png)
 
 ### Make histogram of Go files per package
 
