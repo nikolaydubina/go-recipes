@@ -60,7 +60,7 @@ $ go list -m -versions github.com/google/gofuzz
 github.com/google/gofuzz v1.0.0 v1.1.0 v1.2.0
 ```
 
-### Get assembly of you Go code snippets online
+### Get assembly of Go code snippets online
 
 Use [godbolt.org](https://godbolt.org) to compile and see assembly of short Go code.
 You can check different platforms and compilers including `cgo`.
