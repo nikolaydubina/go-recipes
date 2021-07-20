@@ -1,6 +1,18 @@
 <h1 align="center">Go recipes 🦩 </h1>
 <p align="center">Handy commands to run in Go projects</p>
 
+### GO101: Introduction to Go
+
+First, get familiar with basic commands and read through official [documentation](https://golang.org/doc/cmd).
+
+```bash
+$ go build ./...
+$ go test ./...
+$ go generate ./...
+$ go fmt ./...
+$ go vet ./...
+```
+
 ### Find Go versions of upstream modules
 
 Use this when upgrading version of Go or finding old modules.
@@ -35,6 +47,16 @@ github.com/facebookgo/clock
 golang.org/x/text
 gopkg.in/yaml.v2
 ...
+```
+
+### Find available module versions
+
+This works even if you did not download or install module locally.
+This is useful to check to which version you can upgrade to, what is the latest version, and whether there are v2+ major versions recognized by Go toolchain.
+
+```bash
+$ go list -m -versions github.com/google/gofuzz
+github.com/google/gofuzz v1.0.0 v1.1.0 v1.2.0
 ```
 
 ### Make histogram of Go files per package
