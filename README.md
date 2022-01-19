@@ -152,12 +152,14 @@ go test -p 1 -parallel 1 ./...
 Add `t.Parallel` to your tests case function bodies.
 As per documentation, by default `-p=GOMAXPROCS` and `-parallel=GOMAXPROCS` when you run `go test`.
 Different packages by default run in parallel, and tests within package can be enforced to run in parallel too.
+Make sure to copy test case data to new variable, why explained [here](https://gist.github.com/posener/92a55c4cd441fc5e5e85f27bca008721).
 [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
 
 Example
 ```go
     ...
     for _, tc := range tests {
+        tc := tc
         t.Run(tc.name, func(t *testing.T) {
             t.Parallel()
             ...
