@@ -156,11 +156,11 @@ Different packages by default run in parallel, and tests within package can be e
 
 Example
 ```go
-  ...
-	for _, tc := range tests {
+    ...
+    for _, tc := range tests {
     t.Run(tc.name, func(tc *testing.T) {
-      tc.Parallel()
-      ....
+        tc.Parallel()
+        ...
 ```
 
 ## Dependencies
