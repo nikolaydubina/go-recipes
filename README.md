@@ -25,7 +25,7 @@
   + [➡ Run Go function in shell](#-run-go-function-in-shell)
   + [➡ Run simple fileserver](#-run-simple-fileserver)
   + [➡ Monitor Go processes](#-monitor-go-processes)
-  + [➡ Create 3D visualization of concurrency traces](#-create-3d-visualization-of-concurrency-trances)
+  + [➡ Create 3D visualization of concurrency traces](#-create-3d-visualization-of-concurrency-traces)
 - Refactoring
   + [➡ Replace symbol](#-replace-symbol)
 - Errors
