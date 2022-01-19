@@ -40,7 +40,7 @@ go-cover-treemap -coverprofile cover.out > out.svg
 ```
 
 <div align="center">
-<img src="./docs/hugo-code-coverage.svg" style="margin: 8px; max-height: 640px;">
+<img src="./img/hugo-code-coverage.svg" style="margin: 8px; max-height: 640px;">
 </div>
 
 
@@ -225,7 +225,7 @@ go list -deps -json ./... | jq -c 'select(.Standard!=true) | {from: .ImportPath,
 Example
 
 <div align="center">
-<img src="./docs/packages-graph.svg" style="margin: 8px; height: 640px;">
+<img src="./img/packages-graph.svg" style="margin: 8px; height: 640px;">
 </div>
 
 <details><summary>Requirements</summary>
@@ -252,7 +252,7 @@ go mod graph | import-graph -i=gomod | jsonl-graph -color-scheme=file://$PWD/bas
 Example
 
 <div align="center">
-<img src="./docs/gin-mod-graph-collected.svg" style="margin: 8px; height: 640px;">
+<img src="./img/gin-mod-graph-collected.svg" style="margin: 8px; height: 640px;">
 </div>
 
 <details><summary>Requirements</summary>
@@ -274,7 +274,7 @@ You can check different platforms and compilers including `cgo`.
 This tool is commonly used by C++ community.
 
 <div align="center">
-<img src="./docs/godbolt.png" style="margin: 8px; max-height: 640px;">
+<img src="./img/godbolt.png" style="margin: 8px; max-height: 640px;">
 </div>
 
 ## Execute
@@ -334,7 +334,7 @@ go run fs.go
 ```
 
 <div align="center">
-<img src="./docs/simple-fs.png" style="margin: 8px; max-height: 640px;">
+<img src="./img/simple-fs.png" style="margin: 8px; max-height: 640px;">
 </div>
 
 ---
