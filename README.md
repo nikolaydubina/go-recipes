@@ -1,9 +1,5 @@
 <h1 align="center">Go Recipes 🦩 </h1>
-<p align="center">Handy commands and tools to use in Go projects</p>
-
-This is a collection of mostly CLI tools, UNIX filters, websites you can use in your Go projects.
-Primary motivation here is to collect and share less-known tools that enhanse development experience.
-Feel free to open an issue or pull request!
+<p align="center">Handy and less-known commands and tools for Go projects</p>
 
 ## Contents
 
@@ -22,7 +18,7 @@ Feel free to open an issue or pull request!
 - Assembley
   + [➡️ Get assembly of Go code snippets online](asdf)
 
-# Tests
+## Tests
 
 ### ➡️ Make treemap of code coverage
 
@@ -108,7 +104,7 @@ https://stedolan.github.io/jq/download/
   
 ---
 
-# Dependencies
+## Dependencies
 
 ### ➡️ Get Go version of current module
 
@@ -270,7 +266,7 @@ $ go install github.com/nikolaydubina/jsonl-graph@latest
   
 ---
 
-# Assembly
+## Assembly
 
 ### ➡️ Get assembly of Go code snippets online
 
