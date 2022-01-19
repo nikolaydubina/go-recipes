@@ -158,9 +158,9 @@ Example
 ```go
     ...
     for _, tc := range tests {
-    t.Run(tc.name, func(tc *testing.T) {
-        tc.Parallel()
-        ...
+        t.Run(tc.name, func(t *testing.T) {
+            t.Parallel()
+            ...
 ```
 
 ## Dependencies
