@@ -95,7 +95,7 @@ go tool cover -html=cover.out
 ```
 
 <div align="center">
-<img src="./docs/tool-cover-html.png" style="margin: 8px; max-height: 640px;">
+<img src="./img/tool-cover-html.png" style="margin: 8px; max-height: 640px;">
 </div>
 
 ---
