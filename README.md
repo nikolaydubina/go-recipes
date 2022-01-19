@@ -33,6 +33,8 @@
   + [➡ Replace symbol](#-replace-symbol)
 - Errors
   + [➡ Pretty print `panic` messages](#-pretty-print-panic-messages)
+- Build
+  + [➡ Manually disable or enable `cgo`](#-manually-disable-or-enable-cgo)
 
 ## Tests
 
@@ -558,3 +560,12 @@ go install github.com/maruel/panicparse/v2/cmd/pp@latest
 ```
  
 </details>
+
+## Build
+
+### ➡ Manually disable or enable `cgo`
+
+Disable `cgo` with `CGO_ENABLED=0` and enable with `CGO_ENABLED=1`.
+If you don't explicitly say so, `cgo` may end-up being enabled and code dynamically linked if you use some `net` or `os` packages.
+You may want to do this to improve performance, since complier and runtime would have easier job optimizing code.
+References ["cgo is not go"](https://dave.cheney.net/2016/01/18/cgo-is-not-go)
