@@ -43,7 +43,7 @@
 Visualize distribution of code coverage in your project.
 This helps to identify code areas with high and low coverage.
 Useful when you have large project with lots of files and packages.
-This is a sort-of 2D image-hash of code coverage of your project, which should be more representative than single number.
+This 2D image-hash of your project should be more representative than a single number.
 
 First make profile with
 ```
