@@ -17,7 +17,7 @@
   + [➡ Make graph of upstream packages](#-make-graph-of-upstream-packages)
   + [➡ Scrape details about upstream modules and make graph](#-scrape-details-about-upstream-modules-and-make-graph)
   + [➡ Scrape licences of upstream dependencies](#-scrape-licences-of-upstream-dependencies)
-  + [➡ Explore upstream dependencies interactively](#-explort-upstream-dependencies-interactively)
+  + [➡ Explore upstream dependencies interactively](#-explore-upstream-dependencies-interactively)
 - Assembley
   + [➡ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
   + [➡ Get Go compiler SSA intermediary representation](#-get-go-compiler-ssa-intermediary-representation)
