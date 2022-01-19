@@ -357,6 +357,10 @@ go install github.com/adonovan/spaghetti@latest
 
 This can be helpful to quickly track which packages current package is calling and why.
 
+```
+go-callvis .
+```
+
 Example
 
 <div align="center">
