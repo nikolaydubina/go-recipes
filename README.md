@@ -17,6 +17,7 @@
   + [➡ Make graph of upstream packages](#-make-graph-of-upstream-packages)
   + [➡ Scrape details about upstream modules and make graph](#-scrape-details-about-upstream-modules-and-make-graph)
   + [➡ Scrape licences of upstream dependencies](#-scrape-licences-of-upstream-dependencies)
+  + [➡ Explore upstream dependencies interactively](#-explort-upstream-dependencies-interactively)
 - Assembley
   + [➡ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
   + [➡ Get Go compiler SSA intermediary representation](#-get-go-compiler-ssa-intermediary-representation)
@@ -322,6 +323,26 @@ github.com/yuin/goldmark-highlighting,https://github.com/yuin/goldmark-highlight
   
 ```
 go install github.com/google/go-licenses@latest
+```
+ 
+</details>
+
+---
+
+### ➡ Explore upstream dependencies interactively
+
+This is a tool from one of creators of Go.
+This tool should help explore dependencies and assist large refactorings.
+https://github.com/adonovan/spaghetti
+
+<div align="center">
+<img src="https://github.com/adonovan/spaghetti/blob/main/screenshot.png" style="margin: 8px; height: 640px;">
+</div>
+
+<details><summary>Requirements</summary>
+  
+```
+go install github.com/adonovan/spaghetti@latest
 ```
  
 </details>
