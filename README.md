@@ -4,23 +4,23 @@
 ## Contents
 
 - Tests
-  + [➡ Make treemap of code coverage](asdf)
-  + [➡ Get packages without tests](asdf)
-  + [➡ Browse code coverage by file](asdf)
-  + [➡ Make histogram of Go files per package](asdf)
+  + [➡ Make treemap of code coverage](#-make-treemap-of-code-coverage)
+  + [➡ Get packages without tests](#-get-packages-without-tests)
+  + [➡ Browse code coverage by file](#-browse-code-coverage-by-file)
+  + [➡ Make histogram of Go files per package](#-make-histogram-of-go-files-per-package)
 - Dependencies
-  + [➡ Get Go version of current module](asdf)
-  + [➡ Get Go versions of upstream modules](asdf)
-  + [➡ Get directly dependent modules that can be upgraded](asdf)
-  + [➡ Get upstream modules without Go version](asdf)
-  + [➡ Get available module versions](asdf)
-  + [➡ Make graph of upstream packages](asdf)
-  + [➡ Scrape details about upstream modules and make graph](asdf)
+  + [➡ Get Go version of current module](#-get-go-version-of-current-module)
+  + [➡ Get Go versions of upstream modules](#-get-go-versions-of-upstream-modules)
+  + [➡ Get directly dependent modules that can be upgraded](#-get-directly-dependent-modules-that-can-be-upgraded)
+  + [➡ Get upstream modules without Go version](#-get-upstream-modules-without-go-version)
+  + [➡ Get available module versions](#-get-available-module-versions)
+  + [➡ Make graph of upstream packages](#-make-graph-of-upstream-packages)
+  + [➡ Scrape details about upstream modules and make graph](#-scrape-details-about-upstream-modules-and-make-graph)
 - Assembley
-  + [➡ Get assembly of Go code snippets online](asdf)
+  + [➡ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
 - Execute
-  + [➡ Execute Go one-liners with `gorram`](asdf)
-  + [➡ Run simple fileserver](asdf)
+  + [➡ Execute Go one-liners with `gorram`](#-execute-go-one-liners-with-gorram)
+  + [➡ Run simple fileserver](#-run-simple-fileserver)
 
 ## Tests
 
