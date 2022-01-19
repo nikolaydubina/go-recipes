@@ -25,6 +25,7 @@
   + [➡ Run Go function in shell](#-run-go-function-in-shell)
   + [➡ Run simple fileserver](#-run-simple-fileserver)
   + [➡ Monitor Go processes](#-monitor-go-processes)
+  + [➡ Create 3D visualization of concurrency traces](#-create-3d-visualization-of-concurrency-trances)
 - Refactoring
   + [➡ Replace symbol](#-replace-symbol)
 - Errors
@@ -452,6 +453,30 @@ Example of listing processes. For more, refer to the original repo.
   
 ```
 go install github.com/google/gops@latest
+```
+ 
+</details>
+
+---
+
+### ➡ Create 3D visualization of concurrency traces
+
+This tool creates 3D visualization of coroutines execution.
+There is no advanced functions and it is hard to analyze production systems.
+However, it could be insteresting for educational purposes.
+Source: https://github.com/divan/gotrace
+
+<div align="center">
+<img src="https://github.com/divan/gotrace/blob/master/images/demo.png" style="margin: 8px; height: 640px;">
+</div>
+
+<details><summary>Requirements</summary>
+ 
+You may need to run Docker container with that tool or install locally and patch Go compiler.
+More instructions in the original repo.
+  
+```
+go install github.com/divan/gotrace
 ```
  
 </details>
