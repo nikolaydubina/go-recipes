@@ -4,27 +4,27 @@
 ## Contents
 
 - Tests
-  + [➡️ Make treemap of code coverage](asdf)
-  + [➡️ Get packages without tests](asdf)
-  + [➡️ Browse code coverage by file](asdf)
-  + [➡️ Make histogram of Go files per package](asdf)
+  + [➡ Make treemap of code coverage](asdf)
+  + [➡ Get packages without tests](asdf)
+  + [➡ Browse code coverage by file](asdf)
+  + [➡ Make histogram of Go files per package](asdf)
 - Dependencies
-  + [➡️ Get Go version of current module](asdf)
-  + [➡️ Get Go versions of upstream modules](asdf)
-  + [➡️ Get directly dependent modules that can be upgraded](asdf)
-  + [➡️ Get upstream modules without Go version](asdf)
-  + [➡️ Get available module versions](asdf)
-  + [➡️ Make graph of upstream packages](asdf)
-  + [➡️ Scrape details about upstream modules and make graph](asdf)
+  + [➡ Get Go version of current module](asdf)
+  + [➡ Get Go versions of upstream modules](asdf)
+  + [➡ Get directly dependent modules that can be upgraded](asdf)
+  + [➡ Get upstream modules without Go version](asdf)
+  + [➡ Get available module versions](asdf)
+  + [➡ Make graph of upstream packages](asdf)
+  + [➡ Scrape details about upstream modules and make graph](asdf)
 - Assembley
-  + [➡️ Get assembly of Go code snippets online](asdf)
+  + [➡ Get assembly of Go code snippets online](asdf)
 - Execute
-  + [➡️ Execute Go one-liners with `gorram`](asdf)
-  + [➡️ Run simple fileserver](asdf)
+  + [➡ Execute Go one-liners with `gorram`](asdf)
+  + [➡ Run simple fileserver](asdf)
 
 ## Tests
 
-### ➡️ Make treemap of code coverage
+### ➡ Make treemap of code coverage
 
 Visualize distribution of code coverage in your project.
 This helps to identify code areas with high and low coverage.
@@ -55,7 +55,7 @@ go install github.com/nikolaydubina/go-cover-treemap@latest
   
 ---
 
-### ➡️ Get packages without tests
+### ➡ Get packages without tests
 
 If code coverage does not report packages without tests.
 This should be fast for CI.
@@ -80,7 +80,7 @@ https://stedolan.github.io/jq/download/
   
 ---
 
-### ➡️ Browse code coverage by file
+### ➡ Browse code coverage by file
 
 This is very helpful tool from the official Go toolchain.
 
@@ -100,7 +100,7 @@ go tool cover -html=cover.out
 
 ---
 
-### ➡️ Make histogram of Go files per package
+### ➡ Make histogram of Go files per package
 
 Use this to see when package is too big or too small.
 Adjust histogram length to maximum value.
@@ -128,7 +128,7 @@ https://stedolan.github.io/jq/download/
 
 ## Dependencies
 
-### ➡️ Get Go version of current module
+### ➡ Get Go version of current module
 
 Use this in CI to setup correct Go version automatically from `go.mod`.
 
@@ -151,7 +151,7 @@ https://stedolan.github.io/jq/download/
 
 ---
 
-### ➡️ Get Go versions of upstream modules
+### ➡ Get Go versions of upstream modules
 
 Use this when upgrading version of Go or finding old modules.
 
@@ -176,7 +176,7 @@ https://stedolan.github.io/jq/download/
 
 ---
 
-### ➡️ Get directly dependent modules that can be upgraded
+### ➡ Get directly dependent modules that can be upgraded
 
 Use this to keep your modules updated.
 Similar function is integrated in VSCode official Go plugin and GoLand.
@@ -193,7 +193,7 @@ github.com/json-iterator/go v1.1.9 [v1.1.11]
 ```
 ---
 
-### ➡️ Get upstream modules without Go version
+### ➡ Get upstream modules without Go version
 
 Use this to find outdated modules or imports that you need to upgrade.
 
@@ -218,7 +218,7 @@ https://stedolan.github.io/jq/download/
 
 ---
 
-### ➡️ Get available module versions
+### ➡ Get available module versions
 
 This works even if you did not download or install module locally.
 This is useful to check to which version you can upgrade to, what is the latest version, and whether there are v2+ major versions recognized by Go toolchain.
@@ -233,7 +233,7 @@ github.com/google/gofuzz v1.0.0 v1.1.0 v1.2.0
 ```
 ---
 
-### ➡️ Make graph of upstream packages
+### ➡ Make graph of upstream packages
 
 Use to find unexpected dependencies or visualize project.
 Works best for small number of packages, for large projects use `grep` to narrow down subgraph.
@@ -262,7 +262,7 @@ $ go install github.com/nikolaydubina/jsonl-graph@latest
 
 ---
 
-### ➡️ Scrape details about upstream modules and make graph
+### ➡ Scrape details about upstream modules and make graph
 
 Use to find low quality or unmaintained dependencies.
 
@@ -288,7 +288,7 @@ $ go install github.com/nikolaydubina/jsonl-graph@latest
 
 ## Assembly
 
-### ➡️ Get assembly of Go code snippets online
+### ➡ Get assembly of Go code snippets online
 
 Use [godbolt.org](https://godbolt.org) to compile and see assembly of short Go code.
 You can check different platforms and compilers including `cgo`.
@@ -300,7 +300,7 @@ This tool is commonly used by C++ community.
 
 ## Execute
 
-### ➡️ Execute Go one-liners with `gorram`
+### ➡ Execute Go one-liners with `gorram`
 
 This is short and convenient for Go oneliners.
 This tool will print out to stdout return of a function call.
@@ -332,7 +332,7 @@ go install github.com/natefinch/gorram@latest
 
 ---
 
-### ➡️ Run simple fileserver
+### ➡ Run simple fileserver
 
 This is similar to famous oneliner in Python `python3 -m http.server` and `python -m SimpleHTTPServer`.
 
