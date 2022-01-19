@@ -8,6 +8,7 @@ Feel free to open an issue or pull request!
 ## Contents
 
 - Tests
+  + [➡️ Make treemap of code coverage](asdf)
   + [➡️ Get packages without tests](asdf)
   + [➡️ Make histogram of Go files per package](asdf)
 - Dependencies
@@ -22,6 +23,37 @@ Feel free to open an issue or pull request!
   + [➡️ Get assembly of Go code snippets online](asdf)
 
 # Tests
+
+### ➡️ Make treemap of code coverage
+
+Visualize distribution of code coverage in your project.
+This helps to identify code areas with high and low coverage.
+Useful when you have large project with lots of files and packages.
+
+First make profile with
+```
+go test -coverprofile cover.out ./...
+```
+
+Then turn coverprofile into SVG
+```
+go-cover-treemap -coverprofile cover.out > out.svg
+```
+
+<div align="center">
+<img src="./docs/hugo-code-coverage.svg" style="margin: 8px; max-height: 640px;">
+</div>
+
+
+<details><summary>Requirements</summary>
+
+```
+go install github.com/nikolaydubina/go-cover-treemap@latest
+```
+
+</details>
+  
+---
 
 ### ➡️ Get packages without tests
 
@@ -88,6 +120,7 @@ go mod edit -json | jq -r .Go
 
 Example
 ```
+1.16
 ```
 
 <details><summary>Requirements</summary>
@@ -195,7 +228,7 @@ go list -deps -json ./... | jq -c 'select(.Standard!=true) | {from: .ImportPath,
 Example
 
 <div align="center">
-<img src="./docs/pacages-graph.svg" style="margin: 8px; height: 640px;">
+<img src="./docs/packages-graph.svg" style="margin: 8px; height: 640px;">
 </div>
 
 <details><summary>Requirements</summary>
