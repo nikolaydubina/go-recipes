@@ -138,6 +138,8 @@ https://stedolan.github.io/jq/download/
   
 </details>
 
+---
+
 ### ➡ Run tests sequentially
 
 This is in cases when you need to synchronize tests, for example in integration tests that share environment.
@@ -146,6 +148,8 @@ This is in cases when you need to synchronize tests, for example in integration 
 ```
 go test -p 1 -parallel 1 ./...
 ```
+
+---
 
 ### ➡ Run tests in parallel
 
