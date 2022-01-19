@@ -253,8 +253,6 @@ Without `-deps` only for current module.
 go list -deps -json ./... | jq -c 'select(.Standard!=true) | {from: .ImportPath, to: .Imports[]}' | jsonl-graph | dot -Tsvg > package-graph.svg
 ```
 
-Example
-
 <div align="center">
 <img src="./img/packages-graph.svg" style="margin: 8px; height: 640px;">
 </div>
@@ -279,8 +277,6 @@ Use to find low quality or unmaintained dependencies.
 ```
 go mod graph | import-graph -i=gomod | jsonl-graph -color-scheme=file://$PWD/basic.json | dot -Tsvg > output.svg
 ```
-
-Example
 
 <div align="center">
 <img src="./img/gin-mod-graph-collected.svg" style="margin: 8px; height: 640px;">
@@ -335,9 +331,7 @@ go install github.com/google/go-licenses@latest
 
 This is a tool from one of creators of Go.
 This tool should help explore dependencies and assist large refactorings.
-https://github.com/adonovan/spaghetti
-
-Example
+Source: https://github.com/adonovan/spaghetti
 
 <div align="center">
 <img src="https://github.com/adonovan/spaghetti/blob/main/screenshot.png" style="margin: 8px; height: 640px;">
@@ -360,8 +354,6 @@ This can be helpful to quickly track which packages current package is calling a
 ```
 go-callvis .
 ```
-
-Example
 
 <div align="center">
 <img src="https://raw.githubusercontent.com/ofabry/go-callvis/master/images/syncthing.png" style="margin: 8px; max-height: 640px;">
@@ -403,24 +395,18 @@ Source: https://github.com/golang-design/ssaplayground
 ### ➡ Run Go function in shell
 
 This is short and convenient for Go oneliners.
-This tool will print out to stdout return of a function call.
+This tool will print to stdout the return of a function call.
 
-Example get `base64`
-```
-$ echo 12345 | gorram encoding/base64 StdEncoding.EncodeToString
-MTIzNDUK
-```
-
-Example make HTTP request
-```
-gorram net/http Get https://google.com
-```
-
-Example calculate `SHA1` of file
+Example
 ```
 $ cat README.md | gorram crypto/sha1 Sum
 c8faff3af2e6816800a8b83af8e3535872ec6120
 ```
+
+Selected Usecases
+- `echo 12345 | gorram encoding/base64 StdEncoding.EncodeToString`
+- `cat myfile.txt | gorram crypto/sha1 Sum`
+- `gorram net/http Get https://google.com`
 
 <details><summary>Requirements</summary>
   
@@ -465,11 +451,7 @@ go run fs.go
 This tool from Google has lots of useful features like monitoring memory of Go processes, forcing GC, getting version of Go of process.
 
 ```
-gops
-```
-
-Example of listing processes. For more, refer to the original repo.
-```
+$ gops
 983   980    uplink-soecks  go1.9   /usr/local/bin/uplink-soecks
 52697 52695  gops           go1.10  /Users/jbd/bin/gops
 4132  4130   foops        * go1.9   /Users/jbd/bin/foops
@@ -531,8 +513,6 @@ Refer to examples in original repo.
 ```
 go test -v |& pp
 ```
-
-Example
 
 <div align="center">
 <img src="https://raw.githubusercontent.com/wiki/maruel/panicparse/parse.gif" style="margin: 8px; max-height: 640px;">
