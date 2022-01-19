@@ -8,6 +8,8 @@
   + [➡ Get packages without tests](#-get-packages-without-tests)
   + [➡ Browse code coverage by file](#-browse-code-coverage-by-file)
   + [➡ Make histogram of Go files per package](#-make-histogram-of-go-files-per-package)
+  + [➡ Run tests sequentially](#-run-tests-sequentially)
+  + [➡ Run tests in parallel](#-run-tests-in-parallel)
 - Dependencies
   + [➡ Get Go version of current module](#-get-go-version-of-current-module)
   + [➡ Get Go versions of upstream modules](#-get-go-versions-of-upstream-modules)
@@ -135,6 +137,31 @@ https://stedolan.github.io/jq/download/
 ```
   
 </details>
+
+### ➡ Run tests sequentially
+
+This is in cases when you need to synchronize tests, for example in integration tests that share environment.
+[Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
+
+```
+go test -p 1 -parallel 1 ./...
+```
+
+### ➡ Run tests in parallel
+
+Add `t.Parallel` to your tests case function bodies.
+As per documentation, by default `-p=GOMAXPROCS` and `-parallel=GOMAXPROCS` when you run `go test`.
+Different packages by default run in parallel, and tests within package can be enforced to run in parallel too.
+[Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
+
+Example
+```go
+  ...
+	for _, tc := range tests {
+    t.Run(tc.name, func(tc *testing.T) {
+      tc.Parallel()
+      ....
+```
 
 ## Dependencies
 
