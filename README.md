@@ -336,5 +336,3 @@ go run fs.go
 <div align="center">
 <img src="./docs/simple-fs.png" style="margin: 8px; max-height: 640px;">
 </div>
-
----
