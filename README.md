@@ -23,6 +23,8 @@
   + [➡ Execute Go one-liners with `gorram`](#-execute-go-one-liners-with-gorram)
   + [➡ Run simple fileserver](#-run-simple-fileserver)
   + [➡ Monitor Go processes](#-monitor-go-processes)
+- Refactoring
+  + [➡ Replace symbol](#-replace-symbol)
 
 ## Tests
 
@@ -418,3 +420,14 @@ go install github.com/google/gops@latest
 ```
  
 </details>
+
+## Refactoring
+
+### ➡ Replace symbol
+
+I found this in annoncement [notice](https://github.com/golang/go/commit/2580d0e08d5e9f979b943758d3c49877fb2324cb) of Go 1.18 for changes to `interface{}` to `any`.
+This can be useful for other refactorings too. 
+
+```
+gofmt -w -r 'interface{} -> any' .
+```
