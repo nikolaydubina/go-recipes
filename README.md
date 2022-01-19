@@ -21,7 +21,7 @@
   + [➡ Scrape licences of upstream dependencies](#-scrape-licences-of-upstream-dependencies)
   + [➡ Explore upstream dependencies interactively](#-explore-upstream-dependencies-interactively)
   + [➡ Make graph of function calls in package](#-make-graph-of-function-calls-in-package)
-- Assembley
+- Assembly
   + [➡ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
   + [➡ Get Go compiler SSA intermediary representation](#-get-go-compiler-ssa-intermediary-representation)
 - Execute
