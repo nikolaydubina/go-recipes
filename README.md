@@ -19,6 +19,7 @@
   + [➡ Scrape licences of upstream dependencies](#-scrape-licences-of-upstream-dependencies)
 - Assembley
   + [➡ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
+  + [➡ Get Go compiler SSA intermediary representation](#-get-go-compiler-ssa-intermediary-representation)
 - Execute
   + [➡ Execute Go one-liners with `gorram`](#-execute-go-one-liners-with-gorram)
   + [➡ Run simple fileserver](#-run-simple-fileserver)
@@ -335,6 +336,17 @@ This tool is commonly used by C++ community.
 
 <div align="center">
 <img src="./img/godbolt.png" style="margin: 8px; max-height: 640px;">
+</div>
+
+### ➡ Get Go compiler SSA intermediary representation
+
+This tool allows to check what does Go compiler do.
+Might be useful if you trying to optimize some code or learn more about compiler.
+Website: https://golang.design/gossa 
+Source: https://github.com/golang-design/ssaplayground
+
+<div align="center">
+<img src="https://github.com/golang-design/ssaplayground/blob/main/public/assets/screen.png" style="margin: 8px; height: 640px;">
 </div>
 
 ## Execute
