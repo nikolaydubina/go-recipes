@@ -22,7 +22,7 @@
   + [➡ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
   + [➡ Get Go compiler SSA intermediary representation](#-get-go-compiler-ssa-intermediary-representation)
 - Execute
-  + [➡ Execute Go one-liners with `gorram`](#-execute-go-one-liners-with-gorram)
+  + [➡ Run Go function in shell](#-run-go-function-in-shell)
   + [➡ Run simple fileserver](#-run-simple-fileserver)
   + [➡ Monitor Go processes](#-monitor-go-processes)
 - Refactoring
@@ -372,7 +372,7 @@ Source: https://github.com/golang-design/ssaplayground
 
 ## Execute
 
-### ➡ Execute Go one-liners with `gorram`
+### ➡ Run Go function in shell
 
 This is short and convenient for Go oneliners.
 This tool will print out to stdout return of a function call.
