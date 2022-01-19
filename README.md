@@ -6,6 +6,7 @@
 - Tests
   + [➡️ Make treemap of code coverage](asdf)
   + [➡️ Get packages without tests](asdf)
+  + [➡️ Browse code coverage by file](asdf)
   + [➡️ Make histogram of Go files per package](asdf)
 - Dependencies
   + [➡️ Get Go version of current module](asdf)
@@ -77,6 +78,26 @@ https://stedolan.github.io/jq/download/
 
 </details>
   
+---
+
+### ➡️ Browse code coverage by file
+
+This is very helpful tool from the official Go toolchain.
+
+First make profile
+```
+go test -coverprofile cover.out ./...
+```
+
+Then open in browser
+```
+go tool cover -html=cover.out
+```
+
+<div align="center">
+<img src="./docs/tool-cover-html.png" style="margin: 8px; max-height: 640px;">
+</div>
+
 ---
 
 ### ➡️ Make histogram of Go files per package
