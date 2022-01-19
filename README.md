@@ -16,6 +16,7 @@
   + [➡ Get available module versions](#-get-available-module-versions)
   + [➡ Make graph of upstream packages](#-make-graph-of-upstream-packages)
   + [➡ Scrape details about upstream modules and make graph](#-scrape-details-about-upstream-modules-and-make-graph)
+  + [➡ Scrape licences of upstream dependencies](#-scrape-licences-of-upstream-dependencies)
 - Assembley
   + [➡ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
 - Execute
@@ -282,6 +283,39 @@ Example
 https://graphviz.org/download/
 $ go install github.com/nikolaydubina/import-graph@latest
 $ go install github.com/nikolaydubina/jsonl-graph@latest
+```
+ 
+</details>
+
+---
+
+### ➡ Scrape licences of upstream dependencies
+
+This is tool from Google. Might be useful to collect all the licences or checking if you can use the project for example in propriatary or commercial environment.
+
+```
+go-licenses csv github.com/gohugoio/hugo
+```
+
+Example
+```
+github.com/cli/safeexec,https://github.com/cli/safeexec/blob/master/LICENSE,BSD-2-Clause
+github.com/bep/tmc,https://github.com/bep/tmc/blob/master/LICENSE,MIT
+github.com/aws/aws-sdk-go,https://github.com/aws/aws-sdk-go/blob/master/LICENSE.txt,Apache-2.0
+github.com/jmespath/go-jmespath,https://github.com/jmespath/go-jmespath/blob/master/LICENSE,Apache-2.0
+github.com/gorilla/websocket,https://github.com/gorilla/websocket/blob/master/LICENSE,BSD-2-Clause
+github.com/pelletier/go-toml/v2,https://github.com/pelletier/go-toml/blob/master/v2/LICENSE,MIT
+github.com/spf13/cobra,https://github.com/spf13/cobra/blob/master/LICENSE.txt,Apache-2.0
+github.com/kyokomi/emoji/v2,https://github.com/kyokomi/emoji/blob/master/v2/LICENSE,MIT
+go.opencensus.io,Unknown,Apache-2.0
+github.com/Azure/azure-storage-blob-go/azblob,https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/LICENSE,MIT
+github.com/yuin/goldmark-highlighting,https://github.com/yuin/goldmark-highlighting/blob/master/LICENSE,MIT
+```
+
+<details><summary>Requirements</summary>
+  
+```
+go install github.com/google/go-licenses@latest
 ```
  
 </details>
