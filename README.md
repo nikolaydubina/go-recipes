@@ -25,6 +25,8 @@
   + [➡ Monitor Go processes](#-monitor-go-processes)
 - Refactoring
   + [➡ Replace symbol](#-replace-symbol)
+- Errors
+  + [➡ Pretty print `panic` messages](#-pretty-print-panic-messages)
 
 ## Tests
 
@@ -431,3 +433,24 @@ This can be useful for other refactorings too.
 ```
 gofmt -w -r 'interface{} -> any' .
 ```
+
+## Errors
+
+### ➡ Pretty print `panic` messages
+
+This tool will be useful for reading `panic` messages.
+Need to redirect STDERR to this tool with `panic` stack traces.
+The tool has HTML outpout and does lots of deduplication and enhansements.
+Refer to examples in original repo.
+
+```
+go test -v |& pp
+```
+
+<details><summary>Requirements</summary>
+  
+```
+go install github.com/maruel/panicparse/v2/cmd/pp@latest
+```
+ 
+</details>
