@@ -17,6 +17,9 @@
   + [➡️ Scrape details about upstream modules and make graph](asdf)
 - Assembley
   + [➡️ Get assembly of Go code snippets online](asdf)
+- Execute
+  + [➡️ Execute Go one-liners with `gorram`](asdf)
+  + [➡️ Run simple fileserver](asdf)
 
 ## Tests
 
@@ -101,8 +104,6 @@ https://stedolan.github.io/jq/download/
 ```
   
 </details>
-  
----
 
 ## Dependencies
 
@@ -263,8 +264,6 @@ $ go install github.com/nikolaydubina/jsonl-graph@latest
 ```
  
 </details>
-  
----
 
 ## Assembly
 
@@ -276,6 +275,66 @@ This tool is commonly used by C++ community.
 
 <div align="center">
 <img src="./docs/godbolt.png" style="margin: 8px; max-height: 640px;">
+</div>
+
+## Execute
+
+### ➡️ Execute Go one-liners with `gorram`
+
+This is short and convenient for Go oneliners.
+This tool will print out to stdout return of a function call.
+
+Example get `base64`
+```
+$ echo 12345 | gorram encoding/base64 StdEncoding.EncodeToString
+MTIzNDUK
+```
+
+Example make HTTP request
+```
+gorram net/http Get https://google.com
+```
+
+Example calculate `SHA1` of file
+```
+$ cat README.md | gorram crypto/sha1 Sum
+c8faff3af2e6816800a8b83af8e3535872ec6120
+```
+
+<details><summary>Requirements</summary>
+  
+```
+go install github.com/natefinch/gorram@latest
+```
+ 
+</details>
+
+---
+
+### ➡️ Run simple fileserver
+
+This is similar to famous oneliner in Python `python3 -m http.server` and `python -m SimpleHTTPServer`.
+
+Create file like this
+```go
+package main
+
+import (
+    "net/http"
+)
+
+func main() {
+    http.ListenAndServe(":9000", http.FileServer(http.Dir(".")))
+}
+```
+
+Then run this file (e.g. if named `fs.go`)
+```
+go run fs.go
+```
+
+<div align="center">
+<img src="./docs/simple-fs.png" style="margin: 8px; max-height: 640px;">
 </div>
 
 ---
