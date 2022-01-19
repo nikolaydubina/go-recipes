@@ -22,6 +22,7 @@
 - Execute
   + [➡ Execute Go one-liners with `gorram`](#-execute-go-one-liners-with-gorram)
   + [➡ Run simple fileserver](#-run-simple-fileserver)
+  + [➡ Monitor Go processes](#-monitor-go-processes)
 
 ## Tests
 
@@ -391,3 +392,29 @@ go run fs.go
 <div align="center">
 <img src="./img/simple-fs.png" style="margin: 8px; max-height: 640px;">
 </div>
+
+--- 
+
+### ➡ Monitor Go processes
+
+This tool from Google has lots of useful features like monitoring memory of Go processes, forcing GC, getting version of Go of process.
+
+```
+gops
+```
+
+Example of listing processes. For more, refer to the original repo.
+```
+983   980    uplink-soecks  go1.9   /usr/local/bin/uplink-soecks
+52697 52695  gops           go1.10  /Users/jbd/bin/gops
+4132  4130   foops        * go1.9   /Users/jbd/bin/foops
+51130 51128  gocode         go1.9.2 /Users/jbd/bin/gocode
+```
+
+<details><summary>Requirements</summary>
+  
+```
+go install github.com/google/gops@latest
+```
+ 
+</details>
