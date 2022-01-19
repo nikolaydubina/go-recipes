@@ -18,6 +18,7 @@
   + [➡ Scrape details about upstream modules and make graph](#-scrape-details-about-upstream-modules-and-make-graph)
   + [➡ Scrape licences of upstream dependencies](#-scrape-licences-of-upstream-dependencies)
   + [➡ Explore upstream dependencies interactively](#-explore-upstream-dependencies-interactively)
+  + [➡ Make graph of function calls in package](#-make-garph-of-function-calls-in-pacakge)
 - Assembley
   + [➡ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
   + [➡ Get Go compiler SSA intermediary representation](#-get-go-compiler-ssa-intermediary-representation)
@@ -336,6 +337,8 @@ This is a tool from one of creators of Go.
 This tool should help explore dependencies and assist large refactorings.
 https://github.com/adonovan/spaghetti
 
+Example
+
 <div align="center">
 <img src="https://github.com/adonovan/spaghetti/blob/main/screenshot.png" style="margin: 8px; height: 640px;">
 </div>
@@ -344,6 +347,26 @@ https://github.com/adonovan/spaghetti
   
 ```
 go install github.com/adonovan/spaghetti@latest
+```
+ 
+</details>
+
+---
+
+### ➡ Make graph of function calls in package
+
+This can be helpful to quickly track which packages current package is calling and why.
+
+Example
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/ofabry/go-callvis/master/images/syncthing.png" style="margin: 8px; height: 640px;">
+</div>
+
+<details><summary>Requirements</summary>
+  
+```
+go install github.com/ofabry/go-callvis
 ```
  
 </details>
