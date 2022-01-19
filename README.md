@@ -447,6 +447,12 @@ Refer to examples in original repo.
 go test -v |& pp
 ```
 
+Example
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/wiki/maruel/panicparse/parse.gif" style="margin: 8px; max-height: 640px;">
+</div>
+
 <details><summary>Requirements</summary>
   
 ```
