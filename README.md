@@ -1,5 +1,5 @@
 <h1 align="center">Go Recipes 🦩 </h1>
-<p align="center">Handy well-known and less-known tools for Go projects</p>
+<p align="center">Handy well-known and <i>lesser</i>-known tools for Go projects</p>
 
 ## Contents
 
