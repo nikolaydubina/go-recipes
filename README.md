@@ -35,6 +35,8 @@
   + [➡ Pretty print `panic` messages](#-pretty-print-panic-messages)
 - Build
   + [➡ Manually disable or enable `cgo`](#-manually-disable-or-enable-cgo)
+- Binary
+  + [➡ Make treemap breakdown of Go executable binary](#-make-treemap-breakdown-of-go-executable-binary)
 
 ## Tests
 
@@ -570,3 +572,28 @@ Disable `cgo` with `CGO_ENABLED=0` and enable with `CGO_ENABLED=1`.
 If you don't, `cgo` may end-up being enabled or code dynamically linked if, for example, you use some `net` or `os` packages.
 You may want to disable `cgo` to improve performance, since complier and runtime would have easier job optimizing code.
 This also should reduce your image size, as you can have alpine image with less shared libraries.
+
+## Binary
+
+### ➡ Make treemap breakdown of Go executable binary
+
+This can be useful for studying Go compiler, large projects, projects with C/C++ and `cgo`, 3rd party dependencies, embedding.
+However, total size may not be something to worry about for your executable.
+
+```
+$ go tool nm -size <binary finename> | go-binsize-treemap > binsize.svg
+```
+
+
+<div align="center">
+<img src="https://github.com/nikolaydubina/go-binsize-treemap/blob/main/docs/hugo.svg" style="margin: 8px; max-height: 640px;">
+</div>
+
+
+<details><summary>Requirements</summary>
+  
+```
+$ go install github.com/nikolaydubina/go-binsize-treemap@latest
+```
+ 
+</details>
