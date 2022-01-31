@@ -465,11 +465,12 @@ Create file like this
 package main
 
 import (
+    "log"
     "net/http"
 )
 
 func main() {
-    http.ListenAndServe(":9000", http.FileServer(http.Dir(".")))
+    log.Fatal(http.ListenAndServe(":9000", http.FileServer(http.Dir("."))))
 }
 ```
 
