@@ -371,7 +371,7 @@ go install github.com/google/go-licenses@latest
 
 This is a tool from one of creators of Go.
 This tool should help explore dependencies and assist large refactorings.
-Source: https://github.com/adonovan/spaghetti
+https://github.com/adonovan/spaghetti by [Alan Donovan](https://github.com/adonovan)
 
 <div align="center">
 <img src="https://github.com/adonovan/spaghetti/blob/main/screenshot.png" style="margin: 8px; height: 640px;">
@@ -606,7 +606,8 @@ $ go install github.com/nikolaydubina/go-binsize-treemap@latest
 ## ➡ Make alternative documentation with golds
 
 It has additional infromation like: implementations of interface; promoted methods.
-The tool has nice minimalistic aesthetics. https://github.com/go101/golds — by [Tapir Liu](https://www.tapirgames.com).
+The tool has nice minimalistic aesthetics.
+https://github.com/go101/golds by [Tapir Liu](https://www.tapirgames.com)
 
 ```
 $ golds ./...
