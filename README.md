@@ -613,7 +613,7 @@ $ golds ./...
 ```
 
 <div align="center">
-<img src="https://github.com/nikolaydubina/go-binsize-treemap/blob/main/docs/golds.png" style="margin: 8px; max-height: 640px;">
+<img src="img/golds.png" style="margin: 8px; max-height: 640px;">
 </div>
 
 <details><summary>Requirements</summary>
