@@ -37,6 +37,8 @@
   + [➡ Manually disable or enable `cgo`](#-manually-disable-or-enable-cgo)
 - Binary
   + [➡ Make treemap breakdown of Go executable binary](#-make-treemap-breakdown-of-go-executable-binary)
+- Documentation
+  + [➡ Make alternative documentation with golds](#-make-alternative-documentation-with-golds)
 
 ## Tests
 
@@ -595,6 +597,31 @@ $ go tool nm -size <binary finename> | go-binsize-treemap > binsize.svg
   
 ```
 $ go install github.com/nikolaydubina/go-binsize-treemap@latest
+```
+ 
+</details>
+
+## Documentation
+
+## ➡ Make alternative documentation with golds
+
+It has additional infromation like: implementations of interface; promoted methods.
+The tool has nice minimalistic aesthetics. https://github.com/go101/golds — by [Tapir Liu](https://www.tapirgames.com).
+
+```
+$ golds ./...
+```
+
+<div align="center">
+<img src="https://github.com/nikolaydubina/go-binsize-treemap/blob/main/docs/golds.png" style="margin: 8px; max-height: 640px;">
+</div>
+
+<details><summary>Requirements</summary>
+  
+Refer to repository for latest guidelines.
+  
+```
+$ go install go101.org/golds@latest
 ```
  
 </details>
