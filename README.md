@@ -414,7 +414,7 @@ go install github.com/ofabry/go-callvis
 ### ➡ Issue `go mod` directives
 
 Tell Go compiler which versions of upstreams to include in your build.
-Tell all users of your module how to deal with versions.
+Tell all users of your module how to deal with versions of your module.
 
 ```
 // Deprecated: use example.com/mod/v2 instead.
