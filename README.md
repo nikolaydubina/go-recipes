@@ -62,6 +62,7 @@ Then turn coverprofile into SVG
 ```
 go-cover-treemap -coverprofile cover.out > out.svg
 ```
+Also available at https://go-cover-treemap.io
 
 <div align="center">
 <img src="./img/hugo-code-coverage.svg" style="margin: 8px; max-height: 640px;">
