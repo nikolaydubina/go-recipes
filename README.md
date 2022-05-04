@@ -23,8 +23,10 @@
   + [➡ Scrape details about upstream modules and make graph](#-scrape-details-about-upstream-modules-and-make-graph)
   + [➡ Scrape licences of upstream dependencies](#-scrape-licences-of-upstream-dependencies)
   + [➡ Explore upstream dependencies interactively](#-explore-upstream-dependencies-interactively)
-  + [➡ Make graph of function calls in package](#-make-graph-of-function-calls-in-package)
   + [➡ Issue `go mod` directives](#-issue-go-mod-directives)
+- Code Visualization
+  + [➡ Make graph of function calls in package](#-make-graph-of-function-calls-in-package)
+  + [➡ Make PlantUML diagram](#-make-plantuml-diagram)
 - Assembly
   + [➡ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
   + [➡ Get Go compiler SSA intermediary representation](#-get-go-compiler-ssa-intermediary-representation)
@@ -69,13 +71,10 @@ Also available at https://go-cover-treemap.io
 </div>
 
 
-<details><summary>Requirements</summary>
-
+Requirements
 ```
 go install github.com/nikolaydubina/go-cover-treemap@latest
 ```
-
-</details>
   
 ---
 
@@ -94,13 +93,10 @@ github.com/gin-gonic/gin/ginS
 github.com/gin-gonic/gin/internal/json
 ```
 
-<details><summary>Requirements</summary>
-
+Requirements
 ```
 https://stedolan.github.io/jq/download/
 ```
-
-</details>
   
 ---
 
@@ -142,13 +138,10 @@ Example
          =========== 11	github.com/gin-gonic/gin/render
 ```
 
-<details><summary>Requirements</summary>
-
+Requirements
 ```
 https://stedolan.github.io/jq/download/
 ```
-  
-</details>
 
 ---
 
@@ -171,7 +164,6 @@ Different packages by default run in parallel, and tests within package can be e
 Make sure to copy test case data to new variable, why explained [here](https://gist.github.com/posener/92a55c4cd441fc5e5e85f27bca008721).
 [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
 
-Example
 ```go
     ...
     for _, tc := range tests {
@@ -196,13 +188,10 @@ Example
 1.16
 ```
 
-<details><summary>Requirements</summary>
-
+Requirements
 ```
 https://stedolan.github.io/jq/download/
 ```
-
-</details>
 
 ---
 
@@ -221,13 +210,10 @@ Example
 1.12 github.com/golang/protobuf
 ```
 
-<details><summary>Requirements</summary>
-  
+Requirements  
 ```
 https://stedolan.github.io/jq/download/
 ```
-
-</details>
 
 ---
 
@@ -263,13 +249,10 @@ golang.org/x/text
 gopkg.in/yaml.v2
 ```
 
-<details><summary>Requirements</summary>
-
+Requirements
 ```
 https://stedolan.github.io/jq/download/
 ```
-  
-</details>
 
 ---
 
@@ -302,16 +285,13 @@ go list -deps -json ./... | jq -c 'select(.Standard!=true) | {from: .ImportPath,
 <img src="./img/packages-graph.svg" style="margin: 8px; height: 640px;">
 </div>
 
-<details><summary>Requirements</summary>
-
+Requirements
 ```
 https://stedolan.github.io/jq/download/
 https://graphviz.org/download/
 $ go install github.com/nikolaydubina/import-graph@latest
 $ go install github.com/nikolaydubina/jsonl-graph@latest
 ```
-  
-</details>
 
 ---
 
@@ -327,15 +307,12 @@ go mod graph | import-graph -i=gomod | jsonl-graph -color-scheme=file://$PWD/bas
 <img src="./img/gin-mod-graph-collected.svg" style="margin: 8px; height: 640px;">
 </div>
 
-<details><summary>Requirements</summary>
-  
+Requirements  
 ```
 https://graphviz.org/download/
 $ go install github.com/nikolaydubina/import-graph@latest
 $ go install github.com/nikolaydubina/jsonl-graph@latest
 ```
- 
-</details>
 
 ---
 
@@ -362,13 +339,10 @@ github.com/Azure/azure-storage-blob-go/azblob,https://github.com/Azure/azure-sto
 github.com/yuin/goldmark-highlighting,https://github.com/yuin/goldmark-highlighting/blob/master/LICENSE,MIT
 ```
 
-<details><summary>Requirements</summary>
-  
+Requirements
 ```
 go install github.com/google/go-licenses@latest
 ```
- 
-</details>
 
 ---
 
@@ -382,35 +356,12 @@ https://github.com/adonovan/spaghetti by [Alan Donovan](https://github.com/adono
 <img src="https://github.com/adonovan/spaghetti/blob/main/screenshot.png" style="margin: 8px; height: 640px;">
 </div>
 
-<details><summary>Requirements</summary>
-  
+Requirements  
 ```
 go install github.com/adonovan/spaghetti@latest
 ```
- 
-</details>
 
 ---
-
-### ➡ Make graph of function calls in package
-
-This can be helpful to quickly track which packages current package is calling and why.
-
-```
-go-callvis .
-```
-
-<div align="center">
-<img src="https://raw.githubusercontent.com/ofabry/go-callvis/master/images/syncthing.png" style="margin: 8px; max-height: 640px;">
-</div>
-
-<details><summary>Requirements</summary>
-  
-```
-go install github.com/ofabry/go-callvis
-```
- 
-</details>
 
 ### ➡ Issue `go mod` directives
 
@@ -428,6 +379,47 @@ require example.com/new/thing/v2 v2.3.4
 exclude example.com/old/thing v1.2.3
 replace example.com/bad/thing v1.4.5 => example.com/good/thing v1.4.5
 retract [v1.9.0, v1.9.5]
+```
+
+## Code Visualization
+
+### ➡ Make graph of function calls in package
+
+This can be helpful to quickly track which packages current package is calling and why.
+
+```
+go-callvis .
+```
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/ofabry/go-callvis/master/images/syncthing.png" style="margin: 8px; max-height: 640px;">
+</div>
+
+Requirements  
+```
+go install github.com/ofabry/go-callvis
+```
+
+---
+
+### ➡ Make PlantUML diagram
+
+This can be useful to automatically generate visualization of classes and interfaces for go pacakges.
+Recommend recursive option.
+Render `.puml` files in for exmample [planttext.com](https://www.planttext.com)
+— [github.com/bykof/go-plantuml](https://github.com/bykof/go-plantuml) by [@bykof](https://github.com/bykof) / Michael Bykovski
+
+```
+go-plantuml generate -d . -r -o graph.puml
+```
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/bykof/go-plantuml/master/docs/assets/graph.svg" style="margin: 8px; max-height: 640px;">
+</div>
+
+Requirements  
+```
+go install github.com/bykof/go-plantuml@latest
 ```
 
 ## Assembly
@@ -471,13 +463,10 @@ Selected Usecases
 - `cat myfile.txt | gorram crypto/sha1 Sum`
 - `gorram net/http Get https://google.com`
 
-<details><summary>Requirements</summary>
-  
+Requirements  
 ```
 go install github.com/natefinch/gorram@latest
 ```
- 
-</details>
 
 ---
 
@@ -522,13 +511,10 @@ $ gops
 51130 51128  gocode         go1.9.2 /Users/jbd/bin/gocode
 ```
 
-<details><summary>Requirements</summary>
-  
+Requirements  
 ```
 go install github.com/google/gops@latest
 ```
- 
-</details>
 
 ---
 
@@ -543,11 +529,11 @@ Source: https://github.com/divan/gotrace
 <img src="https://github.com/divan/gotrace/blob/master/images/demo.png" style="margin: 8px; height: 640px;">
 </div>
 
-<details><summary>Requirements</summary>
- 
+Requirements
+
+
 You may need to run Docker container with that tool or install locally and patch Go compiler.
-More instructions in the original repo.
-  
+More instructions in the original repo.  
 ```
 go install github.com/divan/gotrace
 ```
@@ -582,13 +568,10 @@ go test -v |& pp
 <img src="https://raw.githubusercontent.com/wiki/maruel/panicparse/parse.gif" style="margin: 8px; max-height: 640px;">
 </div>
 
-<details><summary>Requirements</summary>
-  
+Requirements  
 ```
 go install github.com/maruel/panicparse/v2/cmd/pp@latest
 ```
- 
-</details>
 
 ## Build
 
@@ -616,13 +599,10 @@ $ go tool nm -size <binary finename> | go-binsize-treemap > binsize.svg
 </div>
 
 
-<details><summary>Requirements</summary>
-  
+Requirements  
 ```
 $ go install github.com/nikolaydubina/go-binsize-treemap@latest
 ```
- 
-</details>
 
 ## Documentation
 
@@ -640,12 +620,7 @@ $ golds ./...
 <img src="img/golds.png" style="margin: 8px; max-height: 640px;">
 </div>
 
-<details><summary>Requirements</summary>
-  
-Refer to repository for latest guidelines.
-  
+Requirements  
 ```
 $ go install go101.org/golds@latest
 ```
- 
-</details>
