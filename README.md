@@ -20,6 +20,7 @@
   + [➡ Get upstream modules without Go version](#-get-upstream-modules-without-go-version)
   + [➡ Get available module versions](#-get-available-module-versions)
   + [➡ Make graph of upstream modules](#-make-graph-of-upstream-modules)
+  + [➡ Make graph of upstream modules with gmchart](#-make-graph-of-upstream-modules-with-gmchart)
   + [➡ Make graph of upstream packages](#-make-graph-of-upstream-packages)
   + [➡ Scrape details about upstream modules and make graph](#-scrape-details-about-upstream-modules-and-make-graph)
   + [➡ Scrape licences of upstream dependencies](#-scrape-licences-of-upstream-dependencies)
@@ -291,6 +292,28 @@ requirements
 ```
 # https://graphviz.org/download/
 $ go install golang.org/x/exp/cmd/modgraphviz@latest
+```
+
+---
+
+### ➡ Make graph of upstream modules with gmchart
+
+Render in browser module graphs.
+Built with D3.js and Javascript and HTTP server in Go.
+— by [PaulXu-cn](https://github.com/PaulXu-cn)
+
+```
+go mod graph | gmchart
+```
+
+<div align="center">
+<img src="https://github.com/PaulXu-cn/go-mod-graph-chart/raw/main/show.gif" style="margin: 8px; max-height: 640px;">
+</div>
+
+requirements
+```
+# https://graphviz.org/download/
+go install github.com/PaulXu-cn/go-mod-graph-chart/gmchart@latest
 ```
 
 ---
