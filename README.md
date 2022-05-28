@@ -298,7 +298,7 @@ $ go install golang.org/x/exp/cmd/modgraphviz@latest
 
 ### ➡ Make graph of upstream modules with gmchart
 
-Render in browser module graphs.
+Render in browser Go module graphs.
 Built with D3.js and Javascript and HTTP server in Go.
 — by [PaulXu-cn](https://github.com/PaulXu-cn)
 
@@ -312,7 +312,6 @@ go mod graph | gmchart
 
 Requirements
 ```
-# https://graphviz.org/download/
 go install github.com/PaulXu-cn/go-mod-graph-chart/gmchart@latest
 ```
 
