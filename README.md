@@ -310,7 +310,7 @@ go mod graph | gmchart
 <img src="https://github.com/PaulXu-cn/go-mod-graph-chart/raw/main/show.gif" style="margin: 8px; max-height: 640px;">
 </div>
 
-requirements
+Requirements
 ```
 # https://graphviz.org/download/
 go install github.com/PaulXu-cn/go-mod-graph-chart/gmchart@latest
