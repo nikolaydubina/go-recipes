@@ -19,6 +19,7 @@
   + [➡ Get directly dependent modules that can be upgraded](#-get-directly-dependent-modules-that-can-be-upgraded)
   + [➡ Get upstream modules without Go version](#-get-upstream-modules-without-go-version)
   + [➡ Get available module versions](#-get-available-module-versions)
+  + [➡ Make graph of upstream modules](#-make-graph-of-upstream-modules)
   + [➡ Make graph of upstream packages](#-make-graph-of-upstream-packages)
   + [➡ Scrape details about upstream modules and make graph](#-scrape-details-about-upstream-modules-and-make-graph)
   + [➡ Scrape licences of upstream dependencies](#-scrape-licences-of-upstream-dependencies)
@@ -269,6 +270,29 @@ Example
 ```
 github.com/google/gofuzz v1.0.0 v1.1.0 v1.2.0
 ```
+
+---
+
+### ➡ Make graph of upstream modules
+
+For each module, the node representing the greatest version (i.e., the version chosen by Go's minimal version selection algorithm) is colored green.
+Other nodes, which aren't in the final build list, are colored grey
+— by official Go team
+
+```
+go mod graph | modgraphviz | dot -Tsvg -o mod-graph.svg
+```
+
+<div align="center">
+<img src="./img/modgraphviz-go-featureprocessing.svg" style="margin: 8px; max-height: 640px;">
+</div>
+
+requirements
+```
+# https://graphviz.org/download/
+$ go install golang.org/x/exp/cmd/modgraphviz@latest
+```
+
 ---
 
 ### ➡ Make graph of upstream packages
@@ -282,7 +306,7 @@ go list -deps -json ./... | jq -c 'select(.Standard!=true) | {from: .ImportPath,
 ```
 
 <div align="center">
-<img src="./img/packages-graph.svg" style="margin: 8px; height: 640px;">
+<img src="./img/packages-graph.svg" style="margin: 8px; max-height: 640px;">
 </div>
 
 Requirements
@@ -304,7 +328,7 @@ go mod graph | import-graph -i=gomod | jsonl-graph -color-scheme=file://$PWD/bas
 ```
 
 <div align="center">
-<img src="./img/gin-mod-graph-collected.svg" style="margin: 8px; height: 640px;">
+<img src="./img/gin-mod-graph-collected.svg" style="margin: 8px; max-height: 640px;">
 </div>
 
 Requirements  
@@ -353,7 +377,7 @@ This tool should help explore dependencies and assist large refactorings.
 https://github.com/adonovan/spaghetti by [Alan Donovan](https://github.com/adonovan)
 
 <div align="center">
-<img src="https://github.com/adonovan/spaghetti/blob/main/screenshot.png" style="margin: 8px; height: 640px;">
+<img src="https://github.com/adonovan/spaghetti/blob/main/screenshot.png" style="margin: 8px; max-height: 640px;">
 </div>
 
 Requirements  
@@ -442,7 +466,7 @@ Website: https://golang.design/gossa
 Source: https://github.com/golang-design/ssaplayground
 
 <div align="center">
-<img src="https://github.com/golang-design/ssaplayground/blob/main/public/assets/screen.png" style="margin: 8px; height: 640px;">
+<img src="https://github.com/golang-design/ssaplayground/blob/main/public/assets/screen.png" style="margin: 8px; max-height: 640px;">
 </div>
 
 ## Execute
@@ -526,7 +550,7 @@ However, it could be insteresting for educational purposes.
 Source: https://github.com/divan/gotrace
 
 <div align="center">
-<img src="https://github.com/divan/gotrace/blob/master/images/demo.png" style="margin: 8px; height: 640px;">
+<img src="https://github.com/divan/gotrace/blob/master/images/demo.png" style="margin: 8px; max-height: 640px;">
 </div>
 
 Requirements
