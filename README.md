@@ -518,25 +518,16 @@ go install github.com/natefinch/gorram@latest
 
 ### ➡ Run simple fileserver
 
-This is similar to famous oneliner in Python `python3 -m http.server` and `python -m SimpleHTTPServer`.
+It takes one line to run HTTP file server in Go.
+Akin to famous oneliner in Python `python3 -m http.server` and `python -m SimpleHTTPServer`.
+Run this file as usualy `go run <filename>`.
 
-Create file like this
 ```go
 package main
 
-import (
-    "log"
-    "net/http"
-)
+import "net/http"
 
-func main() {
-    log.Fatal(http.ListenAndServe(":9000", http.FileServer(http.Dir("."))))
-}
-```
-
-Then run this file (e.g. if named `fs.go`)
-```
-go run fs.go
+func main() { http.ListenAndServe(":9000", http.FileServer(http.Dir("."))) }
 ```
 
 <div align="center">
