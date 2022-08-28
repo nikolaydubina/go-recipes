@@ -32,6 +32,7 @@
 - Assembly
   + [➡ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
   + [➡ Get Go compiler SSA intermediary representation](#-get-go-compiler-ssa-intermediary-representation)
+  + [➡ View Go assembly interactively](#-view-go-assembly-interactively)
 - Execute
   + [➡ Run Go function in shell](#-run-go-function-in-shell)
   + [➡ Run simple fileserver](#-run-simple-fileserver)
@@ -490,6 +491,21 @@ Source: https://github.com/golang-design/ssaplayground
 <div align="center">
 <img src="https://github.com/golang-design/ssaplayground/blob/main/public/assets/screen.png" style="margin: 8px; max-height: 640px;">
 </div>
+
+### ➡ View Go assembly interactively
+
+View assembley of Go interactively — by Egon Elbre / https://github.com/egonelbre
+
+<div align="center">
+<img src="https://github.com/loov/lensm/raw/main/screenshot.gif" style="margin: 8px; max-height: 640px;">
+</div>
+
+Requirements
+```
+go install loov.dev/lensm@main
+```
+
+Source: https://github.com/loov/lensm
 
 ## Execute
 
