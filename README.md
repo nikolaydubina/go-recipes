@@ -4,7 +4,7 @@
 > _Know some cool tool or one-liner? Have a feature request or an idea?_  
 > _Feel free to edit this page or create an Issue/Discussion!_  
 
-## Content
+## Contents
 
  - Tests
    + [➡ Make treemap of code coverage](#-make-treemap-of-code-coverage)
