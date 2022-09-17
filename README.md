@@ -84,9 +84,6 @@ github.com/gin-gonic/gin/ginS
 github.com/gin-gonic/gin/internal/json
 ```
 
-<div align="center"><img src="./img/hugo-code-coverage.svg" style="margin: 8px; max-height: 640px;"></div>
-
-
 Requirements
 ```
 https://stedolan.github.io/jq/download/

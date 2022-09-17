@@ -14,13 +14,12 @@ groups:
           - go-cover-treemap -coverprofile cover.out > out.svg
       - title: Get packages without tests
         description: If code coverage does not report packages without tests. This should be fast for CI.
-        example_image_url: ./img/hugo-code-coverage.svg
         requirements:
           - https://stedolan.github.io/jq/download/
         author: github.com/nikolaydubina
         commands:
           - go list -json ./... | jq -rc 'select((.TestGoFiles | length)==0) | .ImportPath'
-        example_output_url: pkg-without-tests.md
+        example_output_url: source/pkg-without-tests.md
       - title: Browse code coverage by file
         description: This is very helpful tool from the official Go toolchain.
         example_image_url: ./img/tool-cover-html.png
@@ -33,14 +32,14 @@ groups:
           - https://stedolan.github.io/jq/download/
         commands:
           - go list -json ./... | jq -rc '[.ImportPath, (.GoFiles | length | tostring)] | join(" ")' | perl -lane 'print (" " x (20 - $F[1]), "=" x $F[1], " ", $F[1], "\t", $F[0])'
-        example_output_url: histogram-files-pkg.md
+        example_output_url: source/histogram-files-pkg.md
       - title: Run tests sequentially
         description: This is in cases when you need to synchronize tests, for example in integration tests that share environment. [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
         commands:
           - go test -p 1 -parallel 1 ./...
       - title: Run tests in parallel
         description: Add `t.Parallel` to your tests case function bodies. As per documentation, by default `-p=GOMAXPROCS` and `-parallel=GOMAXPROCS` when you run `go test`. Different packages by default run in parallel, and tests within package can be enforced to run in parallel too. Make sure to copy test case data to new variable, why explained [here](https://gist.github.com/posener/92a55c4cd441fc5e5e85f27bca008721). [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
-        example_content_url: run-tests-parallel.go
+        example_content_url: source/run-tests-parallel.go
   - title: Dependencies
     entries:
       - title: Get Go version of current module
@@ -56,19 +55,19 @@ groups:
           - https://stedolan.github.io/jq/download/
         commands:
           - go list -deps -json ./... | jq -rc 'select(.Standard!=true and .Module.GoVersion!=null) | [.Module.GoVersion,.Module.Path] | join(" ")' | sort -V | uniq
-        example_output_url: go-ver-upstream-mods.md
+        example_output_url: source/go-ver-upstream-mods.md
       - title: Get directly dependent modules that can be upgraded
         description: Use this to keep your modules updated. Similar function is integrated in VSCode official Go plugin and GoLand.
         commands:
           - go list -u -m $(go list -m -f '{{.Indirect}} {{.}}' all | grep '^false' | cut -d ' ' -f2) | grep '\['
-        example_output_url: go-upstream-mods-to-update.md
+        example_output_url: source/go-upstream-mods-to-update.md
       - title: Get upstream modules without Go version
         description: Use this to find outdated modules or imports that you need to upgrade.
         commands:
           - go list -deps -json ./... | jq -rc 'select(.Standard!=true and .Module.GoVersion==null) | .Module.Path' | sort -u
         requirements:
           - https://stedolan.github.io/jq/download/
-        example_output_url: go-upstram-mods-without-go-version.md
+        example_output_url: source/go-upstram-mods-without-go-version.md
       - title: Get available module versions
         description: This works even if you did not download or install module locally. This is useful to check to which version you can upgrade to, what is the latest version, and whether there are v2+ major versions recognized by Go toolchain.
         commands:
@@ -114,7 +113,7 @@ groups:
         description: This is tool from Google. Might be useful to collect all the licenses or checking if you can use the project for example in proprietary or commercial environment.
         commands:
           - go-licenses csv github.com/gohugoio/hugo
-        example_output_url: go-upstream-mods-licenses.md
+        example_output_url: source/go-upstream-mods-licenses.md
         requirements:
           - go install github.com/google/go-licenses@latest
         author: official Go team
@@ -127,7 +126,7 @@ groups:
           - go install github.com/adonovan/spaghetti@latest
       - title: Use `go mod` directives
         description: Tell Go compiler which versions of upstreams to include in your build. Tell all users of your module how to deal with versions of your module.
-        example_content_url: go-mod-directives.md
+        example_content_url: source/go-mod-directives.md
   - title: Code Visualization
     entries:
       - title: Make graph of function calls in package
@@ -175,14 +174,14 @@ groups:
       - title: Run simple fileserver
         description: It takes one line to run HTTP file server in Go. Akin to famous oneliner in Python `python3 -m http.server` and `python -m SimpleHTTPServer`. Run this file as usually `go run <filename>`.
         example_image_url: ./img/simple-fs.png
-        example_content_url: go-simple-webserver.go
+        example_content_url: source/go-simple-webserver.go
       - title: Monitor Go processes
         description: This tool from Google has lots of useful features like monitoring memory of Go processes, forcing GC, getting version of Go of process.
         requirements:
           - go install github.com/google/gops@latest
         commands:
           - gops
-        example_output_url: gops.md
+        example_output_url: source/gops.md
       - title: Create 3D visualization of concurrency traces
         description: This tool creates 3D visualization of coroutines execution. There is no advanced functions and it is hard to analyze production systems. However, it could be interesting for educational purposes. 
         source: https://github.com/divan/gotrace
