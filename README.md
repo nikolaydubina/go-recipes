@@ -434,21 +434,6 @@ Requirements
 go install loov.dev/lensm@main
 ```
 
-### ➡ View Go assembly interactively
-
-View assembley of Go interactively — by Egon Elbre / https://github.com/egonelbre
-
-<div align="center">
-<img src="https://github.com/loov/lensm/raw/main/screenshot.gif" style="margin: 8px; max-height: 640px;">
-</div>
-
-Requirements
-```
-go install loov.dev/lensm@main
-```
-
-Source: https://github.com/loov/lensm
-
 ## Execute
 
 ### ➡ Run Go function in shell
