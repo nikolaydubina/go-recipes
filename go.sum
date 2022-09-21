@@ -1,7 +1,7 @@
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/nikolaydubina/mdpage v1.1.0 h1:30Ae1fsnbi4nIqktPhxCtD5PMGW9bqSZQlQ45rbSyLM=
-github.com/nikolaydubina/mdpage v1.1.0/go.mod h1:cZjOAq3nWLysHyd46PxrL/6Euxx2idFIU63RXa51YME=
+github.com/nikolaydubina/mdpage v1.2.0 h1:8JWp6EV9KVOyZmJ1lzYr45fawK7gtqTCXScSOYaNJ/4=
+github.com/nikolaydubina/mdpage v1.2.0/go.mod h1:cZjOAq3nWLysHyd46PxrL/6Euxx2idFIU63RXa51YME=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=

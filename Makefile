@@ -1,3 +1,4 @@
 .PHONY: all
 all:
-	go run github.com/nikolaydubina/mdpage -page page.yaml -config render_config.json > README.md
+	go install github.com/nikolaydubina/mdpage@latest
+	go run github.com/nikolaydubina/mdpage -page page.yaml > README.md

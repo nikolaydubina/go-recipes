@@ -1,5 +1,13 @@
 header:
   content_url: header.md
+contents:
+  title: Contents
+entry:
+  title_prefix: ➡
+  requirements:
+    title: Requirements
+  example:
+    title: Example
 groups:
   - title: Tests
     entries:
