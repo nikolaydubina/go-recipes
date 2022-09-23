@@ -8,6 +8,7 @@
 
  - Tests
    + [➡ Make treemap of code coverage](#-make-treemap-of-code-coverage)
+   + [➡ Pretty print coverage in terminal](#-pretty-print-coverage-in-terminal)
    + [➡ Get packages without tests](#-get-packages-without-tests)
    + [➡ Browse code coverage by file](#-browse-code-coverage-by-file)
    + [➡ Make histogram of Go files per package](#-make-histogram-of-go-files-per-package)
@@ -70,6 +71,23 @@ go-cover-treemap -coverprofile cover.out > out.svg
 Requirements
 ```
 go install github.com/nikolaydubina/go-cover-treemap@latest
+```
+
+### ➡ Pretty print coverage in terminal
+
+It is similar to `go tool cover -html=cover.out` but not leaving the terminal. You can filter by functions, packages, or minimum coverage percent expressions. — Nikifor Seriakov (https://github.com/nikandfor) / https://github.com/nikandfor/cover
+
+
+```
+cover
+```
+
+<div align="center"><img src="img/cover.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/nikandfor/cover@latest
 ```
 
 ### ➡ Get packages without tests

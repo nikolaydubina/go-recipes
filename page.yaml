@@ -20,6 +20,15 @@ groups:
         commands:
           - go test -coverprofile cover.out ./...
           - go-cover-treemap -coverprofile cover.out > out.svg
+      - title: Pretty print coverage of Go code in terminal
+        description: It is similar to `go tool cover -html=cover.out` but not leaving the terminal. You can filter by functions, packages, or minimum coverage percent expressions.
+        source: https://github.com/nikandfor/cover
+        author: Nikifor Seriakov (https://github.com/nikandfor)
+        commands:
+          - cover
+        requirements:
+          - go install github.com/nikandfor/cover@latest
+        example_image_url: img/cover.png
       - title: Get packages without tests
         description: If code coverage does not report packages without tests. This should be fast for CI.
         requirements:
