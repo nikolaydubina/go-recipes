@@ -347,7 +347,7 @@ go install github.com/PaulXu-cn/go-mod-graph-chart/gmchart@latest
 
 ### ➡ Make graph of upstream packages
 
-Use to find unexpected dependencies or visualize project. Works best for small number of packages, for large projects use `grep` to narrow down subgraph. Without `-deps` only for current module.
+Use to find unexpected dependencies or visualize project. Works best for small number of packages, for large projects use `grep` to narrow down subgraph. Without `-deps` only for current module. — github.com/nikolaydubina
 
 
 ```
@@ -367,7 +367,7 @@ go install github.com/nikolaydubina/jsonl-graph@latest
 
 ### ➡ Scrape details about upstream modules and make graph
 
-Use to find low quality or unmaintained dependencies.
+Use to find low quality or unmaintained dependencies. — github.com/nikolaydubina
 
 
 ```
@@ -466,7 +466,7 @@ go install github.com/loov/goda@latest
 
 ### ➡ Make graph of function calls in package
 
-This can be helpful to quickly track which packages current package is calling and why.
+This can be helpful to quickly track which packages current package is calling and why. — Ondrej Fabry (github.com/ofabry)
 
 
 ```
@@ -483,7 +483,7 @@ go install github.com/ofabry/go-callvis
 
 ### ➡ Make PlantUML diagram
 
-This can be useful to automatically generate visualization of classes and interfaces for go pacakges. Recommend recursive option. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com). — [@bykof](https://github.com/bykof) / Michael Bykovski / [github.com/bykof/go-plantuml](https://github.com/bykof/go-plantuml)
+This can be useful to automatically generate visualization of classes and interfaces for go pacakges. Recommend recursive option. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com). — Michael Bykovski (https://github.com/bykof) / [github.com/bykof/go-plantuml](https://github.com/bykof/go-plantuml)
 
 
 ```
@@ -502,7 +502,7 @@ go install github.com/bykof/go-plantuml@latest
 
 ### ➡ Get assembly of Go code snippets online
 
-Use [godbolt.org](https://godbolt.org) to compile and see assembly of short Go code. You can check different platforms and compilers including `cgo`. This tool is commonly used by C++ community.
+Use [godbolt.org](https://godbolt.org) to compile and see assembly of short Go code. You can check different platforms and compilers including `cgo`. This tool is commonly used by C++ community. — Matt Godbolt (https://github.com/mattgodbolt)
 
 <div align="center"><img src="./img/godbolt.png" style="margin: 8px; max-height: 640px;"></div>
 
@@ -510,7 +510,7 @@ Use [godbolt.org](https://godbolt.org) to compile and see assembly of short Go c
 
 ### ➡ Get Go compiler SSA intermediary representation
 
-This tool allows to check what does Go compiler do. Might be useful if you trying to optimize some code or learn more about compiler. https://golang.design/gossa. / https://github.com/golang-design/ssaplayground
+This tool allows to check what does Go compiler do. Might be useful if you trying to optimize some code or learn more about compiler. https://golang.design/gossa. — Changkun Ou (https://github.com/changkun) / https://github.com/golang-design/ssaplayground
 
 <div align="center"><img src="https://github.com/golang-design/ssaplayground/blob/main/public/assets/screen.png" style="margin: 8px; max-height: 640px;"></div>
 
@@ -558,7 +558,7 @@ func main() {
 
 ### ➡ Run Go function in shell
 
-This is short and convenient for Go one-liners. This tool will print to stdout the return of a function call.
+This is short and convenient for Go one-liners. This tool will print to stdout the return of a function call. — Nate Finch (https://github.com/natefinch)
 
 
 ```
@@ -591,7 +591,7 @@ func main() { http.ListenAndServe(":9000", http.FileServer(http.Dir("."))) }
 
 ### ➡ Monitor Go processes
 
-This tool from Google has lots of useful features like monitoring memory of Go processes, forcing GC, getting version of Go of process.
+This tool from Google has lots of useful features like monitoring memory of Go processes, forcing GC, getting version of Go of process. — official Go team
 
 
 ```
@@ -613,7 +613,7 @@ go install github.com/google/gops@latest
 
 ### ➡ Create 3D visualization of concurrency traces
 
-This tool creates 3D visualization of coroutines execution. There is no advanced functions and it is hard to analyze production systems. However, it could be interesting for educational purposes. / https://github.com/divan/gotrace
+This tool creates 3D visualization of coroutines execution. There is no advanced functions and it is hard to analyze production systems. However, it could be interesting for educational purposes. — Ivan Daniluk (https://github.com/divan) / https://github.com/divan/gotrace
 
 <div align="center"><img src="https://github.com/divan/gotrace/blob/master/images/demo.png" style="margin: 8px; max-height: 640px;"></div>
 
@@ -667,7 +667,7 @@ Disable `cgo` with `CGO_ENABLED=0` and enable with `CGO_ENABLED=1`. If you don't
 
 ### ➡ Make treemap breakdown of Go executable binary
 
-This can be useful for studying Go compiler, large projects, projects with C/C++ and `cgo`, 3rd party dependencies, embedding. However, total size may not be something to worry about for your executable.
+This can be useful for studying Go compiler, large projects, projects with C/C++ and `cgo`, 3rd party dependencies, embedding. However, total size may not be something to worry about for your executable. — github.com/nikolaydubina
 
 
 ```

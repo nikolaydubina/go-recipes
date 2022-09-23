@@ -136,6 +136,7 @@ groups:
         commands:
           - "go list -deps -json ./... | jq -c 'select(.Standard!=true) | {from: .ImportPath, to: .Imports[]}' | jsonl-graph | dot -Tsvg > package-graph.svg"
         example_image_url: ./img/packages-graph.svg
+        author: github.com/nikolaydubina
         requirements:
           - https://stedolan.github.io/jq/download/
           - https://graphviz.org/download/
@@ -146,18 +147,19 @@ groups:
         commands:
           - go mod graph | import-graph -i=gomod | jsonl-graph -color-scheme=file://$PWD/basic.json | dot -Tsvg > output.svg
         example_image_url: ./img/gin-mod-graph-collected.svg
+        author: github.com/nikolaydubina
         requirements:
           - https://graphviz.org/download/
           - go install github.com/nikolaydubina/import-graph@latest
           - go install github.com/nikolaydubina/jsonl-graph@latest
       - title: Scrape licenses of upstream dependencies
         description: This is tool from Google. Might be useful to collect all the licenses or checking if you can use the project for example in proprietary or commercial environment.
+        author: official Go team
+        example_output_url: source/go-upstream-mods-licenses.md
         commands:
           - go-licenses csv github.com/gohugoio/hugo
-        example_output_url: source/go-upstream-mods-licenses.md
         requirements:
           - go install github.com/google/go-licenses@latest
-        author: official Go team
       - title: Explore upstream dependencies interactively
         description: This is a tool from one of creators of Go. This tool should help explore dependencies and assist large refactorings.
         source: https://github.com/adonovan/spaghetti
@@ -183,6 +185,7 @@ groups:
     entries:
       - title: Make graph of function calls in package
         description: This can be helpful to quickly track which packages current package is calling and why.
+        author: "Ondrej Fabry (github.com/ofabry)"
         commands:
           - go-callvis .
         example_image_url: https://raw.githubusercontent.com/ofabry/go-callvis/master/images/syncthing.png
@@ -191,7 +194,7 @@ groups:
       - title: Make PlantUML diagram
         description: This can be useful to automatically generate visualization of classes and interfaces for go pacakges. Recommend recursive option. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com).
         source: "[github.com/bykof/go-plantuml](https://github.com/bykof/go-plantuml)"
-        author: "[@bykof](https://github.com/bykof) / Michael Bykovski"
+        author: "Michael Bykovski (https://github.com/bykof)"
         commands:
           - go-plantuml generate -d . -r -o graph.puml
         example_image_url: https://raw.githubusercontent.com/bykof/go-plantuml/master/docs/assets/graph.svg
@@ -202,10 +205,12 @@ groups:
       - title: Get assembly of Go code snippets online
         description: Use [godbolt.org](https://godbolt.org) to compile and see assembly of short Go code. You can check different platforms and compilers including `cgo`. This tool is commonly used by C++ community.
         example_image_url: ./img/godbolt.png
+        author: Matt Godbolt (https://github.com/mattgodbolt)
       - title: Get Go compiler SSA intermediary representation
         description: This tool allows to check what does Go compiler do. Might be useful if you trying to optimize some code or learn more about compiler. https://golang.design/gossa.
         source: https://github.com/golang-design/ssaplayground
         example_image_url: https://github.com/golang-design/ssaplayground/blob/main/public/assets/screen.png
+        author: Changkun Ou (https://github.com/changkun)
       - title: View Go assembly interactively
         description: This tool lets you interactively Go statement in assembly.
         author: Egon Elbre / https://github.com/egonelbre
@@ -222,6 +227,7 @@ groups:
     entries:
       - title: Run Go function in shell
         description: This is short and convenient for Go one-liners. This tool will print to stdout the return of a function call.
+        author: Nate Finch (https://github.com/natefinch) 
         requirements:
           - go install github.com/natefinch/gorram@latest
         commands:
@@ -234,6 +240,7 @@ groups:
         example_content_url: source/go-simple-webserver.go
       - title: Monitor Go processes
         description: This tool from Google has lots of useful features like monitoring memory of Go processes, forcing GC, getting version of Go of process.
+        author: official Go team
         requirements:
           - go install github.com/google/gops@latest
         commands:
@@ -242,6 +249,7 @@ groups:
       - title: Create 3D visualization of concurrency traces
         description: This tool creates 3D visualization of coroutines execution. There is no advanced functions and it is hard to analyze production systems. However, it could be interesting for educational purposes. 
         source: https://github.com/divan/gotrace
+        author: Ivan Daniluk (https://github.com/divan) 
         example_image_url: https://github.com/divan/gotrace/blob/master/images/demo.png
         requirements:
           - go install github.com/divan/gotrace
@@ -270,6 +278,7 @@ groups:
     entries:
       - title: Make treemap breakdown of Go executable binary
         description: This can be useful for studying Go compiler, large projects, projects with C/C++ and `cgo`, 3rd party dependencies, embedding. However, total size may not be something to worry about for your executable.
+        author: github.com/nikolaydubina
         commands:
           - go tool nm -size <binary finename> | go-binsize-treemap > binsize.svg
         example_image_url: https://github.com/nikolaydubina/go-binsize-treemap/blob/main/docs/hugo.svg
