@@ -20,6 +20,27 @@ groups:
         commands:
           - go test -coverprofile cover.out ./...
           - go-cover-treemap -coverprofile cover.out > out.svg
+      - title: Pretty print coverage of Go code in terminal
+        description: It is similar to `go tool cover -html=cover.out` but not leaving the terminal. You can filter by functions, packages, or minimum coverage percent expressions.
+        source: https://github.com/nikandfor/cover
+        author: Nikifor Seriakov (https://github.com/nikandfor)
+        commands:
+          - cover
+        requirements:
+          - go install github.com/nikandfor/cover@latest
+        example_image_url: img/cover.png
+      - title: Browse code coverage of Go code in terminal
+        description: This tool lets you interactively browse Go coverage similarly to HTML version provided by official Go toolchain, but within terminal.
+        source: https://github.com/orlangure/gocovsh
+        author: Yury Fedorov (https://github.com/orlangure)
+        example_image_url: img/gocovsh.png
+        commands:
+          - go test -cover -coverprofile coverage.out
+          - gocovsh
+          - gocovsh --profile profile.out  # for other coverage profile names
+          - git diff --name-only | gocovsh # only show changed files
+        requirements:
+          - go install github.com/orlangure/gocovsh@latest
       - title: Get packages without tests
         description: If code coverage does not report packages without tests. This should be fast for CI.
         requirements:
@@ -48,6 +69,18 @@ groups:
       - title: Run tests in parallel
         description: Add `t.Parallel` to your tests case function bodies. As per documentation, by default `-p=GOMAXPROCS` and `-parallel=GOMAXPROCS` when you run `go test`. Different packages by default run in parallel, and tests within package can be enforced to run in parallel too. Make sure to copy test case data to new variable, why explained [here](https://gist.github.com/posener/92a55c4cd441fc5e5e85f27bca008721). [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
         example_content_url: source/run-tests-parallel.go
+      - title: Run tests with pretty output
+        description: This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary.
+        source: https://github.com/gotestyourself/gotestsum
+        author: Daniel Nephin (https://github.com/dnephin)
+        commands:
+          - gotestsum --format dots
+        example_image_url: https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif
+      - title: Detect goroutine leaks
+        description: Refactored, tested variant of the goroutine leak detector found in both `net/http`` tests and the cockroachdb source tree. You have to call this library in your tests.
+        author: Ian (https://github.com/fortytw2)
+        source: https://github.com/fortytw2/leaktest
+        example_content_url: source/leaktest.go
   - title: Dependencies
     entries:
       - title: Get Go version of current module
@@ -103,6 +136,7 @@ groups:
         commands:
           - "go list -deps -json ./... | jq -c 'select(.Standard!=true) | {from: .ImportPath, to: .Imports[]}' | jsonl-graph | dot -Tsvg > package-graph.svg"
         example_image_url: ./img/packages-graph.svg
+        author: github.com/nikolaydubina
         requirements:
           - https://stedolan.github.io/jq/download/
           - https://graphviz.org/download/
@@ -113,18 +147,19 @@ groups:
         commands:
           - go mod graph | import-graph -i=gomod | jsonl-graph -color-scheme=file://$PWD/basic.json | dot -Tsvg > output.svg
         example_image_url: ./img/gin-mod-graph-collected.svg
+        author: github.com/nikolaydubina
         requirements:
           - https://graphviz.org/download/
           - go install github.com/nikolaydubina/import-graph@latest
           - go install github.com/nikolaydubina/jsonl-graph@latest
       - title: Scrape licenses of upstream dependencies
         description: This is tool from Google. Might be useful to collect all the licenses or checking if you can use the project for example in proprietary or commercial environment.
+        author: official Go team
+        example_output_url: source/go-upstream-mods-licenses.md
         commands:
           - go-licenses csv github.com/gohugoio/hugo
-        example_output_url: source/go-upstream-mods-licenses.md
         requirements:
           - go install github.com/google/go-licenses@latest
-        author: official Go team
       - title: Explore upstream dependencies interactively
         description: This is a tool from one of creators of Go. This tool should help explore dependencies and assist large refactorings.
         source: https://github.com/adonovan/spaghetti
@@ -135,10 +170,22 @@ groups:
       - title: Use `go mod` directives
         description: Tell Go compiler which versions of upstreams to include in your build. Tell all users of your module how to deal with versions of your module.
         example_content_url: source/go-mod-directives.md
+      - title: Analyze dependencies with `goda`
+        description: This tool has extensive syntax for filtering dependencies graphs. It can work with packages and modules.
+        source: https://github.com/loov/goda
+        author: "[Egon Elbre](egonelbre@gmail.com)"
+        commands:
+          - goda graph . | dot -Tsvg -o graph.svg
+          - goda graph -cluster -short "github.com/nikolaydubina/go-cover-treemap:all" | dot -Tsvg -o graph.svg
+        requirements:
+          - https://graphviz.org/download/
+          - go install github.com/loov/goda@latest
+        example_image_url: https://github.com/loov/goda/raw/master/graph.svg
   - title: Code Visualization
     entries:
       - title: Make graph of function calls in package
         description: This can be helpful to quickly track which packages current package is calling and why.
+        author: "Ondrej Fabry (github.com/ofabry)"
         commands:
           - go-callvis .
         example_image_url: https://raw.githubusercontent.com/ofabry/go-callvis/master/images/syncthing.png
@@ -147,7 +194,7 @@ groups:
       - title: Make PlantUML diagram
         description: This can be useful to automatically generate visualization of classes and interfaces for go pacakges. Recommend recursive option. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com).
         source: "[github.com/bykof/go-plantuml](https://github.com/bykof/go-plantuml)"
-        author: "[@bykof](https://github.com/bykof) / Michael Bykovski"
+        author: "Michael Bykovski (https://github.com/bykof)"
         commands:
           - go-plantuml generate -d . -r -o graph.puml
         example_image_url: https://raw.githubusercontent.com/bykof/go-plantuml/master/docs/assets/graph.svg
@@ -158,10 +205,12 @@ groups:
       - title: Get assembly of Go code snippets online
         description: Use [godbolt.org](https://godbolt.org) to compile and see assembly of short Go code. You can check different platforms and compilers including `cgo`. This tool is commonly used by C++ community.
         example_image_url: ./img/godbolt.png
+        author: Matt Godbolt (https://github.com/mattgodbolt)
       - title: Get Go compiler SSA intermediary representation
         description: This tool allows to check what does Go compiler do. Might be useful if you trying to optimize some code or learn more about compiler. https://golang.design/gossa.
         source: https://github.com/golang-design/ssaplayground
         example_image_url: https://github.com/golang-design/ssaplayground/blob/main/public/assets/screen.png
+        author: Changkun Ou (https://github.com/changkun)
       - title: View Go assembly interactively
         description: This tool lets you interactively Go statement in assembly.
         author: Egon Elbre / https://github.com/egonelbre
@@ -169,10 +218,16 @@ groups:
         requirements:
           - go install loov.dev/lensm@main
         source: https://github.com/loov/lensm
+      - title: Generate Go assembly in Go
+        description: Write better quality Go assembly quicker in Go language itself. This tool conveniently generates stub for Go code to call your generated assembly. Used by Go core.
+        author: Michael McLoughlin / https://github.com/mmcloughlin
+        source: https://github.com/mmcloughlin/avo
+        example_content_url: source/avo.go
   - title: Execute
     entries:
       - title: Run Go function in shell
         description: This is short and convenient for Go one-liners. This tool will print to stdout the return of a function call.
+        author: Nate Finch (https://github.com/natefinch) 
         requirements:
           - go install github.com/natefinch/gorram@latest
         commands:
@@ -185,6 +240,7 @@ groups:
         example_content_url: source/go-simple-webserver.go
       - title: Monitor Go processes
         description: This tool from Google has lots of useful features like monitoring memory of Go processes, forcing GC, getting version of Go of process.
+        author: official Go team
         requirements:
           - go install github.com/google/gops@latest
         commands:
@@ -193,6 +249,7 @@ groups:
       - title: Create 3D visualization of concurrency traces
         description: This tool creates 3D visualization of coroutines execution. There is no advanced functions and it is hard to analyze production systems. However, it could be interesting for educational purposes. 
         source: https://github.com/divan/gotrace
+        author: Ivan Daniluk (https://github.com/divan) 
         example_image_url: https://github.com/divan/gotrace/blob/master/images/demo.png
         requirements:
           - go install github.com/divan/gotrace
@@ -221,6 +278,7 @@ groups:
     entries:
       - title: Make treemap breakdown of Go executable binary
         description: This can be useful for studying Go compiler, large projects, projects with C/C++ and `cgo`, 3rd party dependencies, embedding. However, total size may not be something to worry about for your executable.
+        author: github.com/nikolaydubina
         commands:
           - go tool nm -size <binary finename> | go-binsize-treemap > binsize.svg
         example_image_url: https://github.com/nikolaydubina/go-binsize-treemap/blob/main/docs/hugo.svg
