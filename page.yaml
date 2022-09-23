@@ -29,6 +29,18 @@ groups:
         requirements:
           - go install github.com/nikandfor/cover@latest
         example_image_url: img/cover.png
+      - title: Browse code coverage of Go code in terminal
+        description: This tool lets you interactively browse Go coverage similarly to HTML version provided by official Go toolchain, but within terminal.
+        source: https://github.com/orlangure/gocovsh
+        author: Yury Fedorov (https://github.com/orlangure)
+        example_image_url: img/gocovsh.png
+        commands:
+          - go test -cover -coverprofile coverage.out
+          - gocovsh
+          - gocovsh --profile profile.out  # for other coverage profile names
+          - git diff --name-only | gocovsh # only show changed files
+        requirements:
+          - go install github.com/orlangure/gocovsh@latest
       - title: Get packages without tests
         description: If code coverage does not report packages without tests. This should be fast for CI.
         requirements:

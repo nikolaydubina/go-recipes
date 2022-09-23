@@ -8,7 +8,8 @@
 
  - Tests
    + [➡ Make treemap of code coverage](#-make-treemap-of-code-coverage)
-   + [➡ Pretty print coverage in terminal](#-pretty-print-coverage-in-terminal)
+   + [➡ Pretty print coverage of Go code in terminal](#-pretty-print-coverage-of-go-code-in-terminal)
+   + [➡ Browse code coverage of Go code in terminal](#-browse-code-coverage-of-go-code-in-terminal)
    + [➡ Get packages without tests](#-get-packages-without-tests)
    + [➡ Browse code coverage by file](#-browse-code-coverage-by-file)
    + [➡ Make histogram of Go files per package](#-make-histogram-of-go-files-per-package)
@@ -73,7 +74,7 @@ Requirements
 go install github.com/nikolaydubina/go-cover-treemap@latest
 ```
 
-### ➡ Pretty print coverage in terminal
+### ➡ Pretty print coverage of Go code in terminal
 
 It is similar to `go tool cover -html=cover.out` but not leaving the terminal. You can filter by functions, packages, or minimum coverage percent expressions. — Nikifor Seriakov (https://github.com/nikandfor) / https://github.com/nikandfor/cover
 
@@ -88,6 +89,26 @@ cover
 Requirements
 ```
 go install github.com/nikandfor/cover@latest
+```
+
+### ➡ Browse code coverage of Go code in terminal
+
+This tool lets you interactively browse Go coverage similarly to HTML version provided by official Go toolchain, but within terminal. — Yury Fedorov (https://github.com/orlangure) / https://github.com/orlangure/gocovsh
+
+
+```
+go test -cover -coverprofile coverage.out
+gocovsh
+gocovsh --profile profile.out
+git diff --name-only | gocovsh
+```
+
+<div align="center"><img src="img/gocovsh.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/orlangure/gocovsh@latest
 ```
 
 ### ➡ Get packages without tests
