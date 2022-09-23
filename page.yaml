@@ -51,10 +51,15 @@ groups:
       - title: Run tests with pretty output
         description: This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary.
         source: https://github.com/gotestyourself/gotestsum
-        author: Daniel Nephin / https://github.com/dnephin
+        author: Daniel Nephin (https://github.com/dnephin)
         commands:
           - gotestsum --format dots
         example_image_url: https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif
+      - title: Detect goroutine leaks
+        description: Refactored, tested variant of the goroutine leak detector found in both `net/http`` tests and the cockroachdb source tree. You have to call this library in your tests.
+        author: Ian (https://github.com/fortytw2)
+        source: https://github.com/fortytw2/leaktest
+        example_content_url: source/leaktest.go
   - title: Dependencies
     entries:
       - title: Get Go version of current module

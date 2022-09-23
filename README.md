@@ -14,6 +14,7 @@
    + [➡ Run tests sequentially](#-run-tests-sequentially)
    + [➡ Run tests in parallel](#-run-tests-in-parallel)
    + [➡ Run tests with pretty output](#-run-tests-with-pretty-output)
+   + [➡ Detect goroutine leaks](#-detect-goroutine-leaks)
  - Dependencies
    + [➡ Get Go version of current module](#-get-go-version-of-current-module)
    + [➡ Get Go versions of upstream modules](#-get-go-versions-of-upstream-modules)
@@ -154,7 +155,7 @@ Add `t.Parallel` to your tests case function bodies. As per documentation, by de
 
 ### ➡ Run tests with pretty output
 
-This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary. — Daniel Nephin / https://github.com/dnephin / https://github.com/gotestyourself/gotestsum
+This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary. — Daniel Nephin (https://github.com/dnephin) / https://github.com/gotestyourself/gotestsum
 
 
 ```
@@ -163,6 +164,25 @@ gotestsum --format dots
 
 <div align="center"><img src="https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif" style="margin: 8px; max-height: 640px;"></div>
 
+
+
+### ➡ Detect goroutine leaks
+
+Refactored, tested variant of the goroutine leak detector found in both `net/http`` tests and the cockroachdb source tree. You have to call this library in your tests. — Ian (https://github.com/fortytw2) / https://github.com/fortytw2/leaktest
+
+```go
+func TestPoolContext(t *testing.T) {
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	defer cancel()
+	defer leaktest.CheckContext(ctx, t)()
+
+	go func() {
+		for {
+			time.Sleep(time.Second)
+		}
+	}()
+}
+```
 
 
 ## Dependencies
