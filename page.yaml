@@ -168,6 +168,17 @@ groups:
       - title: Use `go mod` directives
         description: Tell Go compiler which versions of upstreams to include in your build. Tell all users of your module how to deal with versions of your module.
         example_content_url: source/go-mod-directives.md
+      - title: Analyze dependencies with `goda`
+        description: This tool has extensive syntax for filtering dependencies graphs. It can work with packages and modules.
+        source: https://github.com/loov/goda
+        author: "[Egon Elbre](egonelbre@gmail.com)"
+        commands:
+          - goda graph . | dot -Tsvg -o graph.svg
+          - goda graph -cluster -short "github.com/nikolaydubina/go-cover-treemap:all" | dot -Tsvg -o graph.svg
+        requirements:
+          - https://graphviz.org/download/
+          - go install github.com/loov/goda@latest
+        example_image_url: https://github.com/loov/goda/raw/master/graph.svg
   - title: Code Visualization
     entries:
       - title: Make graph of function calls in package

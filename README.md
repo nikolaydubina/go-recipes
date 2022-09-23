@@ -30,6 +30,7 @@
    + [➡ Scrape licenses of upstream dependencies](#-scrape-licenses-of-upstream-dependencies)
    + [➡ Explore upstream dependencies interactively](#-explore-upstream-dependencies-interactively)
    + [➡ Use `go mod` directives](#-use-go-mod-directives)
+   + [➡ Analyze dependencies with `goda`](#-analyze-dependencies-with-goda)
  - Code Visualization
    + [➡ Make graph of function calls in package](#-make-graph-of-function-calls-in-package)
    + [➡ Make PlantUML diagram](#-make-plantuml-diagram)
@@ -441,6 +442,25 @@ replace example.com/bad/thing v1.4.5 => example.com/good/thing v1.4.5
 retract [v1.9.0, v1.9.5]
 ```
 
+
+### ➡ Analyze dependencies with `goda`
+
+This tool has extensive syntax for filtering dependencies graphs. It can work with packages and modules. — [Egon Elbre](egonelbre@gmail.com) / https://github.com/loov/goda
+
+
+```
+goda graph . | dot -Tsvg -o graph.svg
+goda graph -cluster -short "github.com/nikolaydubina/go-cover-treemap:all" | dot -Tsvg -o graph.svg
+```
+
+<div align="center"><img src="https://github.com/loov/goda/raw/master/graph.svg" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+https://graphviz.org/download/
+go install github.com/loov/goda@latest
+```
 
 ## Code Visualization
 
