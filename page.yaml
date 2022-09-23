@@ -48,6 +48,13 @@ groups:
       - title: Run tests in parallel
         description: Add `t.Parallel` to your tests case function bodies. As per documentation, by default `-p=GOMAXPROCS` and `-parallel=GOMAXPROCS` when you run `go test`. Different packages by default run in parallel, and tests within package can be enforced to run in parallel too. Make sure to copy test case data to new variable, why explained [here](https://gist.github.com/posener/92a55c4cd441fc5e5e85f27bca008721). [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
         example_content_url: source/run-tests-parallel.go
+      - title: Run tests with pretty output
+        description: This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary.
+        source: https://github.com/gotestyourself/gotestsum
+        author: Daniel Nephin / https://github.com/dnephin
+        commands:
+          - gotestsum --format dots
+        example_image_url: https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif
   - title: Dependencies
     entries:
       - title: Get Go version of current module

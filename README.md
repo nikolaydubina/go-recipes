@@ -13,6 +13,7 @@
    + [➡ Make histogram of Go files per package](#-make-histogram-of-go-files-per-package)
    + [➡ Run tests sequentially](#-run-tests-sequentially)
    + [➡ Run tests in parallel](#-run-tests-in-parallel)
+   + [➡ Run tests with pretty output](#-run-tests-with-pretty-output)
  - Dependencies
    + [➡ Get Go version of current module](#-get-go-version-of-current-module)
    + [➡ Get Go versions of upstream modules](#-get-go-versions-of-upstream-modules)
@@ -149,6 +150,19 @@ Add `t.Parallel` to your tests case function bodies. As per documentation, by de
             t.Parallel()
             ...
 ```
+
+
+### ➡ Run tests with pretty output
+
+This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary. — Daniel Nephin / https://github.com/dnephin / https://github.com/gotestyourself/gotestsum
+
+
+```
+gotestsum --format dots
+```
+
+<div align="center"><img src="https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif" style="margin: 8px; max-height: 640px;"></div>
+
 
 
 ## Dependencies
