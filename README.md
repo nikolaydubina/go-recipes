@@ -33,6 +33,7 @@
    + [➡ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
    + [➡ Get Go compiler SSA intermediary representation](#-get-go-compiler-ssa-intermediary-representation)
    + [➡ View Go assembly interactively](#-view-go-assembly-interactively)
+   + [➡ Generate Go assembly in Go](#-generate-go-assembly-in-go)
  - Execute
    + [➡ Run Go function in shell](#-run-go-function-in-shell)
    + [➡ Run simple fileserver](#-run-simple-fileserver)
@@ -433,6 +434,32 @@ Requirements
 ```
 go install loov.dev/lensm@main
 ```
+
+### ➡ Generate Go assembly in Go
+
+Write better quality Go assembly quicker in Go language itself. This tool conveniently generates stub for Go code to call your generated assembly. Used by Go core. — Michael McLoughlin / https://github.com/mmcloughlin / https://github.com/mmcloughlin/avo
+
+```go
+//go:build ignore
+// +build ignore
+
+package main
+
+import . "github.com/mmcloughlin/avo/build"
+
+func main() {
+	TEXT("Add", NOSPLIT, "func(x, y uint64) uint64")
+	Doc("Add adds x and y.")
+	x := Load(Param("x"), GP64())
+	y := Load(Param("y"), GP64())
+	ADDQ(x, y)
+	Store(y, ReturnIndex(0))
+	RET()
+	Generate()
+}
+
+```
+
 
 ## Execute
 

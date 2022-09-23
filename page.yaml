@@ -169,6 +169,11 @@ groups:
         requirements:
           - go install loov.dev/lensm@main
         source: https://github.com/loov/lensm
+      - title: Generate Go assembly in Go
+        description: Write better quality Go assembly quicker in Go language itself. This tool conveniently generates stub for Go code to call your generated assembly. Used by Go core.
+        author: Michael McLoughlin / https://github.com/mmcloughlin
+        source: https://github.com/mmcloughlin/avo
+        example_content_url: source/avo.go
   - title: Execute
     entries:
       - title: Run Go function in shell
