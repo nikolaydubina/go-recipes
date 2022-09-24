@@ -225,6 +225,10 @@ groups:
         example_image_url: https://raw.githubusercontent.com/bykof/go-plantuml/master/docs/assets/graph.svg
         requirements:
           - go install github.com/bykof/go-plantuml@latest
+      - title: Make 3D chart of Go codebase
+        description: GoCity is an implementation of the Code City metaphor for visualizing source code - folders are districts; files are buildings; structs are buildings on the top of their files. Also available at [go-city.github.io](https://go-city.github.io).
+        example_image_url: img/gocity.png
+        author: https://github.com/rodrigo-brito
   - title: Assembly
     entries:
       - title: Get assembly of Go code snippets online
