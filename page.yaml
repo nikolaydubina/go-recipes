@@ -16,14 +16,14 @@ groups:
         example_image_url: ./img/hugo-code-coverage.svg
         requirements:
           - go install github.com/nikolaydubina/go-cover-treemap@latest
-        author: github.com/nikolaydubina
+        author: https://github.com/nikolaydubina
         commands:
           - go test -coverprofile cover.out ./...
           - go-cover-treemap -coverprofile cover.out > out.svg
       - title: Pretty print coverage of Go code in terminal
         description: It is similar to `go tool cover -html=cover.out` but not leaving the terminal. You can filter by functions, packages, or minimum coverage percent expressions.
         source: https://github.com/nikandfor/cover
-        author: Nikifor Seriakov (https://github.com/nikandfor)
+        author: https://github.com/nikandfor
         commands:
           - cover
         requirements:
@@ -32,7 +32,7 @@ groups:
       - title: Browse code coverage of Go code in terminal
         description: This tool lets you interactively browse Go coverage similarly to HTML version provided by official Go toolchain, but within terminal.
         source: https://github.com/orlangure/gocovsh
-        author: Yury Fedorov (https://github.com/orlangure)
+        author: https://github.com/orlangure
         example_image_url: img/gocovsh.png
         commands:
           - go test -cover -coverprofile coverage.out
@@ -45,7 +45,7 @@ groups:
         description: If code coverage does not report packages without tests. This should be fast for CI.
         requirements:
           - https://stedolan.github.io/jq/download/
-        author: github.com/nikolaydubina
+        author: https://github.com/nikolaydubina
         commands:
           - go list -json ./... | jq -rc 'select((.TestGoFiles | length)==0) | .ImportPath'
         example_output_url: source/pkg-without-tests.md
@@ -72,13 +72,13 @@ groups:
       - title: Run tests with pretty output
         description: This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary.
         source: https://github.com/gotestyourself/gotestsum
-        author: Daniel Nephin (https://github.com/dnephin)
+        author: https://github.com/dnephin
         commands:
           - gotestsum --format dots
         example_image_url: https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif
       - title: Detect goroutine leaks
         description: Refactored, tested variant of the goroutine leak detector found in both `net/http`` tests and the cockroachdb source tree. You have to call this library in your tests.
-        author: Ian (https://github.com/fortytw2)
+        author: https://github.com/fortytw2
         source: https://github.com/fortytw2/leaktest
         example_content_url: source/leaktest.go
   - title: Dependencies
@@ -125,7 +125,7 @@ groups:
           - go install golang.org/x/exp/cmd/modgraphviz@latest
       - title: Make graph of upstream modules with gmchart
         description: Render in browser Go module graphs. Built with D3.js, Javascript, HTTP server in Go.
-        author: "[PaulXu-cn](https://github.com/PaulXu-cn)"
+        author: https://github.com/PaulXu-cn
         commands:
           - go mod graph | gmchart
         example_image_url: https://github.com/PaulXu-cn/go-mod-graph-chart/raw/main/show.gif
@@ -136,7 +136,7 @@ groups:
         commands:
           - "go list -deps -json ./... | jq -c 'select(.Standard!=true) | {from: .ImportPath, to: .Imports[]}' | jsonl-graph | dot -Tsvg > package-graph.svg"
         example_image_url: ./img/packages-graph.svg
-        author: github.com/nikolaydubina
+        author: https://github.com/nikolaydubina
         requirements:
           - https://stedolan.github.io/jq/download/
           - https://graphviz.org/download/
@@ -147,7 +147,7 @@ groups:
         commands:
           - go mod graph | import-graph -i=gomod | jsonl-graph -color-scheme=file://$PWD/basic.json | dot -Tsvg > output.svg
         example_image_url: ./img/gin-mod-graph-collected.svg
-        author: github.com/nikolaydubina
+        author: https://github.com/nikolaydubina
         requirements:
           - https://graphviz.org/download/
           - go install github.com/nikolaydubina/import-graph@latest
@@ -185,7 +185,7 @@ groups:
     entries:
       - title: Make graph of function calls in package
         description: This can be helpful to quickly track which packages current package is calling and why.
-        author: "Ondrej Fabry (github.com/ofabry)"
+        author: https://github.com/ofabry
         commands:
           - go-callvis .
         example_image_url: https://raw.githubusercontent.com/ofabry/go-callvis/master/images/syncthing.png
@@ -194,7 +194,7 @@ groups:
       - title: Make PlantUML diagram
         description: This can be useful to automatically generate visualization of classes and interfaces for go pacakges. Recommend recursive option. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com).
         source: "[github.com/bykof/go-plantuml](https://github.com/bykof/go-plantuml)"
-        author: "Michael Bykovski (https://github.com/bykof)"
+        author: https://github.com/bykof
         commands:
           - go-plantuml generate -d . -r -o graph.puml
         example_image_url: https://raw.githubusercontent.com/bykof/go-plantuml/master/docs/assets/graph.svg
@@ -205,29 +205,29 @@ groups:
       - title: Get assembly of Go code snippets online
         description: Use [godbolt.org](https://godbolt.org) to compile and see assembly of short Go code. You can check different platforms and compilers including `cgo`. This tool is commonly used by C++ community.
         example_image_url: ./img/godbolt.png
-        author: Matt Godbolt (https://github.com/mattgodbolt)
+        author: https://github.com/mattgodbolt
       - title: Get Go compiler SSA intermediary representation
         description: This tool allows to check what does Go compiler do. Might be useful if you trying to optimize some code or learn more about compiler. https://golang.design/gossa.
         source: https://github.com/golang-design/ssaplayground
         example_image_url: https://github.com/golang-design/ssaplayground/blob/main/public/assets/screen.png
-        author: Changkun Ou (https://github.com/changkun)
+        author: https://github.com/changkun
       - title: View Go assembly interactively
         description: This tool lets you interactively Go statement in assembly.
-        author: Egon Elbre / https://github.com/egonelbre
+        author: https://github.com/egonelbre
         example_image_url: https://github.com/loov/lensm/raw/main/screenshot.gif
         requirements:
           - go install loov.dev/lensm@main
         source: https://github.com/loov/lensm
       - title: Generate Go assembly in Go
         description: Write better quality Go assembly quicker in Go language itself. This tool conveniently generates stub for Go code to call your generated assembly. Used by Go core.
-        author: Michael McLoughlin / https://github.com/mmcloughlin
+        author: https://github.com/mmcloughlin
         source: https://github.com/mmcloughlin/avo
         example_content_url: source/avo.go
   - title: Execute
     entries:
       - title: Run Go function in shell
         description: This is short and convenient for Go one-liners. This tool will print to stdout the return of a function call.
-        author: Nate Finch (https://github.com/natefinch) 
+        author: https://github.com/natefinch 
         requirements:
           - go install github.com/natefinch/gorram@latest
         commands:
@@ -249,7 +249,7 @@ groups:
       - title: Create 3D visualization of concurrency traces
         description: This tool creates 3D visualization of coroutines execution. There is no advanced functions and it is hard to analyze production systems. However, it could be interesting for educational purposes. 
         source: https://github.com/divan/gotrace
-        author: Ivan Daniluk (https://github.com/divan) 
+        author: https://github.com/divan 
         example_image_url: https://github.com/divan/gotrace/blob/master/images/demo.png
         requirements:
           - go install github.com/divan/gotrace
@@ -278,7 +278,7 @@ groups:
     entries:
       - title: Make treemap breakdown of Go executable binary
         description: This can be useful for studying Go compiler, large projects, projects with C/C++ and `cgo`, 3rd party dependencies, embedding. However, total size may not be something to worry about for your executable.
-        author: github.com/nikolaydubina
+        author: https://github.com/nikolaydubina
         commands:
           - go tool nm -size <binary finename> | go-binsize-treemap > binsize.svg
         example_image_url: https://github.com/nikolaydubina/go-binsize-treemap/blob/main/docs/hugo.svg

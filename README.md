@@ -59,7 +59,7 @@
 
 ### ➡ Make treemap of code coverage
 
-Visualize distribution of code coverage in your project. This helps to identify code areas with high and low coverage. Useful when you have large project with lots of files and packages. This 2D image-hash of your project should be more representative than a single number. Also available at https://go-cover-treemap.io. — github.com/nikolaydubina
+Visualize distribution of code coverage in your project. This helps to identify code areas with high and low coverage. Useful when you have large project with lots of files and packages. This 2D image-hash of your project should be more representative than a single number. Also available at https://go-cover-treemap.io. — [@nikolaydubina](https://github.com/nikolaydubina)
 
 
 ```
@@ -77,7 +77,7 @@ go install github.com/nikolaydubina/go-cover-treemap@latest
 
 ### ➡ Pretty print coverage of Go code in terminal
 
-It is similar to `go tool cover -html=cover.out` but not leaving the terminal. You can filter by functions, packages, or minimum coverage percent expressions. — Nikifor Seriakov (https://github.com/nikandfor) / https://github.com/nikandfor/cover
+It is similar to `go tool cover -html=cover.out` but not leaving the terminal. You can filter by functions, packages, or minimum coverage percent expressions. — [@nikandfor](https://github.com/nikandfor) / https://github.com/nikandfor/cover
 
 
 ```
@@ -94,7 +94,7 @@ go install github.com/nikandfor/cover@latest
 
 ### ➡ Browse code coverage of Go code in terminal
 
-This tool lets you interactively browse Go coverage similarly to HTML version provided by official Go toolchain, but within terminal. — Yury Fedorov (https://github.com/orlangure) / https://github.com/orlangure/gocovsh
+This tool lets you interactively browse Go coverage similarly to HTML version provided by official Go toolchain, but within terminal. — [@orlangure](https://github.com/orlangure) / https://github.com/orlangure/gocovsh
 
 
 ```
@@ -114,7 +114,7 @@ go install github.com/orlangure/gocovsh@latest
 
 ### ➡ Get packages without tests
 
-If code coverage does not report packages without tests. This should be fast for CI. — github.com/nikolaydubina
+If code coverage does not report packages without tests. This should be fast for CI. — [@nikolaydubina](https://github.com/nikolaydubina)
 
 
 ```
@@ -195,7 +195,7 @@ Add `t.Parallel` to your tests case function bodies. As per documentation, by de
 
 ### ➡ Run tests with pretty output
 
-This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary. — Daniel Nephin (https://github.com/dnephin) / https://github.com/gotestyourself/gotestsum
+This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary. — [@dnephin](https://github.com/dnephin) / https://github.com/gotestyourself/gotestsum
 
 
 ```
@@ -208,7 +208,7 @@ gotestsum --format dots
 
 ### ➡ Detect goroutine leaks
 
-Refactored, tested variant of the goroutine leak detector found in both `net/http`` tests and the cockroachdb source tree. You have to call this library in your tests. — Ian (https://github.com/fortytw2) / https://github.com/fortytw2/leaktest
+Refactored, tested variant of the goroutine leak detector found in both `net/http`` tests and the cockroachdb source tree. You have to call this library in your tests. — [@fortytw2](https://github.com/fortytw2) / https://github.com/fortytw2/leaktest
 
 ```go
 func TestPoolContext(t *testing.T) {
@@ -330,7 +330,7 @@ go install golang.org/x/exp/cmd/modgraphviz@latest
 
 ### ➡ Make graph of upstream modules with gmchart
 
-Render in browser Go module graphs. Built with D3.js, Javascript, HTTP server in Go. — [PaulXu-cn](https://github.com/PaulXu-cn)
+Render in browser Go module graphs. Built with D3.js, Javascript, HTTP server in Go. — [@PaulXu-cn](https://github.com/PaulXu-cn)
 
 
 ```
@@ -347,7 +347,7 @@ go install github.com/PaulXu-cn/go-mod-graph-chart/gmchart@latest
 
 ### ➡ Make graph of upstream packages
 
-Use to find unexpected dependencies or visualize project. Works best for small number of packages, for large projects use `grep` to narrow down subgraph. Without `-deps` only for current module. — github.com/nikolaydubina
+Use to find unexpected dependencies or visualize project. Works best for small number of packages, for large projects use `grep` to narrow down subgraph. Without `-deps` only for current module. — [@nikolaydubina](https://github.com/nikolaydubina)
 
 
 ```
@@ -367,7 +367,7 @@ go install github.com/nikolaydubina/jsonl-graph@latest
 
 ### ➡ Scrape details about upstream modules and make graph
 
-Use to find low quality or unmaintained dependencies. — github.com/nikolaydubina
+Use to find low quality or unmaintained dependencies. — [@nikolaydubina](https://github.com/nikolaydubina)
 
 
 ```
@@ -466,7 +466,7 @@ go install github.com/loov/goda@latest
 
 ### ➡ Make graph of function calls in package
 
-This can be helpful to quickly track which packages current package is calling and why. — Ondrej Fabry (github.com/ofabry)
+This can be helpful to quickly track which packages current package is calling and why. — [@ofabry](https://github.com/ofabry)
 
 
 ```
@@ -483,7 +483,7 @@ go install github.com/ofabry/go-callvis
 
 ### ➡ Make PlantUML diagram
 
-This can be useful to automatically generate visualization of classes and interfaces for go pacakges. Recommend recursive option. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com). — Michael Bykovski (https://github.com/bykof) / [github.com/bykof/go-plantuml](https://github.com/bykof/go-plantuml)
+This can be useful to automatically generate visualization of classes and interfaces for go pacakges. Recommend recursive option. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com). — [@bykof](https://github.com/bykof) / [github.com/bykof/go-plantuml](https://github.com/bykof/go-plantuml)
 
 
 ```
@@ -502,7 +502,7 @@ go install github.com/bykof/go-plantuml@latest
 
 ### ➡ Get assembly of Go code snippets online
 
-Use [godbolt.org](https://godbolt.org) to compile and see assembly of short Go code. You can check different platforms and compilers including `cgo`. This tool is commonly used by C++ community. — Matt Godbolt (https://github.com/mattgodbolt)
+Use [godbolt.org](https://godbolt.org) to compile and see assembly of short Go code. You can check different platforms and compilers including `cgo`. This tool is commonly used by C++ community. — [@mattgodbolt](https://github.com/mattgodbolt)
 
 <div align="center"><img src="./img/godbolt.png" style="margin: 8px; max-height: 640px;"></div>
 
@@ -510,7 +510,7 @@ Use [godbolt.org](https://godbolt.org) to compile and see assembly of short Go c
 
 ### ➡ Get Go compiler SSA intermediary representation
 
-This tool allows to check what does Go compiler do. Might be useful if you trying to optimize some code or learn more about compiler. https://golang.design/gossa. — Changkun Ou (https://github.com/changkun) / https://github.com/golang-design/ssaplayground
+This tool allows to check what does Go compiler do. Might be useful if you trying to optimize some code or learn more about compiler. https://golang.design/gossa. — [@changkun](https://github.com/changkun) / https://github.com/golang-design/ssaplayground
 
 <div align="center"><img src="https://github.com/golang-design/ssaplayground/blob/main/public/assets/screen.png" style="margin: 8px; max-height: 640px;"></div>
 
@@ -518,7 +518,7 @@ This tool allows to check what does Go compiler do. Might be useful if you tryin
 
 ### ➡ View Go assembly interactively
 
-This tool lets you interactively Go statement in assembly. — Egon Elbre / https://github.com/egonelbre / https://github.com/loov/lensm
+This tool lets you interactively Go statement in assembly. — [@egonelbre](https://github.com/egonelbre) / https://github.com/loov/lensm
 
 <div align="center"><img src="https://github.com/loov/lensm/raw/main/screenshot.gif" style="margin: 8px; max-height: 640px;"></div>
 
@@ -530,7 +530,7 @@ go install loov.dev/lensm@main
 
 ### ➡ Generate Go assembly in Go
 
-Write better quality Go assembly quicker in Go language itself. This tool conveniently generates stub for Go code to call your generated assembly. Used by Go core. — Michael McLoughlin / https://github.com/mmcloughlin / https://github.com/mmcloughlin/avo
+Write better quality Go assembly quicker in Go language itself. This tool conveniently generates stub for Go code to call your generated assembly. Used by Go core. — [@mmcloughlin](https://github.com/mmcloughlin) / https://github.com/mmcloughlin/avo
 
 ```go
 //go:build ignore
@@ -558,7 +558,7 @@ func main() {
 
 ### ➡ Run Go function in shell
 
-This is short and convenient for Go one-liners. This tool will print to stdout the return of a function call. — Nate Finch (https://github.com/natefinch)
+This is short and convenient for Go one-liners. This tool will print to stdout the return of a function call. — [@natefinch](https://github.com/natefinch)
 
 
 ```
@@ -613,7 +613,7 @@ go install github.com/google/gops@latest
 
 ### ➡ Create 3D visualization of concurrency traces
 
-This tool creates 3D visualization of coroutines execution. There is no advanced functions and it is hard to analyze production systems. However, it could be interesting for educational purposes. — Ivan Daniluk (https://github.com/divan) / https://github.com/divan/gotrace
+This tool creates 3D visualization of coroutines execution. There is no advanced functions and it is hard to analyze production systems. However, it could be interesting for educational purposes. — [@divan](https://github.com/divan) / https://github.com/divan/gotrace
 
 <div align="center"><img src="https://github.com/divan/gotrace/blob/master/images/demo.png" style="margin: 8px; max-height: 640px;"></div>
 
@@ -667,7 +667,7 @@ Disable `cgo` with `CGO_ENABLED=0` and enable with `CGO_ENABLED=1`. If you don't
 
 ### ➡ Make treemap breakdown of Go executable binary
 
-This can be useful for studying Go compiler, large projects, projects with C/C++ and `cgo`, 3rd party dependencies, embedding. However, total size may not be something to worry about for your executable. — github.com/nikolaydubina
+This can be useful for studying Go compiler, large projects, projects with C/C++ and `cgo`, 3rd party dependencies, embedding. However, total size may not be something to worry about for your executable. — [@nikolaydubina](https://github.com/nikolaydubina)
 
 
 ```
