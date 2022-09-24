@@ -34,6 +34,7 @@
  - Code Visualization
    + [➡ Make graph of function calls in package](#-make-graph-of-function-calls-in-package)
    + [➡ Make PlantUML diagram](#-make-plantuml-diagram)
+   + [➡ Generate graphs for function calls](#-generate-graphs-for-function-calls)
  - Assembly
    + [➡ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
    + [➡ Get Go compiler SSA intermediary representation](#-get-go-compiler-ssa-intermediary-representation)
@@ -502,6 +503,43 @@ go-plantuml generate -d . -r -o graph.puml
 Requirements
 ```
 go install github.com/bykof/go-plantuml@latest
+```
+
+### ➡ Generate graphs for function calls
+
+This is an official tool for generating call-graphs. Requires `main.go` in module. Supports Graphviz output format. Has many options for filtering and formatting. — official Go team
+
+
+```
+callgraph -format graphviz . | dot -Tsvg -o graph.svg
+```
+
+```go
+package painkiller
+
+//go:generate stringer -type=Pill -linecomment
+
+type Pill int
+
+const (
+	Placebo Pill = iota
+	Ibuprofen
+	Paracetamol
+	PillAspirin   // Aspirin
+	Acetaminophen = Paracetamol
+)
+
+// "Acetaminophen"
+var s string = Acetaminophen.String()
+
+```
+
+<div align="center"><img src="img/callgraph.svg" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install golang.org/x/tools/cmd/callgraph@latest
 ```
 
 ## Assembly
