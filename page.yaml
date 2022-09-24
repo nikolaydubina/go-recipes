@@ -67,6 +67,11 @@ groups:
       - title: Run tests in parallel
         description: Add `t.Parallel` to your tests case function bodies. As per documentation, by default `-p=GOMAXPROCS` and `-parallel=GOMAXPROCS` when you run `go test`. Different packages by default run in parallel, and tests within package can be enforced to run in parallel too. Make sure to copy test case data to new variable, why explained [here](https://gist.github.com/posener/92a55c4cd441fc5e5e85f27bca008721). [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
         example_content_url: source/run-tests-parallel.go
+      - title: Detect goroutine leaks
+        description: Refactored, tested variant of the goroutine leak detector found in both `net/http`` tests and the cockroachdb source tree. You have to call this library in your tests.
+        author: https://github.com/fortytw2
+        source: https://github.com/fortytw2/leaktest
+        example_content_url: source/leaktest.go
       - title: Run tests with pretty output
         description: This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary.
         author: https://github.com/dnephin
@@ -75,11 +80,14 @@ groups:
         example_image_url: https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif
         requirements:
           - go install github.com/gotestyourself/gotestsum@latest 
-      - title: Detect goroutine leaks
-        description: Refactored, tested variant of the goroutine leak detector found in both `net/http`` tests and the cockroachdb source tree. You have to call this library in your tests.
-        author: https://github.com/fortytw2
-        source: https://github.com/fortytw2/leaktest
-        example_content_url: source/leaktest.go
+      - title: Enrich `go test` output
+        description: This tool adds colors and enriches `go test` output. It can be used in pipeline and has lots of options.
+        author: https://github.com/kyoh86
+        commands:
+          - richgo test ./...
+        example_image_url: https://asciinema.org/a/99810.png
+        requirements:
+          - go install github.com/kyoh86/richgo@latest  
   - title: Dependencies
     entries:
       - title: Get Go version of current module
