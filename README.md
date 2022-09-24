@@ -15,8 +15,9 @@
    + [➡ Make histogram of Go files per package](#-make-histogram-of-go-files-per-package)
    + [➡ Run tests sequentially](#-run-tests-sequentially)
    + [➡ Run tests in parallel](#-run-tests-in-parallel)
-   + [➡ Run tests with pretty output](#-run-tests-with-pretty-output)
    + [➡ Detect goroutine leaks](#-detect-goroutine-leaks)
+   + [➡ Run tests with pretty output](#-run-tests-with-pretty-output)
+   + [➡ Enrich `go test` output](#-enrich-go-test-output)
  - Dependencies
    + [➡ Get Go version of current module](#-get-go-version-of-current-module)
    + [➡ Get Go versions of upstream modules](#-get-go-versions-of-upstream-modules)
@@ -195,23 +196,6 @@ Add `t.Parallel` to your tests case function bodies. As per documentation, by de
 ```
 
 
-### ➡ Run tests with pretty output
-
-This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary. — [@dnephin](https://github.com/dnephin)
-
-
-```
-gotestsum --format dots
-```
-
-<div align="center"><img src="https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif" style="margin: 8px; max-height: 640px;"></div>
-
-
-Requirements
-```
-go install github.com/gotestyourself/gotestsum@latest
-```
-
 ### ➡ Detect goroutine leaks
 
 Refactored, tested variant of the goroutine leak detector found in both `net/http`` tests and the cockroachdb source tree. You have to call this library in your tests. — [@fortytw2](https://github.com/fortytw2) / https://github.com/fortytw2/leaktest
@@ -230,6 +214,40 @@ func TestPoolContext(t *testing.T) {
 }
 ```
 
+
+### ➡ Run tests with pretty output
+
+This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary. — [@dnephin](https://github.com/dnephin)
+
+
+```
+gotestsum --format dots
+```
+
+<div align="center"><img src="https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/gotestyourself/gotestsum@latest
+```
+
+### ➡ Enrich `go test` output
+
+This tool adds colors and enriches `go test` output. It can be used in pipeline and has lots of options. — [@kyoh86](https://github.com/kyoh86)
+
+
+```
+richgo test ./...
+```
+
+<div align="center"><img src="https://asciinema.org/a/99810.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/kyoh86/richgo@latest
+```
 
 ## Dependencies
 
