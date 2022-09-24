@@ -262,7 +262,6 @@ groups:
         author: official Go team
         source: golang.org/x/tools/cmd/stringer
         example_content_url: source/stringer/stringer.go
-        example_output_url: source/stringer/pill_string.go
         requirements:
           - go install golang.org/x/tools/cmd/stringer@v0.1.12
   - title: Refactoring
