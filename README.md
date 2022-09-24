@@ -36,6 +36,7 @@
    + [➡ Make graph of function calls](#-make-graph-of-function-calls)
    + [➡ Make graph of function calls in package](#-make-graph-of-function-calls-in-package)
    + [➡ Make PlantUML diagram](#-make-plantuml-diagram)
+   + [➡ Make PlantUML diagram](#-make-plantuml-diagram)
  - Assembly
    + [➡ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
    + [➡ Get Go compiler SSA intermediary representation](#-get-go-compiler-ssa-intermediary-representation)
@@ -525,6 +526,24 @@ go-callvis .
 Requirements
 ```
 go install github.com/ofabry/go-callvis
+```
+
+### ➡ Make PlantUML diagram
+
+This tool generates class diagram in PlantYML format with the information on structs, interfaces and their relationships. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com). — [@jfeliu007](https://github.com/jfeliu007)
+
+
+```
+goplantuml -recursive path/to/gofiles path/to/gofiles2
+```
+
+<div align="center"><img src="https://raw.githubusercontent.com/jfeliu007/goplantuml/master/example/example.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go get github.com/jfeliu007/goplantuml/parser
+go install github.com/jfeliu007/goplantuml/cmd/goplantuml@latest
 ```
 
 ### ➡ Make PlantUML diagram

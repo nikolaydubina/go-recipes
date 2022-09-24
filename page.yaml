@@ -209,6 +209,15 @@ groups:
         requirements:
           - go install github.com/ofabry/go-callvis
       - title: Make PlantUML diagram
+        description: This tool generates class diagram in PlantYML format with the information on structs, interfaces and their relationships. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com).
+        author: https://github.com/jfeliu007
+        commands:
+          - goplantuml -recursive path/to/gofiles path/to/gofiles2
+        requirements:
+          - go get github.com/jfeliu007/goplantuml/parser
+          - go install github.com/jfeliu007/goplantuml/cmd/goplantuml@latest
+        example_image_url: https://raw.githubusercontent.com/jfeliu007/goplantuml/master/example/example.png
+      - title: Make PlantUML diagram
         description: This can be useful to automatically generate visualization of classes and interfaces for go pacakges. Recommend recursive option. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com).
         author: https://github.com/bykof
         commands:
