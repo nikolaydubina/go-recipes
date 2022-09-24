@@ -44,6 +44,8 @@
    + [➡ Run simple fileserver](#-run-simple-fileserver)
    + [➡ Monitor Go processes](#-monitor-go-processes)
    + [➡ Create 3D visualization of concurrency traces](#-create-3d-visualization-of-concurrency-traces)
+ - Generate Code
+   + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
  - Refactoring
    + [➡ Replace symbol](#-replace-symbol)
  - Errors
@@ -77,7 +79,7 @@ go install github.com/nikolaydubina/go-cover-treemap@latest
 
 ### ➡ Pretty print coverage of Go code in terminal
 
-It is similar to `go tool cover -html=cover.out` but not leaving the terminal. You can filter by functions, packages, or minimum coverage percent expressions. — [@nikandfor](https://github.com/nikandfor) / https://github.com/nikandfor/cover
+It is similar to `go tool cover -html=cover.out` but not leaving the terminal. You can filter by functions, packages, or minimum coverage percent expressions. — [@nikandfor](https://github.com/nikandfor)
 
 
 ```
@@ -94,7 +96,7 @@ go install github.com/nikandfor/cover@latest
 
 ### ➡ Browse code coverage of Go code in terminal
 
-This tool lets you interactively browse Go coverage similarly to HTML version provided by official Go toolchain, but within terminal. — [@orlangure](https://github.com/orlangure) / https://github.com/orlangure/gocovsh
+This tool lets you interactively browse Go coverage similarly to HTML version provided by official Go toolchain, but within terminal. — [@orlangure](https://github.com/orlangure)
 
 
 ```
@@ -195,7 +197,7 @@ Add `t.Parallel` to your tests case function bodies. As per documentation, by de
 
 ### ➡ Run tests with pretty output
 
-This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary. — [@dnephin](https://github.com/dnephin) / https://github.com/gotestyourself/gotestsum
+This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary. — [@dnephin](https://github.com/dnephin)
 
 
 ```
@@ -205,6 +207,10 @@ gotestsum --format dots
 <div align="center"><img src="https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif" style="margin: 8px; max-height: 640px;"></div>
 
 
+Requirements
+```
+go install github.com/gotestyourself/gotestsum@latest
+```
 
 ### ➡ Detect goroutine leaks
 
@@ -415,7 +421,7 @@ go install github.com/google/go-licenses@latest
 
 ### ➡ Explore upstream dependencies interactively
 
-This is a tool from one of creators of Go. This tool should help explore dependencies and assist large refactorings. — [Alan Donovan](https://github.com/adonovan), official Go team / https://github.com/adonovan/spaghetti
+This is a tool from one of creators of Go. This tool should help explore dependencies and assist large refactorings. — [Alan Donovan](https://github.com/adonovan), official Go team
 
 <div align="center"><img src="https://github.com/adonovan/spaghetti/blob/main/screenshot.png" style="margin: 8px; max-height: 640px;"></div>
 
@@ -445,7 +451,7 @@ retract [v1.9.0, v1.9.5]
 
 ### ➡ Analyze dependencies with `goda`
 
-This tool has extensive syntax for filtering dependencies graphs. It can work with packages and modules. — [Egon Elbre](egonelbre@gmail.com) / https://github.com/loov/goda
+This tool has extensive syntax for filtering dependencies graphs. It can work with packages and modules. — [Egon Elbre](egonelbre@gmail.com)
 
 
 ```
@@ -483,7 +489,7 @@ go install github.com/ofabry/go-callvis
 
 ### ➡ Make PlantUML diagram
 
-This can be useful to automatically generate visualization of classes and interfaces for go pacakges. Recommend recursive option. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com). — [@bykof](https://github.com/bykof) / [github.com/bykof/go-plantuml](https://github.com/bykof/go-plantuml)
+This can be useful to automatically generate visualization of classes and interfaces for go pacakges. Recommend recursive option. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com). — [@bykof](https://github.com/bykof) / github.com/bykof/go-plantuml
 
 
 ```
@@ -613,16 +619,47 @@ go install github.com/google/gops@latest
 
 ### ➡ Create 3D visualization of concurrency traces
 
-This tool creates 3D visualization of coroutines execution. There is no advanced functions and it is hard to analyze production systems. However, it could be interesting for educational purposes. — [@divan](https://github.com/divan) / https://github.com/divan/gotrace
+This tool creates 3D visualization of coroutines execution. There is no advanced functions and it is hard to analyze production systems. However, it could be interesting for educational purposes. — [@divan](https://github.com/divan)
 
 <div align="center"><img src="https://github.com/divan/gotrace/blob/master/images/demo.png" style="margin: 8px; max-height: 640px;"></div>
 
 
 Requirements
 ```
-go install github.com/divan/gotrace
+go install github.com/divan/gotrace@latest
 patch Go compiler, available via Docker
 more instructions in original repo
+```
+
+## Generate Code
+
+### ➡ Generate `String` method for enum types
+
+This is an official tool for generating `String` for enums. It supports overrides via comments. — official Go team
+
+```go
+package painkiller
+
+//go:generate stringer -type=Pill -linecomment
+
+type Pill int
+
+const (
+	Placebo Pill = iota
+	Ibuprofen
+	Paracetamol
+	PillAspirin   // Aspirin
+	Acetaminophen = Paracetamol
+)
+
+// "Acetaminophen"
+var s string = Acetaminophen.String()
+
+```
+
+Requirements
+```
+go install golang.org/x/tools/cmd/stringer@latest
 ```
 
 ## Refactoring
