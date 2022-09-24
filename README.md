@@ -32,9 +32,9 @@
    + [➡ Use `go mod` directives](#-use-go-mod-directives)
    + [➡ Analyze dependencies with `goda`](#-analyze-dependencies-with-goda)
  - Code Visualization
+   + [➡ Make graph of function calls](#-make-graph-of-function-calls)
    + [➡ Make graph of function calls in package](#-make-graph-of-function-calls-in-package)
    + [➡ Make PlantUML diagram](#-make-plantuml-diagram)
-   + [➡ Generate graphs for function calls](#-generate-graphs-for-function-calls)
  - Assembly
    + [➡ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
    + [➡ Get Go compiler SSA intermediary representation](#-get-go-compiler-ssa-intermediary-representation)
@@ -471,6 +471,27 @@ go install github.com/loov/goda@latest
 
 ## Code Visualization
 
+### ➡ Make graph of function calls
+
+This is an official tool for generating call-graphs. Requires `main.go` in module. Supports Graphviz output format. Has many options for filtering and formatting. — official Go team
+
+
+```
+callgraph -format graphviz . | dot -Tsvg -o graph.svg
+recommend: grep <package/class/func of interest>
+recommend: grep -v Error since many packages report error
+recommend: adding `rankdir=LR;` to graphviz file for denser graph
+recommend: you would have to manually fix graphviz file first and last line
+```
+
+<div align="center"><img src="img/callgraph.svg" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install golang.org/x/tools/cmd/callgraph@latest
+```
+
 ### ➡ Make graph of function calls in package
 
 This can be helpful to quickly track which packages current package is calling and why. — [@ofabry](https://github.com/ofabry)
@@ -503,23 +524,6 @@ go-plantuml generate -d . -r -o graph.puml
 Requirements
 ```
 go install github.com/bykof/go-plantuml@latest
-```
-
-### ➡ Generate graphs for function calls
-
-This is an official tool for generating call-graphs. Requires `main.go` in module. Supports Graphviz output format. Has many options for filtering and formatting. — official Go team
-
-
-```
-callgraph -format graphviz . | dot -Tsvg -o graph.svg
-```
-
-<div align="center"><img src="img/callgraph.svg" style="margin: 8px; max-height: 640px;"></div>
-
-
-Requirements
-```
-go install golang.org/x/tools/cmd/callgraph@latest
 ```
 
 ## Assembly

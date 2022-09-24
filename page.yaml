@@ -180,6 +180,18 @@ groups:
         example_image_url: https://github.com/loov/goda/raw/master/graph.svg
   - title: Code Visualization
     entries:
+      - title: Make graph of function calls
+        description: This is an official tool for generating call-graphs. Requires `main.go` in module. Supports Graphviz output format. Has many options for filtering and formatting.
+        author: official Go team
+        example_image_url: img/callgraph.svg
+        commands:
+          - callgraph -format graphviz . | dot -Tsvg -o graph.svg 
+          - "recommend: grep <package/class/func of interest>"
+          - "recommend: grep -v Error since many packages report error"
+          - "recommend: adding `rankdir=LR;` to graphviz file for denser graph"
+          - "recommend: you would have to manually fix graphviz file first and last line"
+        requirements:
+          - go install golang.org/x/tools/cmd/callgraph@latest
       - title: Make graph of function calls in package
         description: This can be helpful to quickly track which packages current package is calling and why.
         author: https://github.com/ofabry
@@ -196,18 +208,6 @@ groups:
         example_image_url: https://raw.githubusercontent.com/bykof/go-plantuml/master/docs/assets/graph.svg
         requirements:
           - go install github.com/bykof/go-plantuml@latest
-      - title: Generate graphs for function calls
-        description: This is an official tool for generating call-graphs. Requires `main.go` in module. Supports Graphviz output format. Has many options for filtering and formatting.
-        author: official Go team
-        example_image_url: img/callgraph.svg
-        commands:
-          - callgraph -format graphviz . | dot -Tsvg -o graph.svg 
-          - # recommend: grep <package/class/func of interest>
-          - # recommend: grep -v Error since many packages report error
-          - # recommend: adding `rankdir=LR;` to graphviz file for denser graph
-          - # recommend: you would have to manually fix graphviz file first and last line
-        requirements:
-          - go install golang.org/x/tools/cmd/callgraph@latest
   - title: Assembly
     entries:
       - title: Get assembly of Go code snippets online
