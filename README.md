@@ -489,7 +489,7 @@ go install github.com/ofabry/go-callvis
 
 ### ➡ Make PlantUML diagram
 
-This can be useful to automatically generate visualization of classes and interfaces for go pacakges. Recommend recursive option. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com). — [@bykof](https://github.com/bykof) / github.com/bykof/go-plantuml
+This can be useful to automatically generate visualization of classes and interfaces for go pacakges. Recommend recursive option. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com). — [@bykof](https://github.com/bykof)
 
 
 ```
