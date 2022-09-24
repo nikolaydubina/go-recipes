@@ -22,7 +22,6 @@ groups:
           - go-cover-treemap -coverprofile cover.out > out.svg
       - title: Pretty print coverage of Go code in terminal
         description: It is similar to `go tool cover -html=cover.out` but not leaving the terminal. You can filter by functions, packages, or minimum coverage percent expressions.
-        source: https://github.com/nikandfor/cover
         author: https://github.com/nikandfor
         commands:
           - cover
@@ -31,7 +30,6 @@ groups:
         example_image_url: img/cover.png
       - title: Browse code coverage of Go code in terminal
         description: This tool lets you interactively browse Go coverage similarly to HTML version provided by official Go toolchain, but within terminal.
-        source: https://github.com/orlangure/gocovsh
         author: https://github.com/orlangure
         example_image_url: img/gocovsh.png
         commands:
@@ -71,11 +69,12 @@ groups:
         example_content_url: source/run-tests-parallel.go
       - title: Run tests with pretty output
         description: This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary.
-        source: https://github.com/gotestyourself/gotestsum
         author: https://github.com/dnephin
         commands:
           - gotestsum --format dots
         example_image_url: https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif
+        requirements:
+          - go install github.com/gotestyourself/gotestsum@latest 
       - title: Detect goroutine leaks
         description: Refactored, tested variant of the goroutine leak detector found in both `net/http`` tests and the cockroachdb source tree. You have to call this library in your tests.
         author: https://github.com/fortytw2
@@ -162,7 +161,6 @@ groups:
           - go install github.com/google/go-licenses@latest
       - title: Explore upstream dependencies interactively
         description: This is a tool from one of creators of Go. This tool should help explore dependencies and assist large refactorings.
-        source: https://github.com/adonovan/spaghetti
         author: "[Alan Donovan](https://github.com/adonovan), official Go team"
         example_image_url: https://github.com/adonovan/spaghetti/blob/main/screenshot.png
         requirements:
@@ -172,7 +170,6 @@ groups:
         example_content_url: source/go-mod-directives.md
       - title: Analyze dependencies with `goda`
         description: This tool has extensive syntax for filtering dependencies graphs. It can work with packages and modules.
-        source: https://github.com/loov/goda
         author: "[Egon Elbre](egonelbre@gmail.com)"
         commands:
           - goda graph . | dot -Tsvg -o graph.svg
@@ -193,7 +190,7 @@ groups:
           - go install github.com/ofabry/go-callvis
       - title: Make PlantUML diagram
         description: This can be useful to automatically generate visualization of classes and interfaces for go pacakges. Recommend recursive option. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com).
-        source: "[github.com/bykof/go-plantuml](https://github.com/bykof/go-plantuml)"
+        source: github.com/bykof/go-plantuml
         author: https://github.com/bykof
         commands:
           - go-plantuml generate -d . -r -o graph.puml
@@ -248,19 +245,17 @@ groups:
         example_output_url: source/gops.md
       - title: Create 3D visualization of concurrency traces
         description: This tool creates 3D visualization of coroutines execution. There is no advanced functions and it is hard to analyze production systems. However, it could be interesting for educational purposes. 
-        source: https://github.com/divan/gotrace
         author: https://github.com/divan 
         example_image_url: https://github.com/divan/gotrace/blob/master/images/demo.png
         requirements:
-          - go install github.com/divan/gotrace
+          - go install github.com/divan/gotrace@latest
           - patch Go compiler, available via Docker
           - more instructions in original repo
   - title: Generate Code
     entries:
-      - title: Generate `String` method for "enum" types
+      - title: Generate `String` method for enum types
         description: This is an official tool for generating `String` for enums. It supports overrides via comments.
         author: official Go team
-        source: golang.org/x/tools/cmd/stringer
         example_content_url: source/stringer/stringer.go
         requirements:
           - go install golang.org/x/tools/cmd/stringer@latest
