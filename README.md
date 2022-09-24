@@ -514,26 +514,6 @@ This is an official tool for generating call-graphs. Requires `main.go` in modul
 callgraph -format graphviz . | dot -Tsvg -o graph.svg
 ```
 
-```go
-package painkiller
-
-//go:generate stringer -type=Pill -linecomment
-
-type Pill int
-
-const (
-	Placebo Pill = iota
-	Ibuprofen
-	Paracetamol
-	PillAspirin   // Aspirin
-	Acetaminophen = Paracetamol
-)
-
-// "Acetaminophen"
-var s string = Acetaminophen.String()
-
-```
-
 <div align="center"><img src="img/callgraph.svg" style="margin: 8px; max-height: 640px;"></div>
 
 
