@@ -37,6 +37,7 @@
    + [➡ Make graph of function calls in package](#-make-graph-of-function-calls-in-package)
    + [➡ Make PlantUML diagram](#-make-plantuml-diagram)
    + [➡ Make PlantUML diagram](#-make-plantuml-diagram)
+   + [➡ Make 3D chart of Go codebase](#-make-3d-chart-of-go-codebase)
  - Assembly
    + [➡ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
    + [➡ Get Go compiler SSA intermediary representation](#-get-go-compiler-ssa-intermediary-representation)
@@ -562,6 +563,14 @@ Requirements
 ```
 go install github.com/bykof/go-plantuml@latest
 ```
+
+### ➡ Make 3D chart of Go codebase
+
+GoCity is an implementation of the Code City metaphor for visualizing source code - folders are districts; files are buildings; structs are buildings on the top of their files. Also available at [go-city.github.io](https://go-city.github.io). — [@rodrigo-brito](https://github.com/rodrigo-brito)
+
+<div align="center"><img src="img/gocity.png" style="margin: 8px; max-height: 640px;"></div>
+
+
 
 ## Assembly
 
