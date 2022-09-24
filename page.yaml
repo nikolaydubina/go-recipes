@@ -255,6 +255,16 @@ groups:
           - go install github.com/divan/gotrace
           - patch Go compiler, available via Docker
           - more instructions in original repo
+  - title: Generate Code
+    entries:
+      - title: Generate `String` method for "enum" types
+        description: This is an official tool for generating `String` for enums. It supports overrides via comments.
+        author: official Go team
+        source: golang.org/x/tools/cmd/stringer
+        example_content_url: source/stringer/stringer.go
+        example_output_url: source/stringer/pill_string.go
+        requirements:
+          - go install golang.org/x/tools/cmd/stringer@v0.1.12
   - title: Refactoring
     entries:
       - title: Replace symbol
