@@ -899,10 +899,6 @@ go build -v -ldflags="-X 'my/pkg/here.Variable=some-string'"
 ```go
 package main
 
-import (
-	"fmt"
-)
-
 var Version string
 
 func main() {
