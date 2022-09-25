@@ -633,6 +633,23 @@ func main() {
 
 You can access Go core AST mechanism to generate AST.
 
+```go
+package main
+
+import (
+	"go/ast"
+	"go/parser"
+	"go/token"
+)
+
+func main() {
+	fs := token.NewFileSet()
+	tr, _ := parser.ParseExpr("(3-1) * 5")
+	ast.Print(fs, tr)
+}
+
+```
+
 Example
 ```
      0  *ast.BinaryExpr {
