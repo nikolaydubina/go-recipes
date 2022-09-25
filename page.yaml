@@ -252,6 +252,10 @@ groups:
         author: https://github.com/mmcloughlin
         source: https://github.com/mmcloughlin/avo
         example_content_url: source/avo.go
+      - title: Generate AST for code snippets
+        description: You can access Go core AST mechanism to generate AST.
+        content_url: source/ast/ex1.go
+        example_output_url: source/ast/ex1.out
   - title: Execute
     entries:
       - title: Run Go function in shell
