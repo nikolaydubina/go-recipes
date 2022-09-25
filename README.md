@@ -56,6 +56,9 @@
  - Errors
    + [➡ Pretty print `panic` messages](#-pretty-print-panic-messages)
  - Build
+   + [➡ Show compiler optimization decisions on heap and inlining](#-show-compiler-optimization-decisions-on-heap-and-inlining)
+   + [➡ Disable inlining](#-disable-inlining)
+   + [➡ Aggressive inlining](#-aggressive-inlining)
    + [➡ Manually disable or enable `cgo`](#-manually-disable-or-enable-cgo)
  - Binary
    + [➡ Make treemap breakdown of Go executable binary](#-make-treemap-breakdown-of-go-executable-binary)
@@ -821,6 +824,50 @@ go install github.com/maruel/panicparse/v2/cmd/pp@latest
 ```
 
 ## Build
+
+### ➡ Show compiler optimization decisions on heap and inlining
+
+Building with `-m` flag will show decisions of compiler on inlining and heap escape. This can help you to validate your understanding of your code and optimize it.
+
+
+```
+go build -gcflags="-m -m" . 2>&1 | grep inline
+```
+
+Example
+```
+...
+./passengerfp.go:25:6: cannot inline (*PassengerFeatureTransformer).Fit: function too complex: cost 496 exceeds budget 80
+...
+./passengerfp.go:192:6: can inline (*PassengerFeatureTransformer).NumFeatures with cost 35 as: method(*PassengerFeatureTransformer) func() int { if e == nil { return 0 }; count := 6; count += (*transformers.OneHotEncoder).NumFeatures(e.Sex); count += (*transformers.OneHotEncoder).NumFeatures(e.Embarked); return count }
+...
+./passengerfp.go:238:43: inlining call to transformers.(*OneHotEncoder).FeatureNames
+./passengerfp.go:238:43: inlining call to transformers.(*OneHotEncoder).NumFeatures
+...
+./passengerfp.go:151:7: parameter e leaks to {heap} with derefs=0:
+./passengerfp.go:43:11: make(map[string]uint) escapes to heap
+```
+
+
+### ➡ Disable inlining
+
+Usually you may not need it, but can reduce binary size and even improve performance.
+
+
+```
+go build -gcflags="-l" .
+```
+
+
+### ➡ Aggressive inlining
+
+This can improve performance. This includes mid-stack inlining.
+
+
+```
+go build -gcflags="-l -l -l -l" .
+```
+
 
 ### ➡ Manually disable or enable `cgo`
 
