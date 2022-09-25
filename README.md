@@ -892,8 +892,8 @@ You can pass metadata through compiler to your binary. This is useulf for includ
 
 
 ```
-go build -v -ldflags="-X 'main.Version=v1.0.0'
-go build -v -ldflags="-X 'my/pkg/here.Variable=some-string'
+go build -v -ldflags="-X 'main.Version=v1.0.0'"
+go build -v -ldflags="-X 'my/pkg/here.Variable=some-string'"
 ```
 
 ```go
