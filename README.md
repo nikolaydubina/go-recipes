@@ -51,6 +51,7 @@
    + [➡ Create 3D visualization of concurrency traces](#-create-3d-visualization-of-concurrency-traces)
  - Generate Code
    + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
+   + [➡ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
  - Refactoring
    + [➡ Replace symbol](#-replace-symbol)
  - Errors
@@ -60,6 +61,7 @@
    + [➡ Disable inlining](#-disable-inlining)
    + [➡ Aggressive inlining](#-aggressive-inlining)
    + [➡ Manually disable or enable `cgo`](#-manually-disable-or-enable-cgo)
+   + [➡ Include metadata in binary during compilation with `ldflags`](#-include-metadata-in-binary-during-compilation-with-ldflags)
  - Binary
    + [➡ Make treemap breakdown of Go executable binary](#-make-treemap-breakdown-of-go-executable-binary)
  - Documentation
@@ -792,6 +794,16 @@ Requirements
 go install golang.org/x/tools/cmd/stringer@latest
 ```
 
+### ➡ Run `go:generate` in parallel
+
+Official Go team [encourages](https://github.com/golang/go/issues/20520) to run sequentially. However, in certain cituations, such as lots of mocks, parallelization helps a lot, ableit, you should consider including your generated files in git. This solution spawns multiple processes in shell.
+
+
+```
+TODO
+```
+
+
 ## Refactoring
 
 ### ➡ Replace symbol
@@ -872,6 +884,33 @@ go build -gcflags="-l -l -l -l" .
 ### ➡ Manually disable or enable `cgo`
 
 Disable `cgo` with `CGO_ENABLED=0` and enable with `CGO_ENABLED=1`. If you don't, `cgo` may end-up being enabled or code dynamically linked if, for example, you use some `net` or `os` packages. You may want to disable `cgo` to improve performance, since complier and runtime would have easier job optimizing code. This also should reduce your image size, as you can have alpine image with less shared libraries.
+
+
+### ➡ Include metadata in binary during compilation with `ldflags`
+
+You can pass metadata through compiler to your binary. This is useulf for including things like git commit, database schema version, integrity hashes. Variables can only be strings.
+
+
+```
+go build -v -ldflags="-X 'main.Version=v1.0.0'
+go build -v -ldflags="-X 'my/pkg/here.Variable=some-string'
+```
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+var Version string
+
+func main() {
+	// Version here has some value
+	...
+}
+
+```
 
 
 ## Binary
