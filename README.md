@@ -796,11 +796,11 @@ go install golang.org/x/tools/cmd/stringer@latest
 
 ### ➡ Run `go:generate` in parallel
 
-Official Go team [encourages](https://github.com/golang/go/issues/20520) to run sequentially. However, in certain cituations, such as lots of mocks, parallelization helps a lot, ableit, you should consider including your generated files in git. This solution spawns multiple processes in shell.
+Official Go team [encourages](https://github.com/golang/go/issues/20520) to run sequentially. However, in certain cituations, such as lots of mocks, parallelization helps a lot, ableit, you should consider including your generated files in git. The solution bellow spawns multiple processes, each per pkg.
 
 
 ```
-TODO
+grep -rnw "go:generate" -E -l "${1:-*.go}" . | xargs -L1 dirname | sort -u | xargs -P 8 -I{} go generate {}
 ```
 
 
