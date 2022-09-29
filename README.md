@@ -207,7 +207,7 @@ Add `t.Parallel` to your tests case function bodies. As per documentation, by de
 
 ### ➡ Detect goroutine leaks
 
-Refactored, tested variant of the goroutine leak detector found in both `net/http`` tests and the cockroachdb source tree. You have to call this library in your tests. — [@fortytw2](https://github.com/fortytw2) / https://github.com/fortytw2/leaktest
+Refactored, tested variant of the goroutine leak detector found in both `net/http` tests and the cockroachdb source tree. You have to call this library in your tests. — [@fortytw2](https://github.com/fortytw2) / https://github.com/fortytw2/leaktest
 
 ```go
 func TestPoolContext(t *testing.T) {
