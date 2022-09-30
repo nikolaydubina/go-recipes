@@ -38,6 +38,20 @@
    + [➡ Make PlantUML diagram](#-make-plantuml-diagram)
    + [➡ Make PlantUML diagram](#-make-plantuml-diagram)
    + [➡ Make 3D chart of Go codebase](#-make-3d-chart-of-go-codebase)
+ - Generate Code
+   + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
+   + [➡ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
+ - Refactor
+   + [➡ Replace symbol](#-replace-symbol)
+ - Errors
+   + [➡ Pretty print `panic` messages](#-pretty-print-panic-messages)
+ - Build
+   + [➡ Show compiler optimization decisions on heap and inlining](#-show-compiler-optimization-decisions-on-heap-and-inlining)
+   + [➡ Disable inlining](#-disable-inlining)
+   + [➡ Aggressive inlining](#-aggressive-inlining)
+   + [➡ Manually disable or enable `cgo`](#-manually-disable-or-enable-cgo)
+   + [➡ Include metadata in binary during compilation with `ldflags`](#-include-metadata-in-binary-during-compilation-with-ldflags)
+   + [➡ Make treemap breakdown of Go executable binary](#-make-treemap-breakdown-of-go-executable-binary)
  - Assembly
    + [➡ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
    + [➡ Get Go compiler SSA intermediary representation](#-get-go-compiler-ssa-intermediary-representation)
@@ -49,21 +63,6 @@
    + [➡ Run simple fileserver](#-run-simple-fileserver)
    + [➡ Monitor Go processes](#-monitor-go-processes)
    + [➡ Create 3D visualization of concurrency traces](#-create-3d-visualization-of-concurrency-traces)
- - Generate Code
-   + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
-   + [➡ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
- - Refactoring
-   + [➡ Replace symbol](#-replace-symbol)
- - Errors
-   + [➡ Pretty print `panic` messages](#-pretty-print-panic-messages)
- - Build
-   + [➡ Show compiler optimization decisions on heap and inlining](#-show-compiler-optimization-decisions-on-heap-and-inlining)
-   + [➡ Disable inlining](#-disable-inlining)
-   + [➡ Aggressive inlining](#-aggressive-inlining)
-   + [➡ Manually disable or enable `cgo`](#-manually-disable-or-enable-cgo)
-   + [➡ Include metadata in binary during compilation with `ldflags`](#-include-metadata-in-binary-during-compilation-with-ldflags)
- - Binary
-   + [➡ Make treemap breakdown of Go executable binary](#-make-treemap-breakdown-of-go-executable-binary)
  - Documentation
    + [➡ Make alternative documentation with golds](#-make-alternative-documentation-with-golds)
 
@@ -582,6 +581,169 @@ Requirements
 go install github.com/rodrigo-brito/gocity@latest
 ```
 
+## Generate Code
+
+### ➡ Generate `String` method for enum types
+
+This is an official tool for generating `String` for enums. It supports overrides via comments. — official Go team
+
+```go
+package painkiller
+
+//go:generate stringer -type=Pill -linecomment
+
+type Pill int
+
+const (
+	Placebo Pill = iota
+	Ibuprofen
+	Paracetamol
+	PillAspirin   // Aspirin
+	Acetaminophen = Paracetamol
+)
+
+// "Acetaminophen"
+var s string = Acetaminophen.String()
+
+```
+
+Requirements
+```
+go install golang.org/x/tools/cmd/stringer@latest
+```
+
+### ➡ Run `go:generate` in parallel
+
+Official Go team [encourages](https://github.com/golang/go/issues/20520) to run sequentially. However, in certain cituations, such as lots of mocks, parallelization helps a lot, ableit, you should consider including your generated files in git. The solution bellow spawns multiple processes, each per pkg.
+
+
+```
+grep -rnw "go:generate" -E -l "${1:-*.go}" . | xargs -L1 dirname | sort -u | xargs -P 8 -I{} go generate {}
+```
+
+
+## Refactor
+
+### ➡ Replace symbol
+
+I found this in announcement [notice](https://github.com/golang/go/commit/2580d0e08d5e9f979b943758d3c49877fb2324cb) of Go 1.18 for changes to `interface{}` to `any`. This can be useful for other refactorings too.
+
+
+```
+gofmt -w -r 'interface{} -> any' .
+```
+
+
+## Errors
+
+### ➡ Pretty print `panic` messages
+
+This tool will be useful for reading `panic` messages. Need to redirect STDERR to this tool with `panic` stack traces. The tool has HTML output and does lots of deduplication and enhancements. Refer to examples in original repo.
+
+
+```
+go test -v |& pp
+```
+
+<div align="center"><img src="https://raw.githubusercontent.com/wiki/maruel/panicparse/parse.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/maruel/panicparse/v2/cmd/pp@latest
+```
+
+## Build
+
+### ➡ Show compiler optimization decisions on heap and inlining
+
+Building with `-m` flag will show decisions of compiler on inlining and heap escape. This can help you to validate your understanding of your code and optimize it.
+
+
+```
+go build -gcflags="-m -m" . 2>&1 | grep inline
+```
+
+Example
+```
+...
+./passengerfp.go:25:6: cannot inline (*PassengerFeatureTransformer).Fit: function too complex: cost 496 exceeds budget 80
+...
+./passengerfp.go:192:6: can inline (*PassengerFeatureTransformer).NumFeatures with cost 35 as: method(*PassengerFeatureTransformer) func() int { if e == nil { return 0 }; count := 6; count += (*transformers.OneHotEncoder).NumFeatures(e.Sex); count += (*transformers.OneHotEncoder).NumFeatures(e.Embarked); return count }
+...
+./passengerfp.go:238:43: inlining call to transformers.(*OneHotEncoder).FeatureNames
+./passengerfp.go:238:43: inlining call to transformers.(*OneHotEncoder).NumFeatures
+...
+./passengerfp.go:151:7: parameter e leaks to {heap} with derefs=0:
+./passengerfp.go:43:11: make(map[string]uint) escapes to heap
+```
+
+
+### ➡ Disable inlining
+
+Usually you may not need it, but can reduce binary size and even improve performance.
+
+
+```
+go build -gcflags="-l" .
+```
+
+
+### ➡ Aggressive inlining
+
+This can improve performance. This includes mid-stack inlining.
+
+
+```
+go build -gcflags="-l -l -l -l" .
+```
+
+
+### ➡ Manually disable or enable `cgo`
+
+Disable `cgo` with `CGO_ENABLED=0` and enable with `CGO_ENABLED=1`. If you don't, `cgo` may end-up being enabled or code dynamically linked if, for example, you use some `net` or `os` packages. You may want to disable `cgo` to improve performance, since complier and runtime would have easier job optimizing code. This also should reduce your image size, as you can have alpine image with less shared libraries.
+
+
+### ➡ Include metadata in binary during compilation with `ldflags`
+
+You can pass metadata through compiler to your binary. This is useulf for including things like git commit, database schema version, integrity hashes. Variables can only be strings.
+
+
+```
+go build -v -ldflags="-X 'main.Version=v1.0.0'"
+go build -v -ldflags="-X 'my/pkg/here.Variable=some-string'"
+```
+
+```go
+package main
+
+var Version string
+
+func main() {
+	// Version here has some value
+	...
+}
+
+```
+
+
+### ➡ Make treemap breakdown of Go executable binary
+
+This can be useful for studying Go compiler, large projects, projects with C/C++ and `cgo`, 3rd party dependencies, embedding. However, total size may not be something to worry about for your executable. — [@nikolaydubina](https://github.com/nikolaydubina)
+
+
+```
+go tool nm -size <binary finename> | go-binsize-treemap > binsize.svg
+```
+
+<div align="center"><img src="https://github.com/nikolaydubina/go-binsize-treemap/blob/main/docs/hugo.svg" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/nikolaydubina/go-binsize-treemap@latest
+```
+
 ## Assembly
 
 ### ➡ Get assembly of Go code snippets online
@@ -761,171 +923,6 @@ Requirements
 go install github.com/divan/gotrace@latest
 patch Go compiler, available via Docker
 more instructions in original repo
-```
-
-## Generate Code
-
-### ➡ Generate `String` method for enum types
-
-This is an official tool for generating `String` for enums. It supports overrides via comments. — official Go team
-
-```go
-package painkiller
-
-//go:generate stringer -type=Pill -linecomment
-
-type Pill int
-
-const (
-	Placebo Pill = iota
-	Ibuprofen
-	Paracetamol
-	PillAspirin   // Aspirin
-	Acetaminophen = Paracetamol
-)
-
-// "Acetaminophen"
-var s string = Acetaminophen.String()
-
-```
-
-Requirements
-```
-go install golang.org/x/tools/cmd/stringer@latest
-```
-
-### ➡ Run `go:generate` in parallel
-
-Official Go team [encourages](https://github.com/golang/go/issues/20520) to run sequentially. However, in certain cituations, such as lots of mocks, parallelization helps a lot, ableit, you should consider including your generated files in git. The solution bellow spawns multiple processes, each per pkg.
-
-
-```
-grep -rnw "go:generate" -E -l "${1:-*.go}" . | xargs -L1 dirname | sort -u | xargs -P 8 -I{} go generate {}
-```
-
-
-## Refactoring
-
-### ➡ Replace symbol
-
-I found this in announcement [notice](https://github.com/golang/go/commit/2580d0e08d5e9f979b943758d3c49877fb2324cb) of Go 1.18 for changes to `interface{}` to `any`. This can be useful for other refactorings too.
-
-
-```
-gofmt -w -r 'interface{} -> any' .
-```
-
-
-## Errors
-
-### ➡ Pretty print `panic` messages
-
-This tool will be useful for reading `panic` messages. Need to redirect STDERR to this tool with `panic` stack traces. The tool has HTML output and does lots of deduplication and enhancements. Refer to examples in original repo.
-
-
-```
-go test -v |& pp
-```
-
-<div align="center"><img src="https://raw.githubusercontent.com/wiki/maruel/panicparse/parse.gif" style="margin: 8px; max-height: 640px;"></div>
-
-
-Requirements
-```
-go install github.com/maruel/panicparse/v2/cmd/pp@latest
-```
-
-## Build
-
-### ➡ Show compiler optimization decisions on heap and inlining
-
-Building with `-m` flag will show decisions of compiler on inlining and heap escape. This can help you to validate your understanding of your code and optimize it.
-
-
-```
-go build -gcflags="-m -m" . 2>&1 | grep inline
-```
-
-Example
-```
-...
-./passengerfp.go:25:6: cannot inline (*PassengerFeatureTransformer).Fit: function too complex: cost 496 exceeds budget 80
-...
-./passengerfp.go:192:6: can inline (*PassengerFeatureTransformer).NumFeatures with cost 35 as: method(*PassengerFeatureTransformer) func() int { if e == nil { return 0 }; count := 6; count += (*transformers.OneHotEncoder).NumFeatures(e.Sex); count += (*transformers.OneHotEncoder).NumFeatures(e.Embarked); return count }
-...
-./passengerfp.go:238:43: inlining call to transformers.(*OneHotEncoder).FeatureNames
-./passengerfp.go:238:43: inlining call to transformers.(*OneHotEncoder).NumFeatures
-...
-./passengerfp.go:151:7: parameter e leaks to {heap} with derefs=0:
-./passengerfp.go:43:11: make(map[string]uint) escapes to heap
-```
-
-
-### ➡ Disable inlining
-
-Usually you may not need it, but can reduce binary size and even improve performance.
-
-
-```
-go build -gcflags="-l" .
-```
-
-
-### ➡ Aggressive inlining
-
-This can improve performance. This includes mid-stack inlining.
-
-
-```
-go build -gcflags="-l -l -l -l" .
-```
-
-
-### ➡ Manually disable or enable `cgo`
-
-Disable `cgo` with `CGO_ENABLED=0` and enable with `CGO_ENABLED=1`. If you don't, `cgo` may end-up being enabled or code dynamically linked if, for example, you use some `net` or `os` packages. You may want to disable `cgo` to improve performance, since complier and runtime would have easier job optimizing code. This also should reduce your image size, as you can have alpine image with less shared libraries.
-
-
-### ➡ Include metadata in binary during compilation with `ldflags`
-
-You can pass metadata through compiler to your binary. This is useulf for including things like git commit, database schema version, integrity hashes. Variables can only be strings.
-
-
-```
-go build -v -ldflags="-X 'main.Version=v1.0.0'"
-go build -v -ldflags="-X 'my/pkg/here.Variable=some-string'"
-```
-
-```go
-package main
-
-var Version string
-
-func main() {
-	// Version here has some value
-	...
-}
-
-```
-
-
-## Binary
-
-### ➡ Make treemap breakdown of Go executable binary
-
-This can be useful for studying Go compiler, large projects, projects with C/C++ and `cgo`, 3rd party dependencies, embedding. However, total size may not be something to worry about for your executable. — [@nikolaydubina](https://github.com/nikolaydubina)
-
-
-```
-go tool nm -size <binary finename> | go-binsize-treemap > binsize.svg
-```
-
-<div align="center"><img src="https://github.com/nikolaydubina/go-binsize-treemap/blob/main/docs/hugo.svg" style="margin: 8px; max-height: 640px;"></div>
-
-
-Requirements
-```
-go install github.com/nikolaydubina/go-binsize-treemap@latest
 ```
 
 ## Documentation
