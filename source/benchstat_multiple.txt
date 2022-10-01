@@ -1,0 +1,17 @@
+name \ time/op          int.bench   float32.bench  fpmoney.bench
+JSONUnmarshal/small-10  481ns ± 2%     502ns ± 0%     331ns ± 0%
+JSONUnmarshal/large-10  530ns ± 1%     572ns ± 0%     414ns ± 0%
+JSONMarshal/small-10    140ns ± 1%     189ns ± 0%     273ns ± 0%
+JSONMarshal/large-10    145ns ± 0%     176ns ± 0%     340ns ± 0%
+
+name \ alloc/op         int.bench   float32.bench  fpmoney.bench
+JSONUnmarshal/small-10   269B ± 0%      271B ± 0%      198B ± 0%
+JSONUnmarshal/large-10   288B ± 0%      312B ± 0%      216B ± 0%
+JSONMarshal/small-10    57.0B ± 0%     66.0B ± 0%    144.0B ± 0%
+JSONMarshal/large-10    72.0B ± 0%     72.0B ± 0%    192.0B ± 0%
+
+name \ allocs/op        int.bench   float32.bench  fpmoney.bench
+JSONUnmarshal/small-10   6.00 ± 0%      6.00 ± 0%      3.00 ± 0%
+JSONUnmarshal/large-10   7.00 ± 0%      7.00 ± 0%      3.00 ± 0%
+JSONMarshal/small-10     2.00 ± 0%      2.00 ± 0%      4.00 ± 0%
+JSONMarshal/large-10     2.00 ± 0%      2.00 ± 0%      5.00 ± 0%

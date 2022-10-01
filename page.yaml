@@ -9,7 +9,7 @@ entry:
   example:
     title: Example
 groups:
-  - title: Tests
+  - title: Testing
     entries:
       - title: Make treemap of code coverage
         description: Visualize distribution of code coverage in your project. This helps to identify code areas with high and low coverage. Useful when you have large project with lots of files and packages. This 2D image-hash of your project should be more representative than a single number. Also available at https://go-cover-treemap.io.
@@ -54,7 +54,7 @@ groups:
           - go test -coverprofile cover.out ./...
           - go tool cover -html=cover.out
       - title: Make histogram of Go files per package
-        description: Use this to see when package is too big or too small. Adjust histogram length to maximum value. 
+        description: Use this to see when package is too big or too small. Adjust histogram length to maximum value.
         requirements:
           - https://stedolan.github.io/jq/download/
         commands:
@@ -79,7 +79,7 @@ groups:
           - gotestsum --format dots
         example_image_url: https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif
         requirements:
-          - go install github.com/gotestyourself/gotestsum@latest 
+          - go install github.com/gotestyourself/gotestsum@latest
       - title: Enrich `go test` output
         description: This tool adds colors and enriches `go test` output. It can be used in pipeline and has lots of options.
         author: https://github.com/kyoh86
@@ -87,7 +87,7 @@ groups:
           - richgo test ./...
         example_image_url: https://asciinema.org/a/99810.png
         requirements:
-          - go install github.com/kyoh86/richgo@latest  
+          - go install github.com/kyoh86/richgo@latest
   - title: Dependencies
     entries:
       - title: Get Go version of current module
@@ -193,7 +193,7 @@ groups:
         author: official Go team
         example_image_url: img/callgraph.svg
         commands:
-          - callgraph -format graphviz . | dot -Tsvg -o graph.svg 
+          - callgraph -format graphviz . | dot -Tsvg -o graph.svg
           - "recommend: grep <package/class/func of interest>"
           - "recommend: grep -v Error since many packages report error"
           - "recommend: adding `rankdir=LR;` to graphviz file for denser graph"
@@ -231,7 +231,7 @@ groups:
         author: https://github.com/rodrigo-brito
         requirements:
           - go install github.com/rodrigo-brito/gocity@latest
-  - title: Generate Code
+  - title: Code Generation
     entries:
       - title: Generate `String` method for enum types
         description: This is an official tool for generating `String` for enums. It supports overrides via comments.
@@ -243,10 +243,10 @@ groups:
         description: Official Go team [encourages](https://github.com/golang/go/issues/20520) to run sequentially. However, in certain cituations, such as lots of mocks, parallelization helps a lot, ableit, you should consider including your generated files in git. The solution bellow spawns multiple processes, each per pkg.
         commands:
           - grep -rnw "go:generate" -E -l "${1:-*.go}" . | xargs -L1 dirname | sort -u | xargs -P 8 -I{} go generate {}
-  - title: Refactor
+  - title: Refactoring
     entries:
       - title: Replace symbol
-        description: I found this in announcement [notice](https://github.com/golang/go/commit/2580d0e08d5e9f979b943758d3c49877fb2324cb) of Go 1.18 for changes to `interface{}` to `any`. This can be useful for other refactorings too. 
+        description: I found this in announcement [notice](https://github.com/golang/go/commit/2580d0e08d5e9f979b943758d3c49877fb2324cb) of Go 1.18 for changes to `interface{}` to `any`. This can be useful for other refactorings too.
         commands:
           - gofmt -w -r 'interface{} -> any' .
   - title: Errors
@@ -316,11 +316,11 @@ groups:
         description: You can access Go core AST mechanism to generate AST.
         example_content_url: source/ast/ex1.go
         example_output_url: source/ast/ex1.out
-  - title: Execute
+  - title: Execution
     entries:
       - title: Run Go function in shell
         description: This is short and convenient for Go one-liners. This tool will print to stdout the return of a function call.
-        author: https://github.com/natefinch 
+        author: https://github.com/natefinch
         requirements:
           - go install github.com/natefinch/gorram@latest
         commands:
@@ -340,13 +340,31 @@ groups:
           - gops
         example_output_url: source/gops.md
       - title: Create 3D visualization of concurrency traces
-        description: This tool creates 3D visualization of coroutines execution. There is no advanced functions and it is hard to analyze production systems. However, it could be interesting for educational purposes. 
-        author: https://github.com/divan 
+        description: This tool creates 3D visualization of coroutines execution. There is no advanced functions and it is hard to analyze production systems. However, it could be interesting for educational purposes.
+        author: https://github.com/divan
         example_image_url: https://github.com/divan/gotrace/blob/master/images/demo.png
         requirements:
           - go install github.com/divan/gotrace@latest
           - patch Go compiler, available via Docker
           - more instructions in original repo
+  - title: Benchmarking
+    entries:
+      - title: Get delta between two benchmarks with `benchstat`
+        description: This is standard way to compare two benchmark outputs. Names of bencharks should be the same. Generate benchmarks as per usual. You would get multiple tables per dimension. If no output, then pass `-split="XYZ"`. If you do not see `delta`, then pass `-count=2` or more in benchmark generation.
+        author: official Go team
+        commands:
+          - benchstat -split="XYZ" old.txt new.txt
+        example_output_url: source/benchstat_two.txt
+        requirements:
+          - go install golang.org/x/perf/cmd/benchstat@latest
+      - title: Get summary of benchmarks with `benchstat`
+        description: You can use this standard tool to summarise multiple runes per dimension. Names of bencharks should be the same. Generate benchmarks as per usual. You would get multiple tables per dimension. If no output, then pass `-split="XYZ"`.
+        author: official Go team
+        commands:
+          - benchstat -split="XYZ" int.txt float32.txt fpmoney.txt
+        example_output_url: source/benchstat_multiple.txt
+        requirements:
+          - go install golang.org/x/perf/cmd/benchstat@latest
   - title: Documentation
     entries:
       - title: Make alternative documentation with golds
