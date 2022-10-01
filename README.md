@@ -1006,6 +1006,7 @@ go install golang.org/x/perf/cmd/benchstat@latest
 
 This tool can be more illustrative of Go traces than standard Go traces. — [@felixge](https://github.com/felixge) / https://github.com/felixge/fgtrace
 
+Example
 ```go
 package main
 
@@ -1030,6 +1031,7 @@ func main() {
 
 This tool can be more illustrative of Go profiles than standard Go profiling. — [@felixge](https://github.com/felixge) / https://github.com/felixge/fgprof
 
+Example
 ```go
 package main
 
