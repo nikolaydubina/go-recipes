@@ -231,6 +231,23 @@ groups:
         author: https://github.com/rodrigo-brito
         requirements:
           - go install github.com/rodrigo-brito/gocity@latest
+  - title: Static Analysis
+    entries:
+      - title: Run default static analysis with `go vet`
+        description: It is an official tool for static analysis of Go programs. It has 27+ static analyzers.
+        author: official Go team
+        commands:
+          - go vet ./...
+      - title: Run custom static analysis tool with `go vet`
+        description: It can also be used to run custom analyzers. Third party analyzers are supported. Lots of official analyzers not included by default into `go vet`. Analyzer has to satisfy interface and command described here https://pkg.go.dev/golang.org/x/tools/go/analysis. Refer for https://pkg.go.dev/golang.org/x/tools/go/analysis/passes for full list of official Go analyzers.
+        author: official Go team
+        commands:
+          - go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow
+          - go vet -vettool=$(which shadow)
+      - title: Run official static analyzers not included in `go vet`
+        description: There are many analyzers not included in `go vet`. These tools are experimental and may not work as expected (e.g. `usesgenerics` does not work). Refer to for full list https://pkg.go.dev/golang.org/x/tools/go/analysis.
+        author: official Go team
+        content_url: source/goanalysis/main.go
   - title: Code Generation
     entries:
       - title: Generate `String` method for enum types

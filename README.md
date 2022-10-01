@@ -38,6 +38,10 @@
    + [➡ Make PlantUML diagram](#-make-plantuml-diagram)
    + [➡ Make PlantUML diagram](#-make-plantuml-diagram)
    + [➡ Make 3D chart of Go codebase](#-make-3d-chart-of-go-codebase)
+ - Static Analysis
+   + [➡ Run default static analysis with `go vet`](#-run-default-static-analysis-with-go-vet)
+   + [➡ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
+   + [➡ Run official static analyzers not included in `go vet`](#-run-official-static-analyzers-not-included-in-go-vet)
  - Code Generation
    + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
    + [➡ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
@@ -585,6 +589,34 @@ Requirements
 ```
 go install github.com/rodrigo-brito/gocity@latest
 ```
+
+## Static Analysis
+
+### ➡ Run default static analysis with `go vet`
+
+It is an official tool for static analysis of Go programs. It has 27+ static analyzers. — official Go team
+
+
+```
+go vet ./...
+```
+
+
+### ➡ Run custom static analysis tool with `go vet`
+
+It can also be used to run custom analyzers. Third party analyzers are supported. Lots of official analyzers not included by default into `go vet`. Analyzer has to satisfy interface and command described here https://pkg.go.dev/golang.org/x/tools/go/analysis. Refer for https://pkg.go.dev/golang.org/x/tools/go/analysis/passes for full list of official Go analyzers. — official Go team
+
+
+```
+go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow
+go vet -vettool=$(which shadow)
+```
+
+
+### ➡ Run official static analyzers not included in `go vet`
+
+There are many analyzers not included in `go vet`. These tools are experimental and may not work as expected (e.g. `usesgenerics` does not work). Refer to for full list https://pkg.go.dev/golang.org/x/tools/go/analysis. — official Go team
+
 
 ## Code Generation
 
