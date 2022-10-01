@@ -350,7 +350,7 @@ groups:
   - title: Benchmarking
     entries:
       - title: Get delta between two benchmarks with `benchstat`
-        description: This is standard way to compare two benchmark outputs. Names of bencharks should be the same. Generate benchmarks as per usual. You would get multiple tables per dimension. If no output, then pass `-split="XYZ"`. If you do not see `delta`, then pass `-count=2` or more in benchmark generation.
+        description: This is standard way to compare two benchmark outputs. Names of bencharks should be the same. Generate benchmarks as per usual. You would get multiple tables per dimension. If no output, then pass `-split="XYZ"`. If you do not see `delta`, then pass `-count=2` or more in benchmark generation. It is recommended to have alternative implementations in different packages, to keep benchmark names the same.
         author: official Go team
         commands:
           - benchstat -split="XYZ" old.txt new.txt
@@ -358,7 +358,7 @@ groups:
         requirements:
           - go install golang.org/x/perf/cmd/benchstat@latest
       - title: Get summary of benchmarks with `benchstat`
-        description: You can use this standard tool to summarise multiple runes per dimension. Names of bencharks should be the same. Generate benchmarks as per usual. You would get multiple tables per dimension. If no output, then pass `-split="XYZ"`.
+        description: You can use this standard tool to summarise multiple runes per dimension. Names of bencharks should be the same. Generate benchmarks as per usual. You would get multiple tables per dimension. If no output, then pass `-split="XYZ"`. It is recommended to have alternative implementations in different packages, to keep benchmark names the same.
         author: official Go team
         commands:
           - benchstat -split="XYZ" int.txt float32.txt fpmoney.txt
