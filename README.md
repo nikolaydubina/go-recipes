@@ -66,6 +66,8 @@
  - Benchmarking
    + [➡ Get delta between two benchmarks with `benchstat`](#-get-delta-between-two-benchmarks-with-benchstat)
    + [➡ Get summary of benchmarks with `benchstat`](#-get-summary-of-benchmarks-with-benchstat)
+   + [➡ Get wallclock traces with `fgtrace`](#-get-wallclock-traces-with-fgtrace)
+   + [➡ Get profiles of on-CPU and off-CPU with `fgprof`](#-get-profiles-of-on-cpu-and-off-cpu-with-fgprof)
  - Documentation
    + [➡ Make alternative documentation with golds](#-make-alternative-documentation-with-golds)
 
@@ -999,6 +1001,60 @@ Requirements
 ```
 go install golang.org/x/perf/cmd/benchstat@latest
 ```
+
+### ➡ Get wallclock traces with `fgtrace`
+
+This tool can be more illustrative of Go traces than standard Go traces. — [@felixge](https://github.com/felixge) / https://github.com/felixge/fgtrace
+
+```go
+package main
+
+import (
+	"net/http"
+
+	"github.com/felixge/fgtrace"
+)
+
+func main() {
+	http.DefaultServeMux.Handle("/debug/fgtrace", fgtrace.Config{})
+	http.ListenAndServe(":1234", nil)
+}
+
+```
+
+<div align="center"><img src="https://github.com/felixge/fgtrace/raw/main/assets/fgtrace-example.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+
+### ➡ Get profiles of on-CPU and off-CPU with `fgprof`
+
+This tool can be more illustrative of Go profiles than standard Go profiling. — [@felixge](https://github.com/felixge) / https://github.com/felixge/fgprof
+
+```go
+package main
+
+import (
+	"log"
+	"net/http"
+	_ "net/http/pprof"
+
+	"github.com/felixge/fgprof"
+)
+
+func main() {
+	http.DefaultServeMux.Handle("/debug/fgprof", fgprof.Handler())
+	go func() {
+		log.Println(http.ListenAndServe(":6060", nil))
+	}()
+
+	// <code to profile>
+}
+
+```
+
+<div align="center"><img src="https://github.com/felixge/fgprof/raw/master/assets/fgprof_pprof.png" style="margin: 8px; max-height: 640px;"></div>
+
+
 
 ## Documentation
 
