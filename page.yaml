@@ -405,3 +405,11 @@ groups:
         example_image_url: img/golds.png
         requirements:
           - go install go101.org/golds@latest
+      - title: Read Go binary documentation in `man` format
+        description: This tool fetches the repo's readme as a man page replacement.
+        example_image_url: https://github.com/appliedgocode/goman/raw/master/goman.gif
+        commands:
+          - goman <mypackage>
+        author: https://github.com/christophberger
+        requirements:
+          - go install github.com/appliedgocode/goman@latest
