@@ -6,7 +6,7 @@
 
 ## Contents
 
- - Tests
+ - Testing
    + [➡ Make treemap of code coverage](#-make-treemap-of-code-coverage)
    + [➡ Pretty print coverage of Go code in terminal](#-pretty-print-coverage-of-go-code-in-terminal)
    + [➡ Browse code coverage of Go code in terminal](#-browse-code-coverage-of-go-code-in-terminal)
@@ -38,10 +38,10 @@
    + [➡ Make PlantUML diagram](#-make-plantuml-diagram)
    + [➡ Make PlantUML diagram](#-make-plantuml-diagram)
    + [➡ Make 3D chart of Go codebase](#-make-3d-chart-of-go-codebase)
- - Generate Code
+ - Code Generation
    + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
    + [➡ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
- - Refactor
+ - Refactoring
    + [➡ Replace symbol](#-replace-symbol)
  - Errors
    + [➡ Pretty print `panic` messages](#-pretty-print-panic-messages)
@@ -58,15 +58,18 @@
    + [➡ View Go assembly interactively](#-view-go-assembly-interactively)
    + [➡ Generate Go assembly in Go](#-generate-go-assembly-in-go)
    + [➡ Generate AST for code snippets](#-generate-ast-for-code-snippets)
- - Execute
+ - Execution
    + [➡ Run Go function in shell](#-run-go-function-in-shell)
    + [➡ Run simple fileserver](#-run-simple-fileserver)
    + [➡ Monitor Go processes](#-monitor-go-processes)
    + [➡ Create 3D visualization of concurrency traces](#-create-3d-visualization-of-concurrency-traces)
+ - Benchmarking
+   + [➡ Get delta between two benchmarks with `benchstat`](#-get-delta-between-two-benchmarks-with-benchstat)
+   + [➡ Get summary of benchmarks with `benchstat`](#-get-summary-of-benchmarks-with-benchstat)
  - Documentation
    + [➡ Make alternative documentation with golds](#-make-alternative-documentation-with-golds)
 
-## Tests
+## Testing
 
 ### ➡ Make treemap of code coverage
 
@@ -581,7 +584,7 @@ Requirements
 go install github.com/rodrigo-brito/gocity@latest
 ```
 
-## Generate Code
+## Code Generation
 
 ### ➡ Generate `String` method for enum types
 
@@ -622,7 +625,7 @@ grep -rnw "go:generate" -E -l "${1:-*.go}" . | xargs -L1 dirname | sort -u | xar
 ```
 
 
-## Refactor
+## Refactoring
 
 ### ➡ Replace symbol
 
@@ -854,7 +857,7 @@ Example
 ```
 
 
-## Execute
+## Execution
 
 ### ➡ Run Go function in shell
 
@@ -923,6 +926,78 @@ Requirements
 go install github.com/divan/gotrace@latest
 patch Go compiler, available via Docker
 more instructions in original repo
+```
+
+## Benchmarking
+
+### ➡ Get delta between two benchmarks with `benchstat`
+
+This is standard way to compare two benchmark outputs. Names of bencharks should be the same. Generate benchmarks as per usual. You would get multiple tables per dimension. If no output, then pass `-split="XYZ"`. If you do not see `delta`, then pass `-count=2` or more in benchmark generation. — official Go team
+
+
+```
+benchstat -split="XYZ" old.txt new.txt
+```
+
+Example
+```
+name                    old time/op    new time/op    delta
+JSONUnmarshal/small-10     502ns ± 0%     331ns ± 0%   -33.99%  (p=0.008 n=5+5)
+JSONUnmarshal/large-10     572ns ± 0%     414ns ± 0%   -27.64%  (p=0.008 n=5+5)
+JSONMarshal/small-10       189ns ± 0%     273ns ± 0%   +44.20%  (p=0.008 n=5+5)
+JSONMarshal/large-10       176ns ± 0%     340ns ± 0%   +93.29%  (p=0.008 n=5+5)
+
+name                    old alloc/op   new alloc/op   delta
+JSONUnmarshal/small-10      271B ± 0%      198B ± 0%   -26.94%  (p=0.008 n=5+5)
+JSONUnmarshal/large-10      312B ± 0%      216B ± 0%   -30.77%  (p=0.008 n=5+5)
+JSONMarshal/small-10       66.0B ± 0%    144.0B ± 0%  +118.18%  (p=0.008 n=5+5)
+JSONMarshal/large-10       72.0B ± 0%    192.0B ± 0%  +166.67%  (p=0.008 n=5+5)
+
+name                    old allocs/op  new allocs/op  delta
+JSONUnmarshal/small-10      6.00 ± 0%      3.00 ± 0%   -50.00%  (p=0.008 n=5+5)
+JSONUnmarshal/large-10      7.00 ± 0%      3.00 ± 0%   -57.14%  (p=0.008 n=5+5)
+JSONMarshal/small-10        2.00 ± 0%      4.00 ± 0%  +100.00%  (p=0.008 n=5+5)
+JSONMarshal/large-10        2.00 ± 0%      5.00 ± 0%  +150.00%  (p=0.008 n=5+5)
+```
+
+Requirements
+```
+go install golang.org/x/perf/cmd/benchstat@latest
+```
+
+### ➡ Get summary of benchmarks with `benchstat`
+
+You can use this standard tool to summarise multiple runes per dimension. Names of bencharks should be the same. Generate benchmarks as per usual. You would get multiple tables per dimension. If no output, then pass `-split="XYZ"`. — official Go team
+
+
+```
+benchstat -split="XYZ" int.txt float32.txt fpmoney.txt
+```
+
+Example
+```
+name \ time/op          int.bench   float32.bench  fpmoney.bench
+JSONUnmarshal/small-10  481ns ± 2%     502ns ± 0%     331ns ± 0%
+JSONUnmarshal/large-10  530ns ± 1%     572ns ± 0%     414ns ± 0%
+JSONMarshal/small-10    140ns ± 1%     189ns ± 0%     273ns ± 0%
+JSONMarshal/large-10    145ns ± 0%     176ns ± 0%     340ns ± 0%
+
+name \ alloc/op         int.bench   float32.bench  fpmoney.bench
+JSONUnmarshal/small-10   269B ± 0%      271B ± 0%      198B ± 0%
+JSONUnmarshal/large-10   288B ± 0%      312B ± 0%      216B ± 0%
+JSONMarshal/small-10    57.0B ± 0%     66.0B ± 0%    144.0B ± 0%
+JSONMarshal/large-10    72.0B ± 0%     72.0B ± 0%    192.0B ± 0%
+
+name \ allocs/op        int.bench   float32.bench  fpmoney.bench
+JSONUnmarshal/small-10   6.00 ± 0%      6.00 ± 0%      3.00 ± 0%
+JSONUnmarshal/large-10   7.00 ± 0%      7.00 ± 0%      3.00 ± 0%
+JSONMarshal/small-10     2.00 ± 0%      2.00 ± 0%      4.00 ± 0%
+JSONMarshal/large-10     2.00 ± 0%      2.00 ± 0%      5.00 ± 0%
+```
+
+Requirements
+```
+go install golang.org/x/perf/cmd/benchstat@latest
 ```
 
 ## Documentation
