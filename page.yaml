@@ -365,6 +365,18 @@ groups:
         example_output_url: source/benchstat_multiple.txt
         requirements:
           - go install golang.org/x/perf/cmd/benchstat@latest
+      - title: Get wallclock traces with `fgtrace`
+        description: This tool can be more illustrative of Go traces than standard Go traces.
+        author: https://github.com/felixge
+        example_content_url: source/fgtrace.go
+        example_image_url: https://github.com/felixge/fgtrace/raw/main/assets/fgtrace-example.png 
+        source: https://github.com/felixge/fgtrace
+      - title: Get profiles of on-CPU and off-CPU with `fgprof`
+        description: This tool can be more illustrative of Go profiles than standard Go profiling.
+        author: https://github.com/felixge
+        source: https://github.com/felixge/fgprof
+        example_content_url: source/fgprof.go
+        example_image_url: https://github.com/felixge/fgprof/raw/master/assets/fgprof_pprof.png
   - title: Documentation
     entries:
       - title: Make alternative documentation with golds
