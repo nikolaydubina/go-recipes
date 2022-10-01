@@ -74,6 +74,7 @@
    + [➡ Get profiles of on-CPU and off-CPU with `fgprof`](#-get-profiles-of-on-cpu-and-off-cpu-with-fgprof)
  - Documentation
    + [➡ Make alternative documentation with golds](#-make-alternative-documentation-with-golds)
+   + [➡ Read Go binary documentation in `man` format](#-read-go-binary-documentation-in-man-format)
 
 ## Testing
 
@@ -1140,6 +1141,23 @@ golds ./...
 Requirements
 ```
 go install go101.org/golds@latest
+```
+
+### ➡ Read Go binary documentation in `man` format
+
+This tool fetches the repo's readme as a man page replacement. — [@christophberger](https://github.com/christophberger)
+
+
+```
+goman <mypackage>
+```
+
+<div align="center"><img src="https://github.com/appliedgocode/goman/raw/master/goman.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/appliedgocode/goman@latest
 ```
 
 
