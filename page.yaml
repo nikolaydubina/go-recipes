@@ -372,7 +372,7 @@ groups:
           - go test -bench=. -benchmem -benchtime=10s ./...
         example_output_url: source/bench.txt
       - title: Table-driven benchmarks
-        description: Simlar to tests, Go supports table driven benchmarks, which is very helpful to generate benchmarks for fine gradation of meta parameters. More details in the Go [blog](https://go.dev/blog/subtests).
+        description: Simlar to tests, Go supports table-driven benchmarks, which is very helpful for fine gradation of meta-parameters. More details in the Go [blog](https://go.dev/blog/subtests).
         example_content_url: source/bench_table.go
         example_output_url: source/bench_table.out
       - title: Generate benchmak CPU and Memory profiles

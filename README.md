@@ -1032,7 +1032,7 @@ ok      github.com/nikolaydubina/fpmoney    62.744s
 
 ### ➡ Table-driven benchmarks
 
-Simlar to tests, Go supports table driven benchmarks, which is very helpful to generate benchmarks for fine gradation of meta parameters. More details in the Go [blog](https://go.dev/blog/subtests).
+Simlar to tests, Go supports table-driven benchmarks, which is very helpful for fine gradation of meta-parameters. More details in the Go [blog](https://go.dev/blog/subtests).
 
 ```go
 func benchIteratorSelector(b *testing.B, n int) {
