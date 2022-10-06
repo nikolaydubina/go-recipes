@@ -413,13 +413,26 @@ groups:
         example_output_url: source/benchstat_multiple.txt
         requirements:
           - go install golang.org/x/perf/cmd/benchstat@latest
+      - title: Generate live traces using `net/http/trace`
+        description: This will add endpoints to your youserver. If you don't have server runing already in your process, you can start one. Then you can point `pprof` tool to this data. More details in documentaion [trace](https://pkg.go.dev/cmd/trace), [pprof](https://pkg.go.dev/net/http/pprof).
+        example_content_url: source/net_http_pprof.go
+        example_output_url: source/net_http_pprof_commands.txt
+      - title: Generate traces using `go test`
+        description: This will produce a trace of execution of tests in pacakge.
+        commands:
+          - go test -trace trace.out .
+      - title: View traces with `go tool trace`
+        description: You can view traces interactively in browser with standard Go tooling. This web tool also shows network blocking profile, synchronization blocking profile, syscall blockign profile, scheduler latency profile.
+        commands:
+          - go tool trace trace.out
+        example_image_url: img/go_tool_trace_web.png
       - title: Get wallclock traces with `fgtrace`
         description: This tool can be more illustrative of Go traces than standard Go traces.
         author: https://github.com/felixge
         example_output_url: source/fgtrace.go
         example_image_url: https://github.com/felixge/fgtrace/raw/main/assets/fgtrace-example.png 
         source: https://github.com/felixge/fgtrace
-      - title: Get profiles of on-CPU and off-CPU with `fgprof`
+      - title: Get profiles of on/off CPU with `fgprof`
         description: This tool can be more illustrative of Go profiles than standard Go profiling.
         author: https://github.com/felixge
         source: https://github.com/felixge/fgprof

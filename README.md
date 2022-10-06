@@ -76,8 +76,11 @@
    + [➡ Visualize profiles online](#-visualize-profiles-online)
    + [➡ Get delta between two benchmarks with `benchstat`](#-get-delta-between-two-benchmarks-with-benchstat)
    + [➡ Get summary of benchmarks with `benchstat`](#-get-summary-of-benchmarks-with-benchstat)
+   + [➡ Generate live traces using `net/http/trace`](#-generate-live-traces-using-nethttptrace)
+   + [➡ Generate traces using `go test`](#-generate-traces-using-go-test)
+   + [➡ View traces with `go tool trace`](#-view-traces-with-go-tool-trace)
    + [➡ Get wallclock traces with `fgtrace`](#-get-wallclock-traces-with-fgtrace)
-   + [➡ Get profiles of on-CPU and off-CPU with `fgprof`](#-get-profiles-of-on-cpu-and-off-cpu-with-fgprof)
+   + [➡ Get profiles of on/off CPU with `fgprof`](#-get-profiles-of-onoff-cpu-with-fgprof)
  - Documentation
    + [➡ Make alternative documentation with golds](#-make-alternative-documentation-with-golds)
    + [➡ Read Go binary documentation in `man` format](#-read-go-binary-documentation-in-man-format)
@@ -1184,6 +1187,50 @@ Requirements
 go install golang.org/x/perf/cmd/benchstat@latest
 ```
 
+### ➡ Generate live traces using `net/http/trace`
+
+This will add endpoints to your youserver. If you don't have server runing already in your process, you can start one. Then you can point `pprof` tool to this data. More details in documentaion [trace](https://pkg.go.dev/cmd/trace), [pprof](https://pkg.go.dev/net/http/pprof).
+
+```go
+import _ "net/http/pprof"
+
+func main() {
+	// if don't have http server yet, then start like
+	go func() { log.Println(http.ListenAndServe("localhost:6060", nil)) }()
+}
+```
+
+Example
+```
+go tool pprof http://localhost:6060/debug/pprof/heap
+go tool pprof http://localhost:6060/debug/pprof/profile?seconds=30
+curl -o trace.out http://localhost:6060/debug/pprof/trace?seconds=5
+```
+
+
+### ➡ Generate traces using `go test`
+
+This will produce a trace of execution of tests in pacakge.
+
+
+```
+go test -trace trace.out .
+```
+
+
+### ➡ View traces with `go tool trace`
+
+You can view traces interactively in browser with standard Go tooling. This web tool also shows network blocking profile, synchronization blocking profile, syscall blockign profile, scheduler latency profile.
+
+
+```
+go tool trace trace.out
+```
+
+<div align="center"><img src="img/go_tool_trace_web.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+
 ### ➡ Get wallclock traces with `fgtrace`
 
 This tool can be more illustrative of Go traces than standard Go traces. — [@felixge](https://github.com/felixge) / https://github.com/felixge/fgtrace
@@ -1209,7 +1256,7 @@ func main() {
 
 
 
-### ➡ Get profiles of on-CPU and off-CPU with `fgprof`
+### ➡ Get profiles of on/off CPU with `fgprof`
 
 This tool can be more illustrative of Go profiles than standard Go profiling. — [@felixge](https://github.com/felixge) / https://github.com/felixge/fgprof
 
