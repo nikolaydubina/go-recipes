@@ -1009,7 +1009,7 @@ more instructions in original repo
 
 ### ➡ Run benchmarks
 
-Standard tool for running benchmarks. Can also be do mutex profiles. More flags are in Go [documentaion](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
+Start here. This is the standard tool for benchmarking. It can also do advanced features like mutex profiles. More flags are in Go [documentaion](https://pkg.go.dev/cmd/go#hdr-Testing_flags) and `go help testflag`.
 
 
 ```
