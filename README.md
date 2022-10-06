@@ -68,6 +68,12 @@
    + [➡ Monitor Go processes](#-monitor-go-processes)
    + [➡ Create 3D visualization of concurrency traces](#-create-3d-visualization-of-concurrency-traces)
  - Benchmarking
+   + [➡ Run benchmarks](#-run-benchmarks)
+   + [➡ Table-driven benchmarks](#-table-driven-benchmarks)
+   + [➡ Generate benchmak CPU and Memory profiles](#-generate-benchmak-cpu-and-memory-profiles)
+   + [➡ Visualize callgraph of profiles wiht `pprof`](#-visualize-callgraph-of-profiles-wiht-pprof)
+   + [➡ Visualize flamegraphs of profiles wiht `pprof`](#-visualize-flamegraphs-of-profiles-wiht-pprof)
+   + [➡ Visualize profiles online](#-visualize-profiles-online)
    + [➡ Get delta between two benchmarks with `benchstat`](#-get-delta-between-two-benchmarks-with-benchstat)
    + [➡ Get summary of benchmarks with `benchstat`](#-get-summary-of-benchmarks-with-benchstat)
    + [➡ Get wallclock traces with `fgtrace`](#-get-wallclock-traces-with-fgtrace)
@@ -997,6 +1003,116 @@ more instructions in original repo
 ```
 
 ## Benchmarking
+
+### ➡ Run benchmarks
+
+Standard tool for running benchmarks. Can also be do mutex profiles. More flags are in Go [documentaion](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
+
+
+```
+go test -bench=. -benchmem -benchtime=10s ./...
+```
+
+Example
+```
+$ go test -bench=. -benchmem ./...
+goos: darwin
+goarch: arm64
+pkg: github.com/nikolaydubina/fpmoney
+BenchmarkArithmetic/add_x1-10                     1000000000             0.5 ns/op           0 B/op           0 allocs/op
+BenchmarkArithmetic/add_x100-10                     18430124            64.6 ns/op           0 B/op           0 allocs/op
+BenchmarkJSONUnmarshal/small-10                      3531835           340.7 ns/op         198 B/op           3 allocs/op
+BenchmarkJSONUnmarshal/large-10                      2791712           426.9 ns/op         216 B/op           3 allocs/op
+BenchmarkJSONMarshal/small-10                        4379685           274.4 ns/op         144 B/op           4 allocs/op
+BenchmarkJSONMarshal/large-10                        3321205           345.8 ns/op         192 B/op           5 allocs/op
+PASS
+ok      github.com/nikolaydubina/fpmoney    62.744s
+```
+
+
+### ➡ Table-driven benchmarks
+
+Simlar to tests, Go supports table driven benchmarks, which is very helpful to generate benchmarks for fine gradation of meta parameters. More details in the Go [blog](https://go.dev/blog/subtests).
+
+```go
+func benchIteratorSelector(b *testing.B, n int) {
+	// ... setup here
+	b.ResetTimer()
+	for n := 0; n < b.N; n++ {
+		err := myExpensiveFunc()
+		if err != nil {
+			b.Error(err)
+		}
+	}
+}
+
+func BenchmarkIteratorSelector(b *testing.B) {
+	for _, q := range []int{100, 1000, 10000, 100000} {
+		b.Run(fmt.Sprintf("n=%d", q), func(b *testing.B) {
+			benchIteratorSelector(b, q)
+		})
+	}
+}
+
+```
+
+Example
+```
+BenchmarkIteratorSelector/n=100-10    	  297792	      4265 ns/op	    5400 B/op	      13 allocs/op
+BenchmarkIteratorSelector/n=1000-10   	   31400	     38182 ns/op	    9752 B/op	      16 allocs/op
+BenchmarkIteratorSelector/n=10000-10  	    3134	    380777 ns/op	   89112 B/op	      24 allocs/op
+BenchmarkIteratorSelector/n=100000-10 	     310	   3827292 ns/op	  912410 B/op	      32 allocs/op
+```
+
+
+### ➡ Generate benchmak CPU and Memory profiles
+
+This is useful for identifying most time or memory consuming parts. Recommended to run for single benchmark at a time and with `-count` or `-benchtime` for better accuracy.
+
+
+```
+go test -bench=<my-benchmark-name> -cpuprofile cpu.out -memprofile mem.out ./...
+```
+
+
+### ➡ Visualize callgraph of profiles wiht `pprof`
+
+Once you generate profiles, visualize them with `pprof`. Both memory and CPU profiles are supported. Many options are available. Refer to the link you get in SVG to how to interpret this graph. More official documentation [blog](https://go.dev/blog/pprof), [pkg-doc](https://pkg.go.dev/net/http/pprof). — official Go team
+
+
+```
+go tool pprof --nodefraction=0.05 -svg cpu.out > cpu.svg
+go tool pprof --nodefraction=0.05 -svg mem.out > mem.svg
+```
+
+<div align="center"><img src="img/pprof_callgraph_cpu.svg" style="margin: 8px; max-height: 640px;"></div>
+
+
+
+### ➡ Visualize flamegraphs of profiles wiht `pprof`
+
+Latest versions of `pprof` can also render [Flamegraphs](https://www.brendangregg.com/flamegraphs.html) for profiles. Make sure you set `-http` to start webserver. Then it is available in "View > Graph" in at http://0.0.0.0:80. — Google
+
+
+```
+pprof -http=0.0.0.0:80 cpu.out
+```
+
+<div align="center"><img src="img/pprof_flamegraph_cpu.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/google/pprof@latest
+```
+
+### ➡ Visualize profiles online
+
+You can also visualize profiles with online tools are aloso available https://www.speedscope.app (cpu).
+
+<div align="center"><img src="img/speedscope_cpu_profile.png" style="margin: 8px; max-height: 640px;"></div>
+
+
 
 ### ➡ Get delta between two benchmarks with `benchstat`
 
