@@ -1084,11 +1084,11 @@ Once you generate profiles, visualize them with `pprof`. Both memory and CPU pro
 
 
 ```
-go tool pprof --nodefraction=0.05 -svg cpu.out > cpu.svg
-go tool pprof --nodefraction=0.05 -svg mem.out > mem.svg
+go tool pprof -svg cpu.out > cpu.svg
+go tool pprof -svg mem.out > mem.svg
 ```
 
-<div align="center"><img src="img/pprof_callgraph_cpu.svg" style="margin: 8px; max-height: 640px;"></div>
+<div align="center"><img src="img/pprof_callgraph_cpu.png" style="margin: 8px; max-height: 640px;"></div>
 
 
 
