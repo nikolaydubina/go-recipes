@@ -68,10 +68,19 @@
    + [➡ Monitor Go processes](#-monitor-go-processes)
    + [➡ Create 3D visualization of concurrency traces](#-create-3d-visualization-of-concurrency-traces)
  - Benchmarking
+   + [➡ Run benchmarks](#-run-benchmarks)
+   + [➡ Table-driven benchmarks](#-table-driven-benchmarks)
+   + [➡ Generate benchmak CPU and Memory profiles](#-generate-benchmak-cpu-and-memory-profiles)
+   + [➡ Visualize callgraph of profiles wiht `pprof`](#-visualize-callgraph-of-profiles-wiht-pprof)
+   + [➡ Visualize flamegraphs of profiles wiht `pprof`](#-visualize-flamegraphs-of-profiles-wiht-pprof)
+   + [➡ Visualize profiles online](#-visualize-profiles-online)
    + [➡ Get delta between two benchmarks with `benchstat`](#-get-delta-between-two-benchmarks-with-benchstat)
    + [➡ Get summary of benchmarks with `benchstat`](#-get-summary-of-benchmarks-with-benchstat)
+   + [➡ Generate live traces using `net/http/trace`](#-generate-live-traces-using-nethttptrace)
+   + [➡ Generate traces using `go test`](#-generate-traces-using-go-test)
+   + [➡ View traces with `go tool trace`](#-view-traces-with-go-tool-trace)
    + [➡ Get wallclock traces with `fgtrace`](#-get-wallclock-traces-with-fgtrace)
-   + [➡ Get profiles of on-CPU and off-CPU with `fgprof`](#-get-profiles-of-on-cpu-and-off-cpu-with-fgprof)
+   + [➡ Get profiles of on/off CPU with `fgprof`](#-get-profiles-of-onoff-cpu-with-fgprof)
  - Documentation
    + [➡ Make alternative documentation with golds](#-make-alternative-documentation-with-golds)
    + [➡ Read Go binary documentation in `man` format](#-read-go-binary-documentation-in-man-format)
@@ -998,6 +1007,116 @@ more instructions in original repo
 
 ## Benchmarking
 
+### ➡ Run benchmarks
+
+Start here. This is the standard tool for benchmarking. It can also do advanced features like mutex profiles. More flags are in Go [documentaion](https://pkg.go.dev/cmd/go#hdr-Testing_flags) and `go help testflag`.
+
+
+```
+go test -bench=. -benchmem -benchtime=10s ./...
+```
+
+Example
+```
+$ go test -bench=. -benchmem ./...
+goos: darwin
+goarch: arm64
+pkg: github.com/nikolaydubina/fpmoney
+BenchmarkArithmetic/add_x1-10                     1000000000             0.5 ns/op           0 B/op           0 allocs/op
+BenchmarkArithmetic/add_x100-10                     18430124            64.6 ns/op           0 B/op           0 allocs/op
+BenchmarkJSONUnmarshal/small-10                      3531835           340.7 ns/op         198 B/op           3 allocs/op
+BenchmarkJSONUnmarshal/large-10                      2791712           426.9 ns/op         216 B/op           3 allocs/op
+BenchmarkJSONMarshal/small-10                        4379685           274.4 ns/op         144 B/op           4 allocs/op
+BenchmarkJSONMarshal/large-10                        3321205           345.8 ns/op         192 B/op           5 allocs/op
+PASS
+ok      github.com/nikolaydubina/fpmoney    62.744s
+```
+
+
+### ➡ Table-driven benchmarks
+
+Simlar to tests, Go supports table-driven benchmarks, which is very helpful for fine gradation of meta-parameters. More details in the Go [blog](https://go.dev/blog/subtests).
+
+```go
+func benchIteratorSelector(b *testing.B, n int) {
+	// ... setup here
+	b.ResetTimer()
+	for n := 0; n < b.N; n++ {
+		err := myExpensiveFunc()
+		if err != nil {
+			b.Error(err)
+		}
+	}
+}
+
+func BenchmarkIteratorSelector(b *testing.B) {
+	for _, q := range []int{100, 1000, 10000, 100000} {
+		b.Run(fmt.Sprintf("n=%d", q), func(b *testing.B) {
+			benchIteratorSelector(b, q)
+		})
+	}
+}
+
+```
+
+Example
+```
+BenchmarkIteratorSelector/n=100-10    	  297792	      4265 ns/op	    5400 B/op	      13 allocs/op
+BenchmarkIteratorSelector/n=1000-10   	   31400	     38182 ns/op	    9752 B/op	      16 allocs/op
+BenchmarkIteratorSelector/n=10000-10  	    3134	    380777 ns/op	   89112 B/op	      24 allocs/op
+BenchmarkIteratorSelector/n=100000-10 	     310	   3827292 ns/op	  912410 B/op	      32 allocs/op
+```
+
+
+### ➡ Generate benchmak CPU and Memory profiles
+
+This is useful for identifying most time or memory consuming parts. Recommended to run for single benchmark at a time and with `-count` or `-benchtime` for better accuracy.
+
+
+```
+go test -bench=<my-benchmark-name> -cpuprofile cpu.out -memprofile mem.out ./...
+```
+
+
+### ➡ Visualize callgraph of profiles wiht `pprof`
+
+Once you generate profiles, visualize them with `pprof`. Both memory and CPU profiles are supported. Many options are available. Refer to the link you get in SVG to how to interpret this graph. More official documentation [blog](https://go.dev/blog/pprof), [pkg-doc](https://pkg.go.dev/net/http/pprof). — official Go team
+
+
+```
+go tool pprof -svg cpu.out > cpu.svg
+go tool pprof -svg mem.out > mem.svg
+```
+
+<div align="center"><img src="img/pprof_callgraph_cpu.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+
+### ➡ Visualize flamegraphs of profiles wiht `pprof`
+
+Latest versions of `pprof` can also render [Flamegraphs](https://www.brendangregg.com/flamegraphs.html) for profiles. Make sure you set `-http` to start webserver. Then it is available in "View > Graph" in at http://0.0.0.0:80. — Google
+
+
+```
+pprof -http=0.0.0.0:80 cpu.out
+```
+
+<div align="center"><img src="img/pprof_flamegraph_cpu.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/google/pprof@latest
+```
+
+### ➡ Visualize profiles online
+
+You can also visualize profiles with online tools are aloso available https://www.speedscope.app (cpu).
+
+<div align="center"><img src="img/speedscope_cpu_profile.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+
 ### ➡ Get delta between two benchmarks with `benchstat`
 
 This is standard way to compare two benchmark outputs. Names of bencharks should be the same. Generate benchmarks as per usual. You would get multiple tables per dimension. If no output, then pass `-split="XYZ"`. If you do not see `delta`, then pass `-count=2` or more in benchmark generation. It is recommended to have alternative implementations in different packages, to keep benchmark names the same. — official Go team
@@ -1068,6 +1187,50 @@ Requirements
 go install golang.org/x/perf/cmd/benchstat@latest
 ```
 
+### ➡ Generate live traces using `net/http/trace`
+
+This will add endpoints to your youserver. If you don't have server runing already in your process, you can start one. Then you can point `pprof` tool to this data. More details in documentaion [trace](https://pkg.go.dev/cmd/trace), [pprof](https://pkg.go.dev/net/http/pprof).
+
+```go
+import _ "net/http/pprof"
+
+func main() {
+	// if don't have http server yet, then start like
+	go func() { log.Println(http.ListenAndServe("localhost:6060", nil)) }()
+}
+```
+
+Example
+```
+go tool pprof http://localhost:6060/debug/pprof/heap
+go tool pprof http://localhost:6060/debug/pprof/profile?seconds=30
+curl -o trace.out http://localhost:6060/debug/pprof/trace?seconds=5
+```
+
+
+### ➡ Generate traces using `go test`
+
+This will produce a trace of execution of tests in pacakge.
+
+
+```
+go test -trace trace.out .
+```
+
+
+### ➡ View traces with `go tool trace`
+
+You can view traces interactively in browser with standard Go tooling. This web tool also shows network blocking profile, synchronization blocking profile, syscall blockign profile, scheduler latency profile.
+
+
+```
+go tool trace trace.out
+```
+
+<div align="center"><img src="img/go_tool_trace_web.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+
 ### ➡ Get wallclock traces with `fgtrace`
 
 This tool can be more illustrative of Go traces than standard Go traces. — [@felixge](https://github.com/felixge) / https://github.com/felixge/fgtrace
@@ -1093,7 +1256,7 @@ func main() {
 
 
 
-### ➡ Get profiles of on-CPU and off-CPU with `fgprof`
+### ➡ Get profiles of on/off CPU with `fgprof`
 
 This tool can be more illustrative of Go profiles than standard Go profiling. — [@felixge](https://github.com/felixge) / https://github.com/felixge/fgprof
 
