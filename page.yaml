@@ -4,6 +4,7 @@ contents:
   title: Contents
 entry:
   title_prefix: ➡
+  back: ⏫
   requirements:
     title: Requirements
   example:
