@@ -8,16 +8,16 @@
 
  - Testing
    + [➡ Make treemap of code coverage](#-make-treemap-of-code-coverage)
-   + [➡ Pretty print coverage of Go code in terminal](#-pretty-print-coverage-of-go-code-in-terminal)
-   + [➡ Browse code coverage of Go code in terminal](#-browse-code-coverage-of-go-code-in-terminal)
-   + [➡ Get packages without tests](#-get-packages-without-tests)
    + [➡ Browse code coverage by file](#-browse-code-coverage-by-file)
+   + [➡ Browse code coverage of Go code in terminal](#-browse-code-coverage-of-go-code-in-terminal)
+   + [➡ Pretty print coverage of Go code in terminal](#-pretty-print-coverage-of-go-code-in-terminal)
    + [➡ Make histogram of Go files per package](#-make-histogram-of-go-files-per-package)
    + [➡ Run tests sequentially](#-run-tests-sequentially)
    + [➡ Run tests in parallel](#-run-tests-in-parallel)
    + [➡ Detect goroutine leaks](#-detect-goroutine-leaks)
    + [➡ Run tests with pretty output](#-run-tests-with-pretty-output)
    + [➡ Enrich `go test` output](#-enrich-go-test-output)
+   + [➡ Get packages without tests](#-get-packages-without-tests)
  - Dependencies
    + [➡ Get Go version of current module](#-get-go-version-of-current-module)
    + [➡ Get Go versions of upstream modules](#-get-go-versions-of-upstream-modules)
@@ -25,7 +25,7 @@
    + [➡ Get upstream modules without Go version](#-get-upstream-modules-without-go-version)
    + [➡ Get available module versions](#-get-available-module-versions)
    + [➡ Make graph of upstream modules](#-make-graph-of-upstream-modules)
-   + [➡ Make graph of upstream modules with gmchart](#-make-graph-of-upstream-modules-with-gmchart)
+   + [➡ Make graph of upstream modules with `gmchart`](#-make-graph-of-upstream-modules-with-gmchart)
    + [➡ Make graph of upstream packages](#-make-graph-of-upstream-packages)
    + [➡ Scrape details about upstream modules and make graph](#-scrape-details-about-upstream-modules-and-make-graph)
    + [➡ Scrape licenses of upstream dependencies](#-scrape-licenses-of-upstream-dependencies)
@@ -43,8 +43,8 @@
    + [➡ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
    + [➡ Run official static analyzers not included in `go vet`](#-run-official-static-analyzers-not-included-in-go-vet)
  - Code Generation
-   + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
    + [➡ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
+   + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
  - Refactoring
    + [➡ Replace symbol](#-replace-symbol)
  - Errors
@@ -109,26 +109,23 @@ Requirements
 go install github.com/nikolaydubina/go-cover-treemap@latest
 ```
 
-### [⏫](#contents)➡ Pretty print coverage of Go code in terminal
+### [⏫](#contents)➡ Browse code coverage by file
 
-It is similar to `go tool cover -html=cover.out` but not leaving the terminal. You can filter by functions, packages, or minimum coverage percent expressions. — [@nikandfor](https://github.com/nikandfor)
+This is very helpful tool from the official Go toolchain. Similar visualization is integrated into VSCode and Goland, but can be used separately.
 
 
 ```
-cover
+go test -coverprofile cover.out ./...
+go tool cover -html=cover.out
 ```
 
-<div align="center"><img src="img/cover.png" style="margin: 8px; max-height: 640px;"></div>
+<div align="center"><img src="./img/tool-cover-html.png" style="margin: 8px; max-height: 640px;"></div>
 
 
-Requirements
-```
-go install github.com/nikandfor/cover@latest
-```
 
 ### [⏫](#contents)➡ Browse code coverage of Go code in terminal
 
-This tool lets you interactively browse Go coverage similarly to HTML version provided by official Go toolchain, but within terminal. — [@orlangure](https://github.com/orlangure)
+Interactively browse Go code coverage similarly to HTML provided by official Go toolchain, but in terminal. — [@orlangure](https://github.com/orlangure)
 
 
 ```
@@ -146,43 +143,26 @@ Requirements
 go install github.com/orlangure/gocovsh@latest
 ```
 
-### [⏫](#contents)➡ Get packages without tests
+### [⏫](#contents)➡ Pretty print coverage of Go code in terminal
 
-If code coverage does not report packages without tests. This should be fast for CI. — [@nikolaydubina](https://github.com/nikolaydubina)
+It is similar to `go tool cover -html=cover.out` but in terminal. You can filter by functions, packages, minimum coverage, and more. — [@nikandfor](https://github.com/nikandfor)
 
 
 ```
-go list -json ./... | jq -rc 'select((.TestGoFiles | length)==0) | .ImportPath'
+cover
 ```
 
-Example
-```
-github.com/gin-gonic/gin/ginS
-github.com/gin-gonic/gin/internal/json
-```
+<div align="center"><img src="img/cover.png" style="margin: 8px; max-height: 640px;"></div>
+
 
 Requirements
 ```
-https://stedolan.github.io/jq/download/
+go install github.com/nikandfor/cover@latest
 ```
-
-### [⏫](#contents)➡ Browse code coverage by file
-
-This is very helpful tool from the official Go toolchain.
-
-
-```
-go test -coverprofile cover.out ./...
-go tool cover -html=cover.out
-```
-
-<div align="center"><img src="./img/tool-cover-html.png" style="margin: 8px; max-height: 640px;"></div>
-
-
 
 ### [⏫](#contents)➡ Make histogram of Go files per package
 
-Use this to see when package is too big or too small. Adjust histogram length to maximum value.
+Find when package is too big or too small. Adjust histogram length to maximum value.
 
 
 ```
@@ -205,7 +185,7 @@ https://stedolan.github.io/jq/download/
 
 ### [⏫](#contents)➡ Run tests sequentially
 
-This is in cases when you need to synchronize tests, for example in integration tests that share environment. [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
+Use when you need to synchronize tests, for example in integration tests that share environment. [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
 
 
 ```
@@ -265,7 +245,7 @@ go install github.com/gotestyourself/gotestsum@latest
 
 ### [⏫](#contents)➡ Enrich `go test` output
 
-This tool adds colors and enriches `go test` output. It can be used in pipeline and has lots of options. — [@kyoh86](https://github.com/kyoh86)
+Add colors and enriche `go test` output. It can be used in CI pipeline and has lots of options. — [@kyoh86](https://github.com/kyoh86)
 
 
 ```
@@ -280,11 +260,31 @@ Requirements
 go install github.com/kyoh86/richgo@latest
 ```
 
+### [⏫](#contents)➡ Get packages without tests
+
+If code coverage does not report packages without tests. For example for CI or quality control. — [@nikolaydubina](https://github.com/nikolaydubina)
+
+
+```
+go list -json ./... | jq -rc 'select((.TestGoFiles | length)==0) | .ImportPath'
+```
+
+Example
+```
+github.com/gin-gonic/gin/ginS
+github.com/gin-gonic/gin/internal/json
+```
+
+Requirements
+```
+https://stedolan.github.io/jq/download/
+```
+
 ## Dependencies
 
 ### [⏫](#contents)➡ Get Go version of current module
 
-Use this in CI to setup correct Go version automatically from `go.mod`.
+For example, setup correct Go version automatically from `go.mod` in CI.
 
 
 ```
@@ -319,7 +319,7 @@ https://stedolan.github.io/jq/download/
 
 ### [⏫](#contents)➡ Get directly dependent modules that can be upgraded
 
-Use this to keep your modules updated. Similar function is integrated in VSCode official Go plugin and GoLand.
+Keep your modules updated. Similar function is integrated in VSCode official Go plugin and GoLand.
 
 
 ```
@@ -336,7 +336,7 @@ github.com/json-iterator/go v1.1.9 [v1.1.11]
 
 ### [⏫](#contents)➡ Get upstream modules without Go version
 
-Use this to find outdated modules or imports that you need to upgrade.
+Find outdated modules or imports that you need to upgrade.
 
 
 ```
@@ -383,7 +383,7 @@ https://graphviz.org/download/
 go install golang.org/x/exp/cmd/modgraphviz@latest
 ```
 
-### [⏫](#contents)➡ Make graph of upstream modules with gmchart
+### [⏫](#contents)➡ Make graph of upstream modules with `gmchart`
 
 Render in browser Go module graphs. Built with D3.js, Javascript, HTTP server in Go. — [@PaulXu-cn](https://github.com/PaulXu-cn)
 
@@ -402,7 +402,7 @@ go install github.com/PaulXu-cn/go-mod-graph-chart/gmchart@latest
 
 ### [⏫](#contents)➡ Make graph of upstream packages
 
-Use to find unexpected dependencies or visualize project. Works best for small number of packages, for large projects use `grep` to narrow down subgraph. Without `-deps` only for current module. — [@nikolaydubina](https://github.com/nikolaydubina)
+Find unexpected dependencies or visualize project. Works best for small number of packages, for large projects use `grep` to narrow down subgraph. Without `-deps` only for current module. — [@nikolaydubina](https://github.com/nikolaydubina)
 
 
 ```
@@ -422,7 +422,7 @@ go install github.com/nikolaydubina/jsonl-graph@latest
 
 ### [⏫](#contents)➡ Scrape details about upstream modules and make graph
 
-Use to find low quality or unmaintained dependencies. — [@nikolaydubina](https://github.com/nikolaydubina)
+Find low quality or unmaintained dependencies. — [@nikolaydubina](https://github.com/nikolaydubina)
 
 
 ```
@@ -441,7 +441,7 @@ go install github.com/nikolaydubina/jsonl-graph@latest
 
 ### [⏫](#contents)➡ Scrape licenses of upstream dependencies
 
-This is tool from Google. Might be useful to collect all the licenses or checking if you can use the project for example in proprietary or commercial environment. — official Go team
+Collect all the licenses for checking if you can use the project, for example in proprietary or commercial environment. — Google
 
 
 ```
@@ -470,7 +470,7 @@ go install github.com/google/go-licenses@latest
 
 ### [⏫](#contents)➡ Explore upstream dependencies interactively
 
-This is a tool from one of creators of Go. This tool should help explore dependencies and assist large refactorings. — [Alan Donovan](https://github.com/adonovan), official Go team
+Useful in large refactorings, dependency breaking, physical layout changes. — [Alan Donovan](https://github.com/adonovan), official Go team
 
 <div align="center"><img src="https://github.com/adonovan/spaghetti/blob/main/screenshot.png" style="margin: 8px; max-height: 640px;"></div>
 
@@ -521,7 +521,7 @@ go install github.com/loov/goda@latest
 
 ### [⏫](#contents)➡ Make graph of function calls
 
-This is an official tool for generating call-graphs. Requires `main.go` in module. Supports Graphviz output format. Has many options for filtering and formatting. — official Go team
+Visualize complex or new project quickly or to study project. Requires `main.go` in module. Supports Graphviz output format. Has many options for filtering and formatting. — official Go team
 
 
 ```
@@ -542,7 +542,7 @@ go install golang.org/x/tools/cmd/callgraph@latest
 
 ### [⏫](#contents)➡ Make graph of function calls in package
 
-This can be helpful to quickly track which packages current package is calling and why. — [@ofabry](https://github.com/ofabry)
+Quickly track which packages current package is calling and why. — [@ofabry](https://github.com/ofabry)
 
 
 ```
@@ -559,7 +559,7 @@ go install github.com/ofabry/go-callvis
 
 ### [⏫](#contents)➡ Make PlantUML diagram
 
-This tool generates class diagram in PlantYML format with the information on structs, interfaces and their relationships. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com). — [@jfeliu007](https://github.com/jfeliu007)
+Generates class diagram in widely used format with the information on structs, interfaces and their relationships. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com). — [@jfeliu007](https://github.com/jfeliu007)
 
 
 ```
@@ -577,7 +577,7 @@ go install github.com/jfeliu007/goplantuml/cmd/goplantuml@latest
 
 ### [⏫](#contents)➡ Make PlantUML diagram
 
-This can be useful to automatically generate visualization of classes and interfaces for go pacakges. Recommend recursive option. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com). — [@bykof](https://github.com/bykof)
+Automatically generate visualization of classes and interfaces for go pacakges. Recommend recursive option. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com). — [@bykof](https://github.com/bykof)
 
 
 ```
@@ -594,7 +594,7 @@ go install github.com/bykof/go-plantuml@latest
 
 ### [⏫](#contents)➡ Make 3D chart of Go codebase
 
-GoCity is an implementation of the Code City metaphor for visualizing source code - folders are districts; files are buildings; structs are buildings on the top of their files. This project has research paper "[GoCity Code City for Go](https://homepages.dcc.ufmg.br/~mtov/pub/2019-saner-gocity.pdf)" at SANER'19. Also available at [go-city.github.io](https://go-city.github.io). — [@rodrigo-brito](https://github.com/rodrigo-brito)
+Fresh artistic perspective on Go codebase. `GoCity` is an implementation of the Code City metaphor for visualizing source code - folders are districts; files are buildings; structs are buildings on the top of their files. This project has research paper "[GoCity Code City for Go](https://homepages.dcc.ufmg.br/~mtov/pub/2019-saner-gocity.pdf)" at SANER'19. Also available at [go-city.github.io](https://go-city.github.io). — [@rodrigo-brito](https://github.com/rodrigo-brito)
 
 <div align="center"><img src="img/gocity.png" style="margin: 8px; max-height: 640px;"></div>
 
@@ -608,7 +608,7 @@ go install github.com/rodrigo-brito/gocity@latest
 
 ### [⏫](#contents)➡ Run default static analysis with `go vet`
 
-It is an official tool for static analysis of Go programs. It has 27+ static analyzers. — official Go team
+Official tool for static analysis of Go programs, with 27+ static analyzers. — official Go team
 
 
 ```
@@ -618,7 +618,7 @@ go vet ./...
 
 ### [⏫](#contents)➡ Run custom static analysis tool with `go vet`
 
-It can also be used to run custom analyzers. Third party analyzers are supported. Lots of official analyzers not included by default into `go vet`. Analyzer has to satisfy interface and command described here https://pkg.go.dev/golang.org/x/tools/go/analysis. Refer for https://pkg.go.dev/golang.org/x/tools/go/analysis/passes for full list of official Go analyzers. — official Go team
+Standard `go vet` can be used to run custom analyzers binaries. Third party analyzers are supported. Lots of official analyzers not included by default into `go vet`. Analyzer has to satisfy interface and command described here https://pkg.go.dev/golang.org/x/tools/go/analysis. Refer for https://pkg.go.dev/golang.org/x/tools/go/analysis/passes for full list of official Go analyzers. — official Go team
 
 
 ```
@@ -667,6 +667,16 @@ func main() {
 
 ## Code Generation
 
+### [⏫](#contents)➡ Run `go:generate` in parallel
+
+Official Go team [encourages](https://github.com/golang/go/issues/20520) to run sequentially. However, in certain cituations, such as lots of mocks, parallelization helps a lot, ableit, you should consider including your generated files in git. The solution bellow spawns multiple processes, each per pkg.
+
+
+```
+grep -rnw "go:generate" -E -l "${1:-*.go}" . | xargs -L1 dirname | sort -u | xargs -P 8 -I{} go generate {}
+```
+
+
 ### [⏫](#contents)➡ Generate `String` method for enum types
 
 This is an official tool for generating `String` for enums. It supports overrides via comments. — official Go team
@@ -696,16 +706,6 @@ Requirements
 go install golang.org/x/tools/cmd/stringer@latest
 ```
 
-### [⏫](#contents)➡ Run `go:generate` in parallel
-
-Official Go team [encourages](https://github.com/golang/go/issues/20520) to run sequentially. However, in certain cituations, such as lots of mocks, parallelization helps a lot, ableit, you should consider including your generated files in git. The solution bellow spawns multiple processes, each per pkg.
-
-
-```
-grep -rnw "go:generate" -E -l "${1:-*.go}" . | xargs -L1 dirname | sort -u | xargs -P 8 -I{} go generate {}
-```
-
-
 ## Refactoring
 
 ### [⏫](#contents)➡ Replace symbol
@@ -722,7 +722,7 @@ gofmt -w -r 'interface{} -> any' .
 
 ### [⏫](#contents)➡ Pretty print `panic` messages
 
-This tool will be useful for reading `panic` messages. Need to redirect STDERR to this tool with `panic` stack traces. The tool has HTML output and does lots of deduplication and enhancements. Refer to examples in original repo.
+Read `panic` messages easier. Need to redirect STDERR to this tool with `panic` stack traces. The tool has HTML output and does lots of deduplication and enhancements. Refer to examples in original repo.
 
 
 ```
@@ -775,7 +775,7 @@ go build -gcflags="-l" .
 
 ### [⏫](#contents)➡ Aggressive inlining
 
-This can improve performance. This includes mid-stack inlining.
+Usually you may not need it, but can improve performance. This includes mid-stack inlining.
 
 
 ```
@@ -813,7 +813,7 @@ func main() {
 
 ### [⏫](#contents)➡ Make treemap breakdown of Go executable binary
 
-This can be useful for studying Go compiler, large projects, projects with C/C++ and `cgo`, 3rd party dependencies, embedding. However, total size may not be something to worry about for your executable. — [@nikolaydubina](https://github.com/nikolaydubina)
+Useful for studying Go compiler, large projects, projects with C/C++ and `cgo`, 3rd party dependencies, embedding. However, total size may not be something to worry about for your executable. — [@nikolaydubina](https://github.com/nikolaydubina)
 
 
 ```
@@ -840,7 +840,7 @@ Use [godbolt.org](https://godbolt.org) to compile and see assembly of short Go c
 
 ### [⏫](#contents)➡ Get Go compiler SSA intermediary representation
 
-This tool allows to check what does Go compiler do. Might be useful if you trying to optimize some code or learn more about compiler. https://golang.design/gossa. — [@changkun](https://github.com/changkun) / https://github.com/golang-design/ssaplayground
+Check what does Go compiler do. Might be useful if you trying to optimize some code or learn more about compiler. https://golang.design/gossa. — [@changkun](https://github.com/changkun) / https://github.com/golang-design/ssaplayground
 
 <div align="center"><img src="https://github.com/golang-design/ssaplayground/blob/main/public/assets/screen.png" style="margin: 8px; max-height: 640px;"></div>
 
@@ -848,7 +848,7 @@ This tool allows to check what does Go compiler do. Might be useful if you tryin
 
 ### [⏫](#contents)➡ View Go assembly interactively
 
-This tool lets you interactively Go statement in assembly. — [@egonelbre](https://github.com/egonelbre) / https://github.com/loov/lensm
+Understand how Go is compiled better. — [@egonelbre](https://github.com/egonelbre) / https://github.com/loov/lensm
 
 <div align="center"><img src="https://github.com/loov/lensm/raw/main/screenshot.gif" style="margin: 8px; max-height: 640px;"></div>
 
@@ -886,7 +886,7 @@ func main() {
 
 ### [⏫](#contents)➡ Generate AST for code snippets
 
-You can access Go core AST mechanism to generate AST.
+Access Go core AST mechanism to generate AST.
 
 ```go
 package main
@@ -942,7 +942,7 @@ Example
 
 ### [⏫](#contents)➡ Run Go function in shell
 
-This is short and convenient for Go one-liners. This tool will print to stdout the return of a function call. — [@natefinch](https://github.com/natefinch)
+Run Go one-liners. This tool will print to stdout the return of a function call. — [@natefinch](https://github.com/natefinch)
 
 
 ```
@@ -975,7 +975,7 @@ func main() { http.ListenAndServe(":9000", http.FileServer(http.Dir("."))) }
 
 ### [⏫](#contents)➡ Monitor Go processes
 
-This tool from Google has lots of useful features like monitoring memory of Go processes, forcing GC, getting version of Go of process. — official Go team
+Monitoring memory of Go processes, forcing GC, getting version of Go of processes. — Google
 
 
 ```
@@ -997,7 +997,7 @@ go install github.com/google/gops@latest
 
 ### [⏫](#contents)➡ Create 3D visualization of concurrency traces
 
-This tool creates 3D visualization of coroutines execution. There is no advanced functions and it is hard to analyze production systems. However, it could be interesting for educational purposes. — [@divan](https://github.com/divan)
+Fresh artistic perspective on coroutines execution. There is no advanced functions and it is hard to analyze production systems. However, it could be interesting for educational purposes. — [@divan](https://github.com/divan)
 
 <div align="center"><img src="https://github.com/divan/gotrace/blob/master/images/demo.png" style="margin: 8px; max-height: 640px;"></div>
 
@@ -1158,7 +1158,7 @@ go install golang.org/x/perf/cmd/benchstat@latest
 
 ### [⏫](#contents)➡ Get summary of benchmarks with `benchstat`
 
-You can use this standard tool to summarise multiple runes per dimension. Names of bencharks should be the same. Generate benchmarks as per usual. You would get multiple tables per dimension. If no output, then pass `-split="XYZ"`. It is recommended to have alternative implementations in different packages, to keep benchmark names the same. — official Go team
+Compare multiple benchmarks. Names of bencharks should be the same. Generate benchmarks as per usual. You would get multiple tables per dimension. If no output, then pass `-split="XYZ"`. It is recommended to have alternative implementations in different packages, to keep benchmark names the same. — official Go team
 
 
 ```
@@ -1193,7 +1193,7 @@ go install golang.org/x/perf/cmd/benchstat@latest
 
 ### [⏫](#contents)➡ Continious benchmarking
 
-It is useful to see how benchmarks change in codebase over time. This is accomplished by running benchmarks for git commits, storing results, and visualizing difference. Running benchmarks can be in GitHub Actions or locally, storage can be in same repository `master` or dedicated branch, or standalone servers. It should be straighforward to setup this manually. Example of GitHub Action [spec](https://github.com/swaggest/rest/blob/master/.github/workflows/bench.yml) and [blog](https://dev.to/vearutop/continuous-benchmarking-with-go-and-github-actions-41ok) from [@vearutop](https://github.com/vearutop), and an example on how it produces a PR [comment](https://github.com/swaggest/rest/pull/88#issuecomment-1271540878).
+Track how benchmarks change in codebase over time. This is accomplished by running benchmarks for git commits, storing results, and visualizing difference. Running benchmarks can be in GitHub Actions or locally, storage can be in same repository `master` or dedicated branch, or standalone servers. It should be straighforward to setup this manually. Example of GitHub Action [spec](https://github.com/swaggest/rest/blob/master/.github/workflows/bench.yml) and [blog](https://dev.to/vearutop/continuous-benchmarking-with-go-and-github-actions-41ok) from [@vearutop](https://github.com/vearutop), and an example on how it produces a PR [comment](https://github.com/swaggest/rest/pull/88#issuecomment-1271540878).
 
 <div align="center"><img src="img/cont-bench-vearutop.png" style="margin: 8px; max-height: 640px;"></div>
 
@@ -1213,7 +1213,7 @@ go install go.bobheadxi.dev/gobenchdata@latest
 
 ### [⏫](#contents)➡ Continious benchmarking with `benchdiff`
 
-This tool automates comparing benchmarks with `benchstat` of two git references. It is available as GitHub Action [benchdiff](https://github.com/marketplace/actions/benchdiff) which runs `benchstat` of HEAD vs base branch. This is useful to see how benchmarks change with PRs in CI. — [@WillAbides](https://github.com/WillAbides)
+Automates comparing benchmarks with `benchstat` of two git references. It is available as GitHub Action [benchdiff](https://github.com/marketplace/actions/benchdiff) which runs `benchstat` of HEAD vs base branch. This is useful to see how benchmarks change with PRs in CI. — [@WillAbides](https://github.com/WillAbides)
 
 <div align="center"><img src="img/cont-bench-willabides.png" style="margin: 8px; max-height: 640px;"></div>
 
@@ -1225,7 +1225,7 @@ go install github.com/willabides/benchdiff/cmd/benchdiff
 
 ### [⏫](#contents)➡ Continious benchmarking with `cob`
 
-This tool runs benchmarks between `HEAD` and `HEAD^1`. It can be used to block CI piplines if benchmarks deteriorate. It reports output as text in CLI. This cane be useful in CI or in local development. — [@knqyf263](https://github.com/knqyf263)
+Automate comparing benchmarks with `benchstat` between `HEAD` and `HEAD^1`. It can be used to block CI piplines if benchmarks deteriorate. It reports output as text in CLI. This cane be useful in CI or in local development. — [@knqyf263](https://github.com/knqyf263)
 
 <div align="center"><img src="https://github.com/knqyf263/cob/raw/master/img/usage.png" style="margin: 8px; max-height: 640px;"></div>
 
@@ -1258,7 +1258,7 @@ curl -o trace.out http://localhost:6060/debug/pprof/trace?seconds=5
 
 ### [⏫](#contents)➡ Generate traces using `go test`
 
-This will produce a trace of execution of tests in pacakge.
+Produce a trace of execution of tests in pacakge.
 
 
 ```
