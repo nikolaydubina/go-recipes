@@ -76,11 +76,15 @@
    + [➡ Visualize profiles online](#-visualize-profiles-online)
    + [➡ Get delta between two benchmarks with `benchstat`](#-get-delta-between-two-benchmarks-with-benchstat)
    + [➡ Get summary of benchmarks with `benchstat`](#-get-summary-of-benchmarks-with-benchstat)
+   + [➡ Continious benchmarking](#-continious-benchmarking)
+   + [➡ Continious benchmarking with `gobenchdata`](#-continious-benchmarking-with-gobenchdata)
+   + [➡ Continious benchmarking with `benchdiff`](#-continious-benchmarking-with-benchdiff)
+   + [➡ Continious benchmarking with `cob`](#-continious-benchmarking-with-cob)
    + [➡ Generate live traces using `net/http/trace`](#-generate-live-traces-using-nethttptrace)
    + [➡ Generate traces using `go test`](#-generate-traces-using-go-test)
    + [➡ View traces with `go tool trace`](#-view-traces-with-go-tool-trace)
-   + [➡ Get wallclock traces with `fgtrace`](#-get-wallclock-traces-with-fgtrace)
-   + [➡ Get profiles of on/off CPU with `fgprof`](#-get-profiles-of-onoff-cpu-with-fgprof)
+   + [➡ Get wallclock traces](#-get-wallclock-traces)
+   + [➡ Get on/off CPU profiles](#-get-onoff-cpu-profiles)
  - Documentation
    + [➡ Make alternative documentation with golds](#-make-alternative-documentation-with-golds)
    + [➡ Read Go binary documentation in `man` format](#-read-go-binary-documentation-in-man-format)
@@ -1187,6 +1191,50 @@ Requirements
 go install golang.org/x/perf/cmd/benchstat@latest
 ```
 
+### ➡ Continious benchmarking
+
+It is useful to see how benchmarks change in codebase over time. This is accomplished by running benchmarks for git commits, storing results, and visualizing difference. Running benchmarks can be in GitHub Actions or locally, storage can be in same repository `master` or dedicated branch, or standalone servers. It should be straighforward to setup this manually. Example of GitHub Action [spec](https://github.com/swaggest/rest/blob/master/.github/workflows/bench.yml) and [blog](https://dev.to/vearutop/continuous-benchmarking-with-go-and-github-actions-41ok) from [@vearutop](https://github.com/vearutop), and an example on how it produces a PR [comment](https://github.com/swaggest/rest/pull/88#issuecomment-1271540878).
+
+<div align="center"><img src="img/cont-bench-vearutop.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+
+### ➡ Continious benchmarking with `gobenchdata`
+
+This tool uses `go test -bench` data in GitHub. It runs benchmarks, and uploads it as GitHub Pages for visualization. It is available as GitHub Action [gobenchdata](https://github.com/marketplace/actions/continuous-benchmarking-for-go). This is useful to see benchmark trends. — [@bobheadxi](https://github.com/bobheadxi) / https://github.com/bobheadxi/gobenchdata
+
+<div align="center"><img src="https://github.com/bobheadxi/gobenchdata/raw/main/.static/demo-chart.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install go.bobheadxi.dev/gobenchdata@latest
+```
+
+### ➡ Continious benchmarking with `benchdiff`
+
+This tool automates comparing benchmarks with `benchstat` of two git references. It is available as GitHub Action [benchdiff](https://github.com/marketplace/actions/benchdiff) which runs `benchstat` of HEAD vs base branch. This is useful to see how benchmarks change with PRs in CI. — [@WillAbides](https://github.com/WillAbides)
+
+<div align="center"><img src="img/cont-bench-willabides.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/willabides/benchdiff/cmd/benchdiff
+```
+
+### ➡ Continious benchmarking with `cob`
+
+This tool runs benchmarks between `HEAD` and `HEAD^1`. It can be used to block CI piplines if benchmarks deteriorate. It reports output as text in CLI. This cane be useful in CI or in local development. — [@knqyf263](https://github.com/knqyf263)
+
+<div align="center"><img src="https://github.com/knqyf263/cob/raw/master/img/usage.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/knqyf263/cob@latest
+```
+
 ### ➡ Generate live traces using `net/http/trace`
 
 This will add endpoints to your youserver. If you don't have server runing already in your process, you can start one. Then you can point `pprof` tool to this data. More details in documentaion [trace](https://pkg.go.dev/cmd/trace), [pprof](https://pkg.go.dev/net/http/pprof).
@@ -1231,7 +1279,7 @@ go tool trace trace.out
 
 
 
-### ➡ Get wallclock traces with `fgtrace`
+### ➡ Get wallclock traces
 
 This tool can be more illustrative of Go traces than standard Go traces. — [@felixge](https://github.com/felixge) / https://github.com/felixge/fgtrace
 
@@ -1256,7 +1304,7 @@ func main() {
 
 
 
-### ➡ Get profiles of on/off CPU with `fgprof`
+### ➡ Get on/off CPU profiles
 
 This tool can be more illustrative of Go profiles than standard Go profiling. — [@felixge](https://github.com/felixge) / https://github.com/felixge/fgprof
 
