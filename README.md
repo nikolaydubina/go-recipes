@@ -4,6 +4,8 @@
 > _Know some cool tool or one-liner? Have a feature request or an idea?_  
 > _Feel free to edit this page or create an Issue/Discussion!_  
 
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fnikolaydubina%2Fgo-recipes&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
 ## Contents
 
  - Testing
@@ -76,10 +78,10 @@
    + [➡ Visualize profiles online](#-visualize-profiles-online)
    + [➡ Get delta between two benchmarks with `benchstat`](#-get-delta-between-two-benchmarks-with-benchstat)
    + [➡ Get summary of benchmarks with `benchstat`](#-get-summary-of-benchmarks-with-benchstat)
-   + [➡ Continious benchmarking](#-continious-benchmarking)
-   + [➡ Continious benchmarking with `gobenchdata`](#-continious-benchmarking-with-gobenchdata)
-   + [➡ Continious benchmarking with `benchdiff`](#-continious-benchmarking-with-benchdiff)
-   + [➡ Continious benchmarking with `cob`](#-continious-benchmarking-with-cob)
+   + [➡ Continuous benchmarking](#-continuous-benchmarking)
+   + [➡ Continuous benchmarking with `gobenchdata`](#-continuous-benchmarking-with-gobenchdata)
+   + [➡ Continuous benchmarking with `benchdiff`](#-continuous-benchmarking-with-benchdiff)
+   + [➡ Continuous benchmarking with `cob`](#-continuous-benchmarking-with-cob)
    + [➡ Generate live traces using `net/http/trace`](#-generate-live-traces-using-nethttptrace)
    + [➡ Generate traces using `go test`](#-generate-traces-using-go-test)
    + [➡ View traces with `go tool trace`](#-view-traces-with-go-tool-trace)
@@ -245,7 +247,7 @@ go install github.com/gotestyourself/gotestsum@latest
 
 ### [⏫](#contents)➡ Enrich `go test` output
 
-Add colors and enriche `go test` output. It can be used in CI pipeline and has lots of options. — [@kyoh86](https://github.com/kyoh86)
+Add colors and enrich `go test` output. It can be used in CI pipeline and has lots of options. — [@kyoh86](https://github.com/kyoh86)
 
 
 ```
@@ -559,7 +561,7 @@ go install github.com/ofabry/go-callvis
 
 ### [⏫](#contents)➡ Make PlantUML diagram
 
-Generates class diagram in widely used format with the information on structs, interfaces and their relationships. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com). — [@jfeliu007](https://github.com/jfeliu007)
+Generates class diagram in widely used format with the information on structs, interfaces and their relationships. Render `.puml` files in for example [planttext.com](https://www.planttext.com). — [@jfeliu007](https://github.com/jfeliu007)
 
 
 ```
@@ -577,7 +579,7 @@ go install github.com/jfeliu007/goplantuml/cmd/goplantuml@latest
 
 ### [⏫](#contents)➡ Make PlantUML diagram
 
-Automatically generate visualization of classes and interfaces for go pacakges. Recommend recursive option. Render `.puml` files in for exmample [planttext.com](https://www.planttext.com). — [@bykof](https://github.com/bykof)
+Automatically generate visualization of classes and interfaces for go packages. Recommend recursive option. Render `.puml` files in for example [planttext.com](https://www.planttext.com). — [@bykof](https://github.com/bykof)
 
 
 ```
@@ -669,7 +671,7 @@ func main() {
 
 ### [⏫](#contents)➡ Run `go:generate` in parallel
 
-Official Go team [encourages](https://github.com/golang/go/issues/20520) to run sequentially. However, in certain cituations, such as lots of mocks, parallelization helps a lot, ableit, you should consider including your generated files in git. The solution bellow spawns multiple processes, each per pkg.
+Official Go team [encourages](https://github.com/golang/go/issues/20520) to run sequentially. However, in certain situations, such as lots of mocks, parallelization helps a lot, albeit, you should consider including your generated files in git. The solution bellow spawns multiple processes, each per pkg.
 
 
 ```
@@ -790,7 +792,7 @@ Disable `cgo` with `CGO_ENABLED=0` and enable with `CGO_ENABLED=1`. If you don't
 
 ### [⏫](#contents)➡ Include metadata in binary during compilation with `ldflags`
 
-You can pass metadata through compiler to your binary. This is useulf for including things like git commit, database schema version, integrity hashes. Variables can only be strings.
+You can pass metadata through compiler to your binary. This is useful for including things like git commit, database schema version, integrity hashes. Variables can only be strings.
 
 
 ```
@@ -1013,7 +1015,7 @@ more instructions in original repo
 
 ### [⏫](#contents)➡ Run benchmarks
 
-Start here. This is the standard tool for benchmarking. It can also do advanced features like mutex profiles. More flags are in Go [documentaion](https://pkg.go.dev/cmd/go#hdr-Testing_flags) and `go help testflag`.
+Start here. This is the standard tool for benchmarking. It can also do advanced features like mutex profiles. More flags are in Go [documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags) and `go help testflag`.
 
 
 ```
@@ -1039,7 +1041,7 @@ ok      github.com/nikolaydubina/fpmoney    62.744s
 
 ### [⏫](#contents)➡ Table-driven benchmarks
 
-Simlar to tests, Go supports table-driven benchmarks, which is very helpful for fine gradation of meta-parameters. More details in the Go [blog](https://go.dev/blog/subtests).
+Similar to tests, Go supports table-driven benchmarks, which is very helpful for fine gradation of meta-parameters. More details in the Go [blog](https://go.dev/blog/subtests).
 
 ```go
 func benchIteratorSelector(b *testing.B, n int) {
@@ -1123,7 +1125,7 @@ You can also visualize profiles with online tools are aloso available https://ww
 
 ### [⏫](#contents)➡ Get delta between two benchmarks with `benchstat`
 
-This is standard way to compare two benchmark outputs. Names of bencharks should be the same. Generate benchmarks as per usual. You would get multiple tables per dimension. If no output, then pass `-split="XYZ"`. If you do not see `delta`, then pass `-count=2` or more in benchmark generation. It is recommended to have alternative implementations in different packages, to keep benchmark names the same. — official Go team
+This is standard way to compare two benchmark outputs. Names of benchmarks should be the same. Generate benchmarks as per usual. You would get multiple tables per dimension. If no output, then pass `-split="XYZ"`. If you do not see `delta`, then pass `-count=2` or more in benchmark generation. It is recommended to have alternative implementations in different packages, to keep benchmark names the same. — official Go team
 
 
 ```
@@ -1158,7 +1160,7 @@ go install golang.org/x/perf/cmd/benchstat@latest
 
 ### [⏫](#contents)➡ Get summary of benchmarks with `benchstat`
 
-Compare multiple benchmarks. Names of bencharks should be the same. Generate benchmarks as per usual. You would get multiple tables per dimension. If no output, then pass `-split="XYZ"`. It is recommended to have alternative implementations in different packages, to keep benchmark names the same. — official Go team
+Compare multiple benchmarks. Names of benchmarks should be the same. Generate benchmarks as per usual. You would get multiple tables per dimension. If no output, then pass `-split="XYZ"`. It is recommended to have alternative implementations in different packages, to keep benchmark names the same. — official Go team
 
 
 ```
@@ -1191,15 +1193,15 @@ Requirements
 go install golang.org/x/perf/cmd/benchstat@latest
 ```
 
-### [⏫](#contents)➡ Continious benchmarking
+### [⏫](#contents)➡ Continuous benchmarking
 
-Track how benchmarks change in codebase over time. This is accomplished by running benchmarks for git commits, storing results, and visualizing difference. Running benchmarks can be in GitHub Actions or locally, storage can be in same repository `master` or dedicated branch, or standalone servers. It should be straighforward to setup this manually. Example of GitHub Action [spec](https://github.com/swaggest/rest/blob/master/.github/workflows/bench.yml) and [blog](https://dev.to/vearutop/continuous-benchmarking-with-go-and-github-actions-41ok) from [@vearutop](https://github.com/vearutop), and an example on how it produces a PR [comment](https://github.com/swaggest/rest/pull/88#issuecomment-1271540878).
+Track how benchmarks change in codebase over time. This is accomplished by running benchmarks for git commits, storing results, and visualizing difference. Running benchmarks can be in GitHub Actions or locally, storage can be in same repository `master` or dedicated branch, or standalone servers. It should be straightforward to setup this manually. Example of GitHub Action [spec](https://github.com/swaggest/rest/blob/master/.github/workflows/bench.yml) and [blog](https://dev.to/vearutop/continuous-benchmarking-with-go-and-github-actions-41ok) from [@vearutop](https://github.com/vearutop), and an example on how it produces a PR [comment](https://github.com/swaggest/rest/pull/88#issuecomment-1271540878).
 
 <div align="center"><img src="img/cont-bench-vearutop.png" style="margin: 8px; max-height: 640px;"></div>
 
 
 
-### [⏫](#contents)➡ Continious benchmarking with `gobenchdata`
+### [⏫](#contents)➡ Continuous benchmarking with `gobenchdata`
 
 This tool uses `go test -bench` data in GitHub. It runs benchmarks, and uploads it as GitHub Pages for visualization. It is available as GitHub Action [gobenchdata](https://github.com/marketplace/actions/continuous-benchmarking-for-go). This is useful to see benchmark trends. — [@bobheadxi](https://github.com/bobheadxi) / https://github.com/bobheadxi/gobenchdata
 
@@ -1211,7 +1213,7 @@ Requirements
 go install go.bobheadxi.dev/gobenchdata@latest
 ```
 
-### [⏫](#contents)➡ Continious benchmarking with `benchdiff`
+### [⏫](#contents)➡ Continuous benchmarking with `benchdiff`
 
 Automates comparing benchmarks with `benchstat` of two git references. It is available as GitHub Action [benchdiff](https://github.com/marketplace/actions/benchdiff) which runs `benchstat` of HEAD vs base branch. This is useful to see how benchmarks change with PRs in CI. — [@WillAbides](https://github.com/WillAbides)
 
@@ -1223,9 +1225,9 @@ Requirements
 go install github.com/willabides/benchdiff/cmd/benchdiff
 ```
 
-### [⏫](#contents)➡ Continious benchmarking with `cob`
+### [⏫](#contents)➡ Continuous benchmarking with `cob`
 
-Automate comparing benchmarks with `benchstat` between `HEAD` and `HEAD^1`. It can be used to block CI piplines if benchmarks deteriorate. It reports output as text in CLI. This cane be useful in CI or in local development. — [@knqyf263](https://github.com/knqyf263)
+Automate comparing benchmarks with `benchstat` between `HEAD` and `HEAD^1`. It can be used to block CI pipelines if benchmarks deteriorate. It reports output as text in CLI. This cane be useful in CI or in local development. — [@knqyf263](https://github.com/knqyf263)
 
 <div align="center"><img src="https://github.com/knqyf263/cob/raw/master/img/usage.png" style="margin: 8px; max-height: 640px;"></div>
 
@@ -1237,7 +1239,7 @@ go install github.com/knqyf263/cob@latest
 
 ### [⏫](#contents)➡ Generate live traces using `net/http/trace`
 
-This will add endpoints to your youserver. If you don't have server runing already in your process, you can start one. Then you can point `pprof` tool to this data. More details in documentaion [trace](https://pkg.go.dev/cmd/trace), [pprof](https://pkg.go.dev/net/http/pprof).
+This will add endpoints to your your server. If you don't have server running already in your process, you can start one. Then you can point `pprof` tool to this data. More details in documentation [trace](https://pkg.go.dev/cmd/trace), [pprof](https://pkg.go.dev/net/http/pprof).
 
 ```go
 import _ "net/http/pprof"
@@ -1268,7 +1270,7 @@ go test -trace trace.out .
 
 ### [⏫](#contents)➡ View traces with `go tool trace`
 
-You can view traces interactively in browser with standard Go tooling. This web tool also shows network blocking profile, synchronization blocking profile, syscall blockign profile, scheduler latency profile.
+You can view traces interactively in browser with standard Go tooling. This web tool also shows network blocking profile, synchronization blocking profile, syscall blocking profile, scheduler latency profile.
 
 
 ```
