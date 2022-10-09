@@ -230,7 +230,7 @@ func TestPoolContext(t *testing.T) {
 
 ### [⏫](#contents)➡ Run tests with pretty output
 
-This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary. — [@dnephin](https://github.com/dnephin)
+This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary. — [@dnephin](https://github.com/dnephin) / https://github.com/gotestyourself/gotestsum
 
 
 ```
@@ -242,7 +242,7 @@ gotestsum --format dots
 
 Requirements
 ```
-go install github.com/gotestyourself/gotestsum@latest
+go install gotest.tools/gotestsum@latest
 ```
 
 ### [⏫](#contents)➡ Enrich `go test` output
