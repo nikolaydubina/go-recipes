@@ -71,6 +71,7 @@ groups:
         commands:
           - gotestsum --format dots
         example_image_url: https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif
+        source: https://github.com/gotestyourself/gotestsum
         requirements:
           - go install gotest.tools/gotestsum@latest
       - title: Enrich `go test` output
