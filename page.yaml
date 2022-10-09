@@ -72,7 +72,7 @@ groups:
           - gotestsum --format dots
         example_image_url: https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif
         requirements:
-          - go install github.com/gotestyourself/gotestsum@latest
+          - go install gotest.tools/gotestsum@latest
       - title: Enrich `go test` output
         description: Add colors and enrich `go test` output. It can be used in CI pipeline and has lots of options.
         author: https://github.com/kyoh86
