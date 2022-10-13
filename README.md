@@ -44,6 +44,7 @@
    + [➡ Run default static analysis with `go vet`](#-run-default-static-analysis-with-go-vet)
    + [➡ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
    + [➡ Run official static analyzers not included in `go vet`](#-run-official-static-analyzers-not-included-in-go-vet)
+   + [➡ Detect usafe code with `go-safer`](#-detect-usafe-code-with-go-safer)
  - Code Generation
    + [➡ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
    + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
@@ -666,6 +667,32 @@ func main() {
 
 ```
 
+
+### [⏫](#contents)➡ Detect usafe code with `go-safer`
+
+Find incorrect uses of `reflect.SliceHeader`, `reflect.StringHeader`, and unsafe casts between structs with architecture-sized fields. Reseach paper ["Uncovering the Hidden Dangers Finding Unsafe Go Code in the Wild"](https://arxiv.org/abs/2010.11242) presented at 19th IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom 2020). — [@jlauinger](https://github.com/jlauinger)
+
+
+```
+go vet -vettool=$(which go-safer) ./...
+```
+
+Example
+```
+# github.com/jlauinger/go-safer/passes/sliceheader/testdata/src/bad/composite_literal
+composite_literal/composite_literal.go:10:9: reflect header composite literal found
+composite_literal/composite_literal.go:10:9: reflect header composite literal found
+# github.com/jlauinger/go-safer/passes/sliceheader/testdata/src/bad/header_in_struct
+header_in_struct/header_in_struct.go:16:2: assigning to reflect header object
+header_in_struct/header_in_struct.go:16:2: assigning to reflect header object
+header_in_struct/header_in_struct.go:17:2: assigning to reflect header object
+header_in_struct/header_in_struct.go:17:2: assigning to reflect header object
+```
+
+Requirements
+```
+go install github.com/jlauinger/go-safer@latest
+```
 
 ## Code Generation
 
