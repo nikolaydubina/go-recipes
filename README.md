@@ -44,7 +44,7 @@
    + [➡ Run default static analysis with `go vet`](#-run-default-static-analysis-with-go-vet)
    + [➡ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
    + [➡ Run official static analyzers not included in `go vet`](#-run-official-static-analyzers-not-included-in-go-vet)
-   + [➡ Detect `unsafe` usages with `go-safer`](#-detect-unsafe-usages-with-go-safer)
+   + [➡ Detect usafe code with `go-safer`](#-detect-usafe-code-with-go-safer)
  - Code Generation
    + [➡ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
    + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
@@ -668,7 +668,7 @@ func main() {
 ```
 
 
-### [⏫](#contents)➡ Detect `unsafe` usages with `go-safer`
+### [⏫](#contents)➡ Detect usafe code with `go-safer`
 
 Find incorrect uses of `reflect.SliceHeader`, `reflect.StringHeader`, and unsafe casts between structs with architecture-sized fields. Reseach paper ["Uncovering the Hidden Dangers Finding Unsafe Go Code in the Wild"](https://arxiv.org/abs/2010.11242) presented at 19th IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom 2020). — [@jlauinger](https://github.com/jlauinger)
 

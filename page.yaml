@@ -250,7 +250,7 @@ groups:
         description: There are many analyzers not included in `go vet`. These tools are experimental and may not work as expected (e.g. `usesgenerics` does not work). Refer to for full list https://pkg.go.dev/golang.org/x/tools/go/analysis.
         author: official Go team
         example_content_url: source/goanalysis/main.go
-      - title: Detect `unsafe` usages with `go-safer`
+      - title: Detect usafe code with `go-safer`
         description: Find incorrect uses of `reflect.SliceHeader`, `reflect.StringHeader`, and unsafe casts between structs with architecture-sized fields. Reseach paper ["Uncovering the Hidden Dangers Finding Unsafe Go Code in the Wild"](https://arxiv.org/abs/2010.11242) presented at 19th IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom 2020).
         author: https://github.com/jlauinger
         commands:
