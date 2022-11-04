@@ -258,6 +258,15 @@ groups:
         example_output_url: source/go-safer.txt
         requirements:
           - go install github.com/jlauinger/go-safer@latest
+      - title: Calculate cognitive complexity with `gocognit`
+        description: Congitive Complexity as defined in this tool can be more illustrative than Cyclometric Complexity. Research paper ["Cognitive Complexity - a new way of measuring understandability"](https://www.sonarsource.com/docs/CognitiveComplexity.pdf), 2021.
+        author: https://github.com/uudashr
+        commands:
+          - gocognit .
+        example_content_url: source/gocognit.txt
+        example_output_url: source/gocognit.out
+        requirements:
+          - go install github.com/uudashr/gocognit/cmd/gocognit@latest
   - title: Code Generation
     entries:
       - title: Run `go:generate` in parallel

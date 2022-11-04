@@ -1,0 +1,29 @@
+// Complexity Cyclomatic=4 Cognitive=7
+// Cognitive complexity give higher score compare to cyclomatic complexity.
+func SumOfPrimes(max int) int {         // +1
+    var total int
+    for i := 1; i < max; i++ {          // +1 (cognitive +1, nesting)
+        for j := 2; j < i; j++ {        // +1 (cognitive +2, nesting)
+            if i%j == 0 {               // +1
+                continue OUT
+            }
+        }
+        total += i
+    }
+    return total
+}
+
+// Complexity Cyclomatic=4 Cognitive=1
+// Cognitive complexity give lower score compare to cyclomatic complexity.
+func GetWords(number int) string {      // +1
+    switch number {
+        case 1:                         // +1 (cognitive 0)
+            return "one"
+        case 2:                         // +1 (cognitive 0)
+            return "a couple"
+        case 3:                         // +1 (cognitive 0)
+             return "a few"
+        default:
+             return "lots"
+    }
+}
