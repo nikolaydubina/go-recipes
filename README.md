@@ -45,7 +45,7 @@
    + [➡ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
    + [➡ Run official static analyzers not included in `go vet`](#-run-official-static-analyzers-not-included-in-go-vet)
    + [➡ Detect usafe code with `go-safer`](#-detect-usafe-code-with-go-safer)
-   + [➡ Calculates cognitive complexity of functions with `gocognit`](#-calculates-cognitive-complexity-of-functions-with-gocognit)
+   + [➡ Calculates Cognitive Complexity with `gocognit`](#-calculates-cognitive-complexity-with-gocognit)
  - Code Generation
    + [➡ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
    + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
@@ -695,7 +695,7 @@ Requirements
 go install github.com/jlauinger/go-safer@latest
 ```
 
-### [⏫](#contents)➡ Calculates cognitive complexity of functions with `gocognit`
+### [⏫](#contents)➡ Calculates Cognitive Complexity with `gocognit`
 
 Calculate cognitive complexity of functions. This can be more illustrative than cyclometric complexity. Research paper ["Cognitive Complexity - a new way of measuring understandability"](https://www.sonarsource.com/docs/CognitiveComplexity.pdf), 2021. — [@uudashr](https://github.com/uudashr)
 
