@@ -45,6 +45,7 @@
    + [➡ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
    + [➡ Run official static analyzers not included in `go vet`](#-run-official-static-analyzers-not-included-in-go-vet)
    + [➡ Detect usafe code with `go-safer`](#-detect-usafe-code-with-go-safer)
+   + [➡ Calculates cognitive complexity of functions with `gocognit`](#-calculates-cognitive-complexity-of-functions-with-gocognit)
  - Code Generation
    + [➡ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
    + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
@@ -692,6 +693,68 @@ header_in_struct/header_in_struct.go:17:2: assigning to reflect header object
 Requirements
 ```
 go install github.com/jlauinger/go-safer@latest
+```
+
+### [⏫](#contents)➡ Calculates cognitive complexity of functions with `gocognit`
+
+Calculate cognitive complexity of functions. This can be more illustrative than cyclometric complexity. Research paper ["Cognitive Complexity - a new way of measuring understandability"](https://www.sonarsource.com/docs/CognitiveComplexity.pdf), 2021. — [@uudashr](https://github.com/uudashr)
+
+
+```
+gocognit .
+```
+
+```
+// Complexity Cyclomatic=4 Cognitive=7
+// Cognitive complexity give higher score compare to cyclomatic complexity.
+func SumOfPrimes(max int) int {         // +1
+    var total int
+    for i := 1; i < max; i++ {          // +1 (cognitive +1, nesting)
+        for j := 2; j < i; j++ {        // +1 (cognitive +2, nesting)
+            if i%j == 0 {               // +1
+                continue OUT
+            }
+        }
+        total += i
+    }
+    return total
+}
+
+// Complexity Cyclomatic=4 Cognitive=1
+// Cognitive complexity give lower score compare to cyclomatic complexity.
+func GetWords(number int) string {      // +1
+    switch number {
+        case 1:                         // +1 (cognitive 0)
+            return "one"
+        case 2:                         // +1 (cognitive 0)
+            return "a couple"
+        case 3:                         // +1 (cognitive 0)
+             return "a few"
+        default:
+             return "lots"
+    }
+}
+```
+
+Example
+```
+$ go-binsize-treemap % gocognit .
+21 main (BasicSymtabConverter).SymtabFileToTreemap basic_converter.go:23:1
+12 symtab parseGoSymtabLine symtab/go_symtab_parser.go:37:1
+11 main main main.go:30:1
+8 symtab EqSymbolName symtab/symbol_name_parser.go:12:1
+7 symtab ParseSymbolName symtab/symbol_name_parser.go:32:1
+7 symtab Test_parseGoSymtabLine symtab/go_symtab_parser_private_test.go:5:1
+4 symtab Test_ParseSymbolName symtab/symbol_name_parser_private_test.go:5:1
+3 main updateNodeNamesWithByteSize main.go:99:1
+3 main unique basic_converter.go:119:1
+3 symtab (GoSymtabParser).ParseSymtab symtab/go_symtab_parser.go:14:1
+2 fmtbytecount ByteCountIEC fmtbytecount/format_bytecount.go:3:1
+```
+
+Requirements
+```
+go install github.com/uudashr/gocognit/cmd/gocognit@latest
 ```
 
 ## Code Generation
