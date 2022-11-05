@@ -1,6 +1,13 @@
-import _ "net/http/pprof"
+package main
+
+import (
+	"log"
+	"net/http"
+	"net/http/pprof"
+)
 
 func main() {
-	// if don't have http server yet, then start like
-	go func() { log.Println(http.ListenAndServe("localhost:6060", nil)) }()
+	mux := http.NewServeMux()
+	mux.HandleFunc("/custom_debug_path/profile", pprof.Profile)
+	log.Fatal(http.ListenAndServe(":7777", mux))
 }

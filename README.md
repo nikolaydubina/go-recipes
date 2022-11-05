@@ -71,6 +71,8 @@
    + [➡ Run simple fileserver](#-run-simple-fileserver)
    + [➡ Monitor Go processes](#-monitor-go-processes)
    + [➡ Create 3D visualization of concurrency traces](#-create-3d-visualization-of-concurrency-traces)
+ - Monitoring
+   + [➡ Auto-Instrument all functions with `otelinji`](#-auto-instrument-all-functions-with-otelinji)
  - Benchmarking
    + [➡ Run benchmarks](#-run-benchmarks)
    + [➡ Table-driven benchmarks](#-table-driven-benchmarks)
@@ -1101,6 +1103,27 @@ patch Go compiler, available via Docker
 more instructions in original repo
 ```
 
+## Monitoring
+
+### [⏫](#contents)➡ Auto-Instrument all functions with `otelinji`
+
+Automatically instrument all functions with Open Telemetry Spans by code generation. Inserts errors into Spans. Supports custom templates and can be used for Open Tracing or any custom insertions. — [@hedhyw](https://github.com/hedhyw)
+
+
+```
+otelinji -w -filename input_file.go
+otelinji -filename input_file.go > input_file.go
+find . -name "*.go" | grep -v "vendor/\|.git/\|_test.go" | xargs -n 1 -t otelinji -w -filename
+```
+
+<div align="center"><img src="https://github.com/hedhyw/otelinji/blob/main/assets/diff.png?raw=true" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/hedhyw/otelinji/cmd/otelinji@latest
+```
+
 ## Benchmarking
 
 ### [⏫](#contents)➡ Run benchmarks
@@ -1329,15 +1352,23 @@ go install github.com/knqyf263/cob@latest
 
 ### [⏫](#contents)➡ Generate live traces using `net/http/trace`
 
-This will add endpoints to your your server. If you don't have server running already in your process, you can start one. Then you can point `pprof` tool to this data. More details in documentation [trace](https://pkg.go.dev/cmd/trace), [pprof](https://pkg.go.dev/net/http/pprof).
+This will add endpoints to your your server. If you don't have server running already in your process, you can start one. Then you can point `pprof` tool to this data. For production, hide this endpoint in separate port and path. More details in documentation [trace](https://pkg.go.dev/cmd/trace), [net/http/pprof](https://pkg.go.dev/net/http/pprof).
 
 ```go
-import _ "net/http/pprof"
+package main
+
+import (
+	"log"
+	"net/http"
+	"net/http/pprof"
+)
 
 func main() {
-	// if don't have http server yet, then start like
-	go func() { log.Println(http.ListenAndServe("localhost:6060", nil)) }()
+	mux := http.NewServeMux()
+	mux.HandleFunc("/custom_debug_path/profile", pprof.Profile)
+	log.Fatal(http.ListenAndServe(":7777", mux))
 }
+
 ```
 
 Example
