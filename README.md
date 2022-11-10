@@ -72,6 +72,7 @@
    + [➡ Monitor Go processes](#-monitor-go-processes)
    + [➡ Create 3D visualization of concurrency traces](#-create-3d-visualization-of-concurrency-traces)
  - Monitoring
+   + [➡ Auto-Instrument all functions with `go-instrument`](#-auto-instrument-all-functions-with-go-instrument)
    + [➡ Auto-Instrument all functions with `otelinji`](#-auto-instrument-all-functions-with-otelinji)
  - Benchmarking
    + [➡ Run benchmarks](#-run-benchmarks)
@@ -1104,6 +1105,23 @@ more instructions in original repo
 ```
 
 ## Monitoring
+
+### [⏫](#contents)➡ Auto-Instrument all functions with `go-instrument`
+
+Automatically instrument all functions with Open Telemetry Spans by code generation. Inserts errors into Spans. — [@nikolaydubina](https://github.com/nikolaydubina)
+
+
+```
+find . -name "*.go" | xargs -I{} go-instrument -app my-service -w -filename {}
+```
+
+<div align="center"><img src="https://github.com/nikolaydubina/go-instrument/raw/master/docs/fib-error.png?raw=true" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/nikolaydubina/go-instrument@latest
+```
 
 ### [⏫](#contents)➡ Auto-Instrument all functions with `otelinji`
 
