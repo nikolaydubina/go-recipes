@@ -385,6 +385,14 @@ groups:
           - more instructions in original repo
   - title: Monitoring
     entries:
+      - title: Auto-Instrument all functions with `go-instrument`
+        description: Automatically instrument all functions with Open Telemetry Spans by code generation. Inserts errors into Spans. 
+        author: https://github.com/nikolaydubina
+        example_image_url: https://github.com/nikolaydubina/go-instrument/raw/master/docs/fib-error.png?raw=true 
+        commands:
+          - find . -name "*.go" | xargs -I{} go-instrument -app my-service -w -filename {} 
+        requirements:
+          - go install github.com/nikolaydubina/go-instrument@latest 
       - title: Auto-Instrument all functions with `otelinji`
         description: Automatically instrument all functions with Open Telemetry Spans by code generation. Inserts errors into Spans. Supports custom templates and can be used for Open Tracing or any custom insertions. 
         author: https://github.com/hedhyw
