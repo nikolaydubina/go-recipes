@@ -210,7 +210,7 @@ groups:
         example_image_url: https://raw.githubusercontent.com/ofabry/go-callvis/master/images/syncthing.png
         requirements:
           - go install github.com/ofabry/go-callvis
-      - title: Make PlantUML diagram
+      - title: Make PlantUML diagram via `goplantuml`
         description: Generates class diagram in widely used format with the information on structs, interfaces and their relationships. Render `.puml` files in for example [planttext.com](https://www.planttext.com).
         author: https://github.com/jfeliu007
         commands:
@@ -219,7 +219,7 @@ groups:
           - go get github.com/jfeliu007/goplantuml/parser
           - go install github.com/jfeliu007/goplantuml/cmd/goplantuml@latest
         example_image_url: https://raw.githubusercontent.com/jfeliu007/goplantuml/master/example/example.png
-      - title: Make PlantUML diagram
+      - title: Make PlantUML diagram via `go-plantuml`
         description: Automatically generate visualization of classes and interfaces for go packages. Recommend recursive option. Render `.puml` files in for example [planttext.com](https://www.planttext.com).
         author: https://github.com/bykof
         commands:
@@ -386,15 +386,15 @@ groups:
   - title: Monitoring
     entries:
       - title: Auto-Instrument all functions with `go-instrument`
-        description: Automatically instrument all functions with Open Telemetry Spans by code generation. Inserts errors into Spans. 
+        description: Automatically instrument all functions with Open Telemetry Spans by code generation. Inserts errors into Spans.
         author: https://github.com/nikolaydubina
-        example_image_url: https://github.com/nikolaydubina/go-instrument/raw/master/docs/fib-error.png?raw=true 
+        example_image_url: https://github.com/nikolaydubina/go-instrument/raw/master/docs/fib-error.png?raw=true
         commands:
-          - find . -name "*.go" | xargs -I{} go-instrument -app my-service -w -filename {} 
+          - find . -name "*.go" | xargs -I{} go-instrument -app my-service -w -filename {}
         requirements:
-          - go install github.com/nikolaydubina/go-instrument@latest 
+          - go install github.com/nikolaydubina/go-instrument@latest
       - title: Auto-Instrument all functions with `otelinji`
-        description: Automatically instrument all functions with Open Telemetry Spans by code generation. Inserts errors into Spans. Supports custom templates and can be used for Open Tracing or any custom insertions. 
+        description: Automatically instrument all functions with Open Telemetry Spans by code generation. Inserts errors into Spans. Supports custom templates and can be used for Open Tracing or any custom insertions.
         author: https://github.com/hedhyw
         example_image_url: https://github.com/hedhyw/otelinji/blob/main/assets/diff.png?raw=true
         commands:
@@ -473,7 +473,7 @@ groups:
         example_image_url: https://github.com/knqyf263/cob/raw/master/img/usage.png
         author: https://github.com/knqyf263
         requirements:
-          - go install github.com/knqyf263/cob@latest 
+          - go install github.com/knqyf263/cob@latest
       - title: Generate live traces using `net/http/trace`
         description: This will add endpoints to your your server. If you don't have server running already in your process, you can start one. Then you can point `pprof` tool to this data. For production, hide this endpoint in separate port and path. More details in documentation [trace](https://pkg.go.dev/cmd/trace), [net/http/pprof](https://pkg.go.dev/net/http/pprof).
         example_content_url: source/net_http_pprof.go
@@ -491,7 +491,7 @@ groups:
         description: This tool can be more illustrative of Go traces than standard Go traces.
         author: https://github.com/felixge
         example_output_url: source/fgtrace.go
-        example_image_url: https://github.com/felixge/fgtrace/raw/main/assets/fgtrace-example.png 
+        example_image_url: https://github.com/felixge/fgtrace/raw/main/assets/fgtrace-example.png
         source: https://github.com/felixge/fgtrace
       - title: Get on/off CPU profiles
         description: This tool can be more illustrative of Go profiles than standard Go profiling.
