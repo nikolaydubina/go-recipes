@@ -1,8 +1,8 @@
 <h1 align="center">Go Recipes 🦩 </h1>
 <p align="center">Handy well-known and <i>lesser</i>-known tools for Go projects</p>
 
-> _Know some cool tool or one-liner? Have a feature request or an idea?_  
-> _Feel free to edit this page or create an Issue/Discussion!_  
+> _Know some cool tool or one-liner? Have a feature request or an idea?_
+> _Feel free to edit this page or create an Issue/Discussion!_
 
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fnikolaydubina%2Fgo-recipes&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 [![go-recipes](https://raw.githubusercontent.com/nikolaydubina/go-recipes/main/badge.svg?raw=true)](https://github.com/nikolaydubina/go-recipes)
@@ -38,8 +38,8 @@
  - Code Visualization
    + [➡ Make graph of function calls](#-make-graph-of-function-calls)
    + [➡ Make graph of function calls in package](#-make-graph-of-function-calls-in-package)
-   + [➡ Make PlantUML diagram](#-make-plantuml-diagram)
-   + [➡ Make PlantUML diagram](#-make-plantuml-diagram)
+   + [➡ Make PlantUML diagram via `goplantuml`](#-make-plantuml-diagram-via-goplantuml)
+   + [➡ Make PlantUML diagram via `go-plantuml`](#-make-plantuml-diagram-via-go-plantuml)
    + [➡ Make 3D chart of Go codebase](#-make-3d-chart-of-go-codebase)
  - Static Analysis
    + [➡ Run default static analysis with `go vet`](#-run-default-static-analysis-with-go-vet)
@@ -565,7 +565,7 @@ Requirements
 go install github.com/ofabry/go-callvis
 ```
 
-### [⏫](#contents)➡ Make PlantUML diagram
+### [⏫](#contents)➡ Make PlantUML diagram via `goplantuml`
 
 Generates class diagram in widely used format with the information on structs, interfaces and their relationships. Render `.puml` files in for example [planttext.com](https://www.planttext.com). — [@jfeliu007](https://github.com/jfeliu007)
 
@@ -583,7 +583,7 @@ go get github.com/jfeliu007/goplantuml/parser
 go install github.com/jfeliu007/goplantuml/cmd/goplantuml@latest
 ```
 
-### [⏫](#contents)➡ Make PlantUML diagram
+### [⏫](#contents)➡ Make PlantUML diagram via `go-plantuml`
 
 Automatically generate visualization of classes and interfaces for go packages. Recommend recursive option. Render `.puml` files in for example [planttext.com](https://www.planttext.com). — [@bykof](https://github.com/bykof)
 
