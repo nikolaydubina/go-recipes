@@ -45,6 +45,7 @@
    + [➡ Run default static analysis with `go vet`](#-run-default-static-analysis-with-go-vet)
    + [➡ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
    + [➡ Run official static analyzers not included in `go vet`](#-run-official-static-analyzers-not-included-in-go-vet)
+   + [➡ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
    + [➡ Detect non-exhaustive switch and map with `exhaustive`](#-detect-non-exhaustive-switch-and-map-with-exhaustive)
    + [➡ Detect usafe code with `go-safer`](#-detect-usafe-code-with-go-safer)
    + [➡ Calculate cognitive complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
@@ -674,9 +675,28 @@ func main() {
 ```
 
 
+### [⏫](#contents)➡ Rely on compiler for stricter Enums
+
+For compile time blocking of: accidental arithmetics; implicit cast of untyped constants; all operators except `==` and `!=`; — simply wrap into a struct in separate package and do not export field.
+
+```go
+package color
+
+type Color struct{ c uint }
+
+var (
+	Undefined = Color{}
+	Red       = Color{1}
+	Green     = Color{2}
+	Blue      = Color{3}
+)
+
+```
+
+
 ### [⏫](#contents)➡ Detect non-exhaustive switch and map with `exhaustive`
 
-This `go vet` compatible analyzer checks for exhaustive switch statemnts and map literals. It works for enums with underyling integer, float, or string types (struct is not supported). — [@nishanths](https://github.com/nishanths)
+This `go vet` compatible analyzer checks for exhaustive switch statemnts and map literals. It works for enums with underyling integer, float, or string types (struct based enums are not supported). — [@nishanths](https://github.com/nishanths)
 
 
 ```
