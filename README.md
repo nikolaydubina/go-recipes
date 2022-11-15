@@ -45,6 +45,7 @@
    + [➡ Run default static analysis with `go vet`](#-run-default-static-analysis-with-go-vet)
    + [➡ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
    + [➡ Run official static analyzers not included in `go vet`](#-run-official-static-analyzers-not-included-in-go-vet)
+   + [➡ Detect non-exhaustive switch and map with `exhaustive`](#-detect-non-exhaustive-switch-and-map-with-exhaustive)
    + [➡ Detect usafe code with `go-safer`](#-detect-usafe-code-with-go-safer)
    + [➡ Calculate cognitive complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
  - Code Generation
@@ -673,13 +674,68 @@ func main() {
 ```
 
 
+### [⏫](#contents)➡ Detect non-exhaustive switch and map with `exhaustive`
+
+This `go vet` compatible analyzer checks for exhaustive switch statemnts and map literals. It works for enums with underyling integer, float, or string types (struct is not supported). — [@nishanths](https://github.com/nishanths)
+
+
+```
+exhaustive ./...
+```
+
+```
+package token
+
+type Token int
+
+const (
+	Add Token = iota
+	Subtract
+	Multiply
+	Quotient
+	Remainder
+)
+
+package calc
+
+import "token"
+
+func f(t token.Token) {
+	switch t {
+	case token.Add:
+	case token.Subtract:
+	case token.Multiply:
+	default:
+	}
+}
+
+func g(t token.Token) string {
+	return map[token.Token]string{
+		token.Add:      "add",
+		token.Subtract: "subtract",
+		token.Multiply: "multiply",
+	}[t]
+}
+```
+
+Example
+```
+calc.go:6:2: missing cases in switch of type token.Token: Quotient, Remainder
+calc.go:15:9: missing map keys of type token.Token: Quotient, Remainder
+```
+
+Requirements
+```
+go install github.com/nishanths/exhaustive/cmd/exhaustive@latest
+```
+
 ### [⏫](#contents)➡ Detect usafe code with `go-safer`
 
 Find incorrect uses of `reflect.SliceHeader`, `reflect.StringHeader`, and unsafe casts between structs with architecture-sized fields. Reseach paper ["Uncovering the Hidden Dangers Finding Unsafe Go Code in the Wild"](https://arxiv.org/abs/2010.11242) presented at 19th IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom 2020). — [@jlauinger](https://github.com/jlauinger)
 
 
 ```
-go vet -vettool=$(which go-safer) ./...
+go-safer ./...
 ```
 
 Example
