@@ -251,10 +251,10 @@ groups:
         author: official Go team
         example_content_url: source/goanalysis/main.go
       - title: Detect non-exhaustive switch and map with `exhaustive`
-        description: This `go vet` compatible analyszer checks for exhastive switch statemnts and map literals. It works for enums with underyling integer, float, or string types (struct is not supported).
+        description: This `go vet` compatible analyzer checks for exhaustive switch statemnts and map literals. It works for enums with underyling integer, float, or string types (struct is not supported).
         author: https://github.com/nishanths 
         commands:
-         - exhaustive ./... 
+         - exhaustive ./...
         example_content_url: source/exhaustive_content.md
         example_output_url: source/exhaustive_output.md
         requirements:
@@ -263,7 +263,7 @@ groups:
         description: Find incorrect uses of `reflect.SliceHeader`, `reflect.StringHeader`, and unsafe casts between structs with architecture-sized fields. Reseach paper ["Uncovering the Hidden Dangers Finding Unsafe Go Code in the Wild"](https://arxiv.org/abs/2010.11242) presented at 19th IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom 2020).
         author: https://github.com/jlauinger
         commands:
-          - go vet -vettool=$(which go-safer) ./...
+          - go-safer ./...
         example_output_url: source/go-safer.txt
         requirements:
           - go install github.com/jlauinger/go-safer@latest

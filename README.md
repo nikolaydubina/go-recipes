@@ -676,7 +676,7 @@ func main() {
 
 ### [⏫](#contents)➡ Detect non-exhaustive switch and map with `exhaustive`
 
-This `go vet` compatible analyszer checks for exhastive switch statemnts and map literals. It works for enums with underyling integer, float, or string types (struct is not supported). — [@nishanths](https://github.com/nishanths)
+This `go vet` compatible analyzer checks for exhaustive switch statemnts and map literals. It works for enums with underyling integer, float, or string types (struct is not supported). — [@nishanths](https://github.com/nishanths)
 
 
 ```
@@ -735,7 +735,7 @@ Find incorrect uses of `reflect.SliceHeader`, `reflect.StringHeader`, and unsafe
 
 
 ```
-go vet -vettool=$(which go-safer) ./...
+go-safer ./...
 ```
 
 Example
