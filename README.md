@@ -45,7 +45,7 @@
    + [➡ Run default static analysis with `go vet`](#-run-default-static-analysis-with-go-vet)
    + [➡ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
    + [➡ Run official static analyzers not included in `go vet`](#-run-official-static-analyzers-not-included-in-go-vet)
-   + [➡ Detect non exhaustive switch and map with `exhaustive`](#-detect-non-exhaustive-switch-and-map-with-exhaustive)
+   + [➡ Detect non-exhaustive switch and map with `exhaustive`](#-detect-non-exhaustive-switch-and-map-with-exhaustive)
    + [➡ Detect usafe code with `go-safer`](#-detect-usafe-code-with-go-safer)
    + [➡ Calculate cognitive complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
  - Code Generation
@@ -674,7 +674,7 @@ func main() {
 ```
 
 
-### [⏫](#contents)➡ Detect non exhaustive switch and map with `exhaustive`
+### [⏫](#contents)➡ Detect non-exhaustive switch and map with `exhaustive`
 
 This `go vet` compatible analyszer checks for exhastive switch statemnts and map literals. It works for enums with underyling integer, float, or string types (struct is not supported). — [@nishanths](https://github.com/nishanths)
 
