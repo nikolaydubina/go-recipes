@@ -250,8 +250,11 @@ groups:
         description: There are many analyzers not included in `go vet`. These tools are experimental and may not work as expected (e.g. `usesgenerics` does not work). Refer to for full list https://pkg.go.dev/golang.org/x/tools/go/analysis.
         author: official Go team
         example_content_url: source/goanalysis/main.go
+      - title: Rely on compiler for stricter Enums
+        description: "For compile time blocking of: accidental arithmetics; implicit cast of untyped constants; all operators except `==` and `!=`; — simply wrap into a struct in separate package and do not export field."
+        example_content_url: source/enum-example.go
       - title: Detect non-exhaustive switch and map with `exhaustive`
-        description: This `go vet` compatible analyzer checks for exhaustive switch statemnts and map literals. It works for enums with underyling integer, float, or string types (struct is not supported).
+        description: This `go vet` compatible analyzer checks for exhaustive switch statemnts and map literals. It works for enums with underyling integer, float, or string types (struct based enums are not supported).
         author: https://github.com/nishanths 
         commands:
          - exhaustive ./...
