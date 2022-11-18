@@ -98,6 +98,9 @@
  - Documentation
    + [➡ Make alternative documentation with golds](#-make-alternative-documentation-with-golds)
    + [➡ Read Go binary documentation in `man` format](#-read-go-binary-documentation-in-man-format)
+ - Style Guide
+   + [➡ Google](#-google)
+   + [➡ Uber](#-uber)
 
 ## Testing
 
@@ -1586,7 +1589,19 @@ goman <mypackage>
 
 Requirements
 ```
-go install github.com/appliedgocode/goman@latest
+go install github.com/appliedgocode/goman@lates
 ```
+
+## Style Guide
+
+### [⏫](#contents)➡ Google
+
+https://google.github.io/styleguide/go.
+
+
+### [⏫](#contents)➡ Uber
+
+https://github.com/uber-go/guide.
+
 
 
