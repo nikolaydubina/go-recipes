@@ -1596,7 +1596,7 @@ go install github.com/appliedgocode/goman@lates
 
 ### [⏫](#contents)➡ Google
 
-https://google.github.io/styleguide/go/index.
+https://google.github.io/styleguide/go.
 
 
 ### [⏫](#contents)➡ Uber

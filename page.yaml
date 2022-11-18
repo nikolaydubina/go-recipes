@@ -533,6 +533,6 @@ groups:
   - title: Style Guide
     entries:
       - title: Google
-        description: https://google.github.io/styleguide/go/index.
+        description: https://google.github.io/styleguide/go.
       - title: Uber
         description: https://github.com/uber-go/guide.
