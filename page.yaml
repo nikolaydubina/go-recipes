@@ -529,4 +529,10 @@ groups:
           - goman <mypackage>
         author: https://github.com/christophberger
         requirements:
-          - go install github.com/appliedgocode/goman@latest
+          - go install github.com/appliedgocode/goman@lates
+  - title: Style Guide
+    entries:
+      - title: Google
+        description: https://google.github.io/styleguide/go/index.
+      - title: Uber
+        description: https://github.com/uber-go/guide.
