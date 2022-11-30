@@ -848,7 +848,7 @@ This go vet compatible tool analyses AST and git and collects details on how far
 
 
 ```
-go-commentage ./...
+go-commentage -min-days-behind 360 ./...
 ```
 
 Example
@@ -858,11 +858,6 @@ kubernetes/pkg/util/ipset/ipset.go:296:1: "createSet": doc_last_updated_behind_d
 kubernetes/pkg/util/ipset/ipset.go:320:1: "AddEntry": doc_last_updated_behind_days(1578.10)
 kubernetes/pkg/util/ipset/ipset.go:332:1: "DelEntry": doc_last_updated_behind_days(1578.10)
 kubernetes/pkg/util/ipset/ipset.go:340:1: "TestEntry": doc_last_updated_behind_days(450.07)
-kubernetes/pkg/util/ipset/ipset.go:356:1: "FlushSet": doc_last_updated_behind_days(0.00)
-kubernetes/pkg/util/ipset/ipset.go:364:1: "DestroySet": doc_last_updated_behind_days(73.85)
-kubernetes/pkg/util/ipset/ipset.go:372:1: "DestroyAllSets": doc_last_updated_behind_days(0.00)
-kubernetes/pkg/util/ipset/ipset.go:380:1: "ListSets": doc_last_updated_behind_days(0.00)
-kubernetes/pkg/util/ipset/ipset.go:389:1: "ListEntries": doc_last_updated_behind_days(0.00)
 ```
 
 Requirements

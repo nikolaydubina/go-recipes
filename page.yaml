@@ -283,7 +283,7 @@ groups:
         description: This go vet compatible tool analyses AST and git and collects details on how far comments drift from code they describe.
         author: https://github.com/nikolaydubina
         commands:
-          - go-commentage ./...
+          - go-commentage -min-days-behind 360 ./...
         example_output_url: source/go-commentage.out
         requirements:
           - # get latest version of git
