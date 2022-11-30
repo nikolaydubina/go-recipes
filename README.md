@@ -50,6 +50,7 @@
    + [➡ Detect usafe code with `go-safer`](#-detect-usafe-code-with-go-safer)
    + [➡ Calculate cognitive complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
    + [➡ Calculate age of comments](#-calculate-age-of-comments)
+   + [➡ Detect mixing pointer and value method receivers with `smrcptr`](#-detect-mixing-pointer-and-value-method-receivers-with-smrcptr)
  - Code Generation
    + [➡ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
    + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
@@ -867,6 +868,36 @@ kubernetes/pkg/util/ipset/ipset.go:389:1: "ListEntries": doc_last_updated_behind
 Requirements
 ```
 go install github.com/nikolaydubina/go-commentage@latest
+```
+
+### [⏫](#contents)➡ Detect mixing pointer and value method receivers with `smrcptr`
+
+This `go vet`` compatible linter detects mixing pointer and value method receivers for the same type. — [@nikolaydubina](https://github.com/nikolaydubina)
+
+
+```
+smrcptr ./...
+```
+
+```go
+type Pancake struct{}
+
+func NewPancake() Pancake { return Pancake{} }
+
+func (s *Pancake) Fry() {}
+
+func (s Pancake) Bake() {}
+```
+
+Example
+```
+smrcptr/internal/bakery/pancake.go:7:1: Pancake.Fry uses pointer
+smrcptr/internal/bakery/pancake.go:9:1: Pancake.Bake uses value
+```
+
+Requirements
+```
+go install github.com/nikolaydubina/smrcptr@latest
 ```
 
 ## Code Generation
