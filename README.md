@@ -872,7 +872,7 @@ go install github.com/nikolaydubina/go-commentage@latest
 
 ### [⏫](#contents)➡ Detect mixing pointer and value method receivers with `smrcptr`
 
-This `go vet`` compatible linter detects mixing pointer and value method receivers for the same type. — [@nikolaydubina](https://github.com/nikolaydubina)
+This `go vet` compatible linter detects mixing pointer and value method receivers for the same type. — [@nikolaydubina](https://github.com/nikolaydubina)
 
 
 ```
