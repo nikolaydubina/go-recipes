@@ -283,11 +283,20 @@ groups:
         description: This go vet compatible tool analyses AST and git and collects details on how far comments drift from code they describe.
         author: https://github.com/nikolaydubina
         commands:
-          - go-commentage ./...
+          - go-commentage -min-days-behind 360 ./...
         example_output_url: source/go-commentage.out
         requirements:
           - # get latest version of git
           - go install github.com/nikolaydubina/go-commentage@latest
+      - title: Detect mixing pointer and value method receivers with `smrcptr` 
+        description: This `go vet` compatible linter detects mixing pointer and value method receivers for the same type.
+        author: https://github.com/nikolaydubina
+        commands:
+          - smrcptr ./...
+        example_content_url: source/smrcptr.go
+        example_output_url: source/smrcptr.out
+        requirements:
+          - go install github.com/nikolaydubina/smrcptr@latest
   - title: Code Generation
     entries:
       - title: Run `go:generate` in parallel
