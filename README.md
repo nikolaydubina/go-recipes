@@ -51,6 +51,7 @@
    + [➡ Calculate cognitive complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
    + [➡ Calculate age of comments](#-calculate-age-of-comments)
    + [➡ Detect mixing pointer and value method receivers with `smrcptr`](#-detect-mixing-pointer-and-value-method-receivers-with-smrcptr)
+   + [➡ Check vertical function ordering with `vertfn`](#-check-vertical-function-ordering-with-vertfn)
  - Code Generation
    + [➡ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
    + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
@@ -893,6 +894,23 @@ smrcptr/internal/bakery/pancake.go:9:1: Pancake.Bake uses value
 Requirements
 ```
 go install github.com/nikolaydubina/smrcptr@latest
+```
+
+### [⏫](#contents)➡ Check vertical function ordering with `vertfn`
+
+This `go vet` compatible linter reports when functions are declared before they are used, which is based on recommendation from 'Clean Code' by Robert.C.Martin. — [@nikolaydubina](https://github.com/nikolaydubina)
+
+
+```
+vertfn --verbose ./...
+```
+
+<div align="center"><img src="https://github.com/nikolaydubina/vertfn/blob/master/doc/code-dep-viz.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/nikolaydubina/vertfn@latest
 ```
 
 ## Code Generation

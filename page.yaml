@@ -297,6 +297,14 @@ groups:
         example_output_url: source/smrcptr.out
         requirements:
           - go install github.com/nikolaydubina/smrcptr@latest
+      - title: Check vertical function ordering with `vertfn` 
+        description: This `go vet` compatible linter reports when functions are declared before they are used, which is based on recommendation from 'Clean Code' by Robert.C.Martin.
+        author: https://github.com/nikolaydubina
+        commands:
+          - vertfn --verbose ./...
+        example_image_url: https://github.com/nikolaydubina/vertfn/blob/master/doc/code-dep-viz.png
+        requirements:
+          - go install github.com/nikolaydubina/vertfn@latest
   - title: Code Generation
     entries:
       - title: Run `go:generate` in parallel
