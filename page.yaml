@@ -456,14 +456,14 @@ groups:
         description: This is useful for identifying most time or memory consuming parts. Recommended to run for single benchmark at a time and with `-count` or `-benchtime` for better accuracy.
         commands:
           - go test -bench=<my-benchmark-name> -cpuprofile cpu.out -memprofile mem.out ./...
-      - title: Visualize callgraph of profiles wiht `pprof`
+      - title: Visualize callgraph of profiles with `pprof`
         description: Once you generate profiles, visualize them with `pprof`. Both memory and CPU profiles are supported. Many options are available. Refer to the link you get in SVG to how to interpret this graph. More official documentation [blog](https://go.dev/blog/pprof), [pkg-doc](https://pkg.go.dev/net/http/pprof).
         author: official Go team
         commands:
           - go tool pprof -svg cpu.out > cpu.svg
           - go tool pprof -svg mem.out > mem.svg
         example_image_url: img/pprof_callgraph_cpu.png
-      - title: Visualize flamegraphs of profiles wiht `pprof`
+      - title: Visualize flamegraphs of profiles with `pprof`
         description: Latest versions of `pprof` can also render [Flamegraphs](https://www.brendangregg.com/flamegraphs.html) for profiles. Make sure you set `-http` to start webserver. Then it is available in "View > Graph" in at http://0.0.0.0:80.
         author: Google
         commands:
