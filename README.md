@@ -84,8 +84,8 @@
    + [➡ Run benchmarks](#-run-benchmarks)
    + [➡ Table-driven benchmarks](#-table-driven-benchmarks)
    + [➡ Generate benchmak CPU and Memory profiles](#-generate-benchmak-cpu-and-memory-profiles)
-   + [➡ Visualize callgraph of profiles wiht `pprof`](#-visualize-callgraph-of-profiles-wiht-pprof)
-   + [➡ Visualize flamegraphs of profiles wiht `pprof`](#-visualize-flamegraphs-of-profiles-wiht-pprof)
+   + [➡ Visualize callgraph of profiles with `pprof`](#-visualize-callgraph-of-profiles-with-pprof)
+   + [➡ Visualize flamegraphs of profiles with `pprof`](#-visualize-flamegraphs-of-profiles-with-pprof)
    + [➡ Visualize profiles online](#-visualize-profiles-online)
    + [➡ Get delta between two benchmarks with `benchstat`](#-get-delta-between-two-benchmarks-with-benchstat)
    + [➡ Get summary of benchmarks with `benchstat`](#-get-summary-of-benchmarks-with-benchstat)
@@ -1368,7 +1368,7 @@ go test -bench=<my-benchmark-name> -cpuprofile cpu.out -memprofile mem.out ./...
 ```
 
 
-### [⏫](#contents)➡ Visualize callgraph of profiles wiht `pprof`
+### [⏫](#contents)➡ Visualize callgraph of profiles with `pprof`
 
 Once you generate profiles, visualize them with `pprof`. Both memory and CPU profiles are supported. Many options are available. Refer to the link you get in SVG to how to interpret this graph. More official documentation [blog](https://go.dev/blog/pprof), [pkg-doc](https://pkg.go.dev/net/http/pprof). — official Go team
 
@@ -1382,7 +1382,7 @@ go tool pprof -svg mem.out > mem.svg
 
 
 
-### [⏫](#contents)➡ Visualize flamegraphs of profiles wiht `pprof`
+### [⏫](#contents)➡ Visualize flamegraphs of profiles with `pprof`
 
 Latest versions of `pprof` can also render [Flamegraphs](https://www.brendangregg.com/flamegraphs.html) for profiles. Make sure you set `-http` to start webserver. Then it is available in "View > Graph" in at http://0.0.0.0:80. — Google
 
