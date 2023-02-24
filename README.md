@@ -47,7 +47,7 @@
    + [➡ Run official static analyzers not included in `go vet`](#-run-official-static-analyzers-not-included-in-go-vet)
    + [➡ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
    + [➡ Detect non-exhaustive switch and map with `exhaustive`](#-detect-non-exhaustive-switch-and-map-with-exhaustive)
-   + [➡ Detect usafe code with `go-safer`](#-detect-usafe-code-with-go-safer)
+   + [➡ Detect unsafe code with `go-safer`](#-detect-unsafe-code-with-go-safer)
    + [➡ Calculate cognitive complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
    + [➡ Calculate age of comments](#-calculate-age-of-comments)
    + [➡ Detect mixing pointer and value method receivers with `smrcptr`](#-detect-mixing-pointer-and-value-method-receivers-with-smrcptr)
