@@ -262,7 +262,7 @@ groups:
         example_output_url: source/exhaustive_output.md
         requirements:
          - go install github.com/nishanths/exhaustive/cmd/exhaustive@latest
-      - title: Detect usafe code with `go-safer`
+      - title: Detect unsafe code with `go-safer`
         description: Find incorrect uses of `reflect.SliceHeader`, `reflect.StringHeader`, and unsafe casts between structs with architecture-sized fields. Reseach paper ["Uncovering the Hidden Dangers Finding Unsafe Go Code in the Wild"](https://arxiv.org/abs/2010.11242) presented at 19th IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom 2020).
         author: https://github.com/jlauinger
         commands:
