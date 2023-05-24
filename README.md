@@ -187,11 +187,11 @@ go list -json ./... | jq -rc '[.ImportPath, (.GoFiles | length | tostring)] | jo
 
 Example
 ```
-  ================== 18	github.com/gin-gonic/gin
-       ============= 13	github.com/gin-gonic/gin/binding
-                   = 1	github.com/gin-gonic/gin/internal/bytesconv
-                   = 1	github.com/gin-gonic/gin/internal/json
-         =========== 11	github.com/gin-gonic/gin/render
+================== 18	github.com/gin-gonic/gin
+     ============= 13	github.com/gin-gonic/gin/binding
+                 = 1	github.com/gin-gonic/gin/internal/bytesconv
+                 = 1	github.com/gin-gonic/gin/internal/json
+       =========== 11	github.com/gin-gonic/gin/render
 ```
 
 Requirements
@@ -214,12 +214,12 @@ go test -p 1 -parallel 1 ./...
 Add `t.Parallel` to your tests case function bodies. As per documentation, by default `-p=GOMAXPROCS` and `-parallel=GOMAXPROCS` when you run `go test`. Different packages by default run in parallel, and tests within package can be enforced to run in parallel too. Make sure to copy test case data to new variable, why explained [here](https://gist.github.com/posener/92a55c4cd441fc5e5e85f27bca008721). [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
 
 ```go
-    ...
-    for _, tc := range tests {
-        tc := tc
-        t.Run(tc.name, func(t *testing.T) {
-            t.Parallel()
-            ...
+...
+for _, tc := range tests {
+    tc := tc
+    t.Run(tc.name, func(t *testing.T) {
+        t.Parallel()
+        ...
 ```
 
 
@@ -227,17 +227,17 @@ Add `t.Parallel` to your tests case function bodies. As per documentation, by de
 
 Refactored, tested variant of the goroutine leak detector found in both `net/http` tests and the cockroachdb source tree. You have to call this library in your tests. — [@fortytw2](https://github.com/fortytw2) / https://github.com/fortytw2/leaktest
 
-```go
+```
 func TestPoolContext(t *testing.T) {
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-	defer cancel()
-	defer leaktest.CheckContext(ctx, t)()
+  ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+  defer cancel()
+  defer leaktest.CheckContext(ctx, t)()
 
-	go func() {
-		for {
-			time.Sleep(time.Second)
-		}
-	}()
+  go func() {
+    for {
+      time.Sleep(time.Second)
+    }
+  }()
 }
 ```
 
@@ -651,33 +651,32 @@ There are many analyzers not included in `go vet`. These tools are experimental 
 package main
 
 import (
-	"golang.org/x/tools/go/analysis/multichecker"
+  "golang.org/x/tools/go/analysis/multichecker"
 
-	"golang.org/x/tools/go/analysis/passes/atomicalign"
-	"golang.org/x/tools/go/analysis/passes/deepequalerrors"
-	"golang.org/x/tools/go/analysis/passes/fieldalignment"
-	"golang.org/x/tools/go/analysis/passes/nilness"
-	"golang.org/x/tools/go/analysis/passes/reflectvaluecompare"
-	"golang.org/x/tools/go/analysis/passes/shadow"
-	"golang.org/x/tools/go/analysis/passes/sortslice"
-	"golang.org/x/tools/go/analysis/passes/unusedwrite"
-	"golang.org/x/tools/go/analysis/passes/usesgenerics"
+  "golang.org/x/tools/go/analysis/passes/atomicalign"
+  "golang.org/x/tools/go/analysis/passes/deepequalerrors"
+  "golang.org/x/tools/go/analysis/passes/fieldalignment"
+  "golang.org/x/tools/go/analysis/passes/nilness"
+  "golang.org/x/tools/go/analysis/passes/reflectvaluecompare"
+  "golang.org/x/tools/go/analysis/passes/shadow"
+  "golang.org/x/tools/go/analysis/passes/sortslice"
+  "golang.org/x/tools/go/analysis/passes/unusedwrite"
+  "golang.org/x/tools/go/analysis/passes/usesgenerics"
 )
 
 func main() {
-	multichecker.Main(
-		atomicalign.Analyzer,         // checks for non-64-bit-aligned arguments to sync/atomic functions
-		deepequalerrors.Analyzer,     // checks for the use of reflect.DeepEqual with error values
-		fieldalignment.Analyzer,      // detects structs that would use less memory if their fields were sorted
-		nilness.Analyzer,             // inspects the control-flow graph of an SSA function and reports errors such as nil pointer dereferences and degenerate nil pointer comparisons
-		reflectvaluecompare.Analyzer, // checks for accidentally using == or reflect.DeepEqual to compare reflect.Value values
-		shadow.Analyzer,              // checks for shadowed variables
-		sortslice.Analyzer,           // checks for calls to sort.Slice that do not use a slice type as first argument
-		unusedwrite.Analyzer,         // checks for unused writes to the elements of a struct or array object
-		usesgenerics.Analyzer,        // checks for usage of generic features added in Go 1.18
-	)
+  multichecker.Main(
+    atomicalign.Analyzer,         // checks for non-64-bit-aligned arguments to sync/atomic functions
+    deepequalerrors.Analyzer,     // checks for the use of reflect.DeepEqual with error values
+    fieldalignment.Analyzer,      // detects structs that would use less memory if their fields were sorted
+    nilness.Analyzer,             // inspects the control-flow graph of an SSA function and reports errors such as nil pointer dereferences and degenerate nil pointer comparisons
+    reflectvaluecompare.Analyzer, // checks for accidentally using == or reflect.DeepEqual to compare reflect.Value values
+    shadow.Analyzer,              // checks for shadowed variables
+    sortslice.Analyzer,           // checks for calls to sort.Slice that do not use a slice type as first argument
+    unusedwrite.Analyzer,         // checks for unused writes to the elements of a struct or array object
+    usesgenerics.Analyzer,        // checks for usage of generic features added in Go 1.18
+  )
 }
-
 ```
 
 
@@ -691,12 +690,11 @@ package color
 type Color struct{ c uint }
 
 var (
-	Undefined = Color{}
-	Red       = Color{1}
-	Green     = Color{2}
-	Blue      = Color{3}
+  Undefined = Color{}
+  Red       = Color{1}
+  Green     = Color{2}
+  Blue      = Color{3}
 )
-
 ```
 
 
@@ -709,17 +707,17 @@ This `go vet` compatible analyzer checks for exhaustive switch statemnts and map
 exhaustive ./...
 ```
 
-```
+```go
 package token
 
 type Token int
 
 const (
-	Add Token = iota
-	Subtract
-	Multiply
-	Quotient
-	Remainder
+  Add Token = iota
+  Subtract
+  Multiply
+  Quotient
+  Remainder
 )
 
 package calc
@@ -727,20 +725,20 @@ package calc
 import "token"
 
 func f(t token.Token) {
-	switch t {
-	case token.Add:
-	case token.Subtract:
-	case token.Multiply:
-	default:
-	}
+  switch t {
+  case token.Add:
+  case token.Subtract:
+  case token.Multiply:
+  default:
+  }
 }
 
 func g(t token.Token) string {
-	return map[token.Token]string{
-		token.Add:      "add",
-		token.Subtract: "subtract",
-		token.Multiply: "multiply",
-	}[t]
+  return map[token.Token]string{
+    token.Add:      "add",
+    token.Subtract: "subtract",
+    token.Multiply: "multiply",
+  }[t]
 }
 ```
 
@@ -771,9 +769,6 @@ composite_literal/composite_literal.go:10:9: reflect header composite literal fo
 composite_literal/composite_literal.go:10:9: reflect header composite literal found
 # github.com/jlauinger/go-safer/passes/sliceheader/testdata/src/bad/header_in_struct
 header_in_struct/header_in_struct.go:16:2: assigning to reflect header object
-header_in_struct/header_in_struct.go:16:2: assigning to reflect header object
-header_in_struct/header_in_struct.go:17:2: assigning to reflect header object
-header_in_struct/header_in_struct.go:17:2: assigning to reflect header object
 ```
 
 Requirements
@@ -790,7 +785,7 @@ Congitive Complexity as defined in this tool can be more illustrative than Cyclo
 gocognit .
 ```
 
-```
+```go
 // Complexity Cyclomatic=4 Cognitive=7
 // Cognitive complexity give higher score compare to cyclomatic complexity.
 func SumOfPrimes(max int) int {         // +1
@@ -815,16 +810,15 @@ func GetWords(number int) string {      // +1
         case 2:                         // +1 (cognitive 0)
             return "a couple"
         case 3:                         // +1 (cognitive 0)
-             return "a few"
+            return "a few"
         default:
-             return "lots"
+            return "lots"
     }
 }
 ```
 
 Example
 ```
-$ go-binsize-treemap % gocognit .
 21 main (BasicSymtabConverter).SymtabFileToTreemap basic_converter.go:23:1
 12 symtab parseGoSymtabLine symtab/go_symtab_parser.go:37:1
 11 main main main.go:30:1
@@ -937,16 +931,15 @@ package painkiller
 type Pill int
 
 const (
-	Placebo Pill = iota
-	Ibuprofen
-	Paracetamol
-	PillAspirin   // Aspirin
-	Acetaminophen = Paracetamol
+  Placebo Pill = iota
+  Ibuprofen
+  Paracetamol
+  PillAspirin   // Aspirin
+  Acetaminophen = Paracetamol
 )
 
 // "Acetaminophen"
 var s string = Acetaminophen.String()
-
 ```
 
 Requirements
@@ -1052,10 +1045,9 @@ package main
 var Version string
 
 func main() {
-	// Version here has some value
-	...
+  // Version here has some value
+  ...
 }
-
 ```
 
 
@@ -1119,16 +1111,15 @@ package main
 import . "github.com/mmcloughlin/avo/build"
 
 func main() {
-	TEXT("Add", NOSPLIT, "func(x, y uint64) uint64")
-	Doc("Add adds x and y.")
-	x := Load(Param("x"), GP64())
-	y := Load(Param("y"), GP64())
-	ADDQ(x, y)
-	Store(y, ReturnIndex(0))
-	RET()
-	Generate()
+  TEXT("Add", NOSPLIT, "func(x, y uint64) uint64")
+  Doc("Add adds x and y.")
+  x := Load(Param("x"), GP64())
+  y := Load(Param("y"), GP64())
+  ADDQ(x, y)
+  Store(y, ReturnIndex(0))
+  RET()
+  Generate()
 }
-
 ```
 
 
@@ -1140,49 +1131,47 @@ Access Go core AST mechanism to generate AST.
 package main
 
 import (
-	"go/ast"
-	"go/parser"
-	"go/token"
+  "go/ast"
+  "go/parser"
+  "go/token"
 )
 
 func main() {
-	fs := token.NewFileSet()
-	tr, _ := parser.ParseExpr("(3-1) * 5")
-	ast.Print(fs, tr)
+  fs := token.NewFileSet()
+  tr, _ := parser.ParseExpr("(3-1) * 5")
+  ast.Print(fs, tr)
 }
-
 ```
 
 Example
 ```
-     0  *ast.BinaryExpr {
-     1  .  X: *ast.ParenExpr {
-     2  .  .  Lparen: -
-     3  .  .  X: *ast.BinaryExpr {
-     4  .  .  .  X: *ast.BasicLit {
-     5  .  .  .  .  ValuePos: -
-     6  .  .  .  .  Kind: INT
-     7  .  .  .  .  Value: "3"
-     8  .  .  .  }
-     9  .  .  .  OpPos: -
-    10  .  .  .  Op: -
-    11  .  .  .  Y: *ast.BasicLit {
-    12  .  .  .  .  ValuePos: -
-    13  .  .  .  .  Kind: INT
-    14  .  .  .  .  Value: "1"
-    15  .  .  .  }
-    16  .  .  }
-    17  .  .  Rparen: -
-    18  .  }
-    19  .  OpPos: -
-    20  .  Op: *
-    21  .  Y: *ast.BasicLit {
-    22  .  .  ValuePos: -
-    23  .  .  Kind: INT
-    24  .  .  Value: "5"
-    25  .  }
-    26  }
-
+0  *ast.BinaryExpr {
+1  .  X: *ast.ParenExpr {
+2  .  .  Lparen: -
+3  .  .  X: *ast.BinaryExpr {
+4  .  .  .  X: *ast.BasicLit {
+5  .  .  .  .  ValuePos: -
+6  .  .  .  .  Kind: INT
+7  .  .  .  .  Value: "3"
+8  .  .  .  }
+9  .  .  .  OpPos: -
+10  .  .  .  Op: -
+11  .  .  .  Y: *ast.BasicLit {
+12  .  .  .  .  ValuePos: -
+13  .  .  .  .  Kind: INT
+14  .  .  .  .  Value: "1"
+15  .  .  .  }
+16  .  .  }
+17  .  .  Rparen: -
+18  .  }
+19  .  OpPos: -
+20  .  Op: *
+21  .  Y: *ast.BasicLit {
+22  .  .  ValuePos: -
+23  .  .  Kind: INT
+24  .  .  Value: "5"
+25  .  }
+26  }
 ```
 
 
@@ -1214,7 +1203,6 @@ package main
 import "net/http"
 
 func main() { http.ListenAndServe(":9000", http.FileServer(http.Dir("."))) }
-
 ```
 
 <div align="center"><img src="./img/simple-fs.png" style="margin: 8px; max-height: 640px;"></div>
@@ -1308,7 +1296,6 @@ go test -bench=. -benchmem -benchtime=10s ./...
 
 Example
 ```
-$ go test -bench=. -benchmem ./...
 goos: darwin
 goarch: arm64
 pkg: github.com/nikolaydubina/fpmoney
@@ -1327,26 +1314,25 @@ ok      github.com/nikolaydubina/fpmoney    62.744s
 
 Similar to tests, Go supports table-driven benchmarks, which is very helpful for fine gradation of meta-parameters. More details in the Go [blog](https://go.dev/blog/subtests).
 
-```go
+```
 func benchIteratorSelector(b *testing.B, n int) {
-	// ... setup here
-	b.ResetTimer()
-	for n := 0; n < b.N; n++ {
-		err := myExpensiveFunc()
-		if err != nil {
-			b.Error(err)
-		}
-	}
+  // ... setup here
+  b.ResetTimer()
+  for n := 0; n < b.N; n++ {
+    err := myExpensiveFunc()
+    if err != nil {
+      b.Error(err)
+    }
+  }
 }
 
 func BenchmarkIteratorSelector(b *testing.B) {
-	for _, q := range []int{100, 1000, 10000, 100000} {
-		b.Run(fmt.Sprintf("n=%d", q), func(b *testing.B) {
-			benchIteratorSelector(b, q)
-		})
-	}
+  for _, q := range []int{100, 1000, 10000, 100000} {
+    b.Run(fmt.Sprintf("n=%d", q), func(b *testing.B) {
+      benchIteratorSelector(b, q)
+    })
+  }
 }
-
 ```
 
 Example
@@ -1525,21 +1511,20 @@ go install github.com/knqyf263/cob@latest
 
 This will add endpoints to your your server. If you don't have server running already in your process, you can start one. Then you can point `pprof` tool to this data. For production, hide this endpoint in separate port and path. More details in documentation [trace](https://pkg.go.dev/cmd/trace), [net/http/pprof](https://pkg.go.dev/net/http/pprof).
 
-```go
+```
 package main
 
 import (
-	"log"
-	"net/http"
-	"net/http/pprof"
+  "log"
+  "net/http"
+  "net/http/pprof"
 )
 
 func main() {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/custom_debug_path/profile", pprof.Profile)
-	log.Fatal(http.ListenAndServe(":7777", mux))
+  mux := http.NewServeMux()
+  mux.HandleFunc("/custom_debug_path/profile", pprof.Profile)
+  log.Fatal(http.ListenAndServe(":7777", mux))
 }
-
 ```
 
 Example
@@ -1578,20 +1563,19 @@ go tool trace trace.out
 This tool can be more illustrative of Go traces than standard Go traces. — [@felixge](https://github.com/felixge) / https://github.com/felixge/fgtrace
 
 Example
-```go
+```
 package main
 
 import (
-	"net/http"
+  "net/http"
 
-	"github.com/felixge/fgtrace"
+  "github.com/felixge/fgtrace"
 )
 
 func main() {
-	http.DefaultServeMux.Handle("/debug/fgtrace", fgtrace.Config{})
-	http.ListenAndServe(":1234", nil)
+  http.DefaultServeMux.Handle("/debug/fgtrace", fgtrace.Config{})
+  http.ListenAndServe(":1234", nil)
 }
-
 ```
 
 <div align="center"><img src="https://github.com/felixge/fgtrace/raw/main/assets/fgtrace-example.png" style="margin: 8px; max-height: 640px;"></div>
@@ -1603,26 +1587,25 @@ func main() {
 This tool can be more illustrative of Go profiles than standard Go profiling. — [@felixge](https://github.com/felixge) / https://github.com/felixge/fgprof
 
 Example
-```go
+```
 package main
 
 import (
-	"log"
-	"net/http"
-	_ "net/http/pprof"
+  "log"
+  "net/http"
+  _ "net/http/pprof"
 
-	"github.com/felixge/fgprof"
+  "github.com/felixge/fgprof"
 )
 
 func main() {
-	http.DefaultServeMux.Handle("/debug/fgprof", fgprof.Handler())
-	go func() {
-		log.Println(http.ListenAndServe(":6060", nil))
-	}()
+  http.DefaultServeMux.Handle("/debug/fgprof", fgprof.Handler())
+  go func() {
+    log.Println(http.ListenAndServe(":6060", nil))
+  }()
 
-	// <code to profile>
+  // <code to profile>
 }
-
 ```
 
 <div align="center"><img src="https://github.com/felixge/fgprof/raw/master/assets/fgprof_pprof.png" style="margin: 8px; max-height: 640px;"></div>

@@ -1,5 +1,12 @@
-header:
-  content_url: header.md
+header: |
+  <h1 align="center">Go Recipes 🦩 </h1>
+  <p align="center">Handy well-known and <i>lesser</i>-known tools for Go projects</p>
+
+  > _Know some cool tool or one-liner? Have a feature request or an idea?_  
+  > _Feel free to edit this page or create an Issue/Discussion!_  
+
+  [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fnikolaydubina%2Fgo-recipes&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+  [![go-recipes](https://raw.githubusercontent.com/nikolaydubina/go-recipes/main/badge.svg?raw=true)](https://github.com/nikolaydubina/go-recipes)
 contents:
   title: Contents
 entry:
@@ -52,19 +59,42 @@ groups:
           - https://stedolan.github.io/jq/download/
         commands:
           - go list -json ./... | jq -rc '[.ImportPath, (.GoFiles | length | tostring)] | join(" ")' | perl -lane 'print (" " x (20 - $F[1]), "=" x $F[1], " ", $F[1], "\t", $F[0])'
-        example_output_url: source/histogram-files-pkg.md
+        example_output: |
+          ================== 18	github.com/gin-gonic/gin
+               ============= 13	github.com/gin-gonic/gin/binding
+                           = 1	github.com/gin-gonic/gin/internal/bytesconv
+                           = 1	github.com/gin-gonic/gin/internal/json
+                 =========== 11	github.com/gin-gonic/gin/render
       - title: Run tests sequentially
         description: Use when you need to synchronize tests, for example in integration tests that share environment. [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
         commands:
           - go test -p 1 -parallel 1 ./...
       - title: Run tests in parallel
         description: Add `t.Parallel` to your tests case function bodies. As per documentation, by default `-p=GOMAXPROCS` and `-parallel=GOMAXPROCS` when you run `go test`. Different packages by default run in parallel, and tests within package can be enforced to run in parallel too. Make sure to copy test case data to new variable, why explained [here](https://gist.github.com/posener/92a55c4cd441fc5e5e85f27bca008721). [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
-        example_content_url: source/run-tests-parallel.go
+        example_content_ext: go
+        example_content: |
+          ...
+          for _, tc := range tests {
+              tc := tc
+              t.Run(tc.name, func(t *testing.T) {
+                  t.Parallel()
+                  ...
       - title: Detect goroutine leaks
         description: Refactored, tested variant of the goroutine leak detector found in both `net/http` tests and the cockroachdb source tree. You have to call this library in your tests.
         author: https://github.com/fortytw2
         source: https://github.com/fortytw2/leaktest
-        example_content_url: source/leaktest.go
+        example_content: |
+          func TestPoolContext(t *testing.T) {
+            ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+            defer cancel()
+            defer leaktest.CheckContext(ctx, t)()
+
+            go func() {
+              for {
+                time.Sleep(time.Second)
+              }
+            }()
+          }
       - title: Run tests with pretty output
         description: This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary.
         author: https://github.com/dnephin
@@ -89,7 +119,9 @@ groups:
         author: https://github.com/nikolaydubina
         commands:
           - go list -json ./... | jq -rc 'select((.TestGoFiles | length)==0) | .ImportPath'
-        example_output_url: source/pkg-without-tests.md
+        example_output: |
+          github.com/gin-gonic/gin/ginS
+          github.com/gin-gonic/gin/internal/json
   - title: Dependencies
     entries:
       - title: Get Go version of current module
@@ -105,19 +137,28 @@ groups:
           - https://stedolan.github.io/jq/download/
         commands:
           - go list -deps -json ./... | jq -rc 'select(.Standard!=true and .Module.GoVersion!=null) | [.Module.GoVersion,.Module.Path] | join(" ")' | sort -V | uniq
-        example_output_url: source/go-ver-upstream-mods.md
+        example_output: |
+          1.11 github.com/ugorji/go/codec
+          1.11 golang.org/x/crypto
+          1.12 github.com/golang/protobuf
       - title: Get directly dependent modules that can be upgraded
         description: Keep your modules updated. Similar function is integrated in VSCode official Go plugin and GoLand.
         commands:
           - go list -u -m $(go list -m -f '{{.Indirect}} {{.}}' all | grep '^false' | cut -d ' ' -f2) | grep '\['
-        example_output_url: source/go-upstream-mods-to-update.md
+        example_output: |
+          github.com/goccy/go-json v0.5.1 [v0.7.3]
+          github.com/golang/protobuf v1.3.3 [v1.5.2]
+          github.com/json-iterator/go v1.1.9 [v1.1.11]
       - title: Get upstream modules without Go version
         description: Find outdated modules or imports that you need to upgrade.
         commands:
           - go list -deps -json ./... | jq -rc 'select(.Standard!=true and .Module.GoVersion==null) | .Module.Path' | sort -u
         requirements:
           - https://stedolan.github.io/jq/download/
-        example_output_url: source/go-upstram-mods-without-go-version.md
+        example_output: |
+          github.com/facebookgo/clock
+          golang.org/x/text
+          gopkg.in/yaml.v2
       - title: Get available module versions
         description: This works even if you did not download or install module locally. This is useful to check to which version you can upgrade to, what is the latest version, and whether there are v2+ major versions recognized by Go toolchain.
         commands:
@@ -164,7 +205,18 @@ groups:
       - title: Scrape licenses of upstream dependencies
         description: Collect all the licenses for checking if you can use the project, for example in proprietary or commercial environment.
         author: Google
-        example_output_url: source/go-upstream-mods-licenses.md
+        example_output: |
+          github.com/cli/safeexec,https://github.com/cli/safeexec/blob/master/LICENSE,BSD-2-Clause
+          github.com/bep/tmc,https://github.com/bep/tmc/blob/master/LICENSE,MIT
+          github.com/aws/aws-sdk-go,https://github.com/aws/aws-sdk-go/blob/master/LICENSE.txt,Apache-2.0
+          github.com/jmespath/go-jmespath,https://github.com/jmespath/go-jmespath/blob/master/LICENSE,Apache-2.0
+          github.com/gorilla/websocket,https://github.com/gorilla/websocket/blob/master/LICENSE,BSD-2-Clause
+          github.com/pelletier/go-toml/v2,https://github.com/pelletier/go-toml/blob/master/v2/LICENSE,MIT
+          github.com/spf13/cobra,https://github.com/spf13/cobra/blob/master/LICENSE.txt,Apache-2.0
+          github.com/kyokomi/emoji/v2,https://github.com/kyokomi/emoji/blob/master/v2/LICENSE,MIT
+          go.opencensus.io,Unknown,Apache-2.0
+          github.com/Azure/azure-storage-blob-go/azblob,https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/LICENSE,MIT
+          github.com/yuin/goldmark-highlighting,https://github.com/yuin/goldmark-highlighting/blob/master/LICENSE,MIT
         commands:
           - go-licenses csv github.com/gohugoio/hugo
         requirements:
@@ -177,7 +229,17 @@ groups:
           - go install github.com/adonovan/spaghetti@latest
       - title: Use `go mod` directives
         description: Tell Go compiler which versions of upstreams to include in your build. Tell all users of your module how to deal with versions of your module.
-        example_content_url: source/go-mod-directives.md
+        example_content: |
+          // Deprecated: use example.com/mod/v2 instead.
+          module example.com/mod
+
+          go 1.16
+
+          require example.com/other/thing v1.0.2
+          require example.com/new/thing/v2 v2.3.4
+          exclude example.com/old/thing v1.2.3
+          replace example.com/bad/thing v1.4.5 => example.com/good/thing v1.4.5
+          retract [v1.9.0, v1.9.5]
       - title: Analyze dependencies with `goda`
         description: This tool has extensive syntax for filtering dependencies graphs. It can work with packages and modules.
         author: "[Egon Elbre](egonelbre@gmail.com)"
@@ -249,17 +311,93 @@ groups:
       - title: Run official static analyzers not included in `go vet`
         description: There are many analyzers not included in `go vet`. These tools are experimental and may not work as expected (e.g. `usesgenerics` does not work). Refer to for full list https://pkg.go.dev/golang.org/x/tools/go/analysis.
         author: official Go team
-        example_content_url: source/goanalysis/main.go
+        example_content_ext: go
+        example_content: |
+          package main
+
+          import (
+            "golang.org/x/tools/go/analysis/multichecker"
+
+            "golang.org/x/tools/go/analysis/passes/atomicalign"
+            "golang.org/x/tools/go/analysis/passes/deepequalerrors"
+            "golang.org/x/tools/go/analysis/passes/fieldalignment"
+            "golang.org/x/tools/go/analysis/passes/nilness"
+            "golang.org/x/tools/go/analysis/passes/reflectvaluecompare"
+            "golang.org/x/tools/go/analysis/passes/shadow"
+            "golang.org/x/tools/go/analysis/passes/sortslice"
+            "golang.org/x/tools/go/analysis/passes/unusedwrite"
+            "golang.org/x/tools/go/analysis/passes/usesgenerics"
+          )
+
+          func main() {
+            multichecker.Main(
+              atomicalign.Analyzer,         // checks for non-64-bit-aligned arguments to sync/atomic functions
+              deepequalerrors.Analyzer,     // checks for the use of reflect.DeepEqual with error values
+              fieldalignment.Analyzer,      // detects structs that would use less memory if their fields were sorted
+              nilness.Analyzer,             // inspects the control-flow graph of an SSA function and reports errors such as nil pointer dereferences and degenerate nil pointer comparisons
+              reflectvaluecompare.Analyzer, // checks for accidentally using == or reflect.DeepEqual to compare reflect.Value values
+              shadow.Analyzer,              // checks for shadowed variables
+              sortslice.Analyzer,           // checks for calls to sort.Slice that do not use a slice type as first argument
+              unusedwrite.Analyzer,         // checks for unused writes to the elements of a struct or array object
+              usesgenerics.Analyzer,        // checks for usage of generic features added in Go 1.18
+            )
+          }
       - title: Rely on compiler for stricter Enums
         description: "For compile time blocking of: accidental arithmetics; implicit cast of untyped constants; all operators except `==` and `!=`; — simply wrap into a struct in separate package and do not export field."
-        example_content_url: source/enum-example.go
+        example_content_ext: go
+        example_content: |
+          package color
+
+          type Color struct{ c uint }
+
+          var (
+            Undefined = Color{}
+            Red       = Color{1}
+            Green     = Color{2}
+            Blue      = Color{3}
+          )
       - title: Detect non-exhaustive switch and map with `exhaustive`
         description: This `go vet` compatible analyzer checks for exhaustive switch statemnts and map literals. It works for enums with underyling integer, float, or string types (struct based enums are not supported).
         author: https://github.com/nishanths 
         commands:
          - exhaustive ./...
-        example_content_url: source/exhaustive_content.md
-        example_output_url: source/exhaustive_output.md
+        example_content_ext: go
+        example_content: |
+          package token
+
+          type Token int
+
+          const (
+            Add Token = iota
+            Subtract
+            Multiply
+            Quotient
+            Remainder
+          )
+
+          package calc
+
+          import "token"
+
+          func f(t token.Token) {
+            switch t {
+            case token.Add:
+            case token.Subtract:
+            case token.Multiply:
+            default:
+            }
+          }
+
+          func g(t token.Token) string {
+            return map[token.Token]string{
+              token.Add:      "add",
+              token.Subtract: "subtract",
+              token.Multiply: "multiply",
+            }[t]
+          }
+        example_output: |
+          calc.go:6:2: missing cases in switch of type token.Token: Quotient, Remainder
+          calc.go:15:9: missing map keys of type token.Token: Quotient, Remainder
         requirements:
          - go install github.com/nishanths/exhaustive/cmd/exhaustive@latest
       - title: Detect unsafe code with `go-safer`
@@ -267,7 +405,12 @@ groups:
         author: https://github.com/jlauinger
         commands:
           - go-safer ./...
-        example_output_url: source/go-safer.txt
+        example_output: |
+          # github.com/jlauinger/go-safer/passes/sliceheader/testdata/src/bad/composite_literal
+          composite_literal/composite_literal.go:10:9: reflect header composite literal found
+          composite_literal/composite_literal.go:10:9: reflect header composite literal found
+          # github.com/jlauinger/go-safer/passes/sliceheader/testdata/src/bad/header_in_struct
+          header_in_struct/header_in_struct.go:16:2: assigning to reflect header object
         requirements:
           - go install github.com/jlauinger/go-safer@latest
       - title: Calculate cognitive complexity with `gocognit`
@@ -275,8 +418,49 @@ groups:
         author: https://github.com/uudashr
         commands:
           - gocognit .
-        example_content_url: source/gocognit.txt
-        example_output_url: source/gocognit.out
+        example_content_ext: go
+        example_content: |
+          // Complexity Cyclomatic=4 Cognitive=7
+          // Cognitive complexity give higher score compare to cyclomatic complexity.
+          func SumOfPrimes(max int) int {         // +1
+              var total int
+              for i := 1; i < max; i++ {          // +1 (cognitive +1, nesting)
+                  for j := 2; j < i; j++ {        // +1 (cognitive +2, nesting)
+                      if i%j == 0 {               // +1
+                          continue OUT
+                      }
+                  }
+                  total += i
+              }
+              return total
+          }
+
+          // Complexity Cyclomatic=4 Cognitive=1
+          // Cognitive complexity give lower score compare to cyclomatic complexity.
+          func GetWords(number int) string {      // +1
+              switch number {
+                  case 1:                         // +1 (cognitive 0)
+                      return "one"
+                  case 2:                         // +1 (cognitive 0)
+                      return "a couple"
+                  case 3:                         // +1 (cognitive 0)
+                      return "a few"
+                  default:
+                      return "lots"
+              }
+          }
+        example_output: |
+          21 main (BasicSymtabConverter).SymtabFileToTreemap basic_converter.go:23:1
+          12 symtab parseGoSymtabLine symtab/go_symtab_parser.go:37:1
+          11 main main main.go:30:1
+          8 symtab EqSymbolName symtab/symbol_name_parser.go:12:1
+          7 symtab ParseSymbolName symtab/symbol_name_parser.go:32:1
+          7 symtab Test_parseGoSymtabLine symtab/go_symtab_parser_private_test.go:5:1
+          4 symtab Test_ParseSymbolName symtab/symbol_name_parser_private_test.go:5:1
+          3 main updateNodeNamesWithByteSize main.go:99:1
+          3 main unique basic_converter.go:119:1
+          3 symtab (GoSymtabParser).ParseSymtab symtab/go_symtab_parser.go:14:1
+          2 fmtbytecount ByteCountIEC fmtbytecount/format_bytecount.go:3:1
         requirements:
           - go install github.com/uudashr/gocognit/cmd/gocognit@latest
       - title: Calculate age of comments
@@ -284,7 +468,12 @@ groups:
         author: https://github.com/nikolaydubina
         commands:
           - go-commentage -min-days-behind 360 ./...
-        example_output_url: source/go-commentage.out
+        example_output: |
+          kubernetes/pkg/util/ipset/ipset.go:283:1: "CreateSet": doc_last_updated_behind_days(1336.83)
+          kubernetes/pkg/util/ipset/ipset.go:296:1: "createSet": doc_last_updated_behind_days(1603.17)
+          kubernetes/pkg/util/ipset/ipset.go:320:1: "AddEntry": doc_last_updated_behind_days(1578.10)
+          kubernetes/pkg/util/ipset/ipset.go:332:1: "DelEntry": doc_last_updated_behind_days(1578.10)
+          kubernetes/pkg/util/ipset/ipset.go:340:1: "TestEntry": doc_last_updated_behind_days(450.07)
         requirements:
           - # get latest version of git
           - go install github.com/nikolaydubina/go-commentage@latest
@@ -293,8 +482,18 @@ groups:
         author: https://github.com/nikolaydubina
         commands:
           - smrcptr ./...
-        example_content_url: source/smrcptr.go
-        example_output_url: source/smrcptr.out
+        example_content_ext: go
+        example_content: |
+          type Pancake struct{}
+
+          func NewPancake() Pancake { return Pancake{} }
+
+          func (s *Pancake) Fry() {}
+
+          func (s Pancake) Bake() {}
+        example_output: |
+          smrcptr/internal/bakery/pancake.go:7:1: Pancake.Fry uses pointer
+          smrcptr/internal/bakery/pancake.go:9:1: Pancake.Bake uses value
         requirements:
           - go install github.com/nikolaydubina/smrcptr@latest
       - title: Check vertical function ordering with `vertfn` 
@@ -314,7 +513,24 @@ groups:
       - title: Generate `String` method for enum types
         description: This is an official tool for generating `String` for enums. It supports overrides via comments.
         author: official Go team
-        example_content_url: source/stringer/stringer.go
+        example_content_ext: go
+        example_content: |
+          package painkiller
+
+          //go:generate stringer -type=Pill -linecomment
+
+          type Pill int
+
+          const (
+            Placebo Pill = iota
+            Ibuprofen
+            Paracetamol
+            PillAspirin   // Aspirin
+            Acetaminophen = Paracetamol
+          )
+
+          // "Acetaminophen"
+          var s string = Acetaminophen.String()
         requirements:
           - go install golang.org/x/tools/cmd/stringer@latest
   - title: Refactoring
@@ -338,7 +554,17 @@ groups:
         description: Building with `-m` flag will show decisions of compiler on inlining and heap escape. This can help you to validate your understanding of your code and optimize it.
         commands:
           - go build -gcflags="-m -m" . 2>&1 | grep inline
-        example_output_url: source/compile-optimizations.md
+        example_output: |
+          ...
+          ./passengerfp.go:25:6: cannot inline (*PassengerFeatureTransformer).Fit: function too complex: cost 496 exceeds budget 80
+          ...
+          ./passengerfp.go:192:6: can inline (*PassengerFeatureTransformer).NumFeatures with cost 35 as: method(*PassengerFeatureTransformer) func() int { if e == nil { return 0 }; count := 6; count += (*transformers.OneHotEncoder).NumFeatures(e.Sex); count += (*transformers.OneHotEncoder).NumFeatures(e.Embarked); return count }
+          ...
+          ./passengerfp.go:238:43: inlining call to transformers.(*OneHotEncoder).FeatureNames
+          ./passengerfp.go:238:43: inlining call to transformers.(*OneHotEncoder).NumFeatures
+          ...
+          ./passengerfp.go:151:7: parameter e leaks to {heap} with derefs=0:
+          ./passengerfp.go:43:11: make(map[string]uint) escapes to heap
       - title: Disable inlining
         description: Usually you may not need it, but can reduce binary size and even improve performance.
         commands:
@@ -354,7 +580,16 @@ groups:
         commands:
           - go build -v -ldflags="-X 'main.Version=v1.0.0'"
           - go build -v -ldflags="-X 'my/pkg/here.Variable=some-string'"
-        example_content_url: source/ldflags-meta.go
+        example_content_ext: go
+        example_content: |
+          package main
+
+          var Version string
+
+          func main() {
+            // Version here has some value
+            ...
+          }
       - title: Make treemap breakdown of Go executable binary
         description: Useful for studying Go compiler, large projects, projects with C/C++ and `cgo`, 3rd party dependencies, embedding. However, total size may not be something to worry about for your executable.
         author: https://github.com/nikolaydubina
@@ -385,11 +620,70 @@ groups:
         description: Write better quality Go assembly quicker in Go language itself. This tool conveniently generates stub for Go code to call your generated assembly. Used by Go core.
         author: https://github.com/mmcloughlin
         source: https://github.com/mmcloughlin/avo
-        example_content_url: source/avo.go
+        example_content_ext: go
+        example_content: |
+          //go:build ignore
+          // +build ignore
+
+          package main
+
+          import . "github.com/mmcloughlin/avo/build"
+
+          func main() {
+            TEXT("Add", NOSPLIT, "func(x, y uint64) uint64")
+            Doc("Add adds x and y.")
+            x := Load(Param("x"), GP64())
+            y := Load(Param("y"), GP64())
+            ADDQ(x, y)
+            Store(y, ReturnIndex(0))
+            RET()
+            Generate()
+          }
       - title: Generate AST for code snippets
         description: Access Go core AST mechanism to generate AST.
-        example_content_url: source/ast/ex1.go
-        example_output_url: source/ast/ex1.out
+        example_content_ext: go
+        example_content: |
+          package main
+
+          import (
+            "go/ast"
+            "go/parser"
+            "go/token"
+          )
+
+          func main() {
+            fs := token.NewFileSet()
+            tr, _ := parser.ParseExpr("(3-1) * 5")
+            ast.Print(fs, tr)
+          }
+        example_output: |
+          0  *ast.BinaryExpr {
+          1  .  X: *ast.ParenExpr {
+          2  .  .  Lparen: -
+          3  .  .  X: *ast.BinaryExpr {
+          4  .  .  .  X: *ast.BasicLit {
+          5  .  .  .  .  ValuePos: -
+          6  .  .  .  .  Kind: INT
+          7  .  .  .  .  Value: "3"
+          8  .  .  .  }
+          9  .  .  .  OpPos: -
+          10  .  .  .  Op: -
+          11  .  .  .  Y: *ast.BasicLit {
+          12  .  .  .  .  ValuePos: -
+          13  .  .  .  .  Kind: INT
+          14  .  .  .  .  Value: "1"
+          15  .  .  .  }
+          16  .  .  }
+          17  .  .  Rparen: -
+          18  .  }
+          19  .  OpPos: -
+          20  .  Op: *
+          21  .  Y: *ast.BasicLit {
+          22  .  .  ValuePos: -
+          23  .  .  Kind: INT
+          24  .  .  Value: "5"
+          25  .  }
+          26  }
   - title: Execution
     entries:
       - title: Run Go function in shell
@@ -404,7 +698,13 @@ groups:
       - title: Run simple fileserver
         description: It takes one line to run HTTP file server in Go. Akin to famous oneliner in Python `python3 -m http.server` and `python -m SimpleHTTPServer`. Run this file as usually `go run <filename>`.
         example_image_url: ./img/simple-fs.png
-        example_content_url: source/go-simple-webserver.go
+        example_content_ext: go
+        example_content: |
+          package main
+
+          import "net/http"
+
+          func main() { http.ListenAndServe(":9000", http.FileServer(http.Dir("."))) }
       - title: Monitor Go processes
         description: Monitoring memory of Go processes, forcing GC, getting version of Go of processes.
         author: Google
@@ -412,7 +712,11 @@ groups:
           - go install github.com/google/gops@latest
         commands:
           - gops
-        example_output_url: source/gops.md
+        example_output: |
+          983   980    uplink-soecks  go1.9   /usr/local/bin/uplink-soecks
+          52697 52695  gops           go1.10  /Users/jbd/bin/gops
+          4132  4130   foops        * go1.9   /Users/jbd/bin/foops
+          51130 51128  gocode         go1.9.2 /Users/jbd/bin/gocode
       - title: Create 3D visualization of concurrency traces
         description: Fresh artistic perspective on coroutines execution. There is no advanced functions and it is hard to analyze production systems. However, it could be interesting for educational purposes.
         author: https://github.com/divan
@@ -447,11 +751,44 @@ groups:
         description: Start here. This is the standard tool for benchmarking. It can also do advanced features like mutex profiles. More flags are in Go [documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags) and `go help testflag`.
         commands:
           - go test -bench=. -benchmem -benchtime=10s ./...
-        example_output_url: source/bench.txt
+        example_output: |
+          goos: darwin
+          goarch: arm64
+          pkg: github.com/nikolaydubina/fpmoney
+          BenchmarkArithmetic/add_x1-10                     1000000000             0.5 ns/op           0 B/op           0 allocs/op
+          BenchmarkArithmetic/add_x100-10                     18430124            64.6 ns/op           0 B/op           0 allocs/op
+          BenchmarkJSONUnmarshal/small-10                      3531835           340.7 ns/op         198 B/op           3 allocs/op
+          BenchmarkJSONUnmarshal/large-10                      2791712           426.9 ns/op         216 B/op           3 allocs/op
+          BenchmarkJSONMarshal/small-10                        4379685           274.4 ns/op         144 B/op           4 allocs/op
+          BenchmarkJSONMarshal/large-10                        3321205           345.8 ns/op         192 B/op           5 allocs/op
+          PASS
+          ok      github.com/nikolaydubina/fpmoney    62.744s
       - title: Table-driven benchmarks
         description: Similar to tests, Go supports table-driven benchmarks, which is very helpful for fine gradation of meta-parameters. More details in the Go [blog](https://go.dev/blog/subtests).
-        example_content_url: source/bench_table.go
-        example_output_url: source/bench_table.out
+        example_content: |
+          func benchIteratorSelector(b *testing.B, n int) {
+            // ... setup here
+            b.ResetTimer()
+            for n := 0; n < b.N; n++ {
+              err := myExpensiveFunc()
+              if err != nil {
+                b.Error(err)
+              }
+            }
+          }
+
+          func BenchmarkIteratorSelector(b *testing.B) {
+            for _, q := range []int{100, 1000, 10000, 100000} {
+              b.Run(fmt.Sprintf("n=%d", q), func(b *testing.B) {
+                benchIteratorSelector(b, q)
+              })
+            }
+          }
+        example_output: |
+          BenchmarkIteratorSelector/n=100-10    	  297792	      4265 ns/op	    5400 B/op	      13 allocs/op
+          BenchmarkIteratorSelector/n=1000-10   	   31400	     38182 ns/op	    9752 B/op	      16 allocs/op
+          BenchmarkIteratorSelector/n=10000-10  	    3134	    380777 ns/op	   89112 B/op	      24 allocs/op
+          BenchmarkIteratorSelector/n=100000-10 	     310	   3827292 ns/op	  912410 B/op	      32 allocs/op
       - title: Generate benchmak CPU and Memory profiles
         description: This is useful for identifying most time or memory consuming parts. Recommended to run for single benchmark at a time and with `-count` or `-benchtime` for better accuracy.
         commands:
@@ -479,7 +816,24 @@ groups:
         author: official Go team
         commands:
           - benchstat -split="XYZ" old.txt new.txt
-        example_output_url: source/benchstat_two.txt
+        example_output: |
+          name                    old time/op    new time/op    delta
+          JSONUnmarshal/small-10     502ns ± 0%     331ns ± 0%   -33.99%  (p=0.008 n=5+5)
+          JSONUnmarshal/large-10     572ns ± 0%     414ns ± 0%   -27.64%  (p=0.008 n=5+5)
+          JSONMarshal/small-10       189ns ± 0%     273ns ± 0%   +44.20%  (p=0.008 n=5+5)
+          JSONMarshal/large-10       176ns ± 0%     340ns ± 0%   +93.29%  (p=0.008 n=5+5)
+
+          name                    old alloc/op   new alloc/op   delta
+          JSONUnmarshal/small-10      271B ± 0%      198B ± 0%   -26.94%  (p=0.008 n=5+5)
+          JSONUnmarshal/large-10      312B ± 0%      216B ± 0%   -30.77%  (p=0.008 n=5+5)
+          JSONMarshal/small-10       66.0B ± 0%    144.0B ± 0%  +118.18%  (p=0.008 n=5+5)
+          JSONMarshal/large-10       72.0B ± 0%    192.0B ± 0%  +166.67%  (p=0.008 n=5+5)
+
+          name                    old allocs/op  new allocs/op  delta
+          JSONUnmarshal/small-10      6.00 ± 0%      3.00 ± 0%   -50.00%  (p=0.008 n=5+5)
+          JSONUnmarshal/large-10      7.00 ± 0%      3.00 ± 0%   -57.14%  (p=0.008 n=5+5)
+          JSONMarshal/small-10        2.00 ± 0%      4.00 ± 0%  +100.00%  (p=0.008 n=5+5)
+          JSONMarshal/large-10        2.00 ± 0%      5.00 ± 0%  +150.00%  (p=0.008 n=5+5)
         requirements:
           - go install golang.org/x/perf/cmd/benchstat@latest
       - title: Get summary of benchmarks with `benchstat`
@@ -487,7 +841,24 @@ groups:
         author: official Go team
         commands:
           - benchstat -split="XYZ" int.txt float32.txt fpmoney.txt
-        example_output_url: source/benchstat_multiple.txt
+        example_output: |
+          name \ time/op          int.bench   float32.bench  fpmoney.bench
+          JSONUnmarshal/small-10  481ns ± 2%     502ns ± 0%     331ns ± 0%
+          JSONUnmarshal/large-10  530ns ± 1%     572ns ± 0%     414ns ± 0%
+          JSONMarshal/small-10    140ns ± 1%     189ns ± 0%     273ns ± 0%
+          JSONMarshal/large-10    145ns ± 0%     176ns ± 0%     340ns ± 0%
+
+          name \ alloc/op         int.bench   float32.bench  fpmoney.bench
+          JSONUnmarshal/small-10   269B ± 0%      271B ± 0%      198B ± 0%
+          JSONUnmarshal/large-10   288B ± 0%      312B ± 0%      216B ± 0%
+          JSONMarshal/small-10    57.0B ± 0%     66.0B ± 0%    144.0B ± 0%
+          JSONMarshal/large-10    72.0B ± 0%     72.0B ± 0%    192.0B ± 0%
+
+          name \ allocs/op        int.bench   float32.bench  fpmoney.bench
+          JSONUnmarshal/small-10   6.00 ± 0%      6.00 ± 0%      3.00 ± 0%
+          JSONUnmarshal/large-10   7.00 ± 0%      7.00 ± 0%      3.00 ± 0%
+          JSONMarshal/small-10     2.00 ± 0%      2.00 ± 0%      4.00 ± 0%
+          JSONMarshal/large-10     2.00 ± 0%      2.00 ± 0%      5.00 ± 0%
         requirements:
           - go install golang.org/x/perf/cmd/benchstat@latest
       - title: Continuous benchmarking
@@ -514,8 +885,24 @@ groups:
           - go install github.com/knqyf263/cob@latest
       - title: Generate live traces using `net/http/trace`
         description: This will add endpoints to your your server. If you don't have server running already in your process, you can start one. Then you can point `pprof` tool to this data. For production, hide this endpoint in separate port and path. More details in documentation [trace](https://pkg.go.dev/cmd/trace), [net/http/pprof](https://pkg.go.dev/net/http/pprof).
-        example_content_url: source/net_http_pprof.go
-        example_output_url: source/net_http_pprof_commands.txt
+        example_content: |
+          package main
+
+          import (
+            "log"
+            "net/http"
+            "net/http/pprof"
+          )
+
+          func main() {
+            mux := http.NewServeMux()
+            mux.HandleFunc("/custom_debug_path/profile", pprof.Profile)
+            log.Fatal(http.ListenAndServe(":7777", mux))
+          }
+        example_output: |
+          go tool pprof http://localhost:6060/debug/pprof/heap
+          go tool pprof http://localhost:6060/debug/pprof/profile?seconds=30
+          curl -o trace.out http://localhost:6060/debug/pprof/trace?seconds=5
       - title: Generate traces using `go test`
         description: Produce a trace of execution of tests in pacakge.
         commands:
@@ -528,14 +915,46 @@ groups:
       - title: Get wallclock traces
         description: This tool can be more illustrative of Go traces than standard Go traces.
         author: https://github.com/felixge
-        example_output_url: source/fgtrace.go
+        example_output_ext: go
+        example_output: |
+          package main
+
+          import (
+            "net/http"
+
+            "github.com/felixge/fgtrace"
+          )
+
+          func main() {
+            http.DefaultServeMux.Handle("/debug/fgtrace", fgtrace.Config{})
+            http.ListenAndServe(":1234", nil)
+          }
         example_image_url: https://github.com/felixge/fgtrace/raw/main/assets/fgtrace-example.png
         source: https://github.com/felixge/fgtrace
       - title: Get on/off CPU profiles
         description: This tool can be more illustrative of Go profiles than standard Go profiling.
         author: https://github.com/felixge
         source: https://github.com/felixge/fgprof
-        example_output_url: source/fgprof.go
+        example_output_ext: go
+        example_output: |
+          package main
+
+          import (
+            "log"
+            "net/http"
+            _ "net/http/pprof"
+
+            "github.com/felixge/fgprof"
+          )
+
+          func main() {
+            http.DefaultServeMux.Handle("/debug/fgprof", fgprof.Handler())
+            go func() {
+              log.Println(http.ListenAndServe(":6060", nil))
+            }()
+
+            // <code to profile>
+          }
         example_image_url: https://github.com/felixge/fgprof/raw/master/assets/fgprof_pprof.png
   - title: Documentation
     entries:
