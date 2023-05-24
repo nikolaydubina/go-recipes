@@ -1650,14 +1650,8 @@ go install github.com/appliedgocode/goman@lates
 
 ## Style Guide
 
-### [⏫](#contents)➡ Google
+- [Google](https://google.github.io/styleguide/go)
 
-https://google.github.io/styleguide/go.
-
-
-### [⏫](#contents)➡ Uber
-
-https://github.com/uber-go/guide.
-
+- [Uber](https://github.com/uber-go/guide)
 
 
