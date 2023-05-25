@@ -997,8 +997,8 @@ groups:
         name: fgtrace
         url: https://github.com/felixge/fgtrace
         author: https://github.com/felixge
-        example_output_ext: go
-        example_output: |
+        example_content_ext: go
+        example_content: |
           package main
 
           import (
@@ -1017,8 +1017,8 @@ groups:
         author: https://github.com/felixge
         name: fgprof
         url: https://github.com/felixge/fgprof
-        example_output_ext: go
-        example_output: |
+        example_content_ext: go
+        example_content: |
           package main
 
           import (

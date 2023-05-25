@@ -1562,8 +1562,7 @@ go tool trace trace.out
 
 This tool can be more illustrative of Go traces than standard Go traces. — [@felixge](https://github.com/felixge)
 
-Example
-```
+```go
 package main
 
 import (
@@ -1586,8 +1585,7 @@ func main() {
 
 This tool can be more illustrative of Go profiles than standard Go profiling. — [@felixge](https://github.com/felixge)
 
-Example
-```
+```go
 package main
 
 import (
