@@ -622,7 +622,7 @@ go install github.com/rodrigo-brito/gocity@latest
 
 ## Static Analysis
 
-### [⏫](#contents)➡ Run default static analysis
+### [⏫](#contents)➡ Run default static analysis with `go vet`
 
 Official tool for static analysis of Go programs, with 27+ static analyzers. — official Go team
 
@@ -632,7 +632,7 @@ go vet ./...
 ```
 
 
-### [⏫](#contents)➡ Run custom static analysis tool
+### [⏫](#contents)➡ Run custom static analysis tool with `go vet`
 
 Standard `go vet` can be used to run custom analyzers binaries. Third party analyzers are supported. Lots of official analyzers not included by default into `go vet`. Analyzer has to satisfy interface and command described here https://pkg.go.dev/golang.org/x/tools/go/analysis. Refer for https://pkg.go.dev/golang.org/x/tools/go/analysis/passes for full list of official Go analyzers. — official Go team
 
@@ -949,7 +949,7 @@ go install golang.org/x/tools/cmd/stringer@latest
 
 ## Refactoring
 
-### [⏫](#contents)➡ Replace symbol
+### [⏫](#contents)➡ Replace symbol with `gofmt`
 
 I found this in announcement [notice](https://github.com/golang/go/commit/2580d0e08d5e9f979b943758d3c49877fb2324cb) of Go 1.18 for changes to `interface{}` to `any`. This can be useful for other refactorings too.
 
@@ -1354,7 +1354,7 @@ go test -bench=<my-benchmark-name> -cpuprofile cpu.out -memprofile mem.out ./...
 ```
 
 
-### [⏫](#contents)➡ Visualize callgraph of profiles
+### [⏫](#contents)➡ Visualize callgraph of profiles with `pprof`
 
 Once you generate profiles, visualize them with `pprof`. Both memory and CPU profiles are supported. Many options are available. Refer to the link you get in SVG to how to interpret this graph. More official documentation [blog](https://go.dev/blog/pprof), [pkg-doc](https://pkg.go.dev/net/http/pprof). — official Go team
 
@@ -1368,7 +1368,7 @@ go tool pprof -svg mem.out > mem.svg
 
 
 
-### [⏫](#contents)➡ Visualize flamegraphs of profiles
+### [⏫](#contents)➡ Visualize flamegraphs of profiles with `pprof`
 
 Latest versions of `pprof` can also render [Flamegraphs](https://www.brendangregg.com/flamegraphs.html) for profiles. Make sure you set `-http` to start webserver. Then it is available in "View > Graph" in at http://0.0.0.0:80. — Google
 
@@ -1507,7 +1507,7 @@ Requirements
 go install github.com/knqyf263/cob@latest
 ```
 
-### [⏫](#contents)➡ Generate live traces
+### [⏫](#contents)➡ Generate live traces with `net/http/trace`
 
 This will add endpoints to your your server. If you don't have server running already in your process, you can start one. Then you can point `pprof` tool to this data. For production, hide this endpoint in separate port and path. More details in documentation [trace](https://pkg.go.dev/cmd/trace), [net/http/pprof](https://pkg.go.dev/net/http/pprof).
 
@@ -1535,7 +1535,7 @@ curl -o trace.out http://localhost:6060/debug/pprof/trace?seconds=5
 ```
 
 
-### [⏫](#contents)➡ Generate traces
+### [⏫](#contents)➡ Generate traces with `go test`
 
 Produce a trace of execution of tests in pacakge.
 
@@ -1545,7 +1545,7 @@ go test -trace trace.out .
 ```
 
 
-### [⏫](#contents)➡ View traces
+### [⏫](#contents)➡ View traces with `go tool trace`
 
 You can view traces interactively in browser with standard Go tooling. This web tool also shows network blocking profile, synchronization blocking profile, syscall blocking profile, scheduler latency profile.
 
