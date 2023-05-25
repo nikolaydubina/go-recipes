@@ -10,7 +10,7 @@
 ## Contents
 
  - Testing
-   + [➡ Make treemap of code coverage with `go-cover-treemap`](#-make-treemap-of-code-coverage-with-go-cover-treemaphttpsgithubcomnikolaydubinago-cover-treemap)
+   + [➡ Make treemap of code coverage with `go-cover-treemap`](#-make-treemap-of-code-coverage-with-go-cover-treemap)
    + [➡ Browse code coverage by file](#-browse-code-coverage-by-file)
    + [➡ Browse code coverage of Go code in terminal](#-browse-code-coverage-of-go-code-in-terminal)
    + [➡ Pretty print coverage of Go code in terminal](#-pretty-print-coverage-of-go-code-in-terminal)
