@@ -102,8 +102,8 @@
    + [➡ Make alternative documentation with `golds`](#-make-alternative-documentation-with-golds)
    + [➡ Read Go binary documentation in `man` format with `goman`](#-read-go-binary-documentation-in-man-format-with-goman)
  - Style Guide
-   + [Google](#style-guide)
-   + [Uber](#style-guide)
+   + [➡ Google](#style-guide)
+   + [➡ Uber](#style-guide)
 
 ## Testing
 
