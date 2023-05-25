@@ -225,7 +225,7 @@ for _, tc := range tests {
 
 ### [⏫](#contents)➡ Detect goroutine leaks with [leaktest](https://github.com/fortytw2/leaktest)
 
-Refactored, tested variant of the goroutine leak detector found in both `net/http` tests and the cockroachdb source tree. You have to call this library in your tests. — [@fortytw2](https://github.com/fortytw2) / https://github.com/fortytw2/leaktest
+Refactored, tested variant of the goroutine leak detector found in both `net/http` tests and the cockroachdb source tree. You have to call this library in your tests. — [@fortytw2](https://github.com/fortytw2)
 
 ```
 func TestPoolContext(t *testing.T) {
@@ -244,7 +244,7 @@ func TestPoolContext(t *testing.T) {
 
 ### [⏫](#contents)➡ Run tests with pretty output with [gotestsum](https://github.com/gotestyourself/gotestsum)
 
-This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary. — [@dnephin](https://github.com/dnephin) / https://github.com/gotestyourself/gotestsum
+This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary. — [@dnephin](https://github.com/dnephin)
 
 
 ```
@@ -1080,7 +1080,7 @@ Use [godbolt.org](https://godbolt.org) to compile and see assembly of short Go c
 
 ### [⏫](#contents)➡ Get Go compiler SSA intermediary representation with [ssaplayground](https://github.com/golang-design/ssaplayground)
 
-Check what does Go compiler do. Might be useful if you trying to optimize some code or learn more about compiler. https://golang.design/gossa. — [@changkun](https://github.com/changkun) / https://github.com/golang-design/ssaplayground
+Check what does Go compiler do. Might be useful if you trying to optimize some code or learn more about compiler. https://golang.design/gossa. — [@changkun](https://github.com/changkun)
 
 <div align="center"><img src="https://github.com/golang-design/ssaplayground/blob/main/public/assets/screen.png" style="margin: 8px; max-height: 640px;"></div>
 
@@ -1088,7 +1088,7 @@ Check what does Go compiler do. Might be useful if you trying to optimize some c
 
 ### [⏫](#contents)➡ View Go assembly interactively with [lensm](https://github.com/loov/lensm)
 
-Understand how Go is compiled better. — [@egonelbre](https://github.com/egonelbre) / https://github.com/loov/lensm
+Understand how Go is compiled better. — [@egonelbre](https://github.com/egonelbre)
 
 <div align="center"><img src="https://github.com/loov/lensm/raw/main/screenshot.gif" style="margin: 8px; max-height: 640px;"></div>
 
@@ -1100,7 +1100,7 @@ go install loov.dev/lensm@main
 
 ### [⏫](#contents)➡ Generate Go assembly in Go with [avo](https://github.com/mmcloughlin/avo)
 
-Write better quality Go assembly quicker in Go language itself. This tool conveniently generates stub for Go code to call your generated assembly. Used by Go core. — [@mmcloughlin](https://github.com/mmcloughlin) / https://github.com/mmcloughlin/avo
+Write better quality Go assembly quicker in Go language itself. This tool conveniently generates stub for Go code to call your generated assembly. Used by Go core. — [@mmcloughlin](https://github.com/mmcloughlin)
 
 ```go
 //go:build ignore
@@ -1473,7 +1473,7 @@ Track how benchmarks change in codebase over time. This is accomplished by runni
 
 ### [⏫](#contents)➡ Continuous benchmarking with [gobenchdata](https://github.com/bobheadxi/gobenchdata)
 
-This tool uses `go test -bench` data in GitHub. It runs benchmarks, and uploads it as GitHub Pages for visualization. It is available as GitHub Action [gobenchdata](https://github.com/marketplace/actions/continuous-benchmarking-for-go). This is useful to see benchmark trends. — [@bobheadxi](https://github.com/bobheadxi) / https://github.com/bobheadxi/gobenchdata
+This tool uses `go test -bench` data in GitHub. It runs benchmarks, and uploads it as GitHub Pages for visualization. It is available as GitHub Action [gobenchdata](https://github.com/marketplace/actions/continuous-benchmarking-for-go). This is useful to see benchmark trends. — [@bobheadxi](https://github.com/bobheadxi)
 
 <div align="center"><img src="https://github.com/bobheadxi/gobenchdata/raw/main/.static/demo-chart.png" style="margin: 8px; max-height: 640px;"></div>
 
@@ -1560,7 +1560,7 @@ go tool trace trace.out
 
 ### [⏫](#contents)➡ Get wallclock traces with [fgtrace](https://github.com/felixge/fgtrace)
 
-This tool can be more illustrative of Go traces than standard Go traces. — [@felixge](https://github.com/felixge) / https://github.com/felixge/fgtrace
+This tool can be more illustrative of Go traces than standard Go traces. — [@felixge](https://github.com/felixge)
 
 Example
 ```
@@ -1584,7 +1584,7 @@ func main() {
 
 ### [⏫](#contents)➡ Get on/off CPU profiles with [fgprof](https://github.com/felixge/fgprof)
 
-This tool can be more illustrative of Go profiles than standard Go profiling. — [@felixge](https://github.com/felixge) / https://github.com/felixge/fgprof
+This tool can be more illustrative of Go profiles than standard Go profiling. — [@felixge](https://github.com/felixge)
 
 Example
 ```
@@ -1616,7 +1616,7 @@ func main() {
 
 ### [⏫](#contents)➡ Make alternative documentation with [golds](https://github.com/go101/golds)
 
-It has additional information like implementations of interface; promoted methods. The tool has nice minimalistic aesthetics. — [Tapir Liu](https://www.tapirgames.com) / https://github.com/go101/golds
+It has additional information like implementations of interface; promoted methods. The tool has nice minimalistic aesthetics. — [Tapir Liu](https://www.tapirgames.com)
 
 
 ```

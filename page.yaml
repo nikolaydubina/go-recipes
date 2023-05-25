@@ -90,7 +90,6 @@ groups:
         name: leaktest
         url: https://github.com/fortytw2/leaktest
         author: https://github.com/fortytw2
-        source: https://github.com/fortytw2/leaktest
         example_content: |
           func TestPoolContext(t *testing.T) {
             ctx, cancel := context.WithTimeout(context.Background(), time.Second)
@@ -111,7 +110,6 @@ groups:
         commands:
           - gotestsum --format dots
         example_image_url: https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif
-        source: https://github.com/gotestyourself/gotestsum
         requirements:
           - go install gotest.tools/gotestsum@latest
       - title: Enrich `go test` output
@@ -663,7 +661,6 @@ groups:
         description: Check what does Go compiler do. Might be useful if you trying to optimize some code or learn more about compiler. https://golang.design/gossa.
         name: ssaplayground
         url: https://github.com/golang-design/ssaplayground
-        source: https://github.com/golang-design/ssaplayground
         example_image_url: https://github.com/golang-design/ssaplayground/blob/main/public/assets/screen.png
         author: https://github.com/changkun
       - title: View Go assembly interactively
@@ -674,13 +671,11 @@ groups:
         example_image_url: https://github.com/loov/lensm/raw/main/screenshot.gif
         requirements:
           - go install loov.dev/lensm@main
-        source: https://github.com/loov/lensm
       - title: Generate Go assembly in Go
         description: Write better quality Go assembly quicker in Go language itself. This tool conveniently generates stub for Go code to call your generated assembly. Used by Go core.
         name: avo
         url: https://github.com/mmcloughlin/avo
         author: https://github.com/mmcloughlin
-        source: https://github.com/mmcloughlin/avo
         example_content_ext: go
         example_content: |
           //go:build ignore
@@ -946,7 +941,6 @@ groups:
         example_image_url: https://github.com/bobheadxi/gobenchdata/raw/main/.static/demo-chart.png
         name: gobenchdata
         url: https://github.com/bobheadxi/gobenchdata
-        source: https://github.com/bobheadxi/gobenchdata
         author: https://github.com/bobheadxi
         requirements:
           - go install go.bobheadxi.dev/gobenchdata@latest
@@ -1018,13 +1012,11 @@ groups:
             http.ListenAndServe(":1234", nil)
           }
         example_image_url: https://github.com/felixge/fgtrace/raw/main/assets/fgtrace-example.png
-        source: https://github.com/felixge/fgtrace
       - title: Get on/off CPU profiles
         description: This tool can be more illustrative of Go profiles than standard Go profiling.
         author: https://github.com/felixge
         name: fgprof
         url: https://github.com/felixge/fgprof
-        source: https://github.com/felixge/fgprof
         example_output_ext: go
         example_output: |
           package main
@@ -1052,7 +1044,6 @@ groups:
         description: It has additional information like implementations of interface; promoted methods. The tool has nice minimalistic aesthetics.
         name: golds
         url: https://github.com/go101/golds
-        source: https://github.com/go101/golds
         author: "[Tapir Liu](https://www.tapirgames.com)"
         commands:
           - golds ./...
