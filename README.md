@@ -10,7 +10,7 @@
 ## Contents
 
  - Testing
-   + [➡ Make treemap of code coverage](#-make-treemap-of-code-coverage)
+   + [➡ Make treemap of code coverage with `go-cover-treemap`](#-make-treemap-of-code-coverage-with-go-cover-treemaphttpsgithubcomnikolaydubinago-cover-treemap)
    + [➡ Browse code coverage by file](#-browse-code-coverage-by-file)
    + [➡ Browse code coverage of Go code in terminal](#-browse-code-coverage-of-go-code-in-terminal)
    + [➡ Pretty print coverage of Go code in terminal](#-pretty-print-coverage-of-go-code-in-terminal)
@@ -107,7 +107,7 @@
 
 ## Testing
 
-### [⏫](#contents)➡ Make treemap of code coverage
+### [⏫](#contents)➡ Make treemap of code coverage with [go-cover-treemap](https://github.com/nikolaydubina/go-cover-treemap)
 
 Visualize distribution of code coverage in your project. This helps to identify code areas with high and low coverage. Useful when you have large project with lots of files and packages. This 2D image-hash of your project should be more representative than a single number. Also available at https://go-cover-treemap.io. — [@nikolaydubina](https://github.com/nikolaydubina)
 
