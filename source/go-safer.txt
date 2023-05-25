@@ -1,8 +1,0 @@
-# github.com/jlauinger/go-safer/passes/sliceheader/testdata/src/bad/composite_literal
-composite_literal/composite_literal.go:10:9: reflect header composite literal found
-composite_literal/composite_literal.go:10:9: reflect header composite literal found
-# github.com/jlauinger/go-safer/passes/sliceheader/testdata/src/bad/header_in_struct
-header_in_struct/header_in_struct.go:16:2: assigning to reflect header object
-header_in_struct/header_in_struct.go:16:2: assigning to reflect header object
-header_in_struct/header_in_struct.go:17:2: assigning to reflect header object
-header_in_struct/header_in_struct.go:17:2: assigning to reflect header object

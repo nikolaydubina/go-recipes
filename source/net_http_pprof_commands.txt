@@ -1,3 +1,0 @@
-go tool pprof http://localhost:6060/debug/pprof/heap
-go tool pprof http://localhost:6060/debug/pprof/profile?seconds=30
-curl -o trace.out http://localhost:6060/debug/pprof/trace?seconds=5
