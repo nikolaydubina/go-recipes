@@ -551,7 +551,7 @@ groups:
         example_image_url: https://github.com/nikolaydubina/vertfn/blob/master/doc/code-dep-viz.png
         requirements:
           - go install github.com/nikolaydubina/vertfn@latest
-      - title: Make sure `if` statements using short assignment 🏚️
+      - title: 🏚️ Make sure `if` statements using short assignment
         name: ifshort
         author: https://github.com/esimonov
         status: archive-not-working
