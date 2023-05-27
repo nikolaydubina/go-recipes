@@ -634,6 +634,36 @@ groups:
         name: gofmt
         commands:
           - gofmt -w -r 'interface{} -> any' .
+      - title: Keep consistent ordering of imports
+        description: "This tool splits all import blocks into different sections, now support five section types: standard (e.g. 'fmt'); custom; default; blank; dot. It will keep each section sorted and keep ordering of sections consistent."
+        name: gci
+        author: https://github.com/daixiang0
+        url: https://github.com/daixiang0/gci
+        commands:
+          - gci write -s standard -s default -s "prefix(github.com/daixiang0/gci)" main.go
+        example_content_ext: go
+        example_content: |
+          // before
+          package main
+          import (
+            "golang.org/x/tools"
+            
+            "fmt"
+            
+            "github.com/daixiang0/gci"
+          )
+
+          // after
+          package main
+          import (
+              "fmt"
+
+              "golang.org/x/tools"
+
+              "github.com/daixiang0/gci"
+          )
+        requirements:
+          - go install github.com/daixiang0/gci@latest
   - title: Errors
     entries:
       - title: Pretty print `panic` messages
