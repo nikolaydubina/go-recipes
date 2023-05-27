@@ -780,7 +780,7 @@ go install github.com/nishanths/exhaustive/cmd/exhaustive@latest
 
 ### [⏫](#contents)➡ Detect structs with uninitialized fields with [go-exhaustruct](https://github.com/GaijinEntertainment/go-exhaustruct)
 
- — [@xobotyi](https://github.com/xobotyi)
+This tool finds instatiations of structs with zero values. It supports struct tags to mark fields as optional. This may help to prevent unexpected zero values. — [@xobotyi](https://github.com/xobotyi)
 
 
 ```

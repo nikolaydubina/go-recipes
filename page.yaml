@@ -450,6 +450,7 @@ groups:
         requirements:
          - go install github.com/nishanths/exhaustive/cmd/exhaustive@latest
       - title: Detect structs with uninitialized fields
+        description: This tool finds instatiations of structs with zero values. It supports struct tags to mark fields as optional. This may help to prevent unexpected zero values.
         url: https://github.com/GaijinEntertainment/go-exhaustruct
         name: go-exhaustruct
         author: https://github.com/xobotyi 
