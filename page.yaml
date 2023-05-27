@@ -679,8 +679,8 @@ groups:
         url: https://github.com/anqiansong/goimportx/tree/main
         commands:
           - goimportx --file /path/to/file.go --group "system,local,third"
-        example_output_ext: go
-        example_output: |
+        example_content_ext: go
+        example_content: |
           package main
 
           import (
