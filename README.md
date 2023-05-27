@@ -52,6 +52,7 @@
    + [➡ Calculate age of comments with `go-commentage`](#-calculate-age-of-comments-with-go-commentage)
    + [➡ Detect mixing pointer and value method receivers with `smrcptr`](#-detect-mixing-pointer-and-value-method-receivers-with-smrcptr)
    + [➡ Check vertical function ordering with `vertfn`](#-check-vertical-function-ordering-with-vertfn)
+   + [➡ (archived) Ensure `if` statements using short assignment with `ifshort`](#-archived-ensure-if-statements-using-short-assignment-with-ifshort)
  - Code Generation
    + [➡ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
    + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
@@ -905,6 +906,20 @@ vertfn --verbose ./...
 Requirements
 ```
 go install github.com/nikolaydubina/vertfn@latest
+```
+
+### [⏫](#contents)➡ (archived) Ensure `if` statements using short assignment with [ifshort](https://github.com/esimonov/ifshort)
+
+Linter for checking that your code uses short syntax for `if` statements whenever possible. However, as of `2023-05-26`, it is not maitaned and is not working. — [@esimonov](https://github.com/esimonov)
+
+
+```
+ifshort ./...
+```
+
+Requirements
+```
+go install github.com/esimonov/ifshort@latest
 ```
 
 ## Code Generation
