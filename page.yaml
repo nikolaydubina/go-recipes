@@ -551,12 +551,12 @@ groups:
         example_image_url: https://github.com/nikolaydubina/vertfn/blob/master/doc/code-dep-viz.png
         requirements:
           - go install github.com/nikolaydubina/vertfn@latest
-      - title: 🏚️ Make sure `if` statements using short assignment
+      - title: (archived) Ensure `if` statements using short assignment
         name: ifshort
         author: https://github.com/esimonov
         status: archive-not-working
         url: https://github.com/esimonov/ifshort
-        description: Go linter for checking that your code uses short syntax for `if` statements whenever possible. However, as of `2023-05-26`, it is not maitaned and is not working.
+        description: Linter for checking that your code uses short syntax for `if` statements whenever possible. However, as of `2023-05-26`, it is not maitaned and is not working.
         commands:
           - ifshort ./...
         requirements:
