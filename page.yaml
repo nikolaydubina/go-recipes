@@ -559,6 +559,31 @@ groups:
         description: Linter for checking that your code uses short syntax for `if` statements whenever possible. However, as of `2023-05-26`, it is not maitaned and is not working.
         commands:
           - ifshort ./...
+        example_content_ext: go
+        example_content: |
+          // bad
+          func someFunc(k string, m map[string]interface{}) {
+            _, ok := m[k]
+            if !ok {
+              return
+            }
+
+            err := otherFunc1()
+            if err != nil {
+              otherFunc2(err)
+            }
+          }
+
+          // good
+          func someFunc(k string, m map[string]interface{}) {
+            if _, ok := m[k]; !ok {
+              return
+            }
+
+            if err := otherFunc1(); err != nil {
+              otherFunc2(err)
+            }
+          }
         requirements:
           - go install github.com/esimonov/ifshort@latest
   - title: Code Generation
