@@ -1080,8 +1080,7 @@ This tool groups and sorts imports within groups. It keeps consitent ordering of
 goimportx --file /path/to/file.go --group "system,local,third"
 ```
 
-Example
-```
+```go
 package main
 
 import (
