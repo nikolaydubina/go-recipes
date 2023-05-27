@@ -449,6 +449,35 @@ groups:
           calc.go:15:9: missing map keys of type token.Token: Quotient, Remainder
         requirements:
          - go install github.com/nishanths/exhaustive/cmd/exhaustive@latest
+      - title: Detect structs with uninitialized fields
+        url: https://github.com/GaijinEntertainment/go-exhaustruct
+        name: go-exhaustruct
+        author: https://github.com/xobotyi 
+        commands:
+          - exhaustruct ./...
+        example_content_ext: go
+        example_content: |
+          type Shape struct {
+            Length int
+            Width  int
+            volume    int
+            Perimeter int `exhaustruct:"optional"`
+          }
+
+          // valid
+          var a Shape = Shape{
+            Length: 5,
+            Width:  3,
+            volume: 5,
+          }
+
+          // invalid, `volume` is missing
+          var b Shape = Shape{
+            Length: 5,
+            Width:  3,
+          }
+        requirements:
+          - go get -u github.com/GaijinEntertainment/go-exhaustruct/v3/cmd/exhaustruct
       - title: Detect unsafe code
         description: Find incorrect uses of `reflect.SliceHeader`, `reflect.StringHeader`, and unsafe casts between structs with architecture-sized fields. Reseach paper ["Uncovering the Hidden Dangers Finding Unsafe Go Code in the Wild"](https://arxiv.org/abs/2010.11242) presented at 19th IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom 2020).
         name: go-safer

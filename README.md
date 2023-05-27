@@ -48,6 +48,7 @@
    + [➡ Run official static analyzers not included in `go vet`](#-run-official-static-analyzers-not-included-in-go-vet)
    + [➡ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
    + [➡ Detect non-exhaustive switch and map with `exhaustive`](#-detect-non-exhaustive-switch-and-map-with-exhaustive)
+   + [➡ Detect structs with uninitialized fields with `go-exhaustruct`](#-detect-structs-with-uninitialized-fields-with-go-exhaustruct)
    + [➡ Detect unsafe code with `go-safer`](#-detect-unsafe-code-with-go-safer)
    + [➡ Calculate cognitive complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
    + [➡ Calculate age of comments with `go-commentage`](#-calculate-age-of-comments-with-go-commentage)
@@ -775,6 +776,42 @@ calc.go:15:9: missing map keys of type token.Token: Quotient, Remainder
 Requirements
 ```
 go install github.com/nishanths/exhaustive/cmd/exhaustive@latest
+```
+
+### [⏫](#contents)➡ Detect structs with uninitialized fields with [go-exhaustruct](https://github.com/GaijinEntertainment/go-exhaustruct)
+
+ — [@xobotyi](https://github.com/xobotyi)
+
+
+```
+exhaustruct ./...
+```
+
+```go
+type Shape struct {
+  Length int
+  Width  int
+  volume    int
+  Perimeter int `exhaustruct:"optional"`
+}
+
+// valid
+var a Shape = Shape{
+  Length: 5,
+  Width:  3,
+  volume: 5,
+}
+
+// invalid, `volume` is missing
+var b Shape = Shape{
+  Length: 5,
+  Width:  3,
+}
+```
+
+Requirements
+```
+go get -u github.com/GaijinEntertainment/go-exhaustruct/v3/cmd/exhaustruct
 ```
 
 ### [⏫](#contents)➡ Detect unsafe code with [go-safer](https://github.com/jlauinger/go-safer)
