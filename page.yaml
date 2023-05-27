@@ -627,6 +627,14 @@ groups:
           var s string = Acetaminophen.String()
         requirements:
           - go install golang.org/x/tools/cmd/stringer@latest
+      - title: Modify struct field tags
+        description: "This tool makes it easy to update, add or delete the tags and options in a struct field. You can add new tags, update existing tags (such as appending a new key, i.e: db, xml, etc..) or remove existing tags. It's intended to be used by an editor, but also has modes to run it from the terminal."
+        name: gomodifytags
+        author: https://github.com/fatih 
+        url: https://github.com/fatih/gomodifytags
+        example_image_url: https://user-images.githubusercontent.com/438920/32691304-a1c7e47c-c716-11e7-977c-f4d0f8c616be.gif
+        requirements:
+          - go install github.com/fatih/gomodifytags@latest
   - title: Refactoring
     entries:
       - title: Replace symbol
