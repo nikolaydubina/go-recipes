@@ -57,6 +57,7 @@
  - Code Generation
    + [➡ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
    + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
+   + [➡ Modify struct field tags with `gomodifytags`](#-modify-struct-field-tags-with-gomodifytags)
  - Refactoring
    + [➡ Replace symbol with `gofmt`](#-replace-symbol-with-gofmt)
    + [➡ Keep consistent ordering of imports with `gci`](#-keep-consistent-ordering-of-imports-with-gci)
@@ -1007,6 +1008,18 @@ var s string = Acetaminophen.String()
 Requirements
 ```
 go install golang.org/x/tools/cmd/stringer@latest
+```
+
+### [⏫](#contents)➡ Modify struct field tags with [gomodifytags](https://github.com/fatih/gomodifytags)
+
+This tool makes it easy to update, add or delete the tags and options in a struct field. You can add new tags, update existing tags (such as appending a new key, i.e: db, xml, etc..) or remove existing tags. It's intended to be used by an editor, but also has modes to run it from the terminal. — [@fatih](https://github.com/fatih)
+
+<div align="center"><img src="https://user-images.githubusercontent.com/438920/32691304-a1c7e47c-c716-11e7-977c-f4d0f8c616be.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/fatih/gomodifytags@latest
 ```
 
 ## Refactoring
