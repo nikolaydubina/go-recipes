@@ -59,6 +59,7 @@
    + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
  - Refactoring
    + [➡ Replace symbol with `gofmt`](#-replace-symbol-with-gofmt)
+   + [➡ Keep consistent ordering of imports with `gci`](#-keep-consistent-ordering-of-imports-with-gci)
  - Errors
    + [➡ Pretty print `panic` messages with `panicparse`](#-pretty-print-panic-messages-with-panicparse)
  - Build
@@ -1019,6 +1020,42 @@ I found this in announcement [notice](https://github.com/golang/go/commit/2580d0
 gofmt -w -r 'interface{} -> any' .
 ```
 
+
+### [⏫](#contents)➡ Keep consistent ordering of imports with [gci](https://github.com/daixiang0/gci)
+
+This tool splits all import blocks into different sections, now support five section types: standard (e.g. 'fmt'); custom; default; blank; dot. It will keep each section sorted and keep ordering of sections consistent. — [@daixiang0](https://github.com/daixiang0)
+
+
+```
+gci write -s standard -s default -s "prefix(github.com/daixiang0/gci)" main.go
+```
+
+```go
+// before
+package main
+import (
+  "golang.org/x/tools"
+  
+  "fmt"
+  
+  "github.com/daixiang0/gci"
+)
+
+// after
+package main
+import (
+    "fmt"
+
+    "golang.org/x/tools"
+
+    "github.com/daixiang0/gci"
+)
+```
+
+Requirements
+```
+go install github.com/daixiang0/gci@latest
+```
 
 ## Errors
 
