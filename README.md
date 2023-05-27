@@ -61,6 +61,7 @@
  - Refactoring
    + [➡ Replace symbol with `gofmt`](#-replace-symbol-with-gofmt)
    + [➡ Keep consistent ordering of imports with `gci`](#-keep-consistent-ordering-of-imports-with-gci)
+   + [➡ Keep consistent ordering of imports with `goimportx`](#-keep-consistent-ordering-of-imports-with-goimportx)
  - Errors
    + [➡ Pretty print `panic` messages with `panicparse`](#-pretty-print-panic-messages-with-panicparse)
  - Build
@@ -1068,6 +1069,36 @@ import (
 Requirements
 ```
 go install github.com/daixiang0/gci@latest
+```
+
+### [⏫](#contents)➡ Keep consistent ordering of imports with [goimportx](https://github.com/anqiansong/goimportx/tree/main)
+
+This tool groups and sorts imports within groups. It keeps consitent ordering of groups. Detection of groups may be not always accurate. — [@anqiansong](https://github.com/anqiansong)
+
+
+```
+goimportx --file /path/to/file.go --group "system,local,third"
+```
+
+Example
+```
+package main
+
+import (
+  "flag"
+  "io"
+  "log"
+  "os"
+
+  "github.com/nikolaydubina/mdpage/page"
+  "github.com/nikolaydubina/mdpage/render"
+  yaml "gopkg.in/yaml.v3"
+) 
+```
+
+Requirements
+```
+go install github.com/anqiansong/goimportx@latest
 ```
 
 ## Errors
