@@ -11,6 +11,7 @@
 
  - Testing
    + [➡ Make treemap of code coverage with `go-cover-treemap`](#-make-treemap-of-code-coverage-with-go-cover-treemap)
+   + [➡ Browse coverage in browser with `gocov-html`](#-browse-coverage-in-browser-with-gocov-html)
    + [➡ Browse code coverage by file](#-browse-code-coverage-by-file)
    + [➡ Browse code coverage of Go code in terminal with `gocovsh`](#-browse-code-coverage-of-go-code-in-terminal-with-gocovsh)
    + [➡ Pretty print coverage of Go code in terminal with `nikandfor/cover`](#-pretty-print-coverage-of-go-code-in-terminal-with-nikandforcover)
@@ -124,6 +125,25 @@ go-cover-treemap -coverprofile cover.out > out.svg
 Requirements
 ```
 go install github.com/nikolaydubina/go-cover-treemap@latest
+```
+
+### [⏫](#contents)➡ Browse coverage in browser with [gocov-html](https://github.com/matm/gocov-html)
+
+Browse coverage in statically generated HTML page. Multiple styles are supported. You may need to convert coverage report into `gocov` format. — [@matm](https://github.com/matm)
+
+
+```
+gocov test strings | gocov-html -t golang > strings.html
+gocov test encoding/csv strings | gocov-html -t kit > strings.html
+```
+
+<div align="center"><img src="./img/gocov-html.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/axw/gocov/gocov@latest
+go install github.com/matm/gocov-html/cmd/gocov-html@latest
 ```
 
 ### [⏫](#contents)➡ Browse code coverage by file
