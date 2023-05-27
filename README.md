@@ -917,6 +917,32 @@ Linter for checking that your code uses short syntax for `if` statements wheneve
 ifshort ./...
 ```
 
+```go
+// bad
+func someFunc(k string, m map[string]interface{}) {
+  _, ok := m[k]
+  if !ok {
+    return
+  }
+
+  err := otherFunc1()
+  if err != nil {
+    otherFunc2(err)
+  }
+}
+
+// good
+func someFunc(k string, m map[string]interface{}) {
+  if _, ok := m[k]; !ok {
+    return
+  }
+
+  if err := otherFunc1(); err != nil {
+    otherFunc2(err)
+  }
+}
+```
+
 Requirements
 ```
 go install github.com/esimonov/ifshort@latest
