@@ -1088,7 +1088,7 @@ Taint analysis is a technique for identifying the flow of sensitive data through
 sqli main.go
 ```
 
-```
+```go
 package main
 
 import (

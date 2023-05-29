@@ -685,7 +685,7 @@ groups:
           - go install github.com/picatz/taint/cmd/sqli@latest
         commands:
           - sqli main.go
-        example_content_go:
+        example_content_ext: go
         example_content: |
           package main
 
