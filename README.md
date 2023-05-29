@@ -15,13 +15,15 @@
    + [➡ Browse code coverage by file](#-browse-code-coverage-by-file)
    + [➡ Browse code coverage of Go code in terminal with `gocovsh`](#-browse-code-coverage-of-go-code-in-terminal-with-gocovsh)
    + [➡ Pretty print coverage of Go code in terminal with `nikandfor/cover`](#-pretty-print-coverage-of-go-code-in-terminal-with-nikandforcover)
-   + [➡ Make histogram of Go files per package](#-make-histogram-of-go-files-per-package)
    + [➡ Run tests sequentially](#-run-tests-sequentially)
    + [➡ Run tests in parallel](#-run-tests-in-parallel)
    + [➡ Detect goroutine leaks with `leaktest`](#-detect-goroutine-leaks-with-leaktest)
    + [➡ Run tests with pretty output with `gotestsum`](#-run-tests-with-pretty-output-with-gotestsum)
    + [➡ Enrich `go test` output with `richgo`](#-enrich-go-test-output-with-richgo)
    + [➡ Get packages without tests](#-get-packages-without-tests)
+   + [➡ Perform Mutation Testing with `ooze`](#-perform-mutation-testing-with-ooze)
+   + [➡ Perform Mutation Testing with `avito-tech/go-mutesting`](#-perform-mutation-testing-with-avito-techgo-mutesting)
+   + [➡ Perform Mutation Testing with `go-mutesting`](#-perform-mutation-testing-with-go-mutesting)
  - Dependencies
    + [➡ Get Go version of current module](#-get-go-version-of-current-module)
    + [➡ Get Go versions of upstream modules](#-get-go-versions-of-upstream-modules)
@@ -42,6 +44,7 @@
    + [➡ Make PlantUML diagram with `goplantuml`](#-make-plantuml-diagram-with-goplantuml)
    + [➡ Make PlantUML diagram with `go-plantuml`](#-make-plantuml-diagram-with-go-plantuml)
    + [➡ Make 3D chart of Go codebase with `gocity`](#-make-3d-chart-of-go-codebase-with-gocity)
+   + [➡ Make histogram of Go files per package](#-make-histogram-of-go-files-per-package)
  - Static Analysis
    + [➡ Run default static analysis with `go vet`](#-run-default-static-analysis-with-go-vet)
    + [➡ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
@@ -201,29 +204,6 @@ Requirements
 go install github.com/nikandfor/cover@latest
 ```
 
-### [⏫](#contents)➡ Make histogram of Go files per package
-
-Find when package is too big or too small. Adjust histogram length to maximum value.
-
-
-```
-go list -json ./... | jq -rc '[.ImportPath, (.GoFiles | length | tostring)] | join(" ")' | perl -lane 'print (" " x (20 - $F[1]), "=" x $F[1], " ", $F[1], "\t", $F[0])'
-```
-
-Example
-```
-================== 18	github.com/gin-gonic/gin
-     ============= 13	github.com/gin-gonic/gin/binding
-                 = 1	github.com/gin-gonic/gin/internal/bytesconv
-                 = 1	github.com/gin-gonic/gin/internal/json
-       =========== 11	github.com/gin-gonic/gin/render
-```
-
-Requirements
-```
-https://stedolan.github.io/jq/download/
-```
-
 ### [⏫](#contents)➡ Run tests sequentially
 
 Use when you need to synchronize tests, for example in integration tests that share environment. [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
@@ -319,6 +299,86 @@ github.com/gin-gonic/gin/internal/json
 Requirements
 ```
 https://stedolan.github.io/jq/download/
+```
+
+### [⏫](#contents)➡ Perform Mutation Testing with [ooze](https://github.com/gtramontina/ooze)
+
+Mutation testing is a technique used to assess the quality and coverage of test suites. It involves introducing controlled changes to the code base, simulating common programming mistakes. These changes are, then, put to test against the test suites. A failing test suite is a good sign. It indicates that the tests are identifying mutations in the code—it "killed the mutant". If all tests pass, we have a surviving mutant. This highlights an area with weak coverage. It is an opportunity for improvement. — [@gtramontina](https://github.com/gtramontina)
+
+
+```
+go test -v -tags=mutation
+```
+
+```go
+//go:build mutation
+
+package main_test
+
+import (
+  "testing"
+
+  "github.com/gtramontina/ooze"
+)
+
+func TestMutation(t *testing.T) {
+  ooze.Release(t)
+}
+```
+
+Requirements
+```
+go get github.com/gtramontina/ooze
+```
+
+### [⏫](#contents)➡ Perform Mutation Testing with [avito-tech/go-mutesting](https://github.com/avito-tech/go-mutesting)
+
+This is fork of [zimmski/go-mutesting](https://github.com/zimmski/go-mutesting). It has more mutators and latest updates. — [@vasiliyyudin](https://github.com/vasiliyyudin)
+
+
+```
+go-mutesting ./...
+```
+
+```go
+for _, d := range opts.Mutator.DisableMutators {
+  pattern := strings.HasSuffix(d, "*")
+
+-	if (pattern && strings.HasPrefix(name, d[:len(d)-2])) || (!pattern && name == d) {
++	if (pattern && strings.HasPrefix(name, d[:len(d)-2])) || false {
+    continue MUTATOR
+  }
+}
+```
+
+Requirements
+```
+go install github.com/avito-tech/go-mutesting/cmd/go-mutesting@latest
+```
+
+### [⏫](#contents)➡ Perform Mutation Testing with [go-mutesting](https://github.com/zimmski/go-mutesting)
+
+Find common bugs source code that would pass tests. This is earliest tool for mutation testing in Go. More functions and permutations were added in other mutation Go tools it inspired. — [@zimmski](https://github.com/zimmski)
+
+
+```
+go-mutesting ./...
+```
+
+```go
+for _, d := range opts.Mutator.DisableMutators {
+  pattern := strings.HasSuffix(d, "*")
+
+-	if (pattern && strings.HasPrefix(name, d[:len(d)-2])) || (!pattern && name == d) {
++	if (pattern && strings.HasPrefix(name, d[:len(d)-2])) || false {
+    continue MUTATOR
+  }
+}
+```
+
+Requirements
+```
+go install github.com/zimmski/go-mutesting/cmd/go-mutesting@latest
 ```
 
 ## Dependencies
@@ -643,6 +703,29 @@ Fresh artistic perspective on Go codebase. `GoCity` is an implementation of the 
 Requirements
 ```
 go install github.com/rodrigo-brito/gocity@latest
+```
+
+### [⏫](#contents)➡ Make histogram of Go files per package
+
+Find when package is too big or too small. Adjust histogram length to maximum value.
+
+
+```
+go list -json ./... | jq -rc '[.ImportPath, (.GoFiles | length | tostring)] | join(" ")' | perl -lane 'print (" " x (20 - $F[1]), "=" x $F[1], " ", $F[1], "\t", $F[0])'
+```
+
+Example
+```
+================== 18	github.com/gin-gonic/gin
+     ============= 13	github.com/gin-gonic/gin/binding
+                 = 1	github.com/gin-gonic/gin/internal/bytesconv
+                 = 1	github.com/gin-gonic/gin/internal/json
+       =========== 11	github.com/gin-gonic/gin/render
+```
+
+Requirements
+```
+https://stedolan.github.io/jq/download/
 ```
 
 ## Static Analysis

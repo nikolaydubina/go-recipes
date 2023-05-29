@@ -71,18 +71,6 @@ groups:
         requirements:
           - go install github.com/nikandfor/cover@latest
         example_image_url: img/cover.png
-      - title: Make histogram of Go files per package
-        description: Find when package is too big or too small. Adjust histogram length to maximum value.
-        requirements:
-          - https://stedolan.github.io/jq/download/
-        commands:
-          - go list -json ./... | jq -rc '[.ImportPath, (.GoFiles | length | tostring)] | join(" ")' | perl -lane 'print (" " x (20 - $F[1]), "=" x $F[1], " ", $F[1], "\t", $F[0])'
-        example_output: |
-          ================== 18	github.com/gin-gonic/gin
-               ============= 13	github.com/gin-gonic/gin/binding
-                           = 1	github.com/gin-gonic/gin/internal/bytesconv
-                           = 1	github.com/gin-gonic/gin/internal/json
-                 =========== 11	github.com/gin-gonic/gin/render
       - title: Run tests sequentially
         description: Use when you need to synchronize tests, for example in integration tests that share environment. [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
         commands:
@@ -143,6 +131,68 @@ groups:
         example_output: |
           github.com/gin-gonic/gin/ginS
           github.com/gin-gonic/gin/internal/json
+      - title: Perform Mutation Testing
+        description: Mutation testing is a technique used to assess the quality and coverage of test suites. It involves introducing controlled changes to the code base, simulating common programming mistakes. These changes are, then, put to test against the test suites. A failing test suite is a good sign. It indicates that the tests are identifying mutations in the code—it "killed the mutant". If all tests pass, we have a surviving mutant. This highlights an area with weak coverage. It is an opportunity for improvement.
+        url: https://github.com/gtramontina/ooze
+        name: ooze
+        author: https://github.com/gtramontina
+        requirements:
+          - go get github.com/gtramontina/ooze
+        commands:
+          - go test -v -tags=mutation
+        example_content_ext: go
+        example_content: |
+          //go:build mutation
+
+          package main_test
+
+          import (
+            "testing"
+
+            "github.com/gtramontina/ooze"
+          )
+
+          func TestMutation(t *testing.T) {
+            ooze.Release(t)
+          }
+      - title: Perform Mutation Testing
+        description: This is fork of [zimmski/go-mutesting](https://github.com/zimmski/go-mutesting). It has more mutators and latest updates.
+        name: "avito-tech/go-mutesting"
+        url: https://github.com/avito-tech/go-mutesting
+        author: https://github.com/vasiliyyudin
+        requirements:
+          - go install github.com/avito-tech/go-mutesting/cmd/go-mutesting@latest
+        commands:
+          - go-mutesting ./...
+        example_content_ext: go
+        example_content: |
+          for _, d := range opts.Mutator.DisableMutators {
+            pattern := strings.HasSuffix(d, "*")
+
+          -	if (pattern && strings.HasPrefix(name, d[:len(d)-2])) || (!pattern && name == d) {
+          +	if (pattern && strings.HasPrefix(name, d[:len(d)-2])) || false {
+              continue MUTATOR
+            }
+          }
+      - title: Perform Mutation Testing
+        description: Find common bugs source code that would pass tests. This is earliest tool for mutation testing in Go. More functions and permutations were added in other mutation Go tools it inspired.
+        name: go-mutesting
+        url: https://github.com/zimmski/go-mutesting
+        author: https://github.com/zimmski
+        requirements:
+          - go install github.com/zimmski/go-mutesting/cmd/go-mutesting@latest
+        commands:
+          - go-mutesting ./...
+        example_content_ext: go
+        example_content: |
+          for _, d := range opts.Mutator.DisableMutators {
+            pattern := strings.HasSuffix(d, "*")
+
+          -	if (pattern && strings.HasPrefix(name, d[:len(d)-2])) || (!pattern && name == d) {
+          +	if (pattern && strings.HasPrefix(name, d[:len(d)-2])) || false {
+              continue MUTATOR
+            }
+          }
   - title: Dependencies
     entries:
       - title: Get Go version of current module
@@ -340,6 +390,18 @@ groups:
         author: https://github.com/rodrigo-brito
         requirements:
           - go install github.com/rodrigo-brito/gocity@latest
+      - title: Make histogram of Go files per package
+        description: Find when package is too big or too small. Adjust histogram length to maximum value.
+        requirements:
+          - https://stedolan.github.io/jq/download/
+        commands:
+          - go list -json ./... | jq -rc '[.ImportPath, (.GoFiles | length | tostring)] | join(" ")' | perl -lane 'print (" " x (20 - $F[1]), "=" x $F[1], " ", $F[1], "\t", $F[0])'
+        example_output: |
+          ================== 18	github.com/gin-gonic/gin
+               ============= 13	github.com/gin-gonic/gin/binding
+                           = 1	github.com/gin-gonic/gin/internal/bytesconv
+                           = 1	github.com/gin-gonic/gin/internal/json
+                 =========== 11	github.com/gin-gonic/gin/render
   - title: Static Analysis
     entries:
       - title: Run default static analysis
