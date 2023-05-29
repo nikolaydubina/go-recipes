@@ -45,6 +45,7 @@
    + [➡ Make PlantUML diagram with `go-plantuml`](#-make-plantuml-diagram-with-go-plantuml)
    + [➡ Make 3D chart of Go codebase with `gocity`](#-make-3d-chart-of-go-codebase-with-gocity)
    + [➡ Make histogram of Go files per package](#-make-histogram-of-go-files-per-package)
+   + [➡ (archived) Interactively visualize packages with `goexplorer`](#-archived-interactively-visualize-packages-with-goexplorer)
  - Static Analysis
    + [➡ Run default static analysis with `go vet`](#-run-default-static-analysis-with-go-vet)
    + [➡ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
@@ -716,6 +717,14 @@ Requirements
 ```
 https://stedolan.github.io/jq/download/
 ```
+
+### [⏫](#contents)➡ (archived) Interactively visualize packages with [goexplorer](https://github.com/ofabry/goexplorer)
+
+Based on `go-callvis`, this tool is an interactive package explorer of packages. This tool have not been updated for a long time. — [@ofabry](https://github.com/ofabry)
+
+<div align="center"><img src="https://github.com/ofabry/goexplorer/raw/master/images/screen.png" style="margin: 8px; max-height: 640px;"></div>
+
+
 
 ## Static Analysis
 

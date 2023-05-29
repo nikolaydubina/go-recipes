@@ -388,6 +388,12 @@ groups:
                            = 1	github.com/gin-gonic/gin/internal/bytesconv
                            = 1	github.com/gin-gonic/gin/internal/json
                  =========== 11	github.com/gin-gonic/gin/render
+      - title: (archived) Interactively visualize packages
+        description: Based on `go-callvis`, this tool is an interactive package explorer of packages. This tool have not been updated for a long time. 
+        url: https://github.com/ofabry/goexplorer
+        name: goexplorer
+        author: https://github.com/ofabry
+        example_image_url: https://github.com/ofabry/goexplorer/raw/master/images/screen.png
   - title: Static Analysis
     entries:
       - title: Run default static analysis
