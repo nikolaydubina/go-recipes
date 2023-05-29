@@ -140,21 +140,7 @@ groups:
           - go get github.com/gtramontina/ooze
         commands:
           - go test -v -tags=mutation
-        example_content_ext: go
-        example_content: |
-          //go:build mutation
-
-          package main_test
-
-          import (
-            "testing"
-
-            "github.com/gtramontina/ooze"
-          )
-
-          func TestMutation(t *testing.T) {
-            ooze.Release(t)
-          }
+        example_image_url: https://github.com/gtramontina/ooze/blob/main/.assets/report.png
       - title: Perform Mutation Testing
         description: This is fork of [zimmski/go-mutesting](https://github.com/zimmski/go-mutesting). It has more mutators and latest updates.
         name: "avito-tech/go-mutesting"
