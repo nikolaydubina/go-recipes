@@ -85,9 +85,10 @@
  - Execution
    + [➡ Run Go function in shell with `gorram`](#-run-go-function-in-shell-with-gorram)
    + [➡ Run simple fileserver](#-run-simple-fileserver)
-   + [➡ Monitor Go processes with `gops`](#-monitor-go-processes-with-gops)
    + [➡ Create 3D visualization of concurrency traces with `gotrace`](#-create-3d-visualization-of-concurrency-traces-with-gotrace)
  - Monitoring
+   + [➡ Monitor Go processes with `gops`](#-monitor-go-processes-with-gops)
+   + [➡ Visualise Go runtime metrics in browser with `statsviz`](#-visualise-go-runtime-metrics-in-browser-with-statsviz)
    + [➡ Auto-Instrument all functions with `go-instrument`](#-auto-instrument-all-functions-with-go-instrument)
    + [➡ Auto-Instrument all functions with `otelinji`](#-auto-instrument-all-functions-with-otelinji)
  - Benchmarking
@@ -1506,6 +1507,22 @@ func main() { http.ListenAndServe(":9000", http.FileServer(http.Dir("."))) }
 
 
 
+### [⏫](#contents)➡ Create 3D visualization of concurrency traces with [gotrace](https://github.com/divan/gotrace)
+
+Fresh artistic perspective on coroutines execution. There is no advanced functions and it is hard to analyze production systems. However, it could be interesting for educational purposes. — [@divan](https://github.com/divan)
+
+<div align="center"><img src="https://github.com/divan/gotrace/blob/master/images/demo.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/divan/gotrace@latest
+patch Go compiler, available via Docker
+more instructions in original repo
+```
+
+## Monitoring
+
 ### [⏫](#contents)➡ Monitor Go processes with [gops](https://github.com/google/gops)
 
 Monitoring memory of Go processes, forcing GC, getting version of Go of processes. — Google
@@ -1528,21 +1545,17 @@ Requirements
 go install github.com/google/gops@latest
 ```
 
-### [⏫](#contents)➡ Create 3D visualization of concurrency traces with [gotrace](https://github.com/divan/gotrace)
+### [⏫](#contents)➡ Visualise Go runtime metrics in browser with [statsviz](https://github.com/arl/statsviz)
 
-Fresh artistic perspective on coroutines execution. There is no advanced functions and it is hard to analyze production systems. However, it could be interesting for educational purposes. — [@divan](https://github.com/divan)
+This tool exposes HTTP endpoint with charts for Go runtime such as heap, objects, goroutines, GC pauses, scheduler. This is useful drop-in solution for visualization of Go runtime. — [@arl](https://github.com/arl)
 
-<div align="center"><img src="https://github.com/divan/gotrace/blob/master/images/demo.png" style="margin: 8px; max-height: 640px;"></div>
+<div align="center"><img src="https://raw.githubusercontent.com/arl/statsviz/readme-docs/window.png" style="margin: 8px; max-height: 640px;"></div>
 
 
 Requirements
 ```
-go install github.com/divan/gotrace@latest
-patch Go compiler, available via Docker
-more instructions in original repo
+go get github.com/arl/statsviz@latest
 ```
-
-## Monitoring
 
 ### [⏫](#contents)➡ Auto-Instrument all functions with [go-instrument](https://github.com/nikolaydubina/go-instrument)
 
