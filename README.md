@@ -45,6 +45,7 @@
    + [➡ Make PlantUML diagram with `go-plantuml`](#-make-plantuml-diagram-with-go-plantuml)
    + [➡ Make 3D chart of Go codebase with `gocity`](#-make-3d-chart-of-go-codebase-with-gocity)
    + [➡ Make histogram of Go files per package](#-make-histogram-of-go-files-per-package)
+   + [➡ (archived) Make graph of AST with `ast_graph`](#-archived-make-graph-of-ast-with-astgraph)
    + [➡ (archived) Interactively visualize packages with `goexplorer`](#-archived-interactively-visualize-packages-with-goexplorer)
  - Static Analysis
    + [➡ Run default static analysis with `go vet`](#-run-default-static-analysis-with-go-vet)
@@ -716,6 +717,18 @@ Example
 Requirements
 ```
 https://stedolan.github.io/jq/download/
+```
+
+### [⏫](#contents)➡ (archived) Make graph of AST with [ast_graph](https://github.com/xiazemin/ast_graph)
+
+This tool visualizes AST as graph, which may be useful to navigate and undertand Go AST. This tool has not been maintaned for a while. — [@xiazemin](https://github.com/xiazemin)
+
+<div align="center"><img src="https://github.com/xiazemin/ast_graph/raw/master/tree.svg" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+graphviz
 ```
 
 ### [⏫](#contents)➡ (archived) Interactively visualize packages with [goexplorer](https://github.com/ofabry/goexplorer)
