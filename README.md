@@ -58,6 +58,7 @@
    + [➡ Detect mixing pointer and value method receivers with `smrcptr`](#-detect-mixing-pointer-and-value-method-receivers-with-smrcptr)
    + [➡ Check vertical function ordering with `vertfn`](#-check-vertical-function-ordering-with-vertfn)
    + [➡ (archived) Ensure `if` statements using short assignment with `ifshort`](#-archived-ensure-if-statements-using-short-assignment-with-ifshort)
+   + [➡ Perform Taint Analysis with `taint`](#-perform-taint-analysis-with-taint)
  - Code Generation
    + [➡ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
    + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
@@ -1076,6 +1077,54 @@ func someFunc(k string, m map[string]interface{}) {
 Requirements
 ```
 go install github.com/esimonov/ifshort@latest
+```
+
+### [⏫](#contents)➡ Perform Taint Analysis with [taint](https://github.com/picatz/taint)
+
+Taint analysis is a technique for identifying the flow of sensitive data through a program. It can be used to identify potential security vulnerabilities, such as SQL injection or cross-site scripting (XSS) attacks, by understanding how this data is used and transformed as it flows through the code. This package provides tools to performs such analysis. Included tool is performing SQL injection taint analysis. — [@picatz](https://github.com/picatz)
+
+
+```
+sqli main.go
+```
+
+```
+package main
+
+import (
+        "database/sql"
+        "net/http"
+)
+
+func business(db *sql.DB, q string) {
+        db.Query(q) // potential sql injection
+}
+
+func run() {
+        db, _ := sql.Open("sqlite3", ":memory:")
+
+        mux := http.NewServeMux()
+
+        mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+                business(db, r.URL.Query().Get("sql-query"))
+        })
+
+        http.ListenAndServe(":8080", mux)
+}
+
+func main() {
+        run()
+}
+```
+
+Example
+```
+./sql/injection/testdata/src/example/main.go:9:10: potential sql injection
+```
+
+Requirements
+```
+go install github.com/picatz/taint/cmd/sqli@latest
 ```
 
 ## Code Generation
