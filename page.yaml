@@ -676,6 +676,45 @@ groups:
           }
         requirements:
           - go install github.com/esimonov/ifshort@latest
+      - title: Perform Taint Analysis
+        description: Taint analysis is a technique for identifying the flow of sensitive data through a program. It can be used to identify potential security vulnerabilities, such as SQL injection or cross-site scripting (XSS) attacks, by understanding how this data is used and transformed as it flows through the code. This package provides tools to performs such analysis. Included tool is performing SQL injection taint analysis.
+        url: https://github.com/picatz/taint
+        author: https://github.com/picatz
+        name: taint
+        requirements:
+          - go install github.com/picatz/taint/cmd/sqli@latest
+        commands:
+          - sqli main.go
+        example_content_go:
+        example_content: |
+          package main
+
+          import (
+                  "database/sql"
+                  "net/http"
+          )
+
+          func business(db *sql.DB, q string) {
+                  db.Query(q) // potential sql injection
+          }
+
+          func run() {
+                  db, _ := sql.Open("sqlite3", ":memory:")
+
+                  mux := http.NewServeMux()
+
+                  mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+                          business(db, r.URL.Query().Get("sql-query"))
+                  })
+
+                  http.ListenAndServe(":8080", mux)
+          }
+
+          func main() {
+                  run()
+          }
+        example_output: |
+          ./sql/injection/testdata/src/example/main.go:9:10: potential sql injection
   - title: Code Generation
     entries:
       - title: Run `go:generate` in parallel
