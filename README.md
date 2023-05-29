@@ -310,21 +310,8 @@ Mutation testing is a technique used to assess the quality and coverage of test 
 go test -v -tags=mutation
 ```
 
-```go
-//go:build mutation
+<div align="center"><img src="https://github.com/gtramontina/ooze/blob/main/.assets/report.png" style="margin: 8px; max-height: 640px;"></div>
 
-package main_test
-
-import (
-  "testing"
-
-  "github.com/gtramontina/ooze"
-)
-
-func TestMutation(t *testing.T) {
-  ooze.Release(t)
-}
-```
 
 Requirements
 ```
