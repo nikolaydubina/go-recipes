@@ -988,6 +988,18 @@ groups:
           import "net/http"
 
           func main() { http.ListenAndServe(":9000", http.FileServer(http.Dir("."))) }
+      - title: Create 3D visualization of concurrency traces
+        description: Fresh artistic perspective on coroutines execution. There is no advanced functions and it is hard to analyze production systems. However, it could be interesting for educational purposes.
+        name: gotrace
+        url: https://github.com/divan/gotrace
+        author: https://github.com/divan
+        example_image_url: https://github.com/divan/gotrace/blob/master/images/demo.png
+        requirements:
+          - go install github.com/divan/gotrace@latest
+          - patch Go compiler, available via Docker
+          - more instructions in original repo
+  - title: Monitoring
+    entries:
       - title: Monitor Go processes
         description: Monitoring memory of Go processes, forcing GC, getting version of Go of processes.
         name: gops
@@ -1002,18 +1014,14 @@ groups:
           52697 52695  gops           go1.10  /Users/jbd/bin/gops
           4132  4130   foops        * go1.9   /Users/jbd/bin/foops
           51130 51128  gocode         go1.9.2 /Users/jbd/bin/gocode
-      - title: Create 3D visualization of concurrency traces
-        description: Fresh artistic perspective on coroutines execution. There is no advanced functions and it is hard to analyze production systems. However, it could be interesting for educational purposes.
-        name: gotrace
-        url: https://github.com/divan/gotrace
-        author: https://github.com/divan
-        example_image_url: https://github.com/divan/gotrace/blob/master/images/demo.png
+      - title: Visualise Go runtime metrics in browser
+        description: This tool exposes HTTP endpoint with charts for Go runtime such as heap, objects, goroutines, GC pauses, scheduler. This is useful drop-in solution for visualization of Go runtime.
+        url: https://github.com/arl/statsviz
+        author: https://github.com/arl
+        name: statsviz
+        example_image_url: https://raw.githubusercontent.com/arl/statsviz/readme-docs/window.png
         requirements:
-          - go install github.com/divan/gotrace@latest
-          - patch Go compiler, available via Docker
-          - more instructions in original repo
-  - title: Monitoring
-    entries:
+          - go get github.com/arl/statsviz@latest
       - title: Auto-Instrument all functions
         description: Automatically instrument all functions with Open Telemetry Spans by code generation. Inserts errors into Spans.
         name: go-instrument
