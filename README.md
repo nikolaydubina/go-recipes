@@ -55,7 +55,8 @@
    + [➡ Detect non-exhaustive switch and map with `exhaustive`](#-detect-non-exhaustive-switch-and-map-with-exhaustive)
    + [➡ Detect structs with uninitialized fields with `go-exhaustruct`](#-detect-structs-with-uninitialized-fields-with-go-exhaustruct)
    + [➡ Detect unsafe code with `go-safer`](#-detect-unsafe-code-with-go-safer)
-   + [➡ Calculate cognitive complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
+   + [➡ Calculate Cognitive Complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
+   + [➡ Calculate Cyclomatic Complexity with `gocyclo`](#-calculate-cyclomatic-complexity-with-gocyclo)
    + [➡ Calculate age of comments with `go-commentage`](#-calculate-age-of-comments-with-go-commentage)
    + [➡ Detect mixing pointer and value method receivers with `smrcptr`](#-detect-mixing-pointer-and-value-method-receivers-with-smrcptr)
    + [➡ Check vertical function ordering with `vertfn`](#-check-vertical-function-ordering-with-vertfn)
@@ -931,7 +932,7 @@ Requirements
 go install github.com/jlauinger/go-safer@latest
 ```
 
-### [⏫](#contents)➡ Calculate cognitive complexity with [gocognit](https://github.com/uudashr/gocognit)
+### [⏫](#contents)➡ Calculate Cognitive Complexity with [gocognit](https://github.com/uudashr/gocognit)
 
 Congitive Complexity as defined in this tool can be more illustrative than Cyclometric Complexity. Research paper ["Cognitive Complexity - a new way of measuring understandability"](https://www.sonarsource.com/docs/CognitiveComplexity.pdf), 2021. — [@uudashr](https://github.com/uudashr)
 
@@ -990,6 +991,20 @@ Example
 Requirements
 ```
 go install github.com/uudashr/gocognit/cmd/gocognit@latest
+```
+
+### [⏫](#contents)➡ Calculate Cyclomatic Complexity with [gocyclo](https://github.com/fzipp/gocyclo)
+
+Cyclomatic complexity is a code quality metric which can be used to identify code that needs refactoring. It measures the number of linearly independent paths through a function's source code. For example, excessive usage of nested `if` and `for` leads to increased cyclomatic complexity. This tool can report `top-N` and `over`, which makes it suitable for CI as a linter and manual investigation. — [@fzipp](https://github.com/fzipp)
+
+
+```
+gocyclo .
+```
+
+Requirements
+```
+go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
 ```
 
 ### [⏫](#contents)➡ Calculate age of comments with [go-commentage](https://github.com/nikolaydubina/go-commentage)
