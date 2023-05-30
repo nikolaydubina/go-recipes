@@ -388,14 +388,6 @@ groups:
                            = 1	github.com/gin-gonic/gin/internal/bytesconv
                            = 1	github.com/gin-gonic/gin/internal/json
                  =========== 11	github.com/gin-gonic/gin/render
-      - title: (archived) Make graph of AST 
-        description: This tool visualizes AST as graph, which may be useful to navigate and undertand Go AST. This tool has not been maintaned for a while.
-        name: ast_graph
-        author: https://github.com/xiazemin
-        url: https://github.com/xiazemin/ast_graph       
-        example_image_url: https://github.com/xiazemin/ast_graph/raw/master/tree.svg
-        requirements:
-           - graphviz
       - title: (archived) Interactively visualize packages
         description: Based on `go-callvis`, this tool is an interactive package explorer of packages. This tool have not been updated for a long time. 
         url: https://github.com/ofabry/goexplorer
@@ -916,7 +908,7 @@ groups:
         description: Use [godbolt.org](https://godbolt.org) to compile and see assembly of short Go code. You can check different platforms and compilers including `cgo`. This tool is commonly used by C++ community.
         example_image_url: ./img/godbolt.png
         author: https://github.com/mattgodbolt
-      - title: Get Go compiler SSA intermediary representation
+      - title: Get Go SSA intermediary representation
         description: Check what does Go compiler do. Might be useful if you trying to optimize some code or learn more about compiler. https://golang.design/gossa.
         name: ssaplayground
         url: https://github.com/golang-design/ssaplayground
@@ -999,6 +991,25 @@ groups:
           24  .  .  Value: "5"
           25  .  }
           26  }
+      - title: Visualize Go SSA function using Graphviz.
+        description: "This tool provides a visual overview of Go SSA function using Graphviz. This is especially useful in SSA-based static analysis. This tool generates an HTML page that is easy to navigate. [demo](https://silverrainz.me/go-ssaviz/)."
+        name: go-ssaviz
+        author: https://github.com/SilverRainZ
+        url: https://github.com/SilverRainZ/go-ssaviz
+        commands:
+          - go-ssaviz ./...
+        example_image_url: ./img/go-ssaviz.png
+        requirements:
+          - # get graphviz
+          - go install github.com/SilverRainZ/go-ssaviz@latest
+      - title: (archived) Make graph of AST 
+        description: This tool visualizes AST as graph, which may be useful to navigate and undertand Go AST. This tool has not been maintaned for a while.
+        name: astgraph
+        author: https://github.com/xiazemin
+        url: https://github.com/xiazemin/ast_graph       
+        example_image_url: https://github.com/xiazemin/ast_graph/raw/master/tree.svg
+        requirements:
+           - graphviz
   - title: Execution
     entries:
       - title: Run Go function in shell
