@@ -1002,6 +1002,20 @@ Cyclomatic complexity is a code quality metric which can be used to identify cod
 gocyclo .
 ```
 
+Example
+```
+$ gocyclo -over=5 .
+34 examplemodule (*With32FieldsFeatureTransformer).Fit cmd/generate/tests/with32fieldsfp.go:48:1
+24 main parseCode cmd/generate/parser.go:83:1
+13 examplemodule (*AllTransformersFeatureTransformer).Fit cmd/generate/tests/alltransformersfp.go:27:1
+12 examplemodule (*EmployeeFeatureTransformer).Fit cmd/generate/tests/employeefp.go:26:1
+11 transformers (*CountVectorizer).TransformInplace transformers/textprocesors.go:84:1
+11 structtransformer (*StructTransformer).Transform structtransformer/structtransformer.go:38:1
+11 examplemodule (*LargeMemoryTransformerFeatureTransformer).Fit cmd/generate/tests/largememorytransformerfp.go:25:1
+10 examplemodule (*WeirdTagsFeatureTransformer).Fit cmd/generate/tests/weirdtagsfp.go:24:1
+8 transformers (*SampleNormalizerL2).TransformInplace transformers/samplenormalizers.go:58:1
+```
+
 Requirements
 ```
 go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
