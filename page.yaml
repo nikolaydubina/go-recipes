@@ -991,7 +991,7 @@ groups:
           24  .  .  Value: "5"
           25  .  }
           26  }
-      - title: Visualize Go SSA function using Graphviz.
+      - title: Visualize Go SSA function using Graphviz
         description: "This tool provides a visual overview of Go SSA function using Graphviz. This is especially useful in SSA-based static analysis. This tool generates an HTML page that is easy to navigate. [demo](https://silverrainz.me/go-ssaviz/)."
         name: go-ssaviz
         author: https://github.com/SilverRainZ

@@ -45,7 +45,6 @@
    + [➡ Make PlantUML diagram with `go-plantuml`](#-make-plantuml-diagram-with-go-plantuml)
    + [➡ Make 3D chart of Go codebase with `gocity`](#-make-3d-chart-of-go-codebase-with-gocity)
    + [➡ Make histogram of Go files per package](#-make-histogram-of-go-files-per-package)
-   + [➡ (archived) Make graph of AST with `ast_graph`](#-archived-make-graph-of-ast-with-astgraph)
    + [➡ (archived) Interactively visualize packages with `goexplorer`](#-archived-interactively-visualize-packages-with-goexplorer)
  - Static Analysis
    + [➡ Run default static analysis with `go vet`](#-run-default-static-analysis-with-go-vet)
@@ -81,10 +80,12 @@
    + [➡ Make treemap breakdown of Go executable binary with `go-binsize-treemap`](#-make-treemap-breakdown-of-go-executable-binary-with-go-binsize-treemap)
  - Assembly
    + [➡ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
-   + [➡ Get Go compiler SSA intermediary representation with `ssaplayground`](#-get-go-compiler-ssa-intermediary-representation-with-ssaplayground)
+   + [➡ Get Go SSA intermediary representation with `ssaplayground`](#-get-go-ssa-intermediary-representation-with-ssaplayground)
    + [➡ View Go assembly interactively with `lensm`](#-view-go-assembly-interactively-with-lensm)
    + [➡ Generate Go assembly in Go with `avo`](#-generate-go-assembly-in-go-with-avo)
    + [➡ Generate AST for code snippets](#-generate-ast-for-code-snippets)
+   + [➡ Visualize Go SSA function using Graphviz with `go-ssaviz`](#-visualize-go-ssa-function-using-graphviz-with-go-ssaviz)
+   + [➡ (archived) Make graph of AST with `astgraph`](#-archived-make-graph-of-ast-with-astgraph)
  - Execution
    + [➡ Run Go function in shell with `gorram`](#-run-go-function-in-shell-with-gorram)
    + [➡ Run simple fileserver](#-run-simple-fileserver)
@@ -718,18 +719,6 @@ Example
 Requirements
 ```
 https://stedolan.github.io/jq/download/
-```
-
-### [⏫](#contents)➡ (archived) Make graph of AST with [ast_graph](https://github.com/xiazemin/ast_graph)
-
-This tool visualizes AST as graph, which may be useful to navigate and undertand Go AST. This tool has not been maintaned for a while. — [@xiazemin](https://github.com/xiazemin)
-
-<div align="center"><img src="https://github.com/xiazemin/ast_graph/raw/master/tree.svg" style="margin: 8px; max-height: 640px;"></div>
-
-
-Requirements
-```
-graphviz
 ```
 
 ### [⏫](#contents)➡ (archived) Interactively visualize packages with [goexplorer](https://github.com/ofabry/goexplorer)
@@ -1427,7 +1416,7 @@ Use [godbolt.org](https://godbolt.org) to compile and see assembly of short Go c
 
 
 
-### [⏫](#contents)➡ Get Go compiler SSA intermediary representation with [ssaplayground](https://github.com/golang-design/ssaplayground)
+### [⏫](#contents)➡ Get Go SSA intermediary representation with [ssaplayground](https://github.com/golang-design/ssaplayground)
 
 Check what does Go compiler do. Might be useful if you trying to optimize some code or learn more about compiler. https://golang.design/gossa. — [@changkun](https://github.com/changkun)
 
@@ -1523,6 +1512,35 @@ Example
 26  }
 ```
 
+
+### [⏫](#contents)➡ Visualize Go SSA function using Graphviz with [go-ssaviz](https://github.com/SilverRainZ/go-ssaviz)
+
+This tool provides a visual overview of Go SSA function using Graphviz. This is especially useful in SSA-based static analysis. This tool generates an HTML page that is easy to navigate. [demo](https://silverrainz.me/go-ssaviz/). — [@SilverRainZ](https://github.com/SilverRainZ)
+
+
+```
+go-ssaviz ./...
+```
+
+<div align="center"><img src="./img/go-ssaviz.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/SilverRainZ/go-ssaviz@latest
+```
+
+### [⏫](#contents)➡ (archived) Make graph of AST with [astgraph](https://github.com/xiazemin/ast_graph)
+
+This tool visualizes AST as graph, which may be useful to navigate and undertand Go AST. This tool has not been maintaned for a while. — [@xiazemin](https://github.com/xiazemin)
+
+<div align="center"><img src="https://github.com/xiazemin/ast_graph/raw/master/tree.svg" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+graphviz
+```
 
 ## Execution
 
