@@ -45,6 +45,7 @@
    + [➡ Make PlantUML diagram with `go-plantuml`](#-make-plantuml-diagram-with-go-plantuml)
    + [➡ Make 3D chart of Go codebase with `gocity`](#-make-3d-chart-of-go-codebase-with-gocity)
    + [➡ Make histogram of Go files per package](#-make-histogram-of-go-files-per-package)
+   + [➡ Explore Go code in browser powered by `go-guru` with `pythia`](#-explore-go-code-in-browser-powered-by-go-guru-with-pythia)
    + [➡ (archived) Interactively visualize packages with `goexplorer`](#-archived-interactively-visualize-packages-with-goexplorer)
  - Static Analysis
    + [➡ Run default static analysis with `go vet`](#-run-default-static-analysis-with-go-vet)
@@ -719,6 +720,24 @@ Example
 Requirements
 ```
 https://stedolan.github.io/jq/download/
+```
+
+### [⏫](#contents)➡ Explore Go code in browser powered by `go-guru` with [pythia](https://github.com/fzipp/pythia)
+
+Explore Go source code in browser. It provides exported symbols summary for navigation. It answers questions like: definition; callers; implementers. It is browser frontend based on [go-guru](https://docs.google.com/document/d/1_Y9xCEMj5S-7rv2ooHpZNH15JgRT5iM742gJkw5LtmQ/edit), which was developed by Go core team from Google. — [@fzipp](https://github.com/fzipp)
+
+
+```
+pythia net/http
+```
+
+<div align="center"><img src="https://camo.githubusercontent.com/a7baec2bada145869272edf97d1123d1717ed68922c159b027d261bd6e1faeff/68747470733a2f2f7261772e6769746875622e636f6d2f667a6970702f7079746869612f67682d70616765732f696d616765732f7079746869615f73637265656e73686f742e706e67" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/fzipp/pythia@latest
+go install golang.org/x/tools/cmd/guru@latest
 ```
 
 ### [⏫](#contents)➡ (archived) Interactively visualize packages with [goexplorer](https://github.com/ofabry/goexplorer)
