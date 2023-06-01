@@ -486,20 +486,15 @@ groups:
               usesgenerics.Analyzer,        // checks for usage of generic features added in Go 1.18
             )
           }
-      - title: Rely on compiler for stricter Enums
-        description: "For compile time blocking of: accidental arithmetics; implicit cast of untyped constants; all operators except `==` and `!=`; — simply wrap into a struct in separate package and do not export field."
-        example_content_ext: go
-        example_content: |
-          package color
-
-          type Color struct{ c uint }
-
-          var (
-            Undefined = Color{}
-            Red       = Color{1}
-            Green     = Color{2}
-            Blue      = Color{3}
-          )
+      - title: Detect most common issues
+        description: Start custom linters with this well-known linter. It contains 150+ high quality low false positive rate linters. It is widely adopted by Open Source and tech companies. [staticcheck.io](https://staticcheck.io/).
+        url: https://github.com/dominikh/go-tools
+        name: staticcheck
+        author: https://github.com/dominikh
+        commands:
+          - staticcheck ./...
+        requirements:
+          - go install honnef.co/go/tools/cmd/staticcheck@latest
       - title: Detect non-exhaustive switch and map
         description: This `go vet` compatible analyzer checks for exhaustive switch statemnts and map literals. It works for enums with underyling integer, float, or string types (struct based enums are not supported).
         name: exhaustive
@@ -876,6 +871,31 @@ groups:
           }
         example_output: |
           ./sql/injection/testdata/src/example/main.go:9:10: potential sql injection
+      - title: Visualize struct layout
+        description: Display the byte offset and size of each field, respecting alignment/padding.
+        name: structlayout
+        url: https://github.com/dominikh/go-tools/tree/master/cmd/structlayout
+        author: https://github.com/dominikh
+        commands:
+          - structlayout -json bytes Buffer | structlayout-svg -t "bytes.Buffer" > /tmp/struct.svg
+        example_image_url: https://github.com/dominikh/go-tools/blob/master/images/screenshots/struct.png
+        requirements:
+          - go install github.com/ajstarks/svgo/structlayout-svg@latest
+          - go install honnef.co/go/tools/cmd/structlayout@latest
+      - title: Rely on compiler for stricter Enums
+        description: "For compile time blocking of: accidental arithmetics; implicit cast of untyped constants; all operators except `==` and `!=`; — simply wrap into a struct in separate package and do not export field. [example](http://github.com/nikolaydubina/go-enum-example)."
+        example_content_ext: go
+        example_content: |
+          package color
+
+          type Color struct{ c uint }
+
+          var (
+            Undefined = Color{}
+            Red       = Color{1}
+            Green     = Color{2}
+            Blue      = Color{3}
+          )
   - title: Code Generation
     entries:
       - title: Run `go:generate` in parallel

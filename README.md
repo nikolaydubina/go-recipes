@@ -54,7 +54,7 @@
    + [➡ Run default static analysis with `go vet`](#-run-default-static-analysis-with-go-vet)
    + [➡ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
    + [➡ Run official static analyzers not included in `go vet`](#-run-official-static-analyzers-not-included-in-go-vet)
-   + [➡ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
+   + [➡ Detect most common issues with `staticcheck`](#-detect-most-common-issues-with-staticcheck)
    + [➡ Detect non-exhaustive switch and map with `exhaustive`](#-detect-non-exhaustive-switch-and-map-with-exhaustive)
    + [➡ Detect structs with uninitialized fields with `go-exhaustruct`](#-detect-structs-with-uninitialized-fields-with-go-exhaustruct)
    + [➡ Detect unsafe code with `go-safer`](#-detect-unsafe-code-with-go-safer)
@@ -70,6 +70,8 @@
    + [➡ Check vertical function ordering with `vertfn`](#-check-vertical-function-ordering-with-vertfn)
    + [➡ (archived) Ensure `if` statements using short assignment with `ifshort`](#-archived-ensure-if-statements-using-short-assignment-with-ifshort)
    + [➡ Perform Taint Analysis with `taint`](#-perform-taint-analysis-with-taint)
+   + [➡ Visualize struct layout with `structlayout`](#-visualize-struct-layout-with-structlayout)
+   + [➡ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
  - Code Generation
    + [➡ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
    + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
@@ -871,23 +873,19 @@ func main() {
 ```
 
 
-### [⏫](#contents)➡ Rely on compiler for stricter Enums
+### [⏫](#contents)➡ Detect most common issues with [staticcheck](https://github.com/dominikh/go-tools)
 
-For compile time blocking of: accidental arithmetics; implicit cast of untyped constants; all operators except `==` and `!=`; — simply wrap into a struct in separate package and do not export field.
+Start custom linters with this well-known linter. It contains 150+ high quality low false positive rate linters. It is widely adopted by Open Source and tech companies. [staticcheck.io](https://staticcheck.io/). — [@dominikh](https://github.com/dominikh)
 
-```go
-package color
 
-type Color struct{ c uint }
-
-var (
-  Undefined = Color{}
-  Red       = Color{1}
-  Green     = Color{2}
-  Blue      = Color{3}
-)
+```
+staticcheck ./...
 ```
 
+Requirements
+```
+go install honnef.co/go/tools/cmd/staticcheck@latest
+```
 
 ### [⏫](#contents)➡ Detect non-exhaustive switch and map with [exhaustive](https://github.com/nishanths/exhaustive)
 
@@ -1381,6 +1379,42 @@ Requirements
 ```
 go install github.com/picatz/taint/cmd/sqli@latest
 ```
+
+### [⏫](#contents)➡ Visualize struct layout with [structlayout](https://github.com/dominikh/go-tools/tree/master/cmd/structlayout)
+
+Display the byte offset and size of each field, respecting alignment/padding. — [@dominikh](https://github.com/dominikh)
+
+
+```
+structlayout -json bytes Buffer | structlayout-svg -t "bytes.Buffer" > /tmp/struct.svg
+```
+
+<div align="center"><img src="https://github.com/dominikh/go-tools/blob/master/images/screenshots/struct.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/ajstarks/svgo/structlayout-svg@latest
+go install honnef.co/go/tools/cmd/structlayout@latest
+```
+
+### [⏫](#contents)➡ Rely on compiler for stricter Enums
+
+For compile time blocking of: accidental arithmetics; implicit cast of untyped constants; all operators except `==` and `!=`; — simply wrap into a struct in separate package and do not export field. [example](http://github.com/nikolaydubina/go-enum-example).
+
+```go
+package color
+
+type Color struct{ c uint }
+
+var (
+  Undefined = Color{}
+  Red       = Color{1}
+  Green     = Color{2}
+  Blue      = Color{3}
+)
+```
+
 
 ## Code Generation
 
