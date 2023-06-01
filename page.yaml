@@ -113,7 +113,7 @@ groups:
         requirements:
           - go install gotest.tools/gotestsum@latest
       - title: Summarize `go test`
-        description: This lightweight wrapper around STDOUT of JSON of `go test`, will nicely render colorized test status, details of failures, duration, coverage, and package summary.
+        description: This lightweight wrapper around STDOUT of JSON of `go test` will nicely render colorized test status, details of failures, duration, coverage, and package summary.
         name: tparse
         url: https://github.com/mfridman/tparse
         author: https://github.com/mfridman
