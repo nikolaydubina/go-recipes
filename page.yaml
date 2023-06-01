@@ -821,6 +821,12 @@ groups:
         example_image_url: https://user-images.githubusercontent.com/438920/32691304-a1c7e47c-c716-11e7-977c-f4d0f8c616be.gif
         requirements:
           - go install github.com/fatih/gomodifytags@latest
+      - title: Generate Table Driven Tests
+        description: This tool generates basic test placeholder. It is included into official Go plugin in VSCode and other major code editors.
+        name: gotests
+        url: https://github.com/cweill/gotests
+        author: https://github.com/cweill
+        example_image_url: https://github.com/cweill/GoTests-Sublime/raw/master/gotests.gif
   - title: Refactoring
     entries:
       - title: Replace symbol

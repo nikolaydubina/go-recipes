@@ -69,6 +69,7 @@
    + [➡ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
    + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
    + [➡ Modify struct field tags with `gomodifytags`](#-modify-struct-field-tags-with-gomodifytags)
+   + [➡ Generate Table Driven Tests with `gotests`](#-generate-table-driven-tests-with-gotests)
  - Refactoring
    + [➡ Replace symbol with `gofmt`](#-replace-symbol-with-gofmt)
    + [➡ Keep consistent ordering of imports with `gci`](#-keep-consistent-ordering-of-imports-with-gci)
@@ -1295,6 +1296,14 @@ Requirements
 ```
 go install github.com/fatih/gomodifytags@latest
 ```
+
+### [⏫](#contents)➡ Generate Table Driven Tests with [gotests](https://github.com/cweill/gotests)
+
+This tool generates basic test placeholder. It is included into official Go plugin in VSCode and other major code editors. — [@cweill](https://github.com/cweill)
+
+<div align="center"><img src="https://github.com/cweill/GoTests-Sublime/raw/master/gotests.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
 
 ## Refactoring
 
