@@ -60,6 +60,9 @@
    + [➡ Detect unsafe code with `go-safer`](#-detect-unsafe-code-with-go-safer)
    + [➡ Detect unnecessary type conversions with `unconvert`](#-detect-unnecessary-type-conversions-with-unconvert)
    + [➡ Detect global variables with `gochecknoglobals`](#-detect-global-variables-with-gochecknoglobals)
+   + [➡ Detect slices that could be preallocated with `prealloc`](#-detect-slices-that-could-be-preallocated-with-prealloc)
+   + [➡ Detect unnecessary import aliases with `unimport`](#-detect-unnecessary-import-aliases-with-unimport)
+   + [➡ Detect naked returns with `nakedret`](#-detect-naked-returns-with-nakedret)
    + [➡ Calculate Cognitive Complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
    + [➡ Calculate Cyclomatic Complexity with `gocyclo`](#-calculate-cyclomatic-complexity-with-gocyclo)
    + [➡ Calculate age of comments with `go-commentage`](#-calculate-age-of-comments-with-go-commentage)
@@ -1044,6 +1047,90 @@ Example
 Requirements
 ```
 go install 4d63.com/gochecknoglobals@latest
+```
+
+### [⏫](#contents)➡ Detect slices that could be preallocated with [prealloc](https://github.com/alexkohler/prealloc)
+
+Preallocating slices can sometimes significantly improve performance. This tool detects common scenarions where preallocating can be beneficial. This tool is not using `golang.org/x/tools/go/analysis` toolchain. — [@alexkohler](https://github.com/alexkohler)
+
+
+```
+prealloc ./...
+```
+
+Example
+```
+tools/gopls/internal/lsp/source/completion/completion.go:1484 Consider preallocating paths
+tools/gopls/internal/lsp/source/completion/package.go:54 Consider preallocating items
+tools/gopls/internal/lsp/template/symbols.go:205 Consider preallocating ans
+tools/gopls/internal/lsp/template/completion.go:199 Consider preallocating working
+tools/gopls/internal/lsp/tests/util.go:32 Consider preallocating notePositions
+tools/gopls/internal/lsp/tests/util.go:240 Consider preallocating paramParts
+tools/gopls/internal/lsp/tests/util.go:282 Consider preallocating result
+tools/gopls/internal/lsp/tests/util.go:309 Consider preallocating got
+```
+
+Requirements
+```
+go install github.com/alexkohler/prealloc@latest
+```
+
+### [⏫](#contents)➡ Detect unnecessary import aliases with [unimport](https://github.com/alexkohler/unimport)
+
+It is common guideline to avoid renaming imports unless there are collisions. This tool detects where original pacakge name would not collide. This tool is useful for investigations. This tool is not using `golang.org/x/tools/go/analysis` toolchain. — [@alexkohler](https://github.com/alexkohler)
+
+
+```
+unimport ./...
+```
+
+Example
+```
+pkg/apis/apiserverinternal/v1alpha1/zz_generated.conversion.go:29 unnecessary import alias runtime
+pkg/apis/apiserverinternal/v1alpha1/zz_generated.conversion.go:30 unnecessary import alias apiserverinternal
+pkg/apis/apps/v1/zz_generated.conversion.go:25 unnecessary import alias unsafe
+pkg/apis/apps/v1/zz_generated.conversion.go:30 unnecessary import alias conversion
+pkg/apis/apps/v1/zz_generated.conversion.go:31 unnecessary import alias runtime
+pkg/apis/apps/v1/zz_generated.conversion.go:32 unnecessary import alias intstr
+pkg/apis/apps/v1/zz_generated.conversion.go:33 unnecessary import alias apps
+pkg/apis/apps/v1/zz_generated.conversion.go:34 unnecessary import alias core
+pkg/apis/apps/v1beta1/zz_generated.conversion.go:25 unnecessary import alias unsafe
+pkg/apis/apps/v1beta1/zz_generated.conversion.go:27 unnecessary import alias v1beta1
+pkg/apis/apps/v1beta1/zz_generated.conversion.go:30 unnecessary import alias conversion
+pkg/apis/apps/v1beta1/zz_generated.conversion.go:31 unnecessary import alias runtime
+```
+
+Requirements
+```
+go install github.com/alexkohler/unimport@latest
+```
+
+### [⏫](#contents)➡ Detect naked returns with [nakedret](https://github.com/alexkohler/nakedret)
+
+It is common guideline to avoid [naked returns](https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters). Naked return is when function has named return, and return statement does not specify value. This tool is useful for investigations. — [@alexkohler](https://github.com/alexkohler)
+
+
+```
+nakedret ./...
+```
+
+Example
+```
+/kubernetes/pkg/controller/podautoscaler/replica_calculator.go:421:2: naked return in func `groupPods` with 44 lines of code
+/kubernetes/pkg/kubelet/container/helpers.go:374:2: naked return in func `MakePortMappings` with 36 lines of code
+/kubernetes/pkg/kubelet/config/config.go:350:2: naked return in func `filterInvalidPods` with 17 lines of code
+/kubernetes/pkg/kubelet/config/config.go:449:3: naked return in func `checkAndUpdatePod` with 38 lines of code
+/kubernetes/pkg/kubelet/config/config.go:471:2: naked return in func `checkAndUpdatePod` with 38 lines of code
+/kubernetes/cmd/kube-controller-manager/app/controllermanager.go:717:2: naked return in func `createClientBuilders` with 19 lines of code
+/kubernetes/pkg/proxy/topology.go:77:3: naked return in func `CategorizeEndpoints` with 98 lines of code
+/kubernetes/pkg/proxy/topology.go:111:3: naked return in func `CategorizeEndpoints` with 98 lines of code
+/kubernetes/pkg/proxy/topology.go:119:3: naked return in func `CategorizeEndpoints` with 98 lines of code
+/kubernetes/pkg/proxy/topology.go:137:2: naked return in func `CategorizeEndpoints` with 98 lines of code
+```
+
+Requirements
+```
+go install github.com/alexkohler/nakedret/cmd/nakedret@latest
 ```
 
 ### [⏫](#contents)➡ Calculate Cognitive Complexity with [gocognit](https://github.com/uudashr/gocognit)
