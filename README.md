@@ -59,6 +59,7 @@
    + [➡ Detect structs with uninitialized fields with `go-exhaustruct`](#-detect-structs-with-uninitialized-fields-with-go-exhaustruct)
    + [➡ Detect unsafe code with `go-safer`](#-detect-unsafe-code-with-go-safer)
    + [➡ Detect unnecessary type conversions with `unconvert`](#-detect-unnecessary-type-conversions-with-unconvert)
+   + [➡ Detect global variables](#-detect-global-variables)
    + [➡ Calculate Cognitive Complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
    + [➡ Calculate Cyclomatic Complexity with `gocyclo`](#-calculate-cyclomatic-complexity-with-gocyclo)
    + [➡ Calculate age of comments with `go-commentage`](#-calculate-age-of-comments-with-go-commentage)
@@ -1020,6 +1021,29 @@ GOROOT/src/fmt/print.go:411:21: unnecessary conversion
 Requirements
 ```
 go install github.com/mdempsky/unconvert@latest
+```
+
+### [⏫](#contents)➡ Detect global variables
+
+Global variables are an input to functions that is not visible in the functions signature, complicate testing, reduces readability and increase the complexity of code. However, sometimes global varaibles make sense. This tool skips such common scenarios. This tool can be used in CI, albeit it is very strict. This tool is useful for investigations. — [@leighmcculloch](https://github.com/leighmcculloch)
+
+
+```
+gochecknoglobals ./...
+```
+
+Example
+```
+/Users/nikolaydubina/Workspace/hugo/common/paths/path.go:64:5: fpb is a global variable
+/Users/nikolaydubina/Workspace/hugo/common/paths/url.go:50:5: pb is a global variable
+/Users/nikolaydubina/Workspace/hugo/common/text/position.go:52:5: positionStringFormatfunc is a global variable
+/Users/nikolaydubina/Workspace/hugo/common/text/transform.go:26:5: accentTransformerPool is a global variable
+/Users/nikolaydubina/Workspace/hugo/common/herrors/error_locator.go:40:5: SimpleLineMatcher is a global variable
+```
+
+Requirements
+```
+go install 4d63.com/gochecknoglobals@latest
 ```
 
 ### [⏫](#contents)➡ Calculate Cognitive Complexity with [gocognit](https://github.com/uudashr/gocognit)
