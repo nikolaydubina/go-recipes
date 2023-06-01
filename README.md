@@ -100,6 +100,7 @@
    + [➡ Visualize Go SSA function using Graphviz with `go-ssaviz`](#-visualize-go-ssa-function-using-graphviz-with-go-ssaviz)
    + [➡ (archived) Make graph of AST with `astgraph`](#-archived-make-graph-of-ast-with-astgraph)
  - Execution
+   + [➡ Run interactive Go interpreter with `gomacro`](#-run-interactive-go-interpreter-with-gomacro)
    + [➡ Run Go function in shell with `gorram`](#-run-go-function-in-shell-with-gorram)
    + [➡ Run simple fileserver](#-run-simple-fileserver)
    + [➡ Create 3D visualization of concurrency traces with `gotrace`](#-create-3d-visualization-of-concurrency-traces-with-gotrace)
@@ -1817,9 +1818,34 @@ graphviz
 
 ## Execution
 
+### [⏫](#contents)➡ Run interactive Go interpreter with [gomacro](https://github.com/cosmos72/gomacro)
+
+This is interactive Go interpreter and debugger with REPL, Eval, generics and Lisp-like macros. You can run functions, import 3rd patry packages. Can be useful for learning and experimentation. Some nice features: autocomplete; constant expressions arithmetics. As of `2023-06-02`, issues with importing 3rd paty package are possible. — [@cosmos72](https://github.com/cosmos72)
+
+
+```
+gomacro
+```
+
+Example
+```
+$ gomacro
+gomacro> import "fmt"
+gomacro> fmt.Println("hello, world!")
+hello, world!
+14      // int
+<nil>   // error
+gomacro>
+```
+
+Requirements
+```
+go install github.com/cosmos72/gomacro@latest
+```
+
 ### [⏫](#contents)➡ Run Go function in shell with [gorram](https://github.com/natefinch/gorram)
 
-Run Go one-liners. This tool will print to stdout the return of a function call. — [@natefinch](https://github.com/natefinch)
+Run Go one-liners. This tool will print to STDOUT the return of a function call. — [@natefinch](https://github.com/natefinch)
 
 
 ```
