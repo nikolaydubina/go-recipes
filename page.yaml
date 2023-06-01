@@ -112,8 +112,8 @@ groups:
         example_image_url: https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif
         requirements:
           - go install gotest.tools/gotestsum@latest
-      - title: Enrich `go test` output
-        description: Add colors and enrich `go test` output. It can be used in CI pipeline and has lots of options.
+      - title: Colorize and decorate `go test`
+        description: Add colors and enrich `go test` output. It can be used in CI pipeline and has lots of alternative visualizations and options.
         name: richgo
         url: https://github.com/kyoh86/richgo
         author: https://github.com/kyoh86
@@ -122,6 +122,16 @@ groups:
         example_image_url: https://asciinema.org/a/99810.png
         requirements:
           - go install github.com/kyoh86/richgo@latest
+      - title: Colorize `go test`
+        description: Add colors to `go test` output. Very lightweight wrapper around `go test` STDOUT.
+        name: gotest
+        url: https://github.com/rakyll/gotest
+        author: https://github.com/rakyll
+        example_image_url: https://raw.githubusercontent.com/jonasbn/go-test-demo/1.0.0/gotest-go-test-demo.png
+        commands:
+          - gotest ./...
+        requirements:
+          - go install github.com/rakyll/gotest@latest
       - title: Get packages without tests
         description: If code coverage does not report packages without tests. For example for CI or quality control.
         requirements:
@@ -179,6 +189,18 @@ groups:
               continue MUTATOR
             }
           }
+      - title: Trace tests
+        description: Collect test execution as distributed traces. This is useful for tracking test duration, failures, flakiness. You distributed tracing storage, search, UI, exploration, dashboards, alarms — all will automatically become test status collection. If you run integration tests in your CI, then it is particularly handy to investigate your integration tests same way as real requests, such as Go processes, databases, etc. However, if you do not have distributed traces, it is still useful for adhoc investigations. This tool processes STDOUT of `go test`. No automatic instrumentation is done.
+        name: go-test-trace
+        url: https://github.com/rakyll/go-test-trace
+        author: https://github.com/rakyll
+        example_image_url: https://camo.githubusercontent.com/1bbb99d14634e097828aff76e17427c0d834b2b37b7ef6c4b15ad01e5b7ac526/68747470733a2f2f692e696d6775722e636f6d2f45313850596b342e706e67
+        commands:
+          - go-test-trace ./...
+        requirements:
+          - # open telemetry collector
+          - # traces UI (Datadog, Jaeger, Honeycomb, NewRelic)
+          - go install github.com/rakyll/go-test-trace@latest
   - title: Dependencies
     entries:
       - title: Get Go version of current module
