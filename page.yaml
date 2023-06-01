@@ -1183,8 +1183,25 @@ groups:
            - graphviz
   - title: Execution
     entries:
+      - title: Run interactive Go interpreter
+        description: "This is interactive Go interpreter and debugger with REPL, Eval, generics and Lisp-like macros. You can run functions, import 3rd patry packages. Can be useful for learning and experimentation. Some nice features: autocomplete; constant expressions arithmetics. As of `2023-06-02`, issues with importing 3rd paty package are possible."
+        url: https://github.com/cosmos72/gomacro
+        name: gomacro
+        author: https://github.com/cosmos72
+        commands:
+          - gomacro
+        example_output: |
+          $ gomacro
+          gomacro> import "fmt"
+          gomacro> fmt.Println("hello, world!")
+          hello, world!
+          14      // int
+          <nil>   // error
+          gomacro>
+        requirements:
+          - go install github.com/cosmos72/gomacro@latest
       - title: Run Go function in shell
-        description: Run Go one-liners. This tool will print to stdout the return of a function call.
+        description: Run Go one-liners. This tool will print to STDOUT the return of a function call.
         name: gorram
         url: https://github.com/natefinch/gorram
         author: https://github.com/natefinch
