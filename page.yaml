@@ -608,6 +608,20 @@ groups:
           - unconvert ./...
         requirements:
           - go install github.com/mdempsky/unconvert@latest
+      - title: Detect global variables
+        description: Global variables are an input to functions that is not visible in the functions signature, complicate testing, reduces readability and increase the complexity of code. However, sometimes global varaibles make sense. This tool skips such common scenarios. This tool can be used in CI, albeit it is very strict. This tool is useful for investigations.
+        url: https://github.com/leighmcculloch/gochecknoglobals
+        author: https://github.com/leighmcculloch
+        commands:
+          - gochecknoglobals ./...
+        example_output: |
+          /Users/nikolaydubina/Workspace/hugo/common/paths/path.go:64:5: fpb is a global variable
+          /Users/nikolaydubina/Workspace/hugo/common/paths/url.go:50:5: pb is a global variable
+          /Users/nikolaydubina/Workspace/hugo/common/text/position.go:52:5: positionStringFormatfunc is a global variable
+          /Users/nikolaydubina/Workspace/hugo/common/text/transform.go:26:5: accentTransformerPool is a global variable
+          /Users/nikolaydubina/Workspace/hugo/common/herrors/error_locator.go:40:5: SimpleLineMatcher is a global variable
+        requirements:
+          - go install 4d63.com/gochecknoglobals@latest
       - title: Calculate Cognitive Complexity
         description: Congitive Complexity as defined in this tool can be more illustrative than Cyclometric Complexity. Research paper ["Cognitive Complexity - a new way of measuring understandability"](https://www.sonarsource.com/docs/CognitiveComplexity.pdf), 2021.
         name: gocognit
