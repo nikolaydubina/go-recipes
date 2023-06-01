@@ -198,8 +198,8 @@ groups:
         commands:
           - go-test-trace ./...
         requirements:
-          - # open telemetry collector
-          - # traces UI (Datadog, Jaeger, Honeycomb, NewRelic)
+          - "# open telemetry collector"
+          - "# traces UI (Datadog, Jaeger, Honeycomb, NewRelic)"
           - go install github.com/rakyll/go-test-trace@latest
   - title: Dependencies
     entries:
@@ -667,7 +667,7 @@ groups:
           kubernetes/pkg/util/ipset/ipset.go:332:1: "DelEntry": doc_last_updated_behind_days(1578.10)
           kubernetes/pkg/util/ipset/ipset.go:340:1: "TestEntry": doc_last_updated_behind_days(450.07)
         requirements:
-          - # get latest version of git
+          - "# get latest version of git"
           - go install github.com/nikolaydubina/go-commentage@latest
       - title: Detect mixing pointer and value method receivers
         description: This `go vet` compatible linter detects mixing pointer and value method receivers for the same type.
@@ -1033,7 +1033,7 @@ groups:
           - go-ssaviz ./...
         example_image_url: ./img/go-ssaviz.png
         requirements:
-          - # get graphviz
+          - "# get graphviz"
           - go install github.com/SilverRainZ/go-ssaviz@latest
       - title: (archived) Make graph of AST 
         description: This tool visualizes AST as graph, which may be useful to navigate and undertand Go AST. This tool has not been maintaned for a while.

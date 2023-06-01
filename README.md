@@ -408,6 +408,8 @@ go-test-trace ./...
 
 Requirements
 ```
+# open telemetry collector
+# traces UI (Datadog, Jaeger, Honeycomb, NewRelic)
 go install github.com/rakyll/go-test-trace@latest
 ```
 
@@ -1085,6 +1087,7 @@ kubernetes/pkg/util/ipset/ipset.go:340:1: "TestEntry": doc_last_updated_behind_d
 
 Requirements
 ```
+# get latest version of git
 go install github.com/nikolaydubina/go-commentage@latest
 ```
 
@@ -1582,6 +1585,7 @@ go-ssaviz ./...
 
 Requirements
 ```
+# get graphviz
 go install github.com/SilverRainZ/go-ssaviz@latest
 ```
 
