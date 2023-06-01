@@ -104,6 +104,7 @@
    + [➡ Run simple fileserver](#-run-simple-fileserver)
    + [➡ Create 3D visualization of concurrency traces with `gotrace`](#-create-3d-visualization-of-concurrency-traces-with-gotrace)
  - Monitoring
+   + [➡ Monitor goroutines with `grmon`](#-monitor-goroutines-with-grmon)
    + [➡ Monitor Go processes with `gops`](#-monitor-go-processes-with-gops)
    + [➡ Visualise Go runtime metrics in browser with `statsviz`](#-visualise-go-runtime-metrics-in-browser-with-statsviz)
    + [➡ Auto-Instrument all functions with `go-instrument`](#-auto-instrument-all-functions-with-go-instrument)
@@ -1863,6 +1864,24 @@ more instructions in original repo
 ```
 
 ## Monitoring
+
+### [⏫](#contents)➡ Monitor goroutines with [grmon](go install github.com/bcicen/grmon@latest)
+
+Command line monitoring for goroutines. — github.com/bcicen
+
+
+```
+grmon
+```
+
+<div align="center"><img src="https://camo.githubusercontent.com/ff8303d0b302fcfaf670846eb4168ac3e70522a8d739491d5509abc6ffb236b8/68747470733a2f2f627261646c65792e636f6465732f7374617469632f696d672f67726d6f6e2e676966" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+# start pprof server or grmon in your Go process
+go install github.com/bcicen/grmon@latest
+```
 
 ### [⏫](#contents)➡ Monitor Go processes with [gops](https://github.com/google/gops)
 
