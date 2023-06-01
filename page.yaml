@@ -678,6 +678,37 @@ groups:
           /kubernetes/pkg/proxy/topology.go:137:2: naked return in func `CategorizeEndpoints` with 98 lines of code
         requirements:
           - go install github.com/alexkohler/nakedret/cmd/nakedret@latest
+      - title: Detect mixing pointer and value method receivers
+        description: "Mixing pointer and value method receivers for the same type is discouraged, as per commong guideline [Go wiki](https://github.com/golang/go/wiki/CodeReviewComments#receiver-type) and [Google Go style guide](https://google.github.io/styleguide/go/decisions#receiver-type)."
+        name: smrcptr
+        url: https://github.com/nikolaydubina/smrcptr
+        author: https://github.com/nikolaydubina
+        commands:
+          - smrcptr ./...
+        example_content_ext: go
+        example_content: |
+          type Pancake struct{}
+
+          func NewPancake() Pancake { return Pancake{} }
+
+          func (s *Pancake) Fry() {}
+
+          func (s Pancake) Bake() {}
+        example_output: |
+          smrcptr/internal/bakery/pancake.go:7:1: Pancake.Fry uses pointer
+          smrcptr/internal/bakery/pancake.go:9:1: Pancake.Bake uses value
+        requirements:
+          - go install github.com/nikolaydubina/smrcptr@latest
+      - title: Detect vertical function ordering
+        description: Vertical function ordering is declaring functions before they are used. Based on 'Clean Code' by Robert.C.Martin.
+        name: vertfn
+        url: https://github.com/nikolaydubina/vertfn
+        author: https://github.com/nikolaydubina
+        commands:
+          - vertfn --verbose ./...
+        example_image_url: https://github.com/nikolaydubina/vertfn/blob/master/doc/code-dep-viz.png
+        requirements:
+          - go install github.com/nikolaydubina/vertfn@latest
       - title: Calculate Cognitive Complexity
         description: Congitive Complexity as defined in this tool can be more illustrative than Cyclometric Complexity. Research paper ["Cognitive Complexity - a new way of measuring understandability"](https://www.sonarsource.com/docs/CognitiveComplexity.pdf), 2021.
         name: gocognit
@@ -766,37 +797,6 @@ groups:
         requirements:
           - "# get latest version of git"
           - go install github.com/nikolaydubina/go-commentage@latest
-      - title: Detect mixing pointer and value method receivers
-        description: This `go vet` compatible linter detects mixing pointer and value method receivers for the same type.
-        name: smrcptr
-        url: https://github.com/nikolaydubina/smrcptr
-        author: https://github.com/nikolaydubina
-        commands:
-          - smrcptr ./...
-        example_content_ext: go
-        example_content: |
-          type Pancake struct{}
-
-          func NewPancake() Pancake { return Pancake{} }
-
-          func (s *Pancake) Fry() {}
-
-          func (s Pancake) Bake() {}
-        example_output: |
-          smrcptr/internal/bakery/pancake.go:7:1: Pancake.Fry uses pointer
-          smrcptr/internal/bakery/pancake.go:9:1: Pancake.Bake uses value
-        requirements:
-          - go install github.com/nikolaydubina/smrcptr@latest
-      - title: Check vertical function ordering
-        description: This `go vet` compatible linter reports when functions are declared before they are used, which is based on recommendation from 'Clean Code' by Robert.C.Martin.
-        name: vertfn
-        url: https://github.com/nikolaydubina/vertfn
-        author: https://github.com/nikolaydubina
-        commands:
-          - vertfn --verbose ./...
-        example_image_url: https://github.com/nikolaydubina/vertfn/blob/master/doc/code-dep-viz.png
-        requirements:
-          - go install github.com/nikolaydubina/vertfn@latest
       - title: (archived) Ensure `if` statements using short assignment
         name: ifshort
         author: https://github.com/esimonov

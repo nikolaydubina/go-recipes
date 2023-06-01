@@ -63,11 +63,11 @@
    + [➡ Detect slices that could be preallocated with `prealloc`](#-detect-slices-that-could-be-preallocated-with-prealloc)
    + [➡ Detect unnecessary import aliases with `unimport`](#-detect-unnecessary-import-aliases-with-unimport)
    + [➡ Detect naked returns with `nakedret`](#-detect-naked-returns-with-nakedret)
+   + [➡ Detect mixing pointer and value method receivers with `smrcptr`](#-detect-mixing-pointer-and-value-method-receivers-with-smrcptr)
+   + [➡ Detect vertical function ordering with `vertfn`](#-detect-vertical-function-ordering-with-vertfn)
    + [➡ Calculate Cognitive Complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
    + [➡ Calculate Cyclomatic Complexity with `gocyclo`](#-calculate-cyclomatic-complexity-with-gocyclo)
    + [➡ Calculate age of comments with `go-commentage`](#-calculate-age-of-comments-with-go-commentage)
-   + [➡ Detect mixing pointer and value method receivers with `smrcptr`](#-detect-mixing-pointer-and-value-method-receivers-with-smrcptr)
-   + [➡ Check vertical function ordering with `vertfn`](#-check-vertical-function-ordering-with-vertfn)
    + [➡ (archived) Ensure `if` statements using short assignment with `ifshort`](#-archived-ensure-if-statements-using-short-assignment-with-ifshort)
    + [➡ Perform Taint Analysis with `taint`](#-perform-taint-analysis-with-taint)
    + [➡ Visualize struct layout with `structlayout`](#-visualize-struct-layout-with-structlayout)
@@ -1132,6 +1132,53 @@ Requirements
 go install github.com/alexkohler/nakedret/cmd/nakedret@latest
 ```
 
+### [⏫](#contents)➡ Detect mixing pointer and value method receivers with [smrcptr](https://github.com/nikolaydubina/smrcptr)
+
+Mixing pointer and value method receivers for the same type is discouraged, as per commong guideline [Go wiki](https://github.com/golang/go/wiki/CodeReviewComments#receiver-type) and [Google Go style guide](https://google.github.io/styleguide/go/decisions#receiver-type). — [@nikolaydubina](https://github.com/nikolaydubina)
+
+
+```
+smrcptr ./...
+```
+
+```go
+type Pancake struct{}
+
+func NewPancake() Pancake { return Pancake{} }
+
+func (s *Pancake) Fry() {}
+
+func (s Pancake) Bake() {}
+```
+
+Example
+```
+smrcptr/internal/bakery/pancake.go:7:1: Pancake.Fry uses pointer
+smrcptr/internal/bakery/pancake.go:9:1: Pancake.Bake uses value
+```
+
+Requirements
+```
+go install github.com/nikolaydubina/smrcptr@latest
+```
+
+### [⏫](#contents)➡ Detect vertical function ordering with [vertfn](https://github.com/nikolaydubina/vertfn)
+
+Vertical function ordering is declaring functions before they are used. Based on 'Clean Code' by Robert.C.Martin. — [@nikolaydubina](https://github.com/nikolaydubina)
+
+
+```
+vertfn --verbose ./...
+```
+
+<div align="center"><img src="https://github.com/nikolaydubina/vertfn/blob/master/doc/code-dep-viz.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/nikolaydubina/vertfn@latest
+```
+
 ### [⏫](#contents)➡ Calculate Cognitive Complexity with [gocognit](https://github.com/uudashr/gocognit)
 
 Congitive Complexity as defined in this tool can be more illustrative than Cyclometric Complexity. Research paper ["Cognitive Complexity - a new way of measuring understandability"](https://www.sonarsource.com/docs/CognitiveComplexity.pdf), 2021. — [@uudashr](https://github.com/uudashr)
@@ -1243,53 +1290,6 @@ Requirements
 ```
 # get latest version of git
 go install github.com/nikolaydubina/go-commentage@latest
-```
-
-### [⏫](#contents)➡ Detect mixing pointer and value method receivers with [smrcptr](https://github.com/nikolaydubina/smrcptr)
-
-This `go vet` compatible linter detects mixing pointer and value method receivers for the same type. — [@nikolaydubina](https://github.com/nikolaydubina)
-
-
-```
-smrcptr ./...
-```
-
-```go
-type Pancake struct{}
-
-func NewPancake() Pancake { return Pancake{} }
-
-func (s *Pancake) Fry() {}
-
-func (s Pancake) Bake() {}
-```
-
-Example
-```
-smrcptr/internal/bakery/pancake.go:7:1: Pancake.Fry uses pointer
-smrcptr/internal/bakery/pancake.go:9:1: Pancake.Bake uses value
-```
-
-Requirements
-```
-go install github.com/nikolaydubina/smrcptr@latest
-```
-
-### [⏫](#contents)➡ Check vertical function ordering with [vertfn](https://github.com/nikolaydubina/vertfn)
-
-This `go vet` compatible linter reports when functions are declared before they are used, which is based on recommendation from 'Clean Code' by Robert.C.Martin. — [@nikolaydubina](https://github.com/nikolaydubina)
-
-
-```
-vertfn --verbose ./...
-```
-
-<div align="center"><img src="https://github.com/nikolaydubina/vertfn/blob/master/doc/code-dep-viz.png" style="margin: 8px; max-height: 640px;"></div>
-
-
-Requirements
-```
-go install github.com/nikolaydubina/vertfn@latest
 ```
 
 ### [⏫](#contents)➡ (archived) Ensure `if` statements using short assignment with [ifshort](https://github.com/esimonov/ifshort)
