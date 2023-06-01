@@ -129,6 +129,7 @@
  - Style Guide
    + [➡ Google](#style-guide)
    + [➡ Uber](#style-guide)
+   + [➡ Go Code Review Comments](#style-guide)
 
 ## Testing
 
@@ -2252,5 +2253,7 @@ go install github.com/appliedgocode/goman@lates
 - [Google](https://google.github.io/styleguide/go)
 
 - [Uber](https://github.com/uber-go/guide)
+
+- [Go Code Review Comments](https://github.com/golang/go/wiki/CodeReviewComments)
 
 

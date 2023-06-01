@@ -1486,3 +1486,5 @@ groups:
         url: https://google.github.io/styleguide/go
       - title: Uber
         url: https://github.com/uber-go/guide
+      - title: Go Code Review Comments
+        url: https://github.com/golang/go/wiki/CodeReviewComments
