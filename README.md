@@ -19,6 +19,7 @@
    + [➡ Run tests in parallel](#-run-tests-in-parallel)
    + [➡ Detect goroutine leaks with `leaktest`](#-detect-goroutine-leaks-with-leaktest)
    + [➡ Run tests with pretty output with `gotestsum`](#-run-tests-with-pretty-output-with-gotestsum)
+   + [➡ Run and summarize `go test` with `tparse`](#-run-and-summarize-go-test-with-tparse)
    + [➡ Colorize and decorate `go test` with `richgo`](#-colorize-and-decorate-go-test-with-richgo)
    + [➡ Colorize `go test` with `gotest`](#-colorize-go-test-with-gotest)
    + [➡ Get packages without tests](#-get-packages-without-tests)
@@ -271,6 +272,23 @@ gotestsum --format dots
 Requirements
 ```
 go install gotest.tools/gotestsum@latest
+```
+
+### [⏫](#contents)➡ Run and summarize `go test` with [tparse](https://github.com/mfridman/tparse)
+
+This lightweight wrapper around STDOUT of JSON of `go test`, will nicely render colorized test status, details of failures, duration, coverage, and package summary. — [@mfridman](https://github.com/mfridman)
+
+
+```
+set -o pipefail && go test ./... -json | tparse -all
+```
+
+<div align="center"><img src="./img/tparse.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/mfridman/tparse@latest
 ```
 
 ### [⏫](#contents)➡ Colorize and decorate `go test` with [richgo](https://github.com/kyoh86/richgo)
