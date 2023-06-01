@@ -276,7 +276,7 @@ go install gotest.tools/gotestsum@latest
 
 ### [⏫](#contents)➡ Summarize `go test` with [tparse](https://github.com/mfridman/tparse)
 
-This lightweight wrapper around STDOUT of JSON of `go test`, will nicely render colorized test status, details of failures, duration, coverage, and package summary. — [@mfridman](https://github.com/mfridman)
+This lightweight wrapper around STDOUT of JSON of `go test` will nicely render colorized test status, details of failures, duration, coverage, and package summary. — [@mfridman](https://github.com/mfridman)
 
 
 ```
