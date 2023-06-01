@@ -591,6 +591,23 @@ groups:
           header_in_struct/header_in_struct.go:16:2: assigning to reflect header object
         requirements:
           - go install github.com/jlauinger/go-safer@latest
+      - title: Detect unnecessary type conversions
+        description: Identify expressions like `T(x)` where `x` is already has type `T`. This tool can identify conversions that force intermediate rounding. It also can overwrite files with fix. This tool is not using `golang.org/x/tools/go/analysis` toolchain.
+        name: unconvert
+        author: https://github.com/mdempsky 
+        url: https://github.com/mdempsky/unconvert
+        example_content: |
+          $ unconvert -v bytes fmt
+          GOROOT/src/bytes/reader.go:117:14: unnecessary conversion
+                          abs = int64(r.i) + offset
+                                    ^
+          GOROOT/src/fmt/print.go:411:21: unnecessary conversion
+                  p.fmt.integer(int64(v), 16, unsigned, udigits)
+                                    ^
+        commands:
+          - unconvert ./...
+        requirements:
+          - go install github.com/mdempsky/unconvert@latest
       - title: Calculate Cognitive Complexity
         description: Congitive Complexity as defined in this tool can be more illustrative than Cyclometric Complexity. Research paper ["Cognitive Complexity - a new way of measuring understandability"](https://www.sonarsource.com/docs/CognitiveComplexity.pdf), 2021.
         name: gocognit
