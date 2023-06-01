@@ -19,11 +19,13 @@
    + [➡ Run tests in parallel](#-run-tests-in-parallel)
    + [➡ Detect goroutine leaks with `leaktest`](#-detect-goroutine-leaks-with-leaktest)
    + [➡ Run tests with pretty output with `gotestsum`](#-run-tests-with-pretty-output-with-gotestsum)
-   + [➡ Enrich `go test` output with `richgo`](#-enrich-go-test-output-with-richgo)
+   + [➡ Colorize and decorate `go test` with `richgo`](#-colorize-and-decorate-go-test-with-richgo)
+   + [➡ Colorize `go test` with `gotest`](#-colorize-go-test-with-gotest)
    + [➡ Get packages without tests](#-get-packages-without-tests)
    + [➡ Perform Mutation Testing with `ooze`](#-perform-mutation-testing-with-ooze)
    + [➡ Perform Mutation Testing with `avito-tech/go-mutesting`](#-perform-mutation-testing-with-avito-techgo-mutesting)
    + [➡ Perform Mutation Testing with `go-mutesting`](#-perform-mutation-testing-with-go-mutesting)
+   + [➡ Trace tests with `go-test-trace`](#-trace-tests-with-go-test-trace)
  - Dependencies
    + [➡ Get Go version of current module](#-get-go-version-of-current-module)
    + [➡ Get Go versions of upstream modules](#-get-go-versions-of-upstream-modules)
@@ -271,9 +273,9 @@ Requirements
 go install gotest.tools/gotestsum@latest
 ```
 
-### [⏫](#contents)➡ Enrich `go test` output with [richgo](https://github.com/kyoh86/richgo)
+### [⏫](#contents)➡ Colorize and decorate `go test` with [richgo](https://github.com/kyoh86/richgo)
 
-Add colors and enrich `go test` output. It can be used in CI pipeline and has lots of options. — [@kyoh86](https://github.com/kyoh86)
+Add colors and enrich `go test` output. It can be used in CI pipeline and has lots of alternative visualizations and options. — [@kyoh86](https://github.com/kyoh86)
 
 
 ```
@@ -286,6 +288,23 @@ richgo test ./...
 Requirements
 ```
 go install github.com/kyoh86/richgo@latest
+```
+
+### [⏫](#contents)➡ Colorize `go test` with [gotest](https://github.com/rakyll/gotest)
+
+Add colors to `go test` output. Very lightweight wrapper around `go test` STDOUT. — [@rakyll](https://github.com/rakyll)
+
+
+```
+gotest ./...
+```
+
+<div align="center"><img src="https://raw.githubusercontent.com/jonasbn/go-test-demo/1.0.0/gotest-go-test-demo.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/rakyll/gotest@latest
 ```
 
 ### [⏫](#contents)➡ Get packages without tests
@@ -373,6 +392,23 @@ for _, d := range opts.Mutator.DisableMutators {
 Requirements
 ```
 go install github.com/zimmski/go-mutesting/cmd/go-mutesting@latest
+```
+
+### [⏫](#contents)➡ Trace tests with [go-test-trace](https://github.com/rakyll/go-test-trace)
+
+Collect test execution as distributed traces. This is useful for tracking test duration, failures, flakiness. You distributed tracing storage, search, UI, exploration, dashboards, alarms — all will automatically become test status collection. If you run integration tests in your CI, then it is particularly handy to investigate your integration tests same way as real requests, such as Go processes, databases, etc. However, if you do not have distributed traces, it is still useful for adhoc investigations. This tool processes STDOUT of `go test`. No automatic instrumentation is done. — [@rakyll](https://github.com/rakyll)
+
+
+```
+go-test-trace ./...
+```
+
+<div align="center"><img src="https://camo.githubusercontent.com/1bbb99d14634e097828aff76e17427c0d834b2b37b7ef6c4b15ad01e5b7ac526/68747470733a2f2f692e696d6775722e636f6d2f45313850596b342e706e67" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/rakyll/go-test-trace@latest
 ```
 
 ## Dependencies
