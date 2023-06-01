@@ -610,6 +610,7 @@ groups:
           - go install github.com/mdempsky/unconvert@latest
       - title: Detect global variables
         description: Global variables are an input to functions that is not visible in the functions signature, complicate testing, reduces readability and increase the complexity of code. However, sometimes global varaibles make sense. This tool skips such common scenarios. This tool can be used in CI, albeit it is very strict. This tool is useful for investigations.
+        name: gochecknoglobals
         url: https://github.com/leighmcculloch/gochecknoglobals
         author: https://github.com/leighmcculloch
         commands:

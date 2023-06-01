@@ -59,7 +59,7 @@
    + [➡ Detect structs with uninitialized fields with `go-exhaustruct`](#-detect-structs-with-uninitialized-fields-with-go-exhaustruct)
    + [➡ Detect unsafe code with `go-safer`](#-detect-unsafe-code-with-go-safer)
    + [➡ Detect unnecessary type conversions with `unconvert`](#-detect-unnecessary-type-conversions-with-unconvert)
-   + [➡ Detect global variables](#-detect-global-variables)
+   + [➡ Detect global variables with `gochecknoglobals`](#-detect-global-variables-with-gochecknoglobals)
    + [➡ Calculate Cognitive Complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
    + [➡ Calculate Cyclomatic Complexity with `gocyclo`](#-calculate-cyclomatic-complexity-with-gocyclo)
    + [➡ Calculate age of comments with `go-commentage`](#-calculate-age-of-comments-with-go-commentage)
@@ -1023,7 +1023,7 @@ Requirements
 go install github.com/mdempsky/unconvert@latest
 ```
 
-### [⏫](#contents)➡ Detect global variables
+### [⏫](#contents)➡ Detect global variables with [gochecknoglobals](https://github.com/leighmcculloch/gochecknoglobals)
 
 Global variables are an input to functions that is not visible in the functions signature, complicate testing, reduces readability and increase the complexity of code. However, sometimes global varaibles make sense. This tool skips such common scenarios. This tool can be used in CI, albeit it is very strict. This tool is useful for investigations. — [@leighmcculloch](https://github.com/leighmcculloch)
 
