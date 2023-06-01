@@ -58,6 +58,7 @@
    + [➡ Detect non-exhaustive switch and map with `exhaustive`](#-detect-non-exhaustive-switch-and-map-with-exhaustive)
    + [➡ Detect structs with uninitialized fields with `go-exhaustruct`](#-detect-structs-with-uninitialized-fields-with-go-exhaustruct)
    + [➡ Detect unsafe code with `go-safer`](#-detect-unsafe-code-with-go-safer)
+   + [➡ Detect unnecessary type conversions with `unconvert`](#-detect-unnecessary-type-conversions-with-unconvert)
    + [➡ Calculate Cognitive Complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
    + [➡ Calculate Cyclomatic Complexity with `gocyclo`](#-calculate-cyclomatic-complexity-with-gocyclo)
    + [➡ Calculate age of comments with `go-commentage`](#-calculate-age-of-comments-with-go-commentage)
@@ -995,6 +996,30 @@ header_in_struct/header_in_struct.go:16:2: assigning to reflect header object
 Requirements
 ```
 go install github.com/jlauinger/go-safer@latest
+```
+
+### [⏫](#contents)➡ Detect unnecessary type conversions with [unconvert](https://github.com/mdempsky/unconvert)
+
+Identify expressions like `T(x)` where `x` is already has type `T`. This tool can identify conversions that force intermediate rounding. It also can overwrite files with fix. This tool is not using `golang.org/x/tools/go/analysis` toolchain. — [@mdempsky](https://github.com/mdempsky)
+
+
+```
+unconvert ./...
+```
+
+```
+$ unconvert -v bytes fmt
+GOROOT/src/bytes/reader.go:117:14: unnecessary conversion
+                abs = int64(r.i) + offset
+                          ^
+GOROOT/src/fmt/print.go:411:21: unnecessary conversion
+        p.fmt.integer(int64(v), 16, unsigned, udigits)
+                          ^
+```
+
+Requirements
+```
+go install github.com/mdempsky/unconvert@latest
 ```
 
 ### [⏫](#contents)➡ Calculate Cognitive Complexity with [gocognit](https://github.com/uudashr/gocognit)
