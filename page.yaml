@@ -112,6 +112,16 @@ groups:
         example_image_url: https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif
         requirements:
           - go install gotest.tools/gotestsum@latest
+      - title: Run and summarize `go test`
+        description: This lightweight wrapper around STDOUT of JSON of `go test`, will nicely render colorized test status, details of failures, duration, coverage, and package summary.
+        name: tparse
+        url: https://github.com/mfridman/tparse
+        author: https://github.com/mfridman
+        example_image_url: ./img/tparse.png
+        commands:
+          - set -o pipefail && go test ./... -json | tparse -all
+        requirements:
+          - go install github.com/mfridman/tparse@latest
       - title: Colorize and decorate `go test`
         description: Add colors and enrich `go test` output. It can be used in CI pipeline and has lots of alternative visualizations and options.
         name: richgo
