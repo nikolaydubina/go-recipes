@@ -48,7 +48,7 @@ groups:
         commands:
           - go test -coverprofile cover.out ./...
           - go tool cover -html=cover.out
-      - title: Browse code coverage of Go code in terminal
+      - title: Browse code coverage in terminal
         description: Interactively browse Go code coverage similarly to HTML provided by official Go toolchain, but in terminal.
         name: gocovsh
         url: https://github.com/orlangure/gocovsh 
@@ -61,7 +61,7 @@ groups:
           - git diff --name-only | gocovsh # only show changed files
         requirements:
           - go install github.com/orlangure/gocovsh@latest
-      - title: Pretty print coverage of Go code in terminal
+      - title: Pretty print coverage in terminal
         description: It is similar to `go tool cover -html=cover.out` but in terminal. You can filter by functions, packages, minimum coverage, and more.
         name: nikandfor/cover
         url: https://github.com/nikandfor/cover 

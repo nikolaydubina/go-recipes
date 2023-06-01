@@ -13,8 +13,8 @@
    + [➡ Make treemap of code coverage with `go-cover-treemap`](#-make-treemap-of-code-coverage-with-go-cover-treemap)
    + [➡ Browse coverage in browser with `gocov-html`](#-browse-coverage-in-browser-with-gocov-html)
    + [➡ Browse code coverage by file](#-browse-code-coverage-by-file)
-   + [➡ Browse code coverage of Go code in terminal with `gocovsh`](#-browse-code-coverage-of-go-code-in-terminal-with-gocovsh)
-   + [➡ Pretty print coverage of Go code in terminal with `nikandfor/cover`](#-pretty-print-coverage-of-go-code-in-terminal-with-nikandforcover)
+   + [➡ Browse code coverage in terminal with `gocovsh`](#-browse-code-coverage-in-terminal-with-gocovsh)
+   + [➡ Pretty print coverage in terminal with `nikandfor/cover`](#-pretty-print-coverage-in-terminal-with-nikandforcover)
    + [➡ Run tests sequentially](#-run-tests-sequentially)
    + [➡ Run tests in parallel](#-run-tests-in-parallel)
    + [➡ Detect goroutine leaks with `leaktest`](#-detect-goroutine-leaks-with-leaktest)
@@ -186,7 +186,7 @@ go tool cover -html=cover.out
 
 
 
-### [⏫](#contents)➡ Browse code coverage of Go code in terminal with [gocovsh](https://github.com/orlangure/gocovsh)
+### [⏫](#contents)➡ Browse code coverage in terminal with [gocovsh](https://github.com/orlangure/gocovsh)
 
 Interactively browse Go code coverage similarly to HTML provided by official Go toolchain, but in terminal. — [@orlangure](https://github.com/orlangure)
 
@@ -206,7 +206,7 @@ Requirements
 go install github.com/orlangure/gocovsh@latest
 ```
 
-### [⏫](#contents)➡ Pretty print coverage of Go code in terminal with [nikandfor/cover](https://github.com/nikandfor/cover)
+### [⏫](#contents)➡ Pretty print coverage in terminal with [nikandfor/cover](https://github.com/nikandfor/cover)
 
 It is similar to `go tool cover -html=cover.out` but in terminal. You can filter by functions, packages, minimum coverage, and more. — [@nikandfor](https://github.com/nikandfor)
 
