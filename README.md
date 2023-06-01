@@ -1865,9 +1865,9 @@ more instructions in original repo
 
 ## Monitoring
 
-### [⏫](#contents)➡ Monitor goroutines with [grmon](go install github.com/bcicen/grmon@latest)
+### [⏫](#contents)➡ Monitor goroutines with [grmon](https://github.com/bcicen/grmon)
 
-Command line monitoring for goroutines. — github.com/bcicen
+Command line monitoring for goroutines. — [@bcicen](https://github.com/bcicen)
 
 
 ```
