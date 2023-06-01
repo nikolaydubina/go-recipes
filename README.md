@@ -42,6 +42,7 @@
    + [➡ Use `go mod` directives](#-use-go-mod-directives)
    + [➡ Analyze dependencies with `goda`](#-analyze-dependencies-with-goda)
  - Code Visualization
+   + [➡ Make C4 diagram with `go-structurizr`](#-make-c4-diagram-with-go-structurizr)
    + [➡ Make graph of function calls with `callgraph`](#-make-graph-of-function-calls-with-callgraph)
    + [➡ Make graph of function calls in package with `go-callvis`](#-make-graph-of-function-calls-in-package-with-go-callvis)
    + [➡ Make PlantUML diagram with `goplantuml`](#-make-plantuml-diagram-with-goplantuml)
@@ -678,6 +679,20 @@ go install github.com/loov/goda@latest
 ```
 
 ## Code Visualization
+
+### [⏫](#contents)➡ Make C4 diagram with [go-structurizr](https://github.com/krzysztofreczek/go-structurizr)
+
+This library provides tools to generate [C4](https://c4model.com) diagrams. The process is a bit involved, however you get diagram generated from real Go code automatically. Steps are outlined in [blog](https://threedots.tech/post/auto-generated-c4-architecture-diagrams-in-go/). — [@krzysztofreczek](https://github.com/krzysztofreczek)
+
+<div align="center"><img src="https://threedots.tech/post/auto-generated-c4-architecture-diagrams-in-go/tdl-go_structurizr_1_2.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+manually defining Go main.go script to invoke library
+graphviz
+manual coloring spec (DB, calsses)
+```
 
 ### [⏫](#contents)➡ Make graph of function calls with [callgraph](https://golang.org/x/tools/cmd/callgraph)
 
