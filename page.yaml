@@ -355,6 +355,16 @@ groups:
         example_image_url: https://github.com/loov/goda/raw/master/graph.svg
   - title: Code Visualization
     entries:
+      - title: Make C4 diagram
+        description: This library provides tools to generate [C4](https://c4model.com) diagrams. The process is a bit involved, however you get diagram generated from real Go code automatically. Steps are outlined in [blog](https://threedots.tech/post/auto-generated-c4-architecture-diagrams-in-go/).
+        url: https://github.com/krzysztofreczek/go-structurizr
+        author: https://github.com/krzysztofreczek
+        name: go-structurizr
+        example_image_url: https://threedots.tech/post/auto-generated-c4-architecture-diagrams-in-go/tdl-go_structurizr_1_2.png
+        requirements:
+          - manually defining Go main.go script to invoke library
+          - graphviz
+          - manual coloring spec (DB, calsses)
       - title: Make graph of function calls
         description: Visualize complex or new project quickly or to study project. Requires `main.go` in module. Supports Graphviz output format. Has many options for filtering and formatting.
         name: callgraph
