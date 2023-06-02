@@ -123,6 +123,7 @@
    + [➡ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
    + [➡ Run official static analyzers not included in `go vet`](#-run-official-static-analyzers-not-included-in-go-vet)
    + [➡ Detect most common issues with `staticcheck`](#-detect-most-common-issues-with-staticcheck)
+   + [➡ Reference and run common linters with `golangci`](#-reference-and-run-common-linters-with-golangci)
    + [➡ Detect non-exhaustive switch and map with `exhaustive`](#-detect-non-exhaustive-switch-and-map-with-exhaustive)
    + [➡ Detect structs with uninitialized fields with `go-exhaustruct`](#-detect-structs-with-uninitialized-fields-with-go-exhaustruct)
    + [➡ Detect unsafe code with `go-safer`](#-detect-unsafe-code-with-go-safer)
@@ -1888,6 +1889,11 @@ Requirements
 ```
 go install honnef.co/go/tools/cmd/staticcheck@latest
 ```
+
+### [⏫](#contents)➡ Reference and run common linters with [golangci](https://github.com/golangci/golangci-lint)
+
+This tool has comprehensive list of linters. Owners of this aggregator keep track of active linters, their versions, and optimal configs. It contains many optimizations to make linters run fast by paralleism, distributing binaries and Docker images, utilising `golang.org/x/tools/go/analysis` toolchain.
+
 
 ### [⏫](#contents)➡ Detect non-exhaustive switch and map with [exhaustive](https://github.com/nishanths/exhaustive)
 

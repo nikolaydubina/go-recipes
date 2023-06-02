@@ -1184,6 +1184,10 @@ groups:
           - staticcheck ./...
         requirements:
           - go install honnef.co/go/tools/cmd/staticcheck@latest
+      - title: Reference and run common linters
+        description: This tool has comprehensive list of linters. Owners of this aggregator keep track of active linters, their versions, and optimal configs. It contains many optimizations to make linters run fast by paralleism, distributing binaries and Docker images, utilising `golang.org/x/tools/go/analysis` toolchain.
+        url: https://github.com/golangci/golangci-lint
+        name: golangci
       - title: Detect non-exhaustive switch and map
         description: This `go vet` compatible analyzer checks for exhaustive switch statemnts and map literals. It works for enums with underyling integer, float, or string types (struct based enums are not supported).
         name: exhaustive
