@@ -1686,7 +1686,7 @@ go install github.com/nikolaydubina/go-binsize-treemap@latest
 
 ### [⏫](#contents)➡ Custom import path
 
-Go can automatically fetch from custom http/https servers using `<meta>` tag to discover how to fetch code. There are multiple tools that can help set this up. This can help for security and analytics. This is also known as 'vanity URLs'. [documentation](https://pkg.go.dev/cmd/go#hdr-Remote_import_paths).
+Go can automatically fetch from custom http/https servers using `<meta>` tag to discover how to fetch code. There are multiple tools that can help set this up. This can help for security and analytics. This is also known as vanity URLs. [documentation](https://pkg.go.dev/cmd/go#hdr-Remote_import_paths).
 
 ```
 # some notable examples
