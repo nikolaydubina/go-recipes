@@ -15,10 +15,10 @@
    + [➡ Browse coverage with `gocov-html`](#-browse-coverage-with-gocov-html)
    + [➡ Browse coverage in terminal with `gocovsh`](#-browse-coverage-in-terminal-with-gocovsh)
    + [➡ Pretty print coverage in terminal with `nikandfor/cover`](#-pretty-print-coverage-in-terminal-with-nikandforcover)
-   + [➡ Run tests sequentially](#-run-tests-sequentially)
-   + [➡ Run tests in parallel](#-run-tests-in-parallel)
    + [➡ Run coverage collector server with `goc`](#-run-coverage-collector-server-with-goc)
    + [➡ Visualize live coverage in VSCode with `goc`](#-visualize-live-coverage-in-vscode-with-goc)
+   + [➡ Run tests sequentially](#-run-tests-sequentially)
+   + [➡ Run tests in parallel](#-run-tests-in-parallel)
    + [➡ Detect goroutine leaks with `leaktest`](#-detect-goroutine-leaks-with-leaktest)
    + [➡ Run tests with pretty output with `gotestsum`](#-run-tests-with-pretty-output-with-gotestsum)
    + [➡ Summarize `go test` with `tparse`](#-summarize-go-test-with-tparse)
@@ -238,30 +238,6 @@ Requirements
 go install github.com/nikandfor/cover@latest
 ```
 
-### [⏫](#contents)➡ Run tests sequentially
-
-Use when you need to synchronize tests, for example in integration tests that share environment. [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
-
-
-```
-go test -p 1 -parallel 1 ./...
-```
-
-
-### [⏫](#contents)➡ Run tests in parallel
-
-Add `t.Parallel` to your tests case function bodies. As per documentation, by default `-p=GOMAXPROCS` and `-parallel=GOMAXPROCS` when you run `go test`. Different packages by default run in parallel, and tests within package can be enforced to run in parallel too. Make sure to copy test case data to new variable, why explained [here](https://gist.github.com/posener/92a55c4cd441fc5e5e85f27bca008721). [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
-
-```go
-...
-for _, tc := range tests {
-    tc := tc
-    t.Run(tc.name, func(t *testing.T) {
-        t.Parallel()
-        ...
-```
-
-
 ### [⏫](#contents)➡ Run coverage collector server with [goc](https://github.com/qiniu/goc)
 
 This tool allows to collect coverage as soon as code is executed. — [@qiniu](https://github.com/qiniu)
@@ -292,6 +268,30 @@ Requirements
 ```
 go install github.com/qiniu/goc@latest
 ```
+
+### [⏫](#contents)➡ Run tests sequentially
+
+Use when you need to synchronize tests, for example in integration tests that share environment. [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
+
+
+```
+go test -p 1 -parallel 1 ./...
+```
+
+
+### [⏫](#contents)➡ Run tests in parallel
+
+Add `t.Parallel` to your tests case function bodies. As per documentation, by default `-p=GOMAXPROCS` and `-parallel=GOMAXPROCS` when you run `go test`. Different packages by default run in parallel, and tests within package can be enforced to run in parallel too. Make sure to copy test case data to new variable, why explained [here](https://gist.github.com/posener/92a55c4cd441fc5e5e85f27bca008721). [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
+
+```go
+...
+for _, tc := range tests {
+    tc := tc
+    t.Run(tc.name, func(t *testing.T) {
+        t.Parallel()
+        ...
+```
+
 
 ### [⏫](#contents)➡ Detect goroutine leaks with [leaktest](https://github.com/fortytw2/leaktest)
 
