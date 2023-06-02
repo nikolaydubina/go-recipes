@@ -85,6 +85,7 @@
  - Execution
    + [➡ Run alternative Go Playground with `goplay.tools`](#-run-alternative-go-playground-with-goplaytools)
    + [➡ Run interactive Go interpreter with `gomacro`](#-run-interactive-go-interpreter-with-gomacro)
+   + [➡ Run interactive Go interpreter with `yaegi`](#-run-interactive-go-interpreter-with-yaegi)
    + [➡ Run Go function in shell with `gorram`](#-run-go-function-in-shell-with-gorram)
    + [➡ Run simple fileserver](#-run-simple-fileserver)
    + [➡ Create 3D visualization of concurrency traces with `gotrace`](#-create-3d-visualization-of-concurrency-traces-with-gotrace)
@@ -1318,6 +1319,36 @@ gomacro>
 Requirements
 ```
 go install github.com/cosmos72/gomacro@latest
+```
+
+### [⏫](#contents)➡ Run interactive Go interpreter with [yaegi](https://github.com/traefik/yaegi)
+
+This interpreter works with 3rd party pacakges located in `$GOPATH/src`. It can also be triggered within Go programmatically via `Eval()`. Works everywhere Go works. — [@traefik](https://github.com/traefik)
+
+
+```
+yaegi
+```
+
+Example
+```
+$ yaegi
+> import "github.com/nikolaydubina/fpdecimal"
+: 0x140000faaf0
+> a, _ := fpdecimal.FromString("10.12") 
+: {0}
+> b, _ := fpdecimal.FromString("5.38")
+: {0}
+> c := a.Add(b)   
+: {15500}
+> c.String()
+: 15.500
+>
+```
+
+Requirements
+```
+go install github.com/traefik/yaegi@latest
 ```
 
 ### [⏫](#contents)➡ Run Go function in shell with [gorram](https://github.com/natefinch/gorram)
