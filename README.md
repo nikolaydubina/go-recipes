@@ -27,6 +27,8 @@
    + [➡ Perform Mutation Testing with `avito-tech/go-mutesting`](#-perform-mutation-testing-with-avito-techgo-mutesting)
    + [➡ Perform Mutation Testing with `go-mutesting`](#-perform-mutation-testing-with-go-mutesting)
    + [➡ Trace tests with `go-test-trace`](#-trace-tests-with-go-test-trace)
+   + [➡ Run coverage collector server with `goc`](#-run-coverage-collector-server-with-goc)
+   + [➡ Visualize live coverage in VSCode with `goc`](#-visualize-live-coverage-in-vscode-with-goc)
  - Dependencies
    + [➡ Get Go version of current module](#-get-go-version-of-current-module)
    + [➡ Get Go versions of upstream modules](#-get-go-versions-of-upstream-modules)
@@ -451,6 +453,37 @@ Requirements
 # open telemetry collector
 # traces UI (Datadog, Jaeger, Honeycomb, NewRelic)
 go install github.com/rakyll/go-test-trace@latest
+```
+
+### [⏫](#contents)➡ Run coverage collector server with [goc](https://github.com/qiniu/goc)
+
+This tool allows to collect coverage as soon as code is executed. — [@qiniu](https://github.com/qiniu)
+
+
+```
+goc server
+goc build
+goc profile
+```
+
+<div align="center"><img src="https://github.com/qiniu/goc/raw/master/docs/images/intro.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/qiniu/goc@latest
+```
+
+### [⏫](#contents)➡ Visualize live coverage in VSCode with [goc](https://github.com/qiniu/goc)
+
+This tool provides VSCode plugin that shows covered lines as soon as they are executed. This can be useful for running manual integration or system tests or debugging. — [@qiniu](https://github.com/qiniu)
+
+<div align="center"><img src="https://github.com/qiniu/goc/raw/master/docs/images/goc-vscode.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/qiniu/goc@latest
 ```
 
 ## Dependencies
