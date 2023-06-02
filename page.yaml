@@ -73,20 +73,6 @@ groups:
         requirements:
           - go install github.com/nikandfor/cover@latest
         example_image_url: img/cover.png
-      - title: Run tests sequentially
-        description: Use when you need to synchronize tests, for example in integration tests that share environment. [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
-        commands:
-          - go test -p 1 -parallel 1 ./...
-      - title: Run tests in parallel
-        description: Add `t.Parallel` to your tests case function bodies. As per documentation, by default `-p=GOMAXPROCS` and `-parallel=GOMAXPROCS` when you run `go test`. Different packages by default run in parallel, and tests within package can be enforced to run in parallel too. Make sure to copy test case data to new variable, why explained [here](https://gist.github.com/posener/92a55c4cd441fc5e5e85f27bca008721). [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
-        example_content_ext: go
-        example_content: |
-          ...
-          for _, tc := range tests {
-              tc := tc
-              t.Run(tc.name, func(t *testing.T) {
-                  t.Parallel()
-                  ...
       - title: Run coverage collector server
         description: This tool allows to collect coverage as soon as code is executed.
         url: https://github.com/qiniu/goc
@@ -107,6 +93,20 @@ groups:
         name: goc
         requirements:
           - go install github.com/qiniu/goc@latest
+      - title: Run tests sequentially
+        description: Use when you need to synchronize tests, for example in integration tests that share environment. [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
+        commands:
+          - go test -p 1 -parallel 1 ./...
+      - title: Run tests in parallel
+        description: Add `t.Parallel` to your tests case function bodies. As per documentation, by default `-p=GOMAXPROCS` and `-parallel=GOMAXPROCS` when you run `go test`. Different packages by default run in parallel, and tests within package can be enforced to run in parallel too. Make sure to copy test case data to new variable, why explained [here](https://gist.github.com/posener/92a55c4cd441fc5e5e85f27bca008721). [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
+        example_content_ext: go
+        example_content: |
+          ...
+          for _, tc := range tests {
+              tc := tc
+              t.Run(tc.name, func(t *testing.T) {
+                  t.Parallel()
+                  ...
       - title: Detect goroutine leaks
         description: Refactored, tested variant of the goroutine leak detector found in both `net/http` tests and the cockroachdb source tree. You have to call this library in your tests.
         name: leaktest
