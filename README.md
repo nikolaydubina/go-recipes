@@ -184,7 +184,7 @@ Browse code coverage in statically generated HTML page. Multiple styles are supp
 ```
 gocov test strings | gocov-html -t golang > strings.html
 gocov test encoding/csv strings | gocov-html -t kit > strings.html
-gocov test strings|./gocov-html -cmax 90 > strings.html
+gocov test strings|./gocov-html -cmax 90 > strings.html # show functions with <90% coverage
 ```
 
 <div align="center"><img src="./img/gocov-html.png" style="margin: 8px; max-height: 640px;"></div>
@@ -203,10 +203,10 @@ Browse code coverage similarly to HTML provided by official Go toolchain, but in
 
 ```
 go test -cover -coverprofile coverage.out
-gocovsh
-git diff --name-only | gocovsh
-git diff | gocovsh
-gocovsh --profile profile.out
+gocovsh                        # show all files from coverage report
+git diff --name-only | gocovsh # only show changed files
+git diff | gocovsh             # show coverage on top of current diff
+gocovsh --profile profile.out  # for other coverage profile names
 ```
 
 <div align="center"><img src="https://github.com/orlangure/gocovsh/raw/master/examples/general.gif" style="margin: 8px; max-height: 640px;"></div>

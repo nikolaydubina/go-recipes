@@ -45,7 +45,7 @@ groups:
         commands:
           - gocov test strings | gocov-html -t golang > strings.html
           - gocov test encoding/csv strings | gocov-html -t kit > strings.html
-          - gocov test strings|./gocov-html -cmax 90 > strings.html # show functions with <90% coverage
+          - "gocov test strings|./gocov-html -cmax 90 > strings.html # show functions with <90% coverage"
         requirements:
           - go install github.com/axw/gocov/gocov@latest
           - go install github.com/matm/gocov-html/cmd/gocov-html@latest 
@@ -57,10 +57,10 @@ groups:
         example_image_url: https://github.com/orlangure/gocovsh/raw/master/examples/general.gif
         commands:
           - go test -cover -coverprofile coverage.out
-          - gocovsh                        # show all files from coverage report
-          - git diff --name-only | gocovsh # only show changed files
-          - git diff | gocovsh             # show coverage on top of current diff
-          - gocovsh --profile profile.out  # for other coverage profile names
+          - "gocovsh                        # show all files from coverage report"
+          - "git diff --name-only | gocovsh # only show changed files"
+          - "git diff | gocovsh             # show coverage on top of current diff"
+          - "gocovsh --profile profile.out  # for other coverage profile names"
         requirements:
           - go install github.com/orlangure/gocovsh@latest
       - title: Pretty print coverage in terminal
