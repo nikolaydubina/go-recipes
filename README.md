@@ -12,7 +12,7 @@
  - Testing
    + [➡ Make treemap of code coverage with `go-cover-treemap`](#-make-treemap-of-code-coverage-with-go-cover-treemap)
    + [➡ Browse coverage in browser with `gocov-html`](#-browse-coverage-in-browser-with-gocov-html)
-   + [➡ Browse coverage by file](#-browse-coverage-by-file)
+   + [➡ Browse coverage in browser by file](#-browse-coverage-in-browser-by-file)
    + [➡ Browse coverage in terminal with `gocovsh`](#-browse-coverage-in-terminal-with-gocovsh)
    + [➡ Pretty print coverage in terminal with `nikandfor/cover`](#-pretty-print-coverage-in-terminal-with-nikandforcover)
    + [➡ Run tests sequentially](#-run-tests-sequentially)
@@ -181,7 +181,7 @@ go install github.com/axw/gocov/gocov@latest
 go install github.com/matm/gocov-html/cmd/gocov-html@latest
 ```
 
-### [⏫](#contents)➡ Browse coverage by file
+### [⏫](#contents)➡ Browse coverage in browser by file
 
 This is very helpful tool from the official Go toolchain. Similar visualization is integrated into VSCode and Goland, but can be used separately.
 
@@ -197,17 +197,18 @@ go tool cover -html=cover.out
 
 ### [⏫](#contents)➡ Browse coverage in terminal with [gocovsh](https://github.com/orlangure/gocovsh)
 
-Browse code coverage similarly to HTML provided by official Go toolchain, but in terminal. — [@orlangure](https://github.com/orlangure)
+Browse code coverage similarly to HTML provided by official Go toolchain, but in terminal. Other notable features are package level statistics, coverage only for changed files. — [@orlangure](https://github.com/orlangure)
 
 
 ```
 go test -cover -coverprofile coverage.out
 gocovsh
-gocovsh --profile profile.out
 git diff --name-only | gocovsh
+git diff | gocovsh
+gocovsh --profile profile.out
 ```
 
-<div align="center"><img src="img/gocovsh.png" style="margin: 8px; max-height: 640px;"></div>
+<div align="center"><img src="https://github.com/orlangure/gocovsh/raw/master/examples/general.gif" style="margin: 8px; max-height: 640px;"></div>
 
 
 Requirements
