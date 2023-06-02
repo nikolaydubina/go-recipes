@@ -1707,8 +1707,6 @@ govanityurls
 
 Requirements
 ```
-# get custom domain
-# define YAML spec for redirection
 go install github.com/GoogleCloudPlatform/govanityurls@latest
 ```
 
@@ -1723,8 +1721,6 @@ sally
 
 Requirements
 ```
-# get custom domain
-# define YAML spec for redirection
 go install go.uber.org/sally@latest
 ```
 
@@ -1739,7 +1735,6 @@ vanity
 
 Requirements
 ```
-# get custom domain
 go get kkn.fi/vanity
 ```
 

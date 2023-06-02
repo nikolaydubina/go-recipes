@@ -1088,8 +1088,6 @@ groups:
         commands:
           - govanityurls
         requirements:
-          - "# get custom domain"
-          - "# define YAML spec for redirection"
           - go install github.com/GoogleCloudPlatform/govanityurls@latest
       - title: Custom import path
         name: sally
@@ -1099,8 +1097,6 @@ groups:
         commands:
           - sally
         requirements:
-          - "# get custom domain"
-          - "# define YAML spec for redirection"
           - go install go.uber.org/sally@latest
       - title: Custom import path
         name: "kkn.fi/vanity"
@@ -1110,7 +1106,6 @@ groups:
         commands:
           - vanity
         requirements:
-          - "# get custom domain"
           - go get kkn.fi/vanity
       - title: Custom import path enforcement
         description: "When import path is using custom domain, it is possible to block code from compilation unless it is used. This can help ensure security and prevent breaking changes. [documentation](https://pkg.go.dev/cmd/go#hdr-Import_path_checking)."
