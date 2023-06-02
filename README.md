@@ -91,6 +91,11 @@
    + [➡ Manually disable or enable `cgo`](#-manually-disable-or-enable-cgo)
    + [➡ Include metadata in binary during compilation with `ldflags`](#-include-metadata-in-binary-during-compilation-with-ldflags)
    + [➡ Make treemap breakdown of Go executable binary with `go-binsize-treemap`](#-make-treemap-breakdown-of-go-executable-binary-with-go-binsize-treemap)
+   + [➡ Custom import path](#-custom-import-path)
+   + [➡ Custom import path with `govanityurls`](#-custom-import-path-with-govanityurls)
+   + [➡ Custom import path with `sally`](#-custom-import-path-with-sally)
+   + [➡ Custom import path with `kkn.fi/vanity`](#-custom-import-path-with-kknfivanity)
+   + [➡ Enforce custom import path](#-enforce-custom-import-path)
  - Assembly
    + [➡ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
    + [➡ Get Go SSA intermediary representation with `ssaplayground`](#-get-go-ssa-intermediary-representation-with-ssaplayground)
@@ -1678,6 +1683,74 @@ Requirements
 ```
 go install github.com/nikolaydubina/go-binsize-treemap@latest
 ```
+
+### [⏫](#contents)➡ Custom import path
+
+Go can automatically fetch from custom http/https servers using `<meta>` tag to discover how to fetch code. There are multiple tools that can help set this up. This can help for security and analytics. This is also known as 'vanity URLs'. [documentation](https://pkg.go.dev/cmd/go#hdr-Remote_import_paths).
+
+```
+- "# some notable examples"
+- golang.org/x/exp
+- go.uber.org/multierr
+- honnef.co/go/tools/cmd/staticcheck
+```
+
+
+### [⏫](#contents)➡ Custom import path with [govanityurls](https://github.com/GoogleCloudPlatform/govanityurls)
+
+Simple HTTP server that lets you host custom import paths for your Go packages. — Google
+
+
+```
+govanityurls
+```
+
+Requirements
+```
+# get custom domain
+# define YAML spec for redirection
+go install github.com/GoogleCloudPlatform/govanityurls@latest
+```
+
+### [⏫](#contents)➡ Custom import path with [sally](https://github.com/uber-go/sally)
+
+Simple HTTP server that lets you host custom import paths for your Go packages. — Uber
+
+
+```
+sally
+```
+
+Requirements
+```
+# get custom domain
+# define YAML spec for redirection
+go install go.uber.org/sally@latest
+```
+
+### [⏫](#contents)➡ Custom import path with [kkn.fi/vanity](https://kkn.fi/vanity)
+
+Simple HTTP server that lets you host custom import paths for your Go packages. — [@kare](https://github.com/kare)
+
+
+```
+vanity
+```
+
+Requirements
+```
+# get custom domain
+go get kkn.fi/vanity
+```
+
+### [⏫](#contents)➡ Enforce custom import path
+
+When import path is using custom domain, it is possible to block code from compilation unless it is used. This can help ensure security and prevent breaking changes. [documentation](https://pkg.go.dev/cmd/go#hdr-Import_path_checking).
+
+```go
+package pdf // import "rsc.io/pdf"
+```
+
 
 ## Assembly
 
