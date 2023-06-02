@@ -788,6 +788,28 @@ groups:
           gomacro>
         requirements:
           - go install github.com/cosmos72/gomacro@latest
+      - title: Run interactive Go interpreter
+        description: This interpreter works with 3rd party pacakges located in `$GOPATH/src`. It can also be triggered within Go programmatically via `Eval()`. Works everywhere Go works.
+        url: https://github.com/traefik/yaegi
+        name: yaegi
+        author: https://github.com/traefik
+        commands:
+          - yaegi
+        example_output: |
+          $ yaegi
+          > import "github.com/nikolaydubina/fpdecimal"
+          : 0x140000faaf0
+          > a, _ := fpdecimal.FromString("10.12") 
+          : {0}
+          > b, _ := fpdecimal.FromString("5.38")
+          : {0}
+          > c := a.Add(b)   
+          : {15500}
+          > c.String()
+          : 15.500
+          >
+        requirements:
+          - go install github.com/traefik/yaegi@latest
       - title: Run Go function in shell
         description: Run Go one-liners. This tool will print to STDOUT the return of a function call.
         name: gorram
