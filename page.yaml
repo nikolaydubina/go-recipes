@@ -87,6 +87,26 @@ groups:
               t.Run(tc.name, func(t *testing.T) {
                   t.Parallel()
                   ...
+      - title: Run coverage collector server
+        description: This tool allows to collect coverage as soon as code is executed.
+        url: https://github.com/qiniu/goc
+        author: https://github.com/qiniu
+        example_image_url: https://github.com/qiniu/goc/raw/master/docs/images/intro.gif
+        name: goc
+        commands:
+          - goc server
+          - goc build
+          - goc profile
+        requirements:
+          - go install github.com/qiniu/goc@latest
+      - title: Visualize live coverage in VSCode
+        description: Official Go VSCode plugin already has coverage highlighting. In addition to that, this tool shows covered lines as soon as they are executed. This can be useful for running manual integration or system tests or debugging.
+        url: https://github.com/qiniu/goc
+        author: https://github.com/qiniu
+        example_image_url: https://github.com/qiniu/goc/raw/master/docs/images/goc-vscode.gif
+        name: goc
+        requirements:
+          - go install github.com/qiniu/goc@latest
       - title: Detect goroutine leaks
         description: Refactored, tested variant of the goroutine leak detector found in both `net/http` tests and the cockroachdb source tree. You have to call this library in your tests.
         name: leaktest
@@ -213,26 +233,6 @@ groups:
           - "# open telemetry collector"
           - "# traces UI (Datadog, Jaeger, Honeycomb, NewRelic)"
           - go install github.com/rakyll/go-test-trace@latest
-      - title: Run coverage collector server
-        description: This tool allows to collect coverage as soon as code is executed.
-        url: https://github.com/qiniu/goc
-        author: https://github.com/qiniu
-        example_image_url: https://github.com/qiniu/goc/raw/master/docs/images/intro.gif
-        name: goc
-        commands:
-          - goc server
-          - goc build
-          - goc profile
-        requirements:
-          - go install github.com/qiniu/goc@latest
-      - title: Visualize live coverage in VSCode
-        description: This tool provides VSCode plugin that shows covered lines as soon as they are executed. This can be useful for running manual integration or system tests or debugging.
-        url: https://github.com/qiniu/goc
-        author: https://github.com/qiniu
-        example_image_url: https://github.com/qiniu/goc/raw/master/docs/images/goc-vscode.gif
-        name: goc
-        requirements:
-          - go install github.com/qiniu/goc@latest
   - title: Dependencies
     entries:
       - title: Get Go version of current module
