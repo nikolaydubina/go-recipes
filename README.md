@@ -84,8 +84,8 @@
    + [➡ (archived) Make graph of AST with `astgraph`](#-archived-make-graph-of-ast-with-astgraph)
  - Execution
    + [➡ Run alternative Go Playground with `goplay.tools`](#-run-alternative-go-playground-with-goplaytools)
-   + [➡ Run interactive Go interpreter with `gomacro`](#-run-interactive-go-interpreter-with-gomacro)
    + [➡ Run interactive Go interpreter with `yaegi`](#-run-interactive-go-interpreter-with-yaegi)
+   + [➡ Run interactive Go interpreter with `gomacro`](#-run-interactive-go-interpreter-with-gomacro)
    + [➡ Run Go function in shell with `gorram`](#-run-go-function-in-shell-with-gorram)
    + [➡ Run simple fileserver](#-run-simple-fileserver)
    + [➡ Create 3D visualization of concurrency traces with `gotrace`](#-create-3d-visualization-of-concurrency-traces-with-gotrace)
@@ -1296,31 +1296,6 @@ Improved Go Playground featuring dark theme, code autocomplete, vim mode, WebAss
 
 
 
-### [⏫](#contents)➡ Run interactive Go interpreter with [gomacro](https://github.com/cosmos72/gomacro)
-
-This is interactive Go interpreter and debugger with REPL, Eval, generics and Lisp-like macros. You can run functions, import 3rd patry packages. Can be useful for learning and experimentation. Some nice features: autocomplete; constant expressions arithmetics. As of `2023-06-02`, issues with importing 3rd paty package are possible. — [@cosmos72](https://github.com/cosmos72)
-
-
-```
-gomacro
-```
-
-Example
-```
-$ gomacro
-gomacro> import "fmt"
-gomacro> fmt.Println("hello, world!")
-hello, world!
-14      // int
-<nil>   // error
-gomacro>
-```
-
-Requirements
-```
-go install github.com/cosmos72/gomacro@latest
-```
-
 ### [⏫](#contents)➡ Run interactive Go interpreter with [yaegi](https://github.com/traefik/yaegi)
 
 This interpreter works with 3rd party pacakges located in `$GOPATH/src`. It can also be triggered within Go programmatically via `Eval()`. Works everywhere Go works. — [@traefik](https://github.com/traefik)
@@ -1349,6 +1324,31 @@ $ yaegi
 Requirements
 ```
 go install github.com/traefik/yaegi@latest
+```
+
+### [⏫](#contents)➡ Run interactive Go interpreter with [gomacro](https://github.com/cosmos72/gomacro)
+
+This is interactive Go interpreter and debugger with REPL, Eval, generics and Lisp-like macros. You can run functions, import 3rd patry packages. Can be useful for learning and experimentation. Some nice features: autocomplete; constant expressions arithmetics. As of `2023-06-02`, issues with importing 3rd paty package are possible. — [@cosmos72](https://github.com/cosmos72)
+
+
+```
+gomacro
+```
+
+Example
+```
+$ gomacro
+gomacro> import "fmt"
+gomacro> fmt.Println("hello, world!")
+hello, world!
+14      // int
+<nil>   // error
+gomacro>
+```
+
+Requirements
+```
+go install github.com/cosmos72/gomacro@latest
 ```
 
 ### [⏫](#contents)➡ Run Go function in shell with [gorram](https://github.com/natefinch/gorram)
