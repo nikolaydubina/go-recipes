@@ -765,6 +765,12 @@ groups:
            - graphviz
   - title: Execution
     entries:
+      - title: Run alternative Go Playground
+        description: "Improved Go Playground featuring: dark theme; code autocomplete; vim mode; WebAssembly. [goplay.tools](https://goplay.tools/)."
+        url: https://github.com/x1unix/go-playground
+        author: https://github.com/x1unix
+        example_image_url: https://github.com/x1unix/go-playground/raw/master/docs/demo.gif
+        name: https://goplay.tools/
       - title: Run interactive Go interpreter
         description: "This is interactive Go interpreter and debugger with REPL, Eval, generics and Lisp-like macros. You can run functions, import 3rd patry packages. Can be useful for learning and experimentation. Some nice features: autocomplete; constant expressions arithmetics. As of `2023-06-02`, issues with importing 3rd paty package are possible."
         url: https://github.com/cosmos72/gomacro
