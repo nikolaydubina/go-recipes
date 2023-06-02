@@ -1289,7 +1289,7 @@ graphviz
 
 ### [⏫](#contents)➡ Run alternative Go Playground with [https://goplay.tools/](https://github.com/x1unix/go-playground)
 
-Improved Go Playground featuring: dark theme; code autocomplete; vim mode; WebAssembly. [goplay.tools](https://goplay.tools/). — [@x1unix](https://github.com/x1unix)
+Improved Go Playground featuring dark theme, code autocomplete, vim mode, WebAssembly. [goplay.tools](https://goplay.tools/). — [@x1unix](https://github.com/x1unix)
 
 <div align="center"><img src="https://github.com/x1unix/go-playground/raw/master/docs/demo.gif" style="margin: 8px; max-height: 640px;"></div>
 
