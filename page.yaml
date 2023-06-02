@@ -766,7 +766,7 @@ groups:
   - title: Execution
     entries:
       - title: Run alternative Go Playground
-        description: "Improved Go Playground featuring: dark theme; code autocomplete; vim mode; WebAssembly. [goplay.tools](https://goplay.tools/)."
+        description: Improved Go Playground featuring dark theme, code autocomplete, vim mode, WebAssembly. [goplay.tools](https://goplay.tools/).
         url: https://github.com/x1unix/go-playground
         author: https://github.com/x1unix
         example_image_url: https://github.com/x1unix/go-playground/raw/master/docs/demo.gif
