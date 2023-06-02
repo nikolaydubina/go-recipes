@@ -42,23 +42,24 @@ groups:
         requirements:
           - go install github.com/axw/gocov/gocov@latest
           - go install github.com/matm/gocov-html/cmd/gocov-html@latest 
-      - title: Browse coverage by file
+      - title: Browse coverage in browser by file
         description: This is very helpful tool from the official Go toolchain. Similar visualization is integrated into VSCode and Goland, but can be used separately.
         example_image_url: ./img/tool-cover-html.png
         commands:
           - go test -coverprofile cover.out ./...
           - go tool cover -html=cover.out
       - title: Browse coverage in terminal
-        description: Browse code coverage similarly to HTML provided by official Go toolchain, but in terminal.
+        description: Browse code coverage similarly to HTML provided by official Go toolchain, but in terminal. Other notable features are package level statistics, coverage only for changed files.
         name: gocovsh
         url: https://github.com/orlangure/gocovsh 
         author: https://github.com/orlangure
-        example_image_url: img/gocovsh.png
+        example_image_url: https://github.com/orlangure/gocovsh/raw/master/examples/general.gif
         commands:
           - go test -cover -coverprofile coverage.out
-          - gocovsh
-          - gocovsh --profile profile.out  # for other coverage profile names
+          - gocovsh                        # show all files from coverage report
           - git diff --name-only | gocovsh # only show changed files
+          - git diff | gocovsh             # show coverage on top of current diff
+          - gocovsh --profile profile.out  # for other coverage profile names
         requirements:
           - go install github.com/orlangure/gocovsh@latest
       - title: Pretty print coverage in terminal
