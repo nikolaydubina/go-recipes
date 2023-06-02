@@ -1021,7 +1021,7 @@ groups:
         example_image_url: https://raw.githubusercontent.com/wiki/maruel/panicparse/parse.gif
         requirements:
           - go install github.com/maruel/panicparse/v2/cmd/pp@latest
-  - title: Build
+  - title: Building
     entries:
       - title: Show compiler optimization decisions on heap and inlining
         description: Building with `-m` flag will show decisions of compiler on inlining and heap escape. This can help you to validate your understanding of your code and optimize it.

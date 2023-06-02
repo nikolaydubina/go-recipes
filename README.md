@@ -84,7 +84,7 @@
    + [➡ Keep consistent ordering of imports with `goimportx`](#-keep-consistent-ordering-of-imports-with-goimportx)
  - Errors
    + [➡ Pretty print `panic` messages with `panicparse`](#-pretty-print-panic-messages-with-panicparse)
- - Build
+ - Building
    + [➡ Show compiler optimization decisions on heap and inlining](#-show-compiler-optimization-decisions-on-heap-and-inlining)
    + [➡ Disable inlining](#-disable-inlining)
    + [➡ Aggressive inlining](#-aggressive-inlining)
@@ -1594,7 +1594,7 @@ Requirements
 go install github.com/maruel/panicparse/v2/cmd/pp@latest
 ```
 
-## Build
+## Building
 
 ### [⏫](#contents)➡ Show compiler optimization decisions on heap and inlining
 
