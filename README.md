@@ -95,7 +95,7 @@
    + [➡ Custom import path with `govanityurls`](#-custom-import-path-with-govanityurls)
    + [➡ Custom import path with `sally`](#-custom-import-path-with-sally)
    + [➡ Custom import path with `kkn.fi/vanity`](#-custom-import-path-with-kknfivanity)
-   + [➡ Enforce custom import path](#-enforce-custom-import-path)
+   + [➡ Custom import path enforcement](#-custom-import-path-enforcement)
  - Assembly
    + [➡ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
    + [➡ Get Go SSA intermediary representation with `ssaplayground`](#-get-go-ssa-intermediary-representation-with-ssaplayground)
@@ -1743,7 +1743,7 @@ Requirements
 go get kkn.fi/vanity
 ```
 
-### [⏫](#contents)➡ Enforce custom import path
+### [⏫](#contents)➡ Custom import path enforcement
 
 When import path is using custom domain, it is possible to block code from compilation unless it is used. This can help ensure security and prevent breaking changes. [documentation](https://pkg.go.dev/cmd/go#hdr-Import_path_checking).
 
