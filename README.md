@@ -83,6 +83,7 @@
    + [➡ Visualize Go SSA function using Graphviz with `go-ssaviz`](#-visualize-go-ssa-function-using-graphviz-with-go-ssaviz)
    + [➡ (archived) Make graph of AST with `astgraph`](#-archived-make-graph-of-ast-with-astgraph)
  - Execution
+   + [➡ Run alternative Go Playground with `https://goplay.tools/`](#-run-alternative-go-playground-with-httpsgoplaytools)
    + [➡ Run interactive Go interpreter with `gomacro`](#-run-interactive-go-interpreter-with-gomacro)
    + [➡ Run Go function in shell with `gorram`](#-run-go-function-in-shell-with-gorram)
    + [➡ Run simple fileserver](#-run-simple-fileserver)
@@ -1285,6 +1286,14 @@ graphviz
 ```
 
 ## Execution
+
+### [⏫](#contents)➡ Run alternative Go Playground with [https://goplay.tools/](https://github.com/x1unix/go-playground)
+
+Improved Go Playground featuring: dark theme; code autocomplete; vim mode; WebAssembly. [goplay.tools](https://goplay.tools/). — [@x1unix](https://github.com/x1unix)
+
+<div align="center"><img src="https://github.com/x1unix/go-playground/raw/master/docs/demo.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
 
 ### [⏫](#contents)➡ Run interactive Go interpreter with [gomacro](https://github.com/cosmos72/gomacro)
 
