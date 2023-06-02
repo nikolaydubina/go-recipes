@@ -1073,6 +1073,50 @@ groups:
         example_image_url: https://github.com/nikolaydubina/go-binsize-treemap/blob/main/docs/hugo.svg
         requirements:
           - go install github.com/nikolaydubina/go-binsize-treemap@latest
+      - title: Custom import path
+        description: "Go can automatically fetch from custom http/https servers using `<meta>` tag to discover how to fetch code. There are multiple tools that can help set this up. This can help for security and analytics. This is also known as 'vanity URLs'. [documentation](https://pkg.go.dev/cmd/go#hdr-Remote_import_paths)."
+        example_content: |
+          - "# some notable examples"
+          - golang.org/x/exp
+          - go.uber.org/multierr
+          - honnef.co/go/tools/cmd/staticcheck
+      - title: Custom import path
+        name: govanityurls
+        description: Simple HTTP server that lets you host custom import paths for your Go packages.
+        url: https://github.com/GoogleCloudPlatform/govanityurls
+        author: Google
+        commands:
+          - govanityurls
+        requirements:
+          - "# get custom domain"
+          - "# define YAML spec for redirection"
+          - go install github.com/GoogleCloudPlatform/govanityurls@latest
+      - title: Custom import path
+        name: sally
+        description: Simple HTTP server that lets you host custom import paths for your Go packages.
+        url: https://github.com/uber-go/sally
+        author: Uber
+        commands:
+          - sally
+        requirements:
+          - "# get custom domain"
+          - "# define YAML spec for redirection"
+          - go install go.uber.org/sally@latest
+      - title: Custom import path
+        name: "kkn.fi/vanity"
+        description: Simple HTTP server that lets you host custom import paths for your Go packages.
+        url: https://kkn.fi/vanity
+        author: https://github.com/kare
+        commands:
+          - vanity
+        requirements:
+          - "# get custom domain"
+          - go get kkn.fi/vanity
+      - title: Enforce custom import path
+        description: "When import path is using custom domain, it is possible to block code from compilation unless it is used. This can help ensure security and prevent breaking changes. [documentation](https://pkg.go.dev/cmd/go#hdr-Import_path_checking)."
+        example_content_ext: go
+        example_content: |
+          package pdf // import "rsc.io/pdf"
   - title: Assembly
     entries:
       - title: Get assembly of Go code snippets online
