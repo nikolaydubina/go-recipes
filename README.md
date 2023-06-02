@@ -17,6 +17,8 @@
    + [➡ Pretty print coverage in terminal with `nikandfor/cover`](#-pretty-print-coverage-in-terminal-with-nikandforcover)
    + [➡ Run tests sequentially](#-run-tests-sequentially)
    + [➡ Run tests in parallel](#-run-tests-in-parallel)
+   + [➡ Run coverage collector server with `goc`](#-run-coverage-collector-server-with-goc)
+   + [➡ Visualize live coverage in VSCode with `goc`](#-visualize-live-coverage-in-vscode-with-goc)
    + [➡ Detect goroutine leaks with `leaktest`](#-detect-goroutine-leaks-with-leaktest)
    + [➡ Run tests with pretty output with `gotestsum`](#-run-tests-with-pretty-output-with-gotestsum)
    + [➡ Summarize `go test` with `tparse`](#-summarize-go-test-with-tparse)
@@ -27,8 +29,6 @@
    + [➡ Perform Mutation Testing with `avito-tech/go-mutesting`](#-perform-mutation-testing-with-avito-techgo-mutesting)
    + [➡ Perform Mutation Testing with `go-mutesting`](#-perform-mutation-testing-with-go-mutesting)
    + [➡ Trace tests with `go-test-trace`](#-trace-tests-with-go-test-trace)
-   + [➡ Run coverage collector server with `goc`](#-run-coverage-collector-server-with-goc)
-   + [➡ Visualize live coverage in VSCode with `goc`](#-visualize-live-coverage-in-vscode-with-goc)
  - Dependencies
    + [➡ Get Go version of current module](#-get-go-version-of-current-module)
    + [➡ Get Go versions of upstream modules](#-get-go-versions-of-upstream-modules)
@@ -262,6 +262,37 @@ for _, tc := range tests {
 ```
 
 
+### [⏫](#contents)➡ Run coverage collector server with [goc](https://github.com/qiniu/goc)
+
+This tool allows to collect coverage as soon as code is executed. — [@qiniu](https://github.com/qiniu)
+
+
+```
+goc server
+goc build
+goc profile
+```
+
+<div align="center"><img src="https://github.com/qiniu/goc/raw/master/docs/images/intro.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/qiniu/goc@latest
+```
+
+### [⏫](#contents)➡ Visualize live coverage in VSCode with [goc](https://github.com/qiniu/goc)
+
+Official Go VSCode plugin already has coverage highlighting. In addition to that, this tool shows covered lines as soon as they are executed. This can be useful for running manual integration or system tests or debugging. — [@qiniu](https://github.com/qiniu)
+
+<div align="center"><img src="https://github.com/qiniu/goc/raw/master/docs/images/goc-vscode.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/qiniu/goc@latest
+```
+
 ### [⏫](#contents)➡ Detect goroutine leaks with [leaktest](https://github.com/fortytw2/leaktest)
 
 Refactored, tested variant of the goroutine leak detector found in both `net/http` tests and the cockroachdb source tree. You have to call this library in your tests. — [@fortytw2](https://github.com/fortytw2)
@@ -453,37 +484,6 @@ Requirements
 # open telemetry collector
 # traces UI (Datadog, Jaeger, Honeycomb, NewRelic)
 go install github.com/rakyll/go-test-trace@latest
-```
-
-### [⏫](#contents)➡ Run coverage collector server with [goc](https://github.com/qiniu/goc)
-
-This tool allows to collect coverage as soon as code is executed. — [@qiniu](https://github.com/qiniu)
-
-
-```
-goc server
-goc build
-goc profile
-```
-
-<div align="center"><img src="https://github.com/qiniu/goc/raw/master/docs/images/intro.gif" style="margin: 8px; max-height: 640px;"></div>
-
-
-Requirements
-```
-go install github.com/qiniu/goc@latest
-```
-
-### [⏫](#contents)➡ Visualize live coverage in VSCode with [goc](https://github.com/qiniu/goc)
-
-This tool provides VSCode plugin that shows covered lines as soon as they are executed. This can be useful for running manual integration or system tests or debugging. — [@qiniu](https://github.com/qiniu)
-
-<div align="center"><img src="https://github.com/qiniu/goc/raw/master/docs/images/goc-vscode.gif" style="margin: 8px; max-height: 640px;"></div>
-
-
-Requirements
-```
-go install github.com/qiniu/goc@latest
 ```
 
 ## Dependencies
