@@ -30,7 +30,13 @@ groups:
         commands:
           - go test -coverprofile cover.out ./...
           - go-cover-treemap -coverprofile cover.out > out.svg
-      - title: Browse coverage in browser
+      - title: Browse coverage
+        description: This is very helpful tool from the official Go toolchain. Similar visualization is integrated into VSCode and Goland, but can be used separately.
+        example_image_url: ./img/tool-cover-html.png
+        commands:
+          - go test -coverprofile cover.out ./...
+          - go tool cover -html=cover.out
+      - title: Browse coverage
         name: gocov-html
         url: https://github.com/matm/gocov-html
         author: https://github.com/matm
@@ -39,15 +45,10 @@ groups:
         commands:
           - gocov test strings | gocov-html -t golang > strings.html
           - gocov test encoding/csv strings | gocov-html -t kit > strings.html
+          - gocov test strings|./gocov-html -cmax 90 > strings.html # show functions with <90% coverage
         requirements:
           - go install github.com/axw/gocov/gocov@latest
           - go install github.com/matm/gocov-html/cmd/gocov-html@latest 
-      - title: Browse coverage in browser by file
-        description: This is very helpful tool from the official Go toolchain. Similar visualization is integrated into VSCode and Goland, but can be used separately.
-        example_image_url: ./img/tool-cover-html.png
-        commands:
-          - go test -coverprofile cover.out ./...
-          - go tool cover -html=cover.out
       - title: Browse coverage in terminal
         description: Browse code coverage similarly to HTML provided by official Go toolchain, but in terminal. Other notable features are package level statistics, coverage only for changed files.
         name: gocovsh

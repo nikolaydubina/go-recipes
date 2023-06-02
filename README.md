@@ -11,8 +11,8 @@
 
  - Testing
    + [➡ Make treemap of code coverage with `go-cover-treemap`](#-make-treemap-of-code-coverage-with-go-cover-treemap)
-   + [➡ Browse coverage in browser with `gocov-html`](#-browse-coverage-in-browser-with-gocov-html)
-   + [➡ Browse coverage in browser by file](#-browse-coverage-in-browser-by-file)
+   + [➡ Browse coverage](#-browse-coverage)
+   + [➡ Browse coverage with `gocov-html`](#-browse-coverage-with-gocov-html)
    + [➡ Browse coverage in terminal with `gocovsh`](#-browse-coverage-in-terminal-with-gocovsh)
    + [➡ Pretty print coverage in terminal with `nikandfor/cover`](#-pretty-print-coverage-in-terminal-with-nikandforcover)
    + [➡ Run tests sequentially](#-run-tests-sequentially)
@@ -162,26 +162,7 @@ Requirements
 go install github.com/nikolaydubina/go-cover-treemap@latest
 ```
 
-### [⏫](#contents)➡ Browse coverage in browser with [gocov-html](https://github.com/matm/gocov-html)
-
-Browse code coverage in statically generated HTML page. Multiple styles are supported. You may need to convert coverage report into `gocov` format. — [@matm](https://github.com/matm)
-
-
-```
-gocov test strings | gocov-html -t golang > strings.html
-gocov test encoding/csv strings | gocov-html -t kit > strings.html
-```
-
-<div align="center"><img src="./img/gocov-html.png" style="margin: 8px; max-height: 640px;"></div>
-
-
-Requirements
-```
-go install github.com/axw/gocov/gocov@latest
-go install github.com/matm/gocov-html/cmd/gocov-html@latest
-```
-
-### [⏫](#contents)➡ Browse coverage in browser by file
+### [⏫](#contents)➡ Browse coverage
 
 This is very helpful tool from the official Go toolchain. Similar visualization is integrated into VSCode and Goland, but can be used separately.
 
@@ -194,6 +175,26 @@ go tool cover -html=cover.out
 <div align="center"><img src="./img/tool-cover-html.png" style="margin: 8px; max-height: 640px;"></div>
 
 
+
+### [⏫](#contents)➡ Browse coverage with [gocov-html](https://github.com/matm/gocov-html)
+
+Browse code coverage in statically generated HTML page. Multiple styles are supported. You may need to convert coverage report into `gocov` format. — [@matm](https://github.com/matm)
+
+
+```
+gocov test strings | gocov-html -t golang > strings.html
+gocov test encoding/csv strings | gocov-html -t kit > strings.html
+gocov test strings|./gocov-html -cmax 90 > strings.html
+```
+
+<div align="center"><img src="./img/gocov-html.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/axw/gocov/gocov@latest
+go install github.com/matm/gocov-html/cmd/gocov-html@latest
+```
 
 ### [⏫](#contents)➡ Browse coverage in terminal with [gocovsh](https://github.com/orlangure/gocovsh)
 
