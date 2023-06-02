@@ -12,8 +12,8 @@
  - Testing
    + [➡ Make treemap of code coverage with `go-cover-treemap`](#-make-treemap-of-code-coverage-with-go-cover-treemap)
    + [➡ Browse coverage in browser with `gocov-html`](#-browse-coverage-in-browser-with-gocov-html)
-   + [➡ Browse code coverage by file](#-browse-code-coverage-by-file)
-   + [➡ Browse code coverage in terminal with `gocovsh`](#-browse-code-coverage-in-terminal-with-gocovsh)
+   + [➡ Browse coverage by file](#-browse-coverage-by-file)
+   + [➡ Browse coverage in terminal with `gocovsh`](#-browse-coverage-in-terminal-with-gocovsh)
    + [➡ Pretty print coverage in terminal with `nikandfor/cover`](#-pretty-print-coverage-in-terminal-with-nikandforcover)
    + [➡ Run tests sequentially](#-run-tests-sequentially)
    + [➡ Run tests in parallel](#-run-tests-in-parallel)
@@ -164,7 +164,7 @@ go install github.com/nikolaydubina/go-cover-treemap@latest
 
 ### [⏫](#contents)➡ Browse coverage in browser with [gocov-html](https://github.com/matm/gocov-html)
 
-Browse coverage in statically generated HTML page. Multiple styles are supported. You may need to convert coverage report into `gocov` format. — [@matm](https://github.com/matm)
+Browse code coverage in statically generated HTML page. Multiple styles are supported. You may need to convert coverage report into `gocov` format. — [@matm](https://github.com/matm)
 
 
 ```
@@ -181,7 +181,7 @@ go install github.com/axw/gocov/gocov@latest
 go install github.com/matm/gocov-html/cmd/gocov-html@latest
 ```
 
-### [⏫](#contents)➡ Browse code coverage by file
+### [⏫](#contents)➡ Browse coverage by file
 
 This is very helpful tool from the official Go toolchain. Similar visualization is integrated into VSCode and Goland, but can be used separately.
 
@@ -195,9 +195,9 @@ go tool cover -html=cover.out
 
 
 
-### [⏫](#contents)➡ Browse code coverage in terminal with [gocovsh](https://github.com/orlangure/gocovsh)
+### [⏫](#contents)➡ Browse coverage in terminal with [gocovsh](https://github.com/orlangure/gocovsh)
 
-Interactively browse Go code coverage similarly to HTML provided by official Go toolchain, but in terminal. — [@orlangure](https://github.com/orlangure)
+Browse code coverage similarly to HTML provided by official Go toolchain, but in terminal. — [@orlangure](https://github.com/orlangure)
 
 
 ```
