@@ -772,23 +772,6 @@ groups:
         author: https://github.com/x1unix
         example_image_url: https://github.com/x1unix/go-playground/raw/master/docs/demo.gif
       - title: Run interactive Go interpreter
-        description: "This is interactive Go interpreter and debugger with REPL, Eval, generics and Lisp-like macros. You can run functions, import 3rd patry packages. Can be useful for learning and experimentation. Some nice features: autocomplete; constant expressions arithmetics. As of `2023-06-02`, issues with importing 3rd paty package are possible."
-        url: https://github.com/cosmos72/gomacro
-        name: gomacro
-        author: https://github.com/cosmos72
-        commands:
-          - gomacro
-        example_output: |
-          $ gomacro
-          gomacro> import "fmt"
-          gomacro> fmt.Println("hello, world!")
-          hello, world!
-          14      // int
-          <nil>   // error
-          gomacro>
-        requirements:
-          - go install github.com/cosmos72/gomacro@latest
-      - title: Run interactive Go interpreter
         description: This interpreter works with 3rd party pacakges located in `$GOPATH/src`. It can also be triggered within Go programmatically via `Eval()`. Works everywhere Go works.
         url: https://github.com/traefik/yaegi
         name: yaegi
@@ -810,6 +793,23 @@ groups:
           >
         requirements:
           - go install github.com/traefik/yaegi@latest
+      - title: Run interactive Go interpreter
+        description: "This is interactive Go interpreter and debugger with REPL, Eval, generics and Lisp-like macros. You can run functions, import 3rd patry packages. Can be useful for learning and experimentation. Some nice features: autocomplete; constant expressions arithmetics. As of `2023-06-02`, issues with importing 3rd paty package are possible."
+        url: https://github.com/cosmos72/gomacro
+        name: gomacro
+        author: https://github.com/cosmos72
+        commands:
+          - gomacro
+        example_output: |
+          $ gomacro
+          gomacro> import "fmt"
+          gomacro> fmt.Println("hello, world!")
+          hello, world!
+          14      // int
+          <nil>   // error
+          gomacro>
+        requirements:
+          - go install github.com/cosmos72/gomacro@latest
       - title: Run Go function in shell
         description: Run Go one-liners. This tool will print to STDOUT the return of a function call.
         name: gorram
