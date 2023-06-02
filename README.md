@@ -51,28 +51,6 @@
    + [➡ Make histogram of Go files per package](#-make-histogram-of-go-files-per-package)
    + [➡ Explore Go code in browser powered by `go-guru` with `pythia`](#-explore-go-code-in-browser-powered-by-go-guru-with-pythia)
    + [➡ (archived) Interactively visualize packages with `goexplorer`](#-archived-interactively-visualize-packages-with-goexplorer)
- - Static Analysis
-   + [➡ Run default static analysis with `go vet`](#-run-default-static-analysis-with-go-vet)
-   + [➡ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
-   + [➡ Run official static analyzers not included in `go vet`](#-run-official-static-analyzers-not-included-in-go-vet)
-   + [➡ Detect most common issues with `staticcheck`](#-detect-most-common-issues-with-staticcheck)
-   + [➡ Detect non-exhaustive switch and map with `exhaustive`](#-detect-non-exhaustive-switch-and-map-with-exhaustive)
-   + [➡ Detect structs with uninitialized fields with `go-exhaustruct`](#-detect-structs-with-uninitialized-fields-with-go-exhaustruct)
-   + [➡ Detect unsafe code with `go-safer`](#-detect-unsafe-code-with-go-safer)
-   + [➡ Detect unnecessary type conversions with `unconvert`](#-detect-unnecessary-type-conversions-with-unconvert)
-   + [➡ Detect global variables with `gochecknoglobals`](#-detect-global-variables-with-gochecknoglobals)
-   + [➡ Detect slices that could be preallocated with `prealloc`](#-detect-slices-that-could-be-preallocated-with-prealloc)
-   + [➡ Detect unnecessary import aliases with `unimport`](#-detect-unnecessary-import-aliases-with-unimport)
-   + [➡ Detect naked returns with `nakedret`](#-detect-naked-returns-with-nakedret)
-   + [➡ Detect mixing pointer and value method receivers with `smrcptr`](#-detect-mixing-pointer-and-value-method-receivers-with-smrcptr)
-   + [➡ Detect vertical function ordering with `vertfn`](#-detect-vertical-function-ordering-with-vertfn)
-   + [➡ Calculate Cognitive Complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
-   + [➡ Calculate Cyclomatic Complexity with `gocyclo`](#-calculate-cyclomatic-complexity-with-gocyclo)
-   + [➡ Calculate age of comments with `go-commentage`](#-calculate-age-of-comments-with-go-commentage)
-   + [➡ (archived) Ensure `if` statements using short assignment with `ifshort`](#-archived-ensure-if-statements-using-short-assignment-with-ifshort)
-   + [➡ Perform Taint Analysis with `taint`](#-perform-taint-analysis-with-taint)
-   + [➡ Visualize struct layout with `structlayout`](#-visualize-struct-layout-with-structlayout)
-   + [➡ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
  - Code Generation
    + [➡ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
    + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
@@ -140,6 +118,28 @@
    + [➡ Google](#style-guide)
    + [➡ Uber](#style-guide)
    + [➡ Go Code Review Comments](#style-guide)
+ - Static Analysis
+   + [➡ Run default static analysis with `go vet`](#-run-default-static-analysis-with-go-vet)
+   + [➡ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
+   + [➡ Run official static analyzers not included in `go vet`](#-run-official-static-analyzers-not-included-in-go-vet)
+   + [➡ Detect most common issues with `staticcheck`](#-detect-most-common-issues-with-staticcheck)
+   + [➡ Detect non-exhaustive switch and map with `exhaustive`](#-detect-non-exhaustive-switch-and-map-with-exhaustive)
+   + [➡ Detect structs with uninitialized fields with `go-exhaustruct`](#-detect-structs-with-uninitialized-fields-with-go-exhaustruct)
+   + [➡ Detect unsafe code with `go-safer`](#-detect-unsafe-code-with-go-safer)
+   + [➡ Detect unnecessary type conversions with `unconvert`](#-detect-unnecessary-type-conversions-with-unconvert)
+   + [➡ Detect global variables with `gochecknoglobals`](#-detect-global-variables-with-gochecknoglobals)
+   + [➡ Detect slices that could be preallocated with `prealloc`](#-detect-slices-that-could-be-preallocated-with-prealloc)
+   + [➡ Detect unnecessary import aliases with `unimport`](#-detect-unnecessary-import-aliases-with-unimport)
+   + [➡ Detect naked returns with `nakedret`](#-detect-naked-returns-with-nakedret)
+   + [➡ Detect mixing pointer and value method receivers with `smrcptr`](#-detect-mixing-pointer-and-value-method-receivers-with-smrcptr)
+   + [➡ Detect vertical function ordering with `vertfn`](#-detect-vertical-function-ordering-with-vertfn)
+   + [➡ Calculate Cognitive Complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
+   + [➡ Calculate Cyclomatic Complexity with `gocyclo`](#-calculate-cyclomatic-complexity-with-gocyclo)
+   + [➡ Calculate age of comments with `go-commentage`](#-calculate-age-of-comments-with-go-commentage)
+   + [➡ (archived) Ensure `if` statements using short assignment with `ifshort`](#-archived-ensure-if-statements-using-short-assignment-with-ifshort)
+   + [➡ Perform Taint Analysis with `taint`](#-perform-taint-analysis-with-taint)
+   + [➡ Visualize struct layout with `structlayout`](#-visualize-struct-layout-with-structlayout)
+   + [➡ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
 
 ## Testing
 
@@ -833,609 +833,6 @@ Based on `go-callvis`, this tool is an interactive package explorer of packages.
 
 <div align="center"><img src="https://github.com/ofabry/goexplorer/raw/master/images/screen.png" style="margin: 8px; max-height: 640px;"></div>
 
-
-
-## Static Analysis
-
-### [⏫](#contents)➡ Run default static analysis with `go vet`
-
-Official tool for static analysis of Go programs, with 27+ static analyzers. — official Go team
-
-
-```
-go vet ./...
-```
-
-
-### [⏫](#contents)➡ Run custom static analysis tool with `go vet`
-
-Standard `go vet` can be used to run custom analyzers binaries. Third party analyzers are supported. Lots of official analyzers not included by default into `go vet`. Analyzer has to satisfy interface and command described here https://pkg.go.dev/golang.org/x/tools/go/analysis. Refer for https://pkg.go.dev/golang.org/x/tools/go/analysis/passes for full list of official Go analyzers. — official Go team
-
-
-```
-go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow
-go vet -vettool=$(which shadow)
-```
-
-
-### [⏫](#contents)➡ Run official static analyzers not included in `go vet`
-
-There are many analyzers not included in `go vet`. These tools are experimental and may not work as expected (e.g. `usesgenerics` does not work). Refer to for full list https://pkg.go.dev/golang.org/x/tools/go/analysis. — official Go team
-
-```go
-package main
-
-import (
-  "golang.org/x/tools/go/analysis/multichecker"
-
-  "golang.org/x/tools/go/analysis/passes/atomicalign"
-  "golang.org/x/tools/go/analysis/passes/deepequalerrors"
-  "golang.org/x/tools/go/analysis/passes/fieldalignment"
-  "golang.org/x/tools/go/analysis/passes/nilness"
-  "golang.org/x/tools/go/analysis/passes/reflectvaluecompare"
-  "golang.org/x/tools/go/analysis/passes/shadow"
-  "golang.org/x/tools/go/analysis/passes/sortslice"
-  "golang.org/x/tools/go/analysis/passes/unusedwrite"
-  "golang.org/x/tools/go/analysis/passes/usesgenerics"
-)
-
-func main() {
-  multichecker.Main(
-    atomicalign.Analyzer,         // checks for non-64-bit-aligned arguments to sync/atomic functions
-    deepequalerrors.Analyzer,     // checks for the use of reflect.DeepEqual with error values
-    fieldalignment.Analyzer,      // detects structs that would use less memory if their fields were sorted
-    nilness.Analyzer,             // inspects the control-flow graph of an SSA function and reports errors such as nil pointer dereferences and degenerate nil pointer comparisons
-    reflectvaluecompare.Analyzer, // checks for accidentally using == or reflect.DeepEqual to compare reflect.Value values
-    shadow.Analyzer,              // checks for shadowed variables
-    sortslice.Analyzer,           // checks for calls to sort.Slice that do not use a slice type as first argument
-    unusedwrite.Analyzer,         // checks for unused writes to the elements of a struct or array object
-    usesgenerics.Analyzer,        // checks for usage of generic features added in Go 1.18
-  )
-}
-```
-
-
-### [⏫](#contents)➡ Detect most common issues with [staticcheck](https://github.com/dominikh/go-tools)
-
-Start custom linters with this well-known linter. It contains 150+ high quality low false positive rate linters. It is widely adopted by Open Source and tech companies. [staticcheck.io](https://staticcheck.io/). — [@dominikh](https://github.com/dominikh)
-
-
-```
-staticcheck ./...
-```
-
-Requirements
-```
-go install honnef.co/go/tools/cmd/staticcheck@latest
-```
-
-### [⏫](#contents)➡ Detect non-exhaustive switch and map with [exhaustive](https://github.com/nishanths/exhaustive)
-
-This `go vet` compatible analyzer checks for exhaustive switch statemnts and map literals. It works for enums with underyling integer, float, or string types (struct based enums are not supported). — [@nishanths](https://github.com/nishanths)
-
-
-```
-exhaustive ./...
-```
-
-```go
-package token
-
-type Token int
-
-const (
-  Add Token = iota
-  Subtract
-  Multiply
-  Quotient
-  Remainder
-)
-
-package calc
-
-import "token"
-
-func f(t token.Token) {
-  switch t {
-  case token.Add:
-  case token.Subtract:
-  case token.Multiply:
-  default:
-  }
-}
-
-func g(t token.Token) string {
-  return map[token.Token]string{
-    token.Add:      "add",
-    token.Subtract: "subtract",
-    token.Multiply: "multiply",
-  }[t]
-}
-```
-
-Example
-```
-calc.go:6:2: missing cases in switch of type token.Token: Quotient, Remainder
-calc.go:15:9: missing map keys of type token.Token: Quotient, Remainder
-```
-
-Requirements
-```
-go install github.com/nishanths/exhaustive/cmd/exhaustive@latest
-```
-
-### [⏫](#contents)➡ Detect structs with uninitialized fields with [go-exhaustruct](https://github.com/GaijinEntertainment/go-exhaustruct)
-
-This tool finds instatiations of structs with zero values. It supports struct tags to mark fields as optional. This may help to prevent unexpected zero values. — [@xobotyi](https://github.com/xobotyi)
-
-
-```
-exhaustruct ./...
-```
-
-```go
-type Shape struct {
-  Length int
-  Width  int
-  volume    int
-  Perimeter int `exhaustruct:"optional"`
-}
-
-// valid
-var a Shape = Shape{
-  Length: 5,
-  Width:  3,
-  volume: 5,
-}
-
-// invalid, `volume` is missing
-var b Shape = Shape{
-  Length: 5,
-  Width:  3,
-}
-```
-
-Requirements
-```
-go get -u github.com/GaijinEntertainment/go-exhaustruct/v3/cmd/exhaustruct
-```
-
-### [⏫](#contents)➡ Detect unsafe code with [go-safer](https://github.com/jlauinger/go-safer)
-
-Find incorrect uses of `reflect.SliceHeader`, `reflect.StringHeader`, and unsafe casts between structs with architecture-sized fields. Reseach paper ["Uncovering the Hidden Dangers Finding Unsafe Go Code in the Wild"](https://arxiv.org/abs/2010.11242) presented at 19th IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom 2020). — [@jlauinger](https://github.com/jlauinger)
-
-
-```
-go-safer ./...
-```
-
-Example
-```
-# github.com/jlauinger/go-safer/passes/sliceheader/testdata/src/bad/composite_literal
-composite_literal/composite_literal.go:10:9: reflect header composite literal found
-composite_literal/composite_literal.go:10:9: reflect header composite literal found
-# github.com/jlauinger/go-safer/passes/sliceheader/testdata/src/bad/header_in_struct
-header_in_struct/header_in_struct.go:16:2: assigning to reflect header object
-```
-
-Requirements
-```
-go install github.com/jlauinger/go-safer@latest
-```
-
-### [⏫](#contents)➡ Detect unnecessary type conversions with [unconvert](https://github.com/mdempsky/unconvert)
-
-Identify expressions like `T(x)` where `x` is already has type `T`. This tool can identify conversions that force intermediate rounding. It also can overwrite files with fix. This tool is not using `golang.org/x/tools/go/analysis` toolchain. — [@mdempsky](https://github.com/mdempsky)
-
-
-```
-unconvert ./...
-```
-
-```
-$ unconvert -v bytes fmt
-GOROOT/src/bytes/reader.go:117:14: unnecessary conversion
-                abs = int64(r.i) + offset
-                          ^
-GOROOT/src/fmt/print.go:411:21: unnecessary conversion
-        p.fmt.integer(int64(v), 16, unsigned, udigits)
-                          ^
-```
-
-Requirements
-```
-go install github.com/mdempsky/unconvert@latest
-```
-
-### [⏫](#contents)➡ Detect global variables with [gochecknoglobals](https://github.com/leighmcculloch/gochecknoglobals)
-
-Global variables are an input to functions that is not visible in the functions signature, complicate testing, reduces readability and increase the complexity of code. However, sometimes global varaibles make sense. This tool skips such common scenarios. This tool can be used in CI, albeit it is very strict. This tool is useful for investigations. — [@leighmcculloch](https://github.com/leighmcculloch)
-
-
-```
-gochecknoglobals ./...
-```
-
-Example
-```
-/Users/nikolaydubina/Workspace/hugo/common/paths/path.go:64:5: fpb is a global variable
-/Users/nikolaydubina/Workspace/hugo/common/paths/url.go:50:5: pb is a global variable
-/Users/nikolaydubina/Workspace/hugo/common/text/position.go:52:5: positionStringFormatfunc is a global variable
-/Users/nikolaydubina/Workspace/hugo/common/text/transform.go:26:5: accentTransformerPool is a global variable
-/Users/nikolaydubina/Workspace/hugo/common/herrors/error_locator.go:40:5: SimpleLineMatcher is a global variable
-```
-
-Requirements
-```
-go install 4d63.com/gochecknoglobals@latest
-```
-
-### [⏫](#contents)➡ Detect slices that could be preallocated with [prealloc](https://github.com/alexkohler/prealloc)
-
-Preallocating slices can sometimes significantly improve performance. This tool detects common scenarions where preallocating can be beneficial. This tool is not using `golang.org/x/tools/go/analysis` toolchain. — [@alexkohler](https://github.com/alexkohler)
-
-
-```
-prealloc ./...
-```
-
-Example
-```
-tools/gopls/internal/lsp/source/completion/completion.go:1484 Consider preallocating paths
-tools/gopls/internal/lsp/source/completion/package.go:54 Consider preallocating items
-tools/gopls/internal/lsp/template/symbols.go:205 Consider preallocating ans
-tools/gopls/internal/lsp/template/completion.go:199 Consider preallocating working
-tools/gopls/internal/lsp/tests/util.go:32 Consider preallocating notePositions
-tools/gopls/internal/lsp/tests/util.go:240 Consider preallocating paramParts
-tools/gopls/internal/lsp/tests/util.go:282 Consider preallocating result
-tools/gopls/internal/lsp/tests/util.go:309 Consider preallocating got
-```
-
-Requirements
-```
-go install github.com/alexkohler/prealloc@latest
-```
-
-### [⏫](#contents)➡ Detect unnecessary import aliases with [unimport](https://github.com/alexkohler/unimport)
-
-It is common guideline to avoid renaming imports unless there are collisions. This tool detects where original pacakge name would not collide. This tool is useful for investigations. This tool is not using `golang.org/x/tools/go/analysis` toolchain. — [@alexkohler](https://github.com/alexkohler)
-
-
-```
-unimport ./...
-```
-
-Example
-```
-pkg/apis/apiserverinternal/v1alpha1/zz_generated.conversion.go:29 unnecessary import alias runtime
-pkg/apis/apiserverinternal/v1alpha1/zz_generated.conversion.go:30 unnecessary import alias apiserverinternal
-pkg/apis/apps/v1/zz_generated.conversion.go:25 unnecessary import alias unsafe
-pkg/apis/apps/v1/zz_generated.conversion.go:30 unnecessary import alias conversion
-pkg/apis/apps/v1/zz_generated.conversion.go:31 unnecessary import alias runtime
-pkg/apis/apps/v1/zz_generated.conversion.go:32 unnecessary import alias intstr
-pkg/apis/apps/v1/zz_generated.conversion.go:33 unnecessary import alias apps
-pkg/apis/apps/v1/zz_generated.conversion.go:34 unnecessary import alias core
-pkg/apis/apps/v1beta1/zz_generated.conversion.go:25 unnecessary import alias unsafe
-pkg/apis/apps/v1beta1/zz_generated.conversion.go:27 unnecessary import alias v1beta1
-pkg/apis/apps/v1beta1/zz_generated.conversion.go:30 unnecessary import alias conversion
-pkg/apis/apps/v1beta1/zz_generated.conversion.go:31 unnecessary import alias runtime
-```
-
-Requirements
-```
-go install github.com/alexkohler/unimport@latest
-```
-
-### [⏫](#contents)➡ Detect naked returns with [nakedret](https://github.com/alexkohler/nakedret)
-
-It is common guideline to avoid [naked returns](https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters). Naked return is when function has named return, and return statement does not specify value. This tool is useful for investigations. — [@alexkohler](https://github.com/alexkohler)
-
-
-```
-nakedret ./...
-```
-
-Example
-```
-/kubernetes/pkg/controller/podautoscaler/replica_calculator.go:421:2: naked return in func `groupPods` with 44 lines of code
-/kubernetes/pkg/kubelet/container/helpers.go:374:2: naked return in func `MakePortMappings` with 36 lines of code
-/kubernetes/pkg/kubelet/config/config.go:350:2: naked return in func `filterInvalidPods` with 17 lines of code
-/kubernetes/pkg/kubelet/config/config.go:449:3: naked return in func `checkAndUpdatePod` with 38 lines of code
-/kubernetes/pkg/kubelet/config/config.go:471:2: naked return in func `checkAndUpdatePod` with 38 lines of code
-/kubernetes/cmd/kube-controller-manager/app/controllermanager.go:717:2: naked return in func `createClientBuilders` with 19 lines of code
-/kubernetes/pkg/proxy/topology.go:77:3: naked return in func `CategorizeEndpoints` with 98 lines of code
-/kubernetes/pkg/proxy/topology.go:111:3: naked return in func `CategorizeEndpoints` with 98 lines of code
-/kubernetes/pkg/proxy/topology.go:119:3: naked return in func `CategorizeEndpoints` with 98 lines of code
-/kubernetes/pkg/proxy/topology.go:137:2: naked return in func `CategorizeEndpoints` with 98 lines of code
-```
-
-Requirements
-```
-go install github.com/alexkohler/nakedret/cmd/nakedret@latest
-```
-
-### [⏫](#contents)➡ Detect mixing pointer and value method receivers with [smrcptr](https://github.com/nikolaydubina/smrcptr)
-
-Mixing pointer and value method receivers for the same type is discouraged, as per commong guideline [Go wiki](https://github.com/golang/go/wiki/CodeReviewComments#receiver-type) and [Google Go style guide](https://google.github.io/styleguide/go/decisions#receiver-type). — [@nikolaydubina](https://github.com/nikolaydubina)
-
-
-```
-smrcptr ./...
-```
-
-```go
-type Pancake struct{}
-
-func NewPancake() Pancake { return Pancake{} }
-
-func (s *Pancake) Fry() {}
-
-func (s Pancake) Bake() {}
-```
-
-Example
-```
-smrcptr/internal/bakery/pancake.go:7:1: Pancake.Fry uses pointer
-smrcptr/internal/bakery/pancake.go:9:1: Pancake.Bake uses value
-```
-
-Requirements
-```
-go install github.com/nikolaydubina/smrcptr@latest
-```
-
-### [⏫](#contents)➡ Detect vertical function ordering with [vertfn](https://github.com/nikolaydubina/vertfn)
-
-Vertical function ordering is declaring functions before they are used. Based on 'Clean Code' by Robert.C.Martin. — [@nikolaydubina](https://github.com/nikolaydubina)
-
-
-```
-vertfn --verbose ./...
-```
-
-<div align="center"><img src="https://github.com/nikolaydubina/vertfn/blob/master/doc/code-dep-viz.png" style="margin: 8px; max-height: 640px;"></div>
-
-
-Requirements
-```
-go install github.com/nikolaydubina/vertfn@latest
-```
-
-### [⏫](#contents)➡ Calculate Cognitive Complexity with [gocognit](https://github.com/uudashr/gocognit)
-
-Congitive Complexity as defined in this tool can be more illustrative than Cyclometric Complexity. Research paper ["Cognitive Complexity - a new way of measuring understandability"](https://www.sonarsource.com/docs/CognitiveComplexity.pdf), 2021. — [@uudashr](https://github.com/uudashr)
-
-
-```
-gocognit .
-```
-
-```go
-// Complexity Cyclomatic=4 Cognitive=7
-// Cognitive complexity give higher score compare to cyclomatic complexity.
-func SumOfPrimes(max int) int {         // +1
-    var total int
-    for i := 1; i < max; i++ {          // +1 (cognitive +1, nesting)
-        for j := 2; j < i; j++ {        // +1 (cognitive +2, nesting)
-            if i%j == 0 {               // +1
-                continue OUT
-            }
-        }
-        total += i
-    }
-    return total
-}
-
-// Complexity Cyclomatic=4 Cognitive=1
-// Cognitive complexity give lower score compare to cyclomatic complexity.
-func GetWords(number int) string {      // +1
-    switch number {
-        case 1:                         // +1 (cognitive 0)
-            return "one"
-        case 2:                         // +1 (cognitive 0)
-            return "a couple"
-        case 3:                         // +1 (cognitive 0)
-            return "a few"
-        default:
-            return "lots"
-    }
-}
-```
-
-Example
-```
-21 main (BasicSymtabConverter).SymtabFileToTreemap basic_converter.go:23:1
-12 symtab parseGoSymtabLine symtab/go_symtab_parser.go:37:1
-11 main main main.go:30:1
-8 symtab EqSymbolName symtab/symbol_name_parser.go:12:1
-7 symtab ParseSymbolName symtab/symbol_name_parser.go:32:1
-7 symtab Test_parseGoSymtabLine symtab/go_symtab_parser_private_test.go:5:1
-4 symtab Test_ParseSymbolName symtab/symbol_name_parser_private_test.go:5:1
-3 main updateNodeNamesWithByteSize main.go:99:1
-3 main unique basic_converter.go:119:1
-3 symtab (GoSymtabParser).ParseSymtab symtab/go_symtab_parser.go:14:1
-2 fmtbytecount ByteCountIEC fmtbytecount/format_bytecount.go:3:1
-```
-
-Requirements
-```
-go install github.com/uudashr/gocognit/cmd/gocognit@latest
-```
-
-### [⏫](#contents)➡ Calculate Cyclomatic Complexity with [gocyclo](https://github.com/fzipp/gocyclo)
-
-Cyclomatic complexity is a code quality metric which can be used to identify code that needs refactoring. It measures the number of linearly independent paths through a function's source code. For example, excessive usage of nested `if` and `for` leads to increased cyclomatic complexity. This tool can report `top-N` and `over`, which makes it suitable for CI as a linter and manual investigation. — [@fzipp](https://github.com/fzipp)
-
-
-```
-gocyclo .
-```
-
-Example
-```
-$ gocyclo -over=5 .
-34 examplemodule (*With32FieldsFeatureTransformer).Fit cmd/generate/tests/with32fieldsfp.go:48:1
-24 main parseCode cmd/generate/parser.go:83:1
-13 examplemodule (*AllTransformersFeatureTransformer).Fit cmd/generate/tests/alltransformersfp.go:27:1
-12 examplemodule (*EmployeeFeatureTransformer).Fit cmd/generate/tests/employeefp.go:26:1
-11 transformers (*CountVectorizer).TransformInplace transformers/textprocesors.go:84:1
-11 structtransformer (*StructTransformer).Transform structtransformer/structtransformer.go:38:1
-11 examplemodule (*LargeMemoryTransformerFeatureTransformer).Fit cmd/generate/tests/largememorytransformerfp.go:25:1
-10 examplemodule (*WeirdTagsFeatureTransformer).Fit cmd/generate/tests/weirdtagsfp.go:24:1
-8 transformers (*SampleNormalizerL2).TransformInplace transformers/samplenormalizers.go:58:1
-```
-
-Requirements
-```
-go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
-```
-
-### [⏫](#contents)➡ Calculate age of comments with [go-commentage](https://github.com/nikolaydubina/go-commentage)
-
-This go vet compatible tool analyses AST and git and collects details on how far comments drift from code they describe. — [@nikolaydubina](https://github.com/nikolaydubina)
-
-
-```
-go-commentage -min-days-behind 360 ./...
-```
-
-Example
-```
-kubernetes/pkg/util/ipset/ipset.go:283:1: "CreateSet": doc_last_updated_behind_days(1336.83)
-kubernetes/pkg/util/ipset/ipset.go:296:1: "createSet": doc_last_updated_behind_days(1603.17)
-kubernetes/pkg/util/ipset/ipset.go:320:1: "AddEntry": doc_last_updated_behind_days(1578.10)
-kubernetes/pkg/util/ipset/ipset.go:332:1: "DelEntry": doc_last_updated_behind_days(1578.10)
-kubernetes/pkg/util/ipset/ipset.go:340:1: "TestEntry": doc_last_updated_behind_days(450.07)
-```
-
-Requirements
-```
-# get latest version of git
-go install github.com/nikolaydubina/go-commentage@latest
-```
-
-### [⏫](#contents)➡ (archived) Ensure `if` statements using short assignment with [ifshort](https://github.com/esimonov/ifshort)
-
-Linter for checking that your code uses short syntax for `if` statements whenever possible. However, as of `2023-05-26`, it is not maitaned and is not working. — [@esimonov](https://github.com/esimonov)
-
-
-```
-ifshort ./...
-```
-
-```go
-// bad
-func someFunc(k string, m map[string]interface{}) {
-  _, ok := m[k]
-  if !ok {
-    return
-  }
-
-  err := otherFunc1()
-  if err != nil {
-    otherFunc2(err)
-  }
-}
-
-// good
-func someFunc(k string, m map[string]interface{}) {
-  if _, ok := m[k]; !ok {
-    return
-  }
-
-  if err := otherFunc1(); err != nil {
-    otherFunc2(err)
-  }
-}
-```
-
-Requirements
-```
-go install github.com/esimonov/ifshort@latest
-```
-
-### [⏫](#contents)➡ Perform Taint Analysis with [taint](https://github.com/picatz/taint)
-
-Taint analysis is a technique for identifying the flow of sensitive data through a program. It can be used to identify potential security vulnerabilities, such as SQL injection or cross-site scripting (XSS) attacks, by understanding how this data is used and transformed as it flows through the code. This package provides tools to performs such analysis. Included tool is performing SQL injection taint analysis. — [@picatz](https://github.com/picatz)
-
-
-```
-sqli main.go
-```
-
-```go
-package main
-
-import (
-        "database/sql"
-        "net/http"
-)
-
-func business(db *sql.DB, q string) {
-        db.Query(q) // potential sql injection
-}
-
-func run() {
-        db, _ := sql.Open("sqlite3", ":memory:")
-
-        mux := http.NewServeMux()
-
-        mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-                business(db, r.URL.Query().Get("sql-query"))
-        })
-
-        http.ListenAndServe(":8080", mux)
-}
-
-func main() {
-        run()
-}
-```
-
-Example
-```
-./sql/injection/testdata/src/example/main.go:9:10: potential sql injection
-```
-
-Requirements
-```
-go install github.com/picatz/taint/cmd/sqli@latest
-```
-
-### [⏫](#contents)➡ Visualize struct layout with [structlayout](https://github.com/dominikh/go-tools/tree/master/cmd/structlayout)
-
-Display the byte offset and size of each field, respecting alignment/padding. — [@dominikh](https://github.com/dominikh)
-
-
-```
-structlayout -json bytes Buffer | structlayout-svg -t "bytes.Buffer" > /tmp/struct.svg
-```
-
-<div align="center"><img src="https://github.com/dominikh/go-tools/blob/master/images/screenshots/struct.png" style="margin: 8px; max-height: 640px;"></div>
-
-
-Requirements
-```
-go install github.com/ajstarks/svgo/structlayout-svg@latest
-go install honnef.co/go/tools/cmd/structlayout@latest
-```
-
-### [⏫](#contents)➡ Rely on compiler for stricter Enums
-
-For compile time blocking of: accidental arithmetics; implicit cast of untyped constants; all operators except `==` and `!=`; — simply wrap into a struct in separate package and do not export field. [example](http://github.com/nikolaydubina/go-enum-example).
-
-```go
-package color
-
-type Color struct{ c uint }
-
-var (
-  Undefined = Color{}
-  Red       = Color{1}
-  Green     = Color{2}
-  Blue      = Color{3}
-)
-```
 
 
 ## Code Generation
@@ -2417,5 +1814,608 @@ go install github.com/appliedgocode/goman@lates
 - [Uber](https://github.com/uber-go/guide)
 
 - [Go Code Review Comments](https://github.com/golang/go/wiki/CodeReviewComments)
+
+## Static Analysis
+
+### [⏫](#contents)➡ Run default static analysis with `go vet`
+
+Official tool for static analysis of Go programs, with 27+ static analyzers. — official Go team
+
+
+```
+go vet ./...
+```
+
+
+### [⏫](#contents)➡ Run custom static analysis tool with `go vet`
+
+Standard `go vet` can be used to run custom analyzers binaries. Third party analyzers are supported. Lots of official analyzers not included by default into `go vet`. Analyzer has to satisfy interface and command described here https://pkg.go.dev/golang.org/x/tools/go/analysis. Refer for https://pkg.go.dev/golang.org/x/tools/go/analysis/passes for full list of official Go analyzers. — official Go team
+
+
+```
+go install golang.org/x/tools/go/analysis/passes/shadow/cmd/shadow
+go vet -vettool=$(which shadow)
+```
+
+
+### [⏫](#contents)➡ Run official static analyzers not included in `go vet`
+
+There are many analyzers not included in `go vet`. These tools are experimental and may not work as expected (e.g. `usesgenerics` does not work). Refer to for full list https://pkg.go.dev/golang.org/x/tools/go/analysis. — official Go team
+
+```go
+package main
+
+import (
+  "golang.org/x/tools/go/analysis/multichecker"
+
+  "golang.org/x/tools/go/analysis/passes/atomicalign"
+  "golang.org/x/tools/go/analysis/passes/deepequalerrors"
+  "golang.org/x/tools/go/analysis/passes/fieldalignment"
+  "golang.org/x/tools/go/analysis/passes/nilness"
+  "golang.org/x/tools/go/analysis/passes/reflectvaluecompare"
+  "golang.org/x/tools/go/analysis/passes/shadow"
+  "golang.org/x/tools/go/analysis/passes/sortslice"
+  "golang.org/x/tools/go/analysis/passes/unusedwrite"
+  "golang.org/x/tools/go/analysis/passes/usesgenerics"
+)
+
+func main() {
+  multichecker.Main(
+    atomicalign.Analyzer,         // checks for non-64-bit-aligned arguments to sync/atomic functions
+    deepequalerrors.Analyzer,     // checks for the use of reflect.DeepEqual with error values
+    fieldalignment.Analyzer,      // detects structs that would use less memory if their fields were sorted
+    nilness.Analyzer,             // inspects the control-flow graph of an SSA function and reports errors such as nil pointer dereferences and degenerate nil pointer comparisons
+    reflectvaluecompare.Analyzer, // checks for accidentally using == or reflect.DeepEqual to compare reflect.Value values
+    shadow.Analyzer,              // checks for shadowed variables
+    sortslice.Analyzer,           // checks for calls to sort.Slice that do not use a slice type as first argument
+    unusedwrite.Analyzer,         // checks for unused writes to the elements of a struct or array object
+    usesgenerics.Analyzer,        // checks for usage of generic features added in Go 1.18
+  )
+}
+```
+
+
+### [⏫](#contents)➡ Detect most common issues with [staticcheck](https://github.com/dominikh/go-tools)
+
+Start custom linters with this well-known linter. It contains 150+ high quality low false positive rate linters. It is widely adopted by Open Source and tech companies. [staticcheck.io](https://staticcheck.io/). — [@dominikh](https://github.com/dominikh)
+
+
+```
+staticcheck ./...
+```
+
+Requirements
+```
+go install honnef.co/go/tools/cmd/staticcheck@latest
+```
+
+### [⏫](#contents)➡ Detect non-exhaustive switch and map with [exhaustive](https://github.com/nishanths/exhaustive)
+
+This `go vet` compatible analyzer checks for exhaustive switch statemnts and map literals. It works for enums with underyling integer, float, or string types (struct based enums are not supported). — [@nishanths](https://github.com/nishanths)
+
+
+```
+exhaustive ./...
+```
+
+```go
+package token
+
+type Token int
+
+const (
+  Add Token = iota
+  Subtract
+  Multiply
+  Quotient
+  Remainder
+)
+
+package calc
+
+import "token"
+
+func f(t token.Token) {
+  switch t {
+  case token.Add:
+  case token.Subtract:
+  case token.Multiply:
+  default:
+  }
+}
+
+func g(t token.Token) string {
+  return map[token.Token]string{
+    token.Add:      "add",
+    token.Subtract: "subtract",
+    token.Multiply: "multiply",
+  }[t]
+}
+```
+
+Example
+```
+calc.go:6:2: missing cases in switch of type token.Token: Quotient, Remainder
+calc.go:15:9: missing map keys of type token.Token: Quotient, Remainder
+```
+
+Requirements
+```
+go install github.com/nishanths/exhaustive/cmd/exhaustive@latest
+```
+
+### [⏫](#contents)➡ Detect structs with uninitialized fields with [go-exhaustruct](https://github.com/GaijinEntertainment/go-exhaustruct)
+
+This tool finds instatiations of structs with zero values. It supports struct tags to mark fields as optional. This may help to prevent unexpected zero values. — [@xobotyi](https://github.com/xobotyi)
+
+
+```
+exhaustruct ./...
+```
+
+```go
+type Shape struct {
+  Length int
+  Width  int
+  volume    int
+  Perimeter int `exhaustruct:"optional"`
+}
+
+// valid
+var a Shape = Shape{
+  Length: 5,
+  Width:  3,
+  volume: 5,
+}
+
+// invalid, `volume` is missing
+var b Shape = Shape{
+  Length: 5,
+  Width:  3,
+}
+```
+
+Requirements
+```
+go get -u github.com/GaijinEntertainment/go-exhaustruct/v3/cmd/exhaustruct
+```
+
+### [⏫](#contents)➡ Detect unsafe code with [go-safer](https://github.com/jlauinger/go-safer)
+
+Find incorrect uses of `reflect.SliceHeader`, `reflect.StringHeader`, and unsafe casts between structs with architecture-sized fields. Reseach paper ["Uncovering the Hidden Dangers Finding Unsafe Go Code in the Wild"](https://arxiv.org/abs/2010.11242) presented at 19th IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom 2020). — [@jlauinger](https://github.com/jlauinger)
+
+
+```
+go-safer ./...
+```
+
+Example
+```
+# github.com/jlauinger/go-safer/passes/sliceheader/testdata/src/bad/composite_literal
+composite_literal/composite_literal.go:10:9: reflect header composite literal found
+composite_literal/composite_literal.go:10:9: reflect header composite literal found
+# github.com/jlauinger/go-safer/passes/sliceheader/testdata/src/bad/header_in_struct
+header_in_struct/header_in_struct.go:16:2: assigning to reflect header object
+```
+
+Requirements
+```
+go install github.com/jlauinger/go-safer@latest
+```
+
+### [⏫](#contents)➡ Detect unnecessary type conversions with [unconvert](https://github.com/mdempsky/unconvert)
+
+Identify expressions like `T(x)` where `x` is already has type `T`. This tool can identify conversions that force intermediate rounding. It also can overwrite files with fix. This tool is not using `golang.org/x/tools/go/analysis` toolchain. — [@mdempsky](https://github.com/mdempsky)
+
+
+```
+unconvert ./...
+```
+
+```
+$ unconvert -v bytes fmt
+GOROOT/src/bytes/reader.go:117:14: unnecessary conversion
+                abs = int64(r.i) + offset
+                          ^
+GOROOT/src/fmt/print.go:411:21: unnecessary conversion
+        p.fmt.integer(int64(v), 16, unsigned, udigits)
+                          ^
+```
+
+Requirements
+```
+go install github.com/mdempsky/unconvert@latest
+```
+
+### [⏫](#contents)➡ Detect global variables with [gochecknoglobals](https://github.com/leighmcculloch/gochecknoglobals)
+
+Global variables are an input to functions that is not visible in the functions signature, complicate testing, reduces readability and increase the complexity of code. However, sometimes global varaibles make sense. This tool skips such common scenarios. This tool can be used in CI, albeit it is very strict. This tool is useful for investigations. — [@leighmcculloch](https://github.com/leighmcculloch)
+
+
+```
+gochecknoglobals ./...
+```
+
+Example
+```
+/Users/nikolaydubina/Workspace/hugo/common/paths/path.go:64:5: fpb is a global variable
+/Users/nikolaydubina/Workspace/hugo/common/paths/url.go:50:5: pb is a global variable
+/Users/nikolaydubina/Workspace/hugo/common/text/position.go:52:5: positionStringFormatfunc is a global variable
+/Users/nikolaydubina/Workspace/hugo/common/text/transform.go:26:5: accentTransformerPool is a global variable
+/Users/nikolaydubina/Workspace/hugo/common/herrors/error_locator.go:40:5: SimpleLineMatcher is a global variable
+```
+
+Requirements
+```
+go install 4d63.com/gochecknoglobals@latest
+```
+
+### [⏫](#contents)➡ Detect slices that could be preallocated with [prealloc](https://github.com/alexkohler/prealloc)
+
+Preallocating slices can sometimes significantly improve performance. This tool detects common scenarions where preallocating can be beneficial. This tool is not using `golang.org/x/tools/go/analysis` toolchain. — [@alexkohler](https://github.com/alexkohler)
+
+
+```
+prealloc ./...
+```
+
+Example
+```
+tools/gopls/internal/lsp/source/completion/completion.go:1484 Consider preallocating paths
+tools/gopls/internal/lsp/source/completion/package.go:54 Consider preallocating items
+tools/gopls/internal/lsp/template/symbols.go:205 Consider preallocating ans
+tools/gopls/internal/lsp/template/completion.go:199 Consider preallocating working
+tools/gopls/internal/lsp/tests/util.go:32 Consider preallocating notePositions
+tools/gopls/internal/lsp/tests/util.go:240 Consider preallocating paramParts
+tools/gopls/internal/lsp/tests/util.go:282 Consider preallocating result
+tools/gopls/internal/lsp/tests/util.go:309 Consider preallocating got
+```
+
+Requirements
+```
+go install github.com/alexkohler/prealloc@latest
+```
+
+### [⏫](#contents)➡ Detect unnecessary import aliases with [unimport](https://github.com/alexkohler/unimport)
+
+It is common guideline to avoid renaming imports unless there are collisions. This tool detects where original pacakge name would not collide. This tool is useful for investigations. This tool is not using `golang.org/x/tools/go/analysis` toolchain. — [@alexkohler](https://github.com/alexkohler)
+
+
+```
+unimport ./...
+```
+
+Example
+```
+pkg/apis/apiserverinternal/v1alpha1/zz_generated.conversion.go:29 unnecessary import alias runtime
+pkg/apis/apiserverinternal/v1alpha1/zz_generated.conversion.go:30 unnecessary import alias apiserverinternal
+pkg/apis/apps/v1/zz_generated.conversion.go:25 unnecessary import alias unsafe
+pkg/apis/apps/v1/zz_generated.conversion.go:30 unnecessary import alias conversion
+pkg/apis/apps/v1/zz_generated.conversion.go:31 unnecessary import alias runtime
+pkg/apis/apps/v1/zz_generated.conversion.go:32 unnecessary import alias intstr
+pkg/apis/apps/v1/zz_generated.conversion.go:33 unnecessary import alias apps
+pkg/apis/apps/v1/zz_generated.conversion.go:34 unnecessary import alias core
+pkg/apis/apps/v1beta1/zz_generated.conversion.go:25 unnecessary import alias unsafe
+pkg/apis/apps/v1beta1/zz_generated.conversion.go:27 unnecessary import alias v1beta1
+pkg/apis/apps/v1beta1/zz_generated.conversion.go:30 unnecessary import alias conversion
+pkg/apis/apps/v1beta1/zz_generated.conversion.go:31 unnecessary import alias runtime
+```
+
+Requirements
+```
+go install github.com/alexkohler/unimport@latest
+```
+
+### [⏫](#contents)➡ Detect naked returns with [nakedret](https://github.com/alexkohler/nakedret)
+
+It is common guideline to avoid [naked returns](https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters). Naked return is when function has named return, and return statement does not specify value. This tool is useful for investigations. — [@alexkohler](https://github.com/alexkohler)
+
+
+```
+nakedret ./...
+```
+
+Example
+```
+/kubernetes/pkg/controller/podautoscaler/replica_calculator.go:421:2: naked return in func `groupPods` with 44 lines of code
+/kubernetes/pkg/kubelet/container/helpers.go:374:2: naked return in func `MakePortMappings` with 36 lines of code
+/kubernetes/pkg/kubelet/config/config.go:350:2: naked return in func `filterInvalidPods` with 17 lines of code
+/kubernetes/pkg/kubelet/config/config.go:449:3: naked return in func `checkAndUpdatePod` with 38 lines of code
+/kubernetes/pkg/kubelet/config/config.go:471:2: naked return in func `checkAndUpdatePod` with 38 lines of code
+/kubernetes/cmd/kube-controller-manager/app/controllermanager.go:717:2: naked return in func `createClientBuilders` with 19 lines of code
+/kubernetes/pkg/proxy/topology.go:77:3: naked return in func `CategorizeEndpoints` with 98 lines of code
+/kubernetes/pkg/proxy/topology.go:111:3: naked return in func `CategorizeEndpoints` with 98 lines of code
+/kubernetes/pkg/proxy/topology.go:119:3: naked return in func `CategorizeEndpoints` with 98 lines of code
+/kubernetes/pkg/proxy/topology.go:137:2: naked return in func `CategorizeEndpoints` with 98 lines of code
+```
+
+Requirements
+```
+go install github.com/alexkohler/nakedret/cmd/nakedret@latest
+```
+
+### [⏫](#contents)➡ Detect mixing pointer and value method receivers with [smrcptr](https://github.com/nikolaydubina/smrcptr)
+
+Mixing pointer and value method receivers for the same type is discouraged, as per commong guideline [Go wiki](https://github.com/golang/go/wiki/CodeReviewComments#receiver-type) and [Google Go style guide](https://google.github.io/styleguide/go/decisions#receiver-type). — [@nikolaydubina](https://github.com/nikolaydubina)
+
+
+```
+smrcptr ./...
+```
+
+```go
+type Pancake struct{}
+
+func NewPancake() Pancake { return Pancake{} }
+
+func (s *Pancake) Fry() {}
+
+func (s Pancake) Bake() {}
+```
+
+Example
+```
+smrcptr/internal/bakery/pancake.go:7:1: Pancake.Fry uses pointer
+smrcptr/internal/bakery/pancake.go:9:1: Pancake.Bake uses value
+```
+
+Requirements
+```
+go install github.com/nikolaydubina/smrcptr@latest
+```
+
+### [⏫](#contents)➡ Detect vertical function ordering with [vertfn](https://github.com/nikolaydubina/vertfn)
+
+Vertical function ordering is declaring functions before they are used. Based on 'Clean Code' by Robert.C.Martin. — [@nikolaydubina](https://github.com/nikolaydubina)
+
+
+```
+vertfn --verbose ./...
+```
+
+<div align="center"><img src="https://github.com/nikolaydubina/vertfn/blob/master/doc/code-dep-viz.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/nikolaydubina/vertfn@latest
+```
+
+### [⏫](#contents)➡ Calculate Cognitive Complexity with [gocognit](https://github.com/uudashr/gocognit)
+
+Congitive Complexity as defined in this tool can be more illustrative than Cyclometric Complexity. Research paper ["Cognitive Complexity - a new way of measuring understandability"](https://www.sonarsource.com/docs/CognitiveComplexity.pdf), 2021. — [@uudashr](https://github.com/uudashr)
+
+
+```
+gocognit .
+```
+
+```go
+// Complexity Cyclomatic=4 Cognitive=7
+// Cognitive complexity give higher score compare to cyclomatic complexity.
+func SumOfPrimes(max int) int {         // +1
+    var total int
+    for i := 1; i < max; i++ {          // +1 (cognitive +1, nesting)
+        for j := 2; j < i; j++ {        // +1 (cognitive +2, nesting)
+            if i%j == 0 {               // +1
+                continue OUT
+            }
+        }
+        total += i
+    }
+    return total
+}
+
+// Complexity Cyclomatic=4 Cognitive=1
+// Cognitive complexity give lower score compare to cyclomatic complexity.
+func GetWords(number int) string {      // +1
+    switch number {
+        case 1:                         // +1 (cognitive 0)
+            return "one"
+        case 2:                         // +1 (cognitive 0)
+            return "a couple"
+        case 3:                         // +1 (cognitive 0)
+            return "a few"
+        default:
+            return "lots"
+    }
+}
+```
+
+Example
+```
+21 main (BasicSymtabConverter).SymtabFileToTreemap basic_converter.go:23:1
+12 symtab parseGoSymtabLine symtab/go_symtab_parser.go:37:1
+11 main main main.go:30:1
+8 symtab EqSymbolName symtab/symbol_name_parser.go:12:1
+7 symtab ParseSymbolName symtab/symbol_name_parser.go:32:1
+7 symtab Test_parseGoSymtabLine symtab/go_symtab_parser_private_test.go:5:1
+4 symtab Test_ParseSymbolName symtab/symbol_name_parser_private_test.go:5:1
+3 main updateNodeNamesWithByteSize main.go:99:1
+3 main unique basic_converter.go:119:1
+3 symtab (GoSymtabParser).ParseSymtab symtab/go_symtab_parser.go:14:1
+2 fmtbytecount ByteCountIEC fmtbytecount/format_bytecount.go:3:1
+```
+
+Requirements
+```
+go install github.com/uudashr/gocognit/cmd/gocognit@latest
+```
+
+### [⏫](#contents)➡ Calculate Cyclomatic Complexity with [gocyclo](https://github.com/fzipp/gocyclo)
+
+Cyclomatic complexity is a code quality metric which can be used to identify code that needs refactoring. It measures the number of linearly independent paths through a function's source code. For example, excessive usage of nested `if` and `for` leads to increased cyclomatic complexity. This tool can report `top-N` and `over`, which makes it suitable for CI as a linter and manual investigation. — [@fzipp](https://github.com/fzipp)
+
+
+```
+gocyclo .
+```
+
+Example
+```
+$ gocyclo -over=5 .
+34 examplemodule (*With32FieldsFeatureTransformer).Fit cmd/generate/tests/with32fieldsfp.go:48:1
+24 main parseCode cmd/generate/parser.go:83:1
+13 examplemodule (*AllTransformersFeatureTransformer).Fit cmd/generate/tests/alltransformersfp.go:27:1
+12 examplemodule (*EmployeeFeatureTransformer).Fit cmd/generate/tests/employeefp.go:26:1
+11 transformers (*CountVectorizer).TransformInplace transformers/textprocesors.go:84:1
+11 structtransformer (*StructTransformer).Transform structtransformer/structtransformer.go:38:1
+11 examplemodule (*LargeMemoryTransformerFeatureTransformer).Fit cmd/generate/tests/largememorytransformerfp.go:25:1
+10 examplemodule (*WeirdTagsFeatureTransformer).Fit cmd/generate/tests/weirdtagsfp.go:24:1
+8 transformers (*SampleNormalizerL2).TransformInplace transformers/samplenormalizers.go:58:1
+```
+
+Requirements
+```
+go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
+```
+
+### [⏫](#contents)➡ Calculate age of comments with [go-commentage](https://github.com/nikolaydubina/go-commentage)
+
+This go vet compatible tool analyses AST and git and collects details on how far comments drift from code they describe. — [@nikolaydubina](https://github.com/nikolaydubina)
+
+
+```
+go-commentage -min-days-behind 360 ./...
+```
+
+Example
+```
+kubernetes/pkg/util/ipset/ipset.go:283:1: "CreateSet": doc_last_updated_behind_days(1336.83)
+kubernetes/pkg/util/ipset/ipset.go:296:1: "createSet": doc_last_updated_behind_days(1603.17)
+kubernetes/pkg/util/ipset/ipset.go:320:1: "AddEntry": doc_last_updated_behind_days(1578.10)
+kubernetes/pkg/util/ipset/ipset.go:332:1: "DelEntry": doc_last_updated_behind_days(1578.10)
+kubernetes/pkg/util/ipset/ipset.go:340:1: "TestEntry": doc_last_updated_behind_days(450.07)
+```
+
+Requirements
+```
+# get latest version of git
+go install github.com/nikolaydubina/go-commentage@latest
+```
+
+### [⏫](#contents)➡ (archived) Ensure `if` statements using short assignment with [ifshort](https://github.com/esimonov/ifshort)
+
+Linter for checking that your code uses short syntax for `if` statements whenever possible. However, as of `2023-05-26`, it is not maitaned and is not working. — [@esimonov](https://github.com/esimonov)
+
+
+```
+ifshort ./...
+```
+
+```go
+// bad
+func someFunc(k string, m map[string]interface{}) {
+  _, ok := m[k]
+  if !ok {
+    return
+  }
+
+  err := otherFunc1()
+  if err != nil {
+    otherFunc2(err)
+  }
+}
+
+// good
+func someFunc(k string, m map[string]interface{}) {
+  if _, ok := m[k]; !ok {
+    return
+  }
+
+  if err := otherFunc1(); err != nil {
+    otherFunc2(err)
+  }
+}
+```
+
+Requirements
+```
+go install github.com/esimonov/ifshort@latest
+```
+
+### [⏫](#contents)➡ Perform Taint Analysis with [taint](https://github.com/picatz/taint)
+
+Taint analysis is a technique for identifying the flow of sensitive data through a program. It can be used to identify potential security vulnerabilities, such as SQL injection or cross-site scripting (XSS) attacks, by understanding how this data is used and transformed as it flows through the code. This package provides tools to performs such analysis. Included tool is performing SQL injection taint analysis. — [@picatz](https://github.com/picatz)
+
+
+```
+sqli main.go
+```
+
+```go
+package main
+
+import (
+        "database/sql"
+        "net/http"
+)
+
+func business(db *sql.DB, q string) {
+        db.Query(q) // potential sql injection
+}
+
+func run() {
+        db, _ := sql.Open("sqlite3", ":memory:")
+
+        mux := http.NewServeMux()
+
+        mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+                business(db, r.URL.Query().Get("sql-query"))
+        })
+
+        http.ListenAndServe(":8080", mux)
+}
+
+func main() {
+        run()
+}
+```
+
+Example
+```
+./sql/injection/testdata/src/example/main.go:9:10: potential sql injection
+```
+
+Requirements
+```
+go install github.com/picatz/taint/cmd/sqli@latest
+```
+
+### [⏫](#contents)➡ Visualize struct layout with [structlayout](https://github.com/dominikh/go-tools/tree/master/cmd/structlayout)
+
+Display the byte offset and size of each field, respecting alignment/padding. — [@dominikh](https://github.com/dominikh)
+
+
+```
+structlayout -json bytes Buffer | structlayout-svg -t "bytes.Buffer" > /tmp/struct.svg
+```
+
+<div align="center"><img src="https://github.com/dominikh/go-tools/blob/master/images/screenshots/struct.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/ajstarks/svgo/structlayout-svg@latest
+go install honnef.co/go/tools/cmd/structlayout@latest
+```
+
+### [⏫](#contents)➡ Rely on compiler for stricter Enums
+
+For compile time blocking of: accidental arithmetics; implicit cast of untyped constants; all operators except `==` and `!=`; — simply wrap into a struct in separate package and do not export field. [example](http://github.com/nikolaydubina/go-enum-example).
+
+```go
+package color
+
+type Color struct{ c uint }
+
+var (
+  Undefined = Color{}
+  Red       = Color{1}
+  Green     = Color{2}
+  Blue      = Color{3}
+)
+```
+
 
 
