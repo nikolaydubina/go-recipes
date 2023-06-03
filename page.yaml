@@ -44,7 +44,7 @@ groups:
           - go install github.com/charmbracelet/mods@latest
       - title: Commit message recommendation
         name: charmbracelet/mods
-        description: 
+        description: Short summaries of changes usually work well.
         url: https://github.com/charmbracelet/mods
         commands:
           - git diff | mods "summarize following git diff into short git commit message."
@@ -55,6 +55,70 @@ groups:
         requirements:
           - "# OpenAI token or LocalAI model and server"
           - go install github.com/charmbracelet/mods@latest
+      - title: Test case recommendation
+        description: Concatenate two files and ask to recommend missing test cases. It is not precise, has high false positive and high false negative rate. Often can not detect that tests cases are present at all. However, it can give a fresh perspective on your code. Best results are produced when asking succinct short replies. Example outputs bellow.
+        commands:
+          - cat fpdecimal.go fpdecimal_test.go | head -c 3600 | mods -f "you are an expert Go programmer. investigate supplied Go program and associated test suite. recommend missing test cases. write very succinctly. under 100 words." | glow 
+          - cat fpdecimal.go fpdecimal_test.go | head -c 4000 | mods -f "investigate supplied Go program and associated test suite. recommend missing test cases." | glow
+        example-output: |
+          For additional test cases, consider adding tests for negative float values, positive and negative infinity, unsigned
+          integers, zero divided by a number greater than zero, and division with only zeros.                       
+          ------------------
+            Test cases:                                                                                                                                                                                                                             
+            • Test for unmarshalling JSON into Decimal                                                                          
+            • Test for marshalling Decimal to JSON                                                                              
+            • Test for multiplication with zero                                                                                 
+            • Test for multiplication identity                                                                                  
+            • Test for division with zero                                                                                       
+            • Test for all comparison operations for the Decimal struct.                                                        
+          ------------------
+          Missing test cases for the  fpdecimal  Go program include those for testing the  DivMod  and  FromString  functions.
+          Additionally, there should be tests checking that zero division is not allowed, and tests that ensure the           
+          FractionDigits  value does not change during the program's runtime. Important test cases include comparing decimals 
+          for equality, as well as testing the commutativity, associativity, and identity properties of addition and          
+          multiplication. Finally, the program should have a test that verifies the  MarshalJSON  and  UnmarshalJSON          
+          functions.
+          ------------------
+          1. Test cases should be created to test the edge cases when the resulting number after any operation is either      
+          maximum or minimum such as:                                                                                         
+                                                                                                                            
+          • Adding a Decimal value to another decimal value that results in the number reaching maximum or minimum.           
+          • Subtracting a Decimal value from another decimal value that results in the number reaching maximum or minimum.    
+          • Multiplying a Decimal value with another decimal value that results in the number reaching maximum or minimum.    
+          • Dividing a Decimal value with another decimal value that results in the number reaching maximum or minimum.       
+                                                                                                                            
+          2. Test cases should be created to test the function 'DivMod' which returns the quotient and remainder from division
+          between two Decimal numbers.                                                                                        
+                                                                                                                            
+          • Test the function for a range of valid input values such as evenly divisible numbers and numbers that are not     
+          evenly divisible.                                                                                                   
+          • Test with very large numbers and very small numbers to ensure accuracy of the function.                           
+                                                                                                                            
+          3. Test cases should be created to test the 'FromString' function which parses string inputs into Decimal values.   
+          The tests should consider:                                                                                          
+                                                                                                                            
+          • Valid input strings for different numbers such as whole numbers, decimal numbers and negative numbers.            
+          • Input strings that exceed the Decimal range limits.                                                               
+          • Two input strings with different values but with the same rounded result.                                         
+                                                                                                                            
+          4. Test cases should be created to test the functions 'MarshalJSON' and 'UnmarshalJSON', which convert JSON data    
+          format to and from Decimal values respectively. The following tests can be considered:                              
+                                                                                                                            
+          • JSON data generated from valid Decimal values should be parsed back to Decimal values accurately.                 
+          • Invalid JSON data should produce errors while performing the conversion.                                          
+          • JSON data generation and parsing should still work accurately for very small or very large Decimal values.        
+                                                                                                                            
+          5. Test cases should be created to test the functions 'Float32' and 'Float64'. The tests should consider:           
+                                                                                                                            
+          • Conversion of Decimal values with maximum and minimum range.                                                      
+          • Conversion of Decimal values with various float types.                                                            
+          • Testing the precision of the float values with larger decimal inputs.                                             
+                                                                                                                            
+          6. Test cases should be created to test the concurrent use of the package. The tests should include:                
+                                                                                                                            
+          • Multiple go routines running at the same time and performing read and write operations of Decimal values.         
+          • One go routine reads while one go routine writes simultaneously.                                                  
+          • Testing the function across multiple machines/processes, while running multithreaded tests. 
   - title: Testing
     entries:
       - title: Make treemap of coverage
