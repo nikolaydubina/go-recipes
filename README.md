@@ -9,7 +9,7 @@
 
 ## Contents
 
- - Using AI for Go projects
+ - AI tools and Prompt Engineering
    + [➡ Advanced autocompletion with `Copilot`](#-advanced-autocompletion-with-copilot)
    + [➡ Code analysis and recommendations with `charmbracelet/mod`](#-code-analysis-and-recommendations-with-charmbraceletmod)
    + [➡ Commit message recommendation with `charmbracelet/mod`](#-commit-message-recommendation-with-charmbraceletmod)
@@ -150,7 +150,7 @@
    + [➡ Visualize struct layout with `structlayout`](#-visualize-struct-layout-with-structlayout)
    + [➡ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
 
-## Using AI for Go projects
+## AI tools and Prompt Engineering
 
 ### [⏫](#contents)➡ Advanced autocompletion with [Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 
@@ -199,6 +199,7 @@ go install github.com/charmbracelet/mods@latest
 ```
 git diff | mods "summarize following git diff into short git commit message."
 git diff | mods "summarize following git diff into short git commit message under 64 characters."
+git diff | mods "summarize following git diff into short git commit message under 10 words."
 ```
 
 Requirements
