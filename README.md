@@ -14,7 +14,7 @@
    + [➡ Code analysis and recommendations with `charmbracelet/mods`](#-code-analysis-and-recommendations-with-charmbraceletmods)
    + [➡ Commit message recommendation](#-commit-message-recommendation)
    + [➡ Test case recommendation](#-test-case-recommendation)
-   + [➡ Estimate time complexity](#-estimate-time-complexity)
+   + [➡ Time complexity estimate](#-time-complexity-estimate)
  - Testing
    + [➡ Make treemap of coverage with `go-cover-treemap`](#-make-treemap-of-coverage-with-go-cover-treemap)
    + [➡ Browse coverage](#-browse-coverage)
@@ -247,7 +247,7 @@ functions.
 ```
 
 
-### [⏫](#contents)➡ Estimate time complexity
+### [⏫](#contents)➡ Time complexity estimate
 
 This is one of recommended use cases by OpenAI website. It can produce fairly good estimations. Copy function and pipe it to model with prompt asking for time complexity estimation.
 

@@ -78,7 +78,7 @@ groups:
           for equality, as well as testing the commutativity, associativity, and identity properties of addition and          
           multiplication. Finally, the program should have a test that verifies the  MarshalJSON  and  UnmarshalJSON          
           functions.
-      - title: Estimate time complexity
+      - title: Time complexity estimate
         url: https://github.com/charmbracelet/mods
         description: This is one of recommended use cases by OpenAI website. It can produce fairly good estimations. Copy function and pipe it to model with prompt asking for time complexity estimation.
         commands:
