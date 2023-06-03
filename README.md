@@ -9,9 +9,9 @@
 
 ## Contents
 
- - AI tools and Prompt Engineering
+ - AI tools
    + [➡ Advanced autocompletion with `Copilot`](#-advanced-autocompletion-with-copilot)
-   + [➡ (waitlist) Pull requests automation with `CopilotX`](#-waitlist-pull-requests-automation-with-copilotx)
+   + [➡ (waitlist) Pull requests recommendations with `CopilotX`](#-waitlist-pull-requests-recommendations-with-copilotx)
    + [➡ Code analysis and recommendations with `charmbracelet/mods`](#-code-analysis-and-recommendations-with-charmbraceletmods)
    + [➡ Commit message recommendation](#-commit-message-recommendation)
    + [➡ Test case recommendation](#-test-case-recommendation)
@@ -153,7 +153,7 @@
    + [➡ Visualize struct layout with `structlayout`](#-visualize-struct-layout-with-structlayout)
    + [➡ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
 
-## AI tools and Prompt Engineering
+## AI tools
 
 ### [⏫](#contents)➡ Advanced autocompletion with [Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 
@@ -174,7 +174,7 @@ VSCode
 GitHub account
 ```
 
-### [⏫](#contents)➡ (waitlist) Pull requests automation with [CopilotX](https://github.com/features/preview/copilot-x)
+### [⏫](#contents)➡ (waitlist) Pull requests recommendations with [CopilotX](https://github.com/features/preview/copilot-x)
 
 CopilotX has dedicated solutions for: writing PR description; writing tests; writing PR reviews and replies; applying requested PR changes. As of `2023-06-04`, it is on waitlist. [documentation](https://githubnext.com/projects/copilot-for-pull-requests).
 
@@ -222,7 +222,7 @@ go install github.com/charmbracelet/mods@latest
 
 ### [⏫](#contents)➡ Test case recommendation
 
-Concatenate two files and ask to recommend missing test cases. It is not precise, has high false positive and high false negative rate. Often can not detect that tests cases are present at all. However, it can give a fresh perspective on your code. Best results are produced when asking succinct short replies. The model works only with input up to 4K characters, so you have to slice input. Example outputs bellow.
+Concatenate two files and ask to recommend missing test cases. It is not precise, has high false positive and high false negative rate. Often can not detect that tests cases are present at all. However, it can give a fresh perspective on your code. Best results are produced when asking succinct short replies. Example outputs bellow.
 
 
 ```
@@ -254,7 +254,7 @@ functions.
 
 ### [⏫](#contents)➡ Time complexity estimate
 
-This is one of recommended use cases by OpenAI website. It can produce fairly good estimations. Copy function and pipe it to model with prompt asking for time complexity estimation. Bellow is example of analyzing a function.
+This is one of recommended use cases by OpenAI website. It can produce fairly good estimations. However, in its direct form usefulness is questionable, since complex cases are not handled precisely enough, educational potential is limited, and simple cases do not require this. Perhaps, this will be utilized in future work on using models in compiler and programming. Copy function and pipe it to model with prompt asking for time complexity estimation. Bellow is an example.
 
 
 ```
