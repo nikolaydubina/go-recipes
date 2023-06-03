@@ -43,7 +43,6 @@ groups:
           - go install github.com/charmbracelet/glow@latest
           - go install github.com/charmbracelet/mods@latest
       - title: Commit message recommendation
-        name: charmbracelet/mods
         description: Short summaries of changes usually work well.
         url: https://github.com/charmbracelet/mods
         commands:
@@ -56,7 +55,6 @@ groups:
           - "# OpenAI token or LocalAI model and server"
           - go install github.com/charmbracelet/mods@latest
       - title: Test case recommendation
-        name: charmbracelet/mods
         url: https://github.com/charmbracelet/mods
         description: Concatenate two files and ask to recommend missing test cases. It is not precise, has high false positive and high false negative rate. Often can not detect that tests cases are present at all. However, it can give a fresh perspective on your code. Best results are produced when asking succinct short replies. Example outputs bellow.
         commands:
@@ -81,7 +79,6 @@ groups:
           multiplication. Finally, the program should have a test that verifies the  MarshalJSON  and  UnmarshalJSON          
           functions.
       - title: Estimate time complexity
-        name: charmbracelet/mods
         url: https://github.com/charmbracelet/mods
         description: This is one of recommended use cases by OpenAI website. It can produce fairly good estimations. Copy function and pipe it to model with prompt asking for time complexity estimation.
         commands:

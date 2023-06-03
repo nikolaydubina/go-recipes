@@ -12,9 +12,9 @@
  - AI tools and Prompt Engineering
    + [➡ Advanced autocompletion with `Copilot`](#-advanced-autocompletion-with-copilot)
    + [➡ Code analysis and recommendations with `charmbracelet/mods`](#-code-analysis-and-recommendations-with-charmbraceletmods)
-   + [➡ Commit message recommendation with `charmbracelet/mods`](#-commit-message-recommendation-with-charmbraceletmods)
-   + [➡ Test case recommendation with `charmbracelet/mods`](#-test-case-recommendation-with-charmbraceletmods)
-   + [➡ Estimate time complexity with `charmbracelet/mods`](#-estimate-time-complexity-with-charmbraceletmods)
+   + [➡ Commit message recommendation](#-commit-message-recommendation)
+   + [➡ Test case recommendation](#-test-case-recommendation)
+   + [➡ Estimate time complexity](#-estimate-time-complexity)
  - Testing
    + [➡ Make treemap of coverage with `go-cover-treemap`](#-make-treemap-of-coverage-with-go-cover-treemap)
    + [➡ Browse coverage](#-browse-coverage)
@@ -193,7 +193,7 @@ go install github.com/charmbracelet/glow@latest
 go install github.com/charmbracelet/mods@latest
 ```
 
-### [⏫](#contents)➡ Commit message recommendation with [charmbracelet/mods](https://github.com/charmbracelet/mods)
+### [⏫](#contents)➡ Commit message recommendation
 
 Short summaries of changes usually work well.
 
@@ -215,7 +215,7 @@ Requirements
 go install github.com/charmbracelet/mods@latest
 ```
 
-### [⏫](#contents)➡ Test case recommendation with [charmbracelet/mods](https://github.com/charmbracelet/mods)
+### [⏫](#contents)➡ Test case recommendation
 
 Concatenate two files and ask to recommend missing test cases. It is not precise, has high false positive and high false negative rate. Often can not detect that tests cases are present at all. However, it can give a fresh perspective on your code. Best results are produced when asking succinct short replies. Example outputs bellow.
 
@@ -247,7 +247,7 @@ functions.
 ```
 
 
-### [⏫](#contents)➡ Estimate time complexity with [charmbracelet/mods](https://github.com/charmbracelet/mods)
+### [⏫](#contents)➡ Estimate time complexity
 
 This is one of recommended use cases by OpenAI website. It can produce fairly good estimations. Copy function and pipe it to model with prompt asking for time complexity estimation.
 
