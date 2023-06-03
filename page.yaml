@@ -80,11 +80,64 @@ groups:
           functions.
       - title: Time complexity estimate
         url: https://github.com/charmbracelet/mods
-        description: This is one of recommended use cases by OpenAI website. It can produce fairly good estimations. Copy function and pipe it to model with prompt asking for time complexity estimation.
+        description: This is one of recommended use cases by OpenAI website. It can produce fairly good estimations. Copy function and pipe it to model with prompt asking for time complexity estimation. Bellow is example of analyzing a function.
         commands:
           - pbpaste | mods -f "calculate time complexity of following Go code function." | glow
+        example_content_ext: go
+        example_content: |
+          func AppendFixedPointDecimal(b []byte, v int64, p int) []byte {
+            if v == 0 {
+              return append(b, '0')
+            }
+
+            if p == 0 {
+              return strconv.AppendInt(b, v, 10)
+            }
+
+            if v < 0 {
+              v = -v
+              b = append(b, '-')
+            }
+
+            s := len(b)
+            b = strconv.AppendInt(b, v, 10)
+
+            if len(b)-s > p {
+              i := len(b) - p
+              b = append(b, 0)
+              copy(b[i+1:], b[i:])
+              b[i] = '.'
+            } else {
+              i := 2 + p - (len(b) - s)
+              for j := 0; j < i; j++ {
+                b = append(b, 0)
+              }
+              copy(b[s+i:], b[s:])
+              copy(b[s:], []byte(zeroPrefix[:i]))
+            }
+
+            return b
+          }
         example_output: |
-          The time complexity of the AppendFixedPointDecimal function is O(N), where N is the length of the input byte slice b. This is because the function performs a constant number of operations for each byte in b, and the largest operation within the function is the loop that appends zeros to the byte slice, which has a length proportional to the input. Other operations, such as integer conversions and comparisons, are considered constant time since the input size is fixed.
+          The time complexity of the AppendFixedPointDecimal function is O(N), where N is the length of the input byte slice  
+          b. This is because the function performs a constant number of operations for each byte in b, and the largest        
+          operation within the function is the loop that appends zeros to the byte slice, which has a length proportional to  
+          the input. Other operations, such as integer conversions and comparisons, are considered constant time since the    
+          input size is fixed.                 
+          ------------------
+          The time complexity of the function depends on the input values  v  and  p .    
+          • The first three if statements before the main computation take constant time, 
+          so they don't contribute to the overall time complexity.                        
+          • The  strconv.AppendInt  function used twice has a time complexity of          
+          O(log(v)), where v is the integer being converted to a string representation in 
+          base 10.                                                                        
+          • The condition  len(b)-s > p  has a constant time complexity.                  
+          • The  append  and  copy  operations inside the if and else blocks take linear  
+          time proportional to  p .                                                       
+          • The  for  loop has a constant number of iterations, specifically 2 +  p  - (  
+          len(b)-s ). The  append  and  copy  operations inside the loop also take linear 
+          time proportional to  p .                                                       
+          Therefore, the overall time complexity of the function is O(log(v) + p).
   - title: Testing
     entries:
       - title: Make treemap of coverage
