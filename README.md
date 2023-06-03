@@ -11,6 +11,7 @@
 
  - AI tools and Prompt Engineering
    + [➡ Advanced autocompletion with `Copilot`](#-advanced-autocompletion-with-copilot)
+   + [➡ (waitlist) Pull requests automation with `CopilotX`](#-waitlist-pull-requests-automation-with-copilotx)
    + [➡ Code analysis and recommendations with `charmbracelet/mods`](#-code-analysis-and-recommendations-with-charmbraceletmods)
    + [➡ Commit message recommendation](#-commit-message-recommendation)
    + [➡ Test case recommendation](#-test-case-recommendation)
@@ -172,6 +173,11 @@ Requirements
 VSCode
 GitHub account
 ```
+
+### [⏫](#contents)➡ (waitlist) Pull requests automation with [CopilotX](https://github.com/features/preview/copilot-x)
+
+CopilotX has dedicated solutions for: writing PR description; writing tests; writing PR reviews and replies; applying requested PR changes. As of `2023-06-04`, it is on waitlist. [documentation](https://githubnext.com/projects/copilot-for-pull-requests).
+
 
 ### [⏫](#contents)➡ Code analysis and recommendations with [charmbracelet/mods](https://github.com/charmbracelet/mods)
 
