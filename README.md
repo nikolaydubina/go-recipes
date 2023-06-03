@@ -13,7 +13,7 @@
    + [➡ Advanced autocompletion with `Copilot`](#-advanced-autocompletion-with-copilot)
    + [➡ Code analysis and recommendations with `charmbracelet/mods`](#-code-analysis-and-recommendations-with-charmbraceletmods)
    + [➡ Commit message recommendation with `charmbracelet/mods`](#-commit-message-recommendation-with-charmbraceletmods)
-   + [➡ Test case recommendation](#-test-case-recommendation)
+   + [➡ Test case recommendation with `charmbracelet/mods`](#-test-case-recommendation-with-charmbraceletmods)
  - Testing
    + [➡ Make treemap of coverage with `go-cover-treemap`](#-make-treemap-of-coverage-with-go-cover-treemap)
    + [➡ Browse coverage](#-browse-coverage)
@@ -214,7 +214,7 @@ Requirements
 go install github.com/charmbracelet/mods@latest
 ```
 
-### [⏫](#contents)➡ Test case recommendation
+### [⏫](#contents)➡ Test case recommendation with [charmbracelet/mods](https://github.com/charmbracelet/mods)
 
 Concatenate two files and ask to recommend missing test cases. It is not precise, has high false positive and high false negative rate. Often can not detect that tests cases are present at all. However, it can give a fresh perspective on your code. Best results are produced when asking succinct short replies. Example outputs bellow.
 
