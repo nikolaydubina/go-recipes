@@ -13,6 +13,7 @@
    + [➡ Advanced autocompletion with `Copilot`](#-advanced-autocompletion-with-copilot)
    + [➡ Code analysis and recommendations with `charmbracelet/mods`](#-code-analysis-and-recommendations-with-charmbraceletmods)
    + [➡ Commit message recommendation with `charmbracelet/mods`](#-commit-message-recommendation-with-charmbraceletmods)
+   + [➡ Test case recommendation](#-test-case-recommendation)
  - Testing
    + [➡ Make treemap of coverage with `go-cover-treemap`](#-make-treemap-of-coverage-with-go-cover-treemap)
    + [➡ Browse coverage](#-browse-coverage)
@@ -193,7 +194,7 @@ go install github.com/charmbracelet/mods@latest
 
 ### [⏫](#contents)➡ Commit message recommendation with [charmbracelet/mods](https://github.com/charmbracelet/mods)
 
-
+Short summaries of changes usually work well.
 
 
 ```
@@ -207,6 +208,17 @@ Requirements
 # OpenAI token or LocalAI model and server
 go install github.com/charmbracelet/mods@latest
 ```
+
+### [⏫](#contents)➡ Test case recommendation
+
+Concatenate two files and ask to recommend missing test cases. It is not precise, has high false positive and high false negative rate. Often can not detect that tests cases are present at all. However, it can give a fresh perspective on your code. Best results are produced when asking succinct short replies. Example outputs bellow.
+
+
+```
+cat fpdecimal.go fpdecimal_test.go | head -c 3600 | mods -f "you are an expert Go programmer. investigate supplied Go program and associated test suite. recommend missing test cases. write very succinctly. under 100 words." | glow
+cat fpdecimal.go fpdecimal_test.go | head -c 4000 | mods -f "investigate supplied Go program and associated test suite. recommend missing test cases." | glow
+```
+
 
 ## Testing
 
