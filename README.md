@@ -200,8 +200,7 @@ Short summaries of changes usually work well.
 
 ```
 git diff | mods "summarize following git diff into short git commit message."
-git diff | mods "summarize following git diff into short git commit message under 64 characters."
-git diff | mods "summarize following git diff into short git commit message under 10 words."
+git diff | mods "you are expert Go programmer. you are owner of this codebase. think through step by step. summarize following git diff into short git commit message under 10 words."
 ```
 
 Example
@@ -217,11 +216,11 @@ go install github.com/charmbracelet/mods@latest
 
 ### [⏫](#contents)➡ Test case recommendation
 
-Concatenate two files and ask to recommend missing test cases. It is not precise, has high false positive and high false negative rate. Often can not detect that tests cases are present at all. However, it can give a fresh perspective on your code. Best results are produced when asking succinct short replies. Example outputs bellow.
+Concatenate two files and ask to recommend missing test cases. It is not precise, has high false positive and high false negative rate. Often can not detect that tests cases are present at all. However, it can give a fresh perspective on your code. Best results are produced when asking succinct short replies. The model works only with input up to 4K characters, so you have to slice input. Example outputs bellow.
 
 
 ```
-cat fpdecimal.go fpdecimal_test.go | head -c 3600 | mods -f "you are an expert Go programmer. investigate supplied Go program and associated test suite. recommend missing test cases. write very succinctly. under 100 words." | glow
+cat fpdecimal.go fpdecimal_test.go | head -c 3600 | mods -f "you are an expert Go programmer. investigate supplied Go program and associated test suite. think through this step by step. make sure you get the right answer. recommend missing test cases. write very succinctly. under 100 words." | glow
 cat fpdecimal.go fpdecimal_test.go | head -c 4000 | mods -f "investigate supplied Go program and associated test suite. recommend missing test cases." | glow
 ```
 
