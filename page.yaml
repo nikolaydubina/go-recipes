@@ -17,6 +17,43 @@ entry:
   example:
     title: Example
 groups:
+  - title: Using AI for Go projects
+    entries:
+      - title: Advanced autocompletion
+        name: Copilot
+        description: Start typing and after few seconds you will get autocompletion suggestion. Some useful ways to interact with it listed bellow.
+        url: https://marketplace.visualstudio.com/items?itemName=GitHub.copilot
+        example_image_url: https://user-images.githubusercontent.com/37570492/212964557-8d832278-61bb-4288-a8a7-47f35859e868.gif
+        commands:
+          - given a function signature and docstring, it will suggest function body
+          - given a function body, it will suggest docstring
+        requirements:
+          - VSCode
+          - GitHub account
+      - title: Code analysis and recommendations
+        name: charmbracelet/mod
+        description: This is a nice looking CLI wrapper for major LLM APIs from [Charm](https://github.com/charmbracelet) team. It supports OpenAI and [LocalAI](https://github.com/go-skynet/LocalAI). It passes arbitrary human language command string and concatenated with STDIN input. Multiple useful commands are possible.
+        url: https://github.com/charmbracelet/mods
+        commands:
+          - mods -f "what are your thoughts on improving this code?" < main.go | glow
+          - mods -f "you are an expert Go programmer. find potential bugs in following Go code." < my_class.go | glow
+        example_image_url: https://user-images.githubusercontent.com/25087/237975943-738fe969-1c9f-4849-af8a-cde38156ce92.gif
+        requirements:
+          - "# OpenAI token or LocalAI model and server"
+          - go install github.com/charmbracelet/glow@latest
+          - go install github.com/charmbracelet/mods@latest
+      - title: Commit message recommendation
+        name: charmbracelet/mod
+        description: 
+        url: https://github.com/charmbracelet/mods
+        commands:
+          - git diff | mods "summarize following git diff into short git commit message."
+          - git diff | mods "summarize following git diff into short git commit message under 64 characters."
+        example-output: |
+          Add new entries for Using AI in Go projects, including Advanced autocompletion with Copilot and Code analysis and recommendations with charmbracelet/mod. Update page.yaml accordingly.
+        requirements:
+          - "# OpenAI token or LocalAI model and server"
+          - go install github.com/charmbracelet/mods@latest
   - title: Testing
     entries:
       - title: Make treemap of coverage
