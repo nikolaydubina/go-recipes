@@ -9,6 +9,10 @@
 
 ## Contents
 
+ - Using AI for Go projects
+   + [➡ Advanced autocompletion with `Copilot`](#-advanced-autocompletion-with-copilot)
+   + [➡ Code analysis and recommendations with `charmbracelet/mod`](#-code-analysis-and-recommendations-with-charmbraceletmod)
+   + [➡ Commit message recommendation with `charmbracelet/mod`](#-commit-message-recommendation-with-charmbraceletmod)
  - Testing
    + [➡ Make treemap of coverage with `go-cover-treemap`](#-make-treemap-of-coverage-with-go-cover-treemap)
    + [➡ Browse coverage](#-browse-coverage)
@@ -145,6 +149,63 @@
    + [➡ Perform Taint Analysis with `taint`](#-perform-taint-analysis-with-taint)
    + [➡ Visualize struct layout with `structlayout`](#-visualize-struct-layout-with-structlayout)
    + [➡ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
+
+## Using AI for Go projects
+
+### [⏫](#contents)➡ Advanced autocompletion with [Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
+
+Start typing and after few seconds you will get autocompletion suggestion. Some useful ways to interact with it listed bellow.
+
+
+```
+given a function signature and docstring, it will suggest function body
+given a function body, it will suggest docstring
+```
+
+<div align="center"><img src="https://user-images.githubusercontent.com/37570492/212964557-8d832278-61bb-4288-a8a7-47f35859e868.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+VSCode
+GitHub account
+```
+
+### [⏫](#contents)➡ Code analysis and recommendations with [charmbracelet/mod](https://github.com/charmbracelet/mods)
+
+This is a nice looking CLI wrapper for major LLM APIs from [Charm](https://github.com/charmbracelet) team. It supports OpenAI and [LocalAI](https://github.com/go-skynet/LocalAI). It passes arbitrary human language command string and concatenated with STDIN input. Multiple useful commands are possible.
+
+
+```
+mods -f "what are your thoughts on improving this code?" < main.go | glow
+mods -f "you are an expert Go programmer. find potential bugs in following Go code." < my_class.go | glow
+```
+
+<div align="center"><img src="https://user-images.githubusercontent.com/25087/237975943-738fe969-1c9f-4849-af8a-cde38156ce92.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+# OpenAI token or LocalAI model and server
+go install github.com/charmbracelet/glow@latest
+go install github.com/charmbracelet/mods@latest
+```
+
+### [⏫](#contents)➡ Commit message recommendation with [charmbracelet/mod](https://github.com/charmbracelet/mods)
+
+
+
+
+```
+git diff | mods "summarize following git diff into short git commit message."
+git diff | mods "summarize following git diff into short git commit message under 64 characters."
+```
+
+Requirements
+```
+# OpenAI token or LocalAI model and server
+go install github.com/charmbracelet/mods@latest
+```
 
 ## Testing
 
