@@ -258,7 +258,8 @@ pbpaste | mods -f "calculate time complexity of following Go code function." | g
 
 Example
 ```
-The time complexity of the AppendFixedPointDecimal function is O(N), where N is the length of the input byte slice b. This is because the function performs a constant number of operations for each byte in b, and the largest operation within the function is the loop that appends zeros to the byte slice, which has a length proportional to the input. Other operations, such as integer conversions and comparisons, are considered constant time since the input size is fixed.```
+The time complexity of the AppendFixedPointDecimal function is O(N), where N is the length of the input byte slice b. This is because the function performs a constant number of operations for each byte in b, and the largest operation within the function is the loop that appends zeros to the byte slice, which has a length proportional to the input. Other operations, such as integer conversions and comparisons, are considered constant time since the input size is fixed.
+```
 
 
 ## Testing
