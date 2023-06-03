@@ -14,6 +14,7 @@
    + [➡ Code analysis and recommendations with `charmbracelet/mods`](#-code-analysis-and-recommendations-with-charmbraceletmods)
    + [➡ Commit message recommendation with `charmbracelet/mods`](#-commit-message-recommendation-with-charmbraceletmods)
    + [➡ Test case recommendation with `charmbracelet/mods`](#-test-case-recommendation-with-charmbraceletmods)
+   + [➡ Estimate time complexity with `charmbracelet/mods`](#-estimate-time-complexity-with-charmbraceletmods)
  - Testing
    + [➡ Make treemap of coverage with `go-cover-treemap`](#-make-treemap-of-coverage-with-go-cover-treemap)
    + [➡ Browse coverage](#-browse-coverage)
@@ -243,47 +244,25 @@ FractionDigits  value does not change during the program's runtime. Important te
 for equality, as well as testing the commutativity, associativity, and identity properties of addition and          
 multiplication. Finally, the program should have a test that verifies the  MarshalJSON  and  UnmarshalJSON          
 functions.
-------------------
-1. Test cases should be created to test the edge cases when the resulting number after any operation is either      
-maximum or minimum such as:                                                                                         
-                                                                                                                  
-• Adding a Decimal value to another decimal value that results in the number reaching maximum or minimum.           
-• Subtracting a Decimal value from another decimal value that results in the number reaching maximum or minimum.    
-• Multiplying a Decimal value with another decimal value that results in the number reaching maximum or minimum.    
-• Dividing a Decimal value with another decimal value that results in the number reaching maximum or minimum.       
-                                                                                                                  
-2. Test cases should be created to test the function 'DivMod' which returns the quotient and remainder from division
-between two Decimal numbers.                                                                                        
-                                                                                                                  
-• Test the function for a range of valid input values such as evenly divisible numbers and numbers that are not     
-evenly divisible.                                                                                                   
-• Test with very large numbers and very small numbers to ensure accuracy of the function.                           
-                                                                                                                  
-3. Test cases should be created to test the 'FromString' function which parses string inputs into Decimal values.   
-The tests should consider:                                                                                          
-                                                                                                                  
-• Valid input strings for different numbers such as whole numbers, decimal numbers and negative numbers.            
-• Input strings that exceed the Decimal range limits.                                                               
-• Two input strings with different values but with the same rounded result.                                         
-                                                                                                                  
-4. Test cases should be created to test the functions 'MarshalJSON' and 'UnmarshalJSON', which convert JSON data    
-format to and from Decimal values respectively. The following tests can be considered:                              
-                                                                                                                  
-• JSON data generated from valid Decimal values should be parsed back to Decimal values accurately.                 
-• Invalid JSON data should produce errors while performing the conversion.                                          
-• JSON data generation and parsing should still work accurately for very small or very large Decimal values.        
-                                                                                                                  
-5. Test cases should be created to test the functions 'Float32' and 'Float64'. The tests should consider:           
-                                                                                                                  
-• Conversion of Decimal values with maximum and minimum range.                                                      
-• Conversion of Decimal values with various float types.                                                            
-• Testing the precision of the float values with larger decimal inputs.                                             
-                                                                                                                  
-6. Test cases should be created to test the concurrent use of the package. The tests should include:                
-                                                                                                                  
-• Multiple go routines running at the same time and performing read and write operations of Decimal values.         
-• One go routine reads while one go routine writes simultaneously.                                                  
-• Testing the function across multiple machines/processes, while running multithreaded tests. 
+```
+
+
+### [⏫](#contents)➡ Estimate time complexity with [charmbracelet/mods](https://github.com/charmbracelet/mods)
+
+This is one of recommended use cases by OpenAI website. It can produce fairly good estimations. Copy function and pipe it to model with prompt asking for time complexity estimation.
+
+
+```
+pbpaste | mods -f "calculate time complexity of following Go code function." | glow
+```
+
+Example
+```
+The time complexity of the AppendFixedPointDecimal function is O(N), where N is the length of the input byte slice  
+b. This is because the function performs a constant number of operations for each byte in b, and the largest        
+operation within the function is the loop that appends zeros to the byte slice, which has a length proportional to  
+the input. Other operations, such as integer conversions and comparisons, are considered constant time since the    
+input size is fixed.                 
 ```
 
 
