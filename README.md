@@ -11,8 +11,8 @@
 
  - AI tools and Prompt Engineering
    + [➡ Advanced autocompletion with `Copilot`](#-advanced-autocompletion-with-copilot)
-   + [➡ Code analysis and recommendations with `charmbracelet/mod`](#-code-analysis-and-recommendations-with-charmbraceletmod)
-   + [➡ Commit message recommendation with `charmbracelet/mod`](#-commit-message-recommendation-with-charmbraceletmod)
+   + [➡ Code analysis and recommendations with `charmbracelet/mods`](#-code-analysis-and-recommendations-with-charmbraceletmods)
+   + [➡ Commit message recommendation with `charmbracelet/mods`](#-commit-message-recommendation-with-charmbraceletmods)
  - Testing
    + [➡ Make treemap of coverage with `go-cover-treemap`](#-make-treemap-of-coverage-with-go-cover-treemap)
    + [➡ Browse coverage](#-browse-coverage)
@@ -171,7 +171,7 @@ VSCode
 GitHub account
 ```
 
-### [⏫](#contents)➡ Code analysis and recommendations with [charmbracelet/mod](https://github.com/charmbracelet/mods)
+### [⏫](#contents)➡ Code analysis and recommendations with [charmbracelet/mods](https://github.com/charmbracelet/mods)
 
 This is a nice looking CLI wrapper for major LLM APIs from [Charm](https://github.com/charmbracelet) team. It supports OpenAI and [LocalAI](https://github.com/go-skynet/LocalAI). It passes arbitrary human language command string and concatenated with STDIN input. Multiple useful commands are possible.
 
@@ -191,7 +191,7 @@ go install github.com/charmbracelet/glow@latest
 go install github.com/charmbracelet/mods@latest
 ```
 
-### [⏫](#contents)➡ Commit message recommendation with [charmbracelet/mod](https://github.com/charmbracelet/mods)
+### [⏫](#contents)➡ Commit message recommendation with [charmbracelet/mods](https://github.com/charmbracelet/mods)
 
 
 

@@ -31,7 +31,7 @@ groups:
           - VSCode
           - GitHub account
       - title: Code analysis and recommendations
-        name: charmbracelet/mod
+        name: charmbracelet/mods
         description: This is a nice looking CLI wrapper for major LLM APIs from [Charm](https://github.com/charmbracelet) team. It supports OpenAI and [LocalAI](https://github.com/go-skynet/LocalAI). It passes arbitrary human language command string and concatenated with STDIN input. Multiple useful commands are possible.
         url: https://github.com/charmbracelet/mods
         commands:
@@ -43,7 +43,7 @@ groups:
           - go install github.com/charmbracelet/glow@latest
           - go install github.com/charmbracelet/mods@latest
       - title: Commit message recommendation
-        name: charmbracelet/mod
+        name: charmbracelet/mods
         description: 
         url: https://github.com/charmbracelet/mods
         commands:
