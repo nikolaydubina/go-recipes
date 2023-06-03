@@ -50,7 +50,7 @@ groups:
           - git diff | mods "summarize following git diff into short git commit message."
           - git diff | mods "summarize following git diff into short git commit message under 64 characters."
           - git diff | mods "summarize following git diff into short git commit message under 10 words."
-        example-output: |
+        example_output: |
           Add new entries for Using AI in Go projects, including Advanced autocompletion with Copilot and Code analysis and recommendations with charmbracelet/mod. Update page.yaml accordingly.
         requirements:
           - "# OpenAI token or LocalAI model and server"
@@ -60,7 +60,7 @@ groups:
         commands:
           - cat fpdecimal.go fpdecimal_test.go | head -c 3600 | mods -f "you are an expert Go programmer. investigate supplied Go program and associated test suite. recommend missing test cases. write very succinctly. under 100 words." | glow 
           - cat fpdecimal.go fpdecimal_test.go | head -c 4000 | mods -f "investigate supplied Go program and associated test suite. recommend missing test cases." | glow
-        example-output: |
+        example_output: |
           For additional test cases, consider adding tests for negative float values, positive and negative infinity, unsigned
           integers, zero divided by a number greater than zero, and division with only zeros.                       
           ------------------
