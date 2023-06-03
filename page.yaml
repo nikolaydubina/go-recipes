@@ -30,6 +30,10 @@ groups:
         requirements:
           - VSCode
           - GitHub account
+      - title: (waitlist) Pull requests automation
+        name: CopilotX
+        description: "CopilotX has dedicated solutions for: writing PR description; writing tests; writing PR reviews and replies; applying requested PR changes. As of `2023-06-04`, it is on waitlist. [documentation](https://githubnext.com/projects/copilot-for-pull-requests)."
+        url: https://github.com/features/preview/copilot-x
       - title: Code analysis and recommendations
         name: charmbracelet/mods
         description: This is a nice looking CLI wrapper for major LLM APIs from [Charm](https://github.com/charmbracelet) team. It supports OpenAI and [LocalAI](https://github.com/go-skynet/LocalAI). It passes arbitrary human language command string and concatenated with STDIN input. Multiple useful commands are possible.
