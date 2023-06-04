@@ -47,9 +47,9 @@
    + [➡ Make graph of upstream packages with `import-graph`](#-make-graph-of-upstream-packages-with-import-graph)
    + [➡ Scrape details about upstream modules and make graph with `import-graph`](#-scrape-details-about-upstream-modules-and-make-graph-with-import-graph)
    + [➡ Scrape licenses of upstream dependencies with `go-licenses`](#-scrape-licenses-of-upstream-dependencies-with-go-licenses)
-   + [➡ Explore upstream dependencies interactively with `spaghetti`](#-explore-upstream-dependencies-interactively-with-spaghetti)
+   + [➡ Explore dependencies with `goda`](#-explore-dependencies-with-goda)
+   + [➡ Explore dependencies interactively with `spaghetti`](#-explore-dependencies-interactively-with-spaghetti)
    + [➡ Use `go mod` directives](#-use-go-mod-directives)
-   + [➡ Analyze dependencies with `goda`](#-analyze-dependencies-with-goda)
  - Code Visualization
    + [➡ Make C4 diagram with `go-structurizr`](#-make-c4-diagram-with-go-structurizr)
    + [➡ Make graph of function calls with `callgraph`](#-make-graph-of-function-calls-with-callgraph)
@@ -849,7 +849,26 @@ Requirements
 go install github.com/google/go-licenses@latest
 ```
 
-### [⏫](#contents)➡ Explore upstream dependencies interactively with [spaghetti](https://github.com/adonovan/spaghetti)
+### [⏫](#contents)➡ Explore dependencies with [goda](https://github.com/loov/goda)
+
+This tool has extensive syntax for filtering dependencies graphs. It can work with packages and modules. — [Egon Elbre](egonelbre@gmail.com)
+
+
+```
+goda graph . | dot -Tsvg -o graph.svg
+goda graph -cluster -short "github.com/nikolaydubina/go-cover-treemap:all" | dot -Tsvg -o graph.svg
+```
+
+<div align="center"><img src="https://github.com/loov/goda/raw/master/graph.svg" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+https://graphviz.org/download/
+go install github.com/loov/goda@latest
+```
+
+### [⏫](#contents)➡ Explore dependencies interactively with [spaghetti](https://github.com/adonovan/spaghetti)
 
 Useful in large refactorings, dependency breaking, physical layout changes. — [Alan Donovan](https://github.com/adonovan), official Go team
 
@@ -878,25 +897,6 @@ replace example.com/bad/thing v1.4.5 => example.com/good/thing v1.4.5
 retract [v1.9.0, v1.9.5]
 ```
 
-
-### [⏫](#contents)➡ Analyze dependencies with [goda](https://github.com/loov/goda)
-
-This tool has extensive syntax for filtering dependencies graphs. It can work with packages and modules. — [Egon Elbre](egonelbre@gmail.com)
-
-
-```
-goda graph . | dot -Tsvg -o graph.svg
-goda graph -cluster -short "github.com/nikolaydubina/go-cover-treemap:all" | dot -Tsvg -o graph.svg
-```
-
-<div align="center"><img src="https://github.com/loov/goda/raw/master/graph.svg" style="margin: 8px; max-height: 640px;"></div>
-
-
-Requirements
-```
-https://graphviz.org/download/
-go install github.com/loov/goda@latest
-```
 
 ## Code Visualization
 
