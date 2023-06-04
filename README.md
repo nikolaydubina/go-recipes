@@ -148,6 +148,7 @@
    + [➡ Detect vertical function ordering with `vertfn`](#-detect-vertical-function-ordering-with-vertfn)
    + [➡ Calculate Cognitive Complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
    + [➡ Calculate Cyclomatic Complexity with `gocyclo`](#-calculate-cyclomatic-complexity-with-gocyclo)
+   + [➡ Calculate Cyclomatic Complexity with `cyclop`](#-calculate-cyclomatic-complexity-with-cyclop)
    + [➡ Calculate age of comments with `go-commentage`](#-calculate-age-of-comments-with-go-commentage)
    + [➡ (archived) Ensure `if` statements using short assignment with `ifshort`](#-archived-ensure-if-statements-using-short-assignment-with-ifshort)
    + [➡ Perform Taint Analysis with `taint`](#-perform-taint-analysis-with-taint)
@@ -2539,6 +2540,32 @@ $ gocyclo -over=5 .
 Requirements
 ```
 go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
+```
+
+### [⏫](#contents)➡ Calculate Cyclomatic Complexity with [cyclop](https://github.com/bkielbasa/cyclop)
+
+This linter calculates cyclomatic copmlexity of functions or packages. It can select minimum compexlity and act as blocking linter in CI pipelines. The key offering from this linter is that it can calculate avg cyclomatic compelxity on package. — [@bkielbasa](https://github.com/bkielbasa)
+
+
+```
+cyclop ./...
+# to find packages with avg cyclomatic copmlexity above maximum
+cyclop -packageAverage 5 -maxComplexity 10000 ./...
+```
+
+Example
+```
+/kubernetes/test/integration/scheduler/scoring/priorities_test.go:17:1: the average complexity for the package scoring is 6.100000, max is 5.000000
+/kubernetes/test/integration/serviceaccount/service_account_test.go:17:1: the average complexity for the package serviceaccount is 10.666667, max is 5.000000
+/kubernetes/test/integration/volume/persistent_volumes_test.go:17:1: the average complexity for the package volume is 6.157895, max is 5.000000
+/kubernetes/test/list/main_test.go:17:1: the average complexity for the package main is 5.461538, max is 5.000000
+/kubernetes/test/typecheck/main_test.go:17:1: the average complexity for the package main is 5.916667, max is 5.000000
+/kubernetes/third_party/forked/golang/net/dnsclient_test.go:10:1: the average complexity for the package net is 5.333333, max is 5.000000
+```
+
+Requirements
+```
+go install github.com/bkielbasa/cyclop@latest
 ```
 
 ### [⏫](#contents)➡ Calculate age of comments with [go-commentage](https://github.com/nikolaydubina/go-commentage)
