@@ -1372,6 +1372,15 @@ groups:
         description: This tool has comprehensive list of linters. Owners of this aggregator keep track of active linters, their versions, and optimal configs. It contains many optimizations to make linters run fast by paralleism, distributing binaries and Docker images, utilising `golang.org/x/tools/go/analysis` toolchain.
         url: https://github.com/golangci/golangci-lint
         name: golangci
+      - title: Detect linting issues based on Go 'Code Review Comments' style guide
+        description: This linting aggregator and runner is similar to staticcheck. It has 100+ linting rules. It is based on Go [Code Review Comments](https://github.com/golang/go/wiki/CodeReviewComments) style guide that is used in core Go project itself. It has styling, security, performance rules. It has minimal dependencies and implements rules itself. It exports all analysers into `golang.org/x/tools/go/analysis` toolchain.
+        url: https://github.com/go-critic/go-critic
+        author: https://github.com/quasilyte
+        name: go-critic
+        commands:
+          - gocritic check ./...
+        requirements:
+          - go install -v github.com/go-critic/go-critic/cmd/gocritic@latest
       - title: Detect non-exhaustive switch and map
         description: This `go vet` compatible analyzer checks for exhaustive switch statemnts and map literals. It works for enums with underyling integer, float, or string types (struct based enums are not supported).
         name: exhaustive
