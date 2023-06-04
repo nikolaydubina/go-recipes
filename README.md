@@ -93,6 +93,7 @@
    + [➡ (archived) Make graph of AST with `astgraph`](#-archived-make-graph-of-ast-with-astgraph)
  - Execution
    + [➡ Run alternative Go Playground with `goplay.tools`](#-run-alternative-go-playground-with-goplaytools)
+   + [➡ Run interactive Go kernels in Jupyter Notebook with `gophernotes`](#-run-interactive-go-kernels-in-jupyter-notebook-with-gophernotes)
    + [➡ Run interactive Go interpreter with `yaegi`](#-run-interactive-go-interpreter-with-yaegi)
    + [➡ Run interactive Go interpreter with `gomacro`](#-run-interactive-go-interpreter-with-gomacro)
    + [➡ Run Go function in shell with `gorram`](#-run-go-function-in-shell-with-gorram)
@@ -1503,6 +1504,20 @@ Improved Go Playground featuring dark theme, code autocomplete, vim mode, WebAss
 <div align="center"><img src="https://github.com/x1unix/go-playground/raw/master/docs/demo.gif" style="margin: 8px; max-height: 640px;"></div>
 
 
+
+### [⏫](#contents)➡ Run interactive Go kernels in Jupyter Notebook with [gophernotes](https://github.com/gopherdata/gophernotes)
+
+Run interactive Go interpreter in Jupyter Notebook browser. As of `2023-06-04`, it is using `gomacro` interpreter and can have issues with loading 3rd party pacakges. — [@gopherdata](https://github.com/gopherdata)
+
+<div align="center"><img src="https://github.com/gopherdata/gophernotes/raw/master/files/jupyter.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+# jupyter notebook
+go install github.com/gopherdata/gophernotes@v0.7.5
+# more instructions on how to install Jupyter Notebook Go kernel in original repo
+```
 
 ### [⏫](#contents)➡ Run interactive Go interpreter with [yaegi](https://github.com/traefik/yaegi)
 

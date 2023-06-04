@@ -915,6 +915,16 @@ groups:
         url: https://github.com/x1unix/go-playground
         author: https://github.com/x1unix
         example_image_url: https://github.com/x1unix/go-playground/raw/master/docs/demo.gif
+      - title: Run interactive Go kernels in Jupyter Notebook
+        description: Run interactive Go interpreter in Jupyter Notebook browser. As of `2023-06-04`, it is using `gomacro` interpreter and can have issues with loading 3rd party pacakges.
+        url: https://github.com/gopherdata/gophernotes
+        name: gophernotes
+        author: https://github.com/gopherdata
+        example_image_url: https://github.com/gopherdata/gophernotes/raw/master/files/jupyter.gif
+        requirements:
+          - "# jupyter notebook"
+          - go install github.com/gopherdata/gophernotes@v0.7.5
+          - "# more instructions on how to install Jupyter Notebook Go kernel in original repo"
       - title: Run interactive Go interpreter
         description: This interpreter works with 3rd party pacakges located in `$GOPATH/src`. It can also be triggered within Go programmatically via `Eval()`. Works everywhere Go works.
         url: https://github.com/traefik/yaegi
