@@ -466,7 +466,19 @@ groups:
           - go-licenses csv github.com/gohugoio/hugo
         requirements:
           - go install github.com/google/go-licenses@latest
-      - title: Explore upstream dependencies interactively
+      - title: Explore dependencies
+        description: This tool has extensive syntax for filtering dependencies graphs. It can work with packages and modules.
+        name: goda
+        url: https://github.com/loov/goda
+        author: "[Egon Elbre](egonelbre@gmail.com)"
+        commands:
+          - goda graph . | dot -Tsvg -o graph.svg
+          - goda graph -cluster -short "github.com/nikolaydubina/go-cover-treemap:all" | dot -Tsvg -o graph.svg
+        requirements:
+          - https://graphviz.org/download/
+          - go install github.com/loov/goda@latest
+        example_image_url: https://github.com/loov/goda/raw/master/graph.svg
+      - title: Explore dependencies interactively
         description: Useful in large refactorings, dependency breaking, physical layout changes.
         name: spaghetti
         url: https://github.com/adonovan/spaghetti
@@ -487,18 +499,6 @@ groups:
           exclude example.com/old/thing v1.2.3
           replace example.com/bad/thing v1.4.5 => example.com/good/thing v1.4.5
           retract [v1.9.0, v1.9.5]
-      - title: Analyze dependencies
-        description: This tool has extensive syntax for filtering dependencies graphs. It can work with packages and modules.
-        name: goda
-        url: https://github.com/loov/goda
-        author: "[Egon Elbre](egonelbre@gmail.com)"
-        commands:
-          - goda graph . | dot -Tsvg -o graph.svg
-          - goda graph -cluster -short "github.com/nikolaydubina/go-cover-treemap:all" | dot -Tsvg -o graph.svg
-        requirements:
-          - https://graphviz.org/download/
-          - go install github.com/loov/goda@latest
-        example_image_url: https://github.com/loov/goda/raw/master/graph.svg
   - title: Code Visualization
     entries:
       - title: Make C4 diagram
