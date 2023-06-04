@@ -136,6 +136,7 @@
    + [➡ Run official static analyzers not included in `go vet`](#-run-official-static-analyzers-not-included-in-go-vet)
    + [➡ Detect most common issues with `staticcheck`](#-detect-most-common-issues-with-staticcheck)
    + [➡ Reference and run common linters with `golangci`](#-reference-and-run-common-linters-with-golangci)
+   + [➡ Detect linting issues based on Go 'Code Review Comments' style guide with `go-critic`](#-detect-linting-issues-based-on-go-code-review-comments-style-guide-with-go-critic)
    + [➡ Detect non-exhaustive switch and map with `exhaustive`](#-detect-non-exhaustive-switch-and-map-with-exhaustive)
    + [➡ Detect structs with uninitialized fields with `go-exhaustruct`](#-detect-structs-with-uninitialized-fields-with-go-exhaustruct)
    + [➡ Detect unsafe code with `go-safer`](#-detect-unsafe-code-with-go-safer)
@@ -2160,6 +2161,20 @@ go install honnef.co/go/tools/cmd/staticcheck@latest
 
 This tool has comprehensive list of linters. Owners of this aggregator keep track of active linters, their versions, and optimal configs. It contains many optimizations to make linters run fast by paralleism, distributing binaries and Docker images, utilising `golang.org/x/tools/go/analysis` toolchain.
 
+
+### [⏫](#contents)➡ Detect linting issues based on Go 'Code Review Comments' style guide with [go-critic](https://github.com/go-critic/go-critic)
+
+This linting aggregator and runner is similar to staticcheck. It has 100+ linting rules. It is based on Go [Code Review Comments](https://github.com/golang/go/wiki/CodeReviewComments) style guide that is used in core Go project itself. It has styling, security, performance rules. It has minimal dependencies and implements rules itself. It exports all analysers into `golang.org/x/tools/go/analysis` toolchain. — [@quasilyte](https://github.com/quasilyte)
+
+
+```
+gocritic check ./...
+```
+
+Requirements
+```
+go install -v github.com/go-critic/go-critic/cmd/gocritic@latest
+```
 
 ### [⏫](#contents)➡ Detect non-exhaustive switch and map with [exhaustive](https://github.com/nishanths/exhaustive)
 
