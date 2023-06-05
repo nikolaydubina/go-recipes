@@ -1311,6 +1311,99 @@ groups:
           - go install github.com/divan/gotrace@latest
           - patch Go compiler, available via Docker
           - more instructions in original repo
+      - title: Wrap command
+        name: os/exec
+        description: Orignally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/).
+        example_content_ext: go
+        example_content: |
+          cmd := exec.Command("ls", "/usr/local/bin")
+          cmd.Stdout = os.Stdout
+          cmd.Stderr = os.Stderr
+          return cmd.Run()
+      - title: Capture output of command to file
+        description: Orignally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/).
+        author: Aaron Son
+        name: os/exec
+        example_content_ext: go
+        example_content: |
+          log, err := os.Create("output.log")
+          if err != nil {
+            return err
+          }
+          defer log.Close()
+          cmd := exec.Command("ls", "/usr/local/bin")
+          cmd.Stdout = log
+          cmd.Stderr = log
+          return cmd.Run()
+      - title: Capture output of command and process it
+        description: Orignally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/).
+        author: Aaron Son
+        name: os/exec
+        example_content_ext: go
+        example_content: |
+          cmd := exec.Command("ls", "/usr/local/bin")
+          stdout, err := cmd.StdoutPipe()
+          if err != nil {
+            return err
+          }
+          scanner := bufio.NewScanner(stdout)
+          err = cmd.Start()
+          if err != nil {
+            return err
+          }
+          for scanner.Scan() {
+            // Do something with the line here.
+            ProcessLine(scanner.Text())
+          }
+          if scanner.Err() != nil {
+            cmd.Process.Kill()
+            cmd.Wait()
+            return scanner.Err()
+          }
+          return cmd.Wait()
+      - title: Piping between processes
+        description: "`ls /usr/local/bin | grep pip`. Orignally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/)."
+        author: Aaron Son
+        name: os/exec
+        example_content_ext: go
+        example_content: |
+          r, w, err := os.Pipe()
+          if err != nil {
+            return err
+          }
+          defer r.Close()
+
+          ls := exec.Command("ls", "/usr/local/bin")
+          ls.Stdout = w
+          err = ls.Start()
+          if err != nil {
+            return err
+          }
+          defer ls.Wait()
+          w.Close()
+
+          grep := exec.Command("grep", "pip")
+          grep.Stdin = r
+          grep.Stdout = os.Stdout
+          return grep.Run()
+      - title: "`errgroup` and CommandContext"
+        description: Orignally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/).
+        author: Aaron Son
+        name: os/exec
+        example_content_ext: go
+        example_content: |
+          eg, ctx := errgroup.WithContext(context.Background())
+          sleeps := make([]*exec.Cmd, 3)
+          sleeps[0] = exec.CommandContext(ctx, "sleep", "100")
+          sleeps[1] = exec.CommandContext(ctx, "sleep", "100")
+          sleeps[2] = exec.CommandContext(ctx, "sleep", "notanumber")
+          for _, s := range sleeps {
+            s := s
+            eg.Do(func() error {
+              return s.Run()
+            })
+          }
+          return eg.Wait()
   - title: Monitoring
     entries:
       - title: Monitor goroutines
