@@ -2365,7 +2365,7 @@ go install github.com/appliedgocode/goman@lates
 
 ### [⏫](#contents)➡ Generate badge with [gobadge](https://github.com/AlexBeauchemin/gobadge)
 
-This tool will generate instructions for [shields.io](https://shields.io) to generate badge. It can read `coverprofile`. — [@AlexBeauchemin](https://github.com/AlexBeauchemin)
+This tool will generate instructions for [shields.io](https://shields.io) to generate badge. It can read `coverprofile`. There is also GitHub Action that utilizes it and stores badge in the same repo, [coverage-badge-go](https://github.com/tj-actions/coverage-badge-go). — [@AlexBeauchemin](https://github.com/AlexBeauchemin)
 
 
 ```
