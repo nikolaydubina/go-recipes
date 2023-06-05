@@ -683,6 +683,7 @@ groups:
           - "ifacemaker -f human.go -s Human -i HumanIface -p humantest -y \"HumanIface makes human interaction easy\" -c \"DONT EDIT: Auto generated\""
         example_content_ext: go
         example_content: |
+          # human.go
           package main
 
           import "fmt"
@@ -713,7 +714,21 @@ groups:
             human.GetName()
             human.SayHello()
             human.Birthday()
-          }  
+          }
+          
+          # human_interface.go
+          // DONT EDIT: Auto generated
+          package humantest
+
+          // HumanIface makes human interaction easy
+          type HumanIface interface {
+            // Returns the name of our Human.
+            GetName() string
+            // Our Human just had a birthday! Increase its age.
+            Birthday()
+            // Make the Human say hello.
+            SayHello()
+          } 
         requirements:
           - go install github.com/vburenin/ifacemaker@latest
       - title: Modify struct field tags
