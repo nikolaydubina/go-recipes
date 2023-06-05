@@ -1016,6 +1016,11 @@ groups:
         description: Usually you may not need it, but can improve performance. This includes mid-stack inlining.
         commands:
           - go build -gcflags="-l -l -l -l" .
+      - title: Profile-guided optimization
+        description: Starting go 1.20 compiler supports Profile-gudied optimization. You need to collect profiles and then supply in compulation to compiler. You can get improvement in performance by around 4%. Officual [guideline](https://go.dev/doc/pgo).
+        commands:
+         - 1. store a `pprof` CPU profile with filename default.pgo in the main package directory of the profiled binary
+         - 2. build with `go build -pgo=auto``, which will pick up `default.pgo` files automatically.
       - title: Manually disable or enable `cgo`
         description: Disable `cgo` with `CGO_ENABLED=0` and enable with `CGO_ENABLED=1`. If you don't, `cgo` may end-up being enabled or code dynamically linked if, for example, you use some `net` or `os` packages. You may want to disable `cgo` to improve performance, since complier and runtime would have easier job optimizing code. This also should reduce your image size, as you can have alpine image with less shared libraries.
       - title: Include metadata in binary during compilation with `ldflags`
@@ -1415,6 +1420,7 @@ groups:
           BenchmarkIteratorSelector/n=100000-10 	     310	   3827292 ns/op	  912410 B/op	      32 allocs/op
       - title: Generate benchmak CPU and Memory profiles
         description: This is useful for identifying most time or memory consuming parts. Recommended to run for single benchmark at a time and with `-count` or `-benchtime` for better accuracy.
+        name: go test
         commands:
           - go test -bench=<my-benchmark-name> -cpuprofile cpu.out -memprofile mem.out ./...
       - title: Visualize callgraph of profiles
