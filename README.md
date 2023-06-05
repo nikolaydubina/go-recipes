@@ -1261,9 +1261,9 @@ type File interface {
 ```
 
 
-### [⏫](#contents)➡ Generate interface for `CSV` file with [structer](https://github.com/rjeczalik/structer)
+### [⏫](#contents)➡ Generate interface for `CSV` file with [structer](https://github.com/rjeczalik/interfaces)
 
-This tool generates interface for `CSV` file. — [@rjeczalik](https://github.com/rjeczalik)
+This tool generates struct that can read and write `CSV` file of this struct. Order of fields is hardcoded. — [@rjeczalik](https://github.com/rjeczalik)
 
 
 ```

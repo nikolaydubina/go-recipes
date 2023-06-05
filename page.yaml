@@ -771,8 +771,8 @@ groups:
         requiremnets:
           - go install github.com/rjeczalik/interfaces/cmd/interfacer@latest
       - title: Generate interface for `CSV` file
-        description: This tool generates interface for `CSV` file.
-        url: https://github.com/rjeczalik/structer
+        description: This tool generates struct that can read and write `CSV` file of this struct. Order of fields is hardcoded.
+        url: https://github.com/rjeczalik/interfaces
         name: structer
         author: https://github.com/rjeczalik
         commands:
