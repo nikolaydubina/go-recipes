@@ -1033,6 +1033,7 @@ groups:
           }
       - title: Generate AST for code snippets
         description: Access Go core AST mechanism to generate AST.
+        name: go/ast
         example_content_ext: go
         example_content: |
           package main
@@ -1076,6 +1077,33 @@ groups:
           24  .  .  Value: "5"
           25  .  }
           26  }
+      - title: Generate AST for code snippets
+        description: This is a wrapper around `go/ast` machinery that makes generating `AST` easier.
+        url: https://github.com/reflog/go2ast
+        author: https://github.com/reflog
+        name: go2ast
+        commands:
+          - echo "a := 1" | go2ast
+        example-output: |
+          []ast.Stmt {
+            &ast.AssignStmt {
+              Lhs: []ast.Expr {
+                &ast.Ident {
+                  Name: "a",
+                },
+              },
+              Tok: :=,
+              Rhs: []ast.Expr {
+                &ast.BasicLit {
+                  ValuePos: 32,
+                  Kind: INT,
+                  Value: "1",
+                },
+              },
+            },
+          }
+        requirements:
+          - go install github.com/reflog/go2ast@latest 
       - title: Visualize Go SSA function using Graphviz
         description: "This tool provides a visual overview of Go SSA function using Graphviz. This is especially useful in SSA-based static analysis. This tool generates an HTML page that is easy to navigate. [demo](https://silverrainz.me/go-ssaviz/)."
         name: go-ssaviz
