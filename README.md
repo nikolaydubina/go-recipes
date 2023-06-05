@@ -93,7 +93,8 @@
    + [➡ Get Go SSA intermediary representation with `ssaplayground`](#-get-go-ssa-intermediary-representation-with-ssaplayground)
    + [➡ View Go assembly interactively with `lensm`](#-view-go-assembly-interactively-with-lensm)
    + [➡ Generate Go assembly in Go with `avo`](#-generate-go-assembly-in-go-with-avo)
-   + [➡ Generate AST for code snippets](#-generate-ast-for-code-snippets)
+   + [➡ Generate AST for code snippets with `go/ast`](#-generate-ast-for-code-snippets-with-goast)
+   + [➡ Generate AST for code snippets with `go2ast`](#-generate-ast-for-code-snippets-with-go2ast)
    + [➡ Visualize Go SSA function using Graphviz with `go-ssaviz`](#-visualize-go-ssa-function-using-graphviz-with-go-ssaviz)
    + [➡ (archived) Make graph of AST with `astgraph`](#-archived-make-graph-of-ast-with-astgraph)
  - Execution
@@ -1631,7 +1632,7 @@ func main() {
 ```
 
 
-### [⏫](#contents)➡ Generate AST for code snippets
+### [⏫](#contents)➡ Generate AST for code snippets with `go/ast`
 
 Access Go core AST mechanism to generate AST.
 
@@ -1682,6 +1683,20 @@ Example
 26  }
 ```
 
+
+### [⏫](#contents)➡ Generate AST for code snippets with [go2ast](https://github.com/reflog/go2ast)
+
+This is a wrapper around `go/ast` machinery that makes generating `AST` easier. — [@reflog](https://github.com/reflog)
+
+
+```
+echo "a := 1" | go2ast
+```
+
+Requirements
+```
+go install github.com/reflog/go2ast@latest
+```
 
 ### [⏫](#contents)➡ Visualize Go SSA function using Graphviz with [go-ssaviz](https://github.com/SilverRainZ/go-ssaviz)
 
