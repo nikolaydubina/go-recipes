@@ -1084,7 +1084,7 @@ groups:
         name: go2ast
         commands:
           - echo "a := 1" | go2ast
-        example-output: |
+        example_output: |
           []ast.Stmt {
             &ast.AssignStmt {
               Lhs: []ast.Expr {

@@ -1693,6 +1693,27 @@ This is a wrapper around `go/ast` machinery that makes generating `AST` easier. 
 echo "a := 1" | go2ast
 ```
 
+Example
+```
+[]ast.Stmt {
+  &ast.AssignStmt {
+    Lhs: []ast.Expr {
+      &ast.Ident {
+        Name: "a",
+      },
+    },
+    Tok: :=,
+    Rhs: []ast.Expr {
+      &ast.BasicLit {
+        ValuePos: 32,
+        Kind: INT,
+        Value: "1",
+      },
+    },
+  },
+}
+```
+
 Requirements
 ```
 go install github.com/reflog/go2ast@latest
