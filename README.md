@@ -26,6 +26,7 @@
    + [➡ Visualize live coverage in VSCode with `goc`](#-visualize-live-coverage-in-vscode-with-goc)
    + [➡ Run tests sequentially](#-run-tests-sequentially)
    + [➡ Run tests in parallel](#-run-tests-in-parallel)
+   + [➡ Detect goroutine leaks with `goleak`](#-detect-goroutine-leaks-with-goleak)
    + [➡ Detect goroutine leaks with `leaktest`](#-detect-goroutine-leaks-with-leaktest)
    + [➡ Summarize `go test` with `tparse`](#-summarize-go-test-with-tparse)
    + [➡ Decorate `go test` with `richgo`](#-decorate-go-test-with-richgo)
@@ -488,6 +489,22 @@ for _, tc := range tests {
         ...
 ```
 
+
+### [⏫](#contents)➡ Detect goroutine leaks with [goleak](https://github.com/uber-go/goleak)
+
+Instrument your test cases with verification call. Alternatively, you can add single call in `TestMain`. This tool was recommended by Pyroscope in [blog](https://grafana.com/blog/2023/04/19/how-to-troubleshoot-memory-leaks-in-go-with-grafana-pyroscope/). — Uber
+
+```go
+func TestA(t *testing.T) {
+  defer goleak.VerifyNone(t)
+  ...
+}
+```
+
+Requirements
+```
+go get -u go.uber.org/goleak
+```
 
 ### [⏫](#contents)➡ Detect goroutine leaks with [leaktest](https://github.com/fortytw2/leaktest)
 
