@@ -715,7 +715,7 @@ groups:
             human.SayHello()
             human.Birthday()
           }
-          
+
           # human_interface.go
           // DONT EDIT: Auto generated
           package humantest
@@ -731,6 +731,82 @@ groups:
           } 
         requirements:
           - go install github.com/vburenin/ifacemaker@latest
+      - title: Generate interface for a struct
+        description: This tool generates interface for a struct. Can be invoked in `go:generate`.
+        url: https://github.com/rjeczalik/interfaces
+        name: interfacer
+        author: https://github.com/rjeczalik
+        commands:
+          - interfacer -for os.File -as mock.File
+        example_content_ext: go
+        example_content: |
+          // Created by interfacer; DO NOT EDIT
+
+          package mock
+
+          import (
+                  "os"
+          )
+
+          // File is an interface generated for "os".File.
+          type File interface {
+                  Chdir() error
+                  Chmod(os.FileMode) error
+                  Chown(int, int) error
+                  Close() error
+                  Fd() uintptr
+                  Name() string
+                  Read([]byte) (int, error)
+                  ReadAt([]byte, int64) (int, error)
+                  Readdir(int) ([]os.FileInfo, error)
+                  Readdirnames(int) ([]string, error)
+                  Seek(int64, int) (int64, error)
+                  Stat() (os.FileInfo, error)
+                  Sync() error
+                  Truncate(int64) error
+                  Write([]byte) (int, error)
+                  WriteAt([]byte, int64) (int, error)
+                  WriteString(string) (int, error)
+          }
+        requiremnets:
+          - go install github.com/rjeczalik/interfaces/cmd/interfacer@latest
+      - title: Generate interface for `CSV` file
+        description: This tool generates interface for `CSV` file.
+        url: https://github.com/rjeczalik/structer
+        name: structer
+        author: https://github.com/rjeczalik
+        commands:
+          - structer -f aws-billing.csv -tag json -as billing.Record
+        example_content_ext: go
+        example_content: |
+          # aws-billing.csv
+          # "InvoiceID","PayerAccountId","LinkedAccountId","RecordType","RecordID","BillingPeriodStartDate","BillingPeriodEndDate","InvoiceDate"
+          # "Estimated","123456","","PayerLineItem","5433212345","2016/01/01 00:00:00","2016/01/31 23:59:59","2016/01/21 19:19:06"          
+
+          # record.go
+          // Record is a struct generated from "aws-billing.csv" file.
+          type Record struct {
+                  InvoiceID              string    `json:"invoiceID"`
+                  PayerAccountID         int64     `json:"payerAccountID"`
+                  LinkedAccountID        string    `json:"linkedAccountID"`
+                  RecordType             string    `json:"recordType"`
+                  RecordID               int64     `json:"recordID"`
+                  BillingPeriodStartDate time.Time `json:"billingPeriodStartDate"`
+                  BillingPeriodEndDate   time.Time `json:"billingPeriodEndDate"`
+                  InvoiceDate            time.Time `json:"invoiceDate"`
+          }
+
+          // MarshalCSV encodes r as a single CSV record.
+          func (r *Record) MarshalCSV() ([]string, error) {
+              ...
+          }
+
+          // UnmarshalCSV decodes a single CSV record into r.
+          func (r *Record) UnmarshalCSV(record []string) error {
+              ...
+          }
+        requiremnets:
+          - go install github.com/rjeczalik/interfaces/cmd/structer@latest
       - title: Modify struct field tags
         description: "This tool makes it easy to update, add or delete the tags and options in a struct field. You can add new tags, update existing tags (such as appending a new key, i.e: db, xml, etc..) or remove existing tags. It's intended to be used by an editor, but also has modes to run it from the terminal."
         name: gomodifytags

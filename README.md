@@ -66,6 +66,8 @@
    + [➡ Generate Table Driven Tests with `gotests`](#-generate-table-driven-tests-with-gotests)
    + [➡ Generate mocks with `mockgen`](#-generate-mocks-with-mockgen)
    + [➡ Generate interface for a struct with `ifacemaker`](#-generate-interface-for-a-struct-with-ifacemaker)
+   + [➡ Generate interface for a struct with `interfacer`](#-generate-interface-for-a-struct-with-interfacer)
+   + [➡ Generate interface for `CSV` file with `structer`](#-generate-interface-for-csv-file-with-structer)
    + [➡ Modify struct field tags with `gomodifytags`](#-modify-struct-field-tags-with-gomodifytags)
  - Refactoring
    + [➡ Replace symbol with `gofmt`](#-replace-symbol-with-gofmt)
@@ -1217,6 +1219,86 @@ Requirements
 ```
 go install github.com/vburenin/ifacemaker@latest
 ```
+
+### [⏫](#contents)➡ Generate interface for a struct with [interfacer](https://github.com/rjeczalik/interfaces)
+
+This tool generates interface for a struct. Can be invoked in `go:generate`. — [@rjeczalik](https://github.com/rjeczalik)
+
+
+```
+interfacer -for os.File -as mock.File
+```
+
+```go
+// Created by interfacer; DO NOT EDIT
+
+package mock
+
+import (
+        "os"
+)
+
+// File is an interface generated for "os".File.
+type File interface {
+        Chdir() error
+        Chmod(os.FileMode) error
+        Chown(int, int) error
+        Close() error
+        Fd() uintptr
+        Name() string
+        Read([]byte) (int, error)
+        ReadAt([]byte, int64) (int, error)
+        Readdir(int) ([]os.FileInfo, error)
+        Readdirnames(int) ([]string, error)
+        Seek(int64, int) (int64, error)
+        Stat() (os.FileInfo, error)
+        Sync() error
+        Truncate(int64) error
+        Write([]byte) (int, error)
+        WriteAt([]byte, int64) (int, error)
+        WriteString(string) (int, error)
+}
+```
+
+
+### [⏫](#contents)➡ Generate interface for `CSV` file with [structer](https://github.com/rjeczalik/structer)
+
+This tool generates interface for `CSV` file. — [@rjeczalik](https://github.com/rjeczalik)
+
+
+```
+structer -f aws-billing.csv -tag json -as billing.Record
+```
+
+```go
+# aws-billing.csv
+# "InvoiceID","PayerAccountId","LinkedAccountId","RecordType","RecordID","BillingPeriodStartDate","BillingPeriodEndDate","InvoiceDate"
+# "Estimated","123456","","PayerLineItem","5433212345","2016/01/01 00:00:00","2016/01/31 23:59:59","2016/01/21 19:19:06"          
+
+# record.go
+// Record is a struct generated from "aws-billing.csv" file.
+type Record struct {
+        InvoiceID              string    `json:"invoiceID"`
+        PayerAccountID         int64     `json:"payerAccountID"`
+        LinkedAccountID        string    `json:"linkedAccountID"`
+        RecordType             string    `json:"recordType"`
+        RecordID               int64     `json:"recordID"`
+        BillingPeriodStartDate time.Time `json:"billingPeriodStartDate"`
+        BillingPeriodEndDate   time.Time `json:"billingPeriodEndDate"`
+        InvoiceDate            time.Time `json:"invoiceDate"`
+}
+
+// MarshalCSV encodes r as a single CSV record.
+func (r *Record) MarshalCSV() ([]string, error) {
+    ...
+}
+
+// UnmarshalCSV decodes a single CSV record into r.
+func (r *Record) UnmarshalCSV(record []string) error {
+    ...
+}
+```
+
 
 ### [⏫](#contents)➡ Modify struct field tags with [gomodifytags](https://github.com/fatih/gomodifytags)
 
