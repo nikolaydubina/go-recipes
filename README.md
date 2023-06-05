@@ -143,6 +143,9 @@
    + [➡ Google](#style-guide)
    + [➡ Uber](#style-guide)
    + [➡ Go Code Review Comments](#style-guide)
+ - Security
+   + [➡ Run official vulnerability check with `govulncheck`](#-run-official-vulnerability-check-with-govulncheck)
+   + [➡ Perform Taint Analysis with `taint`](#-perform-taint-analysis-with-taint)
  - Static Analysis
    + [➡ Run default static analysis with `go vet`](#-run-default-static-analysis-with-go-vet)
    + [➡ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
@@ -168,7 +171,6 @@
    + [➡ Calculate Cyclomatic Complexity with `cyclop`](#-calculate-cyclomatic-complexity-with-cyclop)
    + [➡ Calculate age of comments with `go-commentage`](#-calculate-age-of-comments-with-go-commentage)
    + [➡ (archived) Ensure `if` statements using short assignment with `ifshort`](#-archived-ensure-if-statements-using-short-assignment-with-ifshort)
-   + [➡ Perform Taint Analysis with `taint`](#-perform-taint-analysis-with-taint)
    + [➡ Visualize struct layout with `structlayout`](#-visualize-struct-layout-with-structlayout)
    + [➡ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
 
@@ -2480,6 +2482,90 @@ go install github.com/AlexBeauchemin/gobadge@latest
 
 - [Go Code Review Comments](https://github.com/golang/go/wiki/CodeReviewComments)
 
+## Security
+
+### [⏫](#contents)➡ Run official vulnerability check with [govulncheck](https://pkg.go.dev/golang.org/x/vuln/cmd/govulncheck)
+
+It uses static analysis of source code or a binary's symbol table to narrow down reports to only those that could affect the application. By default, govulncheck makes requests to the Go vulnerability database at https://vuln.go.dev. Requests to the vulnerability database contain only module paths, not code or other properties of your program. See https://vuln.go.dev/privacy.html for more. — Go Core team
+
+
+```
+govulncheck ./...
+```
+
+Example
+```
+vulnerability data from https://vuln.go.dev (last modified 2023-06-01 21:27:40 +0000 UTC).
+
+Scanning your code and 1952 packages across 202 dependent modules for known vulnerabilities...
+Your code is affected by 2 vulnerabilities from 1 module.
+
+Vulnerability #1: GO-2023-1571
+  A maliciously crafted HTTP/2 stream could cause excessive CPU
+  consumption in the HPACK decoder, sufficient to cause a denial
+  of service from a small number of small requests.
+
+  More info: https://pkg.go.dev/vuln/GO-2023-1571
+
+  Module: golang.org/x/net
+    Found in: golang.org/x/net@v0.1.1-0.20221027164007-c63010009c80
+    Fixed in: golang.org/x/net@v0.7.0
+
+    Call stacks in your code:
+      cmd/kube-controller-manager/app/controllermanager.go:216:40: k8s.io/kubernetes/cmd/kube-controller-manager/app.Run calls k8s.io/apiserver/pkg/server.SecureServingInfo.Serve, which eventually calls golang.org/x/net/http2.ConfigureServer
+        requirements:
+          - go install golang.org/x/vuln/cmd/govulncheck@latest
+```
+
+
+### [⏫](#contents)➡ Perform Taint Analysis with [taint](https://github.com/picatz/taint)
+
+Taint analysis is a technique for identifying the flow of sensitive data through a program. It can be used to identify potential security vulnerabilities, such as SQL injection or cross-site scripting (XSS) attacks, by understanding how this data is used and transformed as it flows through the code. This package provides tools to performs such analysis. Included tool is performing SQL injection taint analysis. — [@picatz](https://github.com/picatz)
+
+
+```
+sqli main.go
+```
+
+```go
+package main
+
+import (
+        "database/sql"
+        "net/http"
+)
+
+func business(db *sql.DB, q string) {
+        db.Query(q) // potential sql injection
+}
+
+func run() {
+        db, _ := sql.Open("sqlite3", ":memory:")
+
+        mux := http.NewServeMux()
+
+        mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+                business(db, r.URL.Query().Get("sql-query"))
+        })
+
+        http.ListenAndServe(":8080", mux)
+}
+
+func main() {
+        run()
+}
+```
+
+Example
+```
+./sql/injection/testdata/src/example/main.go:9:10: potential sql injection
+```
+
+Requirements
+```
+go install github.com/picatz/taint/cmd/sqli@latest
+```
+
 ## Static Analysis
 
 ### [⏫](#contents)➡ Run default static analysis with `go vet`
@@ -3105,54 +3191,6 @@ func someFunc(k string, m map[string]interface{}) {
 Requirements
 ```
 go install github.com/esimonov/ifshort@latest
-```
-
-### [⏫](#contents)➡ Perform Taint Analysis with [taint](https://github.com/picatz/taint)
-
-Taint analysis is a technique for identifying the flow of sensitive data through a program. It can be used to identify potential security vulnerabilities, such as SQL injection or cross-site scripting (XSS) attacks, by understanding how this data is used and transformed as it flows through the code. This package provides tools to performs such analysis. Included tool is performing SQL injection taint analysis. — [@picatz](https://github.com/picatz)
-
-
-```
-sqli main.go
-```
-
-```go
-package main
-
-import (
-        "database/sql"
-        "net/http"
-)
-
-func business(db *sql.DB, q string) {
-        db.Query(q) // potential sql injection
-}
-
-func run() {
-        db, _ := sql.Open("sqlite3", ":memory:")
-
-        mux := http.NewServeMux()
-
-        mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-                business(db, r.URL.Query().Get("sql-query"))
-        })
-
-        http.ListenAndServe(":8080", mux)
-}
-
-func main() {
-        run()
-}
-```
-
-Example
-```
-./sql/injection/testdata/src/example/main.go:9:10: potential sql injection
-```
-
-Requirements
-```
-go install github.com/picatz/taint/cmd/sqli@latest
 ```
 
 ### [⏫](#contents)➡ Visualize struct layout with [structlayout](https://github.com/dominikh/go-tools/tree/master/cmd/structlayout)
