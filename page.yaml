@@ -770,6 +770,15 @@ groups:
           }
         requiremnets:
           - go install github.com/rjeczalik/interfaces/cmd/interfacer@latest
+      - title: Generate interface for a struct
+        description: This is alternative tool for interface generation that is aimed to be faster and leaner. It generates only pointer method receiver methods for a struct.
+        url: https://github.com/reflog/struct2interface
+        author: https://github.com/reflog 
+        name: struct2interface
+        commands:
+          -  struct2interface -f . -i IDecimal -p fpdecimal -s Decimal -o idecimal.go
+        requirements:
+          - go install github.com/reflog/struct2interface@latest
       - title: Generate interface for `CSV` file
         description: This tool generates struct that can read and write `CSV` file of this struct. Order of fields is hardcoded.
         url: https://github.com/rjeczalik/interfaces

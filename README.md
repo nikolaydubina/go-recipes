@@ -67,6 +67,7 @@
    + [➡ Generate mocks with `mockgen`](#-generate-mocks-with-mockgen)
    + [➡ Generate interface for a struct with `ifacemaker`](#-generate-interface-for-a-struct-with-ifacemaker)
    + [➡ Generate interface for a struct with `interfacer`](#-generate-interface-for-a-struct-with-interfacer)
+   + [➡ Generate interface for a struct with `struct2interface`](#-generate-interface-for-a-struct-with-struct2interface)
    + [➡ Generate interface for `CSV` file with `structer`](#-generate-interface-for-csv-file-with-structer)
    + [➡ Modify struct field tags with `gomodifytags`](#-modify-struct-field-tags-with-gomodifytags)
  - Refactoring
@@ -1260,6 +1261,20 @@ type File interface {
 }
 ```
 
+
+### [⏫](#contents)➡ Generate interface for a struct with [struct2interface](https://github.com/reflog/struct2interface)
+
+This is alternative tool for interface generation that is aimed to be faster and leaner. It generates only pointer method receiver methods for a struct. — [@reflog](https://github.com/reflog)
+
+
+```
+struct2interface -f . -i IDecimal -p fpdecimal -s Decimal -o idecimal.go
+```
+
+Requirements
+```
+go install github.com/reflog/struct2interface@latest
+```
 
 ### [⏫](#contents)➡ Generate interface for `CSV` file with [structer](https://github.com/rjeczalik/interfaces)
 
