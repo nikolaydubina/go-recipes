@@ -248,16 +248,6 @@ groups:
               }
             }()
           }
-      - title: Run tests with pretty output
-        description: This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary.
-        name: gotestsum
-        url: https://github.com/gotestyourself/gotestsum
-        author: https://github.com/dnephin
-        commands:
-          - gotestsum --format dots
-        example_image_url: https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif
-        requirements:
-          - go install gotest.tools/gotestsum@latest
       - title: Summarize `go test`
         description: This lightweight wrapper around STDOUT of JSON of `go test` will nicely render colorized test status, details of failures, duration, coverage, and package summary.
         name: tparse
@@ -288,6 +278,58 @@ groups:
           - gotest ./...
         requirements:
           - go install github.com/rakyll/gotest@latest
+      - title: Run tests with pretty output
+        description: This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary.
+        name: gotestsum
+        url: https://github.com/gotestyourself/gotestsum
+        author: https://github.com/dnephin
+        commands:
+          - gotestsum --format dots
+        example_image_url: https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif
+        requirements:
+          - go install gotest.tools/gotestsum@latest
+      - title: Get slowest tests 
+        description: This is subcommand of `gotestsum` that processes JSON output of `go test` to find slowest tests. 
+        name: gotestsum
+        url: https://github.com/gotestyourself/gotestsum
+        author: https://github.com/dnephin
+        commands:
+          - go test -json -short ./... | gotestsum tool slowest --threshold 500ms
+        example_output: |
+          gotest.tools/example TestSomething 1.34s
+          gotest.tools/example TestSomethingElse 810ms
+        requirements:
+          - go install gotest.tools/gotestsum@latest
+      - title: Auto-Instrument skipping slow tests
+        description: This is subcommand of `gotestsum` that processes JSON output of `go test` to find slowest tests and instruments test cases to skip them with `t.Skip()` statements.
+        name: gotestsum
+        url: https://github.com/gotestyourself/gotestsum
+        author: https://github.com/dnephin
+        commands:
+          - go test -json ./... | gotestsum tool slowest --skip-stmt "testing.Short" --threshold 200ms
+        example_output: |
+          gotest.tools/example TestSomething 1.34s
+          gotest.tools/example TestSomethingElse 810ms
+        requirements:
+          - go install gotest.tools/gotestsum@latest
+      - title: Automatically re-run failed tests
+        description: Other useful option of `gotestsum` is to re-run failed tests. For example, if you have flaky tests that are idempotent, then re-running them may be a quick fix. 
+        name: gotestsum
+        url: https://github.com/gotestyourself/gotestsum
+        author: https://github.com/dnephin
+        commands:
+          - gotestsum --rerun-fails --packages="./..."
+        requirements:
+          - go install gotest.tools/gotestsum@latest
+      - title: Make `JSUnit` test report
+        description: JUnit is widely used format for test reporting.
+        name: gotestsum
+        url: https://github.com/gotestyourself/gotestsum
+        author: https://github.com/dnephin
+        commands:
+          - go test -json ./... | gotestsum --junitfile unit-tests.xml
+        requirements:
+          - go install gotest.tools/gotestsum@latest
       - title: Get packages without tests
         description: If code coverage does not report packages without tests. For example for CI or quality control.
         requirements:

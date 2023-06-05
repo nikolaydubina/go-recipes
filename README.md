@@ -27,10 +27,14 @@
    + [➡ Run tests sequentially](#-run-tests-sequentially)
    + [➡ Run tests in parallel](#-run-tests-in-parallel)
    + [➡ Detect goroutine leaks with `leaktest`](#-detect-goroutine-leaks-with-leaktest)
-   + [➡ Run tests with pretty output with `gotestsum`](#-run-tests-with-pretty-output-with-gotestsum)
    + [➡ Summarize `go test` with `tparse`](#-summarize-go-test-with-tparse)
    + [➡ Colorize and decorate `go test` with `richgo`](#-colorize-and-decorate-go-test-with-richgo)
    + [➡ Colorize `go test` with `gotest`](#-colorize-go-test-with-gotest)
+   + [➡ Run tests with pretty output with `gotestsum`](#-run-tests-with-pretty-output-with-gotestsum)
+   + [➡ Get slowest tests with `gotestsum`](#-get-slowest-tests-with-gotestsum)
+   + [➡ Auto-Instrument skipping slow tests with `gotestsum`](#-auto-instrument-skipping-slow-tests-with-gotestsum)
+   + [➡ Automatically re-run failed tests with `gotestsum`](#-automatically-re-run-failed-tests-with-gotestsum)
+   + [➡ Make `JSUnit` test report with `gotestsum`](#-make-jsunit-test-report-with-gotestsum)
    + [➡ Get packages without tests](#-get-packages-without-tests)
    + [➡ Perform Mutation Testing with `ooze`](#-perform-mutation-testing-with-ooze)
    + [➡ Perform Mutation Testing with `avito-tech/go-mutesting`](#-perform-mutation-testing-with-avito-techgo-mutesting)
@@ -501,23 +505,6 @@ func TestPoolContext(t *testing.T) {
 ```
 
 
-### [⏫](#contents)➡ Run tests with pretty output with [gotestsum](https://github.com/gotestyourself/gotestsum)
-
-This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary. — [@dnephin](https://github.com/dnephin)
-
-
-```
-gotestsum --format dots
-```
-
-<div align="center"><img src="https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif" style="margin: 8px; max-height: 640px;"></div>
-
-
-Requirements
-```
-go install gotest.tools/gotestsum@latest
-```
-
 ### [⏫](#contents)➡ Summarize `go test` with [tparse](https://github.com/mfridman/tparse)
 
 This lightweight wrapper around STDOUT of JSON of `go test` will nicely render colorized test status, details of failures, duration, coverage, and package summary. — [@mfridman](https://github.com/mfridman)
@@ -567,6 +554,91 @@ gotest ./...
 Requirements
 ```
 go install github.com/rakyll/gotest@latest
+```
+
+### [⏫](#contents)➡ Run tests with pretty output with [gotestsum](https://github.com/gotestyourself/gotestsum)
+
+This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary. — [@dnephin](https://github.com/dnephin)
+
+
+```
+gotestsum --format dots
+```
+
+<div align="center"><img src="https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install gotest.tools/gotestsum@latest
+```
+
+### [⏫](#contents)➡ Get slowest tests with [gotestsum](https://github.com/gotestyourself/gotestsum)
+
+This is subcommand of `gotestsum` that processes JSON output of `go test` to find slowest tests. — [@dnephin](https://github.com/dnephin)
+
+
+```
+go test -json -short ./... | gotestsum tool slowest --threshold 500ms
+```
+
+Example
+```
+gotest.tools/example TestSomething 1.34s
+gotest.tools/example TestSomethingElse 810ms
+```
+
+Requirements
+```
+go install gotest.tools/gotestsum@latest
+```
+
+### [⏫](#contents)➡ Auto-Instrument skipping slow tests with [gotestsum](https://github.com/gotestyourself/gotestsum)
+
+This is subcommand of `gotestsum` that processes JSON output of `go test` to find slowest tests and instruments test cases to skip them with `t.Skip()` statements. — [@dnephin](https://github.com/dnephin)
+
+
+```
+go test -json ./... | gotestsum tool slowest --skip-stmt "testing.Short" --threshold 200ms
+```
+
+Example
+```
+gotest.tools/example TestSomething 1.34s
+gotest.tools/example TestSomethingElse 810ms
+```
+
+Requirements
+```
+go install gotest.tools/gotestsum@latest
+```
+
+### [⏫](#contents)➡ Automatically re-run failed tests with [gotestsum](https://github.com/gotestyourself/gotestsum)
+
+Other useful option of `gotestsum` is to re-run failed tests. For example, if you have flaky tests that are idempotent, then re-running them may be a quick fix. — [@dnephin](https://github.com/dnephin)
+
+
+```
+gotestsum --rerun-fails --packages="./..."
+```
+
+Requirements
+```
+go install gotest.tools/gotestsum@latest
+```
+
+### [⏫](#contents)➡ Make `JSUnit` test report with [gotestsum](https://github.com/gotestyourself/gotestsum)
+
+JUnit is widely used format for test reporting. — [@dnephin](https://github.com/dnephin)
+
+
+```
+go test -json ./... | gotestsum --junitfile unit-tests.xml
+```
+
+Requirements
+```
+go install gotest.tools/gotestsum@latest
 ```
 
 ### [⏫](#contents)➡ Get packages without tests
