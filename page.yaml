@@ -886,6 +886,37 @@ groups:
           - go install github.com/anqiansong/goimportx@latest
   - title: Errors
     entries:
+      - title: Errors with stack traces and source fragments
+        description: This library collects stack traces and pretty prints code fragments. Stack traces induce performance penalty. 
+        url: https://github.com/ztrue/tracerr
+        name: tracerr
+        author: https://github.com/ztrue
+        example_image_url: https://github.com/ztrue/tracerr/raw/master/output.png
+        example_content_ext: go
+        example_content: |
+          package main
+
+          import (
+            "io/ioutil"
+
+            "github.com/ztrue/tracerr"
+          )
+
+          func main() {
+            if err := read(); err != nil {
+              tracerr.PrintSourceColor(err)
+            }
+          }
+
+          func read() error {
+            return readNonExistent()
+          }
+
+          func readNonExistent() error {
+            _, err := ioutil.ReadFile("/tmp/non_existent_file")
+            // Add stack trace to existing error, no matter if it's nil.
+            return tracerr.Wrap(err)
+          }
       - title: Pretty print `panic` messages
         description: Read `panic` messages easier. Need to redirect STDERR to this tool with `panic` stack traces. The tool has HTML output and does lots of deduplication and enhancements. Refer to examples in original repo.
         name: panicparse

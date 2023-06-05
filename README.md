@@ -75,6 +75,7 @@
    + [➡ Keep consistent ordering of imports with `gci`](#-keep-consistent-ordering-of-imports-with-gci)
    + [➡ Keep consistent ordering of imports with `goimportx`](#-keep-consistent-ordering-of-imports-with-goimportx)
  - Errors
+   + [➡ Errors with stack traces and source fragments with `tracerr`](#-errors-with-stack-traces-and-source-fragments-with-tracerr)
    + [➡ Pretty print `panic` messages with `panicparse`](#-pretty-print-panic-messages-with-panicparse)
  - Building
    + [➡ Show compiler optimization decisions on heap and inlining](#-show-compiler-optimization-decisions-on-heap-and-inlining)
@@ -1406,6 +1407,40 @@ go install github.com/anqiansong/goimportx@latest
 ```
 
 ## Errors
+
+### [⏫](#contents)➡ Errors with stack traces and source fragments with [tracerr](https://github.com/ztrue/tracerr)
+
+This library collects stack traces and pretty prints code fragments. Stack traces induce performance penalty. — [@ztrue](https://github.com/ztrue)
+
+```go
+package main
+
+import (
+  "io/ioutil"
+
+  "github.com/ztrue/tracerr"
+)
+
+func main() {
+  if err := read(); err != nil {
+    tracerr.PrintSourceColor(err)
+  }
+}
+
+func read() error {
+  return readNonExistent()
+}
+
+func readNonExistent() error {
+  _, err := ioutil.ReadFile("/tmp/non_existent_file")
+  // Add stack trace to existing error, no matter if it's nil.
+  return tracerr.Wrap(err)
+}
+```
+
+<div align="center"><img src="https://github.com/ztrue/tracerr/raw/master/output.png" style="margin: 8px; max-height: 640px;"></div>
+
+
 
 ### [⏫](#contents)➡ Pretty print `panic` messages with [panicparse](https://github.com/maruel/panicparse)
 
