@@ -87,6 +87,7 @@
    + [➡ Show compiler optimization decisions on heap and inlining](#-show-compiler-optimization-decisions-on-heap-and-inlining)
    + [➡ Disable inlining](#-disable-inlining)
    + [➡ Aggressive inlining](#-aggressive-inlining)
+   + [➡ Profile-guided optimization](#-profile-guided-optimization)
    + [➡ Manually disable or enable `cgo`](#-manually-disable-or-enable-cgo)
    + [➡ Include metadata in binary during compilation with `ldflags`](#-include-metadata-in-binary-during-compilation-with-ldflags)
    + [➡ Make treemap breakdown of Go executable binary with `go-binsize-treemap`](#-make-treemap-breakdown-of-go-executable-binary-with-go-binsize-treemap)
@@ -122,7 +123,7 @@
  - Benchmarking
    + [➡ Run benchmarks](#-run-benchmarks)
    + [➡ Table-driven benchmarks](#-table-driven-benchmarks)
-   + [➡ Generate benchmak CPU and Memory profiles](#-generate-benchmak-cpu-and-memory-profiles)
+   + [➡ Generate benchmak CPU and Memory profiles with `go test`](#-generate-benchmak-cpu-and-memory-profiles-with-go-test)
    + [➡ Visualize callgraph of profiles with `pprof`](#-visualize-callgraph-of-profiles-with-pprof)
    + [➡ Visualize flamegraphs of profiles with `pprof`](#-visualize-flamegraphs-of-profiles-with-pprof)
    + [➡ Visualize profiles online](#-visualize-profiles-online)
@@ -1616,6 +1617,17 @@ go build -gcflags="-l -l -l -l" .
 ```
 
 
+### [⏫](#contents)➡ Profile-guided optimization
+
+Starting go 1.20 compiler supports Profile-gudied optimization. You need to collect profiles and then supply in compulation to compiler. You can get improvement in performance by around 4%. Officual [guideline](https://go.dev/doc/pgo).
+
+
+```
+1. store a `pprof` CPU profile with filename default.pgo in the main package directory of the profiled binary
+2. build with `go build -pgo=auto``, which will pick up `default.pgo` files automatically.
+```
+
+
 ### [⏫](#contents)➡ Manually disable or enable `cgo`
 
 Disable `cgo` with `CGO_ENABLED=0` and enable with `CGO_ENABLED=1`. If you don't, `cgo` may end-up being enabled or code dynamically linked if, for example, you use some `net` or `os` packages. You may want to disable `cgo` to improve performance, since complier and runtime would have easier job optimizing code. This also should reduce your image size, as you can have alpine image with less shared libraries.
@@ -2179,7 +2191,7 @@ BenchmarkIteratorSelector/n=100000-10 	     310	   3827292 ns/op	  912410 B/op	 
 ```
 
 
-### [⏫](#contents)➡ Generate benchmak CPU and Memory profiles
+### [⏫](#contents)➡ Generate benchmak CPU and Memory profiles with `go test`
 
 This is useful for identifying most time or memory consuming parts. Recommended to run for single benchmark at a time and with `-count` or `-benchtime` for better accuracy.
 
