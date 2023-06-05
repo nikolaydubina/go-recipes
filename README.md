@@ -133,6 +133,7 @@
  - Documentation
    + [➡ Make alternative documentation with `golds`](#-make-alternative-documentation-with-golds)
    + [➡ Read Go binary documentation in `man` format with `goman`](#-read-go-binary-documentation-in-man-format-with-goman)
+   + [➡ Generate badge with `gobadge`](#-generate-badge-with-gobadge)
  - Style Guide
    + [➡ Google](#style-guide)
    + [➡ Uber](#style-guide)
@@ -2360,6 +2361,27 @@ goman <mypackage>
 Requirements
 ```
 go install github.com/appliedgocode/goman@lates
+```
+
+### [⏫](#contents)➡ Generate badge with [gobadge](https://github.com/AlexBeauchemin/gobadge)
+
+This tool will generate instructions for [shields.io](https://shields.io) to generate badge. It can read `coverprofile`. — [@AlexBeauchemin](https://github.com/AlexBeauchemin)
+
+
+```
+gobadge -filename=coverage.out
+gobadge -label="Go Coverage" -value=55.6% -color=blue -target=OTHER_README.md
+gobadge -yellow=60 -green=80
+gobadge -color=ff69b4
+gobadge -link=https://github.com/project/repo/actions/workflows/test.yml
+```
+
+<div align="center"><img src="https://camo.githubusercontent.com/641e107dce1dc01655110b327ff8c95121ad34dd9e5c8a33b4c03aff109a6038/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f436f7665726167652d37362e352532352d627269676874677265656e" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/AlexBeauchemin/gobadge@latest
 ```
 
 ## Style Guide
