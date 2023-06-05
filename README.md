@@ -28,11 +28,11 @@
    + [➡ Run tests in parallel](#-run-tests-in-parallel)
    + [➡ Detect goroutine leaks with `leaktest`](#-detect-goroutine-leaks-with-leaktest)
    + [➡ Summarize `go test` with `tparse`](#-summarize-go-test-with-tparse)
-   + [➡ Colorize and decorate `go test` with `richgo`](#-colorize-and-decorate-go-test-with-richgo)
-   + [➡ Colorize `go test` with `gotest`](#-colorize-go-test-with-gotest)
-   + [➡ Run tests with pretty output with `gotestsum`](#-run-tests-with-pretty-output-with-gotestsum)
+   + [➡ Decorate `go test` with `richgo`](#-decorate-go-test-with-richgo)
+   + [➡ Decorate `go test` with `gotest`](#-decorate-go-test-with-gotest)
+   + [➡ Decorate `go test` with `gotestsum`](#-decorate-go-test-with-gotestsum)
    + [➡ Get slowest tests with `gotestsum`](#-get-slowest-tests-with-gotestsum)
-   + [➡ Auto-Instrument skipping slow tests with `gotestsum`](#-auto-instrument-skipping-slow-tests-with-gotestsum)
+   + [➡ Auto-Instrument skipping slowest tests with `gotestsum`](#-auto-instrument-skipping-slowest-tests-with-gotestsum)
    + [➡ Automatically re-run failed tests with `gotestsum`](#-automatically-re-run-failed-tests-with-gotestsum)
    + [➡ Make `JSUnit` test report with `gotestsum`](#-make-jsunit-test-report-with-gotestsum)
    + [➡ Get packages without tests](#-get-packages-without-tests)
@@ -522,7 +522,7 @@ Requirements
 go install github.com/mfridman/tparse@latest
 ```
 
-### [⏫](#contents)➡ Colorize and decorate `go test` with [richgo](https://github.com/kyoh86/richgo)
+### [⏫](#contents)➡ Decorate `go test` with [richgo](https://github.com/kyoh86/richgo)
 
 Add colors and enrich `go test` output. It can be used in CI pipeline and has lots of alternative visualizations and options. — [@kyoh86](https://github.com/kyoh86)
 
@@ -539,7 +539,7 @@ Requirements
 go install github.com/kyoh86/richgo@latest
 ```
 
-### [⏫](#contents)➡ Colorize `go test` with [gotest](https://github.com/rakyll/gotest)
+### [⏫](#contents)➡ Decorate `go test` with [gotest](https://github.com/rakyll/gotest)
 
 Add colors to `go test` output. Very lightweight wrapper around `go test` STDOUT. — [@rakyll](https://github.com/rakyll)
 
@@ -556,7 +556,7 @@ Requirements
 go install github.com/rakyll/gotest@latest
 ```
 
-### [⏫](#contents)➡ Run tests with pretty output with [gotestsum](https://github.com/gotestyourself/gotestsum)
+### [⏫](#contents)➡ Decorate `go test` with [gotestsum](https://github.com/gotestyourself/gotestsum)
 
 This wrapper around `go test` renders test output in easy to read format. Also supports JUnit, JSON output, skipping slow tests, running custom binary. — [@dnephin](https://github.com/dnephin)
 
@@ -593,7 +593,7 @@ Requirements
 go install gotest.tools/gotestsum@latest
 ```
 
-### [⏫](#contents)➡ Auto-Instrument skipping slow tests with [gotestsum](https://github.com/gotestyourself/gotestsum)
+### [⏫](#contents)➡ Auto-Instrument skipping slowest tests with [gotestsum](https://github.com/gotestyourself/gotestsum)
 
 This is subcommand of `gotestsum` that processes JSON output of `go test` to find slowest tests and instruments test cases to skip them with `t.Skip()` statements. — [@dnephin](https://github.com/dnephin)
 
