@@ -232,6 +232,19 @@ groups:
                   t.Parallel()
                   ...
       - title: Detect goroutine leaks
+        description: Instrument your test cases with verification call. Alternatively, you can add single call in `TestMain`. This tool was recommended by Pyroscope in [blog](https://grafana.com/blog/2023/04/19/how-to-troubleshoot-memory-leaks-in-go-with-grafana-pyroscope/).
+        url: https://github.com/uber-go/goleak
+        author: Uber
+        name: goleak
+        example_content_ext: go
+        example_content: |
+          func TestA(t *testing.T) {
+            defer goleak.VerifyNone(t)
+            ...
+          }
+        requirements:
+          - go get -u go.uber.org/goleak
+      - title: Detect goroutine leaks
         description: Refactored, tested variant of the goroutine leak detector found in both `net/http` tests and the cockroachdb source tree. You have to call this library in your tests.
         name: leaktest
         url: https://github.com/fortytw2/leaktest
