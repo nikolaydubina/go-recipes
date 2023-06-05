@@ -147,6 +147,8 @@
    + [➡ Detect naked returns with `nakedret`](#-detect-naked-returns-with-nakedret)
    + [➡ Detect mixing pointer and value method receivers with `smrcptr`](#-detect-mixing-pointer-and-value-method-receivers-with-smrcptr)
    + [➡ Detect vertical function ordering with `vertfn`](#-detect-vertical-function-ordering-with-vertfn)
+   + [➡ Detect tests with wrong `t.Parallel()` usage with `paralleltest`](#-detect-tests-with-wrong-tparallel-usage-with-paralleltest)
+   + [➡ Detect tests with wrong `t.Parallel()` usage with `tparallel`](#-detect-tests-with-wrong-tparallel-usage-with-tparallel)
    + [➡ Calculate Cognitive Complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
    + [➡ Calculate Cyclomatic Complexity with `gocyclo`](#-calculate-cyclomatic-complexity-with-gocyclo)
    + [➡ Calculate Cyclomatic Complexity with `cyclop`](#-calculate-cyclomatic-complexity-with-cyclop)
@@ -2466,6 +2468,49 @@ vertfn --verbose ./...
 Requirements
 ```
 go install github.com/nikolaydubina/vertfn@latest
+```
+
+### [⏫](#contents)➡ Detect tests with wrong `t.Parallel()` usage with [paralleltest](https://github.com/kunwardeep/paralleltest)
+
+This linter checks for incorroect usage of `t.Parallel()` calls. It will detect if `t.Parallel()` is missing. — [@kunwardeep](https://github.com/kunwardeep)
+
+
+```
+paralleltest ./...
+```
+
+Example
+```
+/kubernetes/pkg/scheduler/framework/plugins/nodeunschedulable/node_unschedulable_test.go:28:1: Function TestNodeUnschedulable missing the call to method parallel
+/kubernetes/pkg/scheduler/framework/plugins/nodevolumelimits/csi_test.go:68:1: Function TestCSILimits missing the call to method parallel
+/kubernetes/pkg/scheduler/framework/plugins/nodevolumelimits/csi_test.go:480:2: Range statement for test TestCSILimits missing the call to method parallel in test Run
+/kubernetes/pkg/scheduler/framework/plugins/nodevolumelimits/non_csi_test.go:81:1: Function TestEphemeralLimits missing the call to method parallel
+```
+
+Requirements
+```
+go install github.com/kunwardeep/paralleltest@latest
+```
+
+### [⏫](#contents)➡ Detect tests with wrong `t.Parallel()` usage with [tparallel](https://github.com/moricho/tparallel)
+
+This linter checks for incorroect usage of `t.Parallel()` calls. — [@moricho](https://github.com/moricho)
+
+
+```
+go vet -vettool=`which tparallel` ./...
+```
+
+Example
+```
+testdata/src/sample/table_test.go:7:6: Test_Table1 should use t.Cleanup
+testdata/src/sample/table_test.go:7:6: Test_Table1 should call t.Parallel on the top level as well as its subtests
+testdata/src/sample/table_test.go:30:6: Test_Table2's subtests should call t.Parallel
+```
+
+Requirements
+```
+go install github.com/moricho/tparallel/cmd/tparallel@latest
 ```
 
 ### [⏫](#contents)➡ Calculate Cognitive Complexity with [gocognit](https://github.com/uudashr/gocognit)
