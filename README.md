@@ -113,6 +113,11 @@
    + [➡ Run Go function in shell with `gorram`](#-run-go-function-in-shell-with-gorram)
    + [➡ Run simple fileserver](#-run-simple-fileserver)
    + [➡ Create 3D visualization of concurrency traces with `gotrace`](#-create-3d-visualization-of-concurrency-traces-with-gotrace)
+   + [➡ Wrap command with `os/exec`](#-wrap-command-with-osexec)
+   + [➡ Capture output of command to file with `os/exec`](#-capture-output-of-command-to-file-with-osexec)
+   + [➡ Capture output of command and process it with `os/exec`](#-capture-output-of-command-and-process-it-with-osexec)
+   + [➡ Piping between processes with `os/exec`](#-piping-between-processes-with-osexec)
+   + [➡ `errgroup` and CommandContext with `os/exec`](#-errgroup-and-commandcontext-with-osexec)
  - Monitoring
    + [➡ Monitor goroutines with `grmon`](#-monitor-goroutines-with-grmon)
    + [➡ Monitor Go processes with `gops`](#-monitor-go-processes-with-gops)
@@ -2031,6 +2036,110 @@ go install github.com/divan/gotrace@latest
 patch Go compiler, available via Docker
 more instructions in original repo
 ```
+
+### [⏫](#contents)➡ Wrap command with `os/exec`
+
+Orignally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/).
+
+```go
+cmd := exec.Command("ls", "/usr/local/bin")
+cmd.Stdout = os.Stdout
+cmd.Stderr = os.Stderr
+return cmd.Run()
+```
+
+
+### [⏫](#contents)➡ Capture output of command to file with `os/exec`
+
+Orignally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/). — Aaron Son
+
+```go
+log, err := os.Create("output.log")
+if err != nil {
+  return err
+}
+defer log.Close()
+cmd := exec.Command("ls", "/usr/local/bin")
+cmd.Stdout = log
+cmd.Stderr = log
+return cmd.Run()
+```
+
+
+### [⏫](#contents)➡ Capture output of command and process it with `os/exec`
+
+Orignally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/). — Aaron Son
+
+```go
+cmd := exec.Command("ls", "/usr/local/bin")
+stdout, err := cmd.StdoutPipe()
+if err != nil {
+  return err
+}
+scanner := bufio.NewScanner(stdout)
+err = cmd.Start()
+if err != nil {
+  return err
+}
+for scanner.Scan() {
+  // Do something with the line here.
+  ProcessLine(scanner.Text())
+}
+if scanner.Err() != nil {
+  cmd.Process.Kill()
+  cmd.Wait()
+  return scanner.Err()
+}
+return cmd.Wait()
+```
+
+
+### [⏫](#contents)➡ Piping between processes with `os/exec`
+
+`ls /usr/local/bin | grep pip`. Orignally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/). — Aaron Son
+
+```go
+r, w, err := os.Pipe()
+if err != nil {
+  return err
+}
+defer r.Close()
+
+ls := exec.Command("ls", "/usr/local/bin")
+ls.Stdout = w
+err = ls.Start()
+if err != nil {
+  return err
+}
+defer ls.Wait()
+w.Close()
+
+grep := exec.Command("grep", "pip")
+grep.Stdin = r
+grep.Stdout = os.Stdout
+return grep.Run()
+```
+
+
+### [⏫](#contents)➡ `errgroup` and CommandContext with `os/exec`
+
+Orignally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/). — Aaron Son
+
+```go
+eg, ctx := errgroup.WithContext(context.Background())
+sleeps := make([]*exec.Cmd, 3)
+sleeps[0] = exec.CommandContext(ctx, "sleep", "100")
+sleeps[1] = exec.CommandContext(ctx, "sleep", "100")
+sleeps[2] = exec.CommandContext(ctx, "sleep", "notanumber")
+for _, s := range sleeps {
+  s := s
+  eg.Do(func() error {
+    return s.Run()
+  })
+}
+return eg.Wait()
+```
+
 
 ## Monitoring
 
