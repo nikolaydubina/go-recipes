@@ -1595,6 +1595,33 @@ groups:
         example_image_url: https://github.com/nikolaydubina/vertfn/blob/master/doc/code-dep-viz.png
         requirements:
           - go install github.com/nikolaydubina/vertfn@latest
+      - title: Detect tests with wrong `t.Parallel()` usage
+        description: This linter checks for incorroect usage of `t.Parallel()` calls. It will detect if `t.Parallel()` is missing.
+        url: https://github.com/kunwardeep/paralleltest
+        name: paralleltest
+        author: https://github.com/kunwardeep
+        commands:
+          - paralleltest ./...
+        example_output: |
+          /kubernetes/pkg/scheduler/framework/plugins/nodeunschedulable/node_unschedulable_test.go:28:1: Function TestNodeUnschedulable missing the call to method parallel
+          /kubernetes/pkg/scheduler/framework/plugins/nodevolumelimits/csi_test.go:68:1: Function TestCSILimits missing the call to method parallel
+          /kubernetes/pkg/scheduler/framework/plugins/nodevolumelimits/csi_test.go:480:2: Range statement for test TestCSILimits missing the call to method parallel in test Run
+          /kubernetes/pkg/scheduler/framework/plugins/nodevolumelimits/non_csi_test.go:81:1: Function TestEphemeralLimits missing the call to method parallel
+        requirements:
+          - go install github.com/kunwardeep/paralleltest@latest
+      - title: Detect tests with wrong `t.Parallel()` usage
+        description: This linter checks for incorroect usage of `t.Parallel()` calls.
+        url: https://github.com/moricho/tparallel
+        name: tparallel
+        author: https://github.com/moricho
+        commands:
+          - go vet -vettool=`which tparallel` ./... 
+        example_output: |
+          testdata/src/sample/table_test.go:7:6: Test_Table1 should use t.Cleanup
+          testdata/src/sample/table_test.go:7:6: Test_Table1 should call t.Parallel on the top level as well as its subtests
+          testdata/src/sample/table_test.go:30:6: Test_Table2's subtests should call t.Parallel
+        requirements:
+          - go install github.com/moricho/tparallel/cmd/tparallel@latest 
       - title: Calculate Cognitive Complexity
         description: Congitive Complexity as defined in this tool can be more illustrative than Cyclometric Complexity. Research paper ["Cognitive Complexity - a new way of measuring understandability"](https://www.sonarsource.com/docs/CognitiveComplexity.pdf), 2021.
         name: gocognit
