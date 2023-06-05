@@ -1165,6 +1165,7 @@ ifacemaker -f human.go -s Human -i HumanIface -p humantest -y "HumanIface makes 
 ```
 
 ```go
+# human.go
 package main
 
 import "fmt"
@@ -1195,7 +1196,21 @@ func main() {
   human.GetName()
   human.SayHello()
   human.Birthday()
-}  
+}
+
+# human_interface.go
+// DONT EDIT: Auto generated
+package humantest
+
+// HumanIface makes human interaction easy
+type HumanIface interface {
+  // Returns the name of our Human.
+  GetName() string
+  // Our Human just had a birthday! Increase its age.
+  Birthday()
+  // Make the Human say hello.
+  SayHello()
+} 
 ```
 
 Requirements
