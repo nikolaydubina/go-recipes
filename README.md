@@ -63,8 +63,10 @@
  - Code Generation
    + [➡ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
    + [➡ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
-   + [➡ Modify struct field tags with `gomodifytags`](#-modify-struct-field-tags-with-gomodifytags)
    + [➡ Generate Table Driven Tests with `gotests`](#-generate-table-driven-tests-with-gotests)
+   + [➡ Generate mocks with `mockgen`](#-generate-mocks-with-mockgen)
+   + [➡ Generate interface for a struct with `ifacemaker`](#-generate-interface-for-a-struct-with-ifacemaker)
+   + [➡ Modify struct field tags with `gomodifytags`](#-modify-struct-field-tags-with-gomodifytags)
  - Refactoring
    + [➡ Replace symbol with `gofmt`](#-replace-symbol-with-gofmt)
    + [➡ Keep consistent ordering of imports with `gci`](#-keep-consistent-ordering-of-imports-with-gci)
@@ -1093,6 +1095,114 @@ Requirements
 go install golang.org/x/tools/cmd/stringer@latest
 ```
 
+### [⏫](#contents)➡ Generate Table Driven Tests with [gotests](https://github.com/cweill/gotests)
+
+This tool generates basic test placeholder. It is included into official Go plugin in VSCode and other major code editors. — [@cweill](https://github.com/cweill)
+
+<div align="center"><img src="https://github.com/cweill/GoTests-Sublime/raw/master/gotests.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
+
+### [⏫](#contents)➡ Generate mocks with [mockgen](https://github.com/golang/mock)
+
+This mocking framework integrates well with Go `testing` package. — Go Core team
+
+
+```
+mockgen . Conn,Driver
+```
+
+```go
+# foo.go
+type Foo interface {
+  Bar(x int) int
+}
+
+func SUT(f Foo) {
+// ...
+}
+# foo_test.go
+func TestFoo(t *testing.T) {
+  ctrl := gomock.NewController(t)
+  defer ctrl.Finish()
+
+  m := NewMockFoo(ctrl)
+
+  // Does not make any assertions. Executes the anonymous functions and returns
+  // its result when Bar is invoked with 99.
+  m.
+    EXPECT().
+    Bar(gomock.Eq(99)).
+    DoAndReturn(func(_ int) int {
+      time.Sleep(1*time.Second)
+      return 101
+    }).
+    AnyTimes()
+
+  // Does not make any assertions. Returns 103 when Bar is invoked with 101.
+  m.
+    EXPECT().
+    Bar(gomock.Eq(101)).
+    Return(103).
+    AnyTimes()
+
+  SUT(m)
+}
+```
+
+Requirements
+```
+go install github.com/golang/mock/mockgen@v1.6.0
+```
+
+### [⏫](#contents)➡ Generate interface for a struct with [ifacemaker](https://github.com/vburenin/ifacemaker)
+
+This is a development helper program that generates a Golang interface by inspecting the structure methods of an existing .go file. The primary use case is to generate interfaces for [gomock](https://github.com/golang/mock), so that [gomock](https://github.com/golang/mock) can generate mocks from those interfaces. This makes unit testing easier. — [@vburenin](https://github.com/vburenin)
+
+
+```
+ifacemaker -f human.go -s Human -i HumanIface -p humantest -y "HumanIface makes human interaction easy" -c "DONT EDIT: Auto generated"
+```
+
+```go
+package main
+
+import "fmt"
+
+type Human struct {
+  name string
+  age  int
+}
+
+// Returns the name of our Human.
+func (h *Human) GetName() string {
+  return h.name
+}
+
+// Our Human just had a birthday! Increase its age.
+func (h *Human) Birthday() {
+  h.age += 1
+  fmt.Printf("I am now %d years old!\n", h.age)
+}
+
+// Make the Human say hello.
+func (h *Human) SayHello() {
+  fmt.Printf("Hello, my name is %s, and I am %d years old.\n", h.name, h.age)
+}
+
+func main() {
+  human := &Human{name: "Bob", age: 30}
+  human.GetName()
+  human.SayHello()
+  human.Birthday()
+}  
+```
+
+Requirements
+```
+go install github.com/vburenin/ifacemaker@latest
+```
+
 ### [⏫](#contents)➡ Modify struct field tags with [gomodifytags](https://github.com/fatih/gomodifytags)
 
 This tool makes it easy to update, add or delete the tags and options in a struct field. You can add new tags, update existing tags (such as appending a new key, i.e: db, xml, etc..) or remove existing tags. It's intended to be used by an editor, but also has modes to run it from the terminal. — [@fatih](https://github.com/fatih)
@@ -1104,14 +1214,6 @@ Requirements
 ```
 go install github.com/fatih/gomodifytags@latest
 ```
-
-### [⏫](#contents)➡ Generate Table Driven Tests with [gotests](https://github.com/cweill/gotests)
-
-This tool generates basic test placeholder. It is included into official Go plugin in VSCode and other major code editors. — [@cweill](https://github.com/cweill)
-
-<div align="center"><img src="https://github.com/cweill/GoTests-Sublime/raw/master/gotests.gif" style="margin: 8px; max-height: 640px;"></div>
-
-
 
 ## Refactoring
 
