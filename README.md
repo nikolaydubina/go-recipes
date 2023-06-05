@@ -141,6 +141,8 @@
    + [➡ Make alternative documentation with `golds`](#-make-alternative-documentation-with-golds)
    + [➡ Read Go binary documentation in `man` format with `goman`](#-read-go-binary-documentation-in-man-format-with-goman)
    + [➡ Generate badge with `gobadge`](#-generate-badge-with-gobadge)
+ - Education
+   + [➡ Run Turtle Graphics online with `goplay.space`](#-run-turtle-graphics-online-with-goplayspace)
  - Style Guide
    + [➡ Google](#style-guide)
    + [➡ Uber](#style-guide)
@@ -2499,6 +2501,16 @@ Requirements
 ```
 go install github.com/AlexBeauchemin/gobadge@latest
 ```
+
+## Education
+
+### [⏫](#contents)➡ Run Turtle Graphics online with [goplay.space](https://goplay.space/#wT_eZWJT69)
+
+This absolutely adorable visualization is an excellent online resource to learn programming. — [@iafan](https://github.com/iafan)
+
+<div align="center"><img src="https://user-images.githubusercontent.com/1728158/29108287-12dfd26a-7c93-11e7-966d-713356bce3d3.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
 
 ## Style Guide
 
