@@ -2508,6 +2508,44 @@ go install github.com/AlexBeauchemin/gobadge@latest
 
 This absolutely adorable visualization is an excellent online resource to learn programming. — [@iafan](https://github.com/iafan)
 
+```go
+package main
+
+import (
+  "fmt"
+)
+
+func main() {
+  fmt.Println(`
+    draw mode
+    
+    say Let's start...
+    right 18
+    color red
+
+    forward 7
+    say One...
+    right 144
+
+    forward 7
+    say Two...
+    right 144
+
+    forward 7
+    say Three...
+    right 144
+
+    forward 7
+    say Four...
+    right 144
+
+    forward 7
+    say We've got a star!
+    right 144
+  `)
+}
+```
+
 <div align="center"><img src="https://user-images.githubusercontent.com/1728158/29108287-12dfd26a-7c93-11e7-966d-713356bce3d3.gif" style="margin: 8px; max-height: 640px;"></div>
 
 

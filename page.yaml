@@ -1640,6 +1640,43 @@ groups:
         author: https://github.com/iafan
         name: goplay.space
         example_image_url: https://user-images.githubusercontent.com/1728158/29108287-12dfd26a-7c93-11e7-966d-713356bce3d3.gif
+        example_content_ext: go
+        example_content: |
+          package main
+
+          import (
+            "fmt"
+          )
+
+          func main() {
+            fmt.Println(`
+              draw mode
+              
+              say Let's start...
+              right 18
+              color red
+
+              forward 7
+              say One...
+              right 144
+
+              forward 7
+              say Two...
+              right 144
+
+              forward 7
+              say Three...
+              right 144
+
+              forward 7
+              say Four...
+              right 144
+
+              forward 7
+              say We've got a star!
+              right 144
+            `)
+          }
   - title: Style Guide
     type: md-list
     entries:
