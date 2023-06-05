@@ -1632,6 +1632,14 @@ groups:
           - gobadge -link=https://github.com/project/repo/actions/workflows/test.yml
         requirements:
           - go install github.com/AlexBeauchemin/gobadge@latest
+  - title: Education
+    entries:
+      - title: Run Turtle Graphics online
+        description: This absolutely adorable visualization is an excellent online resource to learn programming.
+        url: https://goplay.space/#wT_eZWJT69
+        author: https://github.com/iafan
+        name: goplay.space
+        example_image_url: https://user-images.githubusercontent.com/1728158/29108287-12dfd26a-7c93-11e7-966d-713356bce3d3.gif
   - title: Style Guide
     type: md-list
     entries:
