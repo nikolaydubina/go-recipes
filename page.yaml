@@ -330,6 +330,15 @@ groups:
           - go test -json ./... | gotestsum --junitfile unit-tests.xml
         requirements:
           - go install gotest.tools/gotestsum@latest
+      - title: Make `JSUnit` test report
+        description: JUnit is widely used format for test reporting. Go benchmark output is also supported.
+        url: https://github.com/jstemmer/go-junit-report
+        name: go-junit-report
+        author: https://github.com/jstemmer
+        commands:
+          - go test -v 2>&1 ./... | go-junit-report -set-exit-code > report.xml
+        requirements:
+          - go install github.com/jstemmer/go-junit-report/v2@latest
       - title: Get packages without tests
         description: If code coverage does not report packages without tests. For example for CI or quality control.
         requirements:

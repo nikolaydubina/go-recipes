@@ -35,6 +35,7 @@
    + [➡ Auto-Instrument skipping slowest tests with `gotestsum`](#-auto-instrument-skipping-slowest-tests-with-gotestsum)
    + [➡ Automatically re-run failed tests with `gotestsum`](#-automatically-re-run-failed-tests-with-gotestsum)
    + [➡ Make `JSUnit` test report with `gotestsum`](#-make-jsunit-test-report-with-gotestsum)
+   + [➡ Make `JSUnit` test report with `go-junit-report`](#-make-jsunit-test-report-with-go-junit-report)
    + [➡ Get packages without tests](#-get-packages-without-tests)
    + [➡ Perform Mutation Testing with `ooze`](#-perform-mutation-testing-with-ooze)
    + [➡ Perform Mutation Testing with `avito-tech/go-mutesting`](#-perform-mutation-testing-with-avito-techgo-mutesting)
@@ -639,6 +640,20 @@ go test -json ./... | gotestsum --junitfile unit-tests.xml
 Requirements
 ```
 go install gotest.tools/gotestsum@latest
+```
+
+### [⏫](#contents)➡ Make `JSUnit` test report with [go-junit-report](https://github.com/jstemmer/go-junit-report)
+
+JUnit is widely used format for test reporting. Go benchmark output is also supported. — [@jstemmer](https://github.com/jstemmer)
+
+
+```
+go test -v 2>&1 ./... | go-junit-report -set-exit-code > report.xml
+```
+
+Requirements
+```
+go install github.com/jstemmer/go-junit-report/v2@latest
 ```
 
 ### [⏫](#contents)➡ Get packages without tests
