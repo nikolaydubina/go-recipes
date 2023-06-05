@@ -157,6 +157,7 @@
    + [➡ Detect vertical function ordering with `vertfn`](#-detect-vertical-function-ordering-with-vertfn)
    + [➡ Detect tests with wrong `t.Parallel()` usage with `paralleltest`](#-detect-tests-with-wrong-tparallel-usage-with-paralleltest)
    + [➡ Detect tests with wrong `t.Parallel()` usage with `tparallel`](#-detect-tests-with-wrong-tparallel-usage-with-tparallel)
+   + [➡ Detect magic numbers with `mnd`](#-detect-magic-numbers-with-mnd)
    + [➡ Calculate Cognitive Complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
    + [➡ Calculate Cyclomatic Complexity with `gocyclo`](#-calculate-cyclomatic-complexity-with-gocyclo)
    + [➡ Calculate Cyclomatic Complexity with `cyclop`](#-calculate-cyclomatic-complexity-with-cyclop)
@@ -2818,6 +2819,26 @@ testdata/src/sample/table_test.go:30:6: Test_Table2's subtests should call t.Par
 Requirements
 ```
 go install github.com/moricho/tparallel/cmd/tparallel@latest
+```
+
+### [⏫](#contents)➡ Detect magic numbers with [mnd](https://github.com/tommy-muehle/go-mnd)
+
+This tool has heuristics to detect magic numbers. — [@tommy-muehle](https://github.com/tommy-muehle)
+
+
+```
+mnd ./...
+```
+
+Example
+```
+/go-mnd/examples/bad/main.go:18:23: Magic number: 200, in <condition> detected
+/go-mnd/examples/bad/main.go:11:12: Magic number: 2, in <assign> detected
+```
+
+Requirements
+```
+go install github.com/tommy-muehle/go-mnd/v2/cmd/mnd@latest
 ```
 
 ### [⏫](#contents)➡ Calculate Cognitive Complexity with [gocognit](https://github.com/uudashr/gocognit)

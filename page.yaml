@@ -1883,6 +1883,18 @@ groups:
           testdata/src/sample/table_test.go:30:6: Test_Table2's subtests should call t.Parallel
         requirements:
           - go install github.com/moricho/tparallel/cmd/tparallel@latest 
+      - title: Detect magic numbers
+        description: This tool has heuristics to detect magic numbers.
+        name: mnd 
+        url: https://github.com/tommy-muehle/go-mnd
+        author: https://github.com/tommy-muehle
+        commands:
+          - mnd ./...
+        example_output: |
+          /go-mnd/examples/bad/main.go:18:23: Magic number: 200, in <condition> detected
+          /go-mnd/examples/bad/main.go:11:12: Magic number: 2, in <assign> detected
+        requirements:
+          - go install github.com/tommy-muehle/go-mnd/v2/cmd/mnd@latest
       - title: Calculate Cognitive Complexity
         description: Congitive Complexity as defined in this tool can be more illustrative than Cyclometric Complexity. Research paper ["Cognitive Complexity - a new way of measuring understandability"](https://www.sonarsource.com/docs/CognitiveComplexity.pdf), 2021.
         name: gocognit
