@@ -1363,6 +1363,12 @@ groups:
           - find . -name "*.go" | grep -v "vendor/\|.git/\|_test.go" | xargs -n 1 -t otelinji -w -filename
         requirements:
           - go install github.com/hedhyw/otelinji/cmd/otelinji@latest
+      - title: Continious Profiling
+        name: Pyroscope
+        description: This tool allows to injest profiling data from your application. You would need to add integration in your main file that will sample in-process data and send it to Pyroscope. Here are useful resources [blog-go-memory-leaks](https://grafana.com/blog/2023/04/19/how-to-troubleshoot-memory-leaks-in-go-with-grafana-pyroscope/).
+        url: https://github.com/grafana/pyroscope
+        author: Grafana Labs
+        example_image_url: https://user-images.githubusercontent.com/23323466/143324845-16ff72df-231e-412d-bd0a-38ef2e09cba8.gif
   - title: Benchmarking
     entries:
       - title: Run benchmarks

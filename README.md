@@ -118,6 +118,7 @@
    + [➡ Visualise Go runtime metrics in browser with `statsviz`](#-visualise-go-runtime-metrics-in-browser-with-statsviz)
    + [➡ Auto-Instrument all functions with `go-instrument`](#-auto-instrument-all-functions-with-go-instrument)
    + [➡ Auto-Instrument all functions with `otelinji`](#-auto-instrument-all-functions-with-otelinji)
+   + [➡ Continious Profiling with `Pyroscope`](#-continious-profiling-with-pyroscope)
  - Benchmarking
    + [➡ Run benchmarks](#-run-benchmarks)
    + [➡ Table-driven benchmarks](#-table-driven-benchmarks)
@@ -2106,6 +2107,14 @@ Requirements
 ```
 go install github.com/hedhyw/otelinji/cmd/otelinji@latest
 ```
+
+### [⏫](#contents)➡ Continious Profiling with [Pyroscope](https://github.com/grafana/pyroscope)
+
+This tool allows to injest profiling data from your application. You would need to add integration in your main file that will sample in-process data and send it to Pyroscope. Here are useful resources [blog-go-memory-leaks](https://grafana.com/blog/2023/04/19/how-to-troubleshoot-memory-leaks-in-go-with-grafana-pyroscope/). — Grafana Labs
+
+<div align="center"><img src="https://user-images.githubusercontent.com/23323466/143324845-16ff72df-231e-412d-bd0a-38ef2e09cba8.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
 
 ## Benchmarking
 
