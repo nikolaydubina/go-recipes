@@ -1923,13 +1923,13 @@ Embed interactive Go Playground component into your blog. [Hugo](https://gohugo.
 ## Sample Code
 
 {{% goplay %}}
-```go
+'''go
 package main
 
 func main() {
   println("hello world")
 }
-```
+'''
 {{% /goplay %}}
 ```
 
