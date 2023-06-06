@@ -957,23 +957,6 @@ groups:
           ) 
         requirements:
           - go install github.com/anqiansong/goimportx@latest
-      - title: Keep consistent aliases of imports
-        description: It greatly helps to navigate large codebases when imports have the same aliases.
-        name: consistentimports
-        url: https://github.com/nikolaydubina/consistentimports
-        author: https://github.com/nikolaydubina
-        commands:
-          - consistentimports ./... 
-        example_output: |
-          -: "k8s.io/utils/net" netutils:4 netutil:1
-          -: "k8s.io/client-go/listers/core/v1" corelisters:1 listersv1:1 v1listers:1
-          -: "k8s.io/client-go/informers/core/v1" coreinformers:1 informers:1
-          -: "k8s.io/api/rbac/v1" rbacv1:4 v1:2
-          -: "k8s.io/apimachinery/pkg/runtime" runtime:3 kruntime:1
-          -: "k8s.io/api/imagepolicy/v1alpha1" imagepolicyv1alpha1:1 v1alpha1:1
-          -: "k8s.io/kubernetes/plugin/pkg/admission/podtolerationrestriction/apis
-        requirements:
-          - go install github.com/nikolaydubina/consistentimports@latest
   - title: Errors
     entries:
       - title: Errors with stack traces and source fragments
@@ -2155,6 +2138,23 @@ groups:
           - importas -alias knative.dev/serving/pkg/apis/autoscaling/v1alpha1:autoscalingv1alpha1 -alias knative.dev/serving/pkg/apis/serving/v1:servingv1 ./...
         requirements:
           - go install github.com/julz/importas/cmd/importas@latest
+      - title: Detect inconsistent import aliases
+        description: It greatly helps to navigate large codebases when imports have the same aliases.
+        name: consistentimports
+        url: https://github.com/nikolaydubina/consistentimports
+        author: https://github.com/nikolaydubina
+        commands:
+          - consistentimports ./... 
+        example_output: |
+          -: "k8s.io/utils/net" netutils:4 netutil:1
+          -: "k8s.io/client-go/listers/core/v1" corelisters:1 listersv1:1 v1listers:1
+          -: "k8s.io/client-go/informers/core/v1" coreinformers:1 informers:1
+          -: "k8s.io/api/rbac/v1" rbacv1:4 v1:2
+          -: "k8s.io/apimachinery/pkg/runtime" runtime:3 kruntime:1
+          -: "k8s.io/api/imagepolicy/v1alpha1" imagepolicyv1alpha1:1 v1alpha1:1
+          -: "k8s.io/kubernetes/plugin/pkg/admission/podtolerationrestriction/apis
+        requirements:
+          - go install github.com/nikolaydubina/consistentimports@latest
       - title: Detect naked returns
         description: "It is common guideline to avoid [naked returns](https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters). Naked return is when function has named return, and return statement does not specify value. This tool is useful for investigations."
         url: https://github.com/alexkohler/nakedret
