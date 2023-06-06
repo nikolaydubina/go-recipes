@@ -106,12 +106,13 @@
    + [➡ Visualize Go SSA function using Graphviz with `go-ssaviz`](#-visualize-go-ssa-function-using-graphviz-with-go-ssaviz)
    + [➡ (archived) Make graph of AST with `astgraph`](#-archived-make-graph-of-ast-with-astgraph)
  - Execution
+   + [➡ Embed Go Playground to your blog with `goplay`](#-embed-go-playground-to-your-blog-with-goplay)
    + [➡ Run alternative Go Playground with `goplay.tools`](#-run-alternative-go-playground-with-goplaytools)
    + [➡ Run interactive Go kernels in Jupyter Notebook with `gophernotes`](#-run-interactive-go-kernels-in-jupyter-notebook-with-gophernotes)
    + [➡ Run interactive Go interpreter with `yaegi`](#-run-interactive-go-interpreter-with-yaegi)
    + [➡ Run interactive Go interpreter with `gomacro`](#-run-interactive-go-interpreter-with-gomacro)
    + [➡ Run Go function in shell with `gorram`](#-run-go-function-in-shell-with-gorram)
-   + [➡ Run simple fileserver](#-run-simple-fileserver)
+   + [➡ Run simple fileserver with `net/http`](#-run-simple-fileserver-with-nethttp)
    + [➡ Create 3D visualization of concurrency traces with `gotrace`](#-create-3d-visualization-of-concurrency-traces-with-gotrace)
    + [➡ Wrap command with `os/exec`](#-wrap-command-with-osexec)
    + [➡ Capture output of command to file with `os/exec`](#-capture-output-of-command-to-file-with-osexec)
@@ -1914,6 +1915,30 @@ graphviz
 
 ## Execution
 
+### [⏫](#contents)➡ Embed Go Playground to your blog with [goplay](https://github.com/ggicci/goplay)
+
+Embed interactive Go Playground component into your blog. [Hugo](https://gohugo.io), [Docusaurus](https://docusaurus.io), [Ghost](https://ghost.org) are supported. There is also another tool [soksan](https://github.com/bbalet/soksan), however it is discontinued. Live [demo](https://ggicci.me/goplay-embed-go-playground-on-your-website/) with guideline. Other resources — GitLab considering to add it in [issue](https://gitlab.com/gitlab-org/gitlab/-/issues/212769); alternative implementation [guideline](https://hrishikeshpathak.com/blog/golang-code-playground/). — [@ggicci](https://github.com/ggicci)
+
+```
+## Sample Code
+
+{{% goplay %}}
+```go
+package main
+
+func main() {
+  println("hello world")
+}
+```
+{{% /goplay %}}
+```
+
+Requirements
+```
+reverse proxy server to https://play.golang.org
+bloging playform with support for embedding javascript
+```
+
 ### [⏫](#contents)➡ Run alternative Go Playground with [goplay.tools](https://github.com/x1unix/go-playground)
 
 Improved Go Playground featuring dark theme, code autocomplete, vim mode, WebAssembly. Available at [https://goplay.tools/](https://goplay.tools/). — [@x1unix](https://github.com/x1unix)
@@ -2007,7 +2032,7 @@ Requirements
 go install github.com/natefinch/gorram@latest
 ```
 
-### [⏫](#contents)➡ Run simple fileserver
+### [⏫](#contents)➡ Run simple fileserver with `net/http`
 
 It takes one line to run HTTP file server in Go. Akin to famous oneliner in Python `python3 -m http.server` and `python -m SimpleHTTPServer`. Run this file as usually `go run <filename>`.
 

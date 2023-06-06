@@ -1225,6 +1225,26 @@ groups:
            - graphviz
   - title: Execution
     entries:
+      - title: Embed Go Playground to your blog
+        description: Embed interactive Go Playground component into your blog. [Hugo](https://gohugo.io), [Docusaurus](https://docusaurus.io), [Ghost](https://ghost.org) are supported. There is also another tool [soksan](https://github.com/bbalet/soksan), however it is discontinued. Live [demo](https://ggicci.me/goplay-embed-go-playground-on-your-website/) with guideline. Other resources — GitLab considering to add it in [issue](https://gitlab.com/gitlab-org/gitlab/-/issues/212769); alternative implementation [guideline](https://hrishikeshpathak.com/blog/golang-code-playground/).
+        name: goplay
+        url: https://github.com/ggicci/goplay
+        author: https://github.com/ggicci
+        example_content: |
+          ## Sample Code
+
+          {{% goplay %}}
+          ```go
+          package main
+
+          func main() {
+            println("hello world")
+          }
+          ```
+          {{% /goplay %}}
+        requirements:
+          - reverse proxy server to https://play.golang.org
+          - bloging playform with support for embedding javascript
       - title: Run alternative Go Playground
         description: Improved Go Playground featuring dark theme, code autocomplete, vim mode, WebAssembly. Available at [https://goplay.tools/](https://goplay.tools/).
         name: goplay.tools
@@ -1292,6 +1312,7 @@ groups:
           - echo 12345 | gorram encoding/base64 StdEncoding.EncodeToString
           - gorram net/http Get https://google.com
       - title: Run simple fileserver
+        name: net/http
         description: It takes one line to run HTTP file server in Go. Akin to famous oneliner in Python `python3 -m http.server` and `python -m SimpleHTTPServer`. Run this file as usually `go run <filename>`.
         example_image_url: ./img/simple-fs.png
         example_content_ext: go
