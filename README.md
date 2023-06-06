@@ -81,7 +81,6 @@
    + [➡ Keep consistent ordering of imports with `goimports`](#-keep-consistent-ordering-of-imports-with-goimports)
    + [➡ Keep consistent ordering of imports with `gci`](#-keep-consistent-ordering-of-imports-with-gci)
    + [➡ Keep consistent ordering of imports with `goimportx`](#-keep-consistent-ordering-of-imports-with-goimportx)
-   + [➡ Keep consistent aliases of imports with `consistentimports`](#-keep-consistent-aliases-of-imports-with-consistentimports)
  - Errors
    + [➡ Errors with stack traces and source fragments with `tracerr`](#-errors-with-stack-traces-and-source-fragments-with-tracerr)
    + [➡ Pretty print `panic` messages with `panicparse`](#-pretty-print-panic-messages-with-panicparse)
@@ -174,6 +173,7 @@
    + [➡ Detect slices that could be preallocated with `prealloc`](#-detect-slices-that-could-be-preallocated-with-prealloc)
    + [➡ Detect unnecessary import aliases with `unimport`](#-detect-unnecessary-import-aliases-with-unimport)
    + [➡ Detect unexpected import aliases with `importas`](#-detect-unexpected-import-aliases-with-importas)
+   + [➡ Detect inconsistent import aliases with `consistentimports`](#-detect-inconsistent-import-aliases-with-consistentimports)
    + [➡ Detect naked returns with `nakedret`](#-detect-naked-returns-with-nakedret)
    + [➡ Detect mixing pointer and value method receivers with `smrcptr`](#-detect-mixing-pointer-and-value-method-receivers-with-smrcptr)
    + [➡ Detect vertical function ordering with `vertfn`](#-detect-vertical-function-ordering-with-vertfn)
@@ -1539,31 +1539,6 @@ import (
 Requirements
 ```
 go install github.com/anqiansong/goimportx@latest
-```
-
-### [⏫](#contents)➡ Keep consistent aliases of imports with [consistentimports](https://github.com/nikolaydubina/consistentimports)
-
-It greatly helps to navigate large codebases when imports have the same aliases. — [@nikolaydubina](https://github.com/nikolaydubina)
-
-
-```
-consistentimports ./...
-```
-
-Example
-```
--: "k8s.io/utils/net" netutils:4 netutil:1
--: "k8s.io/client-go/listers/core/v1" corelisters:1 listersv1:1 v1listers:1
--: "k8s.io/client-go/informers/core/v1" coreinformers:1 informers:1
--: "k8s.io/api/rbac/v1" rbacv1:4 v1:2
--: "k8s.io/apimachinery/pkg/runtime" runtime:3 kruntime:1
--: "k8s.io/api/imagepolicy/v1alpha1" imagepolicyv1alpha1:1 v1alpha1:1
--: "k8s.io/kubernetes/plugin/pkg/admission/podtolerationrestriction/apis
-```
-
-Requirements
-```
-go install github.com/nikolaydubina/consistentimports@latest
 ```
 
 ## Errors
@@ -3164,6 +3139,31 @@ func main() {
 Requirements
 ```
 go install github.com/julz/importas/cmd/importas@latest
+```
+
+### [⏫](#contents)➡ Detect inconsistent import aliases with [consistentimports](https://github.com/nikolaydubina/consistentimports)
+
+It greatly helps to navigate large codebases when imports have the same aliases. — [@nikolaydubina](https://github.com/nikolaydubina)
+
+
+```
+consistentimports ./...
+```
+
+Example
+```
+-: "k8s.io/utils/net" netutils:4 netutil:1
+-: "k8s.io/client-go/listers/core/v1" corelisters:1 listersv1:1 v1listers:1
+-: "k8s.io/client-go/informers/core/v1" coreinformers:1 informers:1
+-: "k8s.io/api/rbac/v1" rbacv1:4 v1:2
+-: "k8s.io/apimachinery/pkg/runtime" runtime:3 kruntime:1
+-: "k8s.io/api/imagepolicy/v1alpha1" imagepolicyv1alpha1:1 v1alpha1:1
+-: "k8s.io/kubernetes/plugin/pkg/admission/podtolerationrestriction/apis
+```
+
+Requirements
+```
+go install github.com/nikolaydubina/consistentimports@latest
 ```
 
 ### [⏫](#contents)➡ Detect naked returns with [nakedret](https://github.com/alexkohler/nakedret)
