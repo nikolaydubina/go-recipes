@@ -172,6 +172,7 @@
    + [➡ Detect global variables with `gochecknoglobals`](#-detect-global-variables-with-gochecknoglobals)
    + [➡ Detect slices that could be preallocated with `prealloc`](#-detect-slices-that-could-be-preallocated-with-prealloc)
    + [➡ Detect unnecessary import aliases with `unimport`](#-detect-unnecessary-import-aliases-with-unimport)
+   + [➡ Detect unexpected import aliases with `importas`](#-detect-unexpected-import-aliases-with-importas)
    + [➡ Detect naked returns with `nakedret`](#-detect-naked-returns-with-nakedret)
    + [➡ Detect mixing pointer and value method receivers with `smrcptr`](#-detect-mixing-pointer-and-value-method-receivers-with-smrcptr)
    + [➡ Detect vertical function ordering with `vertfn`](#-detect-vertical-function-ordering-with-vertfn)
@@ -3111,6 +3112,32 @@ pkg/apis/apps/v1beta1/zz_generated.conversion.go:31 unnecessary import alias run
 Requirements
 ```
 go install github.com/alexkohler/unimport@latest
+```
+
+### [⏫](#contents)➡ Detect unexpected import aliases with [importas](https://github.com/julz/importas)
+
+Ensure that import aliases take one of the allowed values. — [@julz](https://github.com/julz)
+
+
+```
+importas -alias knative.dev/serving/pkg/apis/autoscaling/v1alpha1:autoscalingv1alpha1 -alias knative.dev/serving/pkg/apis/serving/v1:servingv1 ./...
+```
+
+```go
+package main
+
+import (
+  v1alpha1 "knative.dev/serving/pkg/apis/autoscaling/v1alpha1" // want `import "knative.dev/serving/pkg/apis/autoscaling/v1alpha1" imported as "v1alpha1" but must be "autoscalingv1alpha1" according to config`
+  v1 "knative.dev/serving/pkg/apis/serving/v1"                 // want `import "knative.dev/serving/pkg/apis/serving/v1" imported as "v1" but must be "servingv1" according to config`
+)
+
+func main() {
+...
+```
+
+Requirements
+```
+go install github.com/julz/importas/cmd/importas@latest
 ```
 
 ### [⏫](#contents)➡ Detect naked returns with [nakedret](https://github.com/alexkohler/nakedret)

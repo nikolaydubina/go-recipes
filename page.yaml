@@ -2118,6 +2118,26 @@ groups:
           pkg/apis/apps/v1beta1/zz_generated.conversion.go:31 unnecessary import alias runtime
         requirements:
           - go install github.com/alexkohler/unimport@latest
+      - title: Detect unexpected import aliases
+        description: Ensure that import aliases take one of the allowed values.
+        url: https://github.com/julz/importas
+        name: importas
+        author: https://github.com/julz
+        example_content_ext: go
+        example_content: |
+          package main
+
+          import (
+            v1alpha1 "knative.dev/serving/pkg/apis/autoscaling/v1alpha1" // want `import "knative.dev/serving/pkg/apis/autoscaling/v1alpha1" imported as "v1alpha1" but must be "autoscalingv1alpha1" according to config`
+            v1 "knative.dev/serving/pkg/apis/serving/v1"                 // want `import "knative.dev/serving/pkg/apis/serving/v1" imported as "v1" but must be "servingv1" according to config`
+          )
+
+          func main() {
+          ...
+        commands:
+          - importas -alias knative.dev/serving/pkg/apis/autoscaling/v1alpha1:autoscalingv1alpha1 -alias knative.dev/serving/pkg/apis/serving/v1:servingv1 ./...
+        requirements:
+          - go install github.com/julz/importas/cmd/importas@latest
       - title: Detect naked returns
         description: "It is common guideline to avoid [naked returns](https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters). Naked return is when function has named return, and return statement does not specify value. This tool is useful for investigations."
         url: https://github.com/alexkohler/nakedret
