@@ -896,6 +896,15 @@ groups:
         commands:
           - gofmt -w -r 'interface{} -> any' .
       - title: Keep consistent ordering of imports
+        description: This is official tool for for grouping and sorting imports. However, it has only basic grouping functionality.
+        url: https://pkg.go.dev/golang.org/x/tools/cmd/goimports
+        name: goimports
+        author: Go Core team
+        commands:
+          -  goimports -w -local .
+        requirements:
+          - go install golang.org/x/tools/cmd/goimports@latest
+      - title: Keep consistent ordering of imports
         description: "This tool splits all import blocks into different sections, now support five section types: standard (e.g. 'fmt'); custom; default; blank; dot. It will keep each section sorted and keep ordering of sections consistent."
         name: gci
         author: https://github.com/daixiang0

@@ -78,6 +78,7 @@
    + [➡ Modify struct field tags with `gomodifytags`](#-modify-struct-field-tags-with-gomodifytags)
  - Refactoring
    + [➡ Replace symbol with `gofmt`](#-replace-symbol-with-gofmt)
+   + [➡ Keep consistent ordering of imports with `goimports`](#-keep-consistent-ordering-of-imports-with-goimports)
    + [➡ Keep consistent ordering of imports with `gci`](#-keep-consistent-ordering-of-imports-with-gci)
    + [➡ Keep consistent ordering of imports with `goimportx`](#-keep-consistent-ordering-of-imports-with-goimportx)
  - Errors
@@ -1458,6 +1459,20 @@ I found this in announcement [notice](https://github.com/golang/go/commit/2580d0
 gofmt -w -r 'interface{} -> any' .
 ```
 
+
+### [⏫](#contents)➡ Keep consistent ordering of imports with [goimports](https://pkg.go.dev/golang.org/x/tools/cmd/goimports)
+
+This is official tool for for grouping and sorting imports. However, it has only basic grouping functionality. — Go Core team
+
+
+```
+goimports -w -local .
+```
+
+Requirements
+```
+go install golang.org/x/tools/cmd/goimports@latest
+```
 
 ### [⏫](#contents)➡ Keep consistent ordering of imports with [gci](https://github.com/daixiang0/gci)
 
