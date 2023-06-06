@@ -81,6 +81,7 @@
    + [➡ Keep consistent ordering of imports with `goimports`](#-keep-consistent-ordering-of-imports-with-goimports)
    + [➡ Keep consistent ordering of imports with `gci`](#-keep-consistent-ordering-of-imports-with-gci)
    + [➡ Keep consistent ordering of imports with `goimportx`](#-keep-consistent-ordering-of-imports-with-goimportx)
+   + [➡ Keep consistent aliases of imports with `consistentimports`](#-keep-consistent-aliases-of-imports-with-consistentimports)
  - Errors
    + [➡ Errors with stack traces and source fragments with `tracerr`](#-errors-with-stack-traces-and-source-fragments-with-tracerr)
    + [➡ Pretty print `panic` messages with `panicparse`](#-pretty-print-panic-messages-with-panicparse)
@@ -1538,6 +1539,31 @@ import (
 Requirements
 ```
 go install github.com/anqiansong/goimportx@latest
+```
+
+### [⏫](#contents)➡ Keep consistent aliases of imports with [consistentimports](https://github.com/nikolaydubina/consistentimports)
+
+ — [@nikolaydubina](https://github.com/nikolaydubina)
+
+
+```
+consistentimports ./...
+```
+
+Example
+```
+-: "k8s.io/utils/net" netutils:4 netutil:1
+-: "k8s.io/client-go/listers/core/v1" corelisters:1 listersv1:1 v1listers:1
+-: "k8s.io/client-go/informers/core/v1" coreinformers:1 informers:1
+-: "k8s.io/api/rbac/v1" rbacv1:4 v1:2
+-: "k8s.io/apimachinery/pkg/runtime" runtime:3 kruntime:1
+-: "k8s.io/api/imagepolicy/v1alpha1" imagepolicyv1alpha1:1 v1alpha1:1
+-: "k8s.io/kubernetes/plugin/pkg/admission/podtolerationrestriction/apis
+```
+
+Requirements
+```
+go install github.com/nikolaydubina/consistentimports@latest
 ```
 
 ## Errors
