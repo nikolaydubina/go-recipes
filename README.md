@@ -1543,7 +1543,7 @@ go install github.com/anqiansong/goimportx@latest
 
 ### [⏫](#contents)➡ Keep consistent aliases of imports with [consistentimports](https://github.com/nikolaydubina/consistentimports)
 
- — [@nikolaydubina](https://github.com/nikolaydubina)
+It greatly helps to navigate large codebases when imports have the same aliases. — [@nikolaydubina](https://github.com/nikolaydubina)
 
 
 ```
