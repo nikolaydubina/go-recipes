@@ -958,6 +958,7 @@ groups:
         requirements:
           - go install github.com/anqiansong/goimportx@latest
       - title: Keep consistent aliases of imports
+        description: It greatly helps to navigate large codebases when imports have the same aliases.
         name: consistentimports
         url: https://github.com/nikolaydubina/consistentimports
         author: https://github.com/nikolaydubina
