@@ -187,6 +187,7 @@
    + [➡ (archived) Ensure `if` statements using short assignment with `ifshort`](#-archived-ensure-if-statements-using-short-assignment-with-ifshort)
    + [➡ Visualize struct layout with `structlayout`](#-visualize-struct-layout-with-structlayout)
    + [➡ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
+   + [➡ Analyze function callsites with `go-callsite-stats`](#-analyze-function-callsites-with-go-callsite-stats)
 
 ## AI tools
 
@@ -3518,5 +3519,40 @@ var (
 )
 ```
 
+
+### [⏫](#contents)➡ Analyze function callsites with [go-callsite-stats](https://github.com/nikolaydubina/go-callsite-stats)
+
+Scrape callsite information about functions to lern better how functions are beign used. This can help in refactoring, naming, OOP. This tool calcuates frequency of names on assignments in returns and frequency of names in arguments. This can be used to detect ignored returns as well. — [@nikolaydubina](https://github.com/nikolaydubina)
+
+
+```
+go-callsite-stats ./...
+```
+
+```
+x16:       (no assignments)                  = execHostnameTest(serviceAddress:7)
+                                                              (nodePortAddress:3)
+                                                              (nodePortAddress0:3)
+                                                              (nodePortAddress1:2)
+                                                              (clusterIPAddress:1)
+x16:       pod:10, err:12                    = CreatePod(client:11, namespace:10, nil:9, pvclaims:6, false:7, execCommand:2)
+          clientPod:1                                  (c:2, ns:2, podCount:2, true:3)
+          _:1                                          (pod:1, pod:1, pvclaims:2, false:2)
+          err:1                                        (ctx:1, nil:1, createdClaims:1, pvcClaims:1)
+                                                        (namespace:1, nameSpace:1, podTemplate:1)
+                                                        (, basePod:1)
+x16:       (no assignments)                  = GET()
+x16:       deployment:11, err:14             = UpdateDeploymentWithRetries(c:14, ns:14, deploymentName:3, applyUpdate:1, poll:1,pollShortTimeout:1)                                                         
+          _:2                                                            (client:1, namespace:1, pollTimeout:1)
+          deploymentWithUpdatedReplicas:1                                (applyUpdate:1, pollInterval:1, name:1)
+x16:       err:16                            = waitForDefinition(schemaFoo:12
+                                                                (schemaWaldo:3)
+                                                                (expect:1) 
+```
+
+Requirements
+```
+go install github.com/nikolaydubina/go-callsite-stats@latest
+```
 
 
