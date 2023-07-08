@@ -46,6 +46,17 @@ groups:
           - "# OpenAI token or LocalAI model and server"
           - go install github.com/charmbracelet/glow@latest
           - go install github.com/charmbracelet/mods@latest
+      - title: Pull request recommendations
+        name: gpt-pullrequest-updater
+        description: This tool generates GitHub pull request description and review using OpenAI ChatGPT. There is also GitHub Action available.
+        url: https://github.com/ravilushqa/gpt-pullrequest-updater
+        author: https://github.com/ravilushqa
+        example_image_url: ./img/gpt-pullrequest-updater-example.png
+        requirements:
+          - "# OpenAI token"
+          - "# GitHub token"
+          - go install github.com/ravilushqa/gpt-pullrequest-updater/cmd/description@latest
+          - go install github.com/ravilushqa/gpt-pullrequest-updater/cmd/review@latest
       - title: Commit message recommendation
         description: Short summaries of changes usually work well.
         url: https://github.com/charmbracelet/mods
