@@ -13,6 +13,7 @@
    + [➡ Advanced autocompletion with `Copilot`](#-advanced-autocompletion-with-copilot)
    + [➡ Pull requests recommendations with `CopilotX`](#-pull-requests-recommendations-with-copilotx)
    + [➡ Code analysis and recommendations with `charmbracelet/mods`](#-code-analysis-and-recommendations-with-charmbraceletmods)
+   + [➡ Pull request recommendations with `gpt-pullrequest-updater`](#-pull-request-recommendations-with-gpt-pullrequest-updater)
    + [➡ Commit message recommendation](#-commit-message-recommendation)
    + [➡ Test case recommendation](#-test-case-recommendation)
    + [➡ Time complexity estimate](#-time-complexity-estimate)
@@ -233,6 +234,21 @@ Requirements
 # OpenAI token or LocalAI model and server
 go install github.com/charmbracelet/glow@latest
 go install github.com/charmbracelet/mods@latest
+```
+
+### [⏫](#contents)➡ Pull request recommendations with [gpt-pullrequest-updater](https://github.com/ravilushqa/gpt-pullrequest-updater)
+
+This tool generates GitHub pull request description and review using OpenAI ChatGPT. There is also GitHub Action available. — [@ravilushqa](https://github.com/ravilushqa)
+
+<div align="center"><img src="./img/gpt-pullrequest-updater-example.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+# OpenAI token
+# GitHub token
+go install github.com/ravilushqa/gpt-pullrequest-updater/cmd/description@latest
+go install github.com/ravilushqa/gpt-pullrequest-updater/cmd/review@latest
 ```
 
 ### [⏫](#contents)➡ Commit message recommendation
