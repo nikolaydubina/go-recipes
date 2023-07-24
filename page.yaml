@@ -312,6 +312,16 @@ groups:
         example_image_url: https://user-images.githubusercontent.com/442180/182284939-e08a0aa5-4504-4e30-9e88-207ef47f4537.gif
         requirements:
           - go install gotest.tools/gotestsum@latest
+      - title: Format `go test` results as documentation
+        name: gotestdox 
+        description: Decorates `go test` results by converting CamelCaseTestNames into readable sentences.
+        url: https://github.com/bitfield/gotestdox
+        author: https://github.com/bitfield
+        example_image_url: https://github.com/bitfield/gotestdox/raw/main/img/demo.gif
+        commands:
+          - gotestdox ./...
+        requirements:
+          - go install github.com/bitfield/gotestdox/cmd/gotestdox@latest
       - title: Get slowest tests 
         description: This is subcommand of `gotestsum` that processes JSON output of `go test` to find slowest tests. 
         name: gotestsum
