@@ -32,6 +32,7 @@
    + [➡ Summarize `go test` with `tparse`](#-summarize-go-test-with-tparse)
    + [➡ Decorate `go test` with `richgo`](#-decorate-go-test-with-richgo)
    + [➡ Decorate `go test` with `gotest`](#-decorate-go-test-with-gotest)
+   + [➡ Format `go test` results as documentation with `gotestdox`](#-format-go-test-results-as-documentation-with-gotestdox)
    + [➡ Decorate `go test` with `gotestsum`](#-decorate-go-test-with-gotestsum)
    + [➡ Get slowest tests with `gotestsum`](#-get-slowest-tests-with-gotestsum)
    + [➡ Auto-Instrument skipping slowest tests with `gotestsum`](#-auto-instrument-skipping-slowest-tests-with-gotestsum)
@@ -604,6 +605,22 @@ gotest ./...
 Requirements
 ```
 go install github.com/rakyll/gotest@latest
+```
+
+### [⏫](#contents)➡ Format `go test` results as documentation with [gotestdox](https://github.com/bitfield/gotestdox)
+
+Decorates `go test` results by converting CamelCaseTestNames into readable sentences. — [@bitfield](https://github.com/bitfield)
+
+```
+gotestdox ./...
+```
+
+<div align="center"><img src="https://github.com/bitfield/gotestdox/raw/main/img/demo.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/bitfield/gotestdox/cmd/gotestdox@latest
 ```
 
 ### [⏫](#contents)➡ Decorate `go test` with [gotestsum](https://github.com/gotestyourself/gotestsum)
