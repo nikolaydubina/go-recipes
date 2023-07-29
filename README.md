@@ -108,6 +108,7 @@
    + [➡ Generate AST for code snippets with `go2ast`](#-generate-ast-for-code-snippets-with-go2ast)
    + [➡ Visualize Go SSA function using Graphviz with `go-ssaviz`](#-visualize-go-ssa-function-using-graphviz-with-go-ssaviz)
    + [➡ (archived) Make graph of AST with `astgraph`](#-archived-make-graph-of-ast-with-astgraph)
+   + [➡ (archived) Convert C assembly to Go assembly with `c2goasm`](#-archived-convert-c-assembly-to-go-assembly-with-c2goasm)
  - Execution
    + [➡ Embed Go Playground to your blog with `goplay`](#-embed-go-playground-to-your-blog-with-goplay)
    + [➡ Run alternative Go Playground with `goplay.tools`](#-run-alternative-go-playground-with-goplaytools)
@@ -1963,6 +1964,22 @@ This tool visualizes AST as graph, which may be useful to navigate and undertand
 Requirements
 ```
 graphviz
+```
+
+### [⏫](#contents)➡ (archived) Convert C assembly to Go assembly with [c2goasm](https://github.com/minio/c2goasm)
+
+This tool can convert C assembly `.s` into Go assbmely `.s` files. This is useful for reusing compiler optimizations such as SIMD or loop unrolling in C, which can lead to 10x speedups. However, project has been archieved 4+ years ago. — [@fwessels](https://github.com/fwessels)
+
+
+```
+gcc -O3 -march=native -S -o c_code.s c_code.c
+c2goasm -a c_code.s go_c_code.s
+go build -o go_c_code.o -gcflags="-S" go_c_code.s
+```
+
+Requirements
+```
+go install github.com/minio/c2goasm@latest
 ```
 
 ## Execution
