@@ -1253,6 +1253,17 @@ groups:
         example_image_url: https://github.com/xiazemin/ast_graph/raw/master/tree.svg
         requirements:
            - graphviz
+      - title: (archived) Convert C assembly to Go assembly
+        url: https://github.com/minio/c2goasm
+        author: https://github.com/fwessels
+        name: c2goasm
+        description: This tool can convert C assembly `.s` into Go assbmely `.s` files. This is useful for reusing compiler optimizations such as SIMD or loop unrolling in C, which can lead to 10x speedups. However, project has been archieved 4+ years ago.
+        requirements:
+          - go install github.com/minio/c2goasm@latest
+        commands:
+          - gcc -O3 -march=native -S -o c_code.s c_code.c
+          - c2goasm -a c_code.s go_c_code.s
+          - go build -o go_c_code.o -gcflags="-S" go_c_code.s
   - title: Execution
     entries:
       - title: Embed Go Playground to your blog
