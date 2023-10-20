@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.png" width="300" height="300">
+  <img src="img/logo.png" width="300" height="300">
 </p>
 <h1 align="center">Go Recipes 🦩 </h1>
 <p align="center">Handy well-known and <i>lesser</i>-known tools for Go projects</p>
