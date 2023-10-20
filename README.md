@@ -1,7 +1,6 @@
 <p align="center">
   <img src="img/logo.png" width="300" height="300">
 </p>
-<h1 align="center">Go Recipes 🦩 </h1>
 <p align="center">Handy well-known and <i>lesser</i>-known tools for Go projects</p>
 
 > _Know some cool tool or one-liner? Have a feature request or an idea?_  
