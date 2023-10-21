@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="img/logo.png" width="300" height="300">
+  <img width="300" height="300" src="https://github.com/nikolaydubina/go-recipes/assets/2933061/d331d730-dd4b-48d8-9f70-dd133a12d8a9">
 </p>
 <p align="center">Handy well-known and <i>lesser</i>-known tools for Go projects</p>
 
