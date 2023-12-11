@@ -231,7 +231,7 @@ groups:
         requirements:
           - go install github.com/qiniu/goc@latest
       - title: 🎊 Shuffle tests
-        description: This is less known option that is disabled by default. However, it is for robust test suite it may be very beneficial. More test flags and full description available at `go help testflag`.
+        description: This is less known option that is disabled by default. However, for robust test suite it is beneficial. More test flags and full description is available at `go help testflag`.
         commands:
           - go test -shuffle=on
       - title: Run tests sequentially
@@ -1719,7 +1719,7 @@ groups:
           - find . -name "*.go" | grep -v "vendor/\|.git/\|_test.go" | xargs -n 1 -t otelinji -w -filename
         requirements:
           - go install github.com/hedhyw/otelinji/cmd/otelinji@latest
-      - title: 🎊 Auto-Instrument functions with DataDog
+      - title: 🎊 Auto-Instrument functions for DataDog
         description: This is official Datadog tool for automatic instrumentation of code. It has very convenient compiler directives for instrumentation.
         author: https://github.com/DataDog
         name: orchestrion
@@ -2244,6 +2244,7 @@ groups:
         description: This tool employs sophisticated static analysis techniques to catch Nil dereferences. More details in [blog](https://www.uber.com/en-IN/blog/nilaway-practical-nil-panic-detection-for-go/).
         url: https://github.com/uber-go/nilaway
         author: Uber
+        name: nilaway
         commands:
           - nilaway ./...
         example_image_url: https://blog.uber-cdn.com/cdn-cgi/image/width=2048,quality=80,onerror=redirect,format=auto/wp-content/uploads/2023/11/figure_4.jpg

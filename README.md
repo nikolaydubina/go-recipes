@@ -141,7 +141,7 @@
    + [➡ Visualise Go runtime metrics in browser with `statsviz`](#-visualise-go-runtime-metrics-in-browser-with-statsviz)
    + [➡ Auto-Instrument all functions with `go-instrument`](#-auto-instrument-all-functions-with-go-instrument)
    + [➡ Auto-Instrument all functions with `otelinji`](#-auto-instrument-all-functions-with-otelinji)
-   + [➡ 🎊 Auto-Instrument functions with DataDog with `orchestrion`](#--auto-instrument-functions-with-datadog-with-orchestrion)
+   + [➡ 🎊 Auto-Instrument functions for DataDog with `orchestrion`](#--auto-instrument-functions-for-datadog-with-orchestrion)
    + [➡ Continious Profiling with `Pyroscope`](#-continious-profiling-with-pyroscope)
  - Benchmarking
    + [➡ Run benchmarks](#-run-benchmarks)
@@ -181,7 +181,7 @@
    + [➡ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
    + [➡ Run official static analyzers not included in `go vet`](#-run-official-static-analyzers-not-included-in-go-vet)
    + [➡ Detect most common issues with `staticcheck`](#-detect-most-common-issues-with-staticcheck)
-   + [➡ 🎊 Detect potential Nil panics](#--detect-potential-nil-panics)
+   + [➡ 🎊 Detect potential Nil panics with `nilaway`](#--detect-potential-nil-panics-with-nilaway)
    + [➡ Detect most common issues with `go-critic`](#-detect-most-common-issues-with-go-critic)
    + [➡ Reference and run common linters with `golangci`](#-reference-and-run-common-linters-with-golangci)
    + [➡ Detect non-exhaustive switch and map with `exhaustive`](#-detect-non-exhaustive-switch-and-map-with-exhaustive)
@@ -519,7 +519,7 @@ go install github.com/qiniu/goc@latest
 
 ### [⏫](#contents)➡ 🎊 Shuffle tests
 
-This is less known option that is disabled by default. However, it is for robust test suite it may be very beneficial. More test flags and full description available at `go help testflag`.
+This is less known option that is disabled by default. However, for robust test suite it is beneficial. More test flags and full description is available at `go help testflag`.
 
 
 ```
@@ -2586,7 +2586,7 @@ Requirements
 go install github.com/hedhyw/otelinji/cmd/otelinji@latest
 ```
 
-### [⏫](#contents)➡ 🎊 Auto-Instrument functions with DataDog with [orchestrion](https://github.com/DataDog/orchestrion)
+### [⏫](#contents)➡ 🎊 Auto-Instrument functions for DataDog with [orchestrion](https://github.com/DataDog/orchestrion)
 
 This is official Datadog tool for automatic instrumentation of code. It has very convenient compiler directives for instrumentation. — [@DataDog](https://github.com/DataDog)
 
@@ -3277,7 +3277,7 @@ Requirements
 go install honnef.co/go/tools/cmd/staticcheck@latest
 ```
 
-### [⏫](#contents)➡ 🎊 Detect potential Nil panics
+### [⏫](#contents)➡ 🎊 Detect potential Nil panics with [nilaway](https://github.com/uber-go/nilaway)
 
 This tool employs sophisticated static analysis techniques to catch Nil dereferences. More details in [blog](https://www.uber.com/en-IN/blog/nilaway-practical-nil-panic-detection-for-go/). — Uber
 
