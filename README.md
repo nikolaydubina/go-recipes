@@ -69,7 +69,7 @@
    + [ Make 3D chart of Go codebase with `gocity`](#-make-3d-chart-of-go-codebase-with-gocity)
    + [ Make histogram of Go files per package](#-make-histogram-of-go-files-per-package)
    + [ Explore Go code in browser powered by `go-guru` with `pythia`](#-explore-go-code-in-browser-powered-by-go-guru-with-pythia)
-   + [ 🏚️ Interactively visualize packages with `goexplorer`](#--interactively-visualize-packages-with-goexplorer)
+   + [ :derelict_house: Interactively visualize packages with `goexplorer`](#-derelicthouse-interactively-visualize-packages-with-goexplorer)
  - Code Generation
    + [ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
    + [ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
@@ -116,8 +116,8 @@
    + [ Generate AST for code snippets with `go/ast`](#-generate-ast-for-code-snippets-with-goast)
    + [ Generate AST for code snippets with `go2ast`](#-generate-ast-for-code-snippets-with-go2ast)
    + [ Visualize Go SSA function using Graphviz with `go-ssaviz`](#-visualize-go-ssa-function-using-graphviz-with-go-ssaviz)
-   + [ 🏚️ Make graph of AST with `astgraph`](#--make-graph-of-ast-with-astgraph)
-   + [ 🏚️ Convert C assembly to Go assembly with `c2goasm`](#--convert-c-assembly-to-go-assembly-with-c2goasm)
+   + [ :derelict_house: Make graph of AST with `astgraph`](#-derelicthouse-make-graph-of-ast-with-astgraph)
+   + [ :derelict_house: Convert C assembly to Go assembly with `c2goasm`](#-derelicthouse-convert-c-assembly-to-go-assembly-with-c2goasm)
  - Execution
    + [ Embed Go Playground to your blog with `goplay`](#-embed-go-playground-to-your-blog-with-goplay)
    + [ Run alternative Go Playground with `goplay.tools`](#-run-alternative-go-playground-with-goplaytools)
@@ -204,7 +204,7 @@
    + [ Calculate Cyclomatic Complexity with `gocyclo`](#-calculate-cyclomatic-complexity-with-gocyclo)
    + [ Calculate Cyclomatic Complexity with `cyclop`](#-calculate-cyclomatic-complexity-with-cyclop)
    + [ Calculate age of comments with `go-commentage`](#-calculate-age-of-comments-with-go-commentage)
-   + [ 🏚️ Ensure `if` statements using short assignment with `ifshort`](#--ensure-if-statements-using-short-assignment-with-ifshort)
+   + [ :derelict_house: Ensure `if` statements using short assignment with `ifshort`](#-derelicthouse-ensure-if-statements-using-short-assignment-with-ifshort)
    + [ Visualize struct layout with `structlayout`](#-visualize-struct-layout-with-structlayout)
    + [ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
    + [ Analyze function callsites with `go-callsite-stats`](#-analyze-function-callsites-with-go-callsite-stats)
@@ -1247,7 +1247,7 @@ go install github.com/fzipp/pythia@latest
 go install golang.org/x/tools/cmd/guru@latest
 ```
 
-### [⏫](#contents) 🏚️ Interactively visualize packages with [goexplorer](https://github.com/ofabry/goexplorer)
+### [⏫](#contents) :derelict_house: Interactively visualize packages with [goexplorer](https://github.com/ofabry/goexplorer)
 
 Based on `go-callvis`, this tool is an interactive package explorer of packages. This tool have not been updated for a long time. — [@ofabry](https://github.com/ofabry)
 
@@ -2194,7 +2194,7 @@ Requirements
 go install github.com/SilverRainZ/go-ssaviz@latest
 ```
 
-### [⏫](#contents) 🏚️ Make graph of AST with [astgraph](https://github.com/xiazemin/ast_graph)
+### [⏫](#contents) :derelict_house: Make graph of AST with [astgraph](https://github.com/xiazemin/ast_graph)
 
 This tool visualizes AST as graph, which may be useful to navigate and undertand Go AST. This tool has not been maintaned for a while. — [@xiazemin](https://github.com/xiazemin)
 
@@ -2206,7 +2206,7 @@ Requirements
 graphviz
 ```
 
-### [⏫](#contents) 🏚️ Convert C assembly to Go assembly with [c2goasm](https://github.com/minio/c2goasm)
+### [⏫](#contents) :derelict_house: Convert C assembly to Go assembly with [c2goasm](https://github.com/minio/c2goasm)
 
 This tool can convert C assembly `.s` into Go assbmely `.s` files. This is useful for reusing compiler optimizations such as SIMD or loop unrolling in C, which can lead to 10x speedups. However, project has been archieved 4+ years ago. — [@fwessels](https://github.com/fwessels)
 
@@ -3934,7 +3934,7 @@ Requirements
 go install github.com/nikolaydubina/go-commentage@latest
 ```
 
-### [⏫](#contents) 🏚️ Ensure `if` statements using short assignment with [ifshort](https://github.com/esimonov/ifshort)
+### [⏫](#contents) :derelict_house: Ensure `if` statements using short assignment with [ifshort](https://github.com/esimonov/ifshort)
 
 Linter for checking that your code uses short syntax for `if` statements whenever possible. However, as of `2023-05-26`, it is not maitaned and is not working. — [@esimonov](https://github.com/esimonov)
 

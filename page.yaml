@@ -680,7 +680,7 @@ groups:
         requirements:
           - go install github.com/fzipp/pythia@latest
           - go install golang.org/x/tools/cmd/guru@latest
-      - title: 🏚️ Interactively visualize packages
+      - title: ":derelict_house: Interactively visualize packages"
         description: Based on `go-callvis`, this tool is an interactive package explorer of packages. This tool have not been updated for a long time.
         url: https://github.com/ofabry/goexplorer
         name: goexplorer
@@ -1425,7 +1425,7 @@ groups:
         requirements:
           - "# get graphviz"
           - go install github.com/SilverRainZ/go-ssaviz@latest
-      - title: 🏚️ Make graph of AST
+      - title: ":derelict_house: Make graph of AST"
         description: This tool visualizes AST as graph, which may be useful to navigate and undertand Go AST. This tool has not been maintaned for a while.
         name: astgraph
         author: https://github.com/xiazemin
@@ -1433,7 +1433,7 @@ groups:
         example_image_url: https://github.com/xiazemin/ast_graph/raw/master/tree.svg
         requirements:
           - graphviz
-      - title: 🏚️ Convert C assembly to Go assembly
+      - title: ":derelict_house: Convert C assembly to Go assembly"
         url: https://github.com/minio/c2goasm
         author: https://github.com/fwessels
         name: c2goasm
@@ -2712,7 +2712,7 @@ groups:
         requirements:
           - "# get latest version of git"
           - go install github.com/nikolaydubina/go-commentage@latest
-      - title: 🏚️ Ensure `if` statements using short assignment
+      - title: ":derelict_house: Ensure `if` statements using short assignment"
         name: ifshort
         author: https://github.com/esimonov
         status: archive-not-working
