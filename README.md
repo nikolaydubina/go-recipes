@@ -69,7 +69,7 @@
    + [ Make 3D chart of Go codebase with `gocity`](#-make-3d-chart-of-go-codebase-with-gocity)
    + [ Make histogram of Go files per package](#-make-histogram-of-go-files-per-package)
    + [ Explore Go code in browser powered by `go-guru` with `pythia`](#-explore-go-code-in-browser-powered-by-go-guru-with-pythia)
-   + [ :derelict_house: Interactively visualize packages with `goexplorer`](#-derelicthouse-interactively-visualize-packages-with-goexplorer)
+   + [ :derelict_house: Interactively visualize packages with `goexplorer`](#-derelict_house-interactively-visualize-packages-with-goexplorer)
  - Code Generation
    + [ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
    + [ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
@@ -116,8 +116,8 @@
    + [ Generate AST for code snippets with `go/ast`](#-generate-ast-for-code-snippets-with-goast)
    + [ Generate AST for code snippets with `go2ast`](#-generate-ast-for-code-snippets-with-go2ast)
    + [ Visualize Go SSA function using Graphviz with `go-ssaviz`](#-visualize-go-ssa-function-using-graphviz-with-go-ssaviz)
-   + [ :derelict_house: Make graph of AST with `astgraph`](#-derelicthouse-make-graph-of-ast-with-astgraph)
-   + [ :derelict_house: Convert C assembly to Go assembly with `c2goasm`](#-derelicthouse-convert-c-assembly-to-go-assembly-with-c2goasm)
+   + [ :derelict_house: Make graph of AST with `astgraph`](#-derelict_house-make-graph-of-ast-with-astgraph)
+   + [ :derelict_house: Convert C assembly to Go assembly with `c2goasm`](#-derelict_house-convert-c-assembly-to-go-assembly-with-c2goasm)
  - Execution
    + [ Embed Go Playground to your blog with `goplay`](#-embed-go-playground-to-your-blog-with-goplay)
    + [ Run alternative Go Playground with `goplay.tools`](#-run-alternative-go-playground-with-goplaytools)
@@ -204,7 +204,7 @@
    + [ Calculate Cyclomatic Complexity with `gocyclo`](#-calculate-cyclomatic-complexity-with-gocyclo)
    + [ Calculate Cyclomatic Complexity with `cyclop`](#-calculate-cyclomatic-complexity-with-cyclop)
    + [ Calculate age of comments with `go-commentage`](#-calculate-age-of-comments-with-go-commentage)
-   + [ :derelict_house: Ensure `if` statements using short assignment with `ifshort`](#-derelicthouse-ensure-if-statements-using-short-assignment-with-ifshort)
+   + [ :derelict_house: Ensure `if` statements using short assignment with `ifshort`](#-derelict_house-ensure-if-statements-using-short-assignment-with-ifshort)
    + [ Visualize struct layout with `structlayout`](#-visualize-struct-layout-with-structlayout)
    + [ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
    + [ Analyze function callsites with `go-callsite-stats`](#-analyze-function-callsites-with-go-callsite-stats)
