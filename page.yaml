@@ -227,7 +227,7 @@ groups:
         name: goc
         requirements:
           - go install github.com/qiniu/goc@latest
-      - title: 🎊 Shuffle tests
+      - title: ":confetti_ball: Shuffle tests"
         description: This is less known option that is disabled by default. However, for robust test suite it is beneficial. More test flags and full description is available at `go help testflag`.
         commands:
           - go test -shuffle=on
@@ -715,7 +715,7 @@ groups:
           var s string = Acetaminophen.String()
         requirements:
           - go install golang.org/x/tools/cmd/stringer@latest
-      - title: 🎊 Generate data types from JSON Schema
+      - title: ":confetti_ball: Generate data types from JSON Schema"
         url: https://github.com/omissis/go-jsonschema
         author: https://github.com/omissis
         name: go-jsonschema
@@ -811,7 +811,7 @@ groups:
                   // Vegetables corresponds to the JSON schema field "vegetables".
                   Vegetables []Veggie `json:"vegetables,omitempty" yaml:"vegetables,omitempty" mapstructure:"vegetables,omitempty"`
           }
-      - title: 🎊 Generate constructor for a struct
+      - title: ":confetti_ball: Generate constructor for a struct"
         description: Constructor is a widely used useful pattern. This tool generates basic version of it that passes arguments to struct. It also supports intializer method.
         url: https://github.com/moznion/gonstructor
         name: gonstructor
@@ -1040,7 +1040,7 @@ groups:
         name: gofmt
         commands:
           - gofmt -w -r 'interface{} -> any' .
-      - title: 🎊 Apply refactoring patches
+      - title: ":confetti_ball: Apply refactoring patches"
         description: With this tool it is very easy to perform refactorings. It is also possible to organize and maintan your refactoring procedures through patches.
         url: https://github.com/uber-go/gopatch
         author: Uber
@@ -1119,7 +1119,7 @@ groups:
           )
         requirements:
           - go install github.com/anqiansong/goimportx@latest
-      - title: 🎊 Replace unkeyed struct literals into keyed ones
+      - title: ":confetti_ball: Replace unkeyed struct literals into keyed ones"
         description: You may want to do this as preparation for other refactoring steps. This tool has good emacs integration, otherwise may it be hard to use.
         url: https://github.com/dominikh/go-tools/tree/master/cmd/keyify
         author: https://github.com/dominikh
@@ -1135,7 +1135,7 @@ groups:
           - go install honnef.co/go/tools/cmd/keyify@2022.1
   - title: Errors
     entries:
-      - title: 🎊 Errors with return traces
+      - title: ":confetti_ball: Errors with return traces"
         description: Return trace is the path that error took to return to user. This can be more illustrative than typical stack trace that procuded the error. This tool have conenienve automatic instrumentation CLI to update your code.
         url: https://github.com/bracesdev/errtrace
         author: https://github.com/bracesdev
@@ -1281,7 +1281,7 @@ groups:
         example_content_ext: go
         example_content: |
           package pdf // import "rsc.io/pdf"
-      - title: 🎊 Manage multiple Go versions
+      - title: ":confetti_ball: Manage multiple Go versions"
         description: This tool makes it easier for managing multiple Go versions on same host. This works through intercepting Go commands and directing them to the right Go version bin and directory. Official Go [documentation](https://go.dev/doc/manage-install) on this topic.
         url: https://github.com/Norwik/Goenv
         author: https://github.com/clivern
@@ -1307,7 +1307,7 @@ groups:
         example_image_url: https://github.com/loov/lensm/raw/main/screenshot.gif
         requirements:
           - go install loov.dev/lensm@main
-      - title: 🎊 View Go assembly with color annotation
+      - title: ":confetti_ball: View Go assembly with color annotation"
         url: https://github.com/maruel/pat
         author: https://github.com/maruel
         name: pat/disfunc
@@ -1716,7 +1716,7 @@ groups:
           - find . -name "*.go" | grep -v "vendor/\|.git/\|_test.go" | xargs -n 1 -t otelinji -w -filename
         requirements:
           - go install github.com/hedhyw/otelinji/cmd/otelinji@latest
-      - title: 🎊 Auto-Instrument functions for DataDog
+      - title: ":confetti_ball: Auto-Instrument functions for DataDog"
         description: This is official Datadog tool for automatic instrumentation of code. It has very convenient compiler directives for instrumentation.
         author: https://github.com/DataDog
         name: orchestrion
@@ -1859,7 +1859,7 @@ groups:
           JSONMarshal/large-10     2.00 ± 0%      2.00 ± 0%      5.00 ± 0%
         requirements:
           - go install golang.org/x/perf/cmd/benchstat@latest
-      - title: 🎊 Benchmark against git commit
+      - title: ":confetti_ball: Benchmark against git commit"
         url: https://github.com/maruel/pat
         author: https://github.com/maruel
         name: pat/ba
@@ -2237,7 +2237,7 @@ groups:
           - staticcheck ./...
         requirements:
           - go install honnef.co/go/tools/cmd/staticcheck@latest
-      - title: 🎊 Detect potential Nil panics
+      - title: ":confetti_ball: Detect potential Nil panics"
         description: This tool employs sophisticated static analysis techniques to catch Nil dereferences. More details in [blog](https://www.uber.com/en-IN/blog/nilaway-practical-nil-panic-detection-for-go/).
         url: https://github.com/uber-go/nilaway
         author: Uber
@@ -2560,7 +2560,7 @@ groups:
           /go-mnd/examples/bad/main.go:11:12: Magic number: 2, in <assign> detected
         requirements:
           - go install github.com/tommy-muehle/go-mnd/v2/cmd/mnd@latest
-      - title: 🎊 Detect magic strings
+      - title: ":confetti_ball: Detect magic strings"
         description: This tool detects repeated strings.
         name: goconst
         url: https://github.com/jgautheron/goconst
@@ -2596,7 +2596,7 @@ groups:
             ...
         requirements:
           - go install github.com/jgautheron/goconst/cmd/goconst@latest
-      - title: 🎊 Detect bound checks
+      - title: ":confetti_ball: Detect bound checks"
         url: https://github.com/maruel/pat
         author: https://github.com/maruel
         name: pat/boundcheck

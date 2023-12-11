@@ -25,7 +25,7 @@
    + [ Pretty print coverage in terminal with `nikandfor/cover`](#-pretty-print-coverage-in-terminal-with-nikandforcover)
    + [ Run coverage collector server with `goc`](#-run-coverage-collector-server-with-goc)
    + [ Visualize live coverage in VSCode with `goc`](#-visualize-live-coverage-in-vscode-with-goc)
-   + [ 🎊 Shuffle tests](#--shuffle-tests)
+   + [ :confetti_ball: Shuffle tests](#-confetti_ball-shuffle-tests)
    + [ Run tests sequentially](#-run-tests-sequentially)
    + [ Run tests in parallel](#-run-tests-in-parallel)
    + [ Detect goroutine leaks with `goleak`](#-detect-goroutine-leaks-with-goleak)
@@ -73,8 +73,8 @@
  - Code Generation
    + [ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
    + [ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
-   + [ 🎊 Generate data types from JSON Schema with `go-jsonschema`](#--generate-data-types-from-json-schema-with-go-jsonschema)
-   + [ 🎊 Generate constructor for a struct with `gonstructor`](#--generate-constructor-for-a-struct-with-gonstructor)
+   + [ :confetti_ball: Generate data types from JSON Schema with `go-jsonschema`](#-confetti_ball-generate-data-types-from-json-schema-with-go-jsonschema)
+   + [ :confetti_ball: Generate constructor for a struct with `gonstructor`](#-confetti_ball-generate-constructor-for-a-struct-with-gonstructor)
    + [ Generate Table Driven Tests with `gotests`](#-generate-table-driven-tests-with-gotests)
    + [ Generate mocks with `mockgen`](#-generate-mocks-with-mockgen)
    + [ Generate interface for a struct with `ifacemaker`](#-generate-interface-for-a-struct-with-ifacemaker)
@@ -84,13 +84,13 @@
    + [ Modify struct field tags with `gomodifytags`](#-modify-struct-field-tags-with-gomodifytags)
  - Refactoring
    + [ Replace symbol with `gofmt`](#-replace-symbol-with-gofmt)
-   + [ 🎊 Apply refactoring patches with `gopatch`](#--apply-refactoring-patches-with-gopatch)
+   + [ :confetti_ball: Apply refactoring patches with `gopatch`](#-confetti_ball-apply-refactoring-patches-with-gopatch)
    + [ Keep consistent ordering of imports with `goimports`](#-keep-consistent-ordering-of-imports-with-goimports)
    + [ Keep consistent ordering of imports with `gci`](#-keep-consistent-ordering-of-imports-with-gci)
    + [ Keep consistent ordering of imports with `goimportx`](#-keep-consistent-ordering-of-imports-with-goimportx)
-   + [ 🎊 Replace unkeyed struct literals into keyed ones with `keyify`](#--replace-unkeyed-struct-literals-into-keyed-ones-with-keyify)
+   + [ :confetti_ball: Replace unkeyed struct literals into keyed ones with `keyify`](#-confetti_ball-replace-unkeyed-struct-literals-into-keyed-ones-with-keyify)
  - Errors
-   + [ 🎊 Errors with return traces](#--errors-with-return-traces)
+   + [ :confetti_ball: Errors with return traces](#-confetti_ball-errors-with-return-traces)
    + [ Errors with stack traces and source fragments with `tracerr`](#-errors-with-stack-traces-and-source-fragments-with-tracerr)
    + [ Pretty print `panic` messages with `panicparse`](#-pretty-print-panic-messages-with-panicparse)
  - Building
@@ -106,12 +106,12 @@
    + [ Custom import path with `sally`](#-custom-import-path-with-sally)
    + [ Custom import path with `kkn.fi/vanity`](#-custom-import-path-with-kknfivanity)
    + [ Custom import path enforcement](#-custom-import-path-enforcement)
-   + [ 🎊 Manage multiple Go versions with `Goenv`](#--manage-multiple-go-versions-with-goenv)
+   + [ :confetti_ball: Manage multiple Go versions with `Goenv`](#-confetti_ball-manage-multiple-go-versions-with-goenv)
  - Assembly
    + [ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
    + [ Get Go SSA intermediary representation with `ssaplayground`](#-get-go-ssa-intermediary-representation-with-ssaplayground)
    + [ View Go assembly interactively with `lensm`](#-view-go-assembly-interactively-with-lensm)
-   + [ 🎊 View Go assembly with color annotation with `pat/disfunc`](#--view-go-assembly-with-color-annotation-with-patdisfunc)
+   + [ :confetti_ball: View Go assembly with color annotation with `pat/disfunc`](#-confetti_ball-view-go-assembly-with-color-annotation-with-patdisfunc)
    + [ Generate Go assembly in Go with `avo`](#-generate-go-assembly-in-go-with-avo)
    + [ Generate AST for code snippets with `go/ast`](#-generate-ast-for-code-snippets-with-goast)
    + [ Generate AST for code snippets with `go2ast`](#-generate-ast-for-code-snippets-with-go2ast)
@@ -139,7 +139,7 @@
    + [ Visualise Go runtime metrics in browser with `statsviz`](#-visualise-go-runtime-metrics-in-browser-with-statsviz)
    + [ Auto-Instrument all functions with `go-instrument`](#-auto-instrument-all-functions-with-go-instrument)
    + [ Auto-Instrument all functions with `otelinji`](#-auto-instrument-all-functions-with-otelinji)
-   + [ 🎊 Auto-Instrument functions for DataDog with `orchestrion`](#--auto-instrument-functions-for-datadog-with-orchestrion)
+   + [ :confetti_ball: Auto-Instrument functions for DataDog with `orchestrion`](#-confetti_ball-auto-instrument-functions-for-datadog-with-orchestrion)
    + [ Continious Profiling with `Pyroscope`](#-continious-profiling-with-pyroscope)
  - Benchmarking
    + [ Run benchmarks](#-run-benchmarks)
@@ -150,7 +150,7 @@
    + [ Visualize profiles online](#-visualize-profiles-online)
    + [ Get delta between two benchmarks with `benchstat`](#-get-delta-between-two-benchmarks-with-benchstat)
    + [ Get summary of benchmarks with `benchstat`](#-get-summary-of-benchmarks-with-benchstat)
-   + [ 🎊 Benchmark against git commit with `pat/ba`](#--benchmark-against-git-commit-with-patba)
+   + [ :confetti_ball: Benchmark against git commit with `pat/ba`](#-confetti_ball-benchmark-against-git-commit-with-patba)
    + [ Continuous benchmarking](#-continuous-benchmarking)
    + [ Continuous benchmarking with `gobenchdata`](#-continuous-benchmarking-with-gobenchdata)
    + [ Continuous benchmarking with `benchdiff`](#-continuous-benchmarking-with-benchdiff)
@@ -179,7 +179,7 @@
    + [ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
    + [ Run official static analyzers not included in `go vet`](#-run-official-static-analyzers-not-included-in-go-vet)
    + [ Detect most common issues with `staticcheck`](#-detect-most-common-issues-with-staticcheck)
-   + [ 🎊 Detect potential Nil panics with `nilaway`](#--detect-potential-nil-panics-with-nilaway)
+   + [ :confetti_ball: Detect potential Nil panics with `nilaway`](#-confetti_ball-detect-potential-nil-panics-with-nilaway)
    + [ Detect most common issues with `go-critic`](#-detect-most-common-issues-with-go-critic)
    + [ Reference and run common linters with `golangci`](#-reference-and-run-common-linters-with-golangci)
    + [ Detect non-exhaustive switch and map with `exhaustive`](#-detect-non-exhaustive-switch-and-map-with-exhaustive)
@@ -198,8 +198,8 @@
    + [ Detect tests with wrong `t.Parallel()` usage with `paralleltest`](#-detect-tests-with-wrong-tparallel-usage-with-paralleltest)
    + [ Detect tests with wrong `t.Parallel()` usage with `tparallel`](#-detect-tests-with-wrong-tparallel-usage-with-tparallel)
    + [ Detect magic numbers with `mnd`](#-detect-magic-numbers-with-mnd)
-   + [ 🎊 Detect magic strings with `goconst`](#--detect-magic-strings-with-goconst)
-   + [ 🎊 Detect bound checks with `pat/boundcheck`](#--detect-bound-checks-with-patboundcheck)
+   + [ :confetti_ball: Detect magic strings with `goconst`](#-confetti_ball-detect-magic-strings-with-goconst)
+   + [ :confetti_ball: Detect bound checks with `pat/boundcheck`](#-confetti_ball-detect-bound-checks-with-patboundcheck)
    + [ Calculate Cognitive Complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
    + [ Calculate Cyclomatic Complexity with `gocyclo`](#-calculate-cyclomatic-complexity-with-gocyclo)
    + [ Calculate Cyclomatic Complexity with `cyclop`](#-calculate-cyclomatic-complexity-with-cyclop)
@@ -515,7 +515,7 @@ Requirements
 go install github.com/qiniu/goc@latest
 ```
 
-### [⏫](#contents) 🎊 Shuffle tests
+### [⏫](#contents) :confetti_ball: Shuffle tests
 
 This is less known option that is disabled by default. However, for robust test suite it is beneficial. More test flags and full description is available at `go help testflag`.
 
@@ -1295,7 +1295,7 @@ Requirements
 go install golang.org/x/tools/cmd/stringer@latest
 ```
 
-### [⏫](#contents) 🎊 Generate data types from JSON Schema with [go-jsonschema](https://github.com/omissis/go-jsonschema)
+### [⏫](#contents) :confetti_ball: Generate data types from JSON Schema with [go-jsonschema](https://github.com/omissis/go-jsonschema)
 
 JSON Schema is widely used standard for definition of structured data types. This tool will generate Go struct, decoder and validation based on JSON Schema spec. — [@omissis](https://github.com/omissis)
 
@@ -1400,7 +1400,7 @@ go get github.com/atombender/go-jsonschema/...
 go install github.com/atombender/go-jsonschema@latest
 ```
 
-### [⏫](#contents) 🎊 Generate constructor for a struct with [gonstructor](https://github.com/moznion/gonstructor)
+### [⏫](#contents) :confetti_ball: Generate constructor for a struct with [gonstructor](https://github.com/moznion/gonstructor)
 
 Constructor is a widely used useful pattern. This tool generates basic version of it that passes arguments to struct. It also supports intializer method. — [@moznion](https://github.com/moznion)
 
@@ -1660,7 +1660,7 @@ gofmt -w -r 'interface{} -> any' .
 ```
 
 
-### [⏫](#contents) 🎊 Apply refactoring patches with [gopatch](https://github.com/uber-go/gopatch)
+### [⏫](#contents) :confetti_ball: Apply refactoring patches with [gopatch](https://github.com/uber-go/gopatch)
 
 With this tool it is very easy to perform refactorings. It is also possible to organize and maintan your refactoring procedures through patches. — Uber
 
@@ -1760,7 +1760,7 @@ Requirements
 go install github.com/anqiansong/goimportx@latest
 ```
 
-### [⏫](#contents) 🎊 Replace unkeyed struct literals into keyed ones with [keyify](https://github.com/dominikh/go-tools/tree/master/cmd/keyify)
+### [⏫](#contents) :confetti_ball: Replace unkeyed struct literals into keyed ones with [keyify](https://github.com/dominikh/go-tools/tree/master/cmd/keyify)
 
 You may want to do this as preparation for other refactoring steps. This tool has good emacs integration, otherwise may it be hard to use. — [@dominikh](https://github.com/dominikh)
 
@@ -1779,7 +1779,7 @@ go install honnef.co/go/tools/cmd/keyify@2022.1
 
 ## Errors
 
-### [⏫](#contents) 🎊 Errors with return traces
+### [⏫](#contents) :confetti_ball: Errors with return traces
 
 Return trace is the path that error took to return to user. This can be more illustrative than typical stack trace that procuded the error. This tool have conenienve automatic instrumentation CLI to update your code. — [@bracesdev](https://github.com/bracesdev)
 
@@ -2009,7 +2009,7 @@ package pdf // import "rsc.io/pdf"
 ```
 
 
-### [⏫](#contents) 🎊 Manage multiple Go versions with [Goenv](https://github.com/Norwik/Goenv)
+### [⏫](#contents) :confetti_ball: Manage multiple Go versions with [Goenv](https://github.com/Norwik/Goenv)
 
 This tool makes it easier for managing multiple Go versions on same host. This works through intercepting Go commands and directing them to the right Go version bin and directory. Official Go [documentation](https://go.dev/doc/manage-install) on this topic. — [@clivern](https://github.com/clivern)
 
@@ -2047,7 +2047,7 @@ Requirements
 go install loov.dev/lensm@main
 ```
 
-### [⏫](#contents) 🎊 View Go assembly with color annotation with [pat/disfunc](https://github.com/maruel/pat)
+### [⏫](#contents) :confetti_ball: View Go assembly with color annotation with [pat/disfunc](https://github.com/maruel/pat)
 
 This tool shows assmebly of functions and what lines mean by color. — [@maruel](https://github.com/maruel)
 
@@ -2584,7 +2584,7 @@ Requirements
 go install github.com/hedhyw/otelinji/cmd/otelinji@latest
 ```
 
-### [⏫](#contents) 🎊 Auto-Instrument functions for DataDog with [orchestrion](https://github.com/DataDog/orchestrion)
+### [⏫](#contents) :confetti_ball: Auto-Instrument functions for DataDog with [orchestrion](https://github.com/DataDog/orchestrion)
 
 This is official Datadog tool for automatic instrumentation of code. It has very convenient compiler directives for instrumentation. — [@DataDog](https://github.com/DataDog)
 
@@ -2792,7 +2792,7 @@ Requirements
 go install golang.org/x/perf/cmd/benchstat@latest
 ```
 
-### [⏫](#contents) 🎊 Benchmark against git commit with [pat/ba](https://github.com/maruel/pat)
+### [⏫](#contents) :confetti_ball: Benchmark against git commit with [pat/ba](https://github.com/maruel/pat)
 
 This tool runs benchmarks and shows delta between git commits. It can also be useful in GitHub Actions. — [@maruel](https://github.com/maruel)
 
@@ -3275,7 +3275,7 @@ Requirements
 go install honnef.co/go/tools/cmd/staticcheck@latest
 ```
 
-### [⏫](#contents) 🎊 Detect potential Nil panics with [nilaway](https://github.com/uber-go/nilaway)
+### [⏫](#contents) :confetti_ball: Detect potential Nil panics with [nilaway](https://github.com/uber-go/nilaway)
 
 This tool employs sophisticated static analysis techniques to catch Nil dereferences. More details in [blog](https://www.uber.com/en-IN/blog/nilaway-practical-nil-panic-detection-for-go/). — Uber
 
@@ -3734,7 +3734,7 @@ Requirements
 go install github.com/tommy-muehle/go-mnd/v2/cmd/mnd@latest
 ```
 
-### [⏫](#contents) 🎊 Detect magic strings with [goconst](https://github.com/jgautheron/goconst)
+### [⏫](#contents) :confetti_ball: Detect magic strings with [goconst](https://github.com/jgautheron/goconst)
 
 This tool detects repeated strings. — [@jgautheron](https://github.com/jgautheron)
 
@@ -3778,7 +3778,7 @@ Requirements
 go install github.com/jgautheron/goconst/cmd/goconst@latest
 ```
 
-### [⏫](#contents) 🎊 Detect bound checks with [pat/boundcheck](https://github.com/maruel/pat)
+### [⏫](#contents) :confetti_ball: Detect bound checks with [pat/boundcheck](https://github.com/maruel/pat)
 
 This tool detects bound checks in source code by anaylisng compiled code. This is useful for audit. — [@maruel](https://github.com/maruel)
 
