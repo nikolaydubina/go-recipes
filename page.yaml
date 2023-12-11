@@ -19,7 +19,7 @@ entry:
   example:
     title: Example
 groups:
-  - title: AI tools 
+  - title: AI tools
     entries:
       - title: Advanced autocompletion
         name: Copilot
@@ -185,11 +185,11 @@ groups:
           - "gocov test strings|./gocov-html -cmax 90 > strings.html # show functions with <90% coverage"
         requirements:
           - go install github.com/axw/gocov/gocov@latest
-          - go install github.com/matm/gocov-html/cmd/gocov-html@latest 
+          - go install github.com/matm/gocov-html/cmd/gocov-html@latest
       - title: Browse coverage in terminal
         description: Browse code coverage similarly to HTML provided by official Go toolchain, but in terminal. Other notable features are package level statistics, coverage only for changed files.
         name: gocovsh
-        url: https://github.com/orlangure/gocovsh 
+        url: https://github.com/orlangure/gocovsh
         author: https://github.com/orlangure
         example_image_url: https://github.com/orlangure/gocovsh/raw/master/examples/general.gif
         commands:
@@ -203,7 +203,7 @@ groups:
       - title: Pretty print coverage in terminal
         description: It is similar to `go tool cover -html=cover.out` but in terminal. You can filter by functions, packages, minimum coverage, and more.
         name: nikandfor/cover
-        url: https://github.com/nikandfor/cover 
+        url: https://github.com/nikandfor/cover
         author: https://github.com/nikandfor
         commands:
           - cover
@@ -230,6 +230,10 @@ groups:
         name: goc
         requirements:
           - go install github.com/qiniu/goc@latest
+      - title: 🎊 Shuffle tests
+        description: This is less known option that is disabled by default. However, it is for robust test suite it may be very beneficial. More test flags and full description available at `go help testflag`.
+        commands:
+          - go test -shuffle=on
       - title: Run tests sequentially
         description: Use when you need to synchronize tests, for example in integration tests that share environment. [Official documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags).
         commands:
@@ -315,7 +319,7 @@ groups:
         requirements:
           - go install gotest.tools/gotestsum@latest
       - title: Format `go test` results as documentation
-        name: gotestdox 
+        name: gotestdox
         description: Decorates `go test` results by converting CamelCaseTestNames into readable sentences.
         url: https://github.com/bitfield/gotestdox
         author: https://github.com/bitfield
@@ -324,8 +328,8 @@ groups:
           - gotestdox ./...
         requirements:
           - go install github.com/bitfield/gotestdox/cmd/gotestdox@latest
-      - title: Get slowest tests 
-        description: This is subcommand of `gotestsum` that processes JSON output of `go test` to find slowest tests. 
+      - title: Get slowest tests
+        description: This is subcommand of `gotestsum` that processes JSON output of `go test` to find slowest tests.
         name: gotestsum
         url: https://github.com/gotestyourself/gotestsum
         author: https://github.com/dnephin
@@ -349,7 +353,7 @@ groups:
         requirements:
           - go install gotest.tools/gotestsum@latest
       - title: Automatically re-run failed tests
-        description: Other useful option of `gotestsum` is to re-run failed tests. For example, if you have flaky tests that are idempotent, then re-running them may be a quick fix. 
+        description: Other useful option of `gotestsum` is to re-run failed tests. For example, if you have flaky tests that are idempotent, then re-running them may be a quick fix.
         name: gotestsum
         url: https://github.com/gotestyourself/gotestsum
         author: https://github.com/dnephin
@@ -444,6 +448,11 @@ groups:
           - "# open telemetry collector"
           - "# traces UI (Datadog, Jaeger, Honeycomb, NewRelic)"
           - go install github.com/rakyll/go-test-trace@latest
+      - title: Speedup tests for large codebases
+        description: As of 2023-12-11, large codebases may be slow to run tests by default commands. Compiling package test binaries first and executing them later can lead to significant overall speedup.
+        commands:
+          - go test -c ./pkg/mypackage -o my_pkg_test_binary.bin
+          - "./my_pkg_test_binary.bin | ... # normal test output post processing"
   - title: Dependencies
     entries:
       - title: Get Go version of current module
@@ -675,7 +684,7 @@ groups:
           - go install github.com/fzipp/pythia@latest
           - go install golang.org/x/tools/cmd/guru@latest
       - title: (archived) Interactively visualize packages
-        description: Based on `go-callvis`, this tool is an interactive package explorer of packages. This tool have not been updated for a long time. 
+        description: Based on `go-callvis`, this tool is an interactive package explorer of packages. This tool have not been updated for a long time.
         url: https://github.com/ofabry/goexplorer
         name: goexplorer
         author: https://github.com/ofabry
@@ -709,6 +718,122 @@ groups:
           var s string = Acetaminophen.String()
         requirements:
           - go install golang.org/x/tools/cmd/stringer@latest
+      - title: 🎊 Generate data types from JSON Schema
+        url: https://github.com/omissis/go-jsonschema
+        author: https://github.com/omissis
+        name: go-jsonschema
+        requirements:
+          - go get github.com/atombender/go-jsonschema/...
+          - go install github.com/atombender/go-jsonschema@latest
+        description: JSON Schema is widely used standard for definition of structured data types. This tool will generate Go struct, decoder and validation based on JSON Schema spec.
+        commands:
+          - go-jsonschema -p main myschema.jsonschema
+        example_output: |
+          {
+                "$id": "https://example.com/arrays.schema.json",
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "description": "A representation of a person, company, organization, or place",
+                "type": "object",
+                "properties": {
+                      "fruits": {
+                            "type": "array",
+                            "items": {
+                                  "type": "string"
+                            }
+                      },
+                      "vegetables": {
+                            "type": "array",
+                            "items": {
+                                  "$ref": "#/$defs/veggie"
+                            }
+                      }
+                },
+                "$defs": {
+                      "veggie": {
+                            "type": "object",
+                            "required": [
+                                  "veggieName",
+                                  "veggieLike"
+                            ],
+                            "properties": {
+                                  "veggieName": {
+                                        "type": "string",
+                                        "description": "The name of the vegetable."
+                                  },
+                                  "veggieLike": {
+                                        "type": "boolean",
+                                        "description": "Do I like this vegetable?"
+                                  }
+                            }
+                      }
+                }
+          }
+        example_content_ext: go
+        example_content: |
+          // Code generated by github.com/atombender/go-jsonschema, DO NOT EDIT.
+
+          package main
+
+          import "encoding/json"
+          import "fmt"
+
+          type Veggie struct {
+                  // Do I like this vegetable?
+                  VeggieLike bool `json:"veggieLike" yaml:"veggieLike" mapstructure:"veggieLike"`
+
+                  // The name of the vegetable.
+                  VeggieName string `json:"veggieName" yaml:"veggieName" mapstructure:"veggieName"`
+          }
+
+          // UnmarshalJSON implements json.Unmarshaler.
+          func (j *Veggie) UnmarshalJSON(b []byte) error {
+                  var raw map[string]interface{}
+                  if err := json.Unmarshal(b, &raw); err != nil {
+                          return err
+                  }
+                  if v, ok := raw["veggieLike"]; !ok || v == nil {
+                          return fmt.Errorf("field veggieLike in Veggie: required")
+                  }
+                  if v, ok := raw["veggieName"]; !ok || v == nil {
+                          return fmt.Errorf("field veggieName in Veggie: required")
+                  }
+                  type Plain Veggie
+                  var plain Plain
+                  if err := json.Unmarshal(b, &plain); err != nil {
+                          return err
+                  }
+                  *j = Veggie(plain)
+                  return nil
+          }
+
+          // A representation of a person, company, organization, or place
+          type A2Schema struct {
+                  // Fruits corresponds to the JSON schema field "fruits".
+                  Fruits []string `json:"fruits,omitempty" yaml:"fruits,omitempty" mapstructure:"fruits,omitempty"`
+
+                  // Vegetables corresponds to the JSON schema field "vegetables".
+                  Vegetables []Veggie `json:"vegetables,omitempty" yaml:"vegetables,omitempty" mapstructure:"vegetables,omitempty"`
+          }
+      - title: 🎊 Generate constructor for a struct
+        description: Constructor is a widely used useful pattern. This tool generates basic version of it that passes arguments to struct. It also supports intializer method.
+        url: https://github.com/moznion/gonstructor
+        name: gonstructor
+        author: https://github.com/moznion
+        example_content_ext: go
+        example_content: |
+          //go:generate gonstructor --type=Structure --constructorTypes=allArgs
+          type Structure struct {
+            foo string
+            bar io.Reader
+            Buz chan interface{}
+          }
+        example-output: |
+          func NewStructure(foo string, bar io.Reader, buz chan interface{}) *Structure {
+            return &Structure{foo: foo, bar: bar, Buz: buz}
+          }
+        requirements:
+          - go install golang.org/x/tools/cmd/goimports@latest
+          - go install github.com/moznion/gonstructor/cmd/gonstructor@latest
       - title: Generate Table Driven Tests
         description: This tool generates basic test placeholder. It is included into official Go plugin in VSCode and other major code editors.
         name: gotests
@@ -760,14 +885,14 @@ groups:
             SUT(m)
           }
         requirements:
-         - go install github.com/golang/mock/mockgen@v1.6.0
+          - go install github.com/golang/mock/mockgen@v1.6.0
       - title: Generate interface for a struct
         description: This is a development helper program that generates a Golang interface by inspecting the structure methods of an existing .go file. The primary use case is to generate interfaces for [gomock](https://github.com/golang/mock), so that [gomock](https://github.com/golang/mock) can generate mocks from those interfaces. This makes unit testing easier.
         url: https://github.com/vburenin/ifacemaker
         name: ifacemaker
         author: https://github.com/vburenin
         commands:
-          - "ifacemaker -f human.go -s Human -i HumanIface -p humantest -y \"HumanIface makes human interaction easy\" -c \"DONT EDIT: Auto generated\""
+          - 'ifacemaker -f human.go -s Human -i HumanIface -p humantest -y "HumanIface makes human interaction easy" -c "DONT EDIT: Auto generated"'
         example_content_ext: go
         example_content: |
           # human.go
@@ -815,7 +940,7 @@ groups:
             Birthday()
             // Make the Human say hello.
             SayHello()
-          } 
+          }
         requirements:
           - go install github.com/vburenin/ifacemaker@latest
       - title: Generate interface for a struct
@@ -860,10 +985,10 @@ groups:
       - title: Generate interface for a struct
         description: This is alternative tool for interface generation that is aimed to be faster and leaner. It generates only pointer method receiver methods for a struct.
         url: https://github.com/reflog/struct2interface
-        author: https://github.com/reflog 
+        author: https://github.com/reflog
         name: struct2interface
         commands:
-          -  struct2interface -f . -i IDecimal -p fpdecimal -s Decimal -o idecimal.go
+          - struct2interface -f . -i IDecimal -p fpdecimal -s Decimal -o idecimal.go
         requirements:
           - go install github.com/reflog/struct2interface@latest
       - title: Generate interface for `CSV` file
@@ -906,7 +1031,7 @@ groups:
       - title: Modify struct field tags
         description: "This tool makes it easy to update, add or delete the tags and options in a struct field. You can add new tags, update existing tags (such as appending a new key, i.e: db, xml, etc..) or remove existing tags. It's intended to be used by an editor, but also has modes to run it from the terminal."
         name: gomodifytags
-        author: https://github.com/fatih 
+        author: https://github.com/fatih
         url: https://github.com/fatih/gomodifytags
         example_image_url: https://user-images.githubusercontent.com/438920/32691304-a1c7e47c-c716-11e7-977c-f4d0f8c616be.gif
         requirements:
@@ -918,13 +1043,30 @@ groups:
         name: gofmt
         commands:
           - gofmt -w -r 'interface{} -> any' .
+      - title: 🎊 Apply refactoring patches
+        description: With this tool it is very easy to perform refactorings. It is also possible to organize and maintan your refactoring procedures through patches.
+        url: https://github.com/uber-go/gopatch
+        author: Uber
+        name: gopatch
+        example_content_ext: go
+        example_content: |
+          @@
+          @@
+          -import "errors"
+
+          -errors.New(fmt.Sprintf(...))
+          +fmt.Errorf(...)
+        example_output: |
+          return errors.New(fmt.Sprintf("invalid port: %v", err))
+          // becomes
+          return fmt.Errorf("invalid port: %v", err)
       - title: Keep consistent ordering of imports
         description: This is official tool for for grouping and sorting imports. However, it has only basic grouping functionality.
         url: https://pkg.go.dev/golang.org/x/tools/cmd/goimports
         name: goimports
         author: Go Core team
         commands:
-          -  goimports -w -local .
+          - goimports -w -local .
         requirements:
           - go install golang.org/x/tools/cmd/goimports@latest
       - title: Keep consistent ordering of imports
@@ -977,13 +1119,36 @@ groups:
             "github.com/nikolaydubina/mdpage/page"
             "github.com/nikolaydubina/mdpage/render"
             yaml "gopkg.in/yaml.v3"
-          ) 
+          )
         requirements:
           - go install github.com/anqiansong/goimportx@latest
+      - title: 🎊 Replace unkeyed struct literals into keyed ones
+        description: You may want to do this as preparation for other refactoring steps. This tool has good emacs integration. Otherwise may be harder to use.
+        url: https://github.com/dominikh/go-tools/tree/master/cmd/keyify
+        author: https://github.com/dominikh
+        name: keyify
+        example_content_ext: go
+        example_content: |
+          # before
+          myFunc(T{1, 2, 3})
+
+          # after
+          myFunc(T{A: 1, B: 2, C: 3})
+        requirements:
+          - go install honnef.co/go/tools/cmd/keyify@2022.1
   - title: Errors
     entries:
+      - title: 🎊 Errors with return traces
+        description: Return trace is the path that error took to return to user. This can be more illustrative than typical stack trace that procuded the error. This tool have conenienve automatic instrumentation CLI to update your code.
+        url: https://github.com/bracesdev/errtrace
+        author: https://github.com/bracesdev
+        commands:
+          - git ls-files -- '*.go' | xargs errtrace -w
+        requirements:
+          - use packae "braces.dev/errtrace"
+          - instrument code by wrapping errors through all functions with this library
       - title: Errors with stack traces and source fragments
-        description: This library collects stack traces and pretty prints code fragments. Stack traces induce performance penalty. 
+        description: This library collects stack traces and pretty prints code fragments. Stack traces induce performance penalty.
         url: https://github.com/ztrue/tracerr
         name: tracerr
         author: https://github.com/ztrue
@@ -1051,8 +1216,8 @@ groups:
       - title: Profile-guided optimization
         description: Starting go 1.20 compiler supports Profile-gudied optimization. You need to collect profiles and then supply in compulation to compiler. You can get improvement in performance by around 4%. Officual [guideline](https://go.dev/doc/pgo).
         commands:
-         - 1. store a `pprof` CPU profile with filename default.pgo in the main package directory of the profiled binary
-         - 2. build with `go build -pgo=auto``, which will pick up `default.pgo` files automatically.
+          - 1. store a `pprof` CPU profile with filename default.pgo in the main package directory of the profiled binary
+          - 2. build with `go build -pgo=auto``, which will pick up `default.pgo` files automatically.
       - title: Manually disable or enable `cgo`
         description: Disable `cgo` with `CGO_ENABLED=0` and enable with `CGO_ENABLED=1`. If you don't, `cgo` may end-up being enabled or code dynamically linked if, for example, you use some `net` or `os` packages. You may want to disable `cgo` to improve performance, since complier and runtime would have easier job optimizing code. This also should reduce your image size, as you can have alpine image with less shared libraries.
       - title: Include metadata in binary during compilation with `ldflags`
@@ -1119,6 +1284,12 @@ groups:
         example_content_ext: go
         example_content: |
           package pdf // import "rsc.io/pdf"
+      - title: 🎊 Manage multiple Go versions
+        description: This tool makes it easier for managing multiple Go versions on same host. This works through intercepting Go commands and directing them to the right Go version bin and directory. Official Go [documentation](https://go.dev/doc/manage-install) on this topic.
+        url: https://github.com/Norwik/Goenv
+        author: https://github.com/clivern
+        name: Goenv
+        example_image_url: https://github.com/Norwik/Goenv/raw/main/static/screenshot-1.png
   - title: Assembly
     entries:
       - title: Get assembly of Go code snippets online
@@ -1139,6 +1310,16 @@ groups:
         example_image_url: https://github.com/loov/lensm/raw/main/screenshot.gif
         requirements:
           - go install loov.dev/lensm@main
+      - title: 🎊 View Go assembly with color annotation
+        url: https://github.com/maruel/pat
+        author: https://github.com/maruel
+        name: pat/disfunc
+        requirements:
+          - go install github.com/maruel/pat/cmd/...@latest
+        description: This tool shows assmebly of functions and what lines mean by color.
+        example_image_url: https://github.com/maruel/pat/wiki/disfunc.png
+        commands:
+          - disfunc -f 'nin\.CanonicalizePath$' -pkg ./cmd/nin | less -R
       - title: Generate Go assembly in Go
         description: Write better quality Go assembly quicker in Go language itself. This tool conveniently generates stub for Go code to call your generated assembly. Used by Go core.
         name: avo
@@ -1235,7 +1416,7 @@ groups:
             },
           }
         requirements:
-          - go install github.com/reflog/go2ast@latest 
+          - go install github.com/reflog/go2ast@latest
       - title: Visualize Go SSA function using Graphviz
         description: "This tool provides a visual overview of Go SSA function using Graphviz. This is especially useful in SSA-based static analysis. This tool generates an HTML page that is easy to navigate. [demo](https://silverrainz.me/go-ssaviz/)."
         name: go-ssaviz
@@ -1247,14 +1428,14 @@ groups:
         requirements:
           - "# get graphviz"
           - go install github.com/SilverRainZ/go-ssaviz@latest
-      - title: (archived) Make graph of AST 
+      - title: (archived) Make graph of AST
         description: This tool visualizes AST as graph, which may be useful to navigate and undertand Go AST. This tool has not been maintaned for a while.
         name: astgraph
         author: https://github.com/xiazemin
-        url: https://github.com/xiazemin/ast_graph       
+        url: https://github.com/xiazemin/ast_graph
         example_image_url: https://github.com/xiazemin/ast_graph/raw/master/tree.svg
         requirements:
-           - graphviz
+          - graphviz
       - title: (archived) Convert C assembly to Go assembly
         url: https://github.com/minio/c2goasm
         author: https://github.com/fwessels
@@ -1354,6 +1535,19 @@ groups:
           - cat README.md | gorram crypto/sha1 Sum
           - echo 12345 | gorram encoding/base64 StdEncoding.EncodeToString
           - gorram net/http Get https://google.com
+      - title: Run Go function in shell
+        description: Run Go functions in shell. You can also pass parameters directly from shell.
+        name: gosh
+        url: https://github.com/nickwells/utilities/blob/master/gosh/_gosh.DOC.md
+        author: https://github.com/nickwells
+        requirements:
+          - go install github.com/nickwells/utilities/gosh@latest
+        commands:
+          - gosh -pln '"Hello, World!"'
+          - gosh -pln 'math.Pi'
+          - gosh -n -b 'count := 0' -e 'count++' -a-pln 'count'
+          - 'gosh -http-handler ''http.FileServer(http.Dir("/tmp/xxx"))'''
+          - "gosh -n -b-p '\"Radius: \"' -e 'r, err := strconv.ParseFloat(_l.Text(), 64)' -e-s iferr -pf '\"Area: %9.2f\n\", r*r*math.Pi' -p '\"Radius:\"'"
       - title: Run simple fileserver
         name: net/http
         description: It takes one line to run HTTP file server in Go. Akin to famous oneliner in Python `python3 -m http.server` and `python -m SimpleHTTPServer`. Run this file as usually `go run <filename>`.
@@ -1479,7 +1673,7 @@ groups:
         commands:
           - grmon
         requirements:
-          - "# start pprof server or grmon in your Go process" 
+          - "# start pprof server or grmon in your Go process"
           - go install github.com/bcicen/grmon@latest
       - title: Monitor Go processes
         description: Monitoring memory of Go processes, forcing GC, getting version of Go of processes.
@@ -1525,6 +1719,20 @@ groups:
           - find . -name "*.go" | grep -v "vendor/\|.git/\|_test.go" | xargs -n 1 -t otelinji -w -filename
         requirements:
           - go install github.com/hedhyw/otelinji/cmd/otelinji@latest
+      - title: 🎊 Auto-Instrument functions with DataDog
+        description: This is official Datadog tool for automatic instrumentation of code. It has very convenient compiler directives for instrumentation.
+        author: https://github.com/DataDog
+        name: orchestrion
+        url: https://github.com/DataDog/orchestrion
+        requirements:
+          - go install github.com/datadog/orchestrion@latest
+        commands:
+          - orchestrion -w ./
+        example_content_ext: go
+        example_content: |
+          //dd:span my:tag
+          func GetSomeData(ctx context.Context) ([]byte, error) {
+            ...
       - title: Continious Profiling
         name: Pyroscope
         description: This tool allows to injest profiling data from your application. You would need to add integration in your main file that will sample in-process data and send it to Pyroscope. Here are useful resources [blog-go-memory-leaks](https://grafana.com/blog/2023/04/19/how-to-troubleshoot-memory-leaks-in-go-with-grafana-pyroscope/).
@@ -1654,6 +1862,53 @@ groups:
           JSONMarshal/large-10     2.00 ± 0%      2.00 ± 0%      5.00 ± 0%
         requirements:
           - go install golang.org/x/perf/cmd/benchstat@latest
+      - title: 🎊 Benchmark against git commit
+        url: https://github.com/maruel/pat
+        author: https://github.com/maruel
+        name: pat/ba
+        requirements:
+          - go install github.com/maruel/pat/cmd/...@latest
+        description: This tool runs benchmarks and shows delta between git commits. It can also be useful in GitHub Actions.
+        example_output: |
+          $ ba -against HEAD~1
+          warming up
+          go test -bench . -benchtime 100ms -count 1 -run ^$ -cpu 1 ./...
+          git checkout HEAD~1
+          go test -bench . -benchtime 100ms -count 1 -run ^$ -cpu 1 ./...
+          git checkout 02152d698f7d548c
+          02152d698f7d548c...HEAD~1 (1 commits), 100ms x 2 times/batch, batch repeated 3 times.
+          go test -bench . -benchtime 100ms -count 2 -run ^$ -cpu 1 ./...
+          git checkout HEAD~1
+          go test -bench . -benchtime 100ms -count 2 -run ^$ -cpu 1 ./...
+          git checkout 02152d698f7d548c
+          go test -bench . -benchtime 100ms -count 2 -run ^$ -cpu 1 ./...
+          git checkout HEAD~1
+          go test -bench . -benchtime 100ms -count 2 -run ^$ -cpu 1 ./...
+          git checkout 02152d698f7d548c
+          go test -bench . -benchtime 100ms -count 2 -run ^$ -cpu 1 ./...
+          git checkout HEAD~1
+          go test -bench . -benchtime 100ms -count 2 -run ^$ -cpu 1 ./...
+          git checkout 02152d698f7d548c
+          name                  old time/op    new time/op    delta
+          HashCommand             69.0ns ± 2%    67.7ns ± 2%  -1.91%  (p=0.041 n=6+6)
+          CLParser                 281µs ± 1%     281µs ± 1%    ~     (p=0.699 n=6+6)
+          LoadManifest             437ms ± 7%     430ms ± 3%    ~     (p=0.937 n=6+6)
+          CanonicalizePathBits    85.9ns ± 1%    86.2ns ± 0%    ~     (p=1.000 n=6+6)
+          CanonicalizePath        83.9ns ± 1%    84.6ns ± 0%    ~     (p=0.058 n=6+6)
+
+          name                  old alloc/op   new alloc/op   delta
+          HashCommand              0.00B          0.00B         ~     (all equal)
+          CLParser                 164kB ± 0%     164kB ± 0%    ~     (all equal)
+          LoadManifest             298MB ± 0%     295MB ± 0%  -0.78%  (p=0.002 n=6+6)
+          CanonicalizePathBits     80.0B ± 0%     80.0B ± 0%    ~     (all equal)
+          CanonicalizePath         80.0B ± 0%     80.0B ± 0%    ~     (all equal)
+
+          name                  old allocs/op  new allocs/op  delta
+          HashCommand               0.00           0.00         ~     (all equal)
+          CLParser                 1.64k ± 0%     1.64k ± 0%    ~     (all equal)
+          LoadManifest             2.61M ± 0%     2.57M ± 0%  -1.71%  (p=0.002 n=6+6)
+          CanonicalizePathBits      1.00 ± 0%      1.00 ± 0%    ~     (all equal)
+          CanonicalizePath          1.00 ± 0%      1.00 ± 0%    ~     (all equal)
       - title: Continuous benchmarking
         description: Track how benchmarks change in codebase over time. This is accomplished by running benchmarks for git commits, storing results, and visualizing difference. Running benchmarks can be in GitHub Actions or locally, storage can be in same repository `master` or dedicated branch, or standalone servers. It should be straightforward to setup this manually. Example of GitHub Action [spec](https://github.com/swaggest/rest/blob/master/.github/workflows/bench.yml) and [blog](https://dev.to/vearutop/continuous-benchmarking-with-go-and-github-actions-41ok) from [@vearutop](https://github.com/vearutop), and an example on how it produces a PR [comment](https://github.com/swaggest/rest/pull/88#issuecomment-1271540878).
         example_image_url: img/cont-bench-vearutop.png
@@ -1759,6 +2014,15 @@ groups:
             // <code to profile>
           }
         example_image_url: https://github.com/felixge/fgprof/raw/master/assets/fgprof_pprof.png
+      - title: Collect and visualize in-process traces
+        description: This experimental approach illustrates collection of traces, intsrumentation, and visualization. It does not handle distributed traces. Likely useful for special cases or educational or research purposes.
+        url: https://github.com/peterbourgon/trc
+        name: trc
+        author: https://github.com/peterbourgon
+        example_image_url: https://github.com/peterbourgon/trc/raw/main/ui.png
+        requirements:
+          - instrument your code with `trc` package
+          - start UI server at port within same process
   - title: Documentation
     entries:
       - title: Make alternative documentation
@@ -1853,7 +2117,7 @@ groups:
     entries:
       - title: Run official vulnerability check
         description: It uses static analysis of source code or a binary's symbol table to narrow down reports to only those that could affect the application. By default, govulncheck makes requests to the Go vulnerability database at https://vuln.go.dev. Requests to the vulnerability database contain only module paths, not code or other properties of your program. See https://vuln.go.dev/privacy.html for more.
-        name: govulncheck 
+        name: govulncheck
         author: Go Core team
         url: https://pkg.go.dev/golang.org/x/vuln/cmd/govulncheck
         commands:
@@ -1976,6 +2240,15 @@ groups:
           - staticcheck ./...
         requirements:
           - go install honnef.co/go/tools/cmd/staticcheck@latest
+      - title: 🎊 Detect potential Nil panics
+        description: This tool employs sophisticated static analysis techniques to catch Nil dereferences. More details in [blog](https://www.uber.com/en-IN/blog/nilaway-practical-nil-panic-detection-for-go/).
+        url: https://github.com/uber-go/nilaway
+        author: Uber
+        commands:
+          - nilaway ./...
+        example_image_url: https://blog.uber-cdn.com/cdn-cgi/image/width=2048,quality=80,onerror=redirect,format=auto/wp-content/uploads/2023/11/figure_4.jpg
+        requirements:
+          - go install go.uber.org/nilaway/cmd/nilaway@latest
       - title: Detect most common issues
         description: This linting aggregator and runner is similar to staticcheck. It has 100+ linting rules. It is based on Go [Code Review Comments](https://github.com/golang/go/wiki/CodeReviewComments) style guide that is used in core Go project itself. It has styling, security, performance rules. It has minimal dependencies and implements rules itself. It exports all analysers into `golang.org/x/tools/go/analysis` toolchain.
         url: https://github.com/go-critic/go-critic
@@ -1993,9 +2266,9 @@ groups:
         description: This `go vet` compatible analyzer checks for exhaustive switch statemnts and map literals. It works for enums with underyling integer, float, or string types (struct based enums are not supported).
         name: exhaustive
         url: https://github.com/nishanths/exhaustive
-        author: https://github.com/nishanths 
+        author: https://github.com/nishanths
         commands:
-         - exhaustive ./...
+          - exhaustive ./...
         example_content_ext: go
         example_content: |
           package token
@@ -2034,12 +2307,12 @@ groups:
           calc.go:6:2: missing cases in switch of type token.Token: Quotient, Remainder
           calc.go:15:9: missing map keys of type token.Token: Quotient, Remainder
         requirements:
-         - go install github.com/nishanths/exhaustive/cmd/exhaustive@latest
+          - go install github.com/nishanths/exhaustive/cmd/exhaustive@latest
       - title: Detect structs with uninitialized fields
         description: This tool finds instatiations of structs with zero values. It supports struct tags to mark fields as optional. This may help to prevent unexpected zero values.
         url: https://github.com/GaijinEntertainment/go-exhaustruct
         name: go-exhaustruct
-        author: https://github.com/xobotyi 
+        author: https://github.com/xobotyi
         commands:
           - exhaustruct ./...
         example_content_ext: go
@@ -2083,7 +2356,7 @@ groups:
       - title: Detect unnecessary type conversions
         description: Identify expressions like `T(x)` where `x` is already has type `T`. This tool can identify conversions that force intermediate rounding. It also can overwrite files with fix. This tool is not using `golang.org/x/tools/go/analysis` toolchain.
         name: unconvert
-        author: https://github.com/mdempsky 
+        author: https://github.com/mdempsky
         url: https://github.com/mdempsky/unconvert
         example_content: |
           $ unconvert -v bytes fmt
@@ -2113,7 +2386,7 @@ groups:
         requirements:
           - go install 4d63.com/gochecknoglobals@latest
       - title: Detect slices that could be preallocated
-        description: Preallocating slices can sometimes significantly improve performance. This tool detects common scenarions where preallocating can be beneficial. This tool is not using `golang.org/x/tools/go/analysis` toolchain. 
+        description: Preallocating slices can sometimes significantly improve performance. This tool detects common scenarions where preallocating can be beneficial. This tool is not using `golang.org/x/tools/go/analysis` toolchain.
         url: https://github.com/alexkohler/prealloc
         author: https://github.com/alexkohler
         name: prealloc
@@ -2131,7 +2404,7 @@ groups:
         requirements:
           - go install github.com/alexkohler/prealloc@latest
       - title: Detect unnecessary import aliases
-        description: It is common guideline to avoid renaming imports unless there are collisions. This tool detects where original pacakge name would not collide. This tool is useful for investigations. This tool is not using `golang.org/x/tools/go/analysis` toolchain. 
+        description: It is common guideline to avoid renaming imports unless there are collisions. This tool detects where original pacakge name would not collide. This tool is useful for investigations. This tool is not using `golang.org/x/tools/go/analysis` toolchain.
         url: https://github.com/alexkohler/unimport
         author: https://github.com/alexkohler
         name: unimport
@@ -2178,7 +2451,7 @@ groups:
         url: https://github.com/nikolaydubina/consistentimports
         author: https://github.com/nikolaydubina
         commands:
-          - consistentimports ./... 
+          - consistentimports ./...
         example_output: |
           -: "k8s.io/utils/net" netutils:4 netutil:1
           -: "k8s.io/client-go/listers/core/v1" corelisters:1 listersv1:1 v1listers:1
@@ -2240,6 +2513,16 @@ groups:
         example_image_url: https://github.com/nikolaydubina/vertfn/blob/master/doc/code-dep-viz.png
         requirements:
           - go install github.com/nikolaydubina/vertfn@latest
+      - title: Detect vertical symbol ordering
+        description: This tool goes beyond just vertical ordering of function declarations, it also tracks many other types of symbols.
+        name: refdir
+        url: https://github.com/devnev/refdir
+        author: https://github.com/devnev
+        commands:
+          - refdir --verbose ./...
+        example_image_url: https://github.com/devnev/refdir/raw/main/doc/code-dep-viz.png
+        requirements:
+          - go install github.com/devnev/refdir@latest
       - title: Detect tests with wrong `t.Parallel()` usage
         description: This linter checks for incorroect usage of `t.Parallel()` calls. It will detect if `t.Parallel()` is missing.
         url: https://github.com/kunwardeep/paralleltest
@@ -2260,16 +2543,16 @@ groups:
         name: tparallel
         author: https://github.com/moricho
         commands:
-          - go vet -vettool=`which tparallel` ./... 
+          - go vet -vettool=`which tparallel` ./...
         example_output: |
           testdata/src/sample/table_test.go:7:6: Test_Table1 should use t.Cleanup
           testdata/src/sample/table_test.go:7:6: Test_Table1 should call t.Parallel on the top level as well as its subtests
           testdata/src/sample/table_test.go:30:6: Test_Table2's subtests should call t.Parallel
         requirements:
-          - go install github.com/moricho/tparallel/cmd/tparallel@latest 
+          - go install github.com/moricho/tparallel/cmd/tparallel@latest
       - title: Detect magic numbers
         description: This tool has heuristics to detect magic numbers.
-        name: mnd 
+        name: mnd
         url: https://github.com/tommy-muehle/go-mnd
         author: https://github.com/tommy-muehle
         commands:
@@ -2279,6 +2562,52 @@ groups:
           /go-mnd/examples/bad/main.go:11:12: Magic number: 2, in <assign> detected
         requirements:
           - go install github.com/tommy-muehle/go-mnd/v2/cmd/mnd@latest
+      - title: 🎊 Detect magic strings
+        description: This tool detects repeated strings.
+        name: goconst
+        url: https://github.com/jgautheron/goconst
+        author: https://github.com/jgautheron
+        commands:
+          - goconst -min-occurrences 5 -output json ./... | jq
+        example_output: |
+          "not reached": [                                                                                                                                          
+            {                                                                                                                                                       
+              "Filename": "tpl/internal/go_templates/texttemplate/hugo_template.go",                                                                                
+              "Offset": 7916,
+              "Line": 267,
+              "Column": 8
+            },
+            {
+              "Filename": "tpl/internal/go_templates/texttemplate/exec.go",
+              "Offset": 15056,
+              "Line": 525,
+              "Column": 8
+            },
+            {
+              "Filename": "tpl/internal/go_templates/texttemplate/exec.go",
+              "Offset": 21354,
+              "Line": 699,
+              "Column": 8
+            },
+            {
+              "Filename": "tpl/internal/go_templates/texttemplate/exec.go",
+              "Offset": 28145,
+              "Line": 903,
+              "Column": 8
+            },
+            ...
+        requirements:
+          - go install github.com/jgautheron/goconst/cmd/goconst@latest
+      - title: 🎊 Detect bound checks
+        url: https://github.com/maruel/pat
+        author: https://github.com/maruel
+        name: pat/boundcheck
+        requirements:
+          - go install github.com/maruel/pat/cmd/...@latest
+        description: This tool detects bound checks in source code by anaylisng compiled code. This is useful for audit.
+        example_image_url: https://github.com/maruel/pat/wiki/boundcheck.png
+        commands:
+          - boundcheck -pkg ./cmd/nin | less -R
       - title: Calculate Cognitive Complexity
         description: Congitive Complexity as defined in this tool can be more illustrative than Cyclometric Complexity. Research paper ["Cognitive Complexity - a new way of measuring understandability"](https://www.sonarsource.com/docs/CognitiveComplexity.pdf), 2021.
         name: gocognit
@@ -2352,7 +2681,7 @@ groups:
         requirements:
           - go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
       - title: Calculate Cyclomatic Complexity
-        description: This linter calculates cyclomatic copmlexity of functions or packages. It can select minimum compexlity and act as blocking linter in CI pipelines. The key offering from this linter is that it can calculate avg cyclomatic compelxity on package. 
+        description: This linter calculates cyclomatic copmlexity of functions or packages. It can select minimum compexlity and act as blocking linter in CI pipelines. The key offering from this linter is that it can calculate avg cyclomatic compelxity on package.
         url: https://github.com/bkielbasa/cyclop
         name: cyclop
         author: https://github.com/bkielbasa
@@ -2368,7 +2697,7 @@ groups:
           /kubernetes/test/typecheck/main_test.go:17:1: the average complexity for the package main is 5.916667, max is 5.000000
           /kubernetes/third_party/forked/golang/net/dnsclient_test.go:10:1: the average complexity for the package net is 5.333333, max is 5.000000
         requirements:
-          - go install github.com/bkielbasa/cyclop@latest 
+          - go install github.com/bkielbasa/cyclop@latest
       - title: Calculate age of comments
         description: This go vet compatible tool analyses AST and git and collects details on how far comments drift from code they describe.
         name: go-commentage
@@ -2451,7 +2780,7 @@ groups:
         url: https://github.com/nikolaydubina/go-callsite-stats
         name: go-callsite-stats
         commands:
-          - go-callsite-stats ./... 
+          - go-callsite-stats ./...
         requirements:
           - go install github.com/nikolaydubina/go-callsite-stats@latest
         example_content: |
@@ -2472,4 +2801,4 @@ groups:
                     deploymentWithUpdatedReplicas:1                                (applyUpdate:1, pollInterval:1, name:1)
           x16:       err:16                            = waitForDefinition(schemaFoo:12
                                                                           (schemaWaldo:3)
-                                                                          (expect:1) 
+                                                                          (expect:1)
