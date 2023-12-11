@@ -1123,7 +1123,7 @@ groups:
         requirements:
           - go install github.com/anqiansong/goimportx@latest
       - title: 🎊 Replace unkeyed struct literals into keyed ones
-        description: You may want to do this as preparation for other refactoring steps. This tool has good emacs integration. Otherwise may be harder to use.
+        description: You may want to do this as preparation for other refactoring steps. This tool has good emacs integration, otherwise may it be hard to use.
         url: https://github.com/dominikh/go-tools/tree/master/cmd/keyify
         author: https://github.com/dominikh
         name: keyify

@@ -1764,7 +1764,7 @@ go install github.com/anqiansong/goimportx@latest
 
 ### [⏫](#contents)➡ 🎊 Replace unkeyed struct literals into keyed ones with [keyify](https://github.com/dominikh/go-tools/tree/master/cmd/keyify)
 
-You may want to do this as preparation for other refactoring steps. This tool has good emacs integration. Otherwise may be harder to use. — [@dominikh](https://github.com/dominikh)
+You may want to do this as preparation for other refactoring steps. This tool has good emacs integration, otherwise may it be hard to use. — [@dominikh](https://github.com/dominikh)
 
 ```go
 # before
