@@ -1,7 +1,5 @@
 header: |
-  <p align="center">
-    <img src="img/logo.png" width="300" height="300">
-  </p>
+  <p align="center">🦩 Go Recipes</p>
   <p align="center">Handy well-known and <i>lesser</i>-known tools for Go projects</p>
 
   > _Know some cool tool or one-liner? Have a feature request or an idea?_  
