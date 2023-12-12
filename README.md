@@ -90,7 +90,7 @@
    + [ Keep consistent ordering of imports with `goimportx`](#-keep-consistent-ordering-of-imports-with-goimportx)
    + [ :confetti_ball: Replace unkeyed struct literals into keyed ones with `keyify`](#-confetti_ball-replace-unkeyed-struct-literals-into-keyed-ones-with-keyify)
  - Errors
-   + [ :confetti_ball: Errors with return traces](#-confetti_ball-errors-with-return-traces)
+   + [ :confetti_ball: Errors with return traces with `errtrace`](#-confetti_ball-errors-with-return-traces-with-errtrace)
    + [ Errors with stack traces and source fragments with `tracerr`](#-errors-with-stack-traces-and-source-fragments-with-tracerr)
    + [ Pretty print `panic` messages with `panicparse`](#-pretty-print-panic-messages-with-panicparse)
  - Building
@@ -1779,7 +1779,7 @@ go install honnef.co/go/tools/cmd/keyify@2022.1
 
 ## Errors
 
-### [⏫](#contents) :confetti_ball: Errors with return traces
+### [⏫](#contents) :confetti_ball: Errors with return traces with [errtrace](https://github.com/bracesdev/errtrace)
 
 Return trace is the path that error took to return to user. This can be more illustrative than typical stack trace that procuded the error. This tool have conenienve automatic instrumentation CLI to update your code. — [@bracesdev](https://github.com/bracesdev)
 

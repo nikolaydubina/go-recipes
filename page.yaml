@@ -1138,6 +1138,7 @@ groups:
       - title: ":confetti_ball: Errors with return traces"
         description: Return trace is the path that error took to return to user. This can be more illustrative than typical stack trace that procuded the error. This tool have conenienve automatic instrumentation CLI to update your code.
         url: https://github.com/bracesdev/errtrace
+        name: errtrace
         author: https://github.com/bracesdev
         commands:
           - git ls-files -- '*.go' | xargs errtrace -w
