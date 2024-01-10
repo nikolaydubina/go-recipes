@@ -3037,7 +3037,7 @@ goman <mypackage>
 
 Requirements
 ```
-go install github.com/appliedgocode/goman@lates
+go install github.com/appliedgocode/goman@latest
 ```
 
 ### [⏫](#contents) Generate badge with [gobadge](https://github.com/AlexBeauchemin/gobadge)
