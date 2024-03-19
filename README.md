@@ -73,6 +73,7 @@
  - Code Generation
    + [ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
    + [ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
+   + [ Generate enums with `goenums`](#-generate-enums-with-goenums)
    + [ :confetti_ball: Generate data types from JSON Schema with `go-jsonschema`](#-confetti_ball-generate-data-types-from-json-schema-with-go-jsonschema)
    + [ :confetti_ball: Generate constructor for a struct with `gonstructor`](#-confetti_ball-generate-constructor-for-a-struct-with-gonstructor)
    + [ Generate Table Driven Tests with `gotests`](#-generate-table-driven-tests-with-gotests)
@@ -1293,6 +1294,15 @@ var s string = Acetaminophen.String()
 Requirements
 ```
 go install golang.org/x/tools/cmd/stringer@latest
+```
+
+### [⏫](#contents) Generate enums with [goenums](https://github.com/zarldev/goenums)
+
+Genereate strict and fast enums. Generated code is much more tightly typed than just iota defined enums. You will get JSON decoder and encoder as well. — [@zarldev](https://github.com/zarldev)
+
+Requirements
+```
+go install github.com/zarldev/goenums@latest
 ```
 
 ### [⏫](#contents) :confetti_ball: Generate data types from JSON Schema with [go-jsonschema](https://github.com/omissis/go-jsonschema)

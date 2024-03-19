@@ -715,6 +715,13 @@ groups:
           var s string = Acetaminophen.String()
         requirements:
           - go install golang.org/x/tools/cmd/stringer@latest
+      - title: Generate enums
+        name: goenums
+        description: Genereate strict and fast enums. Generated code is much more tightly typed than just iota defined enums. You will get JSON decoder and encoder as well.
+        author: https://github.com/zarldev
+        url: https://github.com/zarldev/goenums
+        requirements:
+          - go install github.com/zarldev/goenums@latest
       - title: ":confetti_ball: Generate data types from JSON Schema"
         url: https://github.com/omissis/go-jsonschema
         author: https://github.com/omissis
