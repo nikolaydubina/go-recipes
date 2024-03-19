@@ -1300,6 +1300,28 @@ go install golang.org/x/tools/cmd/stringer@latest
 
 Genereate strict and fast enums. Generated code is much more tightly typed than just iota defined enums. You will get JSON decoder and encoder as well. — [@zarldev](https://github.com/zarldev)
 
+
+```
+goenums <file-with-iota.go>
+```
+
+```go
+package validation
+
+type status int
+
+//go:generate goenums status.go
+const (
+  unknown status = iota
+  failed
+  passed
+  skipped
+  scheduled
+  running
+  booked
+)
+```
+
 Requirements
 ```
 go install github.com/zarldev/goenums@latest

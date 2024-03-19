@@ -720,6 +720,24 @@ groups:
         description: Genereate strict and fast enums. Generated code is much more tightly typed than just iota defined enums. You will get JSON decoder and encoder as well.
         author: https://github.com/zarldev
         url: https://github.com/zarldev/goenums
+        commands:
+          - goenums <file-with-iota.go>
+        example_content_ext: go
+        example_content: |
+          package validation
+
+          type status int
+
+          //go:generate goenums status.go
+          const (
+            unknown status = iota
+            failed
+            passed
+            skipped
+            scheduled
+            running
+            booked
+          )
         requirements:
           - go install github.com/zarldev/goenums@latest
       - title: ":confetti_ball: Generate data types from JSON Schema"
