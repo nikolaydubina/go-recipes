@@ -1298,7 +1298,7 @@ go install golang.org/x/tools/cmd/stringer@latest
 
 ### [⏫](#contents) Generate enums with [goenums](https://github.com/zarldev/goenums)
 
-Genereate strict and fast enums. Generated code is much more tightly typed than just iota defined enums. You will get JSON decoder and encoder as well. — [@zarldev](https://github.com/zarldev)
+Genereate strict and fast enums. Generated code is much more tightly typed than just iota defined enums. You will get JSON decoder and encoder as well. This tool allows to generate extra fields and default values in enum structs. — [@zarldev](https://github.com/zarldev)
 
 
 ```
@@ -1322,10 +1322,6 @@ const (
 )
 ```
 
-Requirements
-```
-go install github.com/zarldev/goenums@latest
-```
 
 ### [⏫](#contents) :confetti_ball: Generate data types from JSON Schema with [go-jsonschema](https://github.com/omissis/go-jsonschema)
 
