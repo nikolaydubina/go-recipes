@@ -715,6 +715,26 @@ groups:
           var s string = Acetaminophen.String()
         requirements:
           - go install golang.org/x/tools/cmd/stringer@latest
+      - title: Generate enums encoding
+        name: go-enum-encoding
+        description: Generate encoding code for enums. This follows json struct tag notation.
+        author: https://github.com/nikolaydubina
+        url: https://github.com/nikolaydubina/go-enum-encoding
+        commands:
+          - go generate ./...
+        example_content_ext: go
+        example_content: |
+          type Color struct{ c uint }
+
+          //go:generate go-enum-encoding -type=Color
+          var (
+            Undefined = Color{}  // json:"-"
+            Red       = Color{1} // json:"red"
+            Green     = Color{2} // json:"green"
+            Blue      = Color{3} // json:"blue"
+          )
+        requirements:
+          - go install github.com/nikolaydubina/go-enum-encoding@latest
       - title: Generate enums
         name: goenums
         description: Genereate strict and fast enums. Generated code is much more tightly typed than just iota defined enums. You will get JSON decoder and encoder as well. This tool allows to generate extra fields and default values in enum structs.

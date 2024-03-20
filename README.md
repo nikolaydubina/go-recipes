@@ -73,6 +73,7 @@
  - Code Generation
    + [ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
    + [ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
+   + [ Generate enums encoding with `go-enum-encoding`](#-generate-enums-encoding-with-go-enum-encoding)
    + [ Generate enums with `goenums`](#-generate-enums-with-goenums)
    + [ :confetti_ball: Generate data types from JSON Schema with `go-jsonschema`](#-confetti_ball-generate-data-types-from-json-schema-with-go-jsonschema)
    + [ :confetti_ball: Generate constructor for a struct with `gonstructor`](#-confetti_ball-generate-constructor-for-a-struct-with-gonstructor)
@@ -1294,6 +1295,32 @@ var s string = Acetaminophen.String()
 Requirements
 ```
 go install golang.org/x/tools/cmd/stringer@latest
+```
+
+### [⏫](#contents) Generate enums encoding with [go-enum-encoding](https://github.com/nikolaydubina/go-enum-encoding)
+
+Generate encoding code for enums. This follows json struct tag notation. — [@nikolaydubina](https://github.com/nikolaydubina)
+
+
+```
+go generate ./...
+```
+
+```go
+type Color struct{ c uint }
+
+//go:generate go-enum-encoding -type=Color
+var (
+  Undefined = Color{}  // json:"-"
+  Red       = Color{1} // json:"red"
+  Green     = Color{2} // json:"green"
+  Blue      = Color{3} // json:"blue"
+)
+```
+
+Requirements
+```
+go install github.com/nikolaydubina/go-enum-encoding@latest
 ```
 
 ### [⏫](#contents) Generate enums with [goenums](https://github.com/zarldev/goenums)
