@@ -1351,6 +1351,10 @@ const (
 )
 ```
 
+Requirements
+```
+go install github.com/zarldev/goenums@latest
+```
 
 ### [⏫](#contents) :confetti_ball: Generate data types from JSON Schema with [go-jsonschema](https://github.com/omissis/go-jsonschema)
 

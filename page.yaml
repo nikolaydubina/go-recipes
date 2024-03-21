@@ -743,6 +743,8 @@ groups:
         commands:
           - goenums <file-with-iota.go>
         example_content_ext: go
+        requirements:
+          - go install github.com/zarldev/goenums@latest 
         example_content: |
           package milkyway
 
