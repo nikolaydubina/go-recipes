@@ -168,6 +168,7 @@
    + [ Make alternative documentation with `golds`](#-make-alternative-documentation-with-golds)
    + [ Read Go binary documentation in `man` format with `goman`](#-read-go-binary-documentation-in-man-format-with-goman)
    + [ Generate badge with `gobadge`](#-generate-badge-with-gobadge)
+   + [ Generate README.md based on GoDoc comments with `goreadme`](#-generate-readmemd-based-on-godoc-comments-with-goreadme)
  - Education
    + [ Run Turtle Graphics online with `goplay.space`](#-run-turtle-graphics-online-with-goplayspace)
  - Style Guide
@@ -3121,6 +3122,51 @@ gobadge -link=https://github.com/project/repo/actions/workflows/test.yml
 Requirements
 ```
 go install github.com/AlexBeauchemin/gobadge@latest
+```
+
+### [⏫](#contents) Generate README.md based on GoDoc comments with [goreadme](https://github.com/posener/goreadme)
+
+It can be used as a command line tool, as Github action, or as a pre-commit hook. — [@posener](https://github.com/posener)
+
+
+```
+goreadme
+goreadme -variables -functions -methods -badge-godoc
+```
+
+```
+# myapp
+
+## Variables
+
+```go
+var Version string
+```
+
+## Functions
+
+### func [StartApp](/main.go#L16)
+
+```go
+func StartApp(flags *pflag.FlagSet)
+```
+
+## Sub Packages
+
+* [cmd/mycli](./cmd/mycli)
+
+---
+Readme created from Go doc with [goreadme](https://github.com/posener/goreadme)
+```
+
+Example
+```
+goreadme -badge-godoc -constants -functions -methods -recursive -types -variables > README.md
+```
+
+Requirements
+```
+go install github.com/posener/goreadme/cmd/goreadme@latest
 ```
 
 ## Education

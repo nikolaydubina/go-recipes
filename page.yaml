@@ -2105,6 +2105,41 @@ groups:
           - gobadge -link=https://github.com/project/repo/actions/workflows/test.yml
         requirements:
           - go install github.com/AlexBeauchemin/gobadge@latest
+      - title: Generate README.md based on GoDoc comments
+        description: It can be used as a command line tool, as Github action, or as a pre-commit hook.
+        url: https://github.com/posener/goreadme
+        name: goreadme
+        author: https://github.com/posener
+        example_content: |
+          # myapp
+          
+          ## Variables
+          
+          ```go
+          var Version string
+          ```
+          
+          ## Functions
+          
+          ### func [StartApp](/main.go#L16)
+          
+          ```go
+          func StartApp(flags *pflag.FlagSet)
+          ```
+          
+          ## Sub Packages
+          
+          * [cmd/mycli](./cmd/mycli)
+          
+          ---
+          Readme created from Go doc with [goreadme](https://github.com/posener/goreadme)
+        example_output: |
+          goreadme -badge-godoc -constants -functions -methods -recursive -types -variables > README.md
+        commands:
+          - goreadme
+          - goreadme -variables -functions -methods -badge-godoc
+        requirements:
+          - go install github.com/posener/goreadme/cmd/goreadme@latest
   - title: Education
     entries:
       - title: Run Turtle Graphics online
