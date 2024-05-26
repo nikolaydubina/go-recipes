@@ -1081,6 +1081,15 @@ groups:
         example_image_url: https://user-images.githubusercontent.com/438920/32691304-a1c7e47c-c716-11e7-977c-f4d0f8c616be.gif
         requirements:
           - go install github.com/fatih/gomodifytags@latest
+      - title: Generate code from OpenAPI 3 specification
+        description: "Generate Go client and server boilerplate from OpenAPI 3 specifications."
+        name: oapi-codegen
+        author: https://github.com/deepmap
+        url: https://github.com/deepmap/oapi-codegen
+        commands:
+          - oapi-codegen --config=config.yaml api.yaml
+        requirements:
+          - go install github.com/deepmap/oapi-codegen/v2/cmd/oapi-codegen@latest
   - title: Refactoring
     entries:
       - title: Replace symbol
