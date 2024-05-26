@@ -593,7 +593,7 @@ groups:
           exclude example.com/old/thing v1.2.3
           replace example.com/bad/thing v1.4.5 => example.com/good/thing v1.4.5
           retract [v1.9.0, v1.9.5]
-      - title: Enforce Go code architecture
+      - title: Enforce Go code architecture with `go-arch-lint`
         description: "Architecture linter. Will check all project import path and compare with arch rules defined in yml file. Useful for hexagonal / onion / ddd / mvc / etc patterns."
         name: go-arch-lint
         url: https://github.com/fe3dback/go-arch-lint
@@ -601,6 +601,8 @@ groups:
         example_image_url: https://github.com/fe3dback/go-arch-lint/blob/master/docs/images/check-example.png
         requirements:
           - go install github.com/fe3dback/go-arch-lint@latest
+        commands:
+          - go-arch-lint
   - title: Code Visualization
     entries:
       - title: Make C4 diagram
