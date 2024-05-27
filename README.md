@@ -61,7 +61,7 @@
    + [ Explore dependencies with `goda`](#-explore-dependencies-with-goda)
    + [ Explore dependencies interactively with `spaghetti`](#-explore-dependencies-interactively-with-spaghetti)
    + [ Use `go mod` directives](#-use-go-mod-directives)
-   + [ Enforce Go code architecture with `go-arch-lint` with `go-arch-lint`](#-enforce-go-code-architecture-with-go-arch-lint-with-go-arch-lint)
+   + [ Enforce Go code architecture with `go-arch-lint`](#-enforce-go-code-architecture-with-go-arch-lint)
  - Code Visualization
    + [ Make C4 diagram with `go-structurizr`](#-make-c4-diagram-with-go-structurizr)
    + [ Make graph of function calls with `callgraph`](#-make-graph-of-function-calls-with-callgraph)
@@ -72,7 +72,7 @@
    + [ Make histogram of Go files per package](#-make-histogram-of-go-files-per-package)
    + [ Explore Go code in browser powered by `go-guru` with `pythia`](#-explore-go-code-in-browser-powered-by-go-guru-with-pythia)
    + [ :derelict_house: Interactively visualize packages with `goexplorer`](#-derelict_house-interactively-visualize-packages-with-goexplorer)
-   + [ Make D2 graph of architecture and dependencies with `go-arch-lint graph` with `go-arch-lint graph`](#-make-d2-graph-of-architecture-and-dependencies-with-go-arch-lint-graph-with-go-arch-lint-graph)
+   + [ Make D2 graph of architecture and dependencies with `go-arch-lint graph`](#-make-d2-graph-of-architecture-and-dependencies-with-go-arch-lint-graph)
  - Code Generation
    + [ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
    + [ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
@@ -1110,7 +1110,7 @@ retract [v1.9.0, v1.9.5]
 ```
 
 
-### [⏫](#contents) Enforce Go code architecture with `go-arch-lint` with [go-arch-lint](https://github.com/fe3dback/go-arch-lint)
+### [⏫](#contents) Enforce Go code architecture with [go-arch-lint](https://github.com/fe3dback/go-arch-lint)
 
 Architecture linter. Will check all project import path and compare with arch rules defined in yml file. Useful for hexagonal / onion / ddd / mvc / etc patterns. — [@fe3dback](https://github.com/fe3dback)
 
@@ -1277,7 +1277,7 @@ Based on `go-callvis`, this tool is an interactive package explorer of packages.
 
 
 
-### [⏫](#contents) Make D2 graph of architecture and dependencies with `go-arch-lint graph` with [go-arch-lint graph](https://github.com/fe3dback/go-arch-lint)
+### [⏫](#contents) Make D2 graph of architecture and dependencies with [go-arch-lint graph](https://github.com/fe3dback/go-arch-lint)
 
 Can include vendors or not, and be of type 'flow' or 'di'. — [@fe3dback](https://github.com/fe3dback)
 
