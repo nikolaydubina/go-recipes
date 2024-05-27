@@ -85,6 +85,7 @@
    + [ Generate interface for a struct with `struct2interface`](#-generate-interface-for-a-struct-with-struct2interface)
    + [ Generate interface for `CSV` file with `structer`](#-generate-interface-for-csv-file-with-structer)
    + [ Modify struct field tags with `gomodifytags`](#-modify-struct-field-tags-with-gomodifytags)
+   + [ Generate code from OpenAPI 3 specification with `oapi-codegen`](#-generate-code-from-openapi-3-specification-with-oapi-codegen)
  - Refactoring
    + [ Replace symbol with `gofmt`](#-replace-symbol-with-gofmt)
    + [ :confetti_ball: Apply refactoring patches with `gopatch`](#-confetti_ball-apply-refactoring-patches-with-gopatch)
@@ -1709,6 +1710,20 @@ This tool makes it easy to update, add or delete the tags and options in a struc
 Requirements
 ```
 go install github.com/fatih/gomodifytags@latest
+```
+
+### [⏫](#contents) Generate code from OpenAPI 3 specification with [oapi-codegen](https://github.com/deepmap/oapi-codegen)
+
+Generate Go client and server boilerplate from OpenAPI 3 specifications. — [@deepmap](https://github.com/deepmap)
+
+
+```
+oapi-codegen --config=config.yaml api.yaml
+```
+
+Requirements
+```
+go install github.com/deepmap/oapi-codegen/v2/cmd/oapi-codegen@latest
 ```
 
 ## Refactoring
