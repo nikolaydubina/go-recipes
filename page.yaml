@@ -593,6 +593,16 @@ groups:
           exclude example.com/old/thing v1.2.3
           replace example.com/bad/thing v1.4.5 => example.com/good/thing v1.4.5
           retract [v1.9.0, v1.9.5]
+      - title: Enforce Go code architecture
+        description: "Architecture linter. Will check all project import path and compare with arch rules defined in yml file. Useful for hexagonal / onion / ddd / mvc / etc patterns."
+        name: go-arch-lint
+        url: https://github.com/fe3dback/go-arch-lint
+        author: https://github.com/fe3dback
+        example_image_url: https://github.com/fe3dback/go-arch-lint/blob/master/docs/images/check-example.png
+        requirements:
+          - go install github.com/fe3dback/go-arch-lint@latest
+        commands:
+          - go-arch-lint
   - title: Code Visualization
     entries:
       - title: Make C4 diagram
@@ -687,6 +697,16 @@ groups:
         name: goexplorer
         author: https://github.com/ofabry
         example_image_url: https://github.com/ofabry/goexplorer/raw/master/images/screen.png
+      - title: Make D2 graph of architecture and dependencies
+        description: "Can include vendors or not, and be of type 'flow' or 'di'."
+        name: go-arch-lint graph
+        url: https://github.com/fe3dback/go-arch-lint
+        author: https://github.com/fe3dback
+        example_image_url: https://github.com/fe3dback/go-arch-lint/blob/master/docs/images/graph-example.png
+        requirements:
+          - go install github.com/fe3dback/go-arch-lint@latest
+        commands:
+          - go-arch-lint graph
   - title: Code Generation
     entries:
       - title: Run `go:generate` in parallel
