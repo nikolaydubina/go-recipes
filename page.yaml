@@ -603,18 +603,6 @@ groups:
           - go install github.com/fe3dback/go-arch-lint@latest
         commands:
           - go-arch-lint
-      - title: Visualise dependencies size in compiled binaries
-        description: "A tool for analyzing the dependencies in compiled Golang binaries, providing insight into their impact on the final build."
-        name: go-size-analyzer
-        author: https://github.com/Zxilly
-        example_image_url: https://github.com/Zxilly/go-size-analyzer/assets/31370133/e69583ce-b189-4a0d-b108-c3b7d5c33a82
-        requirements:
-          - go install github.com/Zxilly/go-size-analyzer/cmd/gsa@latest
-          - "WebAssembly demo: https://gsa.zxilly.dev"
-        commands:
-          - gsa --web target_binary
-
-
   - title: Code Visualization
     entries:
       - title: Make C4 diagram
@@ -777,7 +765,7 @@ groups:
           - goenums <file-with-iota.go>
         example_content_ext: go
         requirements:
-          - go install github.com/zarldev/goenums@latest 
+          - go install github.com/zarldev/goenums@latest
         example_content: |
           package milkyway
 
@@ -1322,6 +1310,16 @@ groups:
             // Version here has some value
             ...
           }
+      - title: Visualise dependencies size in compiled binaries
+        description: A tool for analyzing the dependencies in compiled Golang binaries, providing insight into their impact on the final build.
+        name: go-size-analyzer
+        author: https://github.com/Zxilly
+        example_image_url: https://github.com/Zxilly/go-size-analyzer/assets/31370133/e69583ce-b189-4a0d-b108-c3b7d5c33a82
+        requirements:
+          - go install github.com/Zxilly/go-size-analyzer/cmd/gsa@latest
+          - "WebAssembly demo: https://gsa.zxilly.dev"
+        commands:
+          - gsa --web target_binary
       - title: Make treemap breakdown of Go executable binary
         description: Useful for studying Go compiler, large projects, projects with C/C++ and `cgo`, 3rd party dependencies, embedding. However, total size may not be something to worry about for your executable.
         name: go-binsize-treemap
@@ -2153,25 +2151,25 @@ groups:
         author: https://github.com/posener
         example_content: |
           # myapp
-          
+
           ## Variables
-          
+
           ```go
           var Version string
           ```
-          
+
           ## Functions
-          
+
           ### func [StartApp](/main.go#L16)
-          
+
           ```go
           func StartApp(flags *pflag.FlagSet)
           ```
-          
+
           ## Sub Packages
-          
+
           * [cmd/mycli](./cmd/mycli)
-          
+
           ---
           Readme created from Go doc with [goreadme](https://github.com/posener/goreadme)
         example_output: |
