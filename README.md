@@ -62,6 +62,7 @@
    + [ Explore dependencies interactively with `spaghetti`](#-explore-dependencies-interactively-with-spaghetti)
    + [ Use `go mod` directives](#-use-go-mod-directives)
    + [ Enforce Go code architecture with `go-arch-lint`](#-enforce-go-code-architecture-with-go-arch-lint)
+   + [ Visualise dependencies size in compiled binaries with `go-size-analyzer`](#-visualise-dependencies-size-in-compiled-binaries-with-go-size-analyzer)
  - Code Visualization
    + [ Make C4 diagram with `go-structurizr`](#-make-c4-diagram-with-go-structurizr)
    + [ Make graph of function calls with `callgraph`](#-make-graph-of-function-calls-with-callgraph)
@@ -1127,6 +1128,24 @@ go-arch-lint
 Requirements
 ```
 go install github.com/fe3dback/go-arch-lint@latest
+```
+
+### [⏫](#contents) Visualise dependencies size in compiled binaries with `go-size-analyzer`
+
+A tool for analyzing the dependencies in compiled Golang binaries, providing insight into their impact on the final build. — [@Zxilly](https://github.com/Zxilly)
+
+
+```
+gsa --web target_binary
+```
+
+<div align="center"><img src="https://github.com/Zxilly/go-size-analyzer/assets/31370133/e69583ce-b189-4a0d-b108-c3b7d5c33a82" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/Zxilly/go-size-analyzer/cmd/gsa@latest
+WebAssembly demo: https://gsa.zxilly.dev
 ```
 
 ## Code Visualization
