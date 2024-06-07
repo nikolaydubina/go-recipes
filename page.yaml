@@ -1313,6 +1313,7 @@ groups:
       - title: Visualise dependencies size in compiled binaries
         description: A tool for analyzing the dependencies in compiled Golang binaries, providing insight into their impact on the final build.
         name: go-size-analyzer
+        url: https://github.com/Zxilly/go-size-analyzer
         author: https://github.com/Zxilly
         example_image_url: https://github.com/Zxilly/go-size-analyzer/assets/31370133/e69583ce-b189-4a0d-b108-c3b7d5c33a82
         requirements:

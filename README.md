@@ -2044,7 +2044,7 @@ func main() {
 ```
 
 
-### [⏫](#contents) Visualise dependencies size in compiled binaries with `go-size-analyzer`
+### [⏫](#contents) Visualise dependencies size in compiled binaries with [go-size-analyzer](https://github.com/Zxilly/go-size-analyzer)
 
 A tool for analyzing the dependencies in compiled Golang binaries, providing insight into their impact on the final build. — [@Zxilly](https://github.com/Zxilly)
 
