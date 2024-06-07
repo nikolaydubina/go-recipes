@@ -2046,7 +2046,7 @@ func main() {
 
 ### [⏫](#contents) Visualise dependencies size in compiled binaries with [go-size-analyzer](https://github.com/Zxilly/go-size-analyzer)
 
-A tool for analyzing the dependencies in compiled Golang binaries, providing insight into their impact on the final build. — [@Zxilly](https://github.com/Zxilly)
+A tool for analyzing the dependencies in compiled Golang binaries, providing insight into their impact on the final build. WebAssembly demo: [https://gsa.zxilly.dev](https://gsa.zxilly.dev). — [@Zxilly](https://github.com/Zxilly)
 
 
 ```
@@ -2059,7 +2059,6 @@ gsa --web target_binary
 Requirements
 ```
 go install github.com/Zxilly/go-size-analyzer/cmd/gsa@latest
-WebAssembly demo: https://gsa.zxilly.dev
 ```
 
 ### [⏫](#contents) Make treemap breakdown of Go executable binary with [go-binsize-treemap](https://github.com/nikolaydubina/go-binsize-treemap)
