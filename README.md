@@ -3292,7 +3292,7 @@ func main() {
 
 - [Uber](https://github.com/uber-go/guide)
 
-- [Go Code Review Comments](https://github.com/golang/go/wiki/CodeReviewComments)
+- [Go Code Review Comments](https://go.dev/wiki/CodeReviewComments)
 
 ## Security
 

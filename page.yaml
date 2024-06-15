@@ -2232,7 +2232,7 @@ groups:
       - title: Uber
         url: https://github.com/uber-go/guide
       - title: Go Code Review Comments
-        url: https://github.com/golang/go/wiki/CodeReviewComments
+        url: https://go.dev/wiki/CodeReviewComments
   - title: Security
     entries:
       - title: Run official vulnerability check
