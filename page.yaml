@@ -439,7 +439,7 @@ groups:
         name: go-test-trace
         url: https://github.com/rakyll/go-test-trace
         author: https://github.com/rakyll
-        example_image_url: https://camo.githubusercontent.com/1bbb99d14634e097828aff76e17427c0d834b2b37b7ef6c4b15ad01e5b7ac526/68747470733a2f2f692e696d6775722e636f6d2f45313850596b342e706e67
+        example_image_url: https://i.imgur.com/E18PYk4.png
         commands:
           - go-test-trace ./...
         requirements:

@@ -855,7 +855,7 @@ Collect test execution as distributed traces. This is useful for tracking test d
 go-test-trace ./...
 ```
 
-<div align="center"><img src="https://camo.githubusercontent.com/1bbb99d14634e097828aff76e17427c0d834b2b37b7ef6c4b15ad01e5b7ac526/68747470733a2f2f692e696d6775722e636f6d2f45313850596b342e706e67" style="margin: 8px; max-height: 640px;"></div>
+<div align="center"><img src="https://i.imgur.com/E18PYk4.png" style="margin: 8px; max-height: 640px;"></div>
 
 
 Requirements
