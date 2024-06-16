@@ -3201,35 +3201,6 @@ It can be used as a command line tool, as Github action, or as a pre-commit hook
 ```
 goreadme
 goreadme -variables -functions -methods -badge-godoc
-```
-
-```
-# myapp
-
-## Variables
-
-```go
-var Version string
-```
-
-## Functions
-
-### func [StartApp](/main.go#L16)
-
-```go
-func StartApp(flags *pflag.FlagSet)
-```
-
-## Sub Packages
-
-* [cmd/mycli](./cmd/mycli)
-
----
-Readme created from Go doc with [goreadme](https://github.com/posener/goreadme)
-```
-
-Example
-```
 goreadme -badge-godoc -constants -functions -methods -recursive -types -variables > README.md
 ```
 
