@@ -154,6 +154,16 @@ groups:
           Therefore, the overall time complexity of the function is O(log(v) + p).
   - title: Testing
     entries:
+      - title: Continuous Tests Monitoring
+        description: Track tests duration, errors, flackiness. Run JUnit test output converter and submit result to codecov.io via GitHub Action.
+        name: codecov.io
+        url: https://app.codecov.io
+        author: https://codecov.io
+        example_image_url: ./img/codecov-tests.png
+        requirements:
+          - go install gotest.tools/gotestsum@latest
+        commands:
+          - go test -coverprofile=coverage.out -cover -json ./... | gotestsum --junitfile tests.xml
       - title: Make treemap of coverage
         description: Visualize distribution of code coverage in your project. This helps to identify code areas with high and low coverage. Useful when you have large project with lots of files and packages. This 2D "image-hash" of your project should be more representative than a single number. Also available at https://go-cover-treemap.io.
         example_image_url: ./img/hugo-code-coverage.svg

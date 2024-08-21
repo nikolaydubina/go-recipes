@@ -6,6 +6,7 @@
 
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fnikolaydubina%2Fgo-recipes&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 [![go-recipes](https://raw.githubusercontent.com/nikolaydubina/go-recipes/main/badge.svg?raw=true)](https://github.com/nikolaydubina/go-recipes)
+[![Track Awesome List](https://www.trackawesomelist.com/badge.svg)](https://www.trackawesomelist.com/nikolaydubina/go-recipes)
 
 ## Contents
 
@@ -18,6 +19,7 @@
    + [ Test case recommendation](#-test-case-recommendation)
    + [ Time complexity estimate](#-time-complexity-estimate)
  - Testing
+   + [ Continuous Tests Monitoring with `codecov.io`](#-continuous-tests-monitoring-with-codecovio)
    + [ Make treemap of coverage with `go-cover-treemap`](#-make-treemap-of-coverage-with-go-cover-treemap)
    + [ Browse coverage](#-browse-coverage)
    + [ Browse coverage with `gocov-html`](#-browse-coverage-with-gocov-html)
@@ -400,6 +402,23 @@ Therefore, the overall time complexity of the function is O(log(v) + p).
 
 
 ## Testing
+
+### [⏫](#contents) Continuous Tests Monitoring with [codecov.io](https://app.codecov.io)
+
+Track tests duration, errors, flackiness. Run JUnit test output converter and submit result to codecov.io via GitHub Action. — https://codecov.io
+
+
+```
+go test -coverprofile=coverage.out -cover -json ./... | gotestsum --junitfile tests.xml
+```
+
+<div align="center"><img src="./img/codecov-tests.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install gotest.tools/gotestsum@latest
+```
 
 ### [⏫](#contents) Make treemap of coverage with [go-cover-treemap](https://github.com/nikolaydubina/go-cover-treemap)
 
