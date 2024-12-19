@@ -233,6 +233,7 @@
    + [ Calculate age of comments with `go-commentage`](#-calculate-age-of-comments-with-go-commentage)
    + [ Ensure `if` statements using short assignment with `ifshort`](#-ensure-if-statements-using-short-assignment-with-ifshort)
    + [ Detect sub-optimal struct layout with `betteralign`](#-detect-sub-optimal-struct-layout-with-betteralign)
+   + [ Detect sub-optimal struct layout with `structlayout-optimize`](#-detect-sub-optimal-struct-layout-with-structlayout-optimize)
    + [ Visualize struct layout with `structlayout`](#-visualize-struct-layout-with-structlayout)
    + [ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
    + [ Analyze function callsites with `go-callsite-stats`](#-analyze-function-callsites-with-go-callsite-stats)
@@ -4489,6 +4490,15 @@ betteralign -apply ./...
 Requirements
 ```
 go install github.com/dkorunic/betteralign/cmd/betteralign@latest
+```
+
+### [⏫](#contents) Detect sub-optimal struct layout with [structlayout-optimize](https://github.com/dominikh/go-tools/blob/master/cmd/structlayout-optimize)
+
+This tool reorders struct fields to minimize the amount of padding. — [@dominikh](https://github.com/dominikh)
+
+Requirements
+```
+go install https://github.com/dominikh/go-tools/blob/master/cmd/structlayout-optimize@latest
 ```
 
 ### [⏫](#contents) Visualize struct layout with [structlayout](https://github.com/dominikh/go-tools/tree/master/cmd/structlayout)

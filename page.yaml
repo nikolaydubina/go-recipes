@@ -3092,6 +3092,13 @@ groups:
           - betteralign -apply ./...
         requirements:
           - go install github.com/dkorunic/betteralign/cmd/betteralign@latest
+      - title: Detect sub-optimal struct layout
+        description: This tool reorders struct fields to minimize the amount of padding.
+        name: structlayout-optimize
+        url: https://github.com/dominikh/go-tools/blob/master/cmd/structlayout-optimize
+        author: https://github.com/dominikh
+        requirements:
+          - go install https://github.com/dominikh/go-tools/blob/master/cmd/structlayout-optimize@latest
       - title: Visualize struct layout
         description: Display the byte offset and size of each field, respecting alignment/padding.
         name: structlayout
