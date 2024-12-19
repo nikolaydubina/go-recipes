@@ -124,6 +124,7 @@
    + [ Make graph of AST with `astgraph`](#-make-graph-of-ast-with-astgraph)
    + [ Convert C assembly to Go assembly with `c2goasm`](#-convert-c-assembly-to-go-assembly-with-c2goasm)
  - Execution
+   + [ Embed Go Playground to your blog with `codapi`](#-embed-go-playground-to-your-blog-with-codapi)
    + [ Embed Go Playground to your blog with `goplay`](#-embed-go-playground-to-your-blog-with-goplay)
    + [ Run alternative Go Playground with `goplay.tools`](#-run-alternative-go-playground-with-goplaytools)
    + [ Run interactive Go kernels in Jupyter Notebook with `gophernotes`](#-run-interactive-go-kernels-in-jupyter-notebook-with-gophernotes)
@@ -2347,6 +2348,35 @@ go install github.com/minio/c2goasm@latest
 
 ## Execution
 
+### [⏫](#contents) Embed Go Playground to your blog with [codapi](https://github.com/nalgeon/codapi)
+
+Codapi is a platform for embedding interactive code snippets directly into your product documentation, online course or blog post. [example](https://antonz.org/go-1-22/). — [@nalgeon](https://github.com/nalgeon)
+
+```
+'''go
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, World!")
+}
+'''
+
+<codapi-snippet sandbox="go" editor="basic">
+</codapi-snippet>
+```
+
+<div align="center"><img src="img/codapi.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+deploy sandbox
+embed javascript in your blog
+markdown go code blocks will turn into runnable snippets
+```
+
 ### [⏫](#contents) Embed Go Playground to your blog with [goplay](https://github.com/ggicci/goplay)
 
 Embed interactive Go Playground component into your blog. [Hugo](https://gohugo.io), [Docusaurus](https://docusaurus.io), [Ghost](https://ghost.org) are supported. There is also another tool [soksan](https://github.com/bbalet/soksan), however it is discontinued. Live [demo](https://ggicci.me/goplay-embed-go-playground-on-your-website/) with guideline. Other resources — GitLab considering to add it in [issue](https://gitlab.com/gitlab-org/gitlab/-/issues/212769); alternative implementation [guideline](https://hrishikeshpathak.com/blog/golang-code-playground/). — [@ggicci](https://github.com/ggicci)
@@ -2368,7 +2398,7 @@ func main() {
 Requirements
 ```
 reverse proxy server to https://play.golang.org
-bloging playform with support for embedding javascript
+bloging platform with support for embedding javascript
 ```
 
 ### [⏫](#contents) Run alternative Go Playground with [goplay.tools](https://github.com/x1unix/go-playground)
