@@ -1263,10 +1263,6 @@ This excellent interactive visualisation tool lets you explore code base as 3D g
 <div align="center"><img src="https://github.com/gabotechs/dep-tree/blob/main/docs/demo.gif" style="margin: 8px; max-height: 640px;"></div>
 
 
-Requirements
-```
-go install github.com/rodrigo-brito/gocity@latest
-```
 
 ### [⏫](#contents) Make 3D chart of Go codebase with [gocity](https://github.com/rodrigo-brito/gocity)
 

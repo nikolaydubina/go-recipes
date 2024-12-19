@@ -684,8 +684,6 @@ groups:
         url: https://github.com/gabotechs/dep-tree
         author: https://github.com/gabotechs
         example_image_url: https://github.com/gabotechs/dep-tree/blob/main/docs/demo.gif
-        requirements:
-          - go install github.com/rodrigo-brito/gocity@latest
       - title: Make 3D chart of Go codebase
         description: Fresh artistic perspective on Go codebase. `GoCity` is an implementation of the Code City metaphor for visualizing source code - folders are districts; files are buildings; structs are buildings on the top of their files. This project has research paper "[GoCity Code City for Go](https://homepages.dcc.ufmg.br/~mtov/pub/2019-saner-gocity.pdf)" at SANER'19. Also available at [go-city.github.io](https://go-city.github.io).
         example_image_url: img/gocity.png
