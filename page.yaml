@@ -2074,6 +2074,16 @@ groups:
         commands:
           - go tool trace trace.out
         example_image_url: img/go_tool_trace_web.png
+      - title: View traces
+        description: Gotraceui is a tool for visualizing and analyzing Go execution traces. It is meant to be a faster, more accessible, and more powerful alternative to go tool trace. Unlike go tool trace, Gotraceui doesn't use deprecated browser APIs (or a browser at all), and its UI is tuned specifically to the unique characteristics of Go traces.
+        name: gotraceui
+        url: https://github.com/dominikh/gotraceui
+        author: https://github.com/dominikh
+        example_image_url: https://gotraceui.dev/img/screenshot.webp
+        commands:
+          - go tool trace trace.out
+        requirements:
+          - go install honnef.co/go/gotraceui/cmd/gotraceui@latest
       - title: Get wallclock traces
         description: This tool can be more illustrative of Go traces than standard Go traces.
         name: fgtrace

@@ -165,6 +165,7 @@
    + [ Generate live traces with `net/http/trace`](#-generate-live-traces-with-nethttptrace)
    + [ Generate traces with `go test`](#-generate-traces-with-go-test)
    + [ View traces with `go tool trace`](#-view-traces-with-go-tool-trace)
+   + [ View traces with `gotraceui`](#-view-traces-with-gotraceui)
    + [ Get wallclock traces with `fgtrace`](#-get-wallclock-traces-with-fgtrace)
    + [ Get on/off CPU profiles with `fgprof`](#-get-onoff-cpu-profiles-with-fgprof)
    + [ Collect and visualize in-process traces with `trc`](#-collect-and-visualize-in-process-traces-with-trc)
@@ -3103,6 +3104,23 @@ go tool trace trace.out
 <div align="center"><img src="img/go_tool_trace_web.png" style="margin: 8px; max-height: 640px;"></div>
 
 
+
+### [⏫](#contents) View traces with [gotraceui](https://github.com/dominikh/gotraceui)
+
+Gotraceui is a tool for visualizing and analyzing Go execution traces. It is meant to be a faster, more accessible, and more powerful alternative to go tool trace. Unlike go tool trace, Gotraceui doesn't use deprecated browser APIs (or a browser at all), and its UI is tuned specifically to the unique characteristics of Go traces. — [@dominikh](https://github.com/dominikh)
+
+
+```
+go tool trace trace.out
+```
+
+<div align="center"><img src="https://gotraceui.dev/img/screenshot.webp" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install honnef.co/go/gotraceui/cmd/gotraceui@latest
+```
 
 ### [⏫](#contents) Get wallclock traces with [fgtrace](https://github.com/felixge/fgtrace)
 
