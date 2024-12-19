@@ -28,6 +28,7 @@
    + [ Shuffle tests](#-shuffle-tests)
    + [ Run tests sequentially](#-run-tests-sequentially)
    + [ Run tests in parallel](#-run-tests-in-parallel)
+   + [ Run all Fuzz tests](#-run-all-fuzz-tests)
    + [ Detect goroutine leaks with `goleak`](#-detect-goroutine-leaks-with-goleak)
    + [ Detect goroutine leaks with `leaktest`](#-detect-goroutine-leaks-with-leaktest)
    + [ Summarize `go test` with `tparse`](#-summarize-go-test-with-tparse)
@@ -571,6 +572,16 @@ for _, tc := range tests {
     t.Run(tc.name, func(t *testing.T) {
         t.Parallel()
         ...
+```
+
+
+### [⏫](#contents) Run all Fuzz tests
+
+Standard tool runs only single fuzz test. Use following to run all fuzz tests in a package.
+
+
+```
+go test -list . | grep Fuzz | xargs -P 8 -I {} go test -fuzz {} -fuzztime 5s .
 ```
 
 

@@ -254,6 +254,10 @@ groups:
               t.Run(tc.name, func(t *testing.T) {
                   t.Parallel()
                   ...
+      - title: Run all Fuzz tests
+        description: Standard tool runs only single fuzz test. Use following to run all fuzz tests in a package.
+        commands:
+          - go test -list . | grep Fuzz | xargs -P 8 -I {} go test -fuzz {} -fuzztime 5s .
       - title: Detect goroutine leaks
         description: Instrument your test cases with verification call. Alternatively, you can add single call in `TestMain`. This tool was recommended by Pyroscope in [blog](https://grafana.com/blog/2023/04/19/how-to-troubleshoot-memory-leaks-in-go-with-grafana-pyroscope/).
         url: https://github.com/uber-go/goleak
