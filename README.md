@@ -105,7 +105,7 @@
    + [ Errors with stack traces and source fragments with `tracerr`](#-errors-with-stack-traces-and-source-fragments-with-tracerr)
    + [ Pretty print `panic` messages with `panicparse`](#-pretty-print-panic-messages-with-panicparse)
  - Build
-   + [ Fetch private dependencidse in CI](#-fetch-private-dependencidse-in-ci)
+   + [ Fetch private dependencies in CI](#-fetch-private-dependencies-in-ci)
    + [ Show compiler optimization decisions on heap and inlining](#-show-compiler-optimization-decisions-on-heap-and-inlining)
    + [ Disable inlining](#-disable-inlining)
    + [ Aggressive inlining](#-aggressive-inlining)
@@ -2056,7 +2056,7 @@ go install github.com/maruel/panicparse/v2/cmd/pp@latest
 
 ## Build
 
-### [⏫](#contents) Fetch private dependencidse in CI
+### [⏫](#contents) Fetch private dependencies in CI
 
 If you are building in CI (e.g. GitHub Actions), you need to download private repositories. Here is one way to accomplish this.
 

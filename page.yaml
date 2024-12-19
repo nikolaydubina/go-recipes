@@ -1317,7 +1317,7 @@ groups:
           - go install github.com/maruel/panicparse/v2/cmd/pp@latest
   - title: Build
     entries:
-      - title: Fetch private dependencidse in CI
+      - title: Fetch private dependencies in CI
         description: If you are building in CI (e.g. GitHub Actions), you need to download private repositories. Here is one way to accomplish this.
         example_content_ext: yaml
         example_content: |
