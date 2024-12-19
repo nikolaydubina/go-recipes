@@ -1923,7 +1923,7 @@ groups:
         description: Go aligns benchmarks names to longest seen so far. Create file with name that is lexicographically first and has noop benchmark like following.
         example_content_ext: go
         example_content: |
-          - func BenchmarkNoop(b *testing.B) { b.Run("--------------------------------", func(b *testing.B) {}) }
+          func BenchmarkNoop(b *testing.B) { b.Run("--------------------------------", func(b *testing.B) {}) }
         example_output: |
           $ go test -bench .
           goos: darwin

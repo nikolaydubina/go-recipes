@@ -2900,7 +2900,7 @@ BenchmarkIteratorSelector/n=100000-10 	     310	   3827292 ns/op	  912410 B/op	 
 Go aligns benchmarks names to longest seen so far. Create file with name that is lexicographically first and has noop benchmark like following.
 
 ```go
-- func BenchmarkNoop(b *testing.B) { b.Run("--------------------------------", func(b *testing.B) {}) }
+func BenchmarkNoop(b *testing.B) { b.Run("--------------------------------", func(b *testing.B) {}) }
 ```
 
 Example
