@@ -2085,7 +2085,16 @@ groups:
         requirements:
           - refer to guideline for requirements for GUI
           - go install honnef.co/go/gotraceui/cmd/gotraceui@latest
-      - title: Get wallclock traces
+      - title: View in-process traces
+        description: This experimental approach illustrates collection of traces, intsrumentation, and visualization. It does not handle distributed traces. Likely useful for special cases or educational or research purposes.
+        url: https://github.com/peterbourgon/trc
+        name: trc
+        author: https://github.com/peterbourgon
+        example_image_url: https://github.com/peterbourgon/trc/raw/main/ui.png
+        requirements:
+          - instrument your code with `trc` package
+          - start UI server at port within same process
+      - title: View wallclock traces
         description: This tool can be more illustrative of Go traces than standard Go traces.
         name: fgtrace
         url: https://github.com/felixge/fgtrace
@@ -2131,15 +2140,6 @@ groups:
             // <code to profile>
           }
         example_image_url: https://github.com/felixge/fgprof/raw/master/assets/fgprof_pprof.png
-      - title: Collect and visualize in-process traces
-        description: This experimental approach illustrates collection of traces, intsrumentation, and visualization. It does not handle distributed traces. Likely useful for special cases or educational or research purposes.
-        url: https://github.com/peterbourgon/trc
-        name: trc
-        author: https://github.com/peterbourgon
-        example_image_url: https://github.com/peterbourgon/trc/raw/main/ui.png
-        requirements:
-          - instrument your code with `trc` package
-          - start UI server at port within same process
   - title: Document
     entries:
       - title: Make alternative documentation

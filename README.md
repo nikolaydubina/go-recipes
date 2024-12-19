@@ -166,9 +166,9 @@
    + [ Generate traces with `go test`](#-generate-traces-with-go-test)
    + [ View traces with `go tool trace`](#-view-traces-with-go-tool-trace)
    + [ View traces with `gotraceui`](#-view-traces-with-gotraceui)
-   + [ Get wallclock traces with `fgtrace`](#-get-wallclock-traces-with-fgtrace)
+   + [ View in-process traces with `trc`](#-view-in-process-traces-with-trc)
+   + [ View wallclock traces with `fgtrace`](#-view-wallclock-traces-with-fgtrace)
    + [ Get on/off CPU profiles with `fgprof`](#-get-onoff-cpu-profiles-with-fgprof)
-   + [ Collect and visualize in-process traces with `trc`](#-collect-and-visualize-in-process-traces-with-trc)
  - Document
    + [ Make alternative documentation with `golds`](#-make-alternative-documentation-with-golds)
    + [ Read Go binary documentation in `man` format with `goman`](#-read-go-binary-documentation-in-man-format-with-goman)
@@ -3123,7 +3123,20 @@ refer to guideline for requirements for GUI
 go install honnef.co/go/gotraceui/cmd/gotraceui@latest
 ```
 
-### [⏫](#contents) Get wallclock traces with [fgtrace](https://github.com/felixge/fgtrace)
+### [⏫](#contents) View in-process traces with [trc](https://github.com/peterbourgon/trc)
+
+This experimental approach illustrates collection of traces, intsrumentation, and visualization. It does not handle distributed traces. Likely useful for special cases or educational or research purposes. — [@peterbourgon](https://github.com/peterbourgon)
+
+<div align="center"><img src="https://github.com/peterbourgon/trc/raw/main/ui.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+instrument your code with `trc` package
+start UI server at port within same process
+```
+
+### [⏫](#contents) View wallclock traces with [fgtrace](https://github.com/felixge/fgtrace)
 
 This tool can be more illustrative of Go traces than standard Go traces. — [@felixge](https://github.com/felixge)
 
@@ -3174,19 +3187,6 @@ func main() {
 <div align="center"><img src="https://github.com/felixge/fgprof/raw/master/assets/fgprof_pprof.png" style="margin: 8px; max-height: 640px;"></div>
 
 
-
-### [⏫](#contents) Collect and visualize in-process traces with [trc](https://github.com/peterbourgon/trc)
-
-This experimental approach illustrates collection of traces, intsrumentation, and visualization. It does not handle distributed traces. Likely useful for special cases or educational or research purposes. — [@peterbourgon](https://github.com/peterbourgon)
-
-<div align="center"><img src="https://github.com/peterbourgon/trc/raw/main/ui.png" style="margin: 8px; max-height: 640px;"></div>
-
-
-Requirements
-```
-instrument your code with `trc` package
-start UI server at port within same process
-```
 
 ## Document
 
