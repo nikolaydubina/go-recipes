@@ -207,7 +207,7 @@
    + [ :fire: Detect escalated priviledges in dependencies with `capslock`](#-fire-detect-escalated-priviledges-in-dependencies-with-capslock)
    + [ :fire: Run static analysis with `gosec`](#-fire-run-static-analysis-with-gosec)
    + [ Perform Taint Analysis with `taint`](#-perform-taint-analysis-with-taint)
-   + [ :fire: Use Microsoft Go compiler with `msft-go`](#-fire-use-microsoft-go-compiler-with-msft-go)
+   + [ :fire: Use Microsoft Go compiler with `microsoft/go`](#-fire-use-microsoft-go-compiler-with-microsoftgo)
  - Static Analysis
    + [ Run default static analysis with `go vet`](#-run-default-static-analysis-with-go-vet)
    + [ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
@@ -3822,7 +3822,7 @@ Requirements
 go install github.com/picatz/taint/cmd/sqli@latest
 ```
 
-### [⏫](#contents) :fire: Use Microsoft Go compiler with [msft-go](https://github.com/microsoft/go)
+### [⏫](#contents) :fire: Use Microsoft Go compiler with [microsoft/go](https://github.com/microsoft/go)
 
 This is modified version of Go that can be used to build FIPS 140-2 compliant applications. — [@microsoft](https://github.com/microsoft)
 
