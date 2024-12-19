@@ -103,6 +103,7 @@
    + [ Profile-guided optimization](#-profile-guided-optimization)
    + [ Manually disable or enable `cgo`](#-manually-disable-or-enable-cgo)
    + [ Include metadata in binary during compilation with `ldflags`](#-include-metadata-in-binary-during-compilation-with-ldflags)
+   + [ Build for Raspberry Pi, Virtual Machine, embedded or normal PC with `gokrazy`](#-build-for-raspberry-pi-virtual-machine-embedded-or-normal-pc-with-gokrazy)
    + [ Visualise dependencies size in compiled binaries with `go-size-analyzer`](#-visualise-dependencies-size-in-compiled-binaries-with-go-size-analyzer)
    + [ Make treemap breakdown of Go executable binary with `go-binsize-treemap`](#-make-treemap-breakdown-of-go-executable-binary-with-go-binsize-treemap)
    + [ Custom import path](#-custom-import-path)
@@ -2018,6 +2019,20 @@ func main() {
 }
 ```
 
+
+### [⏫](#contents) Build for Raspberry Pi, Virtual Machine, embedded or normal PC with [gokrazy](https://github.com/gokrazy/gokrazy)
+
+Turn your Go program(s) into an appliance running on the Raspberry Pi 3, Pi 4, Pi 5, Pi Zero 2 W, or amd64 PCs! [gokrazy.org](https://gokrazy.org/). The surface area for security vulnerabilities is drastically reduced. gokrazy uses its own minimal Go userland instead of a traditional Linux distribution base. The root filesystem is entirely read-only (making persistent malware installation hard) and new versions of the system are installed by overwriting the root file system with the new version. No default shell access: There is neither xz nor OpenSSH on a gokrazy system. Interactive access for debugging is possible, but needs to be explicitly started. — hhttps://github.com/stapelberg
+
+
+```
+follow instructions at: https://gokrazy.org/quickstart/
+```
+
+Requirements
+```
+go install github.com/gokrazy/tools/cmd/gok@main
+```
 
 ### [⏫](#contents) Visualise dependencies size in compiled binaries with [go-size-analyzer](https://github.com/Zxilly/go-size-analyzer)
 
