@@ -240,6 +240,7 @@
    + [ Visualize struct layout with `structlayout`](#-visualize-struct-layout-with-structlayout)
    + [ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
    + [ Analyze function callsites with `go-callsite-stats`](#-analyze-function-callsites-with-go-callsite-stats)
+   + [ Check Clean Architecture with `go-cleanarch`](#-check-clean-architecture-with-go-cleanarch)
 
 ## AI Tools
 
@@ -4621,6 +4622,20 @@ x16:       err:16                            = waitForDefinition(schemaFoo:12
 Requirements
 ```
 go install github.com/nikolaydubina/go-callsite-stats@latest
+```
+
+### [⏫](#contents) Check Clean Architecture with [go-cleanarch](https://github.com/roblaszczak/go-cleanarch)
+
+Clean architecture validator for go, like a The Dependency Rule and interaction between packages in your Go projects. — [@roblaszczak](https://github.com/roblaszczak)
+
+
+```
+go-cleanarch
+```
+
+Requirements
+```
+go install github.com/roblaszczak/go-cleanarch@latest
 ```
 
 

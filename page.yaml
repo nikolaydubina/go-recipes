@@ -3181,3 +3181,12 @@ groups:
           x16:       err:16                            = waitForDefinition(schemaFoo:12
                                                                           (schemaWaldo:3)
                                                                           (expect:1)
+      - title: Check Clean Architecture
+        description: Clean architecture validator for go, like a The Dependency Rule and interaction between packages in your Go projects.
+        author: https://github.com/roblaszczak
+        url: https://github.com/roblaszczak/go-cleanarch
+        name: go-cleanarch
+        commands:
+          - go-cleanarch
+        requirements:
+          - go install github.com/roblaszczak/go-cleanarch@latest
