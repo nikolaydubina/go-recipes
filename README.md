@@ -1862,7 +1862,7 @@ go install github.com/deepmap/oapi-codegen/v2/cmd/oapi-codegen@latest
 
 This project allows to reuse existing C/C++ libraries in your Go applications, by automatically creating c-go bindings for a given set of C headers and the manifest file. We believe in component-based software engineering and think that reusing C/C++ code in Go applications could bring a huge boost to developer's productivity and system's performance. Read more about the motivation: top reasons to use bindings. — [@xlab](https://github.com/xlab)
 
-<div align="center"><img src="https://github.com/xlab/c-for-go/tree/master/docs/overview.png" style="margin: 8px; max-height: 640px;"></div>
+<div align="center"><img src="https://github.com/xlab/c-for-go/raw/master/docs/overview.png" style="margin: 8px; max-height: 640px;"></div>
 
 
 

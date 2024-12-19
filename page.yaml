@@ -1164,7 +1164,7 @@ groups:
         name: c-for-go
         author: https://github.com/xlab
         url: https://github.com/xlab/c-for-go?tab=readme-ov-file
-        example_image_url: https://github.com/xlab/c-for-go/tree/master/docs/overview.png
+        example_image_url: https://github.com/xlab/c-for-go/raw/master/docs/overview.png
   - title: Generics
     entries:
       - title: Enum via generics
