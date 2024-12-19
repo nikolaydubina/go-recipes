@@ -1874,9 +1874,9 @@ groups:
           ...
           runtime.Start()
         requirements:
-          - open telemetry
-          - prometheus
-          - grafana
+          - opentelemetry collector
+          - metrics backend (e.g. prometheus)
+          - dashboard (e.g. grafana)
       - title: Monitor goroutines
         description: Command line monitoring for goroutines.
         url: https://github.com/bcicen/grmon

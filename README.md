@@ -2829,9 +2829,9 @@ runtime.Start()
 
 Requirements
 ```
-open telemetry
-prometheus
-grafana
+opentelemetry collector
+metrics backend (e.g. prometheus)
+dashboard (e.g. grafana)
 ```
 
 ### [⏫](#contents) Monitor goroutines with [grmon](https://github.com/bcicen/grmon)
