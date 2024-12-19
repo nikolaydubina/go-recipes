@@ -678,6 +678,14 @@ groups:
         example_image_url: https://raw.githubusercontent.com/bykof/go-plantuml/master/docs/assets/graph.svg
         requirements:
           - go install github.com/bykof/go-plantuml@latest
+      - title: Visualize the entropy of a code base with a 3D force-directed graph
+        description: This excellent interactive visualisation tool lets you explore code base as 3D graph. The more decoupled and modular a code base is, the more spread and clustered the graph will look like.
+        name: dep-tree
+        url: https://github.com/gabotechs/dep-tree
+        author: https://github.com/gabotechs
+        example_image_url: https://github.com/gabotechs/dep-tree/docs/demo.gif
+        requirements:
+          - go install github.com/rodrigo-brito/gocity@latest
       - title: Make 3D chart of Go codebase
         description: Fresh artistic perspective on Go codebase. `GoCity` is an implementation of the Code City metaphor for visualizing source code - folders are districts; files are buildings; structs are buildings on the top of their files. This project has research paper "[GoCity Code City for Go](https://homepages.dcc.ufmg.br/~mtov/pub/2019-saner-gocity.pdf)" at SANER'19. Also available at [go-city.github.io](https://go-city.github.io).
         example_image_url: img/gocity.png

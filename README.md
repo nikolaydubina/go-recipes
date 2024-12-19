@@ -68,6 +68,7 @@
    + [ Make graph of function calls in package with `go-callvis`](#-make-graph-of-function-calls-in-package-with-go-callvis)
    + [ Make PlantUML diagram with `goplantuml`](#-make-plantuml-diagram-with-goplantuml)
    + [ Make PlantUML diagram with `go-plantuml`](#-make-plantuml-diagram-with-go-plantuml)
+   + [ Visualize the entropy of a code base with a 3D force-directed graph with `dep-tree`](#-visualize-the-entropy-of-a-code-base-with-a-3d-force-directed-graph-with-dep-tree)
    + [ Make 3D chart of Go codebase with `gocity`](#-make-3d-chart-of-go-codebase-with-gocity)
    + [ Make histogram of Go files per package](#-make-histogram-of-go-files-per-package)
    + [ Explore Go code in browser powered by `go-guru` with `pythia`](#-explore-go-code-in-browser-powered-by-go-guru-with-pythia)
@@ -1253,6 +1254,18 @@ go-plantuml generate -d . -r -o graph.puml
 Requirements
 ```
 go install github.com/bykof/go-plantuml@latest
+```
+
+### [⏫](#contents) Visualize the entropy of a code base with a 3D force-directed graph with [dep-tree](https://github.com/gabotechs/dep-tree)
+
+This excellent interactive visualisation tool lets you explore code base as 3D graph. The more decoupled and modular a code base is, the more spread and clustered the graph will look like. — [@gabotechs](https://github.com/gabotechs)
+
+<div align="center"><img src="https://github.com/gabotechs/dep-tree/docs/demo.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/rodrigo-brito/gocity@latest
 ```
 
 ### [⏫](#contents) Make 3D chart of Go codebase with [gocity](https://github.com/rodrigo-brito/gocity)
