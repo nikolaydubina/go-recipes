@@ -2058,7 +2058,7 @@ go install github.com/maruel/panicparse/v2/cmd/pp@latest
 
 ### [⏫](#contents) Fetch private dependencies in CI
 
-If you are building in CI (e.g. GitHub Actions), you need to download private repositories. Here is one way to accomplish this.
+If you are building in CI (e.g. GitHub Actions), you need to download private repositories. Common way to accomplish this is with job like bellow.
 
 ```yaml
 name: go private modules

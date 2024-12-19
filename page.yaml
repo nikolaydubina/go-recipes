@@ -1318,7 +1318,7 @@ groups:
   - title: Build
     entries:
       - title: Fetch private dependencies in CI
-        description: If you are building in CI (e.g. GitHub Actions), you need to download private repositories. Here is one way to accomplish this.
+        description: If you are building in CI (e.g. GitHub Actions), you need to download private repositories. Common way to accomplish this is with job like bellow.
         example_content_ext: yaml
         example_content: |
           name: go private modules
