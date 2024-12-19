@@ -52,6 +52,7 @@
    + [ Get directly dependent modules that can be upgraded](#-get-directly-dependent-modules-that-can-be-upgraded)
    + [ Get upstream modules without Go version](#-get-upstream-modules-without-go-version)
    + [ Get available module versions](#-get-available-module-versions)
+   + [ Get go module libyear, number of releases, version delta with `go-libyear`](#-get-go-module-libyear-number-of-releases-version-delta-with-go-libyear)
    + [ Make graph of upstream modules with `modgraphviz`](#-make-graph-of-upstream-modules-with-modgraphviz)
    + [ Make graph of upstream packages with `import-graph`](#-make-graph-of-upstream-packages-with-import-graph)
    + [ Scrape details about upstream modules and make graph with `import-graph`](#-scrape-details-about-upstream-modules-and-make-graph-with-import-graph)
@@ -974,6 +975,30 @@ This works even if you did not download or install module locally. This is usefu
 go list -m -versions github.com/google/gofuzz
 ```
 
+
+### [⏫](#contents) Get go module libyear, number of releases, version delta with [go-libyear](https://github.com/nieomylnieja/go-libyear)
+
+[libyear](https://libyear.com) is asimple measure of software dependency freshness. It is a single number telling you how up-to-date your dependencies are. For example Rails 5.0.0 (June 2016) is 1 libyear behind 5.1.2 (June 2017). This tool can also compute number of releases, and version number delta. — [@nieomylnieja](https://github.com/nieomylnieja)
+
+
+```
+go-libyear /path/to/go.mod
+```
+
+Example
+```
+package                             version  date        latest   latest_date  libyear
+github.com/nieomylnieja/go-libyear           2023-11-06                        2.41
+github.com/pkg/errors               v0.8.1   2019-01-03  v0.9.1   2020-01-14   1.03
+github.com/urfave/cli/v2            v2.20.0  2022-10-14  v2.25.7  2023-06-14   0.67
+golang.org/x/mod                    v0.12.0  2023-06-21  v0.14.0  2023-10-25   0.35
+golang.org/x/sync                   v0.3.0   2023-06-01  v0.5.0   2023-10-11   0.36
+```
+
+Requirements
+```
+go install github.com/nieomylnieja/go-libyear/cmd/go-libyear@latest
+```
 
 ### [⏫](#contents) Make graph of upstream modules with [modgraphviz](https://golang.org/x/exp/cmd/modgraphviz)
 
