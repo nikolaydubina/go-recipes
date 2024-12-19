@@ -246,6 +246,15 @@ groups:
         name: goc
         requirements:
           - go install github.com/qiniu/goc@latest
+      - title: Detect drops in coverage
+        name: go-test-coverage
+        description: This tool designed to report issues when test coverage falls below a specified threshold. Likely you would want to use it in the CI.
+        url: https://github.com/vladopajic/go-test-coverage
+        author: https://github.com/vladopajic
+        requirements:
+          - go install github.com/vladopajic/go-test-coverage/v2@latest
+        commands:
+          - go-test-coverage --config=./.testcoverage.yml
       - title: Shuffle tests
         description: This is less known option that is disabled by default. However, for robust test suite it is beneficial. More test flags and full description is available at `go help testflag`.
         commands:

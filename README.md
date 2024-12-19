@@ -26,6 +26,7 @@
    + [ Pretty print coverage in terminal with `nikandfor/cover`](#-pretty-print-coverage-in-terminal-with-nikandforcover)
    + [ Run coverage collector server with `goc`](#-run-coverage-collector-server-with-goc)
    + [ Visualize live coverage in VSCode with `goc`](#-visualize-live-coverage-in-vscode-with-goc)
+   + [ Detect drops in coverage with `go-test-coverage`](#-detect-drops-in-coverage-with-go-test-coverage)
    + [ Shuffle tests](#-shuffle-tests)
    + [ Run tests sequentially](#-run-tests-sequentially)
    + [ Run tests in parallel](#-run-tests-in-parallel)
@@ -579,6 +580,20 @@ Official Go VSCode plugin already has coverage highlighting. In addition to that
 Requirements
 ```
 go install github.com/qiniu/goc@latest
+```
+
+### [⏫](#contents) Detect drops in coverage with [go-test-coverage](https://github.com/vladopajic/go-test-coverage)
+
+This tool designed to report issues when test coverage falls below a specified threshold. Likely you would want to use it in the CI. — [@vladopajic](https://github.com/vladopajic)
+
+
+```
+go-test-coverage --config=./.testcoverage.yml
+```
+
+Requirements
+```
+go install github.com/vladopajic/go-test-coverage/v2@latest
 ```
 
 ### [⏫](#contents) Shuffle tests
