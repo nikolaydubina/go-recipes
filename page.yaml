@@ -152,7 +152,7 @@ groups:
           Therefore, the overall time complexity of the function is O(log(v) + p).
   - title: Testing
     entries:
-      - title: ":fire: Continuous Tests Monitoring"
+      - title: "Continuous Tests Monitoring"
         description: Track tests duration, errors, flackiness. Run JUnit test output converter and submit result to codecov.io via GitHub Action.
         name: codecov.io
         url: https://app.codecov.io
@@ -781,7 +781,7 @@ groups:
             uranus                // Uranus 0.889,25362,8.68e25,2872500000,30687,1.3,13,true
             neptune               // Neptune 1.12,24622,1.02e26,4495100000,60190,1.5,2,true
           )
-      - title: ":fire: Generate data types from JSON Schema"
+      - title: "Generate data types from JSON Schema"
         url: https://github.com/omissis/go-jsonschema
         author: https://github.com/omissis
         name: go-jsonschema
@@ -877,7 +877,7 @@ groups:
                   // Vegetables corresponds to the JSON schema field "vegetables".
                   Vegetables []Veggie `json:"vegetables,omitempty" yaml:"vegetables,omitempty" mapstructure:"vegetables,omitempty"`
           }
-      - title: ":fire: Generate constructor for a struct"
+      - title: "Generate constructor for a struct"
         description: Constructor is a widely used useful pattern. This tool generates basic version of it that passes arguments to struct. It also supports intializer method.
         url: https://github.com/moznion/gonstructor
         name: gonstructor
@@ -1115,7 +1115,7 @@ groups:
         name: gofmt
         commands:
           - gofmt -w -r 'interface{} -> any' .
-      - title: ":fire: Apply refactoring patches"
+      - title: "Apply refactoring patches"
         description: With this tool it is very easy to perform refactorings. It is also possible to organize and maintan your refactoring procedures through patches.
         url: https://github.com/uber-go/gopatch
         author: Uber
@@ -1196,7 +1196,7 @@ groups:
           - go install github.com/anqiansong/goimportx@latest
   - title: Errors
     entries:
-      - title: ":fire: Errors with return traces"
+      - title: "Errors with return traces"
         description: Return trace is the path that error took to return to user. This can be more illustrative than typical stack trace that procuded the error. This tool have conenienve automatic instrumentation CLI to update your code.
         url: https://github.com/bracesdev/errtrace
         name: errtrace
@@ -1353,7 +1353,7 @@ groups:
         example_content_ext: go
         example_content: |
           package pdf // import "rsc.io/pdf"
-      - title: ":fire: Manage multiple Go versions"
+      - title: "Manage multiple Go versions"
         description: This tool makes it easier for managing multiple Go versions on same host. This works through intercepting Go commands and directing them to the right Go version bin and directory. Official Go [documentation](https://go.dev/doc/manage-install) on this topic.
         url: https://github.com/Norwik/Goenv
         author: https://github.com/clivern
@@ -1379,7 +1379,7 @@ groups:
         example_image_url: https://github.com/loov/lensm/raw/main/screenshot.gif
         requirements:
           - go install loov.dev/lensm@main
-      - title: ":fire: View Go assembly with color annotation"
+      - title: "View Go assembly with color annotation"
         url: https://github.com/maruel/pat
         author: https://github.com/maruel
         name: pat/disfunc
@@ -1788,7 +1788,7 @@ groups:
           - find . -name "*.go" | grep -v "vendor/\|.git/\|_test.go" | xargs -n 1 -t otelinji -w -filename
         requirements:
           - go install github.com/hedhyw/otelinji/cmd/otelinji@latest
-      - title: ":fire: Auto-Instrument functions for DataDog"
+      - title: "Auto-Instrument functions for DataDog"
         description: This is official Datadog tool for automatic instrumentation of code. It has very convenient compiler directives for instrumentation.
         author: https://github.com/DataDog
         name: orchestrion
@@ -1931,7 +1931,7 @@ groups:
           JSONMarshal/large-10     2.00 ± 0%      2.00 ± 0%      5.00 ± 0%
         requirements:
           - go install golang.org/x/perf/cmd/benchstat@latest
-      - title: ":fire: Benchmark against git commit"
+      - title: "Benchmark against git commit"
         url: https://github.com/maruel/pat
         author: https://github.com/maruel
         name: pat/ba
@@ -2320,7 +2320,7 @@ groups:
           - staticcheck ./...
         requirements:
           - go install honnef.co/go/tools/cmd/staticcheck@latest
-      - title: ":fire: Detect potential Nil panics"
+      - title: "Detect potential Nil panics"
         description: This tool employs sophisticated static analysis techniques to catch Nil dereferences. More details in [blog](https://www.uber.com/en-IN/blog/nilaway-practical-nil-panic-detection-for-go/).
         url: https://github.com/uber-go/nilaway
         author: Uber
@@ -2643,7 +2643,7 @@ groups:
           /go-mnd/examples/bad/main.go:11:12: Magic number: 2, in <assign> detected
         requirements:
           - go install github.com/tommy-muehle/go-mnd/v2/cmd/mnd@latest
-      - title: ":fire: Detect magic strings"
+      - title: "Detect magic strings"
         description: This tool detects repeated strings.
         name: goconst
         url: https://github.com/jgautheron/goconst
@@ -2679,7 +2679,7 @@ groups:
             ...
         requirements:
           - go install github.com/jgautheron/goconst/cmd/goconst@latest
-      - title: ":fire: Detect bound checks"
+      - title: "Detect bound checks"
         url: https://github.com/maruel/pat
         author: https://github.com/maruel
         name: pat/boundcheck
