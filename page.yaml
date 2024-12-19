@@ -194,7 +194,7 @@ groups:
           - go install github.com/matm/gocov-html/cmd/gocov-html@latest
       - title: Browse coverage
         name: xgo
-        description: "The displayed coverage is a combination of coverage and git diff. By default, only modified lines were shown. This helps to quickly locate changes that were not covered, and add tests for them incrementally."
+        description: ":fire: The displayed coverage is a combination of coverage and git diff. By default, only modified lines were shown. This helps to quickly locate changes that were not covered, and add tests for them incrementally."
         url: https://github.com/matm/gocov-html
         author: https://github.com/matm
         example_image_url: https://github.com/xhd2015/xgo/raw/master/doc/img/coverage.jpg
@@ -246,7 +246,7 @@ groups:
         name: goc
         requirements:
           - go install github.com/qiniu/goc@latest
-      - title: Detect drops in coverage
+      - title: ":fire: Detect drops in coverage"
         name: go-test-coverage
         description: This tool designed to report issues when test coverage falls below a specified threshold. Likely you would want to use it in the CI.
         url: https://github.com/vladopajic/go-test-coverage
@@ -307,7 +307,7 @@ groups:
               }
             }()
           }
-      - title: Visualize test runs
+      - title: ":fire: Visualize test runs"
         description: This tool visualizes Go test results in a browser. It's helpful with understanding parallelism of tests and identifying slow tests. More information can be found in our blog post about optimizing Go tests parallelism.
         name: vgt
         url: https://github.com/roblaszczak/vgt
@@ -534,7 +534,7 @@ groups:
         commands:
           - go list -m -versions github.com/google/gofuzz
         example-output: github.com/google/gofuzz v1.0.0 v1.1.0 v1.2.0
-      - title: Get go module libyear, number of releases, version delta
+      - title: ":fire: Get go module libyear, number of releases, version delta"
         description: "[libyear](https://libyear.com) is asimple measure of software dependency freshness. It is a single number telling you how up-to-date your dependencies are. For example Rails 5.0.0 (June 2016) is 1 libyear behind 5.1.2 (June 2017). This tool can also compute number of releases, and version number delta."
         name: go-libyear
         url: https://github.com/nieomylnieja/go-libyear
@@ -627,7 +627,7 @@ groups:
         example_image_url: https://github.com/adonovan/spaghetti/blob/main/screenshot.png
         requirements:
           - go install github.com/adonovan/spaghetti@latest
-      - title: Explore dependencies graph interactively
+      - title: ":fire: Explore dependencies graph interactively"
         description: Transform your Go project's dependency graph into a dynamic, interactive visualization with modview. This powerful tool takes the complexity out of your module graph, offering a clear and explorable view of your project's dependencies.
         name: modview
         url: https://github.com/bayraktugrul/modview
@@ -637,7 +637,7 @@ groups:
           - modview --open
         requirements:
           - go install github.com/bayraktugrul/modview@latest
-      - title: Enforce Go code architecture
+      - title: ":fire: Enforce Go code architecture"
         description: "Architecture linter. Will check all project import path and compare with arch rules defined in yml file. Useful for hexagonal / onion / ddd / mvc / etc patterns."
         name: go-arch-lint
         url: https://github.com/fe3dback/go-arch-lint
@@ -647,6 +647,15 @@ groups:
           - go install github.com/fe3dback/go-arch-lint@latest
         commands:
           - go-arch-lint
+      - title: ":fire: Check Clean Architecture"
+        description: Clean architecture validator for go, like a The Dependency Rule and interaction between packages in your Go projects.
+        author: https://github.com/roblaszczak
+        url: https://github.com/roblaszczak/go-cleanarch
+        name: go-cleanarch
+        commands:
+          - go-cleanarch
+        requirements:
+          - go install github.com/roblaszczak/go-cleanarch@latest
       - title: Use `go mod` directives
         description: Tell Go compiler which versions of upstreams to include in your build. Tell all users of your module how to deal with versions of your module.
         example_content: |
@@ -660,14 +669,14 @@ groups:
           exclude example.com/old/thing v1.2.3
           replace example.com/bad/thing v1.4.5 => example.com/good/thing v1.4.5
           retract [v1.9.0, v1.9.5]
-      - title: Locally patch dependency
+      - title: ":fire: Locally patch dependency"
         name: "`replace`"
         description: "This can be useful for development. First appeared on [blog](https://eli.thegreenplace.net/2024/locally-patching-dependencies-in-go)."
         commands:
           - "# clone your dependency to $DEP folder"
           - "# make changes"
           - go mod edit -replace github.com/google/go-cmp=$DEP
-      - title: Locally patch dependency
+      - title: ":fire: Locally patch dependency"
         name: "`go.work`"
         description: "This is an alternative version may be more robust to accidental mistakes. First appeared on [blog](https://eli.thegreenplace.net/2024/locally-patching-dependencies-in-go)."
         commands:
@@ -732,7 +741,7 @@ groups:
         example_image_url: https://raw.githubusercontent.com/bykof/go-plantuml/master/docs/assets/graph.svg
         requirements:
           - go install github.com/bykof/go-plantuml@latest
-      - title: Visualize the entropy of a code base with a 3D force-directed graph
+      - title: ":fire: Visualize the entropy of a code base with a 3D force-directed graph"
         description: This excellent interactive visualisation tool lets you explore code base as 3D graph. The more decoupled and modular a code base is, the more spread and clustered the graph will look like.
         name: dep-tree
         url: https://github.com/gabotechs/dep-tree
@@ -1171,7 +1180,7 @@ groups:
           }
         requiremnets:
           - go install github.com/rjeczalik/interfaces/cmd/structer@latest
-      - title: Generate decorator for interface
+      - title: ":fire: Generate decorator for interface"
         description: GoWrap is a command line tool that generates decorators for Go interface types using simple templates. With GoWrap you can easily add metrics, tracing, fallbacks, pools, and many other features into your existing code in a few seconds.
         url: https://github.com/hexdigest/gowrap
         author: https://github.com/hexdigest
@@ -1198,7 +1207,7 @@ groups:
           - oapi-codegen --config=config.yaml api.yaml
         requirements:
           - go install github.com/deepmap/oapi-codegen/v2/cmd/oapi-codegen@latest
-      - title: Generate C-Go Bindings
+      - title: ":fire: Generate C-Go Bindings"
         description: "This project allows to reuse existing C/C++ libraries in your Go applications, by automatically creating c-go bindings for a given set of C headers and the manifest file. We believe in component-based software engineering and think that reusing C/C++ code in Go applications could bring a huge boost to developer's productivity and system's performance. Read more about the motivation: top reasons to use bindings."
         name: c-for-go
         author: https://github.com/xlab
@@ -1206,7 +1215,7 @@ groups:
         example_image_url: https://github.com/xlab/c-for-go/raw/master/docs/overview.png
   - title: Generics
     entries:
-      - title: Enum via generics
+      - title: ":fire: Enum via generics"
         name: enum
         description: Type safe enums for Go without code generation or reflection.
         url: https://github.com/orsinium-labs/enum
@@ -1362,7 +1371,7 @@ groups:
           - go install github.com/maruel/panicparse/v2/cmd/pp@latest
   - title: Build
     entries:
-      - title: Fetch private dependencies in CI
+      - title: ":fire: Fetch private dependencies in CI"
         description: If you are building in CI (e.g. GitHub Actions), you need to download private repositories. Common way to accomplish this is with job like bellow.
         example_content_ext: yaml
         example_content: |
@@ -1416,12 +1425,12 @@ groups:
             // Version here has some value
             ...
           }
-      - title: Check if symbol or package is included in binary
+      - title: ":fire: Check if symbol or package is included in binary"
         description: This is useful for investigations during perofmance optimization, security, or compiler work. First spotted in [blog](https://rednafi.com/go/omit_dev_dependencies_in_binaries/).
         commands:
           - "go tool nm main | grep -Ei '<symbol A>|<symbol B>|...'"
           - "go tool nm main | grep -Ei 'golangci-lint|gofumpt'"
-      - title: Build for Raspberry Pi, Virtual Machine, embedded or normal PC
+      - title: ":fire: Build for Raspberry Pi, Virtual Machine, embedded or normal PC"
         description: "Turn your Go program(s) into an appliance running on the Raspberry Pi 3, Pi 4, Pi 5, Pi Zero 2 W, or amd64 PCs! [gokrazy.org](https://gokrazy.org/). The surface area for security vulnerabilities is drastically reduced. gokrazy uses its own minimal Go userland instead of a traditional Linux distribution base. The root filesystem is entirely read-only (making persistent malware installation hard) and new versions of the system are installed by overwriting the root file system with the new version. No default shell access: There is neither xz nor OpenSSH on a gokrazy system. Interactive access for debugging is possible, but needs to be explicitly started."
         name: gokrazy
         url: https://github.com/gokrazy/gokrazy
@@ -1495,7 +1504,7 @@ groups:
         author: https://github.com/clivern
         name: Goenv
         example_image_url: https://github.com/Norwik/Goenv/raw/main/static/screenshot-1.png
-      - title: Transpile C to Go
+      - title: ":fire: Transpile C to Go"
         description: CxGo is a tool for translating C source code to Go (aka transpiler, source-to-source compiler). It uses cc v3 for preprocessing and parsing C (no clang/gcc dependencies!) and a custom type-checker and AST translation layer to make the best output possible.
         url: https://github.com/gotranspile/cxgo
         author: https://github.com/dennwc
@@ -1504,7 +1513,7 @@ groups:
           - go install github.com/gotranspile/cxgo/cmd/cxgo@latest
         commands:
           - cxgo file main.c
-      - title: Transpile Go to Javascript
+      - title: ":fire: Transpile Go to Javascript"
         description: GopherJS compiles Go code (go.dev) to pure JavaScript code. Its main purpose is to give you the opportunity to write front-end code in Go which will still run in all browsers.
         url: https://github.com/gopherjs/gopherjs
         author: https://github.com/neelance
@@ -1513,7 +1522,7 @@ groups:
           - go install github.com/gopherjs/gopherjs@v1.19.0-beta1
         commands:
           - gopherjs build <package>
-      - title: Run compile-time function evaluation
+      - title: ":fire: Run compile-time function evaluation"
         name: prep
         description: By using prep.Comptime, you can evaluate functions at compile time, replacing them with their computed results.
         url: https://github.com/pijng/prep
@@ -1709,7 +1718,7 @@ groups:
           - go build -o go_c_code.o -gcflags="-S" go_c_code.s
   - title: Execution
     entries:
-      - title: Embed Go Playground to your blog
+      - title: ":fire: Embed Go Playground to your blog"
         description: "Codapi is a platform for embedding interactive code snippets directly into your product documentation, online course or blog post. [example](https://antonz.org/go-1-22/)."
         name: codapi
         url: https://github.com/nalgeon/codapi
@@ -1758,7 +1767,7 @@ groups:
         url: https://github.com/x1unix/go-playground
         author: https://github.com/x1unix
         example_image_url: https://github.com/x1unix/go-playground/raw/master/docs/img/demo.gif
-      - title: Use TinyGo Playground
+      - title: ":fire: Use TinyGo Playground"
         description: TinyGo is an alternative Go compiler that focuses on embedded devices, and WASM. There are some Go constructs and packages that not supported. In this online playground you can veryify your code.
         name: tinygo
         url: https://play.tinygo.org
@@ -1952,7 +1961,7 @@ groups:
           return eg.Wait()
   - title: Monitor
     entries:
-      - title: Monitor Go Runtime metrics
+      - title: ":fire: Monitor Go Runtime metrics"
         description: These are standard metrics for Go runtime exposed in OpenTelemetry format. Grafana [dashboard](https://github.com/nikolaydubina/grafana-otel-go-runtime).
         url: https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/runtime
         name: opentelemetry
@@ -1992,7 +2001,7 @@ groups:
           52697 52695  gops           go1.10  /Users/jbd/bin/gops
           4132  4130   foops        * go1.9   /Users/jbd/bin/foops
           51130 51128  gocode         go1.9.2 /Users/jbd/bin/gocode
-      - title: Monitor Go runtime metrics in browser
+      - title: ":fire: Monitor Go runtime metrics in browser"
         name: live-pprof
         description: This is minimal single binary tool that lets you monitor Go app performance. This can be an attractive altenative for local development to avoid operations overhead of full monitoring setup (e.g. Prometheus, Grafana).
         url: https://github.com/moderato-app/live-pprof
@@ -2096,7 +2105,7 @@ groups:
           BenchmarkIteratorSelector/n=1000-10   	   31400	     38182 ns/op	    9752 B/op	      16 allocs/op
           BenchmarkIteratorSelector/n=10000-10  	    3134	    380777 ns/op	   89112 B/op	      24 allocs/op
           BenchmarkIteratorSelector/n=100000-10 	     310	   3827292 ns/op	  912410 B/op	      32 allocs/op
-      - title: Align benchmark output
+      - title: ":fire: Align benchmark output"
         description: Go aligns benchmarks names to longest seen so far. Create file with name that is lexicographically first and has noop benchmark like following.
         example_content_ext: go
         example_content: |
@@ -2304,7 +2313,7 @@ groups:
         commands:
           - go tool trace trace.out
         example_image_url: img/go_tool_trace_web.png
-      - title: View traces
+      - title: ":fire: View traces"
         description: Gotraceui is a tool for visualizing and analyzing Go execution traces. It is meant to be a faster, more accessible, and more powerful alternative to go tool trace. Unlike go tool trace, Gotraceui doesn't use deprecated browser APIs (or a browser at all), and its UI is tuned specifically to the unique characteristics of Go traces. This tool also recommend by official Go team from Google in their [blog](https://go.dev/blog/execution-traces-2024).
         name: gotraceui
         url: https://github.com/dominikh/gotraceui
@@ -2501,7 +2510,7 @@ groups:
                 cmd/kube-controller-manager/app/controllermanager.go:216:40: k8s.io/kubernetes/cmd/kube-controller-manager/app.Run calls k8s.io/apiserver/pkg/server.SecureServingInfo.Serve, which eventually calls golang.org/x/net/http2.ConfigureServer
                   requirements:
                     - go install golang.org/x/vuln/cmd/govulncheck@latest
-      - title: Detect escalated priviledges in dependencies
+      - title: ":fire: Detect escalated priviledges in dependencies"
         description: Capslock is a capability analysis CLI for Go packages that informs users of which privileged operations a given package can access. This works by classifying the capabilities of Go packages by following transitive calls to privileged standard library operations. The recent increase in supply chain attacks targeting open source software has highlighted that third party dependencies should not be inherently trusted. Capabilities indicate what permissions a package has access to, and can be used in conjunction with other security signals to indicate which code requires additional scrutiny before it can be considered trusted.
         url: https://github.com/google/capslock
         author: Google
@@ -2524,7 +2533,7 @@ groups:
           CAPABILITY_SYSTEM_CALLS: 12 references
           CAPABILITY_UNANALYZED: 332 references
           CAPABILITY_UNSAFE_POINTER: 335 references
-      - title: Run static analysis
+      - title: ":fire: Run static analysis"
         description: This tool inspects source code for security problems by scanning the Go AST and SSA code representation. There are numerous rules it checks.
         url: https://github.com/securego/gosec
         author: https://github.com/ccojocar
@@ -2572,7 +2581,7 @@ groups:
           }
         example_output: |
           ./sql/injection/testdata/src/example/main.go:9:10: potential sql injection
-      - title: Use Microsoft Go compiler
+      - title: ":fire: Use Microsoft Go compiler"
         description: This is modified version of Go that can be used to build FIPS 140-2 compliant applications.
         url: https://github.com/microsoft/go
         author: https://github.com/microsoft
@@ -2733,7 +2742,7 @@ groups:
           }
         requirements:
           - go get -u github.com/GaijinEntertainment/go-exhaustruct/v3/cmd/exhaustruct
-      - title: Detect unreachable functions
+      - title: ":fire: Detect unreachable functions"
         description: This static analysis tool detects when functions can not be reached in any execution. There is also `-test` mode that shows if function is reacheable by any of tests.
         name: deadcode
         url: https://pkg.go.dev/golang.org/x/tools/cmd/deadcode
@@ -2760,7 +2769,7 @@ groups:
           header_in_struct/header_in_struct.go:16:2: assigning to reflect header object
         requirements:
           - go install github.com/jlauinger/go-safer@latest
-      - title: "Detect `panic` without explaning comment"
+      - title: ":fire: Detect `panic` without explaning comment"
         description: Panic should only be used very sparingly, for catching bugs basically, and thus deserve a comment to confirm that that's indeed the case.
         name: panic-linter
         url: https://github.com/ldemailly/panic-linter
@@ -3168,7 +3177,7 @@ groups:
           }
         requirements:
           - go install github.com/esimonov/ifshort@latest
-      - title: Detect sub-optimal struct layout
+      - title: ":fire: Detect sub-optimal struct layout"
         description: This tool detect structs that would use less memory if their fields were sorted and optionally sort such fields.
         name: betteralign
         url: https://github.com/dkorunic/betteralign
@@ -3177,7 +3186,7 @@ groups:
           - betteralign -apply ./...
         requirements:
           - go install github.com/dkorunic/betteralign/cmd/betteralign@latest
-      - title: Detect sub-optimal struct layout
+      - title: ":fire: Detect sub-optimal struct layout"
         description: This tool reorders struct fields to minimize the amount of padding.
         name: structlayout-optimize
         url: https://github.com/dominikh/go-tools/blob/master/cmd/structlayout-optimize
@@ -3237,12 +3246,3 @@ groups:
           x16:       err:16                            = waitForDefinition(schemaFoo:12
                                                                           (schemaWaldo:3)
                                                                           (expect:1)
-      - title: Check Clean Architecture
-        description: Clean architecture validator for go, like a The Dependency Rule and interaction between packages in your Go projects.
-        author: https://github.com/roblaszczak
-        url: https://github.com/roblaszczak/go-cleanarch
-        name: go-cleanarch
-        commands:
-          - go-cleanarch
-        requirements:
-          - go install github.com/roblaszczak/go-cleanarch@latest
