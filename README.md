@@ -232,6 +232,7 @@
    + [ Calculate Cyclomatic Complexity with `cyclop`](#-calculate-cyclomatic-complexity-with-cyclop)
    + [ Calculate age of comments with `go-commentage`](#-calculate-age-of-comments-with-go-commentage)
    + [ Ensure `if` statements using short assignment with `ifshort`](#-ensure-if-statements-using-short-assignment-with-ifshort)
+   + [ Detect sub-optimal struct layout with `betteralign`](#-detect-sub-optimal-struct-layout-with-betteralign)
    + [ Visualize struct layout with `structlayout`](#-visualize-struct-layout-with-structlayout)
    + [ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
    + [ Analyze function callsites with `go-callsite-stats`](#-analyze-function-callsites-with-go-callsite-stats)
@@ -4474,6 +4475,20 @@ func someFunc(k string, m map[string]interface{}) {
 Requirements
 ```
 go install github.com/esimonov/ifshort@latest
+```
+
+### [⏫](#contents) Detect sub-optimal struct layout with [betteralign](https://github.com/dkorunic/betteralign)
+
+This tool detect structs that would use less memory if their fields were sorted and optionally sort such fields. — [@dkorunic](https://github.com/dkorunic)
+
+
+```
+betteralign -apply ./...
+```
+
+Requirements
+```
+go install github.com/dkorunic/betteralign/cmd/betteralign@latest
 ```
 
 ### [⏫](#contents) Visualize struct layout with [structlayout](https://github.com/dominikh/go-tools/tree/master/cmd/structlayout)

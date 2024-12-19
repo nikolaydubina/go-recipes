@@ -3083,6 +3083,15 @@ groups:
           }
         requirements:
           - go install github.com/esimonov/ifshort@latest
+      - title: Detect sub-optimal struct layout
+        description: This tool detect structs that would use less memory if their fields were sorted and optionally sort such fields.
+        name: betteralign
+        url: https://github.com/dkorunic/betteralign
+        author: https://github.com/dkorunic
+        commands:
+          - betteralign -apply ./...
+        requirements:
+          - go install github.com/dkorunic/betteralign/cmd/betteralign@latest
       - title: Visualize struct layout
         description: Display the byte offset and size of each field, respecting alignment/padding.
         name: structlayout
