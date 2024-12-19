@@ -202,6 +202,7 @@
    + [ Go Code Review Comments](#style-guide)
  - Security
    + [ Run official vulnerability check with `govulncheck`](#-run-official-vulnerability-check-with-govulncheck)
+   + [ Run static analysis with `gosec`](#-run-static-analysis-with-gosec)
    + [ Perform Taint Analysis with `taint`](#-perform-taint-analysis-with-taint)
    + [ Use Microsoft Go compiler](#-use-microsoft-go-compiler)
  - Static Analysis
@@ -3697,6 +3698,20 @@ Vulnerability #1: GO-2023-1571
           - go install golang.org/x/vuln/cmd/govulncheck@latest
 ```
 
+
+### [⏫](#contents) Run static analysis with [gosec](https://github.com/picatz/taint)
+
+This tool inspects source code for security problems by scanning the Go AST and SSA code representation. There are numerous rules it checks. — [@picatz](https://github.com/picatz)
+
+
+```
+gosec ./...
+```
+
+Requirements
+```
+go install github.com/securego/gosec/v2/cmd/gosec@latest
+```
 
 ### [⏫](#contents) Perform Taint Analysis with [taint](https://github.com/picatz/taint)
 

@@ -2492,6 +2492,15 @@ groups:
                 cmd/kube-controller-manager/app/controllermanager.go:216:40: k8s.io/kubernetes/cmd/kube-controller-manager/app.Run calls k8s.io/apiserver/pkg/server.SecureServingInfo.Serve, which eventually calls golang.org/x/net/http2.ConfigureServer
                   requirements:
                     - go install golang.org/x/vuln/cmd/govulncheck@latest
+      - title: Run static analysis
+        description: This tool inspects source code for security problems by scanning the Go AST and SSA code representation. There are numerous rules it checks.
+        url: https://github.com/picatz/taint
+        author: https://github.com/picatz
+        name: gosec
+        requirements:
+          - go install github.com/securego/gosec/v2/cmd/gosec@latest
+        commands:
+          - gosec ./...
       - title: Perform Taint Analysis
         description: Taint analysis is a technique for identifying the flow of sensitive data through a program. It can be used to identify potential security vulnerabilities, such as SQL injection or cross-site scripting (XSS) attacks, by understanding how this data is used and transformed as it flows through the code. This package provides tools to performs such analysis. Included tool is performing SQL injection taint analysis.
         url: https://github.com/picatz/taint
