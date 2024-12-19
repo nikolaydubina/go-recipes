@@ -3119,6 +3119,7 @@ go tool trace trace.out
 
 Requirements
 ```
+refer to guideline for requirements for GUI
 go install honnef.co/go/gotraceui/cmd/gotraceui@latest
 ```
 

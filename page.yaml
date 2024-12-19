@@ -2083,6 +2083,7 @@ groups:
         commands:
           - go tool trace trace.out
         requirements:
+          - refer to guideline for requirements for GUI
           - go install honnef.co/go/gotraceui/cmd/gotraceui@latest
       - title: Get wallclock traces
         description: This tool can be more illustrative of Go traces than standard Go traces.
