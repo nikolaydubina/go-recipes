@@ -21,7 +21,7 @@
    + [ Make treemap of coverage with `go-cover-treemap`](#-make-treemap-of-coverage-with-go-cover-treemap)
    + [ Browse coverage](#-browse-coverage)
    + [ Browse coverage with `gocov-html`](#-browse-coverage-with-gocov-html)
-   + [ Browse coverage with `xgo`](#-browse-coverage-with-xgo)
+   + [ :fire: Browse coverage with `xgo`](#-fire-browse-coverage-with-xgo)
    + [ Browse coverage in terminal with `gocovsh`](#-browse-coverage-in-terminal-with-gocovsh)
    + [ Pretty print coverage in terminal with `nikandfor/cover`](#-pretty-print-coverage-in-terminal-with-nikandforcover)
    + [ Run coverage collector server with `goc`](#-run-coverage-collector-server-with-goc)
@@ -207,7 +207,7 @@
    + [ :fire: Detect escalated priviledges in dependencies with `capslock`](#-fire-detect-escalated-priviledges-in-dependencies-with-capslock)
    + [ :fire: Run static analysis with `gosec`](#-fire-run-static-analysis-with-gosec)
    + [ Perform Taint Analysis with `taint`](#-perform-taint-analysis-with-taint)
-   + [ :fire: Use Microsoft Go compiler](#-fire-use-microsoft-go-compiler)
+   + [ :fire: Use Microsoft Go compiler with `msft-go`](#-fire-use-microsoft-go-compiler-with-msft-go)
  - Static Analysis
    + [ Run default static analysis with `go vet`](#-run-default-static-analysis-with-go-vet)
    + [ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
@@ -496,9 +496,9 @@ go install github.com/axw/gocov/gocov@latest
 go install github.com/matm/gocov-html/cmd/gocov-html@latest
 ```
 
-### [⏫](#contents) Browse coverage with [xgo](https://github.com/matm/gocov-html)
+### [⏫](#contents) :fire: Browse coverage with [xgo](https://github.com/matm/gocov-html)
 
-:fire: The displayed coverage is a combination of coverage and git diff. By default, only modified lines were shown. This helps to quickly locate changes that were not covered, and add tests for them incrementally. — [@matm](https://github.com/matm)
+The displayed coverage is a combination of coverage and git diff. By default, only modified lines were shown. This helps to quickly locate changes that were not covered, and add tests for them incrementally. — [@matm](https://github.com/matm)
 
 
 ```
@@ -3822,7 +3822,7 @@ Requirements
 go install github.com/picatz/taint/cmd/sqli@latest
 ```
 
-### [⏫](#contents) :fire: Use Microsoft Go compiler
+### [⏫](#contents) :fire: Use Microsoft Go compiler with [msft-go](https://github.com/microsoft/go)
 
 This is modified version of Go that can be used to build FIPS 140-2 compliant applications. — [@microsoft](https://github.com/microsoft)
 
