@@ -16,7 +16,7 @@ entry:
   example:
     title: Example
 groups:
-  - title: AI tools
+  - title: AI Tools
     entries:
       - title: Advanced autocompletion
         name: Copilot
@@ -29,10 +29,6 @@ groups:
         requirements:
           - VSCode
           - GitHub account
-      - title: Pull requests recommendations
-        name: CopilotX
-        description: "CopilotX has dedicated solutions for: writing PR description; writing tests; writing PR reviews and replies; applying requested PR changes. As of `2023-06-04`, it is on waitlist. [documentation](https://githubnext.com/projects/copilot-for-pull-requests)."
-        url: https://github.com/features/preview/copilot-x
       - title: Code analysis and recommendations
         name: charmbracelet/mods
         description: This is a nice looking CLI wrapper for major LLM APIs from [Charm](https://github.com/charmbracelet) team. It supports OpenAI and [LocalAI](https://github.com/go-skynet/LocalAI). It passes arbitrary human language command string and concatenated with STDIN input. Multiple useful commands are possible.
@@ -58,6 +54,7 @@ groups:
           - go install github.com/ravilushqa/gpt-pullrequest-updater/cmd/review@latest
       - title: Commit message recommendation
         description: Short summaries of changes usually work well.
+        name: charmbracelet/mods
         url: https://github.com/charmbracelet/mods
         commands:
           - git diff | mods "summarize following git diff into short git commit message."
@@ -68,6 +65,7 @@ groups:
           - "# OpenAI token or LocalAI model and server"
           - go install github.com/charmbracelet/mods@latest
       - title: Test case recommendation
+        name: charmbracelet/mods
         url: https://github.com/charmbracelet/mods
         description: Concatenate two files and ask to recommend missing test cases. It is not precise, has high false positive and high false negative rate. Often can not detect that tests cases are present at all. However, it can give a fresh perspective on your code. Best results are produced when asking succinct short replies. Example outputs bellow.
         commands:
@@ -92,6 +90,7 @@ groups:
           multiplication. Finally, the program should have a test that verifies the  MarshalJSON  and  UnmarshalJSON          
           functions.
       - title: Time complexity estimate
+        name: charmbracelet/mods
         url: https://github.com/charmbracelet/mods
         description: This is one of recommended use cases by OpenAI website. It can produce fairly good estimations. However, in its direct form usefulness is questionable, since complex cases are not handled precisely enough, educational potential is limited, and simple cases do not require this. Perhaps, this will be utilized in future work on using models in compiler and programming. Copy function and pipe it to model with prompt asking for time complexity estimation. Bellow is an example.
         commands:
@@ -174,7 +173,7 @@ groups:
         commands:
           - go test -coverprofile cover.out ./...
           - go-cover-treemap -coverprofile cover.out > out.svg
-      - title: Browse coverage
+      - title: Browse coverage in HTML
         description: This is very helpful tool from the official Go toolchain. Similar visualization is integrated into VSCode and Goland, but can be used separately.
         example_image_url: ./img/tool-cover-html.png
         commands:
@@ -237,7 +236,7 @@ groups:
         name: goc
         requirements:
           - go install github.com/qiniu/goc@latest
-      - title: ":fire: Shuffle tests"
+      - title: Shuffle tests
         description: This is less known option that is disabled by default. However, for robust test suite it is beneficial. More test flags and full description is available at `go help testflag`.
         commands:
           - go test -shuffle=on
@@ -268,7 +267,7 @@ groups:
           }
         requirements:
           - go get -u go.uber.org/goleak
-      - title: Detect goroutine leaks
+      - title: "Detect goroutine leaks"
         description: Refactored, tested variant of the goroutine leak detector found in both `net/http` tests and the cockroachdb source tree. You have to call this library in your tests.
         name: leaktest
         url: https://github.com/fortytw2/leaktest
@@ -305,7 +304,7 @@ groups:
         example_image_url: https://asciinema.org/a/99810.png
         requirements:
           - go install github.com/kyoh86/richgo@latest
-      - title: Decorate `go test`
+      - title: "Decorate `go test`"
         description: Add colors to `go test` output. Very lightweight wrapper around `go test` STDOUT.
         name: gotest
         url: https://github.com/rakyll/gotest
@@ -377,7 +376,7 @@ groups:
           - go test -json ./... | gotestsum --junitfile unit-tests.xml
         requirements:
           - go install gotest.tools/gotestsum@latest
-      - title: Make `JSUnit` test report
+      - title: "Make `JSUnit` test report"
         description: JUnit is widely used format for test reporting. Go benchmark output is also supported.
         url: https://github.com/jstemmer/go-junit-report
         name: go-junit-report
@@ -405,7 +404,7 @@ groups:
         commands:
           - go test -v -tags=mutation
         example_image_url: https://github.com/gtramontina/ooze/blob/main/.assets/report.png
-      - title: Perform Mutation Testing
+      - title: "Perform Mutation Testing"
         description: This is fork of [zimmski/go-mutesting](https://github.com/zimmski/go-mutesting). It has more mutators and latest updates.
         name: "avito-tech/go-mutesting"
         url: https://github.com/avito-tech/go-mutesting
@@ -424,7 +423,7 @@ groups:
               continue MUTATOR
             }
           }
-      - title: Perform Mutation Testing
+      - title: "Perform Mutation Testing"
         description: Find common bugs source code that would pass tests. This is earliest tool for mutation testing in Go. More functions and permutations were added in other mutation Go tools it inspired.
         name: go-mutesting
         url: https://github.com/zimmski/go-mutesting
@@ -443,7 +442,7 @@ groups:
               continue MUTATOR
             }
           }
-      - title: Trace tests
+      - title: "Trace tests"
         description: Collect test execution as distributed traces. This is useful for tracking test duration, failures, flakiness. You distributed tracing storage, search, UI, exploration, dashboards, alarms — all will automatically become test status collection. If you run integration tests in your CI, then it is particularly handy to investigate your integration tests same way as real requests, such as Go processes, databases, etc. However, if you do not have distributed traces, it is still useful for adhoc investigations. This tool processes STDOUT of `go test`. No automatic instrumentation is done.
         name: go-test-trace
         url: https://github.com/rakyll/go-test-trace
@@ -513,17 +512,7 @@ groups:
         requirements:
           - https://graphviz.org/download/
           - go install golang.org/x/exp/cmd/modgraphviz@latest
-      - title: Make graph of upstream modules
-        description: Render in browser Go module graphs. Built with D3.js, Javascript, HTTP server in Go.
-        name: gmchart
-        url: https://github.com/PaulXu-cn/go-mod-graph-chart/gmchart
-        author: https://github.com/PaulXu-cn
-        commands:
-          - go mod graph | gmchart
-        example_image_url: https://github.com/PaulXu-cn/go-mod-graph-chart/raw/main/show.gif
-        requirements:
-          - go install github.com/PaulXu-cn/go-mod-graph-chart/gmchart@latest
-      - title: Make graph of upstream packages
+      - title: "Make graph of upstream packages"
         description: Find unexpected dependencies or visualize project. Works best for small number of packages, for large projects use `grep` to narrow down subgraph. Without `-deps` only for current module.
         commands:
           - "go list -deps -json ./... | jq -c 'select(.Standard!=true) | {from: .ImportPath, to: .Imports[]}' | jsonl-graph | dot -Tsvg > package-graph.svg"
@@ -536,7 +525,7 @@ groups:
           - https://graphviz.org/download/
           - go install github.com/nikolaydubina/import-graph@latest
           - go install github.com/nikolaydubina/jsonl-graph@latest
-      - title: Scrape details about upstream modules and make graph
+      - title: "Scrape details about upstream modules and make graph"
         description: Find low quality or unmaintained dependencies.
         commands:
           - go mod graph | import-graph -i=gomod | jsonl-graph -color-scheme=file://$PWD/basic.json | dot -Tsvg > output.svg
@@ -700,7 +689,7 @@ groups:
         requirements:
           - go install github.com/fzipp/pythia@latest
           - go install golang.org/x/tools/cmd/guru@latest
-      - title: ":derelict_house: Interactively visualize packages"
+      - title: "Interactively visualize packages"
         description: Based on `go-callvis`, this tool is an interactive package explorer of packages. This tool have not been updated for a long time.
         url: https://github.com/ofabry/goexplorer
         name: goexplorer
@@ -1205,20 +1194,6 @@ groups:
           )
         requirements:
           - go install github.com/anqiansong/goimportx@latest
-      - title: ":fire: Replace unkeyed struct literals into keyed ones"
-        description: You may want to do this as preparation for other refactoring steps. This tool has good emacs integration, otherwise may it be hard to use.
-        url: https://github.com/dominikh/go-tools/tree/master/cmd/keyify
-        author: https://github.com/dominikh
-        name: keyify
-        example_content_ext: go
-        example_content: |
-          # before
-          myFunc(T{1, 2, 3})
-
-          # after
-          myFunc(T{A: 1, B: 2, C: 3})
-        requirements:
-          - go install honnef.co/go/tools/cmd/keyify@2022.1
   - title: Errors
     entries:
       - title: ":fire: Errors with return traces"
@@ -1522,7 +1497,7 @@ groups:
         requirements:
           - "# get graphviz"
           - go install github.com/SilverRainZ/go-ssaviz@latest
-      - title: ":derelict_house: Make graph of AST"
+      - title: "Make graph of AST"
         description: This tool visualizes AST as graph, which may be useful to navigate and undertand Go AST. This tool has not been maintaned for a while.
         name: astgraph
         author: https://github.com/xiazemin
@@ -1530,7 +1505,7 @@ groups:
         example_image_url: https://github.com/xiazemin/ast_graph/raw/master/tree.svg
         requirements:
           - graphviz
-      - title: ":derelict_house: Convert C assembly to Go assembly"
+      - title: "Convert C assembly to Go assembly"
         url: https://github.com/minio/c2goasm
         author: https://github.com/fwessels
         name: c2goasm
@@ -2025,7 +2000,7 @@ groups:
       - title: Continuous benchmarking
         description: Automate comparing benchmarks with `benchstat` between `HEAD` and `HEAD^1`. It can be used to block CI pipelines if benchmarks deteriorate. It reports output as text in CLI. This cane be useful in CI or in local development.
         name: cob
-        url: https://https://github.com/knqyf263/cob
+        url: https://github.com/knqyf263/cob
         example_image_url: https://github.com/knqyf263/cob/raw/master/img/usage.png
         author: https://github.com/knqyf263
         requirements:
@@ -2820,7 +2795,7 @@ groups:
         requirements:
           - "# get latest version of git"
           - go install github.com/nikolaydubina/go-commentage@latest
-      - title: ":derelict_house: Ensure `if` statements using short assignment"
+      - title: "Ensure `if` statements using short assignment"
         name: ifshort
         author: https://github.com/esimonov
         status: archive-not-working

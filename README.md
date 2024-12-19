@@ -9,24 +9,23 @@
 
 ## Contents
 
- - AI tools
+ - AI Tools
    + [ Advanced autocompletion with `Copilot`](#-advanced-autocompletion-with-copilot)
-   + [ Pull requests recommendations with `CopilotX`](#-pull-requests-recommendations-with-copilotx)
    + [ Code analysis and recommendations with `charmbracelet/mods`](#-code-analysis-and-recommendations-with-charmbraceletmods)
    + [ Pull request recommendations with `gpt-pullrequest-updater`](#-pull-request-recommendations-with-gpt-pullrequest-updater)
-   + [ Commit message recommendation](#-commit-message-recommendation)
-   + [ Test case recommendation](#-test-case-recommendation)
-   + [ Time complexity estimate](#-time-complexity-estimate)
+   + [ Commit message recommendation with `charmbracelet/mods`](#-commit-message-recommendation-with-charmbraceletmods)
+   + [ Test case recommendation with `charmbracelet/mods`](#-test-case-recommendation-with-charmbraceletmods)
+   + [ Time complexity estimate with `charmbracelet/mods`](#-time-complexity-estimate-with-charmbraceletmods)
  - Testing
    + [ :fire: Continuous Tests Monitoring with `codecov.io`](#-fire-continuous-tests-monitoring-with-codecovio)
    + [ Make treemap of coverage with `go-cover-treemap`](#-make-treemap-of-coverage-with-go-cover-treemap)
-   + [ Browse coverage](#-browse-coverage)
+   + [ Browse coverage in HTML](#-browse-coverage-in-html)
    + [ Browse coverage with `gocov-html`](#-browse-coverage-with-gocov-html)
    + [ Browse coverage in terminal with `gocovsh`](#-browse-coverage-in-terminal-with-gocovsh)
    + [ Pretty print coverage in terminal with `nikandfor/cover`](#-pretty-print-coverage-in-terminal-with-nikandforcover)
    + [ Run coverage collector server with `goc`](#-run-coverage-collector-server-with-goc)
    + [ Visualize live coverage in VSCode with `goc`](#-visualize-live-coverage-in-vscode-with-goc)
-   + [ :fire: Shuffle tests](#-fire-shuffle-tests)
+   + [ Shuffle tests](#-shuffle-tests)
    + [ Run tests sequentially](#-run-tests-sequentially)
    + [ Run tests in parallel](#-run-tests-in-parallel)
    + [ Detect goroutine leaks with `goleak`](#-detect-goroutine-leaks-with-goleak)
@@ -54,7 +53,6 @@
    + [ Get upstream modules without Go version](#-get-upstream-modules-without-go-version)
    + [ Get available module versions](#-get-available-module-versions)
    + [ Make graph of upstream modules with `modgraphviz`](#-make-graph-of-upstream-modules-with-modgraphviz)
-   + [ Make graph of upstream modules with `gmchart`](#-make-graph-of-upstream-modules-with-gmchart)
    + [ Make graph of upstream packages with `import-graph`](#-make-graph-of-upstream-packages-with-import-graph)
    + [ Scrape details about upstream modules and make graph with `import-graph`](#-scrape-details-about-upstream-modules-and-make-graph-with-import-graph)
    + [ Scrape licenses of upstream dependencies with `go-licenses`](#-scrape-licenses-of-upstream-dependencies-with-go-licenses)
@@ -71,7 +69,7 @@
    + [ Make 3D chart of Go codebase with `gocity`](#-make-3d-chart-of-go-codebase-with-gocity)
    + [ Make histogram of Go files per package](#-make-histogram-of-go-files-per-package)
    + [ Explore Go code in browser powered by `go-guru` with `pythia`](#-explore-go-code-in-browser-powered-by-go-guru-with-pythia)
-   + [ :derelict_house: Interactively visualize packages with `goexplorer`](#-derelict_house-interactively-visualize-packages-with-goexplorer)
+   + [ Interactively visualize packages with `goexplorer`](#-interactively-visualize-packages-with-goexplorer)
    + [ Make D2 graph of architecture and dependencies with `go-arch-lint graph`](#-make-d2-graph-of-architecture-and-dependencies-with-go-arch-lint-graph)
  - Code Generation
    + [ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
@@ -94,7 +92,6 @@
    + [ Keep consistent ordering of imports with `goimports`](#-keep-consistent-ordering-of-imports-with-goimports)
    + [ Keep consistent ordering of imports with `gci`](#-keep-consistent-ordering-of-imports-with-gci)
    + [ Keep consistent ordering of imports with `goimportx`](#-keep-consistent-ordering-of-imports-with-goimportx)
-   + [ :fire: Replace unkeyed struct literals into keyed ones with `keyify`](#-fire-replace-unkeyed-struct-literals-into-keyed-ones-with-keyify)
  - Errors
    + [ :fire: Errors with return traces with `errtrace`](#-fire-errors-with-return-traces-with-errtrace)
    + [ Errors with stack traces and source fragments with `tracerr`](#-errors-with-stack-traces-and-source-fragments-with-tracerr)
@@ -123,8 +120,8 @@
    + [ Generate AST for code snippets with `go/ast`](#-generate-ast-for-code-snippets-with-goast)
    + [ Generate AST for code snippets with `go2ast`](#-generate-ast-for-code-snippets-with-go2ast)
    + [ Visualize Go SSA function using Graphviz with `go-ssaviz`](#-visualize-go-ssa-function-using-graphviz-with-go-ssaviz)
-   + [ :derelict_house: Make graph of AST with `astgraph`](#-derelict_house-make-graph-of-ast-with-astgraph)
-   + [ :derelict_house: Convert C assembly to Go assembly with `c2goasm`](#-derelict_house-convert-c-assembly-to-go-assembly-with-c2goasm)
+   + [ Make graph of AST with `astgraph`](#-make-graph-of-ast-with-astgraph)
+   + [ Convert C assembly to Go assembly with `c2goasm`](#-convert-c-assembly-to-go-assembly-with-c2goasm)
  - Execution
    + [ Embed Go Playground to your blog with `goplay`](#-embed-go-playground-to-your-blog-with-goplay)
    + [ Run alternative Go Playground with `goplay.tools`](#-run-alternative-go-playground-with-goplaytools)
@@ -212,12 +209,12 @@
    + [ Calculate Cyclomatic Complexity with `gocyclo`](#-calculate-cyclomatic-complexity-with-gocyclo)
    + [ Calculate Cyclomatic Complexity with `cyclop`](#-calculate-cyclomatic-complexity-with-cyclop)
    + [ Calculate age of comments with `go-commentage`](#-calculate-age-of-comments-with-go-commentage)
-   + [ :derelict_house: Ensure `if` statements using short assignment with `ifshort`](#-derelict_house-ensure-if-statements-using-short-assignment-with-ifshort)
+   + [ Ensure `if` statements using short assignment with `ifshort`](#-ensure-if-statements-using-short-assignment-with-ifshort)
    + [ Visualize struct layout with `structlayout`](#-visualize-struct-layout-with-structlayout)
    + [ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
    + [ Analyze function callsites with `go-callsite-stats`](#-analyze-function-callsites-with-go-callsite-stats)
 
-## AI tools
+## AI Tools
 
 ### [⏫](#contents) Advanced autocompletion with [Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 
@@ -237,11 +234,6 @@ Requirements
 VSCode
 GitHub account
 ```
-
-### [⏫](#contents) Pull requests recommendations with [CopilotX](https://github.com/features/preview/copilot-x)
-
-CopilotX has dedicated solutions for: writing PR description; writing tests; writing PR reviews and replies; applying requested PR changes. As of `2023-06-04`, it is on waitlist. [documentation](https://githubnext.com/projects/copilot-for-pull-requests).
-
 
 ### [⏫](#contents) Code analysis and recommendations with [charmbracelet/mods](https://github.com/charmbracelet/mods)
 
@@ -278,7 +270,7 @@ go install github.com/ravilushqa/gpt-pullrequest-updater/cmd/description@latest
 go install github.com/ravilushqa/gpt-pullrequest-updater/cmd/review@latest
 ```
 
-### [⏫](#contents) Commit message recommendation
+### [⏫](#contents) Commit message recommendation with [charmbracelet/mods](https://github.com/charmbracelet/mods)
 
 Short summaries of changes usually work well.
 
@@ -299,7 +291,7 @@ Requirements
 go install github.com/charmbracelet/mods@latest
 ```
 
-### [⏫](#contents) Test case recommendation
+### [⏫](#contents) Test case recommendation with [charmbracelet/mods](https://github.com/charmbracelet/mods)
 
 Concatenate two files and ask to recommend missing test cases. It is not precise, has high false positive and high false negative rate. Often can not detect that tests cases are present at all. However, it can give a fresh perspective on your code. Best results are produced when asking succinct short replies. Example outputs bellow.
 
@@ -331,7 +323,7 @@ functions.
 ```
 
 
-### [⏫](#contents) Time complexity estimate
+### [⏫](#contents) Time complexity estimate with [charmbracelet/mods](https://github.com/charmbracelet/mods)
 
 This is one of recommended use cases by OpenAI website. It can produce fairly good estimations. However, in its direct form usefulness is questionable, since complex cases are not handled precisely enough, educational potential is limited, and simple cases do not require this. Perhaps, this will be utilized in future work on using models in compiler and programming. Copy function and pipe it to model with prompt asking for time complexity estimation. Bellow is an example.
 
@@ -437,7 +429,7 @@ Requirements
 go install github.com/nikolaydubina/go-cover-treemap@latest
 ```
 
-### [⏫](#contents) Browse coverage
+### [⏫](#contents) Browse coverage in HTML
 
 This is very helpful tool from the official Go toolchain. Similar visualization is integrated into VSCode and Goland, but can be used separately.
 
@@ -540,7 +532,7 @@ Requirements
 go install github.com/qiniu/goc@latest
 ```
 
-### [⏫](#contents) :fire: Shuffle tests
+### [⏫](#contents) Shuffle tests
 
 This is less known option that is disabled by default. However, for robust test suite it is beneficial. More test flags and full description is available at `go help testflag`.
 
@@ -996,23 +988,6 @@ https://graphviz.org/download/
 go install golang.org/x/exp/cmd/modgraphviz@latest
 ```
 
-### [⏫](#contents) Make graph of upstream modules with [gmchart](https://github.com/PaulXu-cn/go-mod-graph-chart/gmchart)
-
-Render in browser Go module graphs. Built with D3.js, Javascript, HTTP server in Go. — [@PaulXu-cn](https://github.com/PaulXu-cn)
-
-
-```
-go mod graph | gmchart
-```
-
-<div align="center"><img src="https://github.com/PaulXu-cn/go-mod-graph-chart/raw/main/show.gif" style="margin: 8px; max-height: 640px;"></div>
-
-
-Requirements
-```
-go install github.com/PaulXu-cn/go-mod-graph-chart/gmchart@latest
-```
-
 ### [⏫](#contents) Make graph of upstream packages with [import-graph](https://github.com/nikolaydubina/import-graph)
 
 Find unexpected dependencies or visualize project. Works best for small number of packages, for large projects use `grep` to narrow down subgraph. Without `-deps` only for current module. — [@nikolaydubina](https://github.com/nikolaydubina)
@@ -1289,7 +1264,7 @@ go install github.com/fzipp/pythia@latest
 go install golang.org/x/tools/cmd/guru@latest
 ```
 
-### [⏫](#contents) :derelict_house: Interactively visualize packages with [goexplorer](https://github.com/ofabry/goexplorer)
+### [⏫](#contents) Interactively visualize packages with [goexplorer](https://github.com/ofabry/goexplorer)
 
 Based on `go-callvis`, this tool is an interactive package explorer of packages. This tool have not been updated for a long time. — [@ofabry](https://github.com/ofabry)
 
@@ -1892,23 +1867,6 @@ Requirements
 go install github.com/anqiansong/goimportx@latest
 ```
 
-### [⏫](#contents) :fire: Replace unkeyed struct literals into keyed ones with [keyify](https://github.com/dominikh/go-tools/tree/master/cmd/keyify)
-
-You may want to do this as preparation for other refactoring steps. This tool has good emacs integration, otherwise may it be hard to use. — [@dominikh](https://github.com/dominikh)
-
-```go
-# before
-myFunc(T{1, 2, 3})
-
-# after
-myFunc(T{A: 1, B: 2, C: 3})
-```
-
-Requirements
-```
-go install honnef.co/go/tools/cmd/keyify@2022.1
-```
-
 ## Errors
 
 ### [⏫](#contents) :fire: Errors with return traces with [errtrace](https://github.com/bracesdev/errtrace)
@@ -2343,7 +2301,7 @@ Requirements
 go install github.com/SilverRainZ/go-ssaviz@latest
 ```
 
-### [⏫](#contents) :derelict_house: Make graph of AST with [astgraph](https://github.com/xiazemin/ast_graph)
+### [⏫](#contents) Make graph of AST with [astgraph](https://github.com/xiazemin/ast_graph)
 
 This tool visualizes AST as graph, which may be useful to navigate and undertand Go AST. This tool has not been maintaned for a while. — [@xiazemin](https://github.com/xiazemin)
 
@@ -2355,7 +2313,7 @@ Requirements
 graphviz
 ```
 
-### [⏫](#contents) :derelict_house: Convert C assembly to Go assembly with [c2goasm](https://github.com/minio/c2goasm)
+### [⏫](#contents) Convert C assembly to Go assembly with [c2goasm](https://github.com/minio/c2goasm)
 
 This tool can convert C assembly `.s` into Go assbmely `.s` files. This is useful for reusing compiler optimizations such as SIMD or loop unrolling in C, which can lead to 10x speedups. However, project has been archieved 4+ years ago. — [@fwessels](https://github.com/fwessels)
 
@@ -3025,7 +2983,7 @@ Requirements
 go install github.com/willabides/benchdiff/cmd/benchdiff
 ```
 
-### [⏫](#contents) Continuous benchmarking with [cob](https://https://github.com/knqyf263/cob)
+### [⏫](#contents) Continuous benchmarking with [cob](https://github.com/knqyf263/cob)
 
 Automate comparing benchmarks with `benchstat` between `HEAD` and `HEAD^1`. It can be used to block CI pipelines if benchmarks deteriorate. It reports output as text in CLI. This cane be useful in CI or in local development. — [@knqyf263](https://github.com/knqyf263)
 
@@ -4099,7 +4057,7 @@ Requirements
 go install github.com/nikolaydubina/go-commentage@latest
 ```
 
-### [⏫](#contents) :derelict_house: Ensure `if` statements using short assignment with [ifshort](https://github.com/esimonov/ifshort)
+### [⏫](#contents) Ensure `if` statements using short assignment with [ifshort](https://github.com/esimonov/ifshort)
 
 Linter for checking that your code uses short syntax for `if` statements whenever possible. However, as of `2023-05-26`, it is not maitaned and is not working. — [@esimonov](https://github.com/esimonov)
 
