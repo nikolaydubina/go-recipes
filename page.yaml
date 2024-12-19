@@ -598,6 +598,16 @@ groups:
         example_image_url: https://github.com/adonovan/spaghetti/blob/main/screenshot.png
         requirements:
           - go install github.com/adonovan/spaghetti@latest
+      - title: Enforce Go code architecture
+        description: "Architecture linter. Will check all project import path and compare with arch rules defined in yml file. Useful for hexagonal / onion / ddd / mvc / etc patterns."
+        name: go-arch-lint
+        url: https://github.com/fe3dback/go-arch-lint
+        author: https://github.com/fe3dback
+        example_image_url: https://github.com/fe3dback/go-arch-lint/blob/master/docs/images/check-example.png
+        requirements:
+          - go install github.com/fe3dback/go-arch-lint@latest
+        commands:
+          - go-arch-lint
       - title: Use `go mod` directives
         description: Tell Go compiler which versions of upstreams to include in your build. Tell all users of your module how to deal with versions of your module.
         example_content: |
@@ -611,16 +621,21 @@ groups:
           exclude example.com/old/thing v1.2.3
           replace example.com/bad/thing v1.4.5 => example.com/good/thing v1.4.5
           retract [v1.9.0, v1.9.5]
-      - title: Enforce Go code architecture
-        description: "Architecture linter. Will check all project import path and compare with arch rules defined in yml file. Useful for hexagonal / onion / ddd / mvc / etc patterns."
-        name: go-arch-lint
-        url: https://github.com/fe3dback/go-arch-lint
-        author: https://github.com/fe3dback
-        example_image_url: https://github.com/fe3dback/go-arch-lint/blob/master/docs/images/check-example.png
-        requirements:
-          - go install github.com/fe3dback/go-arch-lint@latest
+      - title: Locally patch dependency
+        name: "`replace`"
+        description: "This can be useful for development. First appeared on [blog](https://eli.thegreenplace.net/2024/locally-patching-dependencies-in-go)."
         commands:
-          - go-arch-lint
+          - "# clone your dependency to $DEP folder"
+          - "# make changes"
+          - go mod edit -replace github.com/google/go-cmp=$DEP
+      - title: Locally patch dependency
+        name: "`go.work`"
+        description: "This is an alternative version may be more robust to accidental mistakes. First appeared on [blog](https://eli.thegreenplace.net/2024/locally-patching-dependencies-in-go)."
+        commands:
+          - "# clone your dependency to $DEP folder"
+          - "# make changes"
+          - go work init
+          - go work use . $DEP
   - title: Code Visualization
     entries:
       - title: Make C4 diagram

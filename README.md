@@ -60,8 +60,10 @@
    + [ Scrape licenses of upstream dependencies with `go-licenses`](#-scrape-licenses-of-upstream-dependencies-with-go-licenses)
    + [ Explore dependencies with `goda`](#-explore-dependencies-with-goda)
    + [ Explore dependencies interactively with `spaghetti`](#-explore-dependencies-interactively-with-spaghetti)
-   + [ Use `go mod` directives](#-use-go-mod-directives)
    + [ Enforce Go code architecture with `go-arch-lint`](#-enforce-go-code-architecture-with-go-arch-lint)
+   + [ Use `go mod` directives](#-use-go-mod-directives)
+   + [ Locally patch dependency with ``replace``](#-locally-patch-dependency-with-replace)
+   + [ Locally patch dependency with ``go.work``](#-locally-patch-dependency-with-gowork)
  - Code Visualization
    + [ Make C4 diagram with `go-structurizr`](#-make-c4-diagram-with-go-structurizr)
    + [ Make graph of function calls with `callgraph`](#-make-graph-of-function-calls-with-callgraph)
@@ -1132,6 +1134,23 @@ Requirements
 go install github.com/adonovan/spaghetti@latest
 ```
 
+### [⏫](#contents) Enforce Go code architecture with [go-arch-lint](https://github.com/fe3dback/go-arch-lint)
+
+Architecture linter. Will check all project import path and compare with arch rules defined in yml file. Useful for hexagonal / onion / ddd / mvc / etc patterns. — [@fe3dback](https://github.com/fe3dback)
+
+
+```
+go-arch-lint
+```
+
+<div align="center"><img src="https://github.com/fe3dback/go-arch-lint/blob/master/docs/images/check-example.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/fe3dback/go-arch-lint@latest
+```
+
 ### [⏫](#contents) Use `go mod` directives
 
 Tell Go compiler which versions of upstreams to include in your build. Tell all users of your module how to deal with versions of your module.
@@ -1150,22 +1169,30 @@ retract [v1.9.0, v1.9.5]
 ```
 
 
-### [⏫](#contents) Enforce Go code architecture with [go-arch-lint](https://github.com/fe3dback/go-arch-lint)
+### [⏫](#contents) Locally patch dependency with ``replace``
 
-Architecture linter. Will check all project import path and compare with arch rules defined in yml file. Useful for hexagonal / onion / ddd / mvc / etc patterns. — [@fe3dback](https://github.com/fe3dback)
+This can be useful for development. First appeared on [blog](https://eli.thegreenplace.net/2024/locally-patching-dependencies-in-go).
 
 
 ```
-go-arch-lint
+# clone your dependency to $DEP folder
+# make changes
+go mod edit -replace github.com/google/go-cmp=$DEP
 ```
 
-<div align="center"><img src="https://github.com/fe3dback/go-arch-lint/blob/master/docs/images/check-example.png" style="margin: 8px; max-height: 640px;"></div>
+
+### [⏫](#contents) Locally patch dependency with ``go.work``
+
+This is an alternative version may be more robust to accidental mistakes. First appeared on [blog](https://eli.thegreenplace.net/2024/locally-patching-dependencies-in-go).
 
 
-Requirements
 ```
-go install github.com/fe3dback/go-arch-lint@latest
+# clone your dependency to $DEP folder
+# make changes
+go work init
+go work use . $DEP
 ```
+
 
 ## Code Visualization
 
