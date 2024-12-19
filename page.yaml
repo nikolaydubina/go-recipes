@@ -152,7 +152,7 @@ groups:
           Therefore, the overall time complexity of the function is O(log(v) + p).
   - title: Test
     entries:
-      - title: "Continuous Tests Monitoring"
+      - title: ":fire: Continuous Tests Monitoring"
         description: Track tests duration, errors, flackiness. Run JUnit test output converter and submit result to codecov.io via GitHub Action.
         name: codecov.io
         url: https://app.codecov.io
@@ -823,7 +823,7 @@ groups:
           var s string = Acetaminophen.String()
         requirements:
           - go install golang.org/x/tools/cmd/stringer@latest
-      - title: Generate enums encoding
+      - title: ":fire: Generate enums encoding"
         name: go-enum-encoding
         description: Generate encoding code for enums. This follows json struct tag notation.
         author: https://github.com/nikolaydubina
@@ -843,7 +843,7 @@ groups:
           )
         requirements:
           - go install github.com/nikolaydubina/go-enum-encoding@latest
-      - title: Generate enums
+      - title: ":fire: Generate enums"
         name: goenums
         description: Genereate strict and fast enums. Generated code is much more tightly typed than just iota defined enums. You will get JSON decoder and encoder as well. This tool allows to generate extra fields and default values in enum structs.
         author: https://github.com/zarldev
@@ -1198,7 +1198,7 @@ groups:
         example_image_url: https://user-images.githubusercontent.com/438920/32691304-a1c7e47c-c716-11e7-977c-f4d0f8c616be.gif
         requirements:
           - go install github.com/fatih/gomodifytags@latest
-      - title: Generate code from OpenAPI 3 specification
+      - title: ":fire: Generate code from OpenAPI 3 specification"
         description: "Generate Go client and server boilerplate from OpenAPI 3 specifications."
         name: oapi-codegen
         author: https://github.com/deepmap
@@ -1439,7 +1439,7 @@ groups:
           - go install github.com/gokrazy/tools/cmd/gok@main
         commands:
           - "follow instructions at: https://gokrazy.org/quickstart/"
-      - title: Visualise dependencies size in compiled binaries
+      - title: ":fire: Visualise dependencies size in compiled binaries"
         description: "A tool for analyzing the dependencies in compiled Golang binaries, providing insight into their impact on the final build. WebAssembly demo: [https://gsa.zxilly.dev](https://gsa.zxilly.dev)."
         name: go-size-analyzer
         url: https://github.com/Zxilly/go-size-analyzer
@@ -2415,7 +2415,7 @@ groups:
           - gobadge -link=https://github.com/project/repo/actions/workflows/test.yml
         requirements:
           - go install github.com/AlexBeauchemin/gobadge@latest
-      - title: Generate README.md based on GoDoc comments
+      - title: ":fire: Generate README.md based on GoDoc comments"
         description: It can be used as a command line tool, as Github action, or as a pre-commit hook.
         url: https://github.com/posener/goreadme
         name: goreadme

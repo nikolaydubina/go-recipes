@@ -17,7 +17,7 @@
    + [ Test case recommendation with `charmbracelet/mods`](#-test-case-recommendation-with-charmbraceletmods)
    + [ Time complexity estimate with `charmbracelet/mods`](#-time-complexity-estimate-with-charmbraceletmods)
  - Test
-   + [ Continuous Tests Monitoring with `codecov.io`](#-continuous-tests-monitoring-with-codecovio)
+   + [ :fire: Continuous Tests Monitoring with `codecov.io`](#-fire-continuous-tests-monitoring-with-codecovio)
    + [ Make treemap of coverage with `go-cover-treemap`](#-make-treemap-of-coverage-with-go-cover-treemap)
    + [ Browse coverage](#-browse-coverage)
    + [ Browse coverage with `gocov-html`](#-browse-coverage-with-gocov-html)
@@ -84,8 +84,8 @@
  - Code Generation
    + [ Run `go:generate` in parallel](#-run-gogenerate-in-parallel)
    + [ Generate `String` method for enum types](#-generate-string-method-for-enum-types)
-   + [ Generate enums encoding with `go-enum-encoding`](#-generate-enums-encoding-with-go-enum-encoding)
-   + [ Generate enums with `goenums`](#-generate-enums-with-goenums)
+   + [ :fire: Generate enums encoding with `go-enum-encoding`](#-fire-generate-enums-encoding-with-go-enum-encoding)
+   + [ :fire: Generate enums with `goenums`](#-fire-generate-enums-with-goenums)
    + [ Generate data types from JSON Schema with `go-jsonschema`](#-generate-data-types-from-json-schema-with-go-jsonschema)
    + [ Generate constructor for a struct with `gonstructor`](#-generate-constructor-for-a-struct-with-gonstructor)
    + [ Generate Table Driven Tests with `gotests`](#-generate-table-driven-tests-with-gotests)
@@ -96,7 +96,7 @@
    + [ Generate interface for `CSV` file with `structer`](#-generate-interface-for-csv-file-with-structer)
    + [ :fire: Generate decorator for interface with `gowrap`](#-fire-generate-decorator-for-interface-with-gowrap)
    + [ Modify struct field tags with `gomodifytags`](#-modify-struct-field-tags-with-gomodifytags)
-   + [ Generate code from OpenAPI 3 specification with `oapi-codegen`](#-generate-code-from-openapi-3-specification-with-oapi-codegen)
+   + [ :fire: Generate code from OpenAPI 3 specification with `oapi-codegen`](#-fire-generate-code-from-openapi-3-specification-with-oapi-codegen)
    + [ :fire: Generate C-Go Bindings with `c-for-go`](#-fire-generate-c-go-bindings-with-c-for-go)
  - Generics
    + [ :fire: Enum via generics with `enum`](#-fire-enum-via-generics-with-enum)
@@ -120,7 +120,7 @@
    + [ Include metadata in binary during compilation with `ldflags`](#-include-metadata-in-binary-during-compilation-with-ldflags)
    + [ :fire: Check if symbol or package is included in binary](#-fire-check-if-symbol-or-package-is-included-in-binary)
    + [ :fire: Build for Raspberry Pi, Virtual Machine, embedded or normal PC with `gokrazy`](#-fire-build-for-raspberry-pi-virtual-machine-embedded-or-normal-pc-with-gokrazy)
-   + [ Visualise dependencies size in compiled binaries with `go-size-analyzer`](#-visualise-dependencies-size-in-compiled-binaries-with-go-size-analyzer)
+   + [ :fire: Visualise dependencies size in compiled binaries with `go-size-analyzer`](#-fire-visualise-dependencies-size-in-compiled-binaries-with-go-size-analyzer)
    + [ Make treemap breakdown of Go executable binary with `go-binsize-treemap`](#-make-treemap-breakdown-of-go-executable-binary-with-go-binsize-treemap)
    + [ Custom import path](#-custom-import-path)
    + [ Custom import path with `govanityurls`](#-custom-import-path-with-govanityurls)
@@ -195,7 +195,7 @@
    + [ Make alternative documentation with `golds`](#-make-alternative-documentation-with-golds)
    + [ Read Go binary documentation in `man` format with `goman`](#-read-go-binary-documentation-in-man-format-with-goman)
    + [ Generate badge with `gobadge`](#-generate-badge-with-gobadge)
-   + [ Generate README.md based on GoDoc comments with `goreadme`](#-generate-readmemd-based-on-godoc-comments-with-goreadme)
+   + [ :fire: Generate README.md based on GoDoc comments with `goreadme`](#-fire-generate-readmemd-based-on-godoc-comments-with-goreadme)
  - Education
    + [ Run Turtle Graphics online with `goplay.space`](#-run-turtle-graphics-online-with-goplayspace)
  - Style Guide
@@ -427,7 +427,7 @@ Therefore, the overall time complexity of the function is O(log(v) + p).
 
 ## Test
 
-### [⏫](#contents) Continuous Tests Monitoring with [codecov.io](https://app.codecov.io)
+### [⏫](#contents) :fire: Continuous Tests Monitoring with [codecov.io](https://app.codecov.io)
 
 Track tests duration, errors, flackiness. Run JUnit test output converter and submit result to codecov.io via GitHub Action. — https://codecov.io
 
@@ -1508,7 +1508,7 @@ Requirements
 go install golang.org/x/tools/cmd/stringer@latest
 ```
 
-### [⏫](#contents) Generate enums encoding with [go-enum-encoding](https://github.com/nikolaydubina/go-enum-encoding)
+### [⏫](#contents) :fire: Generate enums encoding with [go-enum-encoding](https://github.com/nikolaydubina/go-enum-encoding)
 
 Generate encoding code for enums. This follows json struct tag notation. — [@nikolaydubina](https://github.com/nikolaydubina)
 
@@ -1534,7 +1534,7 @@ Requirements
 go install github.com/nikolaydubina/go-enum-encoding@latest
 ```
 
-### [⏫](#contents) Generate enums with [goenums](https://github.com/zarldev/goenums)
+### [⏫](#contents) :fire: Generate enums with [goenums](https://github.com/zarldev/goenums)
 
 Genereate strict and fast enums. Generated code is much more tightly typed than just iota defined enums. You will get JSON decoder and encoder as well. This tool allows to generate extra fields and default values in enum structs. — [@zarldev](https://github.com/zarldev)
 
@@ -1937,7 +1937,7 @@ Requirements
 go install github.com/fatih/gomodifytags@latest
 ```
 
-### [⏫](#contents) Generate code from OpenAPI 3 specification with [oapi-codegen](https://github.com/deepmap/oapi-codegen)
+### [⏫](#contents) :fire: Generate code from OpenAPI 3 specification with [oapi-codegen](https://github.com/deepmap/oapi-codegen)
 
 Generate Go client and server boilerplate from OpenAPI 3 specifications. — [@deepmap](https://github.com/deepmap)
 
@@ -2279,7 +2279,7 @@ Requirements
 go install github.com/gokrazy/tools/cmd/gok@main
 ```
 
-### [⏫](#contents) Visualise dependencies size in compiled binaries with [go-size-analyzer](https://github.com/Zxilly/go-size-analyzer)
+### [⏫](#contents) :fire: Visualise dependencies size in compiled binaries with [go-size-analyzer](https://github.com/Zxilly/go-size-analyzer)
 
 A tool for analyzing the dependencies in compiled Golang binaries, providing insight into their impact on the final build. WebAssembly demo: [https://gsa.zxilly.dev](https://gsa.zxilly.dev). — [@Zxilly](https://github.com/Zxilly)
 
@@ -3621,7 +3621,7 @@ Requirements
 go install github.com/AlexBeauchemin/gobadge@latest
 ```
 
-### [⏫](#contents) Generate README.md based on GoDoc comments with [goreadme](https://github.com/posener/goreadme)
+### [⏫](#contents) :fire: Generate README.md based on GoDoc comments with [goreadme](https://github.com/posener/goreadme)
 
 It can be used as a command line tool, as Github action, or as a pre-commit hook. — [@posener](https://github.com/posener)
 
