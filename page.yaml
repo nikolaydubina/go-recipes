@@ -1866,7 +1866,7 @@ groups:
         description: These are standard metrics for Go runtime exposed in OpenTelemetry format. Grafana [dashboard](https://github.com/nikolaydubina/grafana-otel-go-runtime).
         url: https://github.com/bcicen/grmon
         author: "Google, (dashboard by @nikolaydubina)"
-        example_image_url: https://github.com/nikolaydubina/grafana-otel-go-runtime/raw/example.png
+        example_image_url: https://github.com/nikolaydubina/grafana-otel-go-runtime/raw/master/example.png
         example_content_ext: go
         example_content: |
           import "go.opentelemetry.io/contrib/instrumentation/runtime"

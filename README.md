@@ -2824,7 +2824,7 @@ import "go.opentelemetry.io/contrib/instrumentation/runtime"
 runtime.Start()
 ```
 
-<div align="center"><img src="https://github.com/nikolaydubina/grafana-otel-go-runtime/raw/example.png" style="margin: 8px; max-height: 640px;"></div>
+<div align="center"><img src="https://github.com/nikolaydubina/grafana-otel-go-runtime/raw/master/example.png" style="margin: 8px; max-height: 640px;"></div>
 
 
 Requirements
