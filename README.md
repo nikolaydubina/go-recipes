@@ -202,6 +202,7 @@
    + [ Go Code Review Comments](#style-guide)
  - Security
    + [ Run official vulnerability check with `govulncheck`](#-run-official-vulnerability-check-with-govulncheck)
+   + [ Detect escalated priviledges in dependencies with `capslock`](#-detect-escalated-priviledges-in-dependencies-with-capslock)
    + [ Run static analysis with `gosec`](#-run-static-analysis-with-gosec)
    + [ Perform Taint Analysis with `taint`](#-perform-taint-analysis-with-taint)
    + [ Use Microsoft Go compiler](#-use-microsoft-go-compiler)
@@ -3698,6 +3699,37 @@ Vulnerability #1: GO-2023-1571
           - go install golang.org/x/vuln/cmd/govulncheck@latest
 ```
 
+
+### [⏫](#contents) Detect escalated priviledges in dependencies with [capslock](https://github.com/google/capslock)
+
+Capslock is a capability analysis CLI for Go packages that informs users of which privileged operations a given package can access. This works by classifying the capabilities of Go packages by following transitive calls to privileged standard library operations. The recent increase in supply chain attacks targeting open source software has highlighted that third party dependencies should not be inherently trusted. Capabilities indicate what permissions a package has access to, and can be used in conjunction with other security signals to indicate which code requires additional scrutiny before it can be considered trusted. — Google
+
+
+```
+capslock -packages=./...
+```
+
+Example
+```
+...
+CAPABILITY_ARBITRARY_EXECUTION: 317 references
+CAPABILITY_EXEC: 317 references
+CAPABILITY_FILES: 318 references
+CAPABILITY_MODIFY_SYSTEM_STATE: 20 references
+CAPABILITY_NETWORK: 317 references
+CAPABILITY_OPERATING_SYSTEM: 124 references
+CAPABILITY_READ_SYSTEM_STATE: 317 references
+CAPABILITY_REFLECT: 348 references
+CAPABILITY_RUNTIME: 317 references
+CAPABILITY_SYSTEM_CALLS: 12 references
+CAPABILITY_UNANALYZED: 332 references
+CAPABILITY_UNSAFE_POINTER: 335 references
+```
+
+Requirements
+```
+go install github.com/google/capslock/cmd/capslock@latest
+```
 
 ### [⏫](#contents) Run static analysis with [gosec](https://github.com/securego/gosec)
 
