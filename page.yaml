@@ -1749,6 +1749,11 @@ groups:
         url: https://github.com/x1unix/go-playground
         author: https://github.com/x1unix
         example_image_url: https://github.com/x1unix/go-playground/raw/master/docs/demo.gif
+      - title: Use TinyGo Playground
+        description: TinyGo is an alternative Go compiler that focuses on embedded devices, and WASM. There are some Go constructs and packages that not supported. In this online playground you can veryify your code.
+        name: tinygo
+        url: https://play.tinygo.org
+        example_image_url: img/tinygo-playground.png
       - title: Run interactive Go kernels in Jupyter Notebook
         description: Run interactive Go interpreter in Jupyter Notebook browser. As of `2023-06-04`, it is using `gomacro` interpreter and can have issues with loading 3rd party pacakges.
         url: https://github.com/gopherdata/gophernotes

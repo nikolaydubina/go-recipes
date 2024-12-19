@@ -144,6 +144,7 @@
    + [ Embed Go Playground to your blog with `codapi`](#-embed-go-playground-to-your-blog-with-codapi)
    + [ Embed Go Playground to your blog with `goplay`](#-embed-go-playground-to-your-blog-with-goplay)
    + [ Run alternative Go Playground with `goplay.tools`](#-run-alternative-go-playground-with-goplaytools)
+   + [ Use TinyGo Playground with `tinygo`](#-use-tinygo-playground-with-tinygo)
    + [ Run interactive Go kernels in Jupyter Notebook with `gophernotes`](#-run-interactive-go-kernels-in-jupyter-notebook-with-gophernotes)
    + [ Run interactive Go interpreter with `yaegi`](#-run-interactive-go-interpreter-with-yaegi)
    + [ Run interactive Go interpreter with `gomacro`](#-run-interactive-go-interpreter-with-gomacro)
@@ -2688,6 +2689,14 @@ bloging platform with support for embedding javascript
 Improved Go Playground featuring dark theme, code autocomplete, vim mode, WebAssembly. Available at [https://goplay.tools/](https://goplay.tools/). — [@x1unix](https://github.com/x1unix)
 
 <div align="center"><img src="https://github.com/x1unix/go-playground/raw/master/docs/demo.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
+
+### [⏫](#contents) Use TinyGo Playground with [tinygo](https://play.tinygo.org)
+
+TinyGo is an alternative Go compiler that focuses on embedded devices, and WASM. There are some Go constructs and packages that not supported. In this online playground you can veryify your code.
+
+<div align="center"><img src="img/tinygo-playground.png" style="margin: 8px; max-height: 640px;"></div>
 
 
 
