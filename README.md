@@ -124,6 +124,7 @@
    + [ Custom import path enforcement](#-custom-import-path-enforcement)
    + [ Manage multiple Go versions with `Goenv`](#-manage-multiple-go-versions-with-goenv)
    + [ Transpile C to Go with `cxgo`](#-transpile-c-to-go-with-cxgo)
+   + [ Run compile-time function evaluation with `prep`](#-run-compile-time-function-evaluation-with-prep)
  - Assembly
    + [ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
    + [ Get Go SSA intermediary representation with `ssaplayground`](#-get-go-ssa-intermediary-representation-with-ssaplayground)
@@ -2304,6 +2305,49 @@ cxgo file main.c
 Requirements
 ```
 go install github.com/gotranspile/cxgo/cmd/cxgo@latest
+```
+
+### [⏫](#contents) Run compile-time function evaluation with [prep](https://github.com/pijng/prep)
+
+By using prep.Comptime, you can evaluate functions at compile time, replacing them with their computed results. — [@pijng](https://github.com/pijng)
+
+
+```
+go build -a -toolexec="prep" main.go
+```
+
+```go
+package main
+
+import (
+  "fmt"
+  "github.com/pijng/prep"
+)
+
+func main() {
+  // This will be evaluated at compile-time
+  result := prep.Comptime(fibonacci(300))
+
+  fmt.Println("Result:", result)
+}
+
+func fibonacci(n int) int {
+  fmt.Printf("calculating fibonacci for %d\n", n)
+
+  if n <= 1 {
+    return n
+  }
+  a, b := 0, 1
+  for i := 2; i <= n; i++ {
+    a, b = b, a+b
+  }
+  return b
+}
+```
+
+Requirements
+```
+go install github.com/pijng/prep/cmd/prep@latest
 ```
 
 ## Assembly

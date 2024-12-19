@@ -1465,6 +1465,43 @@ groups:
           - go install github.com/gotranspile/cxgo/cmd/cxgo@latest
         commands:
           - cxgo file main.c
+      - title: Run compile-time function evaluation
+        name: prep
+        description: By using prep.Comptime, you can evaluate functions at compile time, replacing them with their computed results.
+        url: https://github.com/pijng/prep
+        author: https://github.com/pijng
+        example_content_ext: go
+        example_content: |
+          package main
+
+          import (
+            "fmt"
+            "github.com/pijng/prep"
+          )
+
+          func main() {
+            // This will be evaluated at compile-time
+            result := prep.Comptime(fibonacci(300))
+
+            fmt.Println("Result:", result)
+          }
+
+          func fibonacci(n int) int {
+            fmt.Printf("calculating fibonacci for %d\n", n)
+
+            if n <= 1 {
+              return n
+            }
+            a, b := 0, 1
+            for i := 2; i <= n; i++ {
+              a, b = b, a+b
+            }
+            return b
+          }
+        requirements:
+          - go install github.com/pijng/prep/cmd/prep@latest
+        commands:
+          - go build -a -toolexec="prep" main.go
   - title: Assembly
     entries:
       - title: Get assembly of Go code snippets online
