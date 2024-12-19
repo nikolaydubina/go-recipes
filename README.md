@@ -152,6 +152,7 @@
    + [ Piping between processes with `os/exec`](#-piping-between-processes-with-osexec)
    + [ `errgroup` and CommandContext with `os/exec`](#-errgroup-and-commandcontext-with-osexec)
  - Monitor
+   + [ OpenTelemetry Go Runtime metrics](#-opentelemetry-go-runtime-metrics)
    + [ Monitor goroutines with `grmon`](#-monitor-goroutines-with-grmon)
    + [ Monitor Go processes with `gops`](#-monitor-go-processes-with-gops)
    + [ Monitor Go runtime metrics in browser with `live-pprof`](#-monitor-go-runtime-metrics-in-browser-with-live-pprof)
@@ -2812,6 +2813,26 @@ return eg.Wait()
 
 
 ## Monitor
+
+### [⏫](#contents) OpenTelemetry Go Runtime metrics
+
+These are standard metrics for Go runtime exposed in OpenTelemetry format. Grafana [dashboard](https://github.com/nikolaydubina/grafana-otel-go-runtime). — Google, (dashboard by @nikolaydubina)
+
+```go
+import "go.opentelemetry.io/contrib/instrumentation/runtime"
+...
+runtime.Start()
+```
+
+<div align="center"><img src="https://github.com/nikolaydubina/grafana-otel-go-runtime/raw/example.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+open telemetry
+prometheus
+grafana
+```
 
 ### [⏫](#contents) Monitor goroutines with [grmon](https://github.com/bcicen/grmon)
 
