@@ -1294,6 +1294,11 @@ groups:
             // Version here has some value
             ...
           }
+      - title: Check if symbol or package is included in binary
+        description: This is useful for investigations during perofmance optimization, security, or compiler work. First spotted in [blog](https://rednafi.com/go/omit_dev_dependencies_in_binaries/).
+        commands:
+          - "go tool nm main | grep -Ei '<symbol A>|<symbol B>|...'"
+          - "go tool nm main | grep -Ei 'golangci-lint|gofumpt'"
       - title: Build for Raspberry Pi, Virtual Machine, embedded or normal PC
         description: "Turn your Go program(s) into an appliance running on the Raspberry Pi 3, Pi 4, Pi 5, Pi Zero 2 W, or amd64 PCs! [gokrazy.org](https://gokrazy.org/). The surface area for security vulnerabilities is drastically reduced. gokrazy uses its own minimal Go userland instead of a traditional Linux distribution base. The root filesystem is entirely read-only (making persistent malware installation hard) and new versions of the system are installed by overwriting the root file system with the new version. No default shell access: There is neither xz nor OpenSSH on a gokrazy system. Interactive access for debugging is possible, but needs to be explicitly started."
         name: gokrazy

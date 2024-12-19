@@ -103,6 +103,7 @@
    + [ Profile-guided optimization](#-profile-guided-optimization)
    + [ Manually disable or enable `cgo`](#-manually-disable-or-enable-cgo)
    + [ Include metadata in binary during compilation with `ldflags`](#-include-metadata-in-binary-during-compilation-with-ldflags)
+   + [ Check if symbol or package is included in binary](#-check-if-symbol-or-package-is-included-in-binary)
    + [ Build for Raspberry Pi, Virtual Machine, embedded or normal PC with `gokrazy`](#-build-for-raspberry-pi-virtual-machine-embedded-or-normal-pc-with-gokrazy)
    + [ Visualise dependencies size in compiled binaries with `go-size-analyzer`](#-visualise-dependencies-size-in-compiled-binaries-with-go-size-analyzer)
    + [ Make treemap breakdown of Go executable binary with `go-binsize-treemap`](#-make-treemap-breakdown-of-go-executable-binary-with-go-binsize-treemap)
@@ -2019,6 +2020,17 @@ func main() {
   // Version here has some value
   ...
 }
+```
+
+
+### [⏫](#contents) Check if symbol or package is included in binary
+
+This is useful for investigations during perofmance optimization, security, or compiler work. First spotted in [blog](https://rednafi.com/go/omit_dev_dependencies_in_binaries/).
+
+
+```
+go tool nm main | grep -Ei '<symbol A>|<symbol B>|...'
+go tool nm main | grep -Ei 'golangci-lint|gofumpt'
 ```
 
 
