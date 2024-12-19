@@ -16,7 +16,7 @@
    + [ Commit message recommendation with `charmbracelet/mods`](#-commit-message-recommendation-with-charmbraceletmods)
    + [ Test case recommendation with `charmbracelet/mods`](#-test-case-recommendation-with-charmbraceletmods)
    + [ Time complexity estimate with `charmbracelet/mods`](#-time-complexity-estimate-with-charmbraceletmods)
- - Testing
+ - Test
    + [ Continuous Tests Monitoring with `codecov.io`](#-continuous-tests-monitoring-with-codecovio)
    + [ Make treemap of coverage with `go-cover-treemap`](#-make-treemap-of-coverage-with-go-cover-treemap)
    + [ Browse coverage in HTML](#-browse-coverage-in-html)
@@ -86,7 +86,7 @@
    + [ Generate interface for `CSV` file with `structer`](#-generate-interface-for-csv-file-with-structer)
    + [ Modify struct field tags with `gomodifytags`](#-modify-struct-field-tags-with-gomodifytags)
    + [ Generate code from OpenAPI 3 specification with `oapi-codegen`](#-generate-code-from-openapi-3-specification-with-oapi-codegen)
- - Refactoring
+ - Refactor
    + [ Replace symbol with `gofmt`](#-replace-symbol-with-gofmt)
    + [ Apply refactoring patches with `gopatch`](#-apply-refactoring-patches-with-gopatch)
    + [ Keep consistent ordering of imports with `goimports`](#-keep-consistent-ordering-of-imports-with-goimports)
@@ -96,7 +96,7 @@
    + [ Errors with return traces with `errtrace`](#-errors-with-return-traces-with-errtrace)
    + [ Errors with stack traces and source fragments with `tracerr`](#-errors-with-stack-traces-and-source-fragments-with-tracerr)
    + [ Pretty print `panic` messages with `panicparse`](#-pretty-print-panic-messages-with-panicparse)
- - Building
+ - Build
    + [ Show compiler optimization decisions on heap and inlining](#-show-compiler-optimization-decisions-on-heap-and-inlining)
    + [ Disable inlining](#-disable-inlining)
    + [ Aggressive inlining](#-aggressive-inlining)
@@ -137,7 +137,7 @@
    + [ Capture output of command and process it with `os/exec`](#-capture-output-of-command-and-process-it-with-osexec)
    + [ Piping between processes with `os/exec`](#-piping-between-processes-with-osexec)
    + [ `errgroup` and CommandContext with `os/exec`](#-errgroup-and-commandcontext-with-osexec)
- - Monitoring
+ - Monitor
    + [ Monitor goroutines with `grmon`](#-monitor-goroutines-with-grmon)
    + [ Monitor Go processes with `gops`](#-monitor-go-processes-with-gops)
    + [ Visualise Go runtime metrics in browser with `statsviz`](#-visualise-go-runtime-metrics-in-browser-with-statsviz)
@@ -145,7 +145,7 @@
    + [ Auto-Instrument all functions with `otelinji`](#-auto-instrument-all-functions-with-otelinji)
    + [ Auto-Instrument functions for DataDog with `orchestrion`](#-auto-instrument-functions-for-datadog-with-orchestrion)
    + [ Continious Profiling with `Pyroscope`](#-continious-profiling-with-pyroscope)
- - Benchmarking
+ - Benchmark
    + [ Run benchmarks](#-run-benchmarks)
    + [ Table-driven benchmarks](#-table-driven-benchmarks)
    + [ Generate benchmak CPU and Memory profiles with `go test`](#-generate-benchmak-cpu-and-memory-profiles-with-go-test)
@@ -165,7 +165,7 @@
    + [ Get wallclock traces with `fgtrace`](#-get-wallclock-traces-with-fgtrace)
    + [ Get on/off CPU profiles with `fgprof`](#-get-onoff-cpu-profiles-with-fgprof)
    + [ Collect and visualize in-process traces with `trc`](#-collect-and-visualize-in-process-traces-with-trc)
- - Documentation
+ - Document
    + [ Make alternative documentation with `golds`](#-make-alternative-documentation-with-golds)
    + [ Read Go binary documentation in `man` format with `goman`](#-read-go-binary-documentation-in-man-format-with-goman)
    + [ Generate badge with `gobadge`](#-generate-badge-with-gobadge)
@@ -392,7 +392,7 @@ Therefore, the overall time complexity of the function is O(log(v) + p).
 ```
 
 
-## Testing
+## Test
 
 ### [⏫](#contents) Continuous Tests Monitoring with [codecov.io](https://app.codecov.io)
 
@@ -1755,7 +1755,7 @@ Requirements
 go install github.com/deepmap/oapi-codegen/v2/cmd/oapi-codegen@latest
 ```
 
-## Refactoring
+## Refactor
 
 ### [⏫](#contents) Replace symbol with `gofmt`
 
@@ -1935,7 +1935,7 @@ Requirements
 go install github.com/maruel/panicparse/v2/cmd/pp@latest
 ```
 
-## Building
+## Build
 
 ### [⏫](#contents) Show compiler optimization decisions on heap and inlining
 
@@ -2601,7 +2601,7 @@ return eg.Wait()
 ```
 
 
-## Monitoring
+## Monitor
 
 ### [⏫](#contents) Monitor goroutines with [grmon](https://github.com/bcicen/grmon)
 
@@ -2719,7 +2719,7 @@ This tool allows to injest profiling data from your application. You would need 
 
 
 
-## Benchmarking
+## Benchmark
 
 ### [⏫](#contents) Run benchmarks
 
@@ -3111,7 +3111,7 @@ instrument your code with `trc` package
 start UI server at port within same process
 ```
 
-## Documentation
+## Document
 
 ### [⏫](#contents) Make alternative documentation with [golds](https://github.com/go101/golds)
 

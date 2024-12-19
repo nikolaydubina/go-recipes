@@ -150,7 +150,7 @@ groups:
           len(b)-s ). The  append  and  copy  operations inside the loop also take linear 
           time proportional to  p .                                                       
           Therefore, the overall time complexity of the function is O(log(v) + p).
-  - title: Testing
+  - title: Test
     entries:
       - title: "Continuous Tests Monitoring"
         description: Track tests duration, errors, flackiness. Run JUnit test output converter and submit result to codecov.io via GitHub Action.
@@ -1108,7 +1108,7 @@ groups:
           - oapi-codegen --config=config.yaml api.yaml
         requirements:
           - go install github.com/deepmap/oapi-codegen/v2/cmd/oapi-codegen@latest
-  - title: Refactoring
+  - title: Refactor
     entries:
       - title: Replace symbol
         description: I found this in announcement [notice](https://github.com/golang/go/commit/2580d0e08d5e9f979b943758d3c49877fb2324cb) of Go 1.18 for changes to `interface{}` to `any`. This can be useful for other refactorings too.
@@ -1247,7 +1247,7 @@ groups:
         example_image_url: https://raw.githubusercontent.com/wiki/maruel/panicparse/parse.gif
         requirements:
           - go install github.com/maruel/panicparse/v2/cmd/pp@latest
-  - title: Building
+  - title: Build
     entries:
       - title: Show compiler optimization decisions on heap and inlining
         description: Building with `-m` flag will show decisions of compiler on inlining and heap escape. This can help you to validate your understanding of your code and optimize it.
@@ -1731,7 +1731,7 @@ groups:
             })
           }
           return eg.Wait()
-  - title: Monitoring
+  - title: Monitor
     entries:
       - title: Monitor goroutines
         description: Command line monitoring for goroutines.
@@ -1808,7 +1808,7 @@ groups:
         url: https://github.com/grafana/pyroscope
         author: Grafana Labs
         example_image_url: https://user-images.githubusercontent.com/23323466/143324845-16ff72df-231e-412d-bd0a-38ef2e09cba8.gif
-  - title: Benchmarking
+  - title: Benchmark
     entries:
       - title: Run benchmarks
         description: Start here. This is the standard tool for benchmarking. It can also do advanced features like mutex profiles. More flags are in Go [documentation](https://pkg.go.dev/cmd/go#hdr-Testing_flags) and `go help testflag`.
@@ -2092,7 +2092,7 @@ groups:
         requirements:
           - instrument your code with `trc` package
           - start UI server at port within same process
-  - title: Documentation
+  - title: Document
     entries:
       - title: Make alternative documentation
         description: It has additional information like implementations of interface; promoted methods. The tool has nice minimalistic aesthetics.
