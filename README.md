@@ -2727,7 +2727,7 @@ Command line monitoring for goroutines. — [@bcicen](https://github.com/bcicen)
 grmon
 ```
 
-<div align="center"><img src="https://camo.githubusercontent.com/ff8303d0b302fcfaf670846eb4168ac3e70522a8d739491d5509abc6ffb236b8/68747470733a2f2f627261646c65792e636f6465732f7374617469632f696d672f67726d6f6e2e676966" style="margin: 8px; max-height: 640px;"></div>
+<div align="center"><img src="https://bradley.codes/static/img/grmon.gif" style="margin: 8px; max-height: 640px;"></div>
 
 
 Requirements
