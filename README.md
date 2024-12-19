@@ -153,7 +153,8 @@
  - Monitor
    + [ Monitor goroutines with `grmon`](#-monitor-goroutines-with-grmon)
    + [ Monitor Go processes with `gops`](#-monitor-go-processes-with-gops)
-   + [ Visualise Go runtime metrics in browser with `statsviz`](#-visualise-go-runtime-metrics-in-browser-with-statsviz)
+   + [ Monitor Go runtime metrics in browser with `live-pprof`](#-monitor-go-runtime-metrics-in-browser-with-live-pprof)
+   + [ Monitor Go runtime metrics in browser with `statsviz`](#-monitor-go-runtime-metrics-in-browser-with-statsviz)
    + [ Auto-Instrument all functions with `go-instrument`](#-auto-instrument-all-functions-with-go-instrument)
    + [ Auto-Instrument all functions with `otelinji`](#-auto-instrument-all-functions-with-otelinji)
    + [ Auto-Instrument functions for DataDog with `orchestrion`](#-auto-instrument-functions-for-datadog-with-orchestrion)
@@ -2843,7 +2844,24 @@ Requirements
 go install github.com/google/gops@latest
 ```
 
-### [⏫](#contents) Visualise Go runtime metrics in browser with [statsviz](https://github.com/arl/statsviz)
+### [⏫](#contents) Monitor Go runtime metrics in browser with [live-pprof](https://github.com/moderato-app/live-pprof)
+
+This is minimal single binary tool that lets you monitor Go app performance. This can be an attractive altenative for local development to avoid operations overhead of full monitoring setup (e.g. Prometheus, Grafana). — [@clement2026](https://github.com/clement2026)
+
+
+```
+live-pprof 6060
+```
+
+<div align="center"><img src="img/live-pprof.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/moderato-app/live-pprof@v1
+```
+
+### [⏫](#contents) Monitor Go runtime metrics in browser with [statsviz](https://github.com/arl/statsviz)
 
 This tool exposes HTTP endpoint with charts for Go runtime such as heap, objects, goroutines, GC pauses, scheduler. This is useful drop-in solution for visualization of Go runtime. — [@arl](https://github.com/arl)
 

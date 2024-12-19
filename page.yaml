@@ -1881,7 +1881,17 @@ groups:
           52697 52695  gops           go1.10  /Users/jbd/bin/gops
           4132  4130   foops        * go1.9   /Users/jbd/bin/foops
           51130 51128  gocode         go1.9.2 /Users/jbd/bin/gocode
-      - title: Visualise Go runtime metrics in browser
+      - title: Monitor Go runtime metrics in browser
+        name: live-pprof
+        description: This is minimal single binary tool that lets you monitor Go app performance. This can be an attractive altenative for local development to avoid operations overhead of full monitoring setup (e.g. Prometheus, Grafana).
+        url: https://github.com/moderato-app/live-pprof
+        author: https://github.com/clement2026
+        example_image_url: img/live-pprof.png
+        requirements:
+          - go install github.com/moderato-app/live-pprof@v1
+        commands:
+          - live-pprof 6060
+      - title: Monitor Go runtime metrics in browser
         description: This tool exposes HTTP endpoint with charts for Go runtime such as heap, objects, goroutines, GC pauses, scheduler. This is useful drop-in solution for visualization of Go runtime.
         url: https://github.com/arl/statsviz
         author: https://github.com/arl
