@@ -1475,6 +1475,15 @@ groups:
           - go install github.com/gotranspile/cxgo/cmd/cxgo@latest
         commands:
           - cxgo file main.c
+      - title: Transpile Go to Javascript
+        description: GopherJS compiles Go code (go.dev) to pure JavaScript code. Its main purpose is to give you the opportunity to write front-end code in Go which will still run in all browsers.
+        url: https://github.com/gopherjs/gopherjs
+        author: https://github.com/neelance
+        name: gopherjs
+        requirements:
+          - go install github.com/gopherjs/gopherjs@v1.19.0-beta1
+        commands:
+          - gopherjs build <package>
       - title: Run compile-time function evaluation
         name: prep
         description: By using prep.Comptime, you can evaluate functions at compile time, replacing them with their computed results.

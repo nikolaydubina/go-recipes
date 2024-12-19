@@ -125,6 +125,7 @@
    + [ Custom import path enforcement](#-custom-import-path-enforcement)
    + [ Manage multiple Go versions with `Goenv`](#-manage-multiple-go-versions-with-goenv)
    + [ Transpile C to Go with `cxgo`](#-transpile-c-to-go-with-cxgo)
+   + [ Transpile Go to Javascript with `gopherjs`](#-transpile-go-to-javascript-with-gopherjs)
    + [ Run compile-time function evaluation with `prep`](#-run-compile-time-function-evaluation-with-prep)
  - Assembly
    + [ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
@@ -2326,6 +2327,20 @@ cxgo file main.c
 Requirements
 ```
 go install github.com/gotranspile/cxgo/cmd/cxgo@latest
+```
+
+### [⏫](#contents) Transpile Go to Javascript with [gopherjs](https://github.com/gopherjs/gopherjs)
+
+GopherJS compiles Go code (go.dev) to pure JavaScript code. Its main purpose is to give you the opportunity to write front-end code in Go which will still run in all browsers. — [@neelance](https://github.com/neelance)
+
+
+```
+gopherjs build <package>
+```
+
+Requirements
+```
+go install github.com/gopherjs/gopherjs@v1.19.0-beta1
 ```
 
 ### [⏫](#contents) Run compile-time function evaluation with [prep](https://github.com/pijng/prep)
