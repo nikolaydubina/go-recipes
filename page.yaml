@@ -1107,6 +1107,16 @@ groups:
           }
         requiremnets:
           - go install github.com/rjeczalik/interfaces/cmd/structer@latest
+      - title: Generate decorator for interface
+        description: GoWrap is a command line tool that generates decorators for Go interface types using simple templates. With GoWrap you can easily add metrics, tracing, fallbacks, pools, and many other features into your existing code in a few seconds.
+        url: https://github.com/hexdigest/gowrap
+        author: https://github.com/hexdigest
+        name: gowrap
+        commands:
+          - gowrap gen -p io -i Reader -t prometheus -o reader_with_metrics.go
+        requirements:
+          - go install github.com/hexdigest/gowrap/cmd/gowrap@latest
+        example_image_url: https://github.com/hexdigest/gowrap/blob/master/gowrap.gif
       - title: Modify struct field tags
         description: "This tool makes it easy to update, add or delete the tags and options in a struct field. You can add new tags, update existing tags (such as appending a new key, i.e: db, xml, etc..) or remove existing tags. It's intended to be used by an editor, but also has modes to run it from the terminal."
         name: gomodifytags

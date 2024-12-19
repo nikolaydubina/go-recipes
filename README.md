@@ -85,6 +85,7 @@
    + [ Generate interface for a struct with `interfacer`](#-generate-interface-for-a-struct-with-interfacer)
    + [ Generate interface for a struct with `struct2interface`](#-generate-interface-for-a-struct-with-struct2interface)
    + [ Generate interface for `CSV` file with `structer`](#-generate-interface-for-csv-file-with-structer)
+   + [ Generate decorator for interface with `gowrap`](#-generate-decorator-for-interface-with-gowrap)
    + [ Modify struct field tags with `gomodifytags`](#-modify-struct-field-tags-with-gomodifytags)
    + [ Generate code from OpenAPI 3 specification with `oapi-codegen`](#-generate-code-from-openapi-3-specification-with-oapi-codegen)
  - Refactor
@@ -1758,6 +1759,23 @@ func (r *Record) UnmarshalCSV(record []string) error {
 }
 ```
 
+
+### [⏫](#contents) Generate decorator for interface with [gowrap](https://github.com/hexdigest/gowrap)
+
+GoWrap is a command line tool that generates decorators for Go interface types using simple templates. With GoWrap you can easily add metrics, tracing, fallbacks, pools, and many other features into your existing code in a few seconds. — [@hexdigest](https://github.com/hexdigest)
+
+
+```
+gowrap gen -p io -i Reader -t prometheus -o reader_with_metrics.go
+```
+
+<div align="center"><img src="https://github.com/hexdigest/gowrap/blob/master/gowrap.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/hexdigest/gowrap/cmd/gowrap@latest
+```
 
 ### [⏫](#contents) Modify struct field tags with [gomodifytags](https://github.com/fatih/gomodifytags)
 
