@@ -1159,6 +1159,12 @@ groups:
           - oapi-codegen --config=config.yaml api.yaml
         requirements:
           - go install github.com/deepmap/oapi-codegen/v2/cmd/oapi-codegen@latest
+      - title: Generate C-Go Bindings
+        description: "This project allows to reuse existing C/C++ libraries in your Go applications, by automatically creating c-go bindings for a given set of C headers and the manifest file. We believe in component-based software engineering and think that reusing C/C++ code in Go applications could bring a huge boost to developer's productivity and system's performance. Read more about the motivation: top reasons to use bindings."
+        name: c-for-go
+        author: https://github.com/xlab
+        url: https://github.com/xlab/c-for-go?tab=readme-ov-file
+        example_image_url: https://github.com/xlab/c-for-go/tree/master/docs/overview.png
   - title: Generics
     entries:
       - title: Enum via generics

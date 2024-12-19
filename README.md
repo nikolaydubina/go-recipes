@@ -92,6 +92,7 @@
    + [ Generate decorator for interface with `gowrap`](#-generate-decorator-for-interface-with-gowrap)
    + [ Modify struct field tags with `gomodifytags`](#-modify-struct-field-tags-with-gomodifytags)
    + [ Generate code from OpenAPI 3 specification with `oapi-codegen`](#-generate-code-from-openapi-3-specification-with-oapi-codegen)
+   + [ Generate C-Go Bindings with `c-for-go`](#-generate-c-go-bindings-with-c-for-go)
  - Generics
    + [ Enum via generics with `enum`](#-enum-via-generics-with-enum)
  - Refactor
@@ -1856,6 +1857,14 @@ Requirements
 ```
 go install github.com/deepmap/oapi-codegen/v2/cmd/oapi-codegen@latest
 ```
+
+### [⏫](#contents) Generate C-Go Bindings with [c-for-go](https://github.com/xlab/c-for-go?tab=readme-ov-file)
+
+This project allows to reuse existing C/C++ libraries in your Go applications, by automatically creating c-go bindings for a given set of C headers and the manifest file. We believe in component-based software engineering and think that reusing C/C++ code in Go applications could bring a huge boost to developer's productivity and system's performance. Read more about the motivation: top reasons to use bindings. — [@xlab](https://github.com/xlab)
+
+<div align="center"><img src="https://github.com/xlab/c-for-go/tree/master/docs/overview.png" style="margin: 8px; max-height: 640px;"></div>
+
+
 
 ## Generics
 
