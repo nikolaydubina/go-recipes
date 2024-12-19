@@ -92,6 +92,8 @@
    + [ Generate decorator for interface with `gowrap`](#-generate-decorator-for-interface-with-gowrap)
    + [ Modify struct field tags with `gomodifytags`](#-modify-struct-field-tags-with-gomodifytags)
    + [ Generate code from OpenAPI 3 specification with `oapi-codegen`](#-generate-code-from-openapi-3-specification-with-oapi-codegen)
+ - Generics
+   + [ Enum via generics with `enum`](#-enum-via-generics-with-enum)
  - Refactor
    + [ Replace symbol with `gofmt`](#-replace-symbol-with-gofmt)
    + [ Apply refactoring patches with `gopatch`](#-apply-refactoring-patches-with-gopatch)
@@ -1852,6 +1854,24 @@ Requirements
 ```
 go install github.com/deepmap/oapi-codegen/v2/cmd/oapi-codegen@latest
 ```
+
+## Generics
+
+### [⏫](#contents) Enum via generics with [enum](https://github.com/orsinium-labs/enum)
+
+Type safe enums for Go without code generation or reflection. — [@orsinium](https://github.com/orsinium)
+
+```go
+type Color enum.Member[string]
+
+var (
+  Red    = Color{"red"}
+  Green  = Color{"green"}
+  Blue   = Color{"blue"}
+  Colors = enum.New(Red, Green, Blue)
+)
+```
+
 
 ## Refactor
 

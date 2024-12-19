@@ -1159,6 +1159,23 @@ groups:
           - oapi-codegen --config=config.yaml api.yaml
         requirements:
           - go install github.com/deepmap/oapi-codegen/v2/cmd/oapi-codegen@latest
+  - title: Generics
+    entries:
+      - title: Enum via generics
+        name: enum
+        description: Type safe enums for Go without code generation or reflection.
+        url: https://github.com/orsinium-labs/enum
+        author: https://github.com/orsinium
+        example_content_ext: go
+        example_content: |
+          type Color enum.Member[string]
+
+          var (
+            Red    = Color{"red"}
+            Green  = Color{"green"}
+            Blue   = Color{"blue"}
+            Colors = enum.New(Red, Green, Blue)
+          )
   - title: Refactor
     entries:
       - title: Replace symbol
