@@ -2336,6 +2336,10 @@ groups:
           }
         example_output: |
           ./sql/injection/testdata/src/example/main.go:9:10: potential sql injection
+      - title: Use Microsoft Go compiler
+        description: This is modified version of Go that can be used to build FIPS 140-2 compliant applications.
+        url: https://github.com/microsoft/go
+        author: https://github.com/microsoft
   - title: Static Analysis
     entries:
       - title: Run default static analysis

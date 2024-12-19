@@ -185,6 +185,7 @@
  - Security
    + [ Run official vulnerability check with `govulncheck`](#-run-official-vulnerability-check-with-govulncheck)
    + [ Perform Taint Analysis with `taint`](#-perform-taint-analysis-with-taint)
+   + [ Use Microsoft Go compiler](#-use-microsoft-go-compiler)
  - Static Analysis
    + [ Run default static analysis with `go vet`](#-run-default-static-analysis-with-go-vet)
    + [ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
@@ -3443,6 +3444,11 @@ Requirements
 ```
 go install github.com/picatz/taint/cmd/sqli@latest
 ```
+
+### [⏫](#contents) Use Microsoft Go compiler
+
+This is modified version of Go that can be used to build FIPS 140-2 compliant applications. — [@microsoft](https://github.com/microsoft)
+
 
 ## Static Analysis
 
