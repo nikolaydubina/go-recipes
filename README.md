@@ -190,6 +190,7 @@
    + [ Reference and run common linters with `golangci`](#-reference-and-run-common-linters-with-golangci)
    + [ Detect non-exhaustive switch and map with `exhaustive`](#-detect-non-exhaustive-switch-and-map-with-exhaustive)
    + [ Detect structs with uninitialized fields with `go-exhaustruct`](#-detect-structs-with-uninitialized-fields-with-go-exhaustruct)
+   + [ Detect unreachable functions with `deadcode`](#-detect-unreachable-functions-with-deadcode)
    + [ Detect unsafe code with `go-safer`](#-detect-unsafe-code-with-go-safer)
    + [ Detect unnecessary type conversions with `unconvert`](#-detect-unnecessary-type-conversions-with-unconvert)
    + [ Detect global variables with `gochecknoglobals`](#-detect-global-variables-with-gochecknoglobals)
@@ -3538,6 +3539,26 @@ var b Shape = Shape{
 Requirements
 ```
 go get -u github.com/GaijinEntertainment/go-exhaustruct/v3/cmd/exhaustruct
+```
+
+### [⏫](#contents) Detect unreachable functions with [deadcode](https://pkg.go.dev/golang.org/x/tools/cmd/deadcode)
+
+This static analysis tool detects when functions can not be reached in any execution. There is also `-test` mode that shows if function is reacheable by any of tests. — [Alan Donovan](https://github.com/adonovan), official Go team
+
+
+```
+deadcode .
+```
+
+Example
+```
+greet.go:23: unreachable func: goodbye
+greet.go:20: unreachable func: Goodbyer.Greet
+```
+
+Requirements
+```
+go install golang.org/x/tools/cmd/deadcode@latest
 ```
 
 ### [⏫](#contents) Detect unsafe code with [go-safer](https://github.com/jlauinger/go-safer)

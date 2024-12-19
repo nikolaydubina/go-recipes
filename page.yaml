@@ -2428,6 +2428,18 @@ groups:
           }
         requirements:
           - go get -u github.com/GaijinEntertainment/go-exhaustruct/v3/cmd/exhaustruct
+      - title: Detect unreachable functions
+        description: This static analysis tool detects when functions can not be reached in any execution. There is also `-test` mode that shows if function is reacheable by any of tests.
+        name: deadcode
+        url: https://pkg.go.dev/golang.org/x/tools/cmd/deadcode
+        author: "[Alan Donovan](https://github.com/adonovan), official Go team"
+        commands:
+          - deadcode .
+        example_output: |
+          greet.go:23: unreachable func: goodbye
+          greet.go:20: unreachable func: Goodbyer.Greet
+        requirements:
+          - go install golang.org/x/tools/cmd/deadcode@latest
       - title: Detect unsafe code
         description: Find incorrect uses of `reflect.SliceHeader`, `reflect.StringHeader`, and unsafe casts between structs with architecture-sized fields. Reseach paper ["Uncovering the Hidden Dangers Finding Unsafe Go Code in the Wild"](https://arxiv.org/abs/2010.11242) presented at 19th IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom 2020).
         name: go-safer
