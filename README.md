@@ -19,8 +19,9 @@
  - Test
    + [ Continuous Tests Monitoring with `codecov.io`](#-continuous-tests-monitoring-with-codecovio)
    + [ Make treemap of coverage with `go-cover-treemap`](#-make-treemap-of-coverage-with-go-cover-treemap)
-   + [ Browse coverage in HTML](#-browse-coverage-in-html)
+   + [ Browse coverage](#-browse-coverage)
    + [ Browse coverage with `gocov-html`](#-browse-coverage-with-gocov-html)
+   + [ Browse coverage with `xgo`](#-browse-coverage-with-xgo)
    + [ Browse coverage in terminal with `gocovsh`](#-browse-coverage-in-terminal-with-gocovsh)
    + [ Pretty print coverage in terminal with `nikandfor/cover`](#-pretty-print-coverage-in-terminal-with-nikandforcover)
    + [ Run coverage collector server with `goc`](#-run-coverage-collector-server-with-goc)
@@ -453,7 +454,7 @@ Requirements
 go install github.com/nikolaydubina/go-cover-treemap@latest
 ```
 
-### [⏫](#contents) Browse coverage in HTML
+### [⏫](#contents) Browse coverage
 
 This is very helpful tool from the official Go toolchain. Similar visualization is integrated into VSCode and Goland, but can be used separately.
 
@@ -485,6 +486,23 @@ Requirements
 ```
 go install github.com/axw/gocov/gocov@latest
 go install github.com/matm/gocov-html/cmd/gocov-html@latest
+```
+
+### [⏫](#contents) Browse coverage with [xgo](https://github.com/matm/gocov-html)
+
+The displayed coverage is a combination of coverage and git diff. By default, only modified lines were shown. This helps to quickly locate changes that were not covered, and add tests for them incrementally. — [@matm](https://github.com/matm)
+
+
+```
+xgo tool coverage serve cover.out
+```
+
+<div align="center"><img src="https://github.com/xhd2015/xgo/raw/master/doc/img/coverage.jpg" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/xhd2015/xgo/cmd/xgo@latest
 ```
 
 ### [⏫](#contents) Browse coverage in terminal with [gocovsh](https://github.com/orlangure/gocovsh)

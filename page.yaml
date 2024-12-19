@@ -173,7 +173,7 @@ groups:
         commands:
           - go test -coverprofile cover.out ./...
           - go-cover-treemap -coverprofile cover.out > out.svg
-      - title: Browse coverage in HTML
+      - title: Browse coverage
         description: This is very helpful tool from the official Go toolchain. Similar visualization is integrated into VSCode and Goland, but can be used separately.
         example_image_url: ./img/tool-cover-html.png
         commands:
@@ -192,6 +192,16 @@ groups:
         requirements:
           - go install github.com/axw/gocov/gocov@latest
           - go install github.com/matm/gocov-html/cmd/gocov-html@latest
+      - title: Browse coverage
+        name: xgo
+        description: "The displayed coverage is a combination of coverage and git diff. By default, only modified lines were shown. This helps to quickly locate changes that were not covered, and add tests for them incrementally."
+        url: https://github.com/matm/gocov-html
+        author: https://github.com/matm
+        example_image_url: https://github.com/xhd2015/xgo/raw/master/doc/img/coverage.jpg
+        commands:
+          - xgo tool coverage serve cover.out
+        requirements:
+          - go install github.com/xhd2015/xgo/cmd/xgo@latest
       - title: Browse coverage in terminal
         description: Browse code coverage similarly to HTML provided by official Go toolchain, but in terminal. Other notable features are package level statistics, coverage only for changed files.
         name: gocovsh
