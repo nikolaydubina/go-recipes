@@ -32,6 +32,7 @@
    + [ Run all Fuzz tests](#-run-all-fuzz-tests)
    + [ Detect goroutine leaks with `goleak`](#-detect-goroutine-leaks-with-goleak)
    + [ Detect goroutine leaks with `leaktest`](#-detect-goroutine-leaks-with-leaktest)
+   + [ Visualize test runs with `vgt`](#-visualize-test-runs-with-vgt)
    + [ Summarize `go test` with `tparse`](#-summarize-go-test-with-tparse)
    + [ Decorate `go test` with `richgo`](#-decorate-go-test-with-richgo)
    + [ Decorate `go test` with `gotest`](#-decorate-go-test-with-gotest)
@@ -653,6 +654,23 @@ func TestPoolContext(t *testing.T) {
 }
 ```
 
+
+### [⏫](#contents) Visualize test runs with [vgt](https://github.com/roblaszczak/vgt)
+
+This tool visualizes Go test results in a browser. It's helpful with understanding parallelism of tests and identifying slow tests. More information can be found in our blog post about optimizing Go tests parallelism. — [@roblaszczak](https://github.com/roblaszczak)
+
+
+```
+go test -json ./... | vgt
+```
+
+<div align="center"><img src="https://github.com/roblaszczak/vgt/raw/main/docs/img3.png" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/roblaszczak/vgt@latest
+```
 
 ### [⏫](#contents) Summarize `go test` with [tparse](https://github.com/mfridman/tparse)
 

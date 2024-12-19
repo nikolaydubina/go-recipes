@@ -298,6 +298,16 @@ groups:
               }
             }()
           }
+      - title: Visualize test runs
+        description: This tool visualizes Go test results in a browser. It's helpful with understanding parallelism of tests and identifying slow tests. More information can be found in our blog post about optimizing Go tests parallelism.
+        name: vgt
+        url: https://github.com/roblaszczak/vgt
+        author: https://github.com/roblaszczak
+        example_image_url: https://github.com/roblaszczak/vgt/raw/main/docs/img3.png
+        commands:
+          - go test -json ./... | vgt
+        requirements:
+          - go install github.com/roblaszczak/vgt@latest
       - title: Summarize `go test`
         description: This lightweight wrapper around STDOUT of JSON of `go test` will nicely render colorized test status, details of failures, duration, coverage, and package summary.
         name: tparse
