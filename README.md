@@ -21,7 +21,7 @@
    + [ Make treemap of coverage with `go-cover-treemap`](#-make-treemap-of-coverage-with-go-cover-treemap)
    + [ Browse coverage](#-browse-coverage)
    + [ Browse coverage with `gocov-html`](#-browse-coverage-with-gocov-html)
-   + [ Browse coverage with `xgo`](#-browse-coverage-with-xgo)
+   + [ :fire: Browse coverage with `xgo`](#-fire-browse-coverage-with-xgo)
    + [ Browse coverage in terminal with `gocovsh`](#-browse-coverage-in-terminal-with-gocovsh)
    + [ Pretty print coverage in terminal with `nikandfor/cover`](#-pretty-print-coverage-in-terminal-with-nikandforcover)
    + [ Run coverage collector server with `goc`](#-run-coverage-collector-server-with-goc)
@@ -496,9 +496,9 @@ go install github.com/axw/gocov/gocov@latest
 go install github.com/matm/gocov-html/cmd/gocov-html@latest
 ```
 
-### [⏫](#contents) Browse coverage with [xgo](https://github.com/matm/gocov-html)
+### [⏫](#contents) :fire: Browse coverage with [xgo](https://github.com/matm/gocov-html)
 
-:fire: The displayed coverage is a combination of coverage and git diff. By default, only modified lines were shown. This helps to quickly locate changes that were not covered, and add tests for them incrementally. — [@matm](https://github.com/matm)
+The displayed coverage is a combination of coverage and git diff. By default, only modified lines were shown. This helps to quickly locate changes that were not covered, and add tests for them incrementally. — [@matm](https://github.com/matm)
 
 
 ```

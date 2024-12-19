@@ -192,9 +192,9 @@ groups:
         requirements:
           - go install github.com/axw/gocov/gocov@latest
           - go install github.com/matm/gocov-html/cmd/gocov-html@latest
-      - title: Browse coverage
+      - title: ":fire: Browse coverage"
         name: xgo
-        description: ":fire: The displayed coverage is a combination of coverage and git diff. By default, only modified lines were shown. This helps to quickly locate changes that were not covered, and add tests for them incrementally."
+        description: "The displayed coverage is a combination of coverage and git diff. By default, only modified lines were shown. This helps to quickly locate changes that were not covered, and add tests for them incrementally."
         url: https://github.com/matm/gocov-html
         author: https://github.com/matm
         example_image_url: https://github.com/xhd2015/xgo/raw/master/doc/img/coverage.jpg
