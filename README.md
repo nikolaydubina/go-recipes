@@ -154,6 +154,7 @@
  - Benchmark
    + [ Run benchmarks](#-run-benchmarks)
    + [ Table-driven benchmarks](#-table-driven-benchmarks)
+   + [ Align benchmark output](#-align-benchmark-output)
    + [ Generate benchmak CPU and Memory profiles with `go test`](#-generate-benchmak-cpu-and-memory-profiles-with-go-test)
    + [ Visualize callgraph of profiles with `pprof`](#-visualize-callgraph-of-profiles-with-pprof)
    + [ Visualize flamegraphs of profiles with `pprof`](#-visualize-flamegraphs-of-profiles-with-pprof)
@@ -2891,6 +2892,36 @@ BenchmarkIteratorSelector/n=100-10    	  297792	      4265 ns/op	    5400 B/op	 
 BenchmarkIteratorSelector/n=1000-10   	   31400	     38182 ns/op	    9752 B/op	      16 allocs/op
 BenchmarkIteratorSelector/n=10000-10  	    3134	    380777 ns/op	   89112 B/op	      24 allocs/op
 BenchmarkIteratorSelector/n=100000-10 	     310	   3827292 ns/op	  912410 B/op	      32 allocs/op
+```
+
+
+### [⏫](#contents) Align benchmark output
+
+Go aligns benchmarks names to longest seen so far. Create file with name that is lexicographically first and has noop benchmark like following.
+
+```go
+- func BenchmarkNoop(b *testing.B) { b.Run("--------------------------------", func(b *testing.B) {}) }
+```
+
+Example
+```
+$ go test -bench .
+goos: darwin
+goarch: arm64
+pkg: github.com/nikolaydubina/go-hackers-delight
+BenchmarkNoop/---------------------------------16         	1000000000	         0.0000001 ns/op
+BenchmarkAbs/basic-16                                     	1000000000	         0.9826 ns/op
+BenchmarkAbs/Abs-16                                       	1000000000	         0.9647 ns/op
+BenchmarkAbs/Abs2-16                                      	1000000000	         0.9943 ns/op
+BenchmarkAbs/Abs3-16                                      	1000000000	         0.9819 ns/op
+BenchmarkAbs/Abs4-16                                      	1000000000	         1.003 ns/op
+BenchmarkAbs/AbsFastMul-16                                	1000000000	         0.9598 ns/op
+BenchmarkAvg/basic-16                                     	973716225	         2.045 ns/op
+BenchmarkAvg/AvgFloor-16                                  	602586224	         2.050 ns/op
+BenchmarkAvg/AvgCeil-16                                   	582029594	         2.054 ns/op
+BenchmarkCycleThree/basic-16                              	767160418	         1.560 ns/op
+BenchmarkCycleThree/CycleThreeValues-16                   	438818894	         2.729 ns/op
+BenchmarkLeadingZeros/uint32/basic-16                     	1000000000	         0.9419 ns/op
 ```
 
 
