@@ -1748,7 +1748,7 @@ groups:
         name: goplay.tools
         url: https://github.com/x1unix/go-playground
         author: https://github.com/x1unix
-        example_image_url: https://github.com/x1unix/go-playground/raw/master/docs/demo.gif
+        example_image_url: https://github.com/x1unix/go-playground/raw/master/docs/img/demo.gif
       - title: Use TinyGo Playground
         description: TinyGo is an alternative Go compiler that focuses on embedded devices, and WASM. There are some Go constructs and packages that not supported. In this online playground you can veryify your code.
         name: tinygo
