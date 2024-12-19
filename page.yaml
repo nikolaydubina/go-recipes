@@ -683,7 +683,7 @@ groups:
         name: dep-tree
         url: https://github.com/gabotechs/dep-tree
         author: https://github.com/gabotechs
-        example_image_url: https://github.com/gabotechs/dep-tree/docs/demo.gif
+        example_image_url: https://github.com/gabotechs/dep-tree/blob/main/docs/demo.gif
         requirements:
           - go install github.com/rodrigo-brito/gocity@latest
       - title: Make 3D chart of Go codebase

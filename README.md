@@ -1260,7 +1260,7 @@ go install github.com/bykof/go-plantuml@latest
 
 This excellent interactive visualisation tool lets you explore code base as 3D graph. The more decoupled and modular a code base is, the more spread and clustered the graph will look like. — [@gabotechs](https://github.com/gabotechs)
 
-<div align="center"><img src="https://github.com/gabotechs/dep-tree/docs/demo.gif" style="margin: 8px; max-height: 640px;"></div>
+<div align="center"><img src="https://github.com/gabotechs/dep-tree/blob/main/docs/demo.gif" style="margin: 8px; max-height: 640px;"></div>
 
 
 Requirements
