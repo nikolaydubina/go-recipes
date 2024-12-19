@@ -2584,6 +2584,7 @@ groups:
       - title: ":fire: Use Microsoft Go compiler"
         description: This is modified version of Go that can be used to build FIPS 140-2 compliant applications.
         url: https://github.com/microsoft/go
+        name: msft-go
         author: https://github.com/microsoft
   - title: Static Analysis
     entries:
