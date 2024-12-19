@@ -215,7 +215,7 @@
    + [ Detect most common issues with `staticcheck`](#-detect-most-common-issues-with-staticcheck)
    + [ Detect potential Nil panics with `nilaway`](#-detect-potential-nil-panics-with-nilaway)
    + [ Detect most common issues with `go-critic`](#-detect-most-common-issues-with-go-critic)
-   + [ Reference and run common linters with `golangci`](#-reference-and-run-common-linters-with-golangci)
+   + [ Reference and run common linters with `golangci-lint`](#-reference-and-run-common-linters-with-golangci-lint)
    + [ Detect non-exhaustive switch and map with `exhaustive`](#-detect-non-exhaustive-switch-and-map-with-exhaustive)
    + [ Detect structs with uninitialized fields with `go-exhaustruct`](#-detect-structs-with-uninitialized-fields-with-go-exhaustruct)
    + [ :fire: Detect unreachable functions with `deadcode`](#-fire-detect-unreachable-functions-with-deadcode)
@@ -3932,10 +3932,32 @@ Requirements
 go install -v github.com/go-critic/go-critic/cmd/gocritic@latest
 ```
 
-### [⏫](#contents) Reference and run common linters with [golangci](https://github.com/golangci/golangci-lint)
+### [⏫](#contents) Reference and run common linters with [golangci-lint](https://golangci-lint.run)
 
-This tool has comprehensive list of linters. Owners of this aggregator keep track of active linters, their versions, and optimal configs. It contains many optimizations to make linters run fast by paralleism, distributing binaries and Docker images, utilising `golang.org/x/tools/go/analysis` toolchain.
+This tool has comprehensive list of linters. Owners of this aggregator keep track of active linters, their versions, and optimal configs. It contains many optimizations to make linters run fast by parallelism, distributing binaries and Docker images, utilising `golang.org/x/tools/go/analysis` toolchain.
 
+
+```
+golangci-lint run
+```
+
+Example
+```
+server/web/filter/opentracing/filter.go:21:2: import-alias-naming: import name (logKit) must match the regular expression: ^[a-z][a-z0-9]{0,}$ (revive)
+core/utils/pagination/paginator.go:65:3: G104: Errors unhandled. (gosec)
+core/utils/pagination/utils.go:33:2: bare-return: avoid using bare returns, please add return expressions (revive)
+server/web/grace/server.go:358:3: exitAfterDefer: log.Fatalf will exit, and `defer regLock.Unlock()` will not run (gocritic)
+server/web/filter/prometheus/filter.go:90:40: "2006-01-02 15:04:05" can be replaced by time.DateTime (usestdlibvars)
+core/utils/slice.go:47:20: builtinShadow: shadowing of predeclared identifier: min (gocritic)
+core/utils/utils.go:54:3: ifElseChain: rewrite if-else to switch statement (gocritic)
+client/orm/hints/db_hints_test.go:95:2: expected-actual: need to reverse actual and expected values (testifylint)
+core/config/env/env.go:95:15: fmt.Errorf can be replaced with errors.New (perfsprint)
+```
+
+Requirements
+```
+curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin latest
+```
 
 ### [⏫](#contents) Detect non-exhaustive switch and map with [exhaustive](https://github.com/nishanths/exhaustive)
 
