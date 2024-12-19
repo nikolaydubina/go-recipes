@@ -1317,6 +1317,15 @@ groups:
           - go install github.com/maruel/panicparse/v2/cmd/pp@latest
   - title: Build
     entries:
+      - title: Fetch private dependencidse in CI
+        description: If you are building in CI (e.g. GitHub Actions), you need to download private repositories. Here is one way to accomplish this.
+        example_content_ext: yaml
+        example_content: |
+          name: go private modules
+          env:
+            USER: ${{ secrets.USER }}
+            TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+          run: git config --global url."https://${USER}:${TOKEN}@github.com".insteadOf "https://github.com"
       - title: Show compiler optimization decisions on heap and inlining
         description: Building with `-m` flag will show decisions of compiler on inlining and heap escape. This can help you to validate your understanding of your code and optimize it.
         commands:
