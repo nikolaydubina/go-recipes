@@ -211,6 +211,7 @@
    + [ Detect structs with uninitialized fields with `go-exhaustruct`](#-detect-structs-with-uninitialized-fields-with-go-exhaustruct)
    + [ Detect unreachable functions with `deadcode`](#-detect-unreachable-functions-with-deadcode)
    + [ Detect unsafe code with `go-safer`](#-detect-unsafe-code-with-go-safer)
+   + [ Detect `panic` without explaning comment with `panic-linter`](#-detect-panic-without-explaning-comment-with-panic-linter)
    + [ Detect unnecessary type conversions with `unconvert`](#-detect-unnecessary-type-conversions-with-unconvert)
    + [ Detect global variables with `gochecknoglobals`](#-detect-global-variables-with-gochecknoglobals)
    + [ Detect slices that could be preallocated with `prealloc`](#-detect-slices-that-could-be-preallocated-with-prealloc)
@@ -3912,6 +3913,19 @@ Requirements
 ```
 go install github.com/jlauinger/go-safer@latest
 ```
+
+### [⏫](#contents) Detect `panic` without explaning comment with [panic-linter](https://github.com/ldemailly/panic-linter)
+
+Panic should only be used very sparingly, for catching bugs basically, and thus deserve a comment to confirm that that's indeed the case. — [@ldemailly](https://github.com/ldemailly)
+
+```go
+# bad
+panic("catch this")
+
+# good
+panic("catch this") // does not happen unless byte is not 8 bits anymore
+```
+
 
 ### [⏫](#contents) Detect unnecessary type conversions with [unconvert](https://github.com/mdempsky/unconvert)
 
