@@ -618,6 +618,16 @@ groups:
         example_image_url: https://github.com/adonovan/spaghetti/blob/main/screenshot.png
         requirements:
           - go install github.com/adonovan/spaghetti@latest
+      - title: Explore dependencies graph interactively
+        description: Transform your Go project's dependency graph into a dynamic, interactive visualization with modview. This powerful tool takes the complexity out of your module graph, offering a clear and explorable view of your project's dependencies.
+        name: modview
+        url: https://github.com/bayraktugrul/modview
+        author: https://github.com/bayraktugrul
+        example_image_url: https://github.com/bayraktugrul/modview/raw/main/modview-opt.gif
+        commands:
+          - modview --open
+        requirements:
+          - go install github.com/bayraktugrul/modview@latest
       - title: Enforce Go code architecture
         description: "Architecture linter. Will check all project import path and compare with arch rules defined in yml file. Useful for hexagonal / onion / ddd / mvc / etc patterns."
         name: go-arch-lint

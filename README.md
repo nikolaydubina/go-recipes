@@ -62,6 +62,7 @@
    + [ Scrape licenses of upstream dependencies with `go-licenses`](#-scrape-licenses-of-upstream-dependencies-with-go-licenses)
    + [ Explore dependencies with `goda`](#-explore-dependencies-with-goda)
    + [ Explore dependencies interactively with `spaghetti`](#-explore-dependencies-interactively-with-spaghetti)
+   + [ Explore dependencies graph interactively with `modview`](#-explore-dependencies-graph-interactively-with-modview)
    + [ Enforce Go code architecture with `go-arch-lint`](#-enforce-go-code-architecture-with-go-arch-lint)
    + [ Use `go mod` directives](#-use-go-mod-directives)
    + [ Locally patch dependency with ``replace``](#-locally-patch-dependency-with-replace)
@@ -1181,6 +1182,23 @@ Useful in large refactorings, dependency breaking, physical layout changes. — 
 Requirements
 ```
 go install github.com/adonovan/spaghetti@latest
+```
+
+### [⏫](#contents) Explore dependencies graph interactively with [modview](https://github.com/bayraktugrul/modview)
+
+Transform your Go project's dependency graph into a dynamic, interactive visualization with modview. This powerful tool takes the complexity out of your module graph, offering a clear and explorable view of your project's dependencies. — [@bayraktugrul](https://github.com/bayraktugrul)
+
+
+```
+modview --open
+```
+
+<div align="center"><img src="https://github.com/bayraktugrul/modview/raw/main/modview-opt.gif" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/bayraktugrul/modview@latest
 ```
 
 ### [⏫](#contents) Enforce Go code architecture with [go-arch-lint](https://github.com/fe3dback/go-arch-lint)
