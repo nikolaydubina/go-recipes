@@ -1862,7 +1862,7 @@ groups:
           return eg.Wait()
   - title: Monitor
     entries:
-      - title: Go Runtime metrics
+      - title: Monitor Go Runtime metrics
         description: These are standard metrics for Go runtime exposed in OpenTelemetry format. Grafana [dashboard](https://github.com/nikolaydubina/grafana-otel-go-runtime).
         url: https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/runtime
         name: opentelemetry
