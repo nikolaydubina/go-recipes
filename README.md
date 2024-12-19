@@ -119,6 +119,7 @@
    + [ Custom import path with `kkn.fi/vanity`](#-custom-import-path-with-kknfivanity)
    + [ Custom import path enforcement](#-custom-import-path-enforcement)
    + [ Manage multiple Go versions with `Goenv`](#-manage-multiple-go-versions-with-goenv)
+   + [ Transpile C to Go with `cxgo`](#-transpile-c-to-go-with-cxgo)
  - Assembly
    + [ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
    + [ Get Go SSA intermediary representation with `ssaplayground`](#-get-go-ssa-intermediary-representation-with-ssaplayground)
@@ -2245,6 +2246,20 @@ This tool makes it easier for managing multiple Go versions on same host. This w
 <div align="center"><img src="https://github.com/Norwik/Goenv/raw/main/static/screenshot-1.png" style="margin: 8px; max-height: 640px;"></div>
 
 
+
+### [⏫](#contents) Transpile C to Go with [cxgo](https://github.com/gotranspile/cxgo)
+
+CxGo is a tool for translating C source code to Go (aka transpiler, source-to-source compiler). It uses cc v3 for preprocessing and parsing C (no clang/gcc dependencies!) and a custom type-checker and AST translation layer to make the best output possible. — [@dennwc](https://github.com/dennwc)
+
+
+```
+cxgo file main.c
+```
+
+Requirements
+```
+go install github.com/gotranspile/cxgo/cmd/cxgo@latest
+```
 
 ## Assembly
 

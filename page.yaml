@@ -1424,6 +1424,15 @@ groups:
         author: https://github.com/clivern
         name: Goenv
         example_image_url: https://github.com/Norwik/Goenv/raw/main/static/screenshot-1.png
+      - title: Transpile C to Go
+        description: CxGo is a tool for translating C source code to Go (aka transpiler, source-to-source compiler). It uses cc v3 for preprocessing and parsing C (no clang/gcc dependencies!) and a custom type-checker and AST translation layer to make the best output possible.
+        url: https://github.com/gotranspile/cxgo
+        author: https://github.com/dennwc
+        name: cxgo
+        requirements:
+          - go install github.com/gotranspile/cxgo/cmd/cxgo@latest
+        commands:
+          - cxgo file main.c
   - title: Assembly
     entries:
       - title: Get assembly of Go code snippets online
