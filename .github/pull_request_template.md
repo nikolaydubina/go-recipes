@@ -2,4 +2,4 @@
 - [ ] `page.yaml` updated
 - [ ] `go generate` run
 
-Thank you for contribution ! 🤝
+Thank you for contributing ! 🤝
