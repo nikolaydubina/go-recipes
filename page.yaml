@@ -2494,8 +2494,8 @@ groups:
                     - go install golang.org/x/vuln/cmd/govulncheck@latest
       - title: Run static analysis
         description: This tool inspects source code for security problems by scanning the Go AST and SSA code representation. There are numerous rules it checks.
-        url: https://github.com/picatz/taint
-        author: https://github.com/picatz
+        url: https://github.com/securego/gosec
+        author: https://github.com/ccojocar
         name: gosec
         requirements:
           - go install github.com/securego/gosec/v2/cmd/gosec@latest

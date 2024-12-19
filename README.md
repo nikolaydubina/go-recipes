@@ -3699,9 +3699,9 @@ Vulnerability #1: GO-2023-1571
 ```
 
 
-### [⏫](#contents) Run static analysis with [gosec](https://github.com/picatz/taint)
+### [⏫](#contents) Run static analysis with [gosec](https://github.com/securego/gosec)
 
-This tool inspects source code for security problems by scanning the Go AST and SSA code representation. There are numerous rules it checks. — [@picatz](https://github.com/picatz)
+This tool inspects source code for security problems by scanning the Go AST and SSA code representation. There are numerous rules it checks. — [@ccojocar](https://github.com/ccojocar)
 
 
 ```
