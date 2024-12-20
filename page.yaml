@@ -2665,8 +2665,22 @@ groups:
           - go install -v github.com/go-critic/go-critic/cmd/gocritic@latest
       - title: Reference and run common linters
         description: This tool has comprehensive list of linters. Owners of this aggregator keep track of active linters, their versions, and optimal configs. It contains many optimizations to make linters run fast by parallelism, distributing binaries and Docker images, utilising `golang.org/x/tools/go/analysis` toolchain.
-        url: https://github.com/golangci/golangci-lint
-        name: golangci
+        url: https://golangci-lint.run
+        name: golangci-lint
+        commands:
+          - golangci-lint run
+        requirements:
+          - curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin latest
+        example_output: |
+          server/web/filter/opentracing/filter.go:21:2: import-alias-naming: import name (logKit) must match the regular expression: ^[a-z][a-z0-9]{0,}$ (revive)
+          core/utils/pagination/paginator.go:65:3: G104: Errors unhandled. (gosec)
+          core/utils/pagination/utils.go:33:2: bare-return: avoid using bare returns, please add return expressions (revive)
+          server/web/grace/server.go:358:3: exitAfterDefer: log.Fatalf will exit, and `defer regLock.Unlock()` will not run (gocritic)
+          server/web/filter/prometheus/filter.go:90:40: "2006-01-02 15:04:05" can be replaced by time.DateTime (usestdlibvars)
+          core/utils/slice.go:47:20: builtinShadow: shadowing of predeclared identifier: min (gocritic)
+          core/utils/utils.go:54:3: ifElseChain: rewrite if-else to switch statement (gocritic)
+          client/orm/hints/db_hints_test.go:95:2: expected-actual: need to reverse actual and expected values (testifylint)
+          core/config/env/env.go:95:15: fmt.Errorf can be replaced with errors.New (perfsprint)
       - title: Detect non-exhaustive switch and map
         description: This `go vet` compatible analyzer checks for exhaustive switch statements and map literals. It works for enums with underlying integer, float, or string types (struct based enums are not supported).
         name: exhaustive
