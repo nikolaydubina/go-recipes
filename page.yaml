@@ -195,8 +195,8 @@ groups:
       - title: ":fire: Browse coverage"
         name: xgo
         description: "The displayed coverage is a combination of coverage and git diff. By default, only modified lines were shown. This helps to quickly locate changes that were not covered, and add tests for them incrementally."
-        url: https://github.com/matm/gocov-html
-        author: https://github.com/matm
+        url: https://github.com/xhd2015/xgo
+        author: https://github.com/xhd2015
         example_image_url: https://github.com/xhd2015/xgo/raw/master/doc/img/coverage.jpg
         commands:
           - xgo tool coverage serve cover.out
