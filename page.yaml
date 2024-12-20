@@ -20,7 +20,7 @@ groups:
     entries:
       - title: Advanced autocompletion
         name: Copilot
-        description: Start typing and after few seconds you will get autocompletion suggestion. Some useful ways to interact with it listed bellow.
+        description: Start typing and after few seconds you will get autocompletion suggestion. Some useful ways to interact with it listed below.
         url: https://marketplace.visualstudio.com/items?itemName=GitHub.copilot
         example_image_url: https://user-images.githubusercontent.com/37570492/212964557-8d832278-61bb-4288-a8a7-47f35859e868.gif
         commands:
@@ -67,7 +67,7 @@ groups:
       - title: Test case recommendation
         name: charmbracelet/mods
         url: https://github.com/charmbracelet/mods
-        description: Concatenate two files and ask to recommend missing test cases. It is not precise, has high false positive and high false negative rate. Often can not detect that tests cases are present at all. However, it can give a fresh perspective on your code. Best results are produced when asking succinct short replies. Example outputs bellow.
+        description: Concatenate two files and ask to recommend missing test cases. It is not precise, has high false positive and high false negative rate. Often can not detect that tests cases are present at all. However, it can give a fresh perspective on your code. Best results are produced when asking succinct short replies. Example outputs below.
         commands:
           - cat fpdecimal.go fpdecimal_test.go | head -c 3600 | mods -f "you are an expert Go programmer. investigate supplied Go program and associated test suite. think through this step by step. make sure you get the right answer. recommend missing test cases. write very succinctly. under 100 words." | glow
           - cat fpdecimal.go fpdecimal_test.go | head -c 4000 | mods -f "investigate supplied Go program and associated test suite. recommend missing test cases." | glow
@@ -92,7 +92,7 @@ groups:
       - title: Time complexity estimate
         name: charmbracelet/mods
         url: https://github.com/charmbracelet/mods
-        description: This is one of recommended use cases by OpenAI website. It can produce fairly good estimations. However, in its direct form usefulness is questionable, since complex cases are not handled precisely enough, educational potential is limited, and simple cases do not require this. Perhaps, this will be utilized in future work on using models in compiler and programming. Copy function and pipe it to model with prompt asking for time complexity estimation. Bellow is an example.
+        description: This is one of recommended use cases by OpenAI website. It can produce fairly good estimations. However, in its direct form usefulness is questionable, since complex cases are not handled precisely enough, educational potential is limited, and simple cases do not require this. Perhaps, this will be utilized in future work on using models in compiler and programming. Copy function and pipe it to model with prompt asking for time complexity estimation. Below is an example.
         commands:
           - pbpaste | mods -f "calculate time complexity of following Go code function." | glow
         example_content_ext: go
@@ -195,8 +195,8 @@ groups:
       - title: ":fire: Browse coverage"
         name: xgo
         description: "The displayed coverage is a combination of coverage and git diff. By default, only modified lines were shown. This helps to quickly locate changes that were not covered, and add tests for them incrementally."
-        url: https://github.com/matm/gocov-html
-        author: https://github.com/matm
+        url: https://github.com/xhd2015/xgo
+        author: https://github.com/xhd2015
         example_image_url: https://github.com/xhd2015/xgo/raw/master/doc/img/coverage.jpg
         commands:
           - xgo tool coverage serve cover.out
@@ -535,7 +535,7 @@ groups:
           - go list -m -versions github.com/google/gofuzz
         example-output: github.com/google/gofuzz v1.0.0 v1.1.0 v1.2.0
       - title: ":fire: Get go module libyear, number of releases, version delta"
-        description: "[libyear](https://libyear.com) is asimple measure of software dependency freshness. It is a single number telling you how up-to-date your dependencies are. For example Rails 5.0.0 (June 2016) is 1 libyear behind 5.1.2 (June 2017). This tool can also compute number of releases, and version number delta."
+        description: "[libyear](https://libyear.com) is a simple measure of software dependency freshness. It is a single number telling you how up-to-date your dependencies are. For example Rails 5.0.0 (June 2016) is 1 libyear behind 5.1.2 (June 2017). This tool can also compute number of releases, and version number delta."
         name: go-libyear
         url: https://github.com/nieomylnieja/go-libyear
         author: https://github.com/nieomylnieja
@@ -695,7 +695,7 @@ groups:
         requirements:
           - manually defining Go main.go script to invoke library
           - graphviz
-          - manual coloring spec (DB, calsses)
+          - manual coloring spec (DB, classes)
       - title: Make graph of function calls
         description: Visualize complex or new project quickly or to study project. Requires `main.go` in module. Supports Graphviz output format. Has many options for filtering and formatting.
         name: callgraph
@@ -797,7 +797,7 @@ groups:
   - title: Code Generation
     entries:
       - title: Run `go:generate` in parallel
-        description: Official Go team [encourages](https://github.com/golang/go/issues/20520) to run sequentially. However, in certain situations, such as lots of mocks, parallelization helps a lot, albeit, you should consider including your generated files in git. The solution bellow spawns multiple processes, each per pkg.
+        description: Official Go team [encourages](https://github.com/golang/go/issues/20520) to run sequentially. However, in certain situations, such as lots of mocks, parallelization helps a lot, albeit, you should consider including your generated files in git. The solution below spawns multiple processes, each per pkg.
         commands:
           - grep -rnw "go:generate" -E -l "${1:-*.go}" . | xargs -L1 dirname | sort -u | xargs -P 8 -I{} go generate {}
       - title: Generate `String` method for enum types
@@ -845,7 +845,7 @@ groups:
           - go install github.com/nikolaydubina/go-enum-encoding@latest
       - title: ":fire: Generate enums"
         name: goenums
-        description: Genereate strict and fast enums. Generated code is much more tightly typed than just iota defined enums. You will get JSON decoder and encoder as well. This tool allows to generate extra fields and default values in enum structs.
+        description: Generate strict and fast enums. Generated code is much more tightly typed than just iota defined enums. You will get JSON decoder and encoder as well. This tool allows to generate extra fields and default values in enum structs.
         author: https://github.com/zarldev
         url: https://github.com/zarldev/goenums
         commands:
@@ -967,7 +967,7 @@ groups:
                   Vegetables []Veggie `json:"vegetables,omitempty" yaml:"vegetables,omitempty" mapstructure:"vegetables,omitempty"`
           }
       - title: "Generate constructor for a struct"
-        description: Constructor is a widely used useful pattern. This tool generates basic version of it that passes arguments to struct. It also supports intializer method.
+        description: Constructor is a widely used useful pattern. This tool generates basic version of it that passes arguments to struct. It also supports initializer method.
         url: https://github.com/moznion/gonstructor
         name: gonstructor
         author: https://github.com/moznion
@@ -1132,7 +1132,7 @@ groups:
                   WriteAt([]byte, int64) (int, error)
                   WriteString(string) (int, error)
           }
-        requiremnets:
+        requirements:
           - go install github.com/rjeczalik/interfaces/cmd/interfacer@latest
       - title: Generate interface for a struct
         description: This is alternative tool for interface generation that is aimed to be faster and leaner. It generates only pointer method receiver methods for a struct.
@@ -1178,7 +1178,7 @@ groups:
           func (r *Record) UnmarshalCSV(record []string) error {
               ...
           }
-        requiremnets:
+        requirements:
           - go install github.com/rjeczalik/interfaces/cmd/structer@latest
       - title: ":fire: Generate decorator for interface"
         description: GoWrap is a command line tool that generates decorators for Go interface types using simple templates. With GoWrap you can easily add metrics, tracing, fallbacks, pools, and many other features into your existing code in a few seconds.
@@ -1238,7 +1238,7 @@ groups:
         commands:
           - gofmt -w -r 'interface{} -> any' .
       - title: "Apply refactoring patches"
-        description: With this tool it is very easy to perform refactorings. It is also possible to organize and maintan your refactoring procedures through patches.
+        description: With this tool it is very easy to perform refactorings. It is also possible to organize and maintain your refactoring procedures through patches.
         url: https://github.com/uber-go/gopatch
         author: Uber
         name: gopatch
@@ -1294,7 +1294,7 @@ groups:
         requirements:
           - go install github.com/daixiang0/gci@latest
       - title: Keep consistent ordering of imports
-        description: This tool groups and sorts imports within groups. It keeps consitent ordering of groups. Detection of groups may be not always accurate.
+        description: This tool groups and sorts imports within groups. It keeps consistent ordering of groups. Detection of groups may be not always accurate.
         name: goimportx
         author: https://github.com/anqiansong
         url: https://github.com/anqiansong/goimportx/tree/main
@@ -1319,14 +1319,14 @@ groups:
   - title: Errors
     entries:
       - title: "Errors with return traces"
-        description: Return trace is the path that error took to return to user. This can be more illustrative than typical stack trace that procuded the error. This tool have conenienve automatic instrumentation CLI to update your code.
+        description: Return trace is the path that error took to return to user. This can be more illustrative than typical stack trace that produced the error. This tool have convenience automatic instrumentation CLI to update your code.
         url: https://github.com/bracesdev/errtrace
         name: errtrace
         author: https://github.com/bracesdev
         commands:
           - git ls-files -- '*.go' | xargs errtrace -w
         requirements:
-          - use packae "braces.dev/errtrace"
+          - use package "braces.dev/errtrace"
           - instrument code by wrapping errors through all functions with this library
       - title: Errors with stack traces and source fragments
         description: This library collects stack traces and pretty prints code fragments. Stack traces induce performance penalty.
@@ -1372,7 +1372,7 @@ groups:
   - title: Build
     entries:
       - title: ":fire: Fetch private dependencies in CI"
-        description: If you are building in CI (e.g. GitHub Actions), you need to download private repositories. Common way to accomplish this is with job like bellow.
+        description: If you are building in CI (e.g. GitHub Actions), you need to download private repositories. Common way to accomplish this is with job like below.
         example_content_ext: yaml
         example_content: |
           name: go private modules
@@ -1404,12 +1404,12 @@ groups:
         commands:
           - go build -gcflags="-l -l -l -l" .
       - title: Profile-guided optimization
-        description: Starting go 1.20 compiler supports Profile-gudied optimization. You need to collect profiles and then supply in compulation to compiler. You can get improvement in performance by around 4%. Officual [guideline](https://go.dev/doc/pgo).
+        description: Starting go 1.20 compiler supports Profile-guided optimization. You need to collect profiles and then supply in computation to compiler. You can get improvement in performance by around 4%. Official [guideline](https://go.dev/doc/pgo).
         commands:
           - 1. store a `pprof` CPU profile with filename default.pgo in the main package directory of the profiled binary
           - 2. build with `go build -pgo=auto``, which will pick up `default.pgo` files automatically.
       - title: Manually disable or enable `cgo`
-        description: Disable `cgo` with `CGO_ENABLED=0` and enable with `CGO_ENABLED=1`. If you don't, `cgo` may end-up being enabled or code dynamically linked if, for example, you use some `net` or `os` packages. You may want to disable `cgo` to improve performance, since complier and runtime would have easier job optimizing code. This also should reduce your image size, as you can have alpine image with less shared libraries.
+        description: Disable `cgo` with `CGO_ENABLED=0` and enable with `CGO_ENABLED=1`. If you don't, `cgo` may end-up being enabled or code dynamically linked if, for example, you use some `net` or `os` packages. You may want to disable `cgo` to improve performance, since compiler and runtime would have easier job optimizing code. This also should reduce your image size, as you can have alpine image with less shared libraries.
       - title: Include metadata in binary during compilation with `ldflags`
         description: You can pass metadata through compiler to your binary. This is useful for including things like git commit, database schema version, integrity hashes. Variables can only be strings.
         commands:
@@ -1426,7 +1426,7 @@ groups:
             ...
           }
       - title: ":fire: Check if symbol or package is included in binary"
-        description: This is useful for investigations during perofmance optimization, security, or compiler work. First spotted in [blog](https://rednafi.com/go/omit_dev_dependencies_in_binaries/).
+        description: This is useful for investigations during performance optimization, security, or compiler work. First spotted in [blog](https://rednafi.com/go/omit_dev_dependencies_in_binaries/).
         commands:
           - "go tool nm main | grep -Ei '<symbol A>|<symbol B>|...'"
           - "go tool nm main | grep -Ei 'golangci-lint|gofumpt'"
@@ -1585,7 +1585,7 @@ groups:
         name: pat/disfunc
         requirements:
           - go install github.com/maruel/pat/cmd/...@latest
-        description: This tool shows assmebly of functions and what lines mean by color.
+        description: This tool shows assembly of functions and what lines mean by color.
         example_image_url: https://github.com/maruel/pat/wiki/disfunc.png
         commands:
           - disfunc -f 'nin\.CanonicalizePath$' -pkg ./cmd/nin | less -R
@@ -1698,7 +1698,7 @@ groups:
           - "# get graphviz"
           - go install github.com/SilverRainZ/go-ssaviz@latest
       - title: "Make graph of AST"
-        description: This tool visualizes AST as graph, which may be useful to navigate and undertand Go AST. This tool has not been maintaned for a while.
+        description: This tool visualizes AST as graph, which may be useful to navigate and understand Go AST. This tool has not been maintained for a while.
         name: astgraph
         author: https://github.com/xiazemin
         url: https://github.com/xiazemin/ast_graph
@@ -1709,7 +1709,7 @@ groups:
         url: https://github.com/minio/c2goasm
         author: https://github.com/fwessels
         name: c2goasm
-        description: This tool can convert C assembly `.s` into Go assbmely `.s` files. This is useful for reusing compiler optimizations such as SIMD or loop unrolling in C, which can lead to 10x speedups. However, project has been archieved 4+ years ago.
+        description: This tool can convert C assembly `.s` into Go assbmely `.s` files. This is useful for reusing compiler optimizations such as SIMD or loop unrolling in C, which can lead to 10x speedups. However, project has been archived 4+ years ago.
         requirements:
           - go install github.com/minio/c2goasm@latest
         commands:
@@ -1768,12 +1768,12 @@ groups:
         author: https://github.com/x1unix
         example_image_url: https://github.com/x1unix/go-playground/raw/master/docs/img/demo.gif
       - title: ":fire: Use TinyGo Playground"
-        description: TinyGo is an alternative Go compiler that focuses on embedded devices, and WASM. There are some Go constructs and packages that not supported. In this online playground you can veryify your code.
+        description: TinyGo is an alternative Go compiler that focuses on embedded devices, and WASM. There are some Go constructs and packages that not supported. In this online playground you can verify your code.
         name: tinygo
         url: https://play.tinygo.org
         example_image_url: img/tinygo-playground.png
       - title: Run interactive Go kernels in Jupyter Notebook
-        description: Run interactive Go interpreter in Jupyter Notebook browser. As of `2023-06-04`, it is using `gomacro` interpreter and can have issues with loading 3rd party pacakges.
+        description: Run interactive Go interpreter in Jupyter Notebook browser. As of `2023-06-04`, it is using `gomacro` interpreter and can have issues with loading 3rd party packages.
         url: https://github.com/gopherdata/gophernotes
         name: gophernotes
         author: https://github.com/gopherdata
@@ -1783,7 +1783,7 @@ groups:
           - go install github.com/gopherdata/gophernotes@v0.7.5
           - "# more instructions on how to install Jupyter Notebook Go kernel in original repo"
       - title: Run interactive Go interpreter
-        description: This interpreter works with 3rd party pacakges located in `$GOPATH/src`. It can also be triggered within Go programmatically via `Eval()`. Works everywhere Go works.
+        description: This interpreter works with 3rd party packages located in `$GOPATH/src`. It can also be triggered within Go programmatically via `Eval()`. Works everywhere Go works.
         url: https://github.com/traefik/yaegi
         name: yaegi
         author: https://github.com/traefik
@@ -1868,7 +1868,7 @@ groups:
           - more instructions in original repo
       - title: Wrap command
         name: os/exec
-        description: Orignally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/).
+        description: Originally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/).
         example_content_ext: go
         example_content: |
           cmd := exec.Command("ls", "/usr/local/bin")
@@ -1876,7 +1876,7 @@ groups:
           cmd.Stderr = os.Stderr
           return cmd.Run()
       - title: Capture output of command to file
-        description: Orignally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/).
+        description: Originally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/).
         author: Aaron Son
         name: os/exec
         example_content_ext: go
@@ -1891,7 +1891,7 @@ groups:
           cmd.Stderr = log
           return cmd.Run()
       - title: Capture output of command and process it
-        description: Orignally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/).
+        description: Originally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/).
         author: Aaron Son
         name: os/exec
         example_content_ext: go
@@ -1917,7 +1917,7 @@ groups:
           }
           return cmd.Wait()
       - title: Piping between processes
-        description: "`ls /usr/local/bin | grep pip`. Orignally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/)."
+        description: "`ls /usr/local/bin | grep pip`. Originally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/)."
         author: Aaron Son
         name: os/exec
         example_content_ext: go
@@ -1942,7 +1942,7 @@ groups:
           grep.Stdout = os.Stdout
           return grep.Run()
       - title: "`errgroup` and CommandContext"
-        description: Orignally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/).
+        description: Originally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/).
         author: Aaron Son
         name: os/exec
         example_content_ext: go
@@ -2003,7 +2003,7 @@ groups:
           51130 51128  gocode         go1.9.2 /Users/jbd/bin/gocode
       - title: ":fire: Monitor Go runtime metrics in browser"
         name: live-pprof
-        description: This is minimal single binary tool that lets you monitor Go app performance. This can be an attractive altenative for local development to avoid operations overhead of full monitoring setup (e.g. Prometheus, Grafana).
+        description: This is minimal single binary tool that lets you monitor Go app performance. This can be an attractive alternative for local development to avoid operations overhead of full monitoring setup (e.g. Prometheus, Grafana).
         url: https://github.com/moderato-app/live-pprof
         author: https://github.com/clement2026
         example_image_url: img/live-pprof.png
@@ -2055,9 +2055,9 @@ groups:
           //dd:span my:tag
           func GetSomeData(ctx context.Context) ([]byte, error) {
             ...
-      - title: Continious Profiling
+      - title: Continuous Profiling
         name: Pyroscope
-        description: This tool allows to injest profiling data from your application. You would need to add integration in your main file that will sample in-process data and send it to Pyroscope. Here are useful resources [blog-go-memory-leaks](https://grafana.com/blog/2023/04/19/how-to-troubleshoot-memory-leaks-in-go-with-grafana-pyroscope/).
+        description: This tool allows to ingest profiling data from your application. You would need to add integration in your main file that will sample in-process data and send it to Pyroscope. Here are useful resources [blog-go-memory-leaks](https://grafana.com/blog/2023/04/19/how-to-troubleshoot-memory-leaks-in-go-with-grafana-pyroscope/).
         url: https://github.com/grafana/pyroscope
         author: Grafana Labs
         example_image_url: https://user-images.githubusercontent.com/23323466/143324845-16ff72df-231e-412d-bd0a-38ef2e09cba8.gif
@@ -2303,7 +2303,7 @@ groups:
           go tool pprof http://localhost:6060/debug/pprof/profile?seconds=30
           curl -o trace.out http://localhost:6060/debug/pprof/trace?seconds=5
       - title: Generate traces
-        description: Produce a trace of execution of tests in pacakge.
+        description: Produce a trace of execution of tests in package.
         name: "go test"
         commands:
           - go test -trace trace.out .
@@ -2510,7 +2510,7 @@ groups:
                 cmd/kube-controller-manager/app/controllermanager.go:216:40: k8s.io/kubernetes/cmd/kube-controller-manager/app.Run calls k8s.io/apiserver/pkg/server.SecureServingInfo.Serve, which eventually calls golang.org/x/net/http2.ConfigureServer
                   requirements:
                     - go install golang.org/x/vuln/cmd/govulncheck@latest
-      - title: ":fire: Detect escalated priviledges in dependencies"
+      - title: ":fire: Detect escalated privileges in dependencies"
         description: Capslock is a capability analysis CLI for Go packages that informs users of which privileged operations a given package can access. This works by classifying the capabilities of Go packages by following transitive calls to privileged standard library operations. The recent increase in supply chain attacks targeting open source software has highlighted that third party dependencies should not be inherently trusted. Capabilities indicate what permissions a package has access to, and can be used in conjunction with other security signals to indicate which code requires additional scrutiny before it can be considered trusted.
         url: https://github.com/google/capslock
         author: Google
@@ -2682,7 +2682,7 @@ groups:
           client/orm/hints/db_hints_test.go:95:2: expected-actual: need to reverse actual and expected values (testifylint)
           core/config/env/env.go:95:15: fmt.Errorf can be replaced with errors.New (perfsprint)
       - title: Detect non-exhaustive switch and map
-        description: This `go vet` compatible analyzer checks for exhaustive switch statemnts and map literals. It works for enums with underyling integer, float, or string types (struct based enums are not supported).
+        description: This `go vet` compatible analyzer checks for exhaustive switch statements and map literals. It works for enums with underlying integer, float, or string types (struct based enums are not supported).
         name: exhaustive
         url: https://github.com/nishanths/exhaustive
         author: https://github.com/nishanths
@@ -2728,7 +2728,7 @@ groups:
         requirements:
           - go install github.com/nishanths/exhaustive/cmd/exhaustive@latest
       - title: Detect structs with uninitialized fields
-        description: This tool finds instatiations of structs with zero values. It supports struct tags to mark fields as optional. This may help to prevent unexpected zero values.
+        description: This tool finds instantiations of structs with zero values. It supports struct tags to mark fields as optional. This may help to prevent unexpected zero values.
         url: https://github.com/GaijinEntertainment/go-exhaustruct
         name: go-exhaustruct
         author: https://github.com/xobotyi
@@ -2758,7 +2758,7 @@ groups:
         requirements:
           - go get -u github.com/GaijinEntertainment/go-exhaustruct/v3/cmd/exhaustruct
       - title: ":fire: Detect unreachable functions"
-        description: This static analysis tool detects when functions can not be reached in any execution. There is also `-test` mode that shows if function is reacheable by any of tests.
+        description: This static analysis tool detects when functions can not be reached in any execution. There is also `-test` mode that shows if function is reachable by any of tests.
         name: deadcode
         url: https://pkg.go.dev/golang.org/x/tools/cmd/deadcode
         author: "[Alan Donovan](https://github.com/adonovan), official Go team"
@@ -2770,7 +2770,7 @@ groups:
         requirements:
           - go install golang.org/x/tools/cmd/deadcode@latest
       - title: Detect unsafe code
-        description: Find incorrect uses of `reflect.SliceHeader`, `reflect.StringHeader`, and unsafe casts between structs with architecture-sized fields. Reseach paper ["Uncovering the Hidden Dangers Finding Unsafe Go Code in the Wild"](https://arxiv.org/abs/2010.11242) presented at 19th IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom 2020).
+        description: Find incorrect uses of `reflect.SliceHeader`, `reflect.StringHeader`, and unsafe casts between structs with architecture-sized fields. Research paper ["Uncovering the Hidden Dangers Finding Unsafe Go Code in the Wild"](https://arxiv.org/abs/2010.11242) presented at 19th IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom 2020).
         name: go-safer
         url: https://github.com/jlauinger/go-safer
         author: https://github.com/jlauinger
@@ -2784,7 +2784,7 @@ groups:
           header_in_struct/header_in_struct.go:16:2: assigning to reflect header object
         requirements:
           - go install github.com/jlauinger/go-safer@latest
-      - title: ":fire: Detect `panic` without explaning comment"
+      - title: ":fire: Detect `panic` without explaining comment"
         description: Panic should only be used very sparingly, for catching bugs basically, and thus deserve a comment to confirm that that's indeed the case.
         name: panic-linter
         url: https://github.com/ldemailly/panic-linter
@@ -2814,7 +2814,7 @@ groups:
         requirements:
           - go install github.com/mdempsky/unconvert@latest
       - title: Detect global variables
-        description: Global variables are an input to functions that is not visible in the functions signature, complicate testing, reduces readability and increase the complexity of code. However, sometimes global varaibles make sense. This tool skips such common scenarios. This tool can be used in CI, albeit it is very strict. This tool is useful for investigations.
+        description: Global variables are an input to functions that is not visible in the functions signature, complicate testing, reduces readability and increase the complexity of code. However, sometimes global variables make sense. This tool skips such common scenarios. This tool can be used in CI, albeit it is very strict. This tool is useful for investigations.
         name: gochecknoglobals
         url: https://github.com/leighmcculloch/gochecknoglobals
         author: https://github.com/leighmcculloch
@@ -2829,7 +2829,7 @@ groups:
         requirements:
           - go install 4d63.com/gochecknoglobals@latest
       - title: Detect slices that could be preallocated
-        description: Preallocating slices can sometimes significantly improve performance. This tool detects common scenarions where preallocating can be beneficial. This tool is not using `golang.org/x/tools/go/analysis` toolchain.
+        description: Preallocating slices can sometimes significantly improve performance. This tool detects common scenarios where preallocating can be beneficial. This tool is not using `golang.org/x/tools/go/analysis` toolchain.
         url: https://github.com/alexkohler/prealloc
         author: https://github.com/alexkohler
         name: prealloc
@@ -2847,7 +2847,7 @@ groups:
         requirements:
           - go install github.com/alexkohler/prealloc@latest
       - title: Detect unnecessary import aliases
-        description: It is common guideline to avoid renaming imports unless there are collisions. This tool detects where original pacakge name would not collide. This tool is useful for investigations. This tool is not using `golang.org/x/tools/go/analysis` toolchain.
+        description: It is common guideline to avoid renaming imports unless there are collisions. This tool detects where original package name would not collide. This tool is useful for investigations. This tool is not using `golang.org/x/tools/go/analysis` toolchain.
         url: https://github.com/alexkohler/unimport
         author: https://github.com/alexkohler
         name: unimport
@@ -2967,7 +2967,7 @@ groups:
         requirements:
           - go install github.com/devnev/refdir@latest
       - title: Detect tests with wrong `t.Parallel()` usage
-        description: This linter checks for incorroect usage of `t.Parallel()` calls. It will detect if `t.Parallel()` is missing.
+        description: This linter checks for incorrect usage of `t.Parallel()` calls. It will detect if `t.Parallel()` is missing.
         url: https://github.com/kunwardeep/paralleltest
         name: paralleltest
         author: https://github.com/kunwardeep
@@ -2981,7 +2981,7 @@ groups:
         requirements:
           - go install github.com/kunwardeep/paralleltest@latest
       - title: Detect tests with wrong `t.Parallel()` usage
-        description: This linter checks for incorroect usage of `t.Parallel()` calls.
+        description: This linter checks for incorrect usage of `t.Parallel()` calls.
         url: https://github.com/moricho/tparallel
         name: tparallel
         author: https://github.com/moricho
@@ -3047,12 +3047,12 @@ groups:
         name: pat/boundcheck
         requirements:
           - go install github.com/maruel/pat/cmd/...@latest
-        description: This tool detects bound checks in source code by anaylisng compiled code. This is useful for audit.
+        description: This tool detects bound checks in source code by analysing compiled code. This is useful for audit.
         example_image_url: https://github.com/maruel/pat/wiki/boundcheck.png
         commands:
           - boundcheck -pkg ./cmd/nin | less -R
       - title: Calculate Cognitive Complexity
-        description: Congitive Complexity as defined in this tool can be more illustrative than Cyclometric Complexity. Research paper ["Cognitive Complexity - a new way of measuring understandability"](https://www.sonarsource.com/docs/CognitiveComplexity.pdf), 2021.
+        description: Cognitive Complexity as defined in this tool can be more illustrative than Cyclometric Complexity. Research paper ["Cognitive Complexity - a new way of measuring understandability"](https://www.sonarsource.com/docs/CognitiveComplexity.pdf), 2021.
         name: gocognit
         url: https://github.com/uudashr/gocognit
         author: https://github.com/uudashr
@@ -3124,13 +3124,13 @@ groups:
         requirements:
           - go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
       - title: Calculate Cyclomatic Complexity
-        description: This linter calculates cyclomatic copmlexity of functions or packages. It can select minimum compexlity and act as blocking linter in CI pipelines. The key offering from this linter is that it can calculate avg cyclomatic compelxity on package.
+        description: This linter calculates cyclomatic complexity of functions or packages. It can select minimum complexity and act as blocking linter in CI pipelines. The key offering from this linter is that it can calculate avg cyclomatic complexity on package.
         url: https://github.com/bkielbasa/cyclop
         name: cyclop
         author: https://github.com/bkielbasa
         commands:
           - cyclop ./...
-          - "# to find packages with avg cyclomatic copmlexity above maximum"
+          - "# to find packages with avg cyclomatic complexity above maximum"
           - cyclop -packageAverage 5 -maxComplexity 10000 ./...
         example_output: |
           /kubernetes/test/integration/scheduler/scoring/priorities_test.go:17:1: the average complexity for the package scoring is 6.100000, max is 5.000000
@@ -3234,7 +3234,7 @@ groups:
             Blue      = Color{3}
           )
       - title: Analyze function callsites
-        description: Scrape callsite information about functions to lern better how functions are beign used. This can help in refactoring, naming, OOP. This tool calcuates frequency of names on assignments in returns and frequency of names in arguments. This can be used to detect ignored returns as well.
+        description: Scrape callsite information about functions to learn better how functions are beinn used. This can help in refactoring, naming, OOP. This tool calculates frequency of names on assignments in returns and frequency of names in arguments. This can be used to detect ignored returns as well.
         author: https://github.com/nikolaydubina
         url: https://github.com/nikolaydubina/go-callsite-stats
         name: go-callsite-stats
