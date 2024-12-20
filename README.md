@@ -1945,7 +1945,7 @@ Requirements
 go install github.com/fatih/gomodifytags@latest
 ```
 
-### [⏫](#contents) :fire: Generate code from OpenAPI 3 specification with [oapi-codegen](https://github.com/deepmap/oapi-codegen)
+### [⏫](#contents) :fire: Generate code from OpenAPI 3 specification with [oapi-codegen](https://github.com/oapi-codegen/oapi-codegen)
 
 Generate Go client and server boilerplate from OpenAPI 3 specifications. — [@deepmap](https://github.com/deepmap)
 
@@ -1956,7 +1956,7 @@ oapi-codegen --config=config.yaml api.yaml
 
 Requirements
 ```
-go install github.com/deepmap/oapi-codegen/v2/cmd/oapi-codegen@latest
+go install github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@latest
 ```
 
 ### [⏫](#contents) :fire: Generate C-Go Bindings with [c-for-go](https://github.com/xlab/c-for-go?tab=readme-ov-file)

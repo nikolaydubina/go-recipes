@@ -1202,11 +1202,11 @@ groups:
         description: "Generate Go client and server boilerplate from OpenAPI 3 specifications."
         name: oapi-codegen
         author: https://github.com/deepmap
-        url: https://github.com/deepmap/oapi-codegen
+        url: https://github.com/oapi-codegen/oapi-codegen
         commands:
           - oapi-codegen --config=config.yaml api.yaml
         requirements:
-          - go install github.com/deepmap/oapi-codegen/v2/cmd/oapi-codegen@latest
+          - go install github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@latest
       - title: ":fire: Generate C-Go Bindings"
         description: "This project allows to reuse existing C/C++ libraries in your Go applications, by automatically creating c-go bindings for a given set of C headers and the manifest file. We believe in component-based software engineering and think that reusing C/C++ code in Go applications could bring a huge boost to developer's productivity and system's performance. Read more about the motivation: top reasons to use bindings."
         name: c-for-go
