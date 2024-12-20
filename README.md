@@ -496,9 +496,9 @@ go install github.com/axw/gocov/gocov@latest
 go install github.com/matm/gocov-html/cmd/gocov-html@latest
 ```
 
-### [⏫](#contents) :fire: Browse coverage with [xgo](https://github.com/matm/gocov-html)
+### [⏫](#contents) :fire: Browse coverage with [xgo](https://github.com/xhd2015/xgo)
 
-The displayed coverage is a combination of coverage and git diff. By default, only modified lines were shown. This helps to quickly locate changes that were not covered, and add tests for them incrementally. — [@matm](https://github.com/matm)
+The displayed coverage is a combination of coverage and git diff. By default, only modified lines were shown. This helps to quickly locate changes that were not covered, and add tests for them incrementally. — [@xhd2015](https://github.com/xhd2015)
 
 
 ```
