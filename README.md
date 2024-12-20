@@ -168,7 +168,7 @@
    + [ Auto-Instrument all functions with `go-instrument`](#-auto-instrument-all-functions-with-go-instrument)
    + [ Auto-Instrument all functions with `otelinji`](#-auto-instrument-all-functions-with-otelinji)
    + [ Auto-Instrument functions for DataDog with `orchestrion`](#-auto-instrument-functions-for-datadog-with-orchestrion)
-   + [ Continious Profiling with `Pyroscope`](#-continious-profiling-with-pyroscope)
+   + [ Continuous Profiling with `Pyroscope`](#-continuous-profiling-with-pyroscope)
  - Benchmark
    + [ Run benchmarks](#-run-benchmarks)
    + [ Table-driven benchmarks](#-table-driven-benchmarks)
@@ -204,7 +204,7 @@
    + [ Go Code Review Comments](#style-guide)
  - Security
    + [ Run official vulnerability check with `govulncheck`](#-run-official-vulnerability-check-with-govulncheck)
-   + [ :fire: Detect escalated priviledges in dependencies with `capslock`](#-fire-detect-escalated-priviledges-in-dependencies-with-capslock)
+   + [ :fire: Detect escalated privileges in dependencies with `capslock`](#-fire-detect-escalated-privileges-in-dependencies-with-capslock)
    + [ :fire: Run static analysis with `gosec`](#-fire-run-static-analysis-with-gosec)
    + [ Perform Taint Analysis with `taint`](#-perform-taint-analysis-with-taint)
    + [ :fire: Use Microsoft Go compiler with `microsoft/go`](#-fire-use-microsoft-go-compiler-with-microsoftgo)
@@ -220,7 +220,7 @@
    + [ Detect structs with uninitialized fields with `go-exhaustruct`](#-detect-structs-with-uninitialized-fields-with-go-exhaustruct)
    + [ :fire: Detect unreachable functions with `deadcode`](#-fire-detect-unreachable-functions-with-deadcode)
    + [ Detect unsafe code with `go-safer`](#-detect-unsafe-code-with-go-safer)
-   + [ :fire: Detect `panic` without explaning comment with `panic-linter`](#-fire-detect-panic-without-explaning-comment-with-panic-linter)
+   + [ :fire: Detect `panic` without explaining comment with `panic-linter`](#-fire-detect-panic-without-explaining-comment-with-panic-linter)
    + [ Detect unnecessary type conversions with `unconvert`](#-detect-unnecessary-type-conversions-with-unconvert)
    + [ Detect global variables with `gochecknoglobals`](#-detect-global-variables-with-gochecknoglobals)
    + [ Detect slices that could be preallocated with `prealloc`](#-detect-slices-that-could-be-preallocated-with-prealloc)
@@ -251,7 +251,7 @@
 
 ### [⏫](#contents) Advanced autocompletion with [Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 
-Start typing and after few seconds you will get autocompletion suggestion. Some useful ways to interact with it listed bellow.
+Start typing and after few seconds you will get autocompletion suggestion. Some useful ways to interact with it listed below.
 
 
 ```
@@ -326,7 +326,7 @@ go install github.com/charmbracelet/mods@latest
 
 ### [⏫](#contents) Test case recommendation with [charmbracelet/mods](https://github.com/charmbracelet/mods)
 
-Concatenate two files and ask to recommend missing test cases. It is not precise, has high false positive and high false negative rate. Often can not detect that tests cases are present at all. However, it can give a fresh perspective on your code. Best results are produced when asking succinct short replies. Example outputs bellow.
+Concatenate two files and ask to recommend missing test cases. It is not precise, has high false positive and high false negative rate. Often can not detect that tests cases are present at all. However, it can give a fresh perspective on your code. Best results are produced when asking succinct short replies. Example outputs below.
 
 
 ```
@@ -358,7 +358,7 @@ functions.
 
 ### [⏫](#contents) Time complexity estimate with [charmbracelet/mods](https://github.com/charmbracelet/mods)
 
-This is one of recommended use cases by OpenAI website. It can produce fairly good estimations. However, in its direct form usefulness is questionable, since complex cases are not handled precisely enough, educational potential is limited, and simple cases do not require this. Perhaps, this will be utilized in future work on using models in compiler and programming. Copy function and pipe it to model with prompt asking for time complexity estimation. Bellow is an example.
+This is one of recommended use cases by OpenAI website. It can produce fairly good estimations. However, in its direct form usefulness is questionable, since complex cases are not handled precisely enough, educational potential is limited, and simple cases do not require this. Perhaps, this will be utilized in future work on using models in compiler and programming. Copy function and pipe it to model with prompt asking for time complexity estimation. Below is an example.
 
 
 ```
@@ -1063,7 +1063,7 @@ go list -m -versions github.com/google/gofuzz
 
 ### [⏫](#contents) :fire: Get go module libyear, number of releases, version delta with [go-libyear](https://github.com/nieomylnieja/go-libyear)
 
-[libyear](https://libyear.com) is asimple measure of software dependency freshness. It is a single number telling you how up-to-date your dependencies are. For example Rails 5.0.0 (June 2016) is 1 libyear behind 5.1.2 (June 2017). This tool can also compute number of releases, and version number delta. — [@nieomylnieja](https://github.com/nieomylnieja)
+[libyear](https://libyear.com) is a simple measure of software dependency freshness. It is a single number telling you how up-to-date your dependencies are. For example Rails 5.0.0 (June 2016) is 1 libyear behind 5.1.2 (June 2017). This tool can also compute number of releases, and version number delta. — [@nieomylnieja](https://github.com/nieomylnieja)
 
 
 ```
@@ -1306,7 +1306,7 @@ Requirements
 ```
 manually defining Go main.go script to invoke library
 graphviz
-manual coloring spec (DB, calsses)
+manual coloring spec (DB, classes)
 ```
 
 ### [⏫](#contents) Make graph of function calls with [callgraph](https://golang.org/x/tools/cmd/callgraph)
@@ -1472,7 +1472,7 @@ go install github.com/fe3dback/go-arch-lint@latest
 
 ### [⏫](#contents) Run `go:generate` in parallel
 
-Official Go team [encourages](https://github.com/golang/go/issues/20520) to run sequentially. However, in certain situations, such as lots of mocks, parallelization helps a lot, albeit, you should consider including your generated files in git. The solution bellow spawns multiple processes, each per pkg.
+Official Go team [encourages](https://github.com/golang/go/issues/20520) to run sequentially. However, in certain situations, such as lots of mocks, parallelization helps a lot, albeit, you should consider including your generated files in git. The solution below spawns multiple processes, each per pkg.
 
 
 ```
@@ -1536,7 +1536,7 @@ go install github.com/nikolaydubina/go-enum-encoding@latest
 
 ### [⏫](#contents) :fire: Generate enums with [goenums](https://github.com/zarldev/goenums)
 
-Genereate strict and fast enums. Generated code is much more tightly typed than just iota defined enums. You will get JSON decoder and encoder as well. This tool allows to generate extra fields and default values in enum structs. — [@zarldev](https://github.com/zarldev)
+Generate strict and fast enums. Generated code is much more tightly typed than just iota defined enums. You will get JSON decoder and encoder as well. This tool allows to generate extra fields and default values in enum structs. — [@zarldev](https://github.com/zarldev)
 
 
 ```
@@ -1674,7 +1674,7 @@ go install github.com/atombender/go-jsonschema@latest
 
 ### [⏫](#contents) Generate constructor for a struct with [gonstructor](https://github.com/moznion/gonstructor)
 
-Constructor is a widely used useful pattern. This tool generates basic version of it that passes arguments to struct. It also supports intializer method. — [@moznion](https://github.com/moznion)
+Constructor is a widely used useful pattern. This tool generates basic version of it that passes arguments to struct. It also supports initializer method. — [@moznion](https://github.com/moznion)
 
 ```go
 //go:generate gonstructor --type=Structure --constructorTypes=allArgs
@@ -1854,6 +1854,10 @@ type File interface {
 }
 ```
 
+Requirements
+```
+go install github.com/rjeczalik/interfaces/cmd/interfacer@latest
+```
 
 ### [⏫](#contents) Generate interface for a struct with [struct2interface](https://github.com/reflog/struct2interface)
 
@@ -1907,6 +1911,10 @@ func (r *Record) UnmarshalCSV(record []string) error {
 }
 ```
 
+Requirements
+```
+go install github.com/rjeczalik/interfaces/cmd/structer@latest
+```
 
 ### [⏫](#contents) :fire: Generate decorator for interface with [gowrap](https://github.com/hexdigest/gowrap)
 
@@ -1991,7 +1999,7 @@ gofmt -w -r 'interface{} -> any' .
 
 ### [⏫](#contents) Apply refactoring patches with [gopatch](https://github.com/uber-go/gopatch)
 
-With this tool it is very easy to perform refactorings. It is also possible to organize and maintan your refactoring procedures through patches. — Uber
+With this tool it is very easy to perform refactorings. It is also possible to organize and maintain your refactoring procedures through patches. — Uber
 
 ```go
 @@
@@ -2062,7 +2070,7 @@ go install github.com/daixiang0/gci@latest
 
 ### [⏫](#contents) Keep consistent ordering of imports with [goimportx](https://github.com/anqiansong/goimportx/tree/main)
 
-This tool groups and sorts imports within groups. It keeps consitent ordering of groups. Detection of groups may be not always accurate. — [@anqiansong](https://github.com/anqiansong)
+This tool groups and sorts imports within groups. It keeps consistent ordering of groups. Detection of groups may be not always accurate. — [@anqiansong](https://github.com/anqiansong)
 
 
 ```
@@ -2093,7 +2101,7 @@ go install github.com/anqiansong/goimportx@latest
 
 ### [⏫](#contents) Errors with return traces with [errtrace](https://github.com/bracesdev/errtrace)
 
-Return trace is the path that error took to return to user. This can be more illustrative than typical stack trace that procuded the error. This tool have conenienve automatic instrumentation CLI to update your code. — [@bracesdev](https://github.com/bracesdev)
+Return trace is the path that error took to return to user. This can be more illustrative than typical stack trace that produced the error. This tool have convenience automatic instrumentation CLI to update your code. — [@bracesdev](https://github.com/bracesdev)
 
 
 ```
@@ -2102,7 +2110,7 @@ git ls-files -- '*.go' | xargs errtrace -w
 
 Requirements
 ```
-use packae "braces.dev/errtrace"
+use package "braces.dev/errtrace"
 instrument code by wrapping errors through all functions with this library
 ```
 
@@ -2161,7 +2169,7 @@ go install github.com/maruel/panicparse/v2/cmd/pp@latest
 
 ### [⏫](#contents) :fire: Fetch private dependencies in CI
 
-If you are building in CI (e.g. GitHub Actions), you need to download private repositories. Common way to accomplish this is with job like bellow.
+If you are building in CI (e.g. GitHub Actions), you need to download private repositories. Common way to accomplish this is with job like below.
 
 ```yaml
 name: go private modules
@@ -2218,7 +2226,7 @@ go build -gcflags="-l -l -l -l" .
 
 ### [⏫](#contents) Profile-guided optimization
 
-Starting go 1.20 compiler supports Profile-gudied optimization. You need to collect profiles and then supply in compulation to compiler. You can get improvement in performance by around 4%. Officual [guideline](https://go.dev/doc/pgo).
+Starting go 1.20 compiler supports Profile-guided optimization. You need to collect profiles and then supply in computation to compiler. You can get improvement in performance by around 4%. Official [guideline](https://go.dev/doc/pgo).
 
 
 ```
@@ -2229,7 +2237,7 @@ Starting go 1.20 compiler supports Profile-gudied optimization. You need to coll
 
 ### [⏫](#contents) Manually disable or enable `cgo`
 
-Disable `cgo` with `CGO_ENABLED=0` and enable with `CGO_ENABLED=1`. If you don't, `cgo` may end-up being enabled or code dynamically linked if, for example, you use some `net` or `os` packages. You may want to disable `cgo` to improve performance, since complier and runtime would have easier job optimizing code. This also should reduce your image size, as you can have alpine image with less shared libraries.
+Disable `cgo` with `CGO_ENABLED=0` and enable with `CGO_ENABLED=1`. If you don't, `cgo` may end-up being enabled or code dynamically linked if, for example, you use some `net` or `os` packages. You may want to disable `cgo` to improve performance, since compiler and runtime would have easier job optimizing code. This also should reduce your image size, as you can have alpine image with less shared libraries.
 
 
 ### [⏫](#contents) Include metadata in binary during compilation with `ldflags`
@@ -2256,7 +2264,7 @@ func main() {
 
 ### [⏫](#contents) :fire: Check if symbol or package is included in binary
 
-This is useful for investigations during perofmance optimization, security, or compiler work. First spotted in [blog](https://rednafi.com/go/omit_dev_dependencies_in_binaries/).
+This is useful for investigations during performance optimization, security, or compiler work. First spotted in [blog](https://rednafi.com/go/omit_dev_dependencies_in_binaries/).
 
 
 ```
@@ -2487,7 +2495,7 @@ go install loov.dev/lensm@main
 
 ### [⏫](#contents) View Go assembly with color annotation with [pat/disfunc](https://github.com/maruel/pat)
 
-This tool shows assmebly of functions and what lines mean by color. — [@maruel](https://github.com/maruel)
+This tool shows assembly of functions and what lines mean by color. — [@maruel](https://github.com/maruel)
 
 
 ```
@@ -2634,7 +2642,7 @@ go install github.com/SilverRainZ/go-ssaviz@latest
 
 ### [⏫](#contents) Make graph of AST with [astgraph](https://github.com/xiazemin/ast_graph)
 
-This tool visualizes AST as graph, which may be useful to navigate and undertand Go AST. This tool has not been maintaned for a while. — [@xiazemin](https://github.com/xiazemin)
+This tool visualizes AST as graph, which may be useful to navigate and understand Go AST. This tool has not been maintained for a while. — [@xiazemin](https://github.com/xiazemin)
 
 <div align="center"><img src="https://github.com/xiazemin/ast_graph/raw/master/tree.svg" style="margin: 8px; max-height: 640px;"></div>
 
@@ -2646,7 +2654,7 @@ graphviz
 
 ### [⏫](#contents) Convert C assembly to Go assembly with [c2goasm](https://github.com/minio/c2goasm)
 
-This tool can convert C assembly `.s` into Go assbmely `.s` files. This is useful for reusing compiler optimizations such as SIMD or loop unrolling in C, which can lead to 10x speedups. However, project has been archieved 4+ years ago. — [@fwessels](https://github.com/fwessels)
+This tool can convert C assembly `.s` into Go assbmely `.s` files. This is useful for reusing compiler optimizations such as SIMD or loop unrolling in C, which can lead to 10x speedups. However, project has been archived 4+ years ago. — [@fwessels](https://github.com/fwessels)
 
 
 ```
@@ -2725,7 +2733,7 @@ Improved Go Playground featuring dark theme, code autocomplete, vim mode, WebAss
 
 ### [⏫](#contents) :fire: Use TinyGo Playground with [tinygo](https://play.tinygo.org)
 
-TinyGo is an alternative Go compiler that focuses on embedded devices, and WASM. There are some Go constructs and packages that not supported. In this online playground you can veryify your code.
+TinyGo is an alternative Go compiler that focuses on embedded devices, and WASM. There are some Go constructs and packages that not supported. In this online playground you can verify your code.
 
 <div align="center"><img src="img/tinygo-playground.png" style="margin: 8px; max-height: 640px;"></div>
 
@@ -2733,7 +2741,7 @@ TinyGo is an alternative Go compiler that focuses on embedded devices, and WASM.
 
 ### [⏫](#contents) Run interactive Go kernels in Jupyter Notebook with [gophernotes](https://github.com/gopherdata/gophernotes)
 
-Run interactive Go interpreter in Jupyter Notebook browser. As of `2023-06-04`, it is using `gomacro` interpreter and can have issues with loading 3rd party pacakges. — [@gopherdata](https://github.com/gopherdata)
+Run interactive Go interpreter in Jupyter Notebook browser. As of `2023-06-04`, it is using `gomacro` interpreter and can have issues with loading 3rd party packages. — [@gopherdata](https://github.com/gopherdata)
 
 <div align="center"><img src="https://github.com/gopherdata/gophernotes/raw/master/files/jupyter.gif" style="margin: 8px; max-height: 640px;"></div>
 
@@ -2747,7 +2755,7 @@ go install github.com/gopherdata/gophernotes@v0.7.5
 
 ### [⏫](#contents) Run interactive Go interpreter with [yaegi](https://github.com/traefik/yaegi)
 
-This interpreter works with 3rd party pacakges located in `$GOPATH/src`. It can also be triggered within Go programmatically via `Eval()`. Works everywhere Go works. — [@traefik](https://github.com/traefik)
+This interpreter works with 3rd party packages located in `$GOPATH/src`. It can also be triggered within Go programmatically via `Eval()`. Works everywhere Go works. — [@traefik](https://github.com/traefik)
 
 
 ```
@@ -2867,7 +2875,7 @@ more instructions in original repo
 
 ### [⏫](#contents) Wrap command with `os/exec`
 
-Orignally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/).
+Originally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/).
 
 ```go
 cmd := exec.Command("ls", "/usr/local/bin")
@@ -2879,7 +2887,7 @@ return cmd.Run()
 
 ### [⏫](#contents) Capture output of command to file with `os/exec`
 
-Orignally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/). — Aaron Son
+Originally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/). — Aaron Son
 
 ```go
 log, err := os.Create("output.log")
@@ -2896,7 +2904,7 @@ return cmd.Run()
 
 ### [⏫](#contents) Capture output of command and process it with `os/exec`
 
-Orignally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/). — Aaron Son
+Originally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/). — Aaron Son
 
 ```go
 cmd := exec.Command("ls", "/usr/local/bin")
@@ -2924,7 +2932,7 @@ return cmd.Wait()
 
 ### [⏫](#contents) Piping between processes with `os/exec`
 
-`ls /usr/local/bin | grep pip`. Orignally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/). — Aaron Son
+`ls /usr/local/bin | grep pip`. Originally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/). — Aaron Son
 
 ```go
 r, w, err := os.Pipe()
@@ -2951,7 +2959,7 @@ return grep.Run()
 
 ### [⏫](#contents) `errgroup` and CommandContext with `os/exec`
 
-Orignally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/). — Aaron Son
+Originally posted in [blog](https://www.dolthub.com/blog/2022-11-28-go-os-exec-patterns/). — Aaron Son
 
 ```go
 eg, ctx := errgroup.WithContext(context.Background())
@@ -3033,7 +3041,7 @@ go install github.com/google/gops@latest
 
 ### [⏫](#contents) :fire: Monitor Go runtime metrics in browser with [live-pprof](https://github.com/moderato-app/live-pprof)
 
-This is minimal single binary tool that lets you monitor Go app performance. This can be an attractive altenative for local development to avoid operations overhead of full monitoring setup (e.g. Prometheus, Grafana). — [@clement2026](https://github.com/clement2026)
+This is minimal single binary tool that lets you monitor Go app performance. This can be an attractive alternative for local development to avoid operations overhead of full monitoring setup (e.g. Prometheus, Grafana). — [@clement2026](https://github.com/clement2026)
 
 
 ```
@@ -3116,9 +3124,9 @@ Requirements
 go install github.com/datadog/orchestrion@latest
 ```
 
-### [⏫](#contents) Continious Profiling with [Pyroscope](https://github.com/grafana/pyroscope)
+### [⏫](#contents) Continuous Profiling with [Pyroscope](https://github.com/grafana/pyroscope)
 
-This tool allows to injest profiling data from your application. You would need to add integration in your main file that will sample in-process data and send it to Pyroscope. Here are useful resources [blog-go-memory-leaks](https://grafana.com/blog/2023/04/19/how-to-troubleshoot-memory-leaks-in-go-with-grafana-pyroscope/). — Grafana Labs
+This tool allows to ingest profiling data from your application. You would need to add integration in your main file that will sample in-process data and send it to Pyroscope. Here are useful resources [blog-go-memory-leaks](https://grafana.com/blog/2023/04/19/how-to-troubleshoot-memory-leaks-in-go-with-grafana-pyroscope/). — Grafana Labs
 
 <div align="center"><img src="https://user-images.githubusercontent.com/23323466/143324845-16ff72df-231e-412d-bd0a-38ef2e09cba8.gif" style="margin: 8px; max-height: 640px;"></div>
 
@@ -3460,7 +3468,7 @@ curl -o trace.out http://localhost:6060/debug/pprof/trace?seconds=5
 
 ### [⏫](#contents) Generate traces with `go test`
 
-Produce a trace of execution of tests in pacakge.
+Produce a trace of execution of tests in package.
 
 
 ```
@@ -3729,7 +3737,7 @@ Vulnerability #1: GO-2023-1571
 ```
 
 
-### [⏫](#contents) :fire: Detect escalated priviledges in dependencies with [capslock](https://github.com/google/capslock)
+### [⏫](#contents) :fire: Detect escalated privileges in dependencies with [capslock](https://github.com/google/capslock)
 
 Capslock is a capability analysis CLI for Go packages that informs users of which privileged operations a given package can access. This works by classifying the capabilities of Go packages by following transitive calls to privileged standard library operations. The recent increase in supply chain attacks targeting open source software has highlighted that third party dependencies should not be inherently trusted. Capabilities indicate what permissions a package has access to, and can be used in conjunction with other security signals to indicate which code requires additional scrutiny before it can be considered trusted. — Google
 
@@ -3934,12 +3942,12 @@ go install -v github.com/go-critic/go-critic/cmd/gocritic@latest
 
 ### [⏫](#contents) Reference and run common linters with [golangci](https://github.com/golangci/golangci-lint)
 
-This tool has comprehensive list of linters. Owners of this aggregator keep track of active linters, their versions, and optimal configs. It contains many optimizations to make linters run fast by paralleism, distributing binaries and Docker images, utilising `golang.org/x/tools/go/analysis` toolchain.
+This tool has comprehensive list of linters. Owners of this aggregator keep track of active linters, their versions, and optimal configs. It contains many optimizations to make linters run fast by parallelism, distributing binaries and Docker images, utilising `golang.org/x/tools/go/analysis` toolchain.
 
 
 ### [⏫](#contents) Detect non-exhaustive switch and map with [exhaustive](https://github.com/nishanths/exhaustive)
 
-This `go vet` compatible analyzer checks for exhaustive switch statemnts and map literals. It works for enums with underyling integer, float, or string types (struct based enums are not supported). — [@nishanths](https://github.com/nishanths)
+This `go vet` compatible analyzer checks for exhaustive switch statements and map literals. It works for enums with underlying integer, float, or string types (struct based enums are not supported). — [@nishanths](https://github.com/nishanths)
 
 
 ```
@@ -3994,7 +4002,7 @@ go install github.com/nishanths/exhaustive/cmd/exhaustive@latest
 
 ### [⏫](#contents) Detect structs with uninitialized fields with [go-exhaustruct](https://github.com/GaijinEntertainment/go-exhaustruct)
 
-This tool finds instatiations of structs with zero values. It supports struct tags to mark fields as optional. This may help to prevent unexpected zero values. — [@xobotyi](https://github.com/xobotyi)
+This tool finds instantiations of structs with zero values. It supports struct tags to mark fields as optional. This may help to prevent unexpected zero values. — [@xobotyi](https://github.com/xobotyi)
 
 
 ```
@@ -4030,7 +4038,7 @@ go get -u github.com/GaijinEntertainment/go-exhaustruct/v3/cmd/exhaustruct
 
 ### [⏫](#contents) :fire: Detect unreachable functions with [deadcode](https://pkg.go.dev/golang.org/x/tools/cmd/deadcode)
 
-This static analysis tool detects when functions can not be reached in any execution. There is also `-test` mode that shows if function is reacheable by any of tests. — [Alan Donovan](https://github.com/adonovan), official Go team
+This static analysis tool detects when functions can not be reached in any execution. There is also `-test` mode that shows if function is reachable by any of tests. — [Alan Donovan](https://github.com/adonovan), official Go team
 
 
 ```
@@ -4050,7 +4058,7 @@ go install golang.org/x/tools/cmd/deadcode@latest
 
 ### [⏫](#contents) Detect unsafe code with [go-safer](https://github.com/jlauinger/go-safer)
 
-Find incorrect uses of `reflect.SliceHeader`, `reflect.StringHeader`, and unsafe casts between structs with architecture-sized fields. Reseach paper ["Uncovering the Hidden Dangers Finding Unsafe Go Code in the Wild"](https://arxiv.org/abs/2010.11242) presented at 19th IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom 2020). — [@jlauinger](https://github.com/jlauinger)
+Find incorrect uses of `reflect.SliceHeader`, `reflect.StringHeader`, and unsafe casts between structs with architecture-sized fields. Research paper ["Uncovering the Hidden Dangers Finding Unsafe Go Code in the Wild"](https://arxiv.org/abs/2010.11242) presented at 19th IEEE International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom 2020). — [@jlauinger](https://github.com/jlauinger)
 
 
 ```
@@ -4071,7 +4079,7 @@ Requirements
 go install github.com/jlauinger/go-safer@latest
 ```
 
-### [⏫](#contents) :fire: Detect `panic` without explaning comment with [panic-linter](https://github.com/ldemailly/panic-linter)
+### [⏫](#contents) :fire: Detect `panic` without explaining comment with [panic-linter](https://github.com/ldemailly/panic-linter)
 
 Panic should only be used very sparingly, for catching bugs basically, and thus deserve a comment to confirm that that's indeed the case. — [@ldemailly](https://github.com/ldemailly)
 
@@ -4110,7 +4118,7 @@ go install github.com/mdempsky/unconvert@latest
 
 ### [⏫](#contents) Detect global variables with [gochecknoglobals](https://github.com/leighmcculloch/gochecknoglobals)
 
-Global variables are an input to functions that is not visible in the functions signature, complicate testing, reduces readability and increase the complexity of code. However, sometimes global varaibles make sense. This tool skips such common scenarios. This tool can be used in CI, albeit it is very strict. This tool is useful for investigations. — [@leighmcculloch](https://github.com/leighmcculloch)
+Global variables are an input to functions that is not visible in the functions signature, complicate testing, reduces readability and increase the complexity of code. However, sometimes global variables make sense. This tool skips such common scenarios. This tool can be used in CI, albeit it is very strict. This tool is useful for investigations. — [@leighmcculloch](https://github.com/leighmcculloch)
 
 
 ```
@@ -4133,7 +4141,7 @@ go install 4d63.com/gochecknoglobals@latest
 
 ### [⏫](#contents) Detect slices that could be preallocated with [prealloc](https://github.com/alexkohler/prealloc)
 
-Preallocating slices can sometimes significantly improve performance. This tool detects common scenarions where preallocating can be beneficial. This tool is not using `golang.org/x/tools/go/analysis` toolchain. — [@alexkohler](https://github.com/alexkohler)
+Preallocating slices can sometimes significantly improve performance. This tool detects common scenarios where preallocating can be beneficial. This tool is not using `golang.org/x/tools/go/analysis` toolchain. — [@alexkohler](https://github.com/alexkohler)
 
 
 ```
@@ -4159,7 +4167,7 @@ go install github.com/alexkohler/prealloc@latest
 
 ### [⏫](#contents) Detect unnecessary import aliases with [unimport](https://github.com/alexkohler/unimport)
 
-It is common guideline to avoid renaming imports unless there are collisions. This tool detects where original pacakge name would not collide. This tool is useful for investigations. This tool is not using `golang.org/x/tools/go/analysis` toolchain. — [@alexkohler](https://github.com/alexkohler)
+It is common guideline to avoid renaming imports unless there are collisions. This tool detects where original package name would not collide. This tool is useful for investigations. This tool is not using `golang.org/x/tools/go/analysis` toolchain. — [@alexkohler](https://github.com/alexkohler)
 
 
 ```
@@ -4332,7 +4340,7 @@ go install github.com/devnev/refdir@latest
 
 ### [⏫](#contents) Detect tests with wrong `t.Parallel()` usage with [paralleltest](https://github.com/kunwardeep/paralleltest)
 
-This linter checks for incorroect usage of `t.Parallel()` calls. It will detect if `t.Parallel()` is missing. — [@kunwardeep](https://github.com/kunwardeep)
+This linter checks for incorrect usage of `t.Parallel()` calls. It will detect if `t.Parallel()` is missing. — [@kunwardeep](https://github.com/kunwardeep)
 
 
 ```
@@ -4354,7 +4362,7 @@ go install github.com/kunwardeep/paralleltest@latest
 
 ### [⏫](#contents) Detect tests with wrong `t.Parallel()` usage with [tparallel](https://github.com/moricho/tparallel)
 
-This linter checks for incorroect usage of `t.Parallel()` calls. — [@moricho](https://github.com/moricho)
+This linter checks for incorrect usage of `t.Parallel()` calls. — [@moricho](https://github.com/moricho)
 
 
 ```
@@ -4439,7 +4447,7 @@ go install github.com/jgautheron/goconst/cmd/goconst@latest
 
 ### [⏫](#contents) Detect bound checks with [pat/boundcheck](https://github.com/maruel/pat)
 
-This tool detects bound checks in source code by anaylisng compiled code. This is useful for audit. — [@maruel](https://github.com/maruel)
+This tool detects bound checks in source code by analysing compiled code. This is useful for audit. — [@maruel](https://github.com/maruel)
 
 
 ```
@@ -4456,7 +4464,7 @@ go install github.com/maruel/pat/cmd/...@latest
 
 ### [⏫](#contents) Calculate Cognitive Complexity with [gocognit](https://github.com/uudashr/gocognit)
 
-Congitive Complexity as defined in this tool can be more illustrative than Cyclometric Complexity. Research paper ["Cognitive Complexity - a new way of measuring understandability"](https://www.sonarsource.com/docs/CognitiveComplexity.pdf), 2021. — [@uudashr](https://github.com/uudashr)
+Cognitive Complexity as defined in this tool can be more illustrative than Cyclometric Complexity. Research paper ["Cognitive Complexity - a new way of measuring understandability"](https://www.sonarsource.com/docs/CognitiveComplexity.pdf), 2021. — [@uudashr](https://github.com/uudashr)
 
 
 ```
@@ -4545,12 +4553,12 @@ go install github.com/fzipp/gocyclo/cmd/gocyclo@latest
 
 ### [⏫](#contents) Calculate Cyclomatic Complexity with [cyclop](https://github.com/bkielbasa/cyclop)
 
-This linter calculates cyclomatic copmlexity of functions or packages. It can select minimum compexlity and act as blocking linter in CI pipelines. The key offering from this linter is that it can calculate avg cyclomatic compelxity on package. — [@bkielbasa](https://github.com/bkielbasa)
+This linter calculates cyclomatic complexity of functions or packages. It can select minimum complexity and act as blocking linter in CI pipelines. The key offering from this linter is that it can calculate avg cyclomatic complexity on package. — [@bkielbasa](https://github.com/bkielbasa)
 
 
 ```
 cyclop ./...
-# to find packages with avg cyclomatic copmlexity above maximum
+# to find packages with avg cyclomatic complexity above maximum
 cyclop -packageAverage 5 -maxComplexity 10000 ./...
 ```
 
@@ -4694,7 +4702,7 @@ var (
 
 ### [⏫](#contents) Analyze function callsites with [go-callsite-stats](https://github.com/nikolaydubina/go-callsite-stats)
 
-Scrape callsite information about functions to lern better how functions are beign used. This can help in refactoring, naming, OOP. This tool calcuates frequency of names on assignments in returns and frequency of names in arguments. This can be used to detect ignored returns as well. — [@nikolaydubina](https://github.com/nikolaydubina)
+Scrape callsite information about functions to learn better how functions are beinn used. This can help in refactoring, naming, OOP. This tool calculates frequency of names on assignments in returns and frequency of names in arguments. This can be used to detect ignored returns as well. — [@nikolaydubina](https://github.com/nikolaydubina)
 
 
 ```
