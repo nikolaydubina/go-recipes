@@ -1559,6 +1559,36 @@ groups:
           - go install github.com/pijng/prep/cmd/prep@latest
         commands:
           - go build -a -toolexec="prep" main.go
+      - title: "Containerize your builds"
+        name: brewkit
+        description: BrewKit is a container-native build system focused on repeatable builds and caching.
+        url: https://github.com/ispringtech/brewkit
+        example_content_ext: jsonnet
+        example_content: |
+          local app = "service";
+
+          local copy = std.native('copy');
+
+          {
+              apiVersion: "brewkit/v1",
+              targets: {
+                  all: ['gobuild'],
+                  
+                  gobuild: {
+                      from: "golang:1.24",
+                      workdir: "/app",
+                      copy: [
+                          copy('cmd', 'cmd'),
+                          copy('pkg', 'pkg'),
+                      ],
+                      command: std.format("go build -o ./bin/%s ./cmd/%s", [app])
+                  }
+              }
+          }
+        requirements:
+          - go install github.com/ispringtech/brewkit/cmd/brewkit@latest
+        commands:
+          - brewkit build
   - title: Assembly
     entries:
       - title: Get assembly of Go code snippets online

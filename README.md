@@ -131,6 +131,7 @@
    + [ :fire: Transpile C to Go with `cxgo`](#-fire-transpile-c-to-go-with-cxgo)
    + [ :fire: Transpile Go to Javascript with `gopherjs`](#-fire-transpile-go-to-javascript-with-gopherjs)
    + [ :fire: Run compile-time function evaluation with `prep`](#-fire-run-compile-time-function-evaluation-with-prep)
+   + [ Containerize your builds with `brewkit`](#-containerize-your-builds-with-brewkit)
  - Assembly
    + [ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
    + [ Get Go SSA intermediary representation with `ssaplayground`](#-get-go-ssa-intermediary-representation-with-ssaplayground)
@@ -2461,6 +2462,43 @@ func fibonacci(n int) int {
 Requirements
 ```
 go install github.com/pijng/prep/cmd/prep@latest
+```
+
+### [⏫](#contents) Containerize your builds with [brewkit](https://github.com/ispringtech/brewkit)
+
+BrewKit is a container-native build system focused on repeatable builds and caching.
+
+
+```
+brewkit build
+```
+
+```jsonnet
+local app = "service";
+
+local copy = std.native('copy');
+
+{
+    apiVersion: "brewkit/v1",
+    targets: {
+        all: ['gobuild'],
+        
+        gobuild: {
+            from: "golang:1.24",
+            workdir: "/app",
+            copy: [
+                copy('cmd', 'cmd'),
+                copy('pkg', 'pkg'),
+            ],
+            command: std.format("go build -o ./bin/%s ./cmd/%s", [app])
+        }
+    }
+}
+```
+
+Requirements
+```
+go install github.com/ispringtech/brewkit/cmd/brewkit@latest
 ```
 
 ## Assembly
