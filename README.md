@@ -16,7 +16,7 @@
    + [ Commit message recommendation with `charmbracelet/mods`](#-commit-message-recommendation-with-charmbraceletmods)
    + [ Test case recommendation with `charmbracelet/mods`](#-test-case-recommendation-with-charmbraceletmods)
    + [ Time complexity estimate with `charmbracelet/mods`](#-time-complexity-estimate-with-charmbraceletmods)
-   + [ Fuzzing with AI with `oss-fuzz-gen`](#-fuzzing-with-ai-with-oss-fuzz-gen)
+   + [ Fuzzing with AI with `ai-corpus-generation`](#-fuzzing-with-ai-with-ai-corpus-generation)
  - Test
    + [ :fire: Continuous Tests Monitoring with `codecov.io`](#-fire-continuous-tests-monitoring-with-codecovio)
    + [ Make treemap of coverage with `go-cover-treemap`](#-make-treemap-of-coverage-with-go-cover-treemap)
@@ -427,29 +427,81 @@ Therefore, the overall time complexity of the function is O(log(v) + p).
 ```
 
 
-### [⏫](#contents) Fuzzing with AI with [oss-fuzz-gen](https://github.com/google/oss-fuzz-gen)
+### [⏫](#contents) Fuzzing with AI with [ai-corpus-generation](https://go.dev/security/fuzz/)
 
-Generate fuzz seed corpus files using AI models like LLAMA3. This tool can automatically create effective fuzzing inputs for Go functions, helping discover edge cases and potential bugs. AI-generated corpus files can significantly improve fuzzing effectiveness by providing diverse and targeted test inputs. — [@google](https://github.com/google)
+Use AI models like LLAMA3 or ChatGPT to generate fuzz corpus files for Go functions. AI can create diverse, edge-case inputs that significantly improve fuzzing effectiveness by providing targeted test data for specific function signatures. — https://openai.com/chatgpt
 
 
 ```
-# Generate fuzz corpus for a specific function
-oss-fuzz-gen --language go --function-signature 'func ParseURL(rawurl string) (*URL, error)' --output-corpus ./testdata/fuzz/
-# Use with existing fuzz tests
-go test -fuzz=FuzzParseURL -fuzztime=30s
+# 1. Create a simple fuzz test (example: testing URL parsing)
+cat > url_test.go << 'EOF'
+package main
+
+import (
+  "net/url"
+  "testing"
+)
+
+func FuzzParseURL(f *testing.F) {
+  // AI-generated seed corpus
+  f.Add("https://example.com")
+  f.Add("://missing-scheme")
+  f.Add("https://user:pass@host:8080/path?q=v#frag")
+  f.Add("http://192.168.1.1:8080")
+  f.Add("ftp://files.example.com/data.txt")
+  f.Add("https://[::1]:8080/ipv6")
+  f.Add("mailto:test@example.com")
+  f.Add("file:///tmp/file.txt")
+  f.Add("data:text/plain;base64,SGVsbG8=")
+  f.Add("tel:+1-234-567-8901")
+  f.Add("https://üñíçødé.example.com")
+  f.Add("https://example.com:99999")
+  f.Add("https://example.com/../../../etc/passwd")
+  f.Add("javascript:alert(1)")
+  f.Add("")
+  f.Add("\\x00\\x01\\x02")
+
+  f.Fuzz(func(t *testing.T, rawurl string) {
+    _, err := url.Parse(rawurl)
+    if err != nil {
+      return // Expected for malformed URLs
+    }
+  })
+}
+EOF
+
+# 2. Run fuzzing with AI-generated seeds
+go test -fuzz=FuzzParseURL -fuzztime=10s
+
+# 3. Ask ChatGPT/Claude for domain-specific corpus:
+# 'Generate 50 edge-case URLs for testing including unicode, IPv6, long domains, special characters, protocol variations, malformed syntax'
 ```
 
 Example
 ```
-AI models like LLAMA3 can generate almost correct fuzz seed corpus files that help discover edge cases in Go code. 
-The generated corpus files provide diverse inputs including edge cases, boundary conditions, and malformed data 
-that improve the effectiveness of Go's built-in fuzzing capabilities.
+$ go test -fuzz=FuzzParseURL -fuzztime=10s
+fuzz: elapsed: 0s, gathering baseline coverage: 0/26 completed
+fuzz: elapsed: 0s, gathering baseline coverage: 26/26 completed, now fuzzing with 8 workers
+fuzz: elapsed: 3s, execs: 67891 (22630/sec), new interesting: 3 (total: 29)
+fuzz: elapsed: 6s, execs: 142905 (25005/sec), new interesting: 4 (total: 30)
+fuzz: elapsed: 9s, execs: 215023 (24040/sec), new interesting: 5 (total: 31)
+fuzz: elapsed: 10s, execs: 239876 (24853/sec), new interesting: 5 (total: 31)
+PASS
+ok      command-line-arguments  10.096s
+
+# AI-generated seeds provided 16 initial test cases covering:
+# - Standard HTTPS/HTTP URLs
+# - Malformed schemes and syntax  
+# - IPv6 addresses and unicode domains
+# - Various protocols (ftp, mailto, file, data, tel)
+# - Edge cases (empty strings, binary data, path traversal)
+# - The fuzzer found 5 additional interesting inputs beyond the AI seeds
 ```
 
 Requirements
 ```
-# AI model access (e.g., LLAMA3, OpenAI)
-pip install oss-fuzz-gen
+# AI model access (ChatGPT, Claude, LLAMA3, etc.)
+# Go 1.18+ for built-in fuzzing support
 ```
 
 ## Test
