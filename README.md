@@ -16,6 +16,7 @@
    + [ Commit message recommendation with `charmbracelet/mods`](#-commit-message-recommendation-with-charmbraceletmods)
    + [ Test case recommendation with `charmbracelet/mods`](#-test-case-recommendation-with-charmbraceletmods)
    + [ Time complexity estimate with `charmbracelet/mods`](#-time-complexity-estimate-with-charmbraceletmods)
+   + [ Fuzzing with AI with `oss-fuzz-gen`](#-fuzzing-with-ai-with-oss-fuzz-gen)
  - Test
    + [ :fire: Continuous Tests Monitoring with `codecov.io`](#-fire-continuous-tests-monitoring-with-codecovio)
    + [ Make treemap of coverage with `go-cover-treemap`](#-make-treemap-of-coverage-with-go-cover-treemap)
@@ -425,6 +426,31 @@ time proportional to  p .
 Therefore, the overall time complexity of the function is O(log(v) + p).
 ```
 
+
+### [⏫](#contents) Fuzzing with AI with [oss-fuzz-gen](https://github.com/google/oss-fuzz-gen)
+
+Generate fuzz seed corpus files using AI models like LLAMA3. This tool can automatically create effective fuzzing inputs for Go functions, helping discover edge cases and potential bugs. AI-generated corpus files can significantly improve fuzzing effectiveness by providing diverse and targeted test inputs. — [@google](https://github.com/google)
+
+
+```
+# Generate fuzz corpus for a specific function
+oss-fuzz-gen --language go --function-signature 'func ParseURL(rawurl string) (*URL, error)' --output-corpus ./testdata/fuzz/
+# Use with existing fuzz tests
+go test -fuzz=FuzzParseURL -fuzztime=30s
+```
+
+Example
+```
+AI models like LLAMA3 can generate almost correct fuzz seed corpus files that help discover edge cases in Go code. 
+The generated corpus files provide diverse inputs including edge cases, boundary conditions, and malformed data 
+that improve the effectiveness of Go's built-in fuzzing capabilities.
+```
+
+Requirements
+```
+# AI model access (e.g., LLAMA3, OpenAI)
+pip install oss-fuzz-gen
+```
 
 ## Test
 
