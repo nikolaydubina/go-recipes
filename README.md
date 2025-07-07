@@ -27,6 +27,7 @@
    + [ Run coverage collector server with `goc`](#-run-coverage-collector-server-with-goc)
    + [ Visualize live coverage in VSCode with `goc`](#-visualize-live-coverage-in-vscode-with-goc)
    + [ :fire: Detect drops in coverage with `go-test-coverage`](#-fire-detect-drops-in-coverage-with-go-test-coverage)
+   + [ Analyze differential coverage](#-analyze-differential-coverage)
    + [ Shuffle tests](#-shuffle-tests)
    + [ Run tests sequentially](#-run-tests-sequentially)
    + [ Run tests in parallel](#-run-tests-in-parallel)
@@ -595,6 +596,39 @@ go-test-coverage --config=./.testcoverage.yml
 Requirements
 ```
 go install github.com/vladopajic/go-test-coverage/v2@latest
+```
+
+### [⏫](#contents) Analyze differential coverage
+
+Differential coverage analysis compares coverage between different versions of code to understand which lines were newly covered or uncovered by changes. This technique, popularized by research at https://research.swtch.com/diffcover, helps focus testing efforts on changed code and ensures new code paths are properly tested.
+
+
+```
+# Generate coverage for base version
+git checkout main && go test -coverprofile=base.out ./...
+# Generate coverage for current changes
+git checkout feature-branch && go test -coverprofile=new.out ./...
+# Compare coverage reports
+go tool cover -html=base.out -o base.html
+go tool cover -html=new.out -o new.html
+# Use gocovsh to show coverage on diff
+git diff main..feature-branch | gocovsh
+# Show only coverage for changed files
+git diff --name-only main..feature-branch | gocovsh
+```
+
+Example
+```
+# Example of differential coverage analysis
+Lines added in feature-branch: 150
+Lines covered in new changes: 120  
+Coverage of new code: 80.0%
+Previously covered lines that became uncovered: 5
+```
+
+Requirements
+```
+go install github.com/orlangure/gocovsh@latest
 ```
 
 ### [⏫](#contents) Shuffle tests
