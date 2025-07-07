@@ -119,6 +119,7 @@
    + [ Manually disable or enable `cgo`](#-manually-disable-or-enable-cgo)
    + [ Include metadata in binary during compilation with `ldflags`](#-include-metadata-in-binary-during-compilation-with-ldflags)
    + [ :fire: Check if symbol or package is included in binary](#-fire-check-if-symbol-or-package-is-included-in-binary)
+   + [ Find out what is embedded into the binary with `embed`](#-find-out-what-is-embedded-into-the-binary-with-embed)
    + [ :fire: Build for Raspberry Pi, Virtual Machine, embedded or normal PC with `gokrazy`](#-fire-build-for-raspberry-pi-virtual-machine-embedded-or-normal-pc-with-gokrazy)
    + [ :fire: Visualise dependencies size in compiled binaries with `go-size-analyzer`](#-fire-visualise-dependencies-size-in-compiled-binaries-with-go-size-analyzer)
    + [ Make treemap breakdown of Go executable binary with `go-binsize-treemap`](#-make-treemap-breakdown-of-go-executable-binary-with-go-binsize-treemap)
@@ -2271,6 +2272,34 @@ This is useful for investigations during performance optimization, security, or 
 ```
 go tool nm main | grep -Ei '<symbol A>|<symbol B>|...'
 go tool nm main | grep -Ei 'golangci-lint|gofumpt'
+```
+
+
+### [⏫](#contents) Find out what is embedded into the binary with `embed`
+
+Go's embed directive allows including files directly into binaries at compile time. Use these techniques to discover what files are embedded in your binary or source code. This is useful for security audits, debugging, and understanding binary composition.
+
+
+```
+go list -f '{{.EmbedFiles}}' .
+go list -f '{{.EmbedPatterns}}' .
+grep -r '//go:embed' .
+go tool nm <binary> | grep -i embed
+strings <binary> | grep -E 'known-content-pattern'
+```
+
+Example
+```
+$ go list -f '{{.EmbedFiles}}' .
+[data.json hello.txt static/script.js static/style.css]
+
+$ go list -f '{{.EmbedPatterns}}' .
+[data.json hello.txt static/*]
+
+$ grep -r '//go:embed' .
+./main.go://go:embed hello.txt
+./main.go://go:embed data.json
+./main.go://go:embed static/*
 ```
 
 
