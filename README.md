@@ -600,7 +600,7 @@ go install github.com/vladopajic/go-test-coverage/v2@latest
 
 ### [⏫](#contents) Analyze differential coverage
 
-Differential coverage analysis compares coverage between different versions of code to understand which lines were newly covered or uncovered by changes. This technique, popularized by research at https://research.swtch.com/diffcover, helps focus testing efforts on changed code and ensures new code paths are properly tested.
+Differential coverage analysis compares coverage between different versions of code to understand which lines were newly covered or uncovered by changes. This technique, based on research at https://research.swtch.com/diffcover, helps focus testing efforts on changed code and ensures new code paths are properly tested. It answers questions like "What is the coverage of my new code?" and "Did my changes break existing coverage?".
 
 
 ```
@@ -608,22 +608,31 @@ Differential coverage analysis compares coverage between different versions of c
 git checkout main && go test -coverprofile=base.out ./...
 # Generate coverage for current changes
 git checkout feature-branch && go test -coverprofile=new.out ./...
-# Compare coverage reports
+# Compare coverage reports using built-in tools
 go tool cover -html=base.out -o base.html
 go tool cover -html=new.out -o new.html
-# Use gocovsh to show coverage on diff
+# Use gocovsh to show coverage on diff (most effective method)
 git diff main..feature-branch | gocovsh
 # Show only coverage for changed files
 git diff --name-only main..feature-branch | gocovsh
+# Alternative: manual comparison with cover tool
+go tool cover -func=base.out > base_func.txt
+go tool cover -func=new.out > new_func.txt
+diff base_func.txt new_func.txt
 ```
 
 Example
 ```
-# Example of differential coverage analysis
-Lines added in feature-branch: 150
-Lines covered in new changes: 120  
-Coverage of new code: 80.0%
-Previously covered lines that became uncovered: 5
+# gocovsh showing coverage on diff
+--- a/pkg/calculator/math.go
++++ b/pkg/calculator/math.go
+@@ -10,6 +10,12 @@ func Add(a, b int) int {
++func Multiply(a, b int) int {    // ✓ covered
++    if a == 0 || b == 0 {       // ✗ not covered  
++        return 0
++    }
++    return a * b                // ✓ covered
++}
 ```
 
 Requirements
