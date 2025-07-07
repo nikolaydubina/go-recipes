@@ -2277,29 +2277,34 @@ go tool nm main | grep -Ei 'golangci-lint|gofumpt'
 
 ### [⏫](#contents) Find out what is embedded into the binary with `embed`
 
-Go's embed directive allows including files directly into binaries at compile time. Use these techniques to discover what files are embedded in your binary or source code. This is useful for security audits, debugging, and understanding binary composition.
+Go's embed directive allows including files directly into binaries at compile time. Use these binary analysis techniques to discover what files are embedded without access to source code. This is useful for security audits, debugging, and understanding binary composition in large codebases.
 
 
 ```
-go list -f '{{.EmbedFiles}}' .
-go list -f '{{.EmbedPatterns}}' .
-grep -r '//go:embed' .
 go tool nm <binary> | grep -i embed
 strings <binary> | grep -E 'known-content-pattern'
+objdump -t <binary> | grep embed
+readelf -s <binary> | grep embed  # Linux
+nm <binary> | grep embed          # Alternative to go tool nm
 ```
 
 Example
 ```
-$ go list -f '{{.EmbedFiles}}' .
-[data.json hello.txt static/script.js static/style.css]
+$ go tool nm mybinary | grep -i embed
+  4b8c60 D go.info.embed
+  4b8c80 D main..inittask
+  4b8ca0 D type..importcfg.embed
 
-$ go list -f '{{.EmbedPatterns}}' .
-[data.json hello.txt static/*]
+$ strings mybinary | head -20
+static/style.css
+body { margin: 0; }
+static/script.js
+console.log('Hello');
+data.json
+{"version": "1.0"}
 
-$ grep -r '//go:embed' .
-./main.go://go:embed hello.txt
-./main.go://go:embed data.json
-./main.go://go:embed static/*
+$ objdump -t mybinary | grep embed
+00000000004b8c60 g     O .noptrdata	0000000000000010 go.info.embed
 ```
 
 
