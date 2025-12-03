@@ -1700,9 +1700,9 @@ This tool generates basic test placeholder. It is included into official Go plug
 
 
 
-### [⏫](#contents) Generate mocks with [mockgen](https://github.com/golang/mock)
+### [⏫](#contents) Generate mocks with [mockgen](https://github.com/uber-go/mock)
 
-This mocking framework integrates well with Go `testing` package. — Go Core team
+This mocking framework integrates well with Go's built-in `testing` package, but can be used in other contexts too. — Go Core team, Uber
 
 
 ```
@@ -1716,12 +1716,11 @@ type Foo interface {
 }
 
 func SUT(f Foo) {
-// ...
+  // ...
 }
 # foo_test.go
 func TestFoo(t *testing.T) {
   ctrl := gomock.NewController(t)
-  defer ctrl.Finish()
 
   m := NewMockFoo(ctrl)
 
@@ -1749,7 +1748,7 @@ func TestFoo(t *testing.T) {
 
 Requirements
 ```
-go install github.com/golang/mock/mockgen@v1.6.0
+go install go.uber.org/mock/mockgen@latest
 ```
 
 ### [⏫](#contents) Generate interface for a struct with [ifacemaker](https://github.com/vburenin/ifacemaker)
