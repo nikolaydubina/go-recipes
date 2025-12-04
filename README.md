@@ -3965,7 +3965,7 @@ go install go.uber.org/nilaway/cmd/nilaway@latest
 
 ### [⏫](#contents) Detect most common issues with [go-critic](https://github.com/go-critic/go-critic)
 
-This linting aggregator and runner is similar to staticcheck. It has 100+ linting rules. It is based on Go [Code Review Comments](https://github.com/golang/go/wiki/CodeReviewComments) style guide that is used in core Go project itself. It has styling, security, performance rules. It has minimal dependencies and implements rules itself. It exports all analysers into `golang.org/x/tools/go/analysis` toolchain. — [@quasilyte](https://github.com/quasilyte)
+This linting aggregator and runner is similar to staticcheck. It has 100+ linting rules. It is based on Go [Code Review Comments](https://go.dev/wiki/CodeReviewComments) style guide that is used in core Go project itself. It has styling, security, performance rules. It has minimal dependencies and implements rules itself. It exports all analysers into `golang.org/x/tools/go/analysis` toolchain. — [@quasilyte](https://github.com/quasilyte)
 
 
 ```
@@ -4307,7 +4307,7 @@ go install github.com/nikolaydubina/consistentimports@latest
 
 ### [⏫](#contents) Detect naked returns with [nakedret](https://github.com/alexkohler/nakedret)
 
-It is common guideline to avoid [naked returns](https://github.com/golang/go/wiki/CodeReviewComments#named-result-parameters). Naked return is when function has named return, and return statement does not specify value. This tool is useful for investigations. — [@alexkohler](https://github.com/alexkohler)
+It is common guideline to avoid [naked returns](https://go.dev/wiki/CodeReviewComments#named-result-parameters). Naked return is when function has named return, and return statement does not specify value. This tool is useful for investigations. — [@alexkohler](https://github.com/alexkohler)
 
 
 ```
@@ -4335,7 +4335,7 @@ go install github.com/alexkohler/nakedret/cmd/nakedret@latest
 
 ### [⏫](#contents) Detect mixing pointer and value method receivers with [smrcptr](https://github.com/nikolaydubina/smrcptr)
 
-Mixing pointer and value method receivers for the same type is discouraged, as per commong guideline [Go wiki](https://github.com/golang/go/wiki/CodeReviewComments#receiver-type) and [Google Go style guide](https://google.github.io/styleguide/go/decisions#receiver-type). — [@nikolaydubina](https://github.com/nikolaydubina)
+Mixing pointer and value method receivers for the same type is discouraged, as per commong guideline [Go wiki](https://go.dev/wiki/CodeReviewComments#receiver-type) and [Google Go style guide](https://google.github.io/styleguide/go/decisions#receiver-type). — [@nikolaydubina](https://github.com/nikolaydubina)
 
 
 ```
