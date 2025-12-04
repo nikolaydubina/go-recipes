@@ -993,10 +993,10 @@ groups:
         author: https://github.com/cweill
         example_image_url: https://github.com/cweill/GoTests-Sublime/raw/master/gotests.gif
       - title: Generate mocks
-        description: This mocking framework integrates well with Go `testing` package.
-        author: Go Core team
+        description: This mocking framework integrates well with Go's built-in `testing` package, but can be used in other contexts too.
+        author: Go Core team, Uber
         name: mockgen
-        url: https://github.com/golang/mock
+        url: https://github.com/uber-go/mock
         commands:
           - mockgen . Conn,Driver
         example_content_ext: go
@@ -1007,12 +1007,11 @@ groups:
           }
 
           func SUT(f Foo) {
-          // ...
+            // ...
           }
           # foo_test.go
           func TestFoo(t *testing.T) {
             ctrl := gomock.NewController(t)
-            defer ctrl.Finish()
 
             m := NewMockFoo(ctrl)
 
@@ -1037,7 +1036,7 @@ groups:
             SUT(m)
           }
         requirements:
-          - go install github.com/golang/mock/mockgen@v1.6.0
+          - go install go.uber.org/mock/mockgen@latest
       - title: Generate interface for a struct
         description: This is a development helper program that generates a Golang interface by inspecting the structure methods of an existing .go file. The primary use case is to generate interfaces for [gomock](https://github.com/golang/mock), so that [gomock](https://github.com/golang/mock) can generate mocks from those interfaces. This makes unit testing easier.
         url: https://github.com/vburenin/ifacemaker
