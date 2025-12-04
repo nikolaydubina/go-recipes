@@ -2158,7 +2158,7 @@ groups:
           BenchmarkCycleThree/basic-16                              	767160418	         1.560 ns/op
           BenchmarkCycleThree/CycleThreeValues-16                   	438818894	         2.729 ns/op
           BenchmarkLeadingZeros/uint32/basic-16                     	1000000000	         0.9419 ns/op
-      - title: Generate benchmak CPU and Memory profiles
+      - title: Generate benchmark CPU and Memory profiles
         description: This is useful for identifying most time or memory consuming parts. Recommended to run for single benchmark at a time and with `-count` or `-benchtime` for better accuracy.
         name: go test
         commands:

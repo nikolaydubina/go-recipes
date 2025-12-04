@@ -174,7 +174,7 @@
    + [ Run benchmarks](#-run-benchmarks)
    + [ Table-driven benchmarks](#-table-driven-benchmarks)
    + [ :fire: Align benchmark output](#-fire-align-benchmark-output)
-   + [ Generate benchmak CPU and Memory profiles with `go test`](#-generate-benchmak-cpu-and-memory-profiles-with-go-test)
+   + [ Generate benchmark CPU and Memory profiles with `go test`](#-generate-benchmark-cpu-and-memory-profiles-with-go-test)
    + [ Visualize callgraph of profiles with `pprof`](#-visualize-callgraph-of-profiles-with-pprof)
    + [ Visualize flamegraphs of profiles with `pprof`](#-visualize-flamegraphs-of-profiles-with-pprof)
    + [ Visualize profiles online](#-visualize-profiles-online)
@@ -3261,7 +3261,7 @@ BenchmarkLeadingZeros/uint32/basic-16                     	1000000000	         0
 ```
 
 
-### [⏫](#contents) Generate benchmak CPU and Memory profiles with `go test`
+### [⏫](#contents) Generate benchmark CPU and Memory profiles with `go test`
 
 This is useful for identifying most time or memory consuming parts. Recommended to run for single benchmark at a time and with `-count` or `-benchtime` for better accuracy.
 
