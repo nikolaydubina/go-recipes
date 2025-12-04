@@ -237,6 +237,7 @@
    + [ Detect magic numbers with `mnd`](#-detect-magic-numbers-with-mnd)
    + [ Detect magic strings with `goconst`](#-detect-magic-strings-with-goconst)
    + [ Detect bound checks with `pat/boundcheck`](#-detect-bound-checks-with-patboundcheck)
+   + [ Detect performance optimizations with `perfsprint`](#-detect-performance-optimizations-with-perfsprint)
    + [ Calculate Cognitive Complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
    + [ Calculate Cyclomatic Complexity with `gocyclo`](#-calculate-cyclomatic-complexity-with-gocyclo)
    + [ Calculate Cyclomatic Complexity with `cyclop`](#-calculate-cyclomatic-complexity-with-cyclop)
@@ -4519,6 +4520,48 @@ boundcheck -pkg ./cmd/nin | less -R
 Requirements
 ```
 go install github.com/maruel/pat/cmd/...@latest
+```
+
+### [⏫](#contents) Detect performance optimizations with [perfsprint](https://github.com/catenacyber/perfsprint)
+
+This tool detects possible performance optimizations in source code. It suggests replacing usages of `fmt.Sprintf` and `fmt.Errorf` with more efficient alternatives. — [@catenacyber](https://github.com/catenacyber)
+
+
+```
+perfsprint .
+```
+
+```go
+package main
+
+import (
+  "fmt"
+)
+
+var _ = fmt.Errorf("some error")
+
+func Sprintf() {
+  _ = fmt.Sprintf("Hello, World!")
+  world := "World"
+  _ = fmt.Sprintf("Hello %s", world)
+  _ = fmt.Sprintf("%d", 42)
+  _ = fmt.Sprintf("%d", int64(42))
+}
+```
+
+Example
+```
+/testdata/perfsprint.go:7:9: error-format: fmt.Errorf can be replaced with errors.New
+/testdata/perfsprint.go:10:6: string-format: fmt.Sprintf can be replaced with just using the string
+/testdata/perfsprint.go:12:6: string-format: fmt.Sprintf can be replaced with string concatenation
+/testdata/perfsprint.go:13:6: integer-format: fmt.Sprintf can be replaced with faster strconv.Itoa
+/testdata/perfsprint.go:14:6: integer-format: fmt.Sprintf can be replaced with faster strconv.FormatInt
+/testdata/perfsprint.go:4:2: fiximports: Fix imports
+```
+
+Requirements
+```
+go install github.com/catenacyber/perfsprint@latest
 ```
 
 ### [⏫](#contents) Calculate Cognitive Complexity with [gocognit](https://github.com/uudashr/gocognit)

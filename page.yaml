@@ -3080,6 +3080,39 @@ groups:
         example_image_url: https://github.com/maruel/pat/wiki/boundcheck.png
         commands:
           - boundcheck -pkg ./cmd/nin | less -R
+      - title: Detect performance optimizations
+        name: perfsprint
+        url: https://github.com/catenacyber/perfsprint
+        author: https://github.com/catenacyber
+        description: This tool detects possible performance optimizations in source code. It suggests replacing usages of `fmt.Sprintf` and `fmt.Errorf` with more efficient alternatives.
+        example_content_ext: go
+        example_content: |
+          package main
+
+          import (
+            "fmt"
+          )
+
+          var _ = fmt.Errorf("some error")
+
+          func Sprintf() {
+            _ = fmt.Sprintf("Hello, World!")
+            world := "World"
+            _ = fmt.Sprintf("Hello %s", world)
+            _ = fmt.Sprintf("%d", 42)
+            _ = fmt.Sprintf("%d", int64(42))
+          }
+        commands:
+          - perfsprint .
+        example_output: |
+          /testdata/perfsprint.go:7:9: error-format: fmt.Errorf can be replaced with errors.New
+          /testdata/perfsprint.go:10:6: string-format: fmt.Sprintf can be replaced with just using the string
+          /testdata/perfsprint.go:12:6: string-format: fmt.Sprintf can be replaced with string concatenation
+          /testdata/perfsprint.go:13:6: integer-format: fmt.Sprintf can be replaced with faster strconv.Itoa
+          /testdata/perfsprint.go:14:6: integer-format: fmt.Sprintf can be replaced with faster strconv.FormatInt
+          /testdata/perfsprint.go:4:2: fiximports: Fix imports
+        requirements:
+          - go install github.com/catenacyber/perfsprint@latest
       - title: Calculate Cognitive Complexity
         description: Cognitive Complexity as defined in this tool can be more illustrative than Cyclometric Complexity. Research paper ["Cognitive Complexity - a new way of measuring understandability"](https://www.sonarsource.com/docs/CognitiveComplexity.pdf), 2021.
         name: gocognit
