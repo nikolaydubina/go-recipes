@@ -120,6 +120,7 @@
    + [ Show compiler optimization decisions on heap and inlining](#-show-compiler-optimization-decisions-on-heap-and-inlining)
    + [ Disable inlining](#-disable-inlining)
    + [ Aggressive inlining](#-aggressive-inlining)
+   + [ :gift: Reduce size of binary](#-gift-reduce-size-of-binary)
    + [ Profile-guided optimization](#-profile-guided-optimization)
    + [ Manually disable or enable `cgo`](#-manually-disable-or-enable-cgo)
    + [ Include metadata in binary during compilation with `ldflags`](#-include-metadata-in-binary-during-compilation-with-ldflags)
@@ -2351,6 +2352,16 @@ Usually you may not need it, but can improve performance. This includes mid-stac
 
 ```
 go build -gcflags="-l -l -l -l" .
+```
+
+
+### [⏫](#contents) :gift: Reduce size of binary
+
+First, get breakdown of how much specific packages take space in your binary. Very often you will see some dependnecy taking 80% of your binary size, yet often you can have more slim version of it. (e.g. `elasticsearch`, `gcp` clients). Then, apply compiler directives to strip away non-essential information.
+
+
+```
+go build -ldflags="-s -w" .
 ```
 
 
