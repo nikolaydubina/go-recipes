@@ -63,6 +63,7 @@
    + [ Explore dependencies interactively with `spaghetti`](#-explore-dependencies-interactively-with-spaghetti)
    + [ Explore dependencies graph interactively with `modview`](#-explore-dependencies-graph-interactively-with-modview)
    + [ Explore dependencies graph in CLI with `depth`](#-explore-dependencies-graph-in-cli-with-depth)
+   + [ Explore your `GOPATH` with GUI with `goggles`](#-explore-your-gopath-with-gui-with-goggles)
    + [ Enforce Go code architecture with `go-arch-lint`](#-enforce-go-code-architecture-with-go-arch-lint)
    + [ Check Clean Architecture with `go-cleanarch`](#-check-clean-architecture-with-go-cleanarch)
    + [ Use `go mod` directives](#-use-go-mod-directives)
@@ -1261,7 +1262,24 @@ github.com/KyleBanks/depth/cmd/depth
 
 Requirements
 ```
-go get github.com/KyleBanks/depth/cmd/depth@latest
+go install github.com/KyleBanks/depth/cmd/depth@latest
+```
+
+### [⏫](#contents) Explore your `GOPATH` with GUI with [goggles](https://github.com/KyleBanks/goggles)
+
+Browse and search local packages. View package documentation.  Displays badges for GoDoc, Goreportcard, and Travis.CI (if .travis.yml is present). — [@KyleBanks](https://github.com/KyleBanks)
+
+
+```
+goggles
+```
+
+<div align="center"><img src="https://github.com/KyleBanks/goggles/blob/master/demo.gif?raw=true" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/KyleBanks/goggles/cmd/goggles@latest
 ```
 
 ### [⏫](#contents) Enforce Go code architecture with [go-arch-lint](https://github.com/fe3dback/go-arch-lint)

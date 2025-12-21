@@ -664,7 +664,17 @@ groups:
               └ strings
           12 dependencies (11 internal, 1 external, 0 testing).
         requirements:
-          - go get github.com/KyleBanks/depth/cmd/depth@latest
+          - go install github.com/KyleBanks/depth/cmd/depth@latest
+      - title: "Explore your `GOPATH` with GUI"
+        description: "Browse and search local packages. View package documentation.  Displays badges for GoDoc, Goreportcard, and Travis.CI (if .travis.yml is present)."
+        name: goggles
+        url: https://github.com/KyleBanks/goggles
+        author: https://github.com/KyleBanks
+        commands:
+          - goggles
+        example_image_url: https://github.com/KyleBanks/goggles/blob/master/demo.gif?raw=true
+        requirements:
+          - go install github.com/KyleBanks/goggles/cmd/goggles@latest
       - title: "Enforce Go code architecture"
         description: "Architecture linter. Will check all project import path and compare with arch rules defined in yml file. Useful for hexagonal / onion / ddd / mvc / etc patterns."
         name: go-arch-lint
