@@ -1696,6 +1696,22 @@ groups:
           - gcc -O3 -march=native -S -o c_code.s c_code.c
           - c2goasm -a c_code.s go_c_code.s
           - go build -o go_c_code.o -gcflags="-S" go_c_code.s
+  - title: Deployment
+    entries:
+      - title: ":gift: Automatically set memory and cpu limits in K8S"
+        description: Go can automatically detect container environment cpu and memory limits. This ensures better utilization.
+        example_content_ext: yaml
+        example_content: |
+          - name: GOMAXPROCS
+            valueFrom:
+              resourceFieldRef:
+                resource: limits.cpu
+          - name: GOMEMLIMIT
+            valueFrom:
+              resourceFieldRef:
+                resource: limits.memory
+        requirements:
+          - go 1.25+
   - title: Execution
     entries:
       - title: "Embed Go Playground to your blog"

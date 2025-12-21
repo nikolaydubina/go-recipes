@@ -142,6 +142,8 @@
    + [ Visualize Go SSA function using Graphviz with `go-ssaviz`](#-visualize-go-ssa-function-using-graphviz-with-go-ssaviz)
    + [ Make graph of AST with `astgraph`](#-make-graph-of-ast-with-astgraph)
    + [ Convert C assembly to Go assembly with `c2goasm`](#-convert-c-assembly-to-go-assembly-with-c2goasm)
+ - Deployment
+   + [ :gift: Automatically set memory and cpu limits in K8S](#-gift-automatically-set-memory-and-cpu-limits-in-k8s)
  - Execution
    + [ Embed Go Playground to your blog with `codapi`](#-embed-go-playground-to-your-blog-with-codapi)
    + [ Embed Go Playground to your blog with `goplay`](#-embed-go-playground-to-your-blog-with-goplay)
@@ -2659,6 +2661,28 @@ go build -o go_c_code.o -gcflags="-S" go_c_code.s
 Requirements
 ```
 go install github.com/minio/c2goasm@latest
+```
+
+## Deployment
+
+### [⏫](#contents) :gift: Automatically set memory and cpu limits in K8S
+
+Go can automatically detect container environment cpu and memory limits. This ensures better utilization.
+
+```yaml
+- name: GOMAXPROCS
+  valueFrom:
+    resourceFieldRef:
+      resource: limits.cpu
+- name: GOMEMLIMIT
+  valueFrom:
+    resourceFieldRef:
+      resource: limits.memory
+```
+
+Requirements
+```
+go 1.25+
 ```
 
 ## Execution
