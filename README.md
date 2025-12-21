@@ -42,6 +42,7 @@
    + [ Automatically re-run failed tests with `gotestsum`](#-automatically-re-run-failed-tests-with-gotestsum)
    + [ Make `JSUnit` test report with `gotestsum`](#-make-jsunit-test-report-with-gotestsum)
    + [ Make `JSUnit` test report with `go-junit-report`](#-make-jsunit-test-report-with-go-junit-report)
+   + [ :gift: Manipulate coverage profiles with `gopherage`](#-gift-manipulate-coverage-profiles-with-gopherage)
    + [ Get packages without tests](#-get-packages-without-tests)
    + [ Perform Mutation Testing with `ooze`](#-perform-mutation-testing-with-ooze)
    + [ Perform Mutation Testing with `avito-tech/go-mutesting`](#-perform-mutation-testing-with-avito-techgo-mutesting)
@@ -870,6 +871,32 @@ go test -v 2>&1 ./... | go-junit-report -set-exit-code > report.xml
 Requirements
 ```
 go install github.com/jstemmer/go-junit-report/v2@latest
+```
+
+### [⏫](#contents) :gift: Manipulate coverage profiles with [gopherage](https://github.com/kubernetes/test-infra/blob/master/gopherage)
+
+Kubernetes test-infra contains couple useful granular tools to manipulate coverage profiles. — [@kubernetes](https://github.com/kubernetes)
+
+
+```
+aggregate [files...]
+diff [first] [second]
+filter [file]
+html [coverage]
+junit [profile]
+merge [files...]
+metadata [...fields]
+```
+
+Requirements
+```
+go install k8s.io/test-infra/gopherage/cmd/aggregate@latest
+go install k8s.io/test-infra/gopherage/cmd/diff@latest
+go install k8s.io/test-infra/gopherage/cmd/filter@latest
+go install k8s.io/test-infra/gopherage/cmd/html@latest
+go install k8s.io/test-infra/gopherage/cmd/junit@latest
+go install k8s.io/test-infra/gopherage/cmd/metadata@latest
+go install k8s.io/test-infra/gopherage/cmd/merge@latest
 ```
 
 ### [⏫](#contents) Get packages without tests

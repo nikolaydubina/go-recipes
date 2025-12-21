@@ -421,6 +421,27 @@ groups:
           - go test -v 2>&1 ./... | go-junit-report -set-exit-code > report.xml
         requirements:
           - go install github.com/jstemmer/go-junit-report/v2@latest
+      - title: ":gift: Manipulate coverage profiles"
+        description: "Kubernetes test-infra contains couple useful granular tools to manipulate coverage profiles."
+        url: https://github.com/kubernetes/test-infra/blob/master/gopherage
+        name: gopherage
+        author: https://github.com/kubernetes
+        commands:
+          - aggregate [files...]
+          - diff [first] [second]
+          - filter [file]
+          - html [coverage]
+          - junit [profile]
+          - merge [files...]
+          - metadata [...fields]
+        requirements:
+          - go install k8s.io/test-infra/gopherage/cmd/aggregate@latest
+          - go install k8s.io/test-infra/gopherage/cmd/diff@latest
+          - go install k8s.io/test-infra/gopherage/cmd/filter@latest
+          - go install k8s.io/test-infra/gopherage/cmd/html@latest
+          - go install k8s.io/test-infra/gopherage/cmd/junit@latest
+          - go install k8s.io/test-infra/gopherage/cmd/metadata@latest
+          - go install k8s.io/test-infra/gopherage/cmd/merge@latest
       - title: Get packages without tests
         description: If code coverage does not report packages without tests. For example for CI or quality control.
         requirements:
