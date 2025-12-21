@@ -2669,13 +2669,9 @@ go install github.com/minio/c2goasm@latest
 
 ### [⏫](#contents) :gift: Automatically set memory and cpu limits in K8S
 
-Go can automatically detect container environment cpu and memory limits. This ensures better utilization.
+Go can automatically detect container environment cpu and memory limits. This ensures better utilization. Starting Go 1.25 `GOMAXPROCS` is K8S aware and sets it from `limits.cpu` automatically.
 
 ```yaml
-- name: GOMAXPROCS
-  valueFrom:
-    resourceFieldRef:
-      resource: limits.cpu
 - name: GOMEMLIMIT
   valueFrom:
     resourceFieldRef:

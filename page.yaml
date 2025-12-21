@@ -1701,13 +1701,9 @@ groups:
   - title: Deployment
     entries:
       - title: ":gift: Automatically set memory and cpu limits in K8S"
-        description: Go can automatically detect container environment cpu and memory limits. This ensures better utilization.
+        description: "Go can automatically detect container environment cpu and memory limits. This ensures better utilization. Starting Go 1.25 `GOMAXPROCS` is K8S aware and sets it from `limits.cpu` automatically."
         example_content_ext: yaml
         example_content: |
-          - name: GOMAXPROCS
-            valueFrom:
-              resourceFieldRef:
-                resource: limits.cpu
           - name: GOMEMLIMIT
             valueFrom:
               resourceFieldRef:
