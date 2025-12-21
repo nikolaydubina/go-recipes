@@ -255,6 +255,12 @@ groups:
           - go install github.com/vladopajic/go-test-coverage/v2@latest
         commands:
           - go-test-coverage --config=./.testcoverage.yml
+      - title: ":christmas_tree: post code coverage reports to pull requests"
+        description: "A CLI tool and GitHub Action to post Go code coverage reports as comment to your pull requests."
+        url: https://github.com/fgrosse/go-coverage-report
+        name: go-coverage-report
+        author: https://github.com/fgrosse
+        example_image_url: https://github.com/fgrosse/go-coverage-report/blob/main/screenshot.png
       - title: Shuffle tests
         description: This is less known option that is disabled by default. However, for robust test suite it is beneficial. More test flags and full description is available at `go help testflag`.
         commands:

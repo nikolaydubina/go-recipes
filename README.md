@@ -27,6 +27,7 @@
    + [ Run coverage collector server with `goc`](#-run-coverage-collector-server-with-goc)
    + [ Visualize live coverage in VSCode with `goc`](#-visualize-live-coverage-in-vscode-with-goc)
    + [ Detect drops in coverage with `go-test-coverage`](#-detect-drops-in-coverage-with-go-test-coverage)
+   + [ :christmas_tree: post code coverage reports to pull requests with `go-coverage-report`](#-christmas_tree-post-code-coverage-reports-to-pull-requests-with-go-coverage-report)
    + [ Shuffle tests](#-shuffle-tests)
    + [ Run tests sequentially](#-run-tests-sequentially)
    + [ Run tests in parallel](#-run-tests-in-parallel)
@@ -599,6 +600,14 @@ Requirements
 ```
 go install github.com/vladopajic/go-test-coverage/v2@latest
 ```
+
+### [⏫](#contents) :christmas_tree: post code coverage reports to pull requests with [go-coverage-report](https://github.com/fgrosse/go-coverage-report)
+
+A CLI tool and GitHub Action to post Go code coverage reports as comment to your pull requests. — [@fgrosse](https://github.com/fgrosse)
+
+<div align="center"><img src="https://github.com/fgrosse/go-coverage-report/blob/main/screenshot.png" style="margin: 8px; max-height: 640px;"></div>
+
+
 
 ### [⏫](#contents) Shuffle tests
 
