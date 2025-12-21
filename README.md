@@ -24,7 +24,9 @@
    + [ Run coverage collector server with `goc`](#-run-coverage-collector-server-with-goc)
    + [ Visualize live coverage in VSCode with `goc`](#-visualize-live-coverage-in-vscode-with-goc)
    + [ Detect drops in coverage with `go-test-coverage`](#-detect-drops-in-coverage-with-go-test-coverage)
-   + [ :gift: post code coverage reports to pull requests with `go-coverage-report`](#-gift-post-code-coverage-reports-to-pull-requests-with-go-coverage-report)
+   + [ :gift: Comment code coverage reports in pull request with `go-coverage-report`](#-gift-comment-code-coverage-reports-in-pull-request-with-go-coverage-report)
+   + [ :gift: Differential coverage](#-gift-differential-coverage)
+   + [ :gift: Manipulate coverage profiles with `gopherage`](#-gift-manipulate-coverage-profiles-with-gopherage)
    + [ Shuffle tests](#-shuffle-tests)
    + [ Run tests sequentially](#-run-tests-sequentially)
    + [ Run tests in parallel](#-run-tests-in-parallel)
@@ -43,7 +45,6 @@
    + [ Automatically re-run failed tests with `gotestsum`](#-automatically-re-run-failed-tests-with-gotestsum)
    + [ Make `JSUnit` test report with `gotestsum`](#-make-jsunit-test-report-with-gotestsum)
    + [ Make `JSUnit` test report with `go-junit-report`](#-make-jsunit-test-report-with-go-junit-report)
-   + [ :gift: Manipulate coverage profiles with `gopherage`](#-gift-manipulate-coverage-profiles-with-gopherage)
    + [ Get packages without tests](#-get-packages-without-tests)
    + [ Perform Mutation Testing with `ooze`](#-perform-mutation-testing-with-ooze)
    + [ Perform Mutation Testing with `avito-tech/go-mutesting`](#-perform-mutation-testing-with-avito-techgo-mutesting)
@@ -608,13 +609,44 @@ Requirements
 go install github.com/vladopajic/go-test-coverage/v2@latest
 ```
 
-### [⏫](#contents) :gift: post code coverage reports to pull requests with [go-coverage-report](https://github.com/fgrosse/go-coverage-report)
+### [⏫](#contents) :gift: Comment code coverage reports in pull request with [go-coverage-report](https://github.com/fgrosse/go-coverage-report)
 
 A CLI tool and GitHub Action to post Go code coverage reports as comment to your pull requests. — [@fgrosse](https://github.com/fgrosse)
 
 <div align="center"><img src="https://github.com/fgrosse/go-coverage-report/blob/main/screenshot.png" style="margin: 8px; max-height: 640px;"></div>
 
 
+
+### [⏫](#contents) :gift: Differential coverage
+
+This is a useful basic technique that should be more widely known (just like bisect). Read more in the blog post. — [@rsc](https://github.com/rsc)
+
+
+### [⏫](#contents) :gift: Manipulate coverage profiles with [gopherage](https://github.com/kubernetes/test-infra/blob/master/gopherage)
+
+Kubernetes test-infra contains couple useful granular tools to manipulate coverage profiles. — [@kubernetes](https://github.com/kubernetes)
+
+
+```
+aggregate [files...]
+diff [first] [second]
+filter [file]
+html [coverage]
+junit [profile]
+merge [files...]
+metadata [...fields]
+```
+
+Requirements
+```
+go install k8s.io/test-infra/gopherage/cmd/aggregate@latest
+go install k8s.io/test-infra/gopherage/cmd/diff@latest
+go install k8s.io/test-infra/gopherage/cmd/filter@latest
+go install k8s.io/test-infra/gopherage/cmd/html@latest
+go install k8s.io/test-infra/gopherage/cmd/junit@latest
+go install k8s.io/test-infra/gopherage/cmd/metadata@latest
+go install k8s.io/test-infra/gopherage/cmd/merge@latest
+```
 
 ### [⏫](#contents) Shuffle tests
 
@@ -882,32 +914,6 @@ go test -v 2>&1 ./... | go-junit-report -set-exit-code > report.xml
 Requirements
 ```
 go install github.com/jstemmer/go-junit-report/v2@latest
-```
-
-### [⏫](#contents) :gift: Manipulate coverage profiles with [gopherage](https://github.com/kubernetes/test-infra/blob/master/gopherage)
-
-Kubernetes test-infra contains couple useful granular tools to manipulate coverage profiles. — [@kubernetes](https://github.com/kubernetes)
-
-
-```
-aggregate [files...]
-diff [first] [second]
-filter [file]
-html [coverage]
-junit [profile]
-merge [files...]
-metadata [...fields]
-```
-
-Requirements
-```
-go install k8s.io/test-infra/gopherage/cmd/aggregate@latest
-go install k8s.io/test-infra/gopherage/cmd/diff@latest
-go install k8s.io/test-infra/gopherage/cmd/filter@latest
-go install k8s.io/test-infra/gopherage/cmd/html@latest
-go install k8s.io/test-infra/gopherage/cmd/junit@latest
-go install k8s.io/test-infra/gopherage/cmd/metadata@latest
-go install k8s.io/test-infra/gopherage/cmd/merge@latest
 ```
 
 ### [⏫](#contents) Get packages without tests

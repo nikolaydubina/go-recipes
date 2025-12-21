@@ -252,12 +252,37 @@ groups:
           - go install github.com/vladopajic/go-test-coverage/v2@latest
         commands:
           - go-test-coverage --config=./.testcoverage.yml
-      - title: ":gift: post code coverage reports to pull requests"
+      - title: ":gift: Comment code coverage reports in pull request"
         description: "A CLI tool and GitHub Action to post Go code coverage reports as comment to your pull requests."
         url: https://github.com/fgrosse/go-coverage-report
         name: go-coverage-report
         author: https://github.com/fgrosse
         example_image_url: https://github.com/fgrosse/go-coverage-report/blob/main/screenshot.png
+      - title: ":gift: Differential coverage"
+        description: "This is a useful basic technique that should be more widely known (just like bisect). Read more in the blog post."
+        url: https://research.swtch.com/diffcover
+        author: https://github.com/rsc
+      - title: ":gift: Manipulate coverage profiles"
+        description: "Kubernetes test-infra contains couple useful granular tools to manipulate coverage profiles."
+        url: https://github.com/kubernetes/test-infra/blob/master/gopherage
+        name: gopherage
+        author: https://github.com/kubernetes
+        commands:
+          - aggregate [files...]
+          - diff [first] [second]
+          - filter [file]
+          - html [coverage]
+          - junit [profile]
+          - merge [files...]
+          - metadata [...fields]
+        requirements:
+          - go install k8s.io/test-infra/gopherage/cmd/aggregate@latest
+          - go install k8s.io/test-infra/gopherage/cmd/diff@latest
+          - go install k8s.io/test-infra/gopherage/cmd/filter@latest
+          - go install k8s.io/test-infra/gopherage/cmd/html@latest
+          - go install k8s.io/test-infra/gopherage/cmd/junit@latest
+          - go install k8s.io/test-infra/gopherage/cmd/metadata@latest
+          - go install k8s.io/test-infra/gopherage/cmd/merge@latest
       - title: Shuffle tests
         description: This is less known option that is disabled by default. However, for robust test suite it is beneficial. More test flags and full description is available at `go help testflag`.
         commands:
@@ -426,27 +451,6 @@ groups:
           - go test -v 2>&1 ./... | go-junit-report -set-exit-code > report.xml
         requirements:
           - go install github.com/jstemmer/go-junit-report/v2@latest
-      - title: ":gift: Manipulate coverage profiles"
-        description: "Kubernetes test-infra contains couple useful granular tools to manipulate coverage profiles."
-        url: https://github.com/kubernetes/test-infra/blob/master/gopherage
-        name: gopherage
-        author: https://github.com/kubernetes
-        commands:
-          - aggregate [files...]
-          - diff [first] [second]
-          - filter [file]
-          - html [coverage]
-          - junit [profile]
-          - merge [files...]
-          - metadata [...fields]
-        requirements:
-          - go install k8s.io/test-infra/gopherage/cmd/aggregate@latest
-          - go install k8s.io/test-infra/gopherage/cmd/diff@latest
-          - go install k8s.io/test-infra/gopherage/cmd/filter@latest
-          - go install k8s.io/test-infra/gopherage/cmd/html@latest
-          - go install k8s.io/test-infra/gopherage/cmd/junit@latest
-          - go install k8s.io/test-infra/gopherage/cmd/metadata@latest
-          - go install k8s.io/test-infra/gopherage/cmd/merge@latest
       - title: Get packages without tests
         description: If code coverage does not report packages without tests. For example for CI or quality control.
         requirements:
