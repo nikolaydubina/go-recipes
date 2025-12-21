@@ -523,6 +523,10 @@ groups:
           - "./my_pkg_test_binary.bin | ... # normal test output post processing"
   - title: Dependencies
     entries:
+      - title: Upgrade dependencies
+        description: In case VSCode or GoLand broke and you need to update dependencies manually.
+        commands:
+          - go get -u ./...
       - title: Get Go version of current module
         description: For example, setup correct Go version automatically from `go.mod` in CI.
         requirements:

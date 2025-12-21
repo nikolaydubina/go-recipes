@@ -51,6 +51,7 @@
    + [ Trace tests with `go-test-trace`](#-trace-tests-with-go-test-trace)
    + [ Speedup tests for large codebases](#-speedup-tests-for-large-codebases)
  - Dependencies
+   + [ Upgrade dependencies](#-upgrade-dependencies)
    + [ Get Go version of current module](#-get-go-version-of-current-module)
    + [ Get Go versions of upstream modules](#-get-go-versions-of-upstream-modules)
    + [ Get directly dependent modules that can be upgraded](#-get-directly-dependent-modules-that-can-be-upgraded)
@@ -1027,6 +1028,16 @@ go test -c ./pkg/mypackage -o my_pkg_test_binary.bin
 
 
 ## Dependencies
+
+### [⏫](#contents) Upgrade dependencies
+
+In case VSCode or GoLand broke and you need to update dependencies manually.
+
+
+```
+go get -u ./...
+```
+
 
 ### [⏫](#contents) Get Go version of current module
 
