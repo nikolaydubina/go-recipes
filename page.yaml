@@ -1509,7 +1509,7 @@ groups:
           - go install github.com/pijng/prep/cmd/prep@latest
         commands:
           - go build -a -toolexec="prep" main.go
-      - title: "Containerize your builds"
+      - title: ":gift: Containerize your builds"
         name: brewkit
         description: BrewKit is a container-native build system focused on repeatable builds and caching.
         url: https://github.com/ispringtech/brewkit
@@ -3114,7 +3114,7 @@ groups:
         example_image_url: https://github.com/maruel/pat/wiki/boundcheck.png
         commands:
           - boundcheck -pkg ./cmd/nin | less -R
-      - title: Detect performance optimizations
+      - title: ":gift: Detect performance optimizations"
         name: perfsprint
         url: https://github.com/catenacyber/perfsprint
         author: https://github.com/catenacyber

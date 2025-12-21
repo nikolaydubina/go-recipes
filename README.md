@@ -130,7 +130,7 @@
    + [ Transpile C to Go with `cxgo`](#-transpile-c-to-go-with-cxgo)
    + [ Transpile Go to Javascript with `gopherjs`](#-transpile-go-to-javascript-with-gopherjs)
    + [ Run compile-time function evaluation with `prep`](#-run-compile-time-function-evaluation-with-prep)
-   + [ Containerize your builds with `brewkit`](#-containerize-your-builds-with-brewkit)
+   + [ :gift: Containerize your builds with `brewkit`](#-gift-containerize-your-builds-with-brewkit)
  - Assembly
    + [ Get assembly of Go code snippets online](#-get-assembly-of-go-code-snippets-online)
    + [ Get Go SSA intermediary representation with `ssaplayground`](#-get-go-ssa-intermediary-representation-with-ssaplayground)
@@ -241,7 +241,7 @@
    + [ Detect magic numbers with `mnd`](#-detect-magic-numbers-with-mnd)
    + [ Detect magic strings with `goconst`](#-detect-magic-strings-with-goconst)
    + [ Detect bound checks with `pat/boundcheck`](#-detect-bound-checks-with-patboundcheck)
-   + [ Detect performance optimizations with `perfsprint`](#-detect-performance-optimizations-with-perfsprint)
+   + [ :gift: Detect performance optimizations with `perfsprint`](#-gift-detect-performance-optimizations-with-perfsprint)
    + [ Calculate Cognitive Complexity with `gocognit`](#-calculate-cognitive-complexity-with-gocognit)
    + [ Calculate Cyclomatic Complexity with `gocyclo`](#-calculate-cyclomatic-complexity-with-gocyclo)
    + [ Calculate Cyclomatic Complexity with `cyclop`](#-calculate-cyclomatic-complexity-with-cyclop)
@@ -2421,7 +2421,7 @@ Requirements
 go install github.com/pijng/prep/cmd/prep@latest
 ```
 
-### [⏫](#contents) Containerize your builds with [brewkit](https://github.com/ispringtech/brewkit)
+### [⏫](#contents) :gift: Containerize your builds with [brewkit](https://github.com/ispringtech/brewkit)
 
 BrewKit is a container-native build system focused on repeatable builds and caching.
 
@@ -4586,7 +4586,7 @@ Requirements
 go install github.com/maruel/pat/cmd/...@latest
 ```
 
-### [⏫](#contents) Detect performance optimizations with [perfsprint](https://github.com/catenacyber/perfsprint)
+### [⏫](#contents) :gift: Detect performance optimizations with [perfsprint](https://github.com/catenacyber/perfsprint)
 
 This tool detects possible performance optimizations in source code. It suggests replacing usages of `fmt.Sprintf` and `fmt.Errorf` with more efficient alternatives. — [@catenacyber](https://github.com/catenacyber)
 
