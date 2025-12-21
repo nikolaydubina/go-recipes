@@ -62,6 +62,7 @@
    + [ Explore dependencies with `goda`](#-explore-dependencies-with-goda)
    + [ Explore dependencies interactively with `spaghetti`](#-explore-dependencies-interactively-with-spaghetti)
    + [ Explore dependencies graph interactively with `modview`](#-explore-dependencies-graph-interactively-with-modview)
+   + [ Explore dependencies graph in CLI with `depth`](#-explore-dependencies-graph-in-cli-with-depth)
    + [ Enforce Go code architecture with `go-arch-lint`](#-enforce-go-code-architecture-with-go-arch-lint)
    + [ Check Clean Architecture with `go-cleanarch`](#-check-clean-architecture-with-go-cleanarch)
    + [ Use `go mod` directives](#-use-go-mod-directives)
@@ -1228,6 +1229,39 @@ modview --open
 Requirements
 ```
 go install github.com/bayraktugrul/modview@latest
+```
+
+### [⏫](#contents) Explore dependencies graph in CLI with [depth](https://github.com/KyleBanks/depth)
+
+Use this tool to retrieve and visualize Go source code dependency trees in CLI. You can also visualize multiple packages at once, set max depth, select internal only, and show explanation. — [@KyleBanks](https://github.com/KyleBanks)
+
+
+```
+depth github.com/KyleBanks/depth/cmd/depth
+```
+
+Example
+```
+github.com/KyleBanks/depth/cmd/depth
+  ├ encoding/json
+  ├ flag
+  ├ fmt
+  ├ io
+  ├ log
+  ├ os
+  ├ strings
+  └ github.com/KyleBanks/depth
+    ├ fmt
+    ├ go/build
+    ├ path
+    ├ sort
+    └ strings
+12 dependencies (11 internal, 1 external, 0 testing).
+```
+
+Requirements
+```
+go get github.com/KyleBanks/depth/cmd/depth@latest
 ```
 
 ### [⏫](#contents) Enforce Go code architecture with [go-arch-lint](https://github.com/fe3dback/go-arch-lint)

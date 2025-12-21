@@ -640,6 +640,31 @@ groups:
           - modview --open
         requirements:
           - go install github.com/bayraktugrul/modview@latest
+      - title: "Explore dependencies graph in CLI"
+        description: "Use this tool to retrieve and visualize Go source code dependency trees in CLI. You can also visualize multiple packages at once, set max depth, select internal only, and show explanation."
+        name: depth
+        url: https://github.com/KyleBanks/depth
+        author: https://github.com/KyleBanks
+        commands:
+          - depth github.com/KyleBanks/depth/cmd/depth
+        example_output: |
+          github.com/KyleBanks/depth/cmd/depth
+            ├ encoding/json
+            ├ flag
+            ├ fmt
+            ├ io
+            ├ log
+            ├ os
+            ├ strings
+            └ github.com/KyleBanks/depth
+              ├ fmt
+              ├ go/build
+              ├ path
+              ├ sort
+              └ strings
+          12 dependencies (11 internal, 1 external, 0 testing).
+        requirements:
+          - go get github.com/KyleBanks/depth/cmd/depth@latest
       - title: "Enforce Go code architecture"
         description: "Architecture linter. Will check all project import path and compare with arch rules defined in yml file. Useful for hexagonal / onion / ddd / mvc / etc patterns."
         name: go-arch-lint
