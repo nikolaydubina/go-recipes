@@ -280,6 +280,11 @@ groups:
         description: Standard tool runs only single fuzz test. Use following to run all fuzz tests in a package.
         commands:
           - go test -list . | grep Fuzz | xargs -P 8 -I {} go test -fuzz {} -fuzztime 5s .
+      - title: ":gift: Fuzz Go binaries using LibAFL"
+        description: "This project provides a setup for fuzzing Go binaries using LibAFL. By leveraging Go native libFuzzer-compatible instrumentation (`sancov_8bit`), we enable advanced fuzzing capabilities beyond Go built-in fuzzing support."
+        url: https://github.com/srlabs/golibafl
+        author: https://github.com/srlabs
+        name: GoLibAFL
       - title: Detect goroutine leaks
         description: Instrument your test cases with verification call. Alternatively, you can add single call in `TestMain`. This tool was recommended by Pyroscope in [blog](https://grafana.com/blog/2023/04/19/how-to-troubleshoot-memory-leaks-in-go-with-grafana-pyroscope/).
         url: https://github.com/uber-go/goleak
@@ -3458,7 +3463,7 @@ groups:
           x16:       err:16                            = waitForDefinition(schemaFoo:12
                                                                           (schemaWaldo:3)
                                                                           (expect:1)
-  - title: Guides
+  - title: ":gift: Guides"
     type: md-list
     entries:
       - title: Go Optimization Guide

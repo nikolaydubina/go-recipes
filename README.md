@@ -29,6 +29,7 @@
    + [ Run tests sequentially](#-run-tests-sequentially)
    + [ Run tests in parallel](#-run-tests-in-parallel)
    + [ Run all Fuzz tests](#-run-all-fuzz-tests)
+   + [ :gift: Fuzz Go binaries using LibAFL with `GoLibAFL`](#-gift-fuzz-go-binaries-using-libafl-with-golibafl)
    + [ Detect goroutine leaks with `goleak`](#-detect-goroutine-leaks-with-goleak)
    + [ Detect goroutine leaks with `leaktest`](#-detect-goroutine-leaks-with-leaktest)
    + [ Visualize test runs with `vgt`](#-visualize-test-runs-with-vgt)
@@ -253,9 +254,9 @@
    + [ Visualize struct layout with `structlayout`](#-visualize-struct-layout-with-structlayout)
    + [ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
    + [ Analyze function callsites with `go-callsite-stats`](#-analyze-function-callsites-with-go-callsite-stats)
- - Guides
-   + [ Go Optimization Guide](#guides)
-   + [ Go 101](#guides)
+ - :gift: Guides
+   + [ Go Optimization Guide](#:gift:-guides)
+   + [ Go 101](#:gift:-guides)
 
 ## AI Tools
 
@@ -656,6 +657,11 @@ Standard tool runs only single fuzz test. Use following to run all fuzz tests in
 ```
 go test -list . | grep Fuzz | xargs -P 8 -I {} go test -fuzz {} -fuzztime 5s .
 ```
+
+
+### [⏫](#contents) :gift: Fuzz Go binaries using LibAFL with [GoLibAFL](https://github.com/srlabs/golibafl)
+
+This project provides a setup for fuzzing Go binaries using LibAFL. By leveraging Go native libFuzzer-compatible instrumentation (`sancov_8bit`), we enable advanced fuzzing capabilities beyond Go built-in fuzzing support. — [@srlabs](https://github.com/srlabs)
 
 
 ### [⏫](#contents) Detect goroutine leaks with [goleak](https://github.com/uber-go/goleak)
@@ -5028,7 +5034,7 @@ Requirements
 go install github.com/nikolaydubina/go-callsite-stats@latest
 ```
 
-## Guides
+## :gift: Guides
 
 - [Go Optimization Guide](https://goperf.dev/)
 
