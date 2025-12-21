@@ -1374,6 +1374,15 @@ groups:
         example_image_url: https://raw.githubusercontent.com/wiki/maruel/panicparse/parse.gif
         requirements:
           - go install github.com/maruel/panicparse/v2/cmd/pp@latest
+      - title: ":gift: generate errors from a spec"
+        description: "This is a tool for error codes documentation and code generation. You can define all the errors in one YAML file and generate strictly typed error constructors. Error public messages are automatically localized on initialization based on the user locale."
+        name: zederr
+        url: https://github.com/amanbolat/zederr
+        author: https://github.com/amanbolat
+        commands:
+          - zederr gen --go-out ./out --spec zederr_spec.yaml
+        requirements:
+          - go install github.com/amanbolat/zederr/cmd/zederr@latest
   - title: Build
     entries:
       - title: "Fetch private dependencies in CI"
