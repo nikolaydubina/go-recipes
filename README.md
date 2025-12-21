@@ -27,7 +27,7 @@
    + [ Run coverage collector server with `goc`](#-run-coverage-collector-server-with-goc)
    + [ Visualize live coverage in VSCode with `goc`](#-visualize-live-coverage-in-vscode-with-goc)
    + [ Detect drops in coverage with `go-test-coverage`](#-detect-drops-in-coverage-with-go-test-coverage)
-   + [ :christmas_tree: post code coverage reports to pull requests with `go-coverage-report`](#-christmas_tree-post-code-coverage-reports-to-pull-requests-with-go-coverage-report)
+   + [ :gift: post code coverage reports to pull requests with `go-coverage-report`](#-gift-post-code-coverage-reports-to-pull-requests-with-go-coverage-report)
    + [ Shuffle tests](#-shuffle-tests)
    + [ Run tests sequentially](#-run-tests-sequentially)
    + [ Run tests in parallel](#-run-tests-in-parallel)
@@ -198,7 +198,7 @@
    + [ Read Go binary documentation in `man` format with `goman`](#-read-go-binary-documentation-in-man-format-with-goman)
    + [ Generate badge with `gobadge`](#-generate-badge-with-gobadge)
    + [ Generate README.md based on GoDoc comments with `goreadme`](#-generate-readmemd-based-on-godoc-comments-with-goreadme)
-   + [ :christmas_tree: display contents of a module with `go-mod-viewer`](#-christmas_tree-display-contents-of-a-module-with-go-mod-viewer)
+   + [ :gift: display contents of a module with `go-mod-viewer`](#-gift-display-contents-of-a-module-with-go-mod-viewer)
  - Education
    + [ Run Turtle Graphics online with `goplay.space`](#-run-turtle-graphics-online-with-goplayspace)
  - Style Guide
@@ -221,7 +221,7 @@
    + [ Reference and run common linters with `golangci-lint`](#-reference-and-run-common-linters-with-golangci-lint)
    + [ Detect non-exhaustive switch and map with `exhaustive`](#-detect-non-exhaustive-switch-and-map-with-exhaustive)
    + [ Detect structs with uninitialized fields with `go-exhaustruct`](#-detect-structs-with-uninitialized-fields-with-go-exhaustruct)
-   + [ :christmas_tree: Detect missing cascade calls with `go-lint-cascade`](#-christmas_tree-detect-missing-cascade-calls-with-go-lint-cascade)
+   + [ :gift: Detect missing cascade calls with `go-lint-cascade`](#-gift-detect-missing-cascade-calls-with-go-lint-cascade)
    + [ Detect unreachable functions with `deadcode`](#-detect-unreachable-functions-with-deadcode)
    + [ Detect unsafe code with `go-safer`](#-detect-unsafe-code-with-go-safer)
    + [ Detect `panic` without explaining comment with `panic-linter`](#-detect-panic-without-explaining-comment-with-panic-linter)
@@ -601,7 +601,7 @@ Requirements
 go install github.com/vladopajic/go-test-coverage/v2@latest
 ```
 
-### [⏫](#contents) :christmas_tree: post code coverage reports to pull requests with [go-coverage-report](https://github.com/fgrosse/go-coverage-report)
+### [⏫](#contents) :gift: post code coverage reports to pull requests with [go-coverage-report](https://github.com/fgrosse/go-coverage-report)
 
 A CLI tool and GitHub Action to post Go code coverage reports as comment to your pull requests. — [@fgrosse](https://github.com/fgrosse)
 
@@ -3694,7 +3694,7 @@ Requirements
 go install github.com/posener/goreadme/cmd/goreadme@latest
 ```
 
-### [⏫](#contents) :christmas_tree: display contents of a module with [go-mod-viewer](https://go-mod-viewer.appspot.com/https://go-mod-viewer.appspot.com/)
+### [⏫](#contents) :gift: display contents of a module with [go-mod-viewer](https://go-mod-viewer.appspot.com/https://go-mod-viewer.appspot.com/)
 
 Go mod viewer displays text files from Go modules stored in the Go module proxy. The URL schema is https://go-mod-viewer.appspot.com/<module>@<version>/<file>. — [@rsc](https://github.com/rsc)
 
@@ -4116,7 +4116,7 @@ Requirements
 go get -u github.com/GaijinEntertainment/go-exhaustruct/v3/cmd/exhaustruct
 ```
 
-### [⏫](#contents) :christmas_tree: Detect missing cascade calls with [go-lint-cascade](https://github.com/nikolaydubina/go-lint-cascade)
+### [⏫](#contents) :gift: Detect missing cascade calls with [go-lint-cascade](https://github.com/nikolaydubina/go-lint-cascade)
 
 For example, if you have cascade calls for WithDefaults() in nested config structs, this linter will detect if you missed any WithDefaults() calls. — [@nikolaydubina](https://github.com/nikolaydubina)
 

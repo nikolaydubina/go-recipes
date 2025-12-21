@@ -255,7 +255,7 @@ groups:
           - go install github.com/vladopajic/go-test-coverage/v2@latest
         commands:
           - go-test-coverage --config=./.testcoverage.yml
-      - title: ":christmas_tree: post code coverage reports to pull requests"
+      - title: ":gift: post code coverage reports to pull requests"
         description: "A CLI tool and GitHub Action to post Go code coverage reports as comment to your pull requests."
         url: https://github.com/fgrosse/go-coverage-report
         name: go-coverage-report
@@ -2461,7 +2461,7 @@ groups:
           - goreadme -badge-godoc -constants -functions -methods -recursive -types -variables > README.md
         requirements:
           - go install github.com/posener/goreadme/cmd/goreadme@latest
-      - title: ":christmas_tree: display contents of a module"
+      - title: ":gift: display contents of a module"
         description: "Go mod viewer displays text files from Go modules stored in the Go module proxy. The URL schema is https://go-mod-viewer.appspot.com/<module>@<version>/<file>."
         url: https://go-mod-viewer.appspot.com/https://go-mod-viewer.appspot.com/
         name: go-mod-viewer
@@ -2799,7 +2799,7 @@ groups:
           }
         requirements:
           - go get -u github.com/GaijinEntertainment/go-exhaustruct/v3/cmd/exhaustruct
-      - title: ":christmas_tree: Detect missing cascade calls"
+      - title: ":gift: Detect missing cascade calls"
         description: For example, if you have cascade calls for WithDefaults() in nested config structs, this linter will detect if you missed any WithDefaults() calls.
         url: https://github.com/nikolaydubina/go-lint-cascade
         name: go-lint-cascade
