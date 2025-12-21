@@ -180,6 +180,7 @@
    + [ Visualize callgraph of profiles with `pprof`](#-visualize-callgraph-of-profiles-with-pprof)
    + [ Visualize flamegraphs of profiles with `pprof`](#-visualize-flamegraphs-of-profiles-with-pprof)
    + [ Visualize profiles online](#-visualize-profiles-online)
+   + [ :gift: Profile and visualizse (with video) Go profiles through eBPF](#-gift-profile-and-visualizse-with-video-go-profiles-through-ebpf)
    + [ Get delta between two benchmarks with `benchstat`](#-get-delta-between-two-benchmarks-with-benchstat)
    + [ Get summary of benchmarks with `benchstat`](#-get-summary-of-benchmarks-with-benchstat)
    + [ Benchmark against git commit with `pat/ba`](#-benchmark-against-git-commit-with-patba)
@@ -3411,6 +3412,46 @@ You can also visualize profiles with online tools are aloso available https://ww
 <div align="center"><img src="img/speedscope_cpu_profile.png" style="margin: 8px; max-height: 640px;"></div>
 
 
+
+### [⏫](#contents) :gift: Profile and visualizse (with video) Go profiles through eBPF
+
+You can generate profiles throubh eBPF for Go programs. There is a frame export mode that you can use to generate videos. — [@benbaker76](https://github.com/benbaker76)
+
+
+```
+BPF_CFLAGS='-D__TARGET_ARCH_x86' go generate ./cmd/profile/
+go run ./cmd/profile -p 2197 100
+ffmpeg -framerate 30 -i ./frames/flamegraph%04d.png flamegraph.mp4
+```
+
+Example
+```
+Waiting for stack traces for 1m40s...
+
+    [U] 7f4d99a0112d [unknown]
+    [U] 7f4d99a0021d __isoc99_fscanf
+    -                htop (2197)
+        1
+    [K] ffffffff853bd36e do_task_stat
+    [K] ffffffff853bd36e do_task_stat
+    [K] ffffffff853b70ed proc_single_show
+    [K] ffffffff853574a0 seq_read_iter
+    [K] ffffffff8535792a seq_read
+    [K] ffffffff85326855 vfs_read
+    [K] ffffffff85326c2f ksys_read
+    [K] ffffffff85f22e55 do_syscall_64
+    [K] ffffffff86000124 entry_SYSCALL_64_after_hwframe
+    [U] 7f4d99ab27e2 read
+    [U] 00000040 [unknown]
+```
+
+<div align="center"><img src="ihttps://www.youtube.com/watch?v=LL-KoHnRfSM" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+follow instructions how to get required headers
+```
 
 ### [⏫](#contents) Get delta between two benchmarks with [benchstat](https://golang.org/x/perf/cmd/benchstat)
 

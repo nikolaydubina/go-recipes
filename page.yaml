@@ -2250,6 +2250,36 @@ groups:
       - title: Visualize profiles online
         description: You can also visualize profiles with online tools are aloso available https://www.speedscope.app (cpu).
         example_image_url: img/speedscope_cpu_profile.png
+      - title: ":gift: Profile and visualizse (with video) Go profiles through eBPF"
+        description: "You can generate profiles throubh eBPF for Go programs. There is a frame export mode that you can use to generate videos."
+        name: go-profile
+        example_image_url: ihttps://www.youtube.com/watch?v=LL-KoHnRfSM
+        url: https://github.com/benbaker76/go-profile
+        author: https://github.com/benbaker76
+        commands:
+          - BPF_CFLAGS='-D__TARGET_ARCH_x86' go generate ./cmd/profile/
+          - go run ./cmd/profile -p 2197 100
+          - ffmpeg -framerate 30 -i ./frames/flamegraph%04d.png flamegraph.mp4
+        example_output: |
+          Waiting for stack traces for 1m40s...
+
+              [U] 7f4d99a0112d [unknown]
+              [U] 7f4d99a0021d __isoc99_fscanf
+              -                htop (2197)
+                  1
+              [K] ffffffff853bd36e do_task_stat
+              [K] ffffffff853bd36e do_task_stat
+              [K] ffffffff853b70ed proc_single_show
+              [K] ffffffff853574a0 seq_read_iter
+              [K] ffffffff8535792a seq_read
+              [K] ffffffff85326855 vfs_read
+              [K] ffffffff85326c2f ksys_read
+              [K] ffffffff85f22e55 do_syscall_64
+              [K] ffffffff86000124 entry_SYSCALL_64_after_hwframe
+              [U] 7f4d99ab27e2 read
+              [U] 00000040 [unknown]
+        requirements:
+          - follow instructions how to get required headers
       - title: Get delta between two benchmarks
         description: This is standard way to compare two benchmark outputs. Names of benchmarks should be the same. Generate benchmarks as per usual. You would get multiple tables per dimension. If no output, then pass `-split="XYZ"`. If you do not see `delta`, then pass `-count=2` or more in benchmark generation. It is recommended to have alternative implementations in different packages, to keep benchmark names the same.
         name: benchstat
