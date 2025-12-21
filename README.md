@@ -3445,7 +3445,7 @@ Waiting for stack traces for 1m40s...
     [U] 00000040 [unknown]
 ```
 
-<div align="center"><img src="https://www.youtube.com/watch?v=LL-KoHnRfSM" style="margin: 8px; max-height: 640px;"></div>
+<div align="center"><a href="https://www.youtube.com/watch?v=LL-KoHnRfSM"><img src="https://img.youtube.com/vi/LL-KoHnRfSM/0.jpg" style="margin: 8px; max-height: 640px;"></a></div>
 
 
 Requirements
