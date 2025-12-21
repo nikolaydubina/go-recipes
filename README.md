@@ -254,9 +254,9 @@
    + [ Visualize struct layout with `structlayout`](#-visualize-struct-layout-with-structlayout)
    + [ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
    + [ Analyze function callsites with `go-callsite-stats`](#-analyze-function-callsites-with-go-callsite-stats)
- - :gift: Guides
-   + [ Go Optimization Guide](#:gift:-guides)
-   + [ Go 101](#:gift:-guides)
+ - Guides
+   + [ Go Optimization Guide](#guides)
+   + [ Go 101](#guides)
 
 ## AI Tools
 
@@ -5034,7 +5034,7 @@ Requirements
 go install github.com/nikolaydubina/go-callsite-stats@latest
 ```
 
-## :gift: Guides
+## Guides
 
 - [Go Optimization Guide](https://goperf.dev/)
 

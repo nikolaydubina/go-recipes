@@ -3463,7 +3463,7 @@ groups:
           x16:       err:16                            = waitForDefinition(schemaFoo:12
                                                                           (schemaWaldo:3)
                                                                           (expect:1)
-  - title: ":gift: Guides"
+  - title: Guides
     type: md-list
     entries:
       - title: Go Optimization Guide
