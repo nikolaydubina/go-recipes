@@ -253,6 +253,8 @@
    + [ Visualize struct layout with `structlayout`](#-visualize-struct-layout-with-structlayout)
    + [ Rely on compiler for stricter Enums](#-rely-on-compiler-for-stricter-enums)
    + [ Analyze function callsites with `go-callsite-stats`](#-analyze-function-callsites-with-go-callsite-stats)
+ - Guides
+   + [ Go Optimization Guide](#guides)
 
 ## AI Tools
 
@@ -3445,6 +3447,9 @@ Waiting for stack traces for 1m40s...
     [U] 00000040 [unknown]
 ```
 
+<div align="center"><a href="https://www.youtube.com/watch?v=LL-KoHnRfSM"><img src="https://img.youtube.com/vi/LL-KoHnRfSM/0.jpg" style="margin: 8px; max-height: 640px;"></a></div>
+
+
 Requirements
 ```
 follow instructions how to get required headers
@@ -5021,5 +5026,9 @@ Requirements
 ```
 go install github.com/nikolaydubina/go-callsite-stats@latest
 ```
+
+## Guides
+
+- [Go Optimization Guide](https://goperf.dev/)
 
 
