@@ -180,7 +180,7 @@
    + [ Visualize callgraph of profiles with `pprof`](#-visualize-callgraph-of-profiles-with-pprof)
    + [ Visualize flamegraphs of profiles with `pprof`](#-visualize-flamegraphs-of-profiles-with-pprof)
    + [ Visualize profiles online](#-visualize-profiles-online)
-   + [ :gift: Profile and visualizse (with video) Go profiles through eBPF](#-gift-profile-and-visualizse-with-video-go-profiles-through-ebpf)
+   + [ :gift: Profile and visualizse (with video) Go profiles through eBPF with `go-profile`](#-gift-profile-and-visualizse-with-video-go-profiles-through-ebpf-with-go-profile)
    + [ Get delta between two benchmarks with `benchstat`](#-get-delta-between-two-benchmarks-with-benchstat)
    + [ Get summary of benchmarks with `benchstat`](#-get-summary-of-benchmarks-with-benchstat)
    + [ Benchmark against git commit with `pat/ba`](#-benchmark-against-git-commit-with-patba)
@@ -3413,7 +3413,7 @@ You can also visualize profiles with online tools are aloso available https://ww
 
 
 
-### [⏫](#contents) :gift: Profile and visualizse (with video) Go profiles through eBPF
+### [⏫](#contents) :gift: Profile and visualizse (with video) Go profiles through eBPF with [go-profile](https://github.com/benbaker76/go-profile)
 
 You can generate profiles throubh eBPF for Go programs. There is a frame export mode that you can use to generate videos. — [@benbaker76](https://github.com/benbaker76)
 
