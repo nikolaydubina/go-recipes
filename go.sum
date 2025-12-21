@@ -1,15 +1,5 @@
-github.com/KyleBanks/depth v1.2.1 h1:5h8fQADFrWtarTdtDudMmGsC7GPbOAu6RVB3ffsVFHc=
-github.com/KyleBanks/depth v1.2.1/go.mod h1:jzSb9d0L43HxTQfT+oSA1EEp2q+ne2uh6XgeJcm8brE=
-github.com/KyleBanks/go-kit v0.0.0-20190806085950-af561f6ff7a1 h1:lkCgaCQYp3A2E1VUgkUtxV6NeJYMb06AgYnn0QSgAYE=
-github.com/KyleBanks/go-kit v0.0.0-20190806085950-af561f6ff7a1/go.mod h1:Zf2kMqBfoYw8sdD+1XFrIcR9QWhnt6T+jTA7K97sIjU=
-github.com/KyleBanks/goggles v0.3.5 h1:kahPiKrtm2SwDE/d/dssZ87QuOTIg4uS0VMBeyo09FA=
-github.com/KyleBanks/goggles v0.3.5/go.mod h1:4SDDYU2+rD15XspDD+Dj7WhUlAPm68s/ryWbCNz6zDA=
-github.com/elazarl/go-bindata-assetfs v1.0.1 h1:m0kkaHRKEu7tUIUFVwhGGGYClXvyl4RE03qmvRTNfbw=
-github.com/elazarl/go-bindata-assetfs v1.0.1/go.mod h1:v+YaWX3bdea5J/mo8dSETolEo7R71Vk1u8bnjau5yw4=
-github.com/nikolaydubina/mdpage v1.7.0 h1:whMG+jYWvTE59/ncZXw0n2Dr58jExCD2TBDZTPSoU+w=
-github.com/nikolaydubina/mdpage v1.7.0/go.mod h1:RJhbUZIlRBVQRMkLYFgDehxqkRSXSPYhiBwQWtwIlAo=
-github.com/skratchdot/open-golang v0.0.0-20200116055534-eef842397966 h1:JIAuq3EEf9cgbU6AtGPK4CTG3Zf6CKMNqf0MHTggAUA=
-github.com/skratchdot/open-golang v0.0.0-20200116055534-eef842397966/go.mod h1:sUM3LWHvSMaG192sy56D9F7CNvL7jUJVXoqM1QKLnog=
+github.com/nikolaydubina/mdpage v1.8.0 h1:ANvjlMZl1UlmPAHOmNSWI7zKzo4T+kJlcL4MDfpkgSI=
+github.com/nikolaydubina/mdpage v1.8.0/go.mod h1:RJhbUZIlRBVQRMkLYFgDehxqkRSXSPYhiBwQWtwIlAo=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
 gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
