@@ -1,9 +1,6 @@
 <h1 align="center">🦩 Go Recipes</h1>
 <p align="center">Handy well-known and <i>lesser</i>-known tools for Go projects</p>
 
-> _Know some cool tool or one-liner? Have a feature request or an idea?_  
-> _Feel free to edit this page or create an Issue!_  
-
 [![Hits](https://hits.sh/github.com/nikolaydubina/go-recipes.svg?view=today-total&extraCount=64309)](https://hits.sh/github.com/nikolaydubina/go-recipes/)
 [![go-recipes](https://raw.githubusercontent.com/nikolaydubina/go-recipes/main/badge.svg?raw=true)](https://github.com/nikolaydubina/go-recipes)
 
