@@ -114,7 +114,7 @@
    + [ Errors with return traces with `errtrace`](#-errors-with-return-traces-with-errtrace)
    + [ Errors with stack traces and source fragments with `tracerr`](#-errors-with-stack-traces-and-source-fragments-with-tracerr)
    + [ Pretty print `panic` messages with `panicparse`](#-pretty-print-panic-messages-with-panicparse)
-   + [ :gift: generate errors from a spec with `zederr`](#-gift-generate-errors-from-a-spec-with-zederr)
+   + [ :gift: Generate errors from a spec with `zederr`](#-gift-generate-errors-from-a-spec-with-zederr)
  - Build
    + [ Fetch private dependencies in CI](#-fetch-private-dependencies-in-ci)
    + [ Show compiler optimization decisions on heap and inlining](#-show-compiler-optimization-decisions-on-heap-and-inlining)
@@ -2282,7 +2282,7 @@ Requirements
 go install github.com/maruel/panicparse/v2/cmd/pp@latest
 ```
 
-### [⏫](#contents) :gift: generate errors from a spec with [zederr](https://github.com/amanbolat/zederr)
+### [⏫](#contents) :gift: Generate errors from a spec with [zederr](https://github.com/amanbolat/zederr)
 
 This is a tool for error codes documentation and code generation. You can define all the errors in one YAML file and generate strictly typed error constructors. Error public messages are automatically localized on initialization based on the user locale. — [@amanbolat](https://github.com/amanbolat)
 
