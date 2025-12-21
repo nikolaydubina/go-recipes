@@ -255,6 +255,7 @@
    + [ Analyze function callsites with `go-callsite-stats`](#-analyze-function-callsites-with-go-callsite-stats)
  - Guides
    + [ Go Optimization Guide](#guides)
+   + [ Go 101](#guides)
 
 ## AI Tools
 
@@ -5030,5 +5031,7 @@ go install github.com/nikolaydubina/go-callsite-stats@latest
 ## Guides
 
 - [Go Optimization Guide](https://goperf.dev/)
+
+- [Go 101](https://go101.org/)
 
 

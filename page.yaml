@@ -3463,3 +3463,5 @@ groups:
     entries:
       - title: Go Optimization Guide
         url: https://goperf.dev/
+      - title: Go 101
+        url: https://go101.org/
