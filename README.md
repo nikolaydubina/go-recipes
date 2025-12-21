@@ -4136,7 +4136,7 @@ type Config struct {
     DB DBConfig
 }
 
-func (s Config) WithDefaults() Outer {
+func (s Config) WithDefaults() Config {
     // ERROR: Missing s.DB = s.DB.WithDefaults()
     return s
 }
@@ -4145,7 +4145,7 @@ type DBConfig struct {
     Port int
 }
 
-func (s DBConfig) WithDefaults() Inner { 
+func (s DBConfig) WithDefaults() DBConfig { 
     if s.Port == 0 {
         s.Port = 42
     }
