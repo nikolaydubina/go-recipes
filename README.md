@@ -1,13 +1,14 @@
 <h1 align="center">🦩 Go Recipes</h1>
+
+<p align="center">
+  ✨ Sponsored by <a href="https://apps.apple.com/app/id6738306589">NDX AI Shopping Assistant</a>
+</p>
+
 <p align="center">Handy well-known and <i>lesser</i>-known tools for Go projects</p>
 
 <p align="center">
   <a href="https://hits.sh/github.com/nikolaydubina/go-recipes/"><img src="https://hits.sh/github.com/nikolaydubina/go-recipes.svg?view=today-total&extraCount=64309" alt="Hits"></a>
   <a href="https://github.com/nikolaydubina/go-recipes"><img src="https://raw.githubusercontent.com/nikolaydubina/go-recipes/main/badge.svg?raw=true" alt="go-recipes"></a>
-</p>
-
-<p align="center">
-  ✨ Sponsored by <a href="https://apps.apple.com/app/id6738306589">NDX AI Shopping Assistant</a>
 </p>
 
 ## Contents
