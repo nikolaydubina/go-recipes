@@ -25,7 +25,7 @@
    + [ Visualize live coverage in VSCode with `goc`](#-visualize-live-coverage-in-vscode-with-goc)
    + [ Detect drops in coverage with `go-test-coverage`](#-detect-drops-in-coverage-with-go-test-coverage)
    + [ :gift: Comment code coverage reports in pull request with `go-coverage-report`](#-gift-comment-code-coverage-reports-in-pull-request-with-go-coverage-report)
-   + [ :gift: Differential coverage](#-gift-differential-coverage)
+   + [ :gift: Debug with `Differential Coverage`](#-gift-debug-with-differential-coverage)
    + [ :gift: Manipulate coverage profiles with `gopherage`](#-gift-manipulate-coverage-profiles-with-gopherage)
    + [ Shuffle tests](#-shuffle-tests)
    + [ Run tests sequentially](#-run-tests-sequentially)
@@ -442,7 +442,7 @@ A CLI tool and GitHub Action to post Go code coverage reports as comment to your
 
 
 
-### [⏫](#contents) :gift: Differential coverage
+### [⏫](#contents) :gift: Debug with [Differential Coverage](https://research.swtch.com/diffcover)
 
 This is a useful basic technique that should be more widely known (just like bisect). Read more in the blog post. — [@rsc](https://github.com/rsc)
 
