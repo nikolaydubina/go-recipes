@@ -23,7 +23,7 @@ groups:
   - title: Test
     entries:
       - title: "Continuous Tests Monitoring"
-        description: Track tests duration, errors, flackiness. Run JUnit test output converter and submit result to codecov.io via GitHub Action.
+        description: Track tests duration, errors, and flakiness. Run JUnit test output converter and submit results to codecov.io via GitHub Action.
         name: codecov.io
         url: https://app.codecov.io
         author: https://codecov.io
@@ -44,7 +44,7 @@ groups:
           - go test -coverprofile cover.out ./...
           - go-cover-treemap -coverprofile cover.out > out.svg
       - title: Browse coverage
-        description: This is very helpful tool from the official Go toolchain. Similar visualization is integrated into VSCode and Goland, but can be used separately.
+        description: This is very helpful tool from the official Go toolchain. Similar visualization is integrated into VSCode and GoLand, but can be used separately.
         example_image_url: ./img/tool-cover-html.png
         commands:
           - go test -coverprofile cover.out ./...
@@ -118,7 +118,7 @@ groups:
           - go install github.com/qiniu/goc@latest
       - title: "Detect drops in coverage"
         name: go-test-coverage
-        description: This tool designed to report issues when test coverage falls below a specified threshold. Likely you would want to use it in the CI.
+        description: This tool is designed to report issues when test coverage falls below a specified threshold. Likely you would want to use it in the CI.
         url: https://github.com/vladopajic/go-test-coverage
         author: https://github.com/vladopajic
         requirements:
@@ -126,7 +126,7 @@ groups:
         commands:
           - go-test-coverage --config=./.testcoverage.yml
       - title: ":gift: Comment code coverage reports in pull request"
-        description: "A CLI tool and GitHub Action to post Go code coverage reports as comment to your pull requests."
+        description: "A CLI tool and GitHub Action to post Go code coverage reports as a comment on your pull requests."
         url: https://github.com/fgrosse/go-coverage-report
         name: go-coverage-report
         author: https://github.com/fgrosse
@@ -137,7 +137,7 @@ groups:
         name: Differential Coverage
         author: https://github.com/rsc
       - title: ":gift: Manipulate coverage profiles"
-        description: "Kubernetes test-infra contains couple useful granular tools to manipulate coverage profiles."
+        description: "Kubernetes test-infra contains a couple of useful granular tools to manipulate coverage profiles."
         url: https://github.com/kubernetes/test-infra/blob/master/gopherage
         name: gopherage
         author: https://github.com/kubernetes
@@ -176,7 +176,7 @@ groups:
                   t.Parallel()
                   ...
       - title: Run all Fuzz tests
-        description: Standard tool runs only single fuzz test. Use following to run all fuzz tests in a package.
+        description: The standard tool runs only a single fuzz test. Use the following to run all fuzz tests in a package.
         commands:
           - go test -list . | grep Fuzz | xargs -P 8 -I {} go test -fuzz {} -fuzztime 5s .
       - title: ":gift: Fuzz Go binaries using LibAFL"
@@ -307,7 +307,7 @@ groups:
           - gotestsum --rerun-fails --packages="./..."
         requirements:
           - go install gotest.tools/gotestsum@latest
-      - title: Make `JSUnit` test report
+      - title: Make `JUnit` test report
         description: JUnit is widely used format for test reporting.
         name: gotestsum
         url: https://github.com/gotestyourself/gotestsum
@@ -316,7 +316,7 @@ groups:
           - go test -json ./... | gotestsum --junitfile unit-tests.xml
         requirements:
           - go install gotest.tools/gotestsum@latest
-      - title: "Make `JSUnit` test report"
+      - title: "Make `JUnit` test report"
         description: JUnit is widely used format for test reporting. Go benchmark output is also supported.
         url: https://github.com/jstemmer/go-junit-report
         name: go-junit-report
@@ -383,7 +383,7 @@ groups:
             }
           }
       - title: "Trace tests"
-        description: Collect test execution as distributed traces. This is useful for tracking test duration, failures, flakiness. You distributed tracing storage, search, UI, exploration, dashboards, alarms — all will automatically become test status collection. If you run integration tests in your CI, then it is particularly handy to investigate your integration tests same way as real requests, such as Go processes, databases, etc. However, if you do not have distributed traces, it is still useful for adhoc investigations. This tool processes STDOUT of `go test`. No automatic instrumentation is done.
+        description: Collect test execution as distributed traces. This is useful for tracking test duration, failures, and flakiness. Your distributed tracing storage, search, UI, exploration, dashboards, and alarms all automatically become test status collection. If you run integration tests in your CI, then it is particularly handy to investigate your integration tests the same way as real requests, such as Go processes, databases, etc. However, if you do not have distributed traces, it is still useful for ad hoc investigations. This tool processes STDOUT of `go test`. No automatic instrumentation is done.
         name: go-test-trace
         url: https://github.com/rakyll/go-test-trace
         author: https://github.com/rakyll
@@ -667,7 +667,7 @@ groups:
         requirements:
           - go install github.com/ofabry/go-callvis
       - title: Make PlantUML diagram
-        description: Generates class diagram in widely used format with the information on structs, interfaces and their relationships. Render `.puml` files in for example [planttext.com](https://www.planttext.com).
+        description: Generates class diagrams in a widely used format with information on structs, interfaces, and their relationships. Render `.puml` files in, for example, [planttext.com](https://www.planttext.com).
         name: goplantuml
         url: https://github.com/jfeliu007/goplantuml
         author: https://github.com/jfeliu007
@@ -678,7 +678,7 @@ groups:
           - go install github.com/jfeliu007/goplantuml/cmd/goplantuml@latest
         example_image_url: https://raw.githubusercontent.com/jfeliu007/goplantuml/master/example/example.png
       - title: Make PlantUML diagram
-        description: Automatically generate visualization of classes and interfaces for go packages. Recommend recursive option. Render `.puml` files in for example [planttext.com](https://www.planttext.com).
+        description: Automatically generates visualizations of classes and interfaces for Go packages. We recommend the recursive option. Render `.puml` files in, for example, [planttext.com](https://www.planttext.com).
         name: go-plantuml
         url: https://github.com/bykof/go-plantuml
         author: https://github.com/bykof
@@ -725,7 +725,7 @@ groups:
           - go install github.com/fzipp/pythia@latest
           - go install golang.org/x/tools/cmd/guru@latest
       - title: "Interactively visualize packages"
-        description: Based on `go-callvis`, this tool is an interactive package explorer of packages. This tool have not been updated for a long time.
+        description: Based on `go-callvis`, this tool is an interactive package explorer of packages. This tool has not been updated for a long time.
         url: https://github.com/ofabry/goexplorer
         name: goexplorer
         author: https://github.com/ofabry
@@ -823,7 +823,7 @@ groups:
         requirements:
           - go get github.com/atombender/go-jsonschema/...
           - go install github.com/atombender/go-jsonschema@latest
-        description: JSON Schema is widely used standard for definition of structured data types. This tool will generate Go struct, decoder and validation based on JSON Schema spec.
+        description: JSON Schema is a widely used standard for the definition of structured data types. This tool will generate a Go struct, decoder, and validation based on the JSON Schema spec.
         commands:
           - go-jsonschema -p main myschema.jsonschema
         example_output: |
@@ -1264,7 +1264,7 @@ groups:
   - title: Errors
     entries:
       - title: "Errors with return traces"
-        description: Return trace is the path that error took to return to user. This can be more illustrative than typical stack trace that produced the error. This tool have convenience automatic instrumentation CLI to update your code.
+        description: Return trace is the path that an error took to return to the user. This can be more illustrative than a typical stack trace that produced the error. This tool has a convenient automatic instrumentation CLI to update your code.
         url: https://github.com/bracesdev/errtrace
         name: errtrace
         author: https://github.com/bracesdev
@@ -1358,7 +1358,7 @@ groups:
         commands:
           - go build -gcflags="-l -l -l -l" .
       - title: ":gift: Reduce size of binary"
-        description: "First, get breakdown of how much specific packages take space in your binary. Very often you will see some dependnecy taking 80% of your binary size, yet often you can have more slim version of it. (e.g. `elasticsearch`, `gcp` clients). Then, apply compiler directives to strip away non-essential information."
+        description: "First, get breakdown of how much specific packages take space in your binary. Very often you will see some dependency taking 80% of your binary size, yet often you can have more slim version of it. (e.g. `elasticsearch`, `gcp` clients). Then, apply compiler directives to strip away non-essential information."
         commands:
           - go build -ldflags="-s -w" .
       - title: Profile-guided optimization
@@ -1805,7 +1805,7 @@ groups:
         requirements:
           - go install github.com/traefik/yaegi@latest
       - title: Run interactive Go interpreter
-        description: "This is interactive Go interpreter and debugger with REPL, Eval, generics and Lisp-like macros. You can run functions, import 3rd patry packages. Can be useful for learning and experimentation. Some nice features: autocomplete; constant expressions arithmetics. As of `2023-06-02`, issues with importing 3rd paty package are possible."
+        description: "This is an interactive Go interpreter and debugger with REPL, Eval, generics, and Lisp-like macros. You can run functions and import 3rd-party packages. It can be useful for learning and experimentation. Some nice features: autocomplete; constant-expression arithmetic. As of `2023-06-02`, issues with importing 3rd-party packages are possible."
         url: https://github.com/cosmos72/gomacro
         name: gomacro
         author: https://github.com/cosmos72
@@ -2153,7 +2153,7 @@ groups:
       - title: Visualize profiles online
         description: You can also visualize profiles with online tools are aloso available https://www.speedscope.app (cpu).
         example_image_url: img/speedscope_cpu_profile.png
-      - title: ":gift: Profile and visualizse (with video) Go profiles through eBPF"
+      - title: ":gift: Profile and visualize (with video) Go profiles through eBPF"
         description: "You can generate profiles throubh eBPF for Go programs. There is a frame export mode that you can use to generate videos."
         name: go-profile
         example_video_url: https://www.youtube.com/watch?v=LL-KoHnRfSM
@@ -2344,7 +2344,7 @@ groups:
           - go tool trace trace.out
         example_image_url: img/go_tool_trace_web.png
       - title: "View traces"
-        description: Gotraceui is a tool for visualizing and analyzing Go execution traces. It is meant to be a faster, more accessible, and more powerful alternative to go tool trace. Unlike go tool trace, Gotraceui doesn't use deprecated browser APIs (or a browser at all), and its UI is tuned specifically to the unique characteristics of Go traces. This tool also recommend by official Go team from Google in their [blog](https://go.dev/blog/execution-traces-2024).
+        description: Gotraceui is a tool for visualizing and analyzing Go execution traces. It is meant to be a faster, more accessible, and more powerful alternative to go tool trace. Unlike go tool trace, Gotraceui doesn't use deprecated browser APIs (or a browser at all), and its UI is tuned specifically to the unique characteristics of Go traces. This tool is also recommended by the official Go team from Google in their [blog](https://go.dev/blog/execution-traces-2024).
         name: gotraceui
         url: https://github.com/dominikh/gotraceui
         author: https://github.com/dominikh
@@ -3330,7 +3330,7 @@ groups:
           - go install github.com/ajstarks/svgo/structlayout-svg@latest
           - go install honnef.co/go/tools/cmd/structlayout@latest
       - title: Rely on compiler for stricter Enums
-        description: "For compile time blocking of: accidental arithmetics; implicit cast of untyped constants; all operators except `==` and `!=`; — simply wrap into a struct in separate package and do not export field. [example](http://github.com/nikolaydubina/go-enum-example)."
+        description: "For compile time blocking of: accidental arithmetic; implicit cast of untyped constants; all operators except `==` and `!=`; — simply wrap into a struct in a separate package and do not export the field. [example](http://github.com/nikolaydubina/go-enum-example)."
         example_content_ext: go
         example_content: |
           package color

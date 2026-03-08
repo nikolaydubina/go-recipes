@@ -43,8 +43,8 @@
    + [ Get slowest tests with `gotestsum`](#-get-slowest-tests-with-gotestsum)
    + [ Auto-Instrument skipping slowest tests with `gotestsum`](#-auto-instrument-skipping-slowest-tests-with-gotestsum)
    + [ Automatically re-run failed tests with `gotestsum`](#-automatically-re-run-failed-tests-with-gotestsum)
-   + [ Make `JSUnit` test report with `gotestsum`](#-make-jsunit-test-report-with-gotestsum)
-   + [ Make `JSUnit` test report with `go-junit-report`](#-make-jsunit-test-report-with-go-junit-report)
+   + [ Make `JUnit` test report with `gotestsum`](#-make-junit-test-report-with-gotestsum)
+   + [ Make `JUnit` test report with `go-junit-report`](#-make-junit-test-report-with-go-junit-report)
    + [ Get packages without tests](#-get-packages-without-tests)
    + [ Perform Mutation Testing with `ooze`](#-perform-mutation-testing-with-ooze)
    + [ Perform Mutation Testing with `avito-tech/go-mutesting`](#-perform-mutation-testing-with-avito-techgo-mutesting)
@@ -186,7 +186,7 @@
    + [ Visualize callgraph of profiles with `pprof`](#-visualize-callgraph-of-profiles-with-pprof)
    + [ Visualize flamegraphs of profiles with `pprof`](#-visualize-flamegraphs-of-profiles-with-pprof)
    + [ Visualize profiles online](#-visualize-profiles-online)
-   + [ :gift: Profile and visualizse (with video) Go profiles through eBPF with `go-profile`](#-gift-profile-and-visualizse-with-video-go-profiles-through-ebpf-with-go-profile)
+   + [ :gift: Profile and visualize (with video) Go profiles through eBPF with `go-profile`](#-gift-profile-and-visualize-with-video-go-profiles-through-ebpf-with-go-profile)
    + [ Get delta between two benchmarks with `benchstat`](#-get-delta-between-two-benchmarks-with-benchstat)
    + [ Get summary of benchmarks with `benchstat`](#-get-summary-of-benchmarks-with-benchstat)
    + [ Benchmark against git commit with `pat/ba`](#-benchmark-against-git-commit-with-patba)
@@ -268,7 +268,7 @@
 
 ### [⏫](#contents) Continuous Tests Monitoring with [codecov.io](https://app.codecov.io)
 
-Track tests duration, errors, flackiness. Run JUnit test output converter and submit result to codecov.io via GitHub Action. — https://codecov.io
+Track tests duration, errors, and flakiness. Run JUnit test output converter and submit results to codecov.io via GitHub Action. — https://codecov.io
 
 
 ```
@@ -303,7 +303,7 @@ go install github.com/nikolaydubina/go-cover-treemap@latest
 
 ### [⏫](#contents) Browse coverage
 
-This is very helpful tool from the official Go toolchain. Similar visualization is integrated into VSCode and Goland, but can be used separately.
+This is very helpful tool from the official Go toolchain. Similar visualization is integrated into VSCode and GoLand, but can be used separately.
 
 
 ```
@@ -423,7 +423,7 @@ go install github.com/qiniu/goc@latest
 
 ### [⏫](#contents) Detect drops in coverage with [go-test-coverage](https://github.com/vladopajic/go-test-coverage)
 
-This tool designed to report issues when test coverage falls below a specified threshold. Likely you would want to use it in the CI. — [@vladopajic](https://github.com/vladopajic)
+This tool is designed to report issues when test coverage falls below a specified threshold. Likely you would want to use it in the CI. — [@vladopajic](https://github.com/vladopajic)
 
 
 ```
@@ -437,7 +437,7 @@ go install github.com/vladopajic/go-test-coverage/v2@latest
 
 ### [⏫](#contents) :gift: Comment code coverage reports in pull request with [go-coverage-report](https://github.com/fgrosse/go-coverage-report)
 
-A CLI tool and GitHub Action to post Go code coverage reports as comment to your pull requests. — [@fgrosse](https://github.com/fgrosse)
+A CLI tool and GitHub Action to post Go code coverage reports as a comment on your pull requests. — [@fgrosse](https://github.com/fgrosse)
 
 <div align="center"><img src="https://github.com/fgrosse/go-coverage-report/blob/main/screenshot.png" style="margin: 8px; max-height: 640px;"></div>
 
@@ -450,7 +450,7 @@ This is a useful basic technique that should be more widely known (just like bis
 
 ### [⏫](#contents) :gift: Manipulate coverage profiles with [gopherage](https://github.com/kubernetes/test-infra/blob/master/gopherage)
 
-Kubernetes test-infra contains couple useful granular tools to manipulate coverage profiles. — [@kubernetes](https://github.com/kubernetes)
+Kubernetes test-infra contains a couple of useful granular tools to manipulate coverage profiles. — [@kubernetes](https://github.com/kubernetes)
 
 
 ```
@@ -510,7 +510,7 @@ for _, tc := range tests {
 
 ### [⏫](#contents) Run all Fuzz tests
 
-Standard tool runs only single fuzz test. Use following to run all fuzz tests in a package.
+The standard tool runs only a single fuzz test. Use the following to run all fuzz tests in a package.
 
 
 ```
@@ -714,7 +714,7 @@ Requirements
 go install gotest.tools/gotestsum@latest
 ```
 
-### [⏫](#contents) Make `JSUnit` test report with [gotestsum](https://github.com/gotestyourself/gotestsum)
+### [⏫](#contents) Make `JUnit` test report with [gotestsum](https://github.com/gotestyourself/gotestsum)
 
 JUnit is widely used format for test reporting. — [@dnephin](https://github.com/dnephin)
 
@@ -728,7 +728,7 @@ Requirements
 go install gotest.tools/gotestsum@latest
 ```
 
-### [⏫](#contents) Make `JSUnit` test report with [go-junit-report](https://github.com/jstemmer/go-junit-report)
+### [⏫](#contents) Make `JUnit` test report with [go-junit-report](https://github.com/jstemmer/go-junit-report)
 
 JUnit is widely used format for test reporting. Go benchmark output is also supported. — [@jstemmer](https://github.com/jstemmer)
 
@@ -831,7 +831,7 @@ go install github.com/zimmski/go-mutesting/cmd/go-mutesting@latest
 
 ### [⏫](#contents) Trace tests with [go-test-trace](https://github.com/rakyll/go-test-trace)
 
-Collect test execution as distributed traces. This is useful for tracking test duration, failures, flakiness. You distributed tracing storage, search, UI, exploration, dashboards, alarms — all will automatically become test status collection. If you run integration tests in your CI, then it is particularly handy to investigate your integration tests same way as real requests, such as Go processes, databases, etc. However, if you do not have distributed traces, it is still useful for adhoc investigations. This tool processes STDOUT of `go test`. No automatic instrumentation is done. — [@rakyll](https://github.com/rakyll)
+Collect test execution as distributed traces. This is useful for tracking test duration, failures, and flakiness. Your distributed tracing storage, search, UI, exploration, dashboards, and alarms all automatically become test status collection. If you run integration tests in your CI, then it is particularly handy to investigate your integration tests the same way as real requests, such as Go processes, databases, etc. However, if you do not have distributed traces, it is still useful for ad hoc investigations. This tool processes STDOUT of `go test`. No automatic instrumentation is done. — [@rakyll](https://github.com/rakyll)
 
 
 ```
@@ -1292,7 +1292,7 @@ go install github.com/ofabry/go-callvis
 
 ### [⏫](#contents) Make PlantUML diagram with [goplantuml](https://github.com/jfeliu007/goplantuml)
 
-Generates class diagram in widely used format with the information on structs, interfaces and their relationships. Render `.puml` files in for example [planttext.com](https://www.planttext.com). — [@jfeliu007](https://github.com/jfeliu007)
+Generates class diagrams in a widely used format with information on structs, interfaces, and their relationships. Render `.puml` files in, for example, [planttext.com](https://www.planttext.com). — [@jfeliu007](https://github.com/jfeliu007)
 
 
 ```
@@ -1310,7 +1310,7 @@ go install github.com/jfeliu007/goplantuml/cmd/goplantuml@latest
 
 ### [⏫](#contents) Make PlantUML diagram with [go-plantuml](https://github.com/bykof/go-plantuml)
 
-Automatically generate visualization of classes and interfaces for go packages. Recommend recursive option. Render `.puml` files in for example [planttext.com](https://www.planttext.com). — [@bykof](https://github.com/bykof)
+Automatically generates visualizations of classes and interfaces for Go packages. We recommend the recursive option. Render `.puml` files in, for example, [planttext.com](https://www.planttext.com). — [@bykof](https://github.com/bykof)
 
 
 ```
@@ -1388,7 +1388,7 @@ go install golang.org/x/tools/cmd/guru@latest
 
 ### [⏫](#contents) Interactively visualize packages with [goexplorer](https://github.com/ofabry/goexplorer)
 
-Based on `go-callvis`, this tool is an interactive package explorer of packages. This tool have not been updated for a long time. — [@ofabry](https://github.com/ofabry)
+Based on `go-callvis`, this tool is an interactive package explorer of packages. This tool has not been updated for a long time. — [@ofabry](https://github.com/ofabry)
 
 <div align="center"><img src="https://github.com/ofabry/goexplorer/raw/master/images/screen.png" style="margin: 8px; max-height: 640px;"></div>
 
@@ -1512,7 +1512,7 @@ go install github.com/zarldev/goenums@latest
 
 ### [⏫](#contents) Generate data types from JSON Schema with [go-jsonschema](https://github.com/omissis/go-jsonschema)
 
-JSON Schema is widely used standard for definition of structured data types. This tool will generate Go struct, decoder and validation based on JSON Schema spec. — [@omissis](https://github.com/omissis)
+JSON Schema is a widely used standard for the definition of structured data types. This tool will generate a Go struct, decoder, and validation based on the JSON Schema spec. — [@omissis](https://github.com/omissis)
 
 
 ```
@@ -2043,7 +2043,7 @@ go install github.com/anqiansong/goimportx@latest
 
 ### [⏫](#contents) Errors with return traces with [errtrace](https://github.com/bracesdev/errtrace)
 
-Return trace is the path that error took to return to user. This can be more illustrative than typical stack trace that produced the error. This tool have convenience automatic instrumentation CLI to update your code. — [@bracesdev](https://github.com/bracesdev)
+Return trace is the path that an error took to return to the user. This can be more illustrative than a typical stack trace that produced the error. This tool has a convenient automatic instrumentation CLI to update your code. — [@bracesdev](https://github.com/bracesdev)
 
 
 ```
@@ -2182,7 +2182,7 @@ go build -gcflags="-l -l -l -l" .
 
 ### [⏫](#contents) :gift: Reduce size of binary
 
-First, get breakdown of how much specific packages take space in your binary. Very often you will see some dependnecy taking 80% of your binary size, yet often you can have more slim version of it. (e.g. `elasticsearch`, `gcp` clients). Then, apply compiler directives to strip away non-essential information.
+First, get breakdown of how much specific packages take space in your binary. Very often you will see some dependency taking 80% of your binary size, yet often you can have more slim version of it. (e.g. `elasticsearch`, `gcp` clients). Then, apply compiler directives to strip away non-essential information.
 
 
 ```
@@ -2806,7 +2806,7 @@ go install github.com/traefik/yaegi@latest
 
 ### [⏫](#contents) Run interactive Go interpreter with [gomacro](https://github.com/cosmos72/gomacro)
 
-This is interactive Go interpreter and debugger with REPL, Eval, generics and Lisp-like macros. You can run functions, import 3rd patry packages. Can be useful for learning and experimentation. Some nice features: autocomplete; constant expressions arithmetics. As of `2023-06-02`, issues with importing 3rd paty package are possible. — [@cosmos72](https://github.com/cosmos72)
+This is an interactive Go interpreter and debugger with REPL, Eval, generics, and Lisp-like macros. You can run functions and import 3rd-party packages. It can be useful for learning and experimentation. Some nice features: autocomplete; constant-expression arithmetic. As of `2023-06-02`, issues with importing 3rd-party packages are possible. — [@cosmos72](https://github.com/cosmos72)
 
 
 ```
@@ -3293,7 +3293,7 @@ You can also visualize profiles with online tools are aloso available https://ww
 
 
 
-### [⏫](#contents) :gift: Profile and visualizse (with video) Go profiles through eBPF with [go-profile](https://github.com/benbaker76/go-profile)
+### [⏫](#contents) :gift: Profile and visualize (with video) Go profiles through eBPF with [go-profile](https://github.com/benbaker76/go-profile)
 
 You can generate profiles throubh eBPF for Go programs. There is a frame export mode that you can use to generate videos. — [@benbaker76](https://github.com/benbaker76)
 
@@ -3552,7 +3552,7 @@ go tool trace trace.out
 
 ### [⏫](#contents) View traces with [gotraceui](https://github.com/dominikh/gotraceui)
 
-Gotraceui is a tool for visualizing and analyzing Go execution traces. It is meant to be a faster, more accessible, and more powerful alternative to go tool trace. Unlike go tool trace, Gotraceui doesn't use deprecated browser APIs (or a browser at all), and its UI is tuned specifically to the unique characteristics of Go traces. This tool also recommend by official Go team from Google in their [blog](https://go.dev/blog/execution-traces-2024). — [@dominikh](https://github.com/dominikh)
+Gotraceui is a tool for visualizing and analyzing Go execution traces. It is meant to be a faster, more accessible, and more powerful alternative to go tool trace. Unlike go tool trace, Gotraceui doesn't use deprecated browser APIs (or a browser at all), and its UI is tuned specifically to the unique characteristics of Go traces. This tool is also recommended by the official Go team from Google in their [blog](https://go.dev/blog/execution-traces-2024). — [@dominikh](https://github.com/dominikh)
 
 
 ```
@@ -4871,7 +4871,7 @@ go install honnef.co/go/tools/cmd/structlayout@latest
 
 ### [⏫](#contents) Rely on compiler for stricter Enums
 
-For compile time blocking of: accidental arithmetics; implicit cast of untyped constants; all operators except `==` and `!=`; — simply wrap into a struct in separate package and do not export field. [example](http://github.com/nikolaydubina/go-enum-example).
+For compile time blocking of: accidental arithmetic; implicit cast of untyped constants; all operators except `==` and `!=`; — simply wrap into a struct in a separate package and do not export the field. [example](http://github.com/nikolaydubina/go-enum-example).
 
 ```go
 package color
