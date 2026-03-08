@@ -1073,7 +1073,7 @@ goda graph . | dot -Tsvg -o graph.svg
 goda graph -cluster -short "github.com/nikolaydubina/go-cover-treemap:all" | dot -Tsvg -o graph.svg
 ```
 
-<div align="center"><img src="https://github.com/loov/goda/raw/master/graph.svg" style="margin: 8px; max-height: 640px;"></div>
+<div align="center"><img src="https://github.com/loov/goda/raw/main/graph.svg" style="margin: 8px; max-height: 640px;"></div>
 
 
 Requirements

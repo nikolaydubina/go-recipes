@@ -529,7 +529,7 @@ groups:
         requirements:
           - https://graphviz.org/download/
           - go install github.com/loov/goda@latest
-        example_image_url: https://github.com/loov/goda/raw/master/graph.svg
+        example_image_url: https://github.com/loov/goda/raw/main/graph.svg
       - title: Explore dependencies interactively
         description: Useful in large refactorings, dependency breaking, physical layout changes.
         name: spaghetti
