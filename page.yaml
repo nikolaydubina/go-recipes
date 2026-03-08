@@ -2681,6 +2681,16 @@ groups:
           - staticcheck ./...
         requirements:
           - go install honnef.co/go/tools/cmd/staticcheck@latest
+      - title: Detect common style, performance, and naming issues
+        description: Highly configurable linter with strict presets for code review. It contains 100+ rules. [revive.run](https://revive.run/).
+        url: https://github.com/mgechev/revive
+        name: revive
+        author: https://github.com/mgechev
+        commands:
+          - revive ./...
+        example_image_url: https://revive.run/images/gen/demo.svg
+        requirements:
+          - go install github.com/mgechev/revive@latest
       - title: "Detect potential Nil panics"
         description: This tool employs sophisticated static analysis techniques to catch Nil dereferences. More details in [blog](https://www.uber.com/en-IN/blog/nilaway-practical-nil-panic-detection-for-go/).
         url: https://github.com/uber-go/nilaway

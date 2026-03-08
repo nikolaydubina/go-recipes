@@ -224,6 +224,7 @@
    + [ Run custom static analysis tool with `go vet`](#-run-custom-static-analysis-tool-with-go-vet)
    + [ Run official static analyzers not included in `go vet`](#-run-official-static-analyzers-not-included-in-go-vet)
    + [ Detect most common issues with `staticcheck`](#-detect-most-common-issues-with-staticcheck)
+   + [ Detect common style, performance, and naming issues with `revive`](#-detect-common-style-performance-and-naming-issues-with-revive)
    + [ Detect potential Nil panics with `nilaway`](#-detect-potential-nil-panics-with-nilaway)
    + [ Detect most common issues with `go-critic`](#-detect-most-common-issues-with-go-critic)
    + [ Reference and run common linters with `golangci-lint`](#-reference-and-run-common-linters-with-golangci-lint)
@@ -3976,6 +3977,23 @@ staticcheck ./...
 Requirements
 ```
 go install honnef.co/go/tools/cmd/staticcheck@latest
+```
+
+### [⏫](#contents) Detect common style, performance, and naming issues with [revive](https://github.com/mgechev/revive)
+
+Highly configurable linter with strict presets for code review. It contains 100+ rules. [revive.run](https://revive.run/). — [@mgechev](https://github.com/mgechev)
+
+
+```
+revive ./...
+```
+
+<div align="center"><img src="https://revive.run/images/gen/demo.svg" style="margin: 8px; max-height: 640px;"></div>
+
+
+Requirements
+```
+go install github.com/mgechev/revive@latest
 ```
 
 ### [⏫](#contents) Detect potential Nil panics with [nilaway](https://github.com/uber-go/nilaway)
