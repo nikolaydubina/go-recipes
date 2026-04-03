@@ -152,6 +152,7 @@
  - Deployment
    + [ :gift: Automatically set memory and cpu limits in K8S](#-gift-automatically-set-memory-and-cpu-limits-in-k8s)
  - Execution
+   + [ Get version of binary installed with go install](#-get-version-of-binary-installed-with-go-install)
    + [ Embed Go Playground to your blog with `codapi`](#-embed-go-playground-to-your-blog-with-codapi)
    + [ Embed Go Playground to your blog with `goplay`](#-embed-go-playground-to-your-blog-with-goplay)
    + [ Run alternative Go Playground with `goplay.tools`](#-run-alternative-go-playground-with-goplaytools)
@@ -2690,6 +2691,14 @@ go 1.25+
 ```
 
 ## Execution
+
+### [⏫](#contents) Get version of binary installed with go install
+
+Use this command to quickly get which version of the tool is installed.
+
+```
+go version -m $(which <name>)```
+
 
 ### [⏫](#contents) Embed Go Playground to your blog with [codapi](https://github.com/nalgeon/codapi)
 

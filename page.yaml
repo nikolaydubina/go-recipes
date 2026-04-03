@@ -1718,6 +1718,9 @@ groups:
           - go 1.25+
   - title: Execution
     entries:
+      - title: "Get version of binary installed with go install"
+        description: "Use this command to quickly get which version of the tool is installed."
+        example_content: go version -m $(which <name>)
       - title: "Embed Go Playground to your blog"
         description: "Codapi is a platform for embedding interactive code snippets directly into your product documentation, online course or blog post. [example](https://antonz.org/go-1-22/)."
         name: codapi
