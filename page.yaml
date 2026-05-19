@@ -363,25 +363,6 @@ groups:
               continue MUTATOR
             }
           }
-      - title: "Perform Mutation Testing"
-        description: Find common bugs source code that would pass tests. This is earliest tool for mutation testing in Go. More functions and permutations were added in other mutation Go tools it inspired.
-        name: go-mutesting
-        url: https://github.com/zimmski/go-mutesting
-        author: https://github.com/zimmski
-        requirements:
-          - go install github.com/zimmski/go-mutesting/cmd/go-mutesting@latest
-        commands:
-          - go-mutesting ./...
-        example_content_ext: go
-        example_content: |
-          for _, d := range opts.Mutator.DisableMutators {
-            pattern := strings.HasSuffix(d, "*")
-
-          -	if (pattern && strings.HasPrefix(name, d[:len(d)-2])) || (!pattern && name == d) {
-          +	if (pattern && strings.HasPrefix(name, d[:len(d)-2])) || false {
-              continue MUTATOR
-            }
-          }
       - title: "Trace tests"
         description: Collect test execution as distributed traces. This is useful for tracking test duration, failures, and flakiness. Your distributed tracing storage, search, UI, exploration, dashboards, and alarms all automatically become test status collection. If you run integration tests in your CI, then it is particularly handy to investigate your integration tests the same way as real requests, such as Go processes, databases, etc. However, if you do not have distributed traces, it is still useful for ad hoc investigations. This tool processes STDOUT of `go test`. No automatic instrumentation is done.
         name: go-test-trace
