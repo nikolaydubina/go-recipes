@@ -345,7 +345,7 @@ groups:
           - go test -v -tags=mutation
         example_image_url: https://github.com/gtramontina/ooze/blob/main/.assets/report.png
       - title: "Perform Mutation Testing"
-        description: Actively maintained fork of zimmski/go-mutesting with CI quality gates (`--min-msi`, `--min-covered-msi`), coverage-aware MSI, baseline tracking, git-diff filtering, and structured JSON/HTML reports.
+        description: Mutation testing for Go with CI quality gates (`--min-msi`, `--min-covered-msi`), coverage-aware MSI, baseline tracking, git-diff filtering, and structured JSON/HTML reports.
         name: "jonbaldie/go-mutesting"
         url: https://github.com/jonbaldie/go-mutesting
         author: https://github.com/jonbaldie
