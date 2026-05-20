@@ -1,7 +1,7 @@
 <h1 align="center">🦩 Go Recipes</h1>
 
 <p align="center">
-  ✨ Sponsored by <a href="https://ndx.one/?ct=github">NDX AI Shopping Assistant</a>
+  ✨ Sponsored by <a href="https://apps.apple.com/app/id6738306589">NDX AI Shopping Assistant</a>
 </p>
 
 <p align="center">Handy well-known and <i>lesser</i>-known tools for Go projects</p>
@@ -48,6 +48,7 @@
    + [ Get packages without tests](#-get-packages-without-tests)
    + [ Perform Mutation Testing with `ooze`](#-perform-mutation-testing-with-ooze)
    + [ Perform Mutation Testing with `avito-tech/go-mutesting`](#-perform-mutation-testing-with-avito-techgo-mutesting)
+   + [ :gift: Perform Mutation Testing with `jonbaldie/go-mutesting`](#-gift-perform-mutation-testing-with-jonbaldiego-mutesting)
    + [ Perform Mutation Testing with `go-mutesting`](#-perform-mutation-testing-with-go-mutesting)
    + [ Trace tests with `go-test-trace`](#-trace-tests-with-go-test-trace)
    + [ Speedup tests for large codebases](#-speedup-tests-for-large-codebases)
@@ -803,6 +804,31 @@ for _, d := range opts.Mutator.DisableMutators {
 Requirements
 ```
 go install github.com/avito-tech/go-mutesting/cmd/go-mutesting@latest
+```
+
+### [⏫](#contents) :gift: Perform Mutation Testing with [jonbaldie/go-mutesting](https://github.com/jonbaldie/go-mutesting)
+
+Fork of avito-tech/go-mutesting with a much richer mutator set, CI quality gates, covered MSI %, baseline tracking, per-test filtering, parallel execution, and LLM-ready output. — [@jonbaldie](https://github.com/jonbaldie)
+
+
+```
+go-mutesting ./...
+```
+
+```go
+for _, d := range opts.Mutator.DisableMutators {
+  pattern := strings.HasSuffix(d, "*")
+
+-	if (pattern && strings.HasPrefix(name, d[:len(d)-2])) || (!pattern && name == d) {
++	if (pattern && strings.HasPrefix(name, d[:len(d)-2])) || false {
+    continue MUTATOR
+  }
+}
+```
+
+Requirements
+```
+go install github.com/jonbaldie/go-mutesting/v2/cmd/go-mutesting@latest
 ```
 
 ### [⏫](#contents) Perform Mutation Testing with [go-mutesting](https://github.com/zimmski/go-mutesting)
