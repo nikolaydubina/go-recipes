@@ -363,13 +363,13 @@ groups:
               continue MUTATOR
             }
           }
-      - title: "Perform Mutation Testing"
-        description: Find common bugs source code that would pass tests. This is earliest tool for mutation testing in Go. More functions and permutations were added in other mutation Go tools it inspired.
-        name: go-mutesting
-        url: https://github.com/zimmski/go-mutesting
-        author: https://github.com/zimmski
+      - title: ":gift: Perform Mutation Testing"
+        description: Fork of avito-tech/go-mutesting with a much richer mutator set, CI quality gates, covered MSI %, baseline tracking, per-test filtering, parallel execution, and LLM-ready output.
+        name: "jonbaldie/go-mutesting"
+        url: https://github.com/jonbaldie/go-mutesting
+        author: https://github.com/jonbaldie
         requirements:
-          - go install github.com/zimmski/go-mutesting/cmd/go-mutesting@latest
+          - go install github.com/jonbaldie/go-mutesting/v2/cmd/go-mutesting@latest
         commands:
           - go-mutesting ./...
         example_content_ext: go
