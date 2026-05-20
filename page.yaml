@@ -364,7 +364,7 @@ groups:
             }
           }
       - title: ":gift: Perform Mutation Testing"
-        description: Mutation testing for Go with CI quality gates (`--min-msi`, `--min-covered-msi`), coverage-aware MSI, baseline tracking, git-diff filtering, and structured JSON/HTML reports.
+        description: Actively maintained fork of avito-tech/go-mutesting with CI quality gates, covered MSI %, baseline tracking, per-test filtering, parallel execution, and LLM-ready output.
         name: "jonbaldie/go-mutesting"
         url: https://github.com/jonbaldie/go-mutesting
         author: https://github.com/jonbaldie
