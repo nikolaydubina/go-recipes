@@ -345,6 +345,25 @@ groups:
           - go test -v -tags=mutation
         example_image_url: https://github.com/gtramontina/ooze/blob/main/.assets/report.png
       - title: "Perform Mutation Testing"
+        description: This is fork of [zimmski/go-mutesting](https://github.com/zimmski/go-mutesting). It has more mutators and latest updates.
+        name: "avito-tech/go-mutesting"
+        url: https://github.com/avito-tech/go-mutesting
+        author: https://github.com/vasiliyyudin
+        requirements:
+          - go install github.com/avito-tech/go-mutesting/cmd/go-mutesting@latest
+        commands:
+          - go-mutesting ./...
+        example_content_ext: go
+        example_content: |
+          for _, d := range opts.Mutator.DisableMutators {
+            pattern := strings.HasSuffix(d, "*")
+
+          -	if (pattern && strings.HasPrefix(name, d[:len(d)-2])) || (!pattern && name == d) {
+          +	if (pattern && strings.HasPrefix(name, d[:len(d)-2])) || false {
+              continue MUTATOR
+            }
+          }
+      - title: ":gift: Perform Mutation Testing"
         description: Mutation testing for Go with CI quality gates (`--min-msi`, `--min-covered-msi`), coverage-aware MSI, baseline tracking, git-diff filtering, and structured JSON/HTML reports.
         name: "jonbaldie/go-mutesting"
         url: https://github.com/jonbaldie/go-mutesting
