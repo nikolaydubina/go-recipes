@@ -1,7 +1,7 @@
 <h1 align="center">🦩 Go Recipes</h1>
 
 <p align="center">
-  ✨ Sponsored by <a href="https://ndx.one/">NDX Technologies</a>
+  ✨ Sponsored by <a href="https://ndx.one/?ct=github">NDX Technologies</a>
 </p>
 
 <p align="center">Handy well-known and <i>lesser</i>-known tools for Go projects</p>
