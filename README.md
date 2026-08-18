@@ -282,7 +282,7 @@ go install gotest.tools/gotestsum@latest
 
 ### [⏫](#contents) Make treemap of coverage with [go-cover-treemap](https://github.com/nikolaydubina/go-cover-treemap)
 
-Visualize distribution of code coverage in your project. This helps to identify code areas with high and low coverage. Useful when you have large project with lots of files and packages. This 2D "image-hash" of your project should be more representative than a single number. Also available at https://go-cover-treemap.io. — [@nikolaydubina](https://github.com/nikolaydubina)
+Visualize distribution of code coverage in your project. This helps to identify code areas with high and low coverage. Useful when you have large project with lots of files and packages. This 2D "image-hash" of your project should be more representative than a single number. Also available at https://nikolaydubina.github.io/go-cover-treemap/. — [@nikolaydubina](https://github.com/nikolaydubina)
 
 
 ```
