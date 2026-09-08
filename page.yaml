@@ -320,6 +320,15 @@ groups:
           - go test -v 2>&1 ./... | go-junit-report -set-exit-code > report.xml
         requirements:
           - go install github.com/jstemmer/go-junit-report/v2@latest
+      - title: Report each subtest as its own case
+        description: Turns `go test -json` into a report where every subtest is its own case with its own status and timing, and where labels, steps and files attached from inside a test travel with it. Also detects build failures, which produce no event in the JSON stream at all before Go 1.24.
+        name: qualflare-go
+        url: https://github.com/Qualflare/qualflare-go
+        author: https://github.com/Qualflare
+        commands:
+          - qualflare-go ./...
+        requirements:
+          - go install github.com/Qualflare/qualflare-go/cmd/qualflare-go@latest
       - title: Get packages without tests
         description: If code coverage does not report packages without tests. For example for CI or quality control.
         requirements:

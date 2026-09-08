@@ -40,6 +40,7 @@
    + [ Automatically re-run failed tests with `gotestsum`](#-automatically-re-run-failed-tests-with-gotestsum)
    + [ Make `JUnit` test report with `gotestsum`](#-make-junit-test-report-with-gotestsum)
    + [ Make `JUnit` test report with `go-junit-report`](#-make-junit-test-report-with-go-junit-report)
+   + [ Report each subtest as its own case with `qualflare-go`](#-report-each-subtest-as-its-own-case-with-qualflare-go)
    + [ Get packages without tests](#-get-packages-without-tests)
    + [ Perform Mutation Testing with `ooze`](#-perform-mutation-testing-with-ooze)
    + [ Perform Mutation Testing with `avito-tech/go-mutesting`](#-perform-mutation-testing-with-avito-techgo-mutesting)
@@ -737,6 +738,20 @@ go test -v 2>&1 ./... | go-junit-report -set-exit-code > report.xml
 Requirements
 ```
 go install github.com/jstemmer/go-junit-report/v2@latest
+```
+
+### [⏫](#contents) Report each subtest as its own case with [qualflare-go](https://github.com/Qualflare/qualflare-go)
+
+Turns `go test -json` into a report where every subtest is its own case with its own status and timing, and where labels, steps and files attached from inside a test travel with it. Also detects build failures, which produce no event in the JSON stream at all before Go 1.24. — [@Qualflare](https://github.com/Qualflare)
+
+
+```
+qualflare-go ./...
+```
+
+Requirements
+```
+go install github.com/Qualflare/qualflare-go/cmd/qualflare-go@latest
 ```
 
 ### [⏫](#contents) Get packages without tests
