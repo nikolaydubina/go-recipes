@@ -3812,6 +3812,7 @@ func main() {
 
 - [Google](https://google.github.io/styleguide/go)
 
+- [Ivy Tendril](https://github.com/Ivy-Interactive/Ivy-Tendril) - Open-source GUI software factory and agent harness that handles parallel Git worktrees for you, complete with programmatic verifications and review loops
 - [Uber](https://github.com/uber-go/guide)
 
 - [Go Code Review Comments](https://go.dev/wiki/CodeReviewComments)
