@@ -63,6 +63,7 @@
    + [ Explore dependencies with `goda`](#-explore-dependencies-with-goda)
    + [ Explore dependencies interactively with `spaghetti`](#-explore-dependencies-interactively-with-spaghetti)
    + [ Explore dependencies graph interactively with `modview`](#-explore-dependencies-graph-interactively-with-modview)
+   + [ Explore Go module ecosystem dependency graph interactively with `shape-of-go`](#-explore-go-module-ecosystem-dependency-graph-interactively-with-shape-of-go)
    + [ Explore dependencies graph in CLI with `depth`](#-explore-dependencies-graph-in-cli-with-depth)
    + [ Explore your `GOPATH` with GUI with `goggles`](#-explore-your-gopath-with-gui-with-goggles)
    + [ Enforce Go code architecture with `go-arch-lint`](#-enforce-go-code-architecture-with-go-arch-lint)
@@ -1148,6 +1149,14 @@ Requirements
 ```
 go install github.com/bayraktugrul/modview@latest
 ```
+
+### [⏫](#contents) Explore Go module ecosystem dependency graph interactively with [shape-of-go](https://github.com/LuisLSousa/shape-of-go)
+
+A map of the Go module ecosystem containing over 2.6 million modules and 9.4 million declared dependency edges in a single graph. The interactive WebGL viewer visualizes the connected module galaxy with hub and dependent analysis. Live interactive map at [shape-of-go.pages.dev](https://shape-of-go.pages.dev/). — [@LuisLSousa](https://github.com/LuisLSousa)
+
+<div align="center"><img src="https://raw.githubusercontent.com/LuisLSousa/shape-of-go/main/docs/images/galaxy-overview.jpg" style="margin: 8px; max-height: 640px;"></div>
+
+
 
 ### [⏫](#contents) Explore dependencies graph in CLI with [depth](https://github.com/KyleBanks/depth)
 

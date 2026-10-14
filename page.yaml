@@ -572,6 +572,12 @@ groups:
           - modview --open
         requirements:
           - go install github.com/bayraktugrul/modview@latest
+      - title: "Explore Go module ecosystem dependency graph interactively"
+        description: A map of the Go module ecosystem containing over 2.6 million modules and 9.4 million declared dependency edges in a single graph. The interactive WebGL viewer visualizes the connected module galaxy with hub and dependent analysis. Live interactive map at [shape-of-go.pages.dev](https://shape-of-go.pages.dev/).
+        name: shape-of-go
+        url: https://github.com/LuisLSousa/shape-of-go
+        author: https://github.com/LuisLSousa
+        example_image_url: https://raw.githubusercontent.com/LuisLSousa/shape-of-go/main/docs/images/galaxy-overview.jpg
       - title: "Explore dependencies graph in CLI"
         description: "Use this tool to retrieve and visualize Go source code dependency trees in CLI. You can also visualize multiple packages at once, set max depth, select internal only, and show explanation."
         name: depth
