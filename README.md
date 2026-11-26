@@ -25,6 +25,7 @@
    + [ Shuffle tests](#-shuffle-tests)
    + [ Run tests sequentially](#-run-tests-sequentially)
    + [ Run tests in parallel](#-run-tests-in-parallel)
+   + [ Test concurrent code in a time bubble](#-test-concurrent-code-in-a-time-bubble)
    + [ Run all Fuzz tests](#-run-all-fuzz-tests)
    + [ :gift: Fuzz Go binaries using LibAFL with `GoLibAFL`](#-gift-fuzz-go-binaries-using-libafl-with-golibafl)
    + [ Detect goroutine leaks with `goleak`](#-detect-goroutine-leaks-with-goleak)
@@ -504,6 +505,41 @@ for _, tc := range tests {
     t.Run(tc.name, func(t *testing.T) {
         t.Parallel()
         ...
+```
+
+
+### [⏫](#contents) Test concurrent code in a time bubble
+
+Go 1.25 added the `testing/synctest` package. It runs a test in an isolated bubble where the `time` package functions use a fake clock, and the clock jumps forward once every goroutine in the bubble is blocked. A test that backs off or polls for seconds therefore finishes immediately, and `synctest.Wait` waits for a background goroutine to block instead of guessing a sleep long enough for it. [Official documentation](https://pkg.go.dev/testing/synctest), [release notes](https://go.dev/doc/go1.25).
+
+```go
+func TestFetchRetries(t *testing.T) {
+  synctest.Test(t, func(t *testing.T) {
+    start := time.Now() // bubble clock always starts at midnight UTC 2000-01-01
+    fails := 2
+    fetch := func() error {
+      if fails > 0 {
+        fails--
+        return errors.New("timeout")
+      }
+      return nil
+    }
+    var err error
+    for attempt := 1; attempt <= 3; attempt++ {
+      if err = fetch(); err == nil {
+        break
+      }
+      time.Sleep(time.Duration(attempt) * time.Second)
+    }
+    if err != nil {
+      t.Fatalf("fetch() = %v, want nil", err)
+    }
+    // 1s and 2s of backoff, yet no wall-clock time passed
+    if got := time.Since(start); got != 3*time.Second {
+      t.Fatalf("elapsed = %v, want 3s", got)
+    }
+  })
+}
 ```
 
 
